@@ -46,13 +46,14 @@ export default function LanguageSwitcher() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
+        className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-white to-gray-50 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-md transition-all duration-300 shadow-sm relative overflow-hidden"
         aria-label={t('selectLanguage')}
       >
-        <span className="text-xl">{currentLanguage.flag}</span>
-        <span className="font-medium text-gray-700">{currentLanguage.name}</span>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <span className="text-xl relative z-10 transform group-hover:scale-110 transition-transform duration-300">{currentLanguage.flag}</span>
+        <span className="font-medium text-gray-700 relative z-10 group-hover:text-blue-600 transition-colors duration-300">{currentLanguage.name}</span>
         <svg
-          className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 relative z-10 transition-all duration-300 group-hover:text-blue-600 ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -62,19 +63,20 @@ export default function LanguageSwitcher() {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full mt-2 right-0 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50 min-w-[200px]">
-          {languages.map((lang) => (
+        <div className="absolute top-full mt-2 right-0 bg-white border border-gray-200 rounded-lg shadow-xl overflow-hidden z-50 min-w-[200px] animate-slideDown backdrop-blur-sm">
+          {languages.map((lang, index) => (
             <button
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
-              className={`w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors ${
-                lang.code === locale ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+              className={`w-full flex items-center gap-3 px-4 py-3 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100/50 transition-all duration-200 relative group ${
+                lang.code === locale ? 'bg-gradient-to-r from-blue-50 to-blue-100/50 text-blue-600' : 'text-gray-700'
               }`}
+              style={{ animationDelay: `${index * 0.03}s` }}
             >
-              <span className="text-xl">{lang.flag}</span>
-              <span className="font-medium">{lang.name}</span>
+              <span className="text-xl transform group-hover:scale-125 transition-transform duration-200">{lang.flag}</span>
+              <span className="font-medium group-hover:translate-x-1 transition-transform duration-200">{lang.name}</span>
               {lang.code === locale && (
-                <svg className="w-5 h-5 ml-auto" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 ml-auto animate-scaleIn" fill="currentColor" viewBox="0 0 20 20">
                   <path
                     fillRule="evenodd"
                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -82,6 +84,7 @@ export default function LanguageSwitcher() {
                   />
                 </svg>
               )}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
             </button>
           ))}
         </div>

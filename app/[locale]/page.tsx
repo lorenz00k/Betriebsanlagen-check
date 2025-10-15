@@ -3,15 +3,36 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import AnimatedStats from "../components/AnimatedStats";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const t = useTranslations("home");
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100">
-      <div className="max-w-6xl mx-auto px-4 py-16">
+    <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 relative overflow-hidden">
+      {/* Animated background shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s', animationDuration: '4s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-green-200/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s', animationDuration: '5s' }}></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 py-16 relative z-10">
         {/* Hero Section */}
-        <div className="text-center mb-16 animate-fadeIn">
+        <div
+          className="text-center mb-16 animate-fadeIn"
+          style={{ transform: `translateY(${scrollY * 0.3}px)`, opacity: Math.max(0, 1 - scrollY / 500) }}
+        >
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
             {t("title")}
           </h1>
@@ -23,7 +44,7 @@ export default function Home() {
         {/* Two Main Cards */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* Card 1: Check if permit is needed */}
-          <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-blue-300 hover:-translate-y-2 glow-on-hover">
+          <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-blue-300 hover:-translate-y-2 relative">
             <div className="h-2 bg-gradient-to-r from-blue-600 to-blue-700"></div>
             <div className="p-8">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-md animate-float">
@@ -49,7 +70,7 @@ export default function Home() {
               </p>
               <Link
                 href="/check"
-                className="inline-flex items-center gap-2 w-full justify-center bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 px-6 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg"
+                className="button-shine inline-flex items-center gap-2 w-full justify-center bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 px-6 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg active:scale-95"
               >
                 {t("card1Button")}
                 <svg
@@ -96,7 +117,7 @@ export default function Home() {
               </p>
               <Link
                 href="/documents"
-                className="inline-flex items-center gap-2 w-full justify-center bg-gradient-to-r from-green-600 to-green-700 text-white py-4 px-6 rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition-all shadow-md hover:shadow-lg"
+                className="button-shine inline-flex items-center gap-2 w-full justify-center bg-gradient-to-r from-green-600 to-green-700 text-white py-4 px-6 rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition-all shadow-md hover:shadow-lg active:scale-95"
               >
                 {t("card2Button")}
                 <svg
@@ -185,68 +206,6 @@ export default function Home() {
           />
         </div>
 
-        {/* Trust indicators */}
-        <div className="bg-white/60 backdrop-blur-sm rounded-xl p-8 border border-gray-200 shadow-sm">
-          <div className="grid md:grid-cols-3 gap-6 text-center">
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
-                <svg
-                  className="w-6 h-6 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Sicher</h3>
-              <p className="text-sm text-gray-600">Ihre Daten bleiben privat</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-3">
-                <svg
-                  className="w-6 h-6 text-green-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Schnell</h3>
-              <p className="text-sm text-gray-600">Ergebnis in 2 Minuten</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-3">
-                <svg
-                  className="w-6 h-6 text-purple-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Mehrsprachig</h3>
-              <p className="text-sm text-gray-600">8 Sprachen verfügbar</p>
-            </div>
-          </div>
-        </div>
       </div>
     </main>
   );
