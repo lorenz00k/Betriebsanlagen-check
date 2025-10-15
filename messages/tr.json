@@ -10,7 +10,28 @@
     "card1Button": "Kontrole başla",
     "card2Title": "Yolunuz ve gerekli belgeler",
     "card2Description": "İşletme tesisi izni için ihtiyacınız olan tüm adımların ve belgelerin genel bakışı",
-    "card2Button": "Daha fazla bilgi"
+    "card2Button": "Daha fazla bilgi",
+    "stats": {
+      "languages": "Mevcut diller",
+      "time": "Dakikalar içinde sonuç",
+      "free": "Ücretsiz ve güvenli"
+    },
+    "seo": {
+      "heading": "İşletme tesisi izninin neden önemli olduğu",
+      "intro": "Viyana'da ve Avusturya genelinde, birçok işletme Ticaret Yasası'na göre işletme tesisi izni gerektirir. Ücretsiz kontrolümüz, işletmenizin izin gerektirip gerektirmediğini hızlı ve kolay bir şekilde bulmanıza yardımcı olur.",
+      "feature1Title": "Hızlı ve basit",
+      "feature1Text": "Sadece 2 dakikada işletme tesisi iznine ihtiyacınız olup olmadığına dair ilk değerlendirmeyi alacaksınız. Karmaşık formlar yok, bekleme süresi yok.",
+      "feature2Title": "Çok dilli",
+      "feature2Text": "Hizmetimiz 8 dilde mevcuttur: Almanca, İngilizce, Sırpça, Hırvatça, Türkçe, İtalyanca, İspanyolca ve Ukraynaca - Viyana'daki tüm girişimciler için erişilebilir.",
+      "feature3Title": "Ücretsiz ve anonim",
+      "feature3Text": "Kontrol tamamen ücretsizdir ve verileriniz gizli kalır. Kayıt gerekmez, gizli maliyet yoktur.",
+      "whyTitle": "Ne zaman işletme tesisi iznine ihtiyacınız var?",
+      "whyText": "İşletme tesisi izni, Avusturya'da birçok ticari faaliyet için gereklidir. İzin muafiyeti yönetmeliği, hangi işletmelerin izin gereksiniminden muaf olduğunu belirler. İşletme alanı, gürültü, çalışma saatleri ve faaliyet türü gibi faktörler önemli bir rol oynar."
+    },
+    "footer": {
+      "copyright": "Betriebsanlagen Check - Viyana bürokrasisi için yardımcınız",
+      "disclaimer": "Bu web sitesi yalnızca bilgilendirme amaçlıdır. Yasal olarak bağlayıcı bilgiler için lütfen ilgili makamlarla iletişime geçin."
+    }
   },
   "questionnaire": {
     "title": "İşletme İzni Kontrolü",

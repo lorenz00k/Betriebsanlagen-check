@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { locales, Locale } from "@/i18n";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import LanguageBanner from "../components/LanguageBanner";
+import Footer from "../components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Link from "next/link";
@@ -54,16 +55,7 @@ export default async function LocaleLayout({
         </div>
       </nav>
       <main className="min-h-screen">{children}</main>
-      <footer className="bg-white/50 backdrop-blur-sm border-t border-gray-200 mt-20">
-        <div className="max-w-7xl mx-auto px-4 py-8 text-center text-gray-600 text-sm">
-          <p>© 2025 Betriebsanlagen Check - Ihr Helfer für Wiener Bürokratie</p>
-          <p className="mt-2 text-xs text-gray-500">
-            Diese Website dient nur zu Informationszwecken. Für rechtlich
-            verbindliche Auskünfte wenden Sie sich bitte an die zuständigen
-            Behörden.
-          </p>
-        </div>
-      </footer>
+      <Footer />
       <Analytics />
       <SpeedInsights />
     </NextIntlClientProvider>

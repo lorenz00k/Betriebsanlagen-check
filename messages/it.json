@@ -10,7 +10,28 @@
     "card1Button": "Avvia il controllo",
     "card2Title": "Il tuo percorso e i documenti necessari",
     "card2Description": "Panoramica di tutti i passaggi e i documenti necessari per l'autorizzazione dell'impianto aziendale",
-    "card2Button": "Scopri di più"
+    "card2Button": "Scopri di più",
+    "stats": {
+      "languages": "Lingue disponibili",
+      "time": "Risultato in pochi minuti",
+      "free": "Gratuito e sicuro"
+    },
+    "seo": {
+      "heading": "Perché un'autorizzazione per l'impianto aziendale è importante",
+      "intro": "A Vienna e in tutta l'Austria, molte aziende richiedono un'autorizzazione per l'impianto aziendale secondo la Legge sul Commercio. Il nostro controllo gratuito ti aiuta a scoprire rapidamente e facilmente se la tua azienda richiede un'autorizzazione.",
+      "feature1Title": "Veloce e semplice",
+      "feature1Text": "In soli 2 minuti riceverai una valutazione iniziale se hai bisogno di un'autorizzazione per l'impianto aziendale. Nessun modulo complicato, nessun tempo di attesa.",
+      "feature2Title": "Multilingue",
+      "feature2Text": "Il nostro servizio è disponibile in 8 lingue: tedesco, inglese, serbo, croato, turco, italiano, spagnolo e ucraino - accessibile a tutti gli imprenditori di Vienna.",
+      "feature3Title": "Gratuito e anonimo",
+      "feature3Text": "Il controllo è completamente gratuito e i tuoi dati rimangono privati. Nessuna registrazione richiesta, nessun costo nascosto.",
+      "whyTitle": "Quando hai bisogno di un'autorizzazione per l'impianto aziendale?",
+      "whyText": "Un'autorizzazione per l'impianto aziendale è richiesta in Austria per molte attività commerciali. Il regolamento di esenzione determina quali aziende sono esentate dall'obbligo di autorizzazione. Fattori come l'area aziendale, il rumore, gli orari di apertura e il tipo di attività svolgono un ruolo importante."
+    },
+    "footer": {
+      "copyright": "Betriebsanlagen Check - Il tuo aiuto per la burocrazia viennese",
+      "disclaimer": "Questo sito web è solo a scopo informativo. Per informazioni legalmente vincolanti, si prega di contattare le autorità competenti."
+    }
   },
   "questionnaire": {
     "title": "Controllo Autorizzazione Impianto Aziendale",

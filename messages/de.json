@@ -10,7 +10,28 @@
     "card1Button": "Check starten",
     "card2Title": "Ihr Weg und benötigte Dokumente",
     "card2Description": "Überblick über alle Schritte und Dokumente, die Sie für eine Betriebsanlagengenehmigung benötigen",
-    "card2Button": "Mehr erfahren"
+    "card2Button": "Mehr erfahren",
+    "stats": {
+      "languages": "Sprachen verfügbar",
+      "time": "Ergebnis in Minuten",
+      "free": "Kostenlos & Sicher"
+    },
+    "seo": {
+      "heading": "Warum eine Betriebsanlagengenehmigung wichtig ist",
+      "intro": "In Wien und ganz Österreich benötigen viele Unternehmen eine Betriebsanlagengenehmigung nach der Gewerbeordnung. Unser kostenloser Check hilft Ihnen schnell und unkompliziert herauszufinden, ob Ihr Betrieb genehmigungspflichtig ist.",
+      "feature1Title": "Schnell & Einfach",
+      "feature1Text": "In nur 2 Minuten erhalten Sie eine erste Einschätzung, ob Sie eine Betriebsanlagengenehmigung benötigen. Keine komplizierten Formulare, keine Wartezeiten.",
+      "feature2Title": "Mehrsprachig",
+      "feature2Text": "Unser Service ist in 8 Sprachen verfügbar: Deutsch, Englisch, Serbisch, Kroatisch, Türkisch, Italienisch, Spanisch und Ukrainisch - für alle Unternehmer in Wien zugänglich.",
+      "feature3Title": "Kostenlos & Anonym",
+      "feature3Text": "Der Check ist völlig kostenlos und Ihre Daten bleiben privat. Keine Registrierung erforderlich, keine versteckten Kosten.",
+      "whyTitle": "Wann brauchen Sie eine Betriebsanlagengenehmigung?",
+      "whyText": "Eine Betriebsanlagengenehmigung ist in Österreich für viele gewerbliche Tätigkeiten erforderlich. Die Genehmigungsfreistellungsverordnung regelt, welche Betriebe von der Genehmigungspflicht ausgenommen sind. Faktoren wie Betriebsfläche, Lärm, Öffnungszeiten und Art der Tätigkeit spielen eine wichtige Rolle."
+    },
+    "footer": {
+      "copyright": "Betriebsanlagen Check - Ihr Helfer für Wiener Bürokratie",
+      "disclaimer": "Diese Website dient nur zu Informationszwecken. Für rechtlich verbindliche Auskünfte wenden Sie sich bitte an die zuständigen Behörden."
+    }
   },
   "questionnaire": {
     "title": "Betriebsanlagen-Genehmigungscheck",

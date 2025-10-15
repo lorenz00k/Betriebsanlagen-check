@@ -10,7 +10,28 @@
     "card1Button": "Start Check",
     "card2Title": "Your path and required documents",
     "card2Description": "Overview of all steps and documents you need for a business facility permit",
-    "card2Button": "Learn more"
+    "card2Button": "Learn more",
+    "stats": {
+      "languages": "Languages available",
+      "time": "Result in minutes",
+      "free": "Free & Secure"
+    },
+    "seo": {
+      "heading": "Why a business facility permit is important",
+      "intro": "In Vienna and throughout Austria, many businesses require a business facility permit according to the Trade Act. Our free check helps you quickly and easily find out whether your business requires a permit.",
+      "feature1Title": "Fast & Simple",
+      "feature1Text": "In just 2 minutes you will receive an initial assessment of whether you need a business facility permit. No complicated forms, no waiting times.",
+      "feature2Title": "Multilingual",
+      "feature2Text": "Our service is available in 8 languages: German, English, Serbian, Croatian, Turkish, Italian, Spanish and Ukrainian - accessible to all entrepreneurs in Vienna.",
+      "feature3Title": "Free & Anonymous",
+      "feature3Text": "The check is completely free and your data remains private. No registration required, no hidden costs.",
+      "whyTitle": "When do you need a business facility permit?",
+      "whyText": "A business facility permit is required in Austria for many commercial activities. The exemption regulation determines which businesses are exempt from the permit requirement. Factors such as business area, noise, operating hours and type of activity play an important role."
+    },
+    "footer": {
+      "copyright": "Betriebsanlagen Check - Your helper for Viennese bureaucracy",
+      "disclaimer": "This website is for informational purposes only. For legally binding information, please contact the relevant authorities."
+    }
   },
   "questionnaire": {
     "title": "Business Facility Permit Check",

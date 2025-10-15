@@ -10,7 +10,28 @@
     "card1Button": "Započnite provjeru",
     "card2Title": "Vaš put i potrebni dokumenti",
     "card2Description": "Pregled svih koraka i dokumenata koji su vam potrebni za dozvolu za poslovni objekt",
-    "card2Button": "Saznajte više"
+    "card2Button": "Saznajte više",
+    "stats": {
+      "languages": "Dostupnih jezika",
+      "time": "Rezultat za nekoliko minuta",
+      "free": "Besplatno i sigurno"
+    },
+    "seo": {
+      "heading": "Zašto je dozvola za poslovni objekt važna",
+      "intro": "U Beču i širom Austrije, mnogim poduzećima je potrebna dozvola za poslovni objekt prema Zakonu o trgovini. Naša besplatna provjera vam pomaže da brzo i lako saznate treba li vašem poduzeću dozvola.",
+      "feature1Title": "Brzo i jednostavno",
+      "feature1Text": "Za samo 2 minute dobit ćete početnu procjenu trebate li dozvolu za poslovni objekt. Bez kompliciranih obrazaca, bez čekanja.",
+      "feature2Title": "Višejezično",
+      "feature2Text": "Naša usluga dostupna je na 8 jezika: njemački, engleski, srpski, hrvatski, turski, talijanski, španjolski i ukrajinski - dostupna svim poduzetnicima u Beču.",
+      "feature3Title": "Besplatno i anonimno",
+      "feature3Text": "Provjera je potpuno besplatna i vaši podaci ostaju privatni. Nije potrebna registracija, nema skrivenih troškova.",
+      "whyTitle": "Kada vam je potrebna dozvola za poslovni objekt?",
+      "whyText": "Dozvola za poslovni objekt potrebna je u Austriji za mnoge komercijalne djelatnosti. Uredba o izuzeću od dozvole određuje koja poduzeća su oslobođena od obveze dozvole. Čimbenici poput poslovne površine, buke, radnog vremena i vrste djelatnosti igraju važnu ulogu."
+    },
+    "footer": {
+      "copyright": "Betriebsanlagen Check - Vaš pomoćnik za bečku birokraciju",
+      "disclaimer": "Ova web stranica je samo u informativne svrhe. Za pravno obvezujuće informacije, molimo kontaktirajte nadležne organe."
+    }
   },
   "questionnaire": {
     "title": "Provjera dozvole za poslovni objekt",

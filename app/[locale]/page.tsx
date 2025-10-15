@@ -145,7 +145,7 @@ export default function Home() {
               {
                 value: 8,
                 suffix: "",
-                label: "Sprachen verfügbar",
+                label: t("stats.languages"),
                 icon: (
                   <svg
                     className="w-7 h-7 text-white"
@@ -165,7 +165,7 @@ export default function Home() {
               {
                 value: 2,
                 suffix: " Min",
-                label: "Ergebnis in Minuten",
+                label: t("stats.time"),
                 icon: (
                   <svg
                     className="w-7 h-7 text-white"
@@ -185,7 +185,7 @@ export default function Home() {
               {
                 value: 100,
                 suffix: "%",
-                label: "Kostenlos & Sicher",
+                label: t("stats.free"),
                 icon: (
                   <svg
                     className="w-7 h-7 text-white"
@@ -206,6 +206,103 @@ export default function Home() {
           />
         </div>
 
+        {/* SEO Content Section */}
+        <div className="mt-16 space-y-12">
+          {/* Main SEO Heading */}
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              {t("seo.heading")}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              {t("seo.intro")}
+            </p>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <svg
+                  className="w-6 h-6 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                {t("seo.feature1Title")}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {t("seo.feature1Text")}
+              </p>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                <svg
+                  className="w-6 h-6 text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                {t("seo.feature2Title")}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {t("seo.feature2Text")}
+              </p>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <svg
+                  className="w-6 h-6 text-purple-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                {t("seo.feature3Title")}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {t("seo.feature3Text")}
+              </p>
+            </div>
+          </div>
+
+          {/* Additional SEO Content */}
+          <div className="bg-gradient-to-r from-blue-50 to-blue-100/50 rounded-2xl p-8 border border-blue-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              {t("seo.whyTitle")}
+            </h3>
+            <p className="text-gray-700 leading-relaxed text-lg">
+              {t("seo.whyText")}
+            </p>
+          </div>
+        </div>
       </div>
     </main>
   );

@@ -10,7 +10,28 @@
     "card1Button": "Iniciar verificación",
     "card2Title": "Tu camino y los documentos necesarios",
     "card2Description": "Resumen de todos los pasos y documentos que necesitas para el permiso de instalación comercial",
-    "card2Button": "Más información"
+    "card2Button": "Más información",
+    "stats": {
+      "languages": "Idiomas disponibles",
+      "time": "Resultado en minutos",
+      "free": "Gratis y seguro"
+    },
+    "seo": {
+      "heading": "Por qué un permiso de instalación comercial es importante",
+      "intro": "En Viena y en toda Austria, muchas empresas requieren un permiso de instalación comercial según la Ley de Comercio. Nuestra verificación gratuita te ayuda a descubrir rápida y fácilmente si tu empresa requiere un permiso.",
+      "feature1Title": "Rápido y simple",
+      "feature1Text": "En solo 2 minutos recibirás una evaluación inicial de si necesitas un permiso de instalación comercial. Sin formularios complicados, sin tiempos de espera.",
+      "feature2Title": "Multilingüe",
+      "feature2Text": "Nuestro servicio está disponible en 8 idiomas: alemán, inglés, serbio, croata, turco, italiano, español y ucraniano - accesible para todos los empresarios en Viena.",
+      "feature3Title": "Gratis y anónimo",
+      "feature3Text": "La verificación es completamente gratuita y tus datos permanecen privados. No se requiere registro, sin costos ocultos.",
+      "whyTitle": "¿Cuándo necesitas un permiso de instalación comercial?",
+      "whyText": "Un permiso de instalación comercial es requerido en Austria para muchas actividades comerciales. El reglamento de exención determina qué empresas están exentas del requisito de permiso. Factores como el área comercial, el ruido, el horario de apertura y el tipo de actividad juegan un papel importante."
+    },
+    "footer": {
+      "copyright": "Betriebsanlagen Check - Tu ayudante para la burocracia vienesa",
+      "disclaimer": "Este sitio web es solo con fines informativos. Para información legalmente vinculante, por favor contacta con las autoridades competentes."
+    }
   },
   "questionnaire": {
     "title": "Verificación de Permiso de Instalación Comercial",

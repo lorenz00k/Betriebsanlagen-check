@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import type { QuestionnaireData, BusinessType } from '@/app/lib/questionnaireLogic'
@@ -11,10 +11,18 @@ export default function QuestionnairePage() {
   const router = useRouter()
   const [currentStep, setCurrentStep] = useState(0)
   const [data, setData] = useState<QuestionnaireData>({})
+  const [questionAnimation, setQuestionAnimation] = useState(true)
 
   const visibleQuestions = getVisibleQuestions(data)
   const currentQuestion = visibleQuestions[currentStep]
   const isLastQuestion = currentStep === visibleQuestions.length - 1
+
+  // Trigger animation on step change
+  useEffect(() => {
+    setQuestionAnimation(false)
+    const timer = setTimeout(() => setQuestionAnimation(true), 50)
+    return () => clearTimeout(timer)
+  }, [currentStep])
 
   const handleBusinessTypeChange = (value: string) => {
     setData({ ...data, businessType: value as BusinessType })
@@ -94,17 +102,39 @@ export default function QuestionnairePage() {
                 'dataCenter',
                 'specialized',
                 'other',
-              ].map((type) => (
+              ].map((type, index) => (
                 <button
                   key={type}
                   onClick={() => handleBusinessTypeChange(type)}
-                  className={`p-4 rounded-xl border-2 text-left transition-all ${
+                  className={`group p-4 rounded-xl border-2 text-left transition-all duration-300 hover:scale-105 hover:shadow-md ${
                     data.businessType === type
-                      ? 'border-blue-600 bg-blue-50 shadow-md'
+                      ? 'border-blue-600 bg-gradient-to-r from-blue-50 to-blue-100 shadow-md'
                       : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
                   }`}
+                  style={{ animationDelay: `${index * 0.05}s` }}
                 >
-                  <span className="font-medium text-gray-900">{t(`businessType.${type}`)}</span>
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${
+                      data.businessType === type
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-100 text-gray-600 group-hover:bg-blue-100 group-hover:text-blue-600'
+                    }`}>
+                      {type === 'retail' && '🏪'}
+                      {type === 'office' && '🏢'}
+                      {type === 'warehouse' && '📦'}
+                      {type === 'beauty' && '💅'}
+                      {type === 'tailor' && '✂️'}
+                      {type === 'photography' && '📸'}
+                      {type === 'dental' && '🦷'}
+                      {type === 'accommodation' && '🏨'}
+                      {type === 'gastronomy' && '🍦'}
+                      {type === 'textilePickup' && '👔'}
+                      {type === 'dataCenter' && '💻'}
+                      {type === 'specialized' && '⚙️'}
+                      {type === 'other' && '🏭'}
+                    </div>
+                    <span className="font-medium text-gray-900">{t(`businessType.${type}`)}</span>
+                  </div>
                 </button>
               ))}
             </div>
@@ -200,29 +230,30 @@ export default function QuestionnairePage() {
               </div>
             )}
             <div className="space-y-3">
-              {options.map((option) => (
+              {options.map((option, index) => (
                 <button
                   key={option}
                   onClick={() => handleRadioChange(currentQuestion.id, option)}
-                  className={`w-full p-4 rounded-xl border-2 text-left transition-all ${
+                  className={`group w-full p-4 rounded-xl border-2 text-left transition-all duration-300 hover:scale-102 ${
                     (data as Record<string, unknown>)[currentQuestion.id] === option
-                      ? 'border-blue-600 bg-blue-50 shadow-md'
-                      : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                      ? 'border-blue-600 bg-gradient-to-r from-blue-50 to-blue-100 shadow-md'
+                      : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50 hover:shadow-sm'
                   }`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
                         (data as Record<string, unknown>)[currentQuestion.id] === option
-                          ? 'border-blue-600 bg-blue-600'
-                          : 'border-gray-300'
+                          ? 'border-blue-600 bg-blue-600 scale-110'
+                          : 'border-gray-300 group-hover:border-blue-400'
                       }`}
                     >
                       {(data as Record<string, unknown>)[currentQuestion.id] === option && (
-                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                        <div className="w-2 h-2 bg-white rounded-full animate-scaleIn"></div>
                       )}
                     </div>
-                    <span className="font-medium text-gray-900">{t(`${currentQuestion.id}.${option}`)}</span>
+                    <span className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">{t(`${currentQuestion.id}.${option}`)}</span>
                   </div>
                 </button>
               ))}
@@ -263,7 +294,9 @@ export default function QuestionnairePage() {
         </div>
 
         {/* Question card */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-6 border border-gray-100">
+        <div className={`bg-white rounded-2xl shadow-xl p-8 mb-6 border border-gray-100 transition-all duration-500 ${
+          questionAnimation ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}>
           {renderQuestion()}
         </div>
 
@@ -280,13 +313,20 @@ export default function QuestionnairePage() {
           <button
             onClick={handleNext}
             disabled={!canProceed()}
-            className={`flex-1 px-6 py-3 rounded-xl font-semibold transition-all ${
+            className={`button-shine flex-1 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
               canProceed()
-                ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-md hover:shadow-lg'
+                ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-md hover:shadow-lg active:scale-95'
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
-            {isLastQuestion ? t('submit') : t('next')}
+            <span className="flex items-center justify-center gap-2">
+              {isLastQuestion ? t('submit') : t('next')}
+              {!isLastQuestion && (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              )}
+            </span>
           </button>
         </div>
       </div>
