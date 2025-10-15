@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
-export default function Home({ params }: { params: Promise<{ locale: string }> }) {
+export default function Home() {
   const t = useTranslations('home')
 
   return (

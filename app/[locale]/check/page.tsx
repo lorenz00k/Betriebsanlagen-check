@@ -33,7 +33,7 @@ export default function QuestionnairePage() {
   }
 
   const handleRadioChange = (questionId: string, value: string) => {
-    setData({ ...data, [questionId]: value })
+    setData({ ...data, [questionId]: value } as QuestionnaireData)
   }
 
   const canProceed = () => {
@@ -45,7 +45,7 @@ export default function QuestionnairePage() {
       case 'address':
         return !!(data.address?.street && data.address?.postalCode && data.address?.city)
       default:
-        return !!(data as any)[currentQuestion.id]
+        return !!(data as Record<string, unknown>)[currentQuestion.id]
     }
   }
 
@@ -205,7 +205,7 @@ export default function QuestionnairePage() {
                   key={option}
                   onClick={() => handleRadioChange(currentQuestion.id, option)}
                   className={`w-full p-4 rounded-xl border-2 text-left transition-all ${
-                    (data as any)[currentQuestion.id] === option
+                    (data as Record<string, unknown>)[currentQuestion.id] === option
                       ? 'border-blue-600 bg-blue-50 shadow-md'
                       : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
                   }`}
@@ -213,12 +213,12 @@ export default function QuestionnairePage() {
                   <div className="flex items-center gap-3">
                     <div
                       className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                        (data as any)[currentQuestion.id] === option
+                        (data as Record<string, unknown>)[currentQuestion.id] === option
                           ? 'border-blue-600 bg-blue-600'
                           : 'border-gray-300'
                       }`}
                     >
-                      {(data as any)[currentQuestion.id] === option && (
+                      {(data as Record<string, unknown>)[currentQuestion.id] === option && (
                         <div className="w-2 h-2 bg-white rounded-full"></div>
                       )}
                     </div>

@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
-import { locales } from '@/i18n'
+import { locales, Locale } from '@/i18n'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 
 export default async function LocaleLayout({
@@ -12,12 +12,12 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params
 
-  if (!locales.includes(locale as any)) notFound()
+  if (!locales.includes(locale as Locale)) notFound()
 
   let messages
   try {
     messages = (await import(`@/messages/${locale}.json`)).default
-  } catch (error) {
+  } catch {
     notFound()
   }
 
