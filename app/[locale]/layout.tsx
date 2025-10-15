@@ -1,25 +1,25 @@
-import { NextIntlClientProvider } from 'next-intl'
-import { notFound } from 'next/navigation'
-import { locales, Locale } from '@/i18n'
-import LanguageSwitcher from '../components/LanguageSwitcher'
-import { Analytics } from "@vercel/analytics/next"
+import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
+import { locales, Locale } from "@/i18n";
+import LanguageSwitcher from "../components/LanguageSwitcher";
+import { Analytics } from "@vercel/analytics/next";
 
 export default async function LocaleLayout({
   children,
-  params
+  params,
 }: {
-  children: React.ReactNode
-  params: Promise<{ locale: string }>
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params
+  const { locale } = await params;
 
-  if (!locales.includes(locale as Locale)) notFound()
+  if (!locales.includes(locale as Locale)) notFound();
 
-  let messages
+  let messages;
   try {
-    messages = (await import(`@/messages/${locale}.json`)).default
+    messages = (await import(`@/messages/${locale}.json`)).default;
   } catch {
-    notFound()
+    notFound();
   }
 
   return (
@@ -42,7 +42,9 @@ export default async function LocaleLayout({
                 />
               </svg>
             </div>
-            <h1 className="text-xl font-bold text-gray-800">Betriebsanlagen Check</h1>
+            <h1 className="text-xl font-bold text-gray-800">
+              Betriebsanlagen Check
+            </h1>
           </div>
           <LanguageSwitcher />
         </div>
@@ -52,14 +54,17 @@ export default async function LocaleLayout({
         <div className="max-w-7xl mx-auto px-4 py-8 text-center text-gray-600 text-sm">
           <p>© 2025 Betriebsanlagen Check - Ihr Helfer für Wiener Bürokratie</p>
           <p className="mt-2 text-xs text-gray-500">
-            Diese Website dient nur zu Informationszwecken. Für rechtlich verbindliche Auskünfte wenden Sie sich bitte an die zuständigen Behörden.
+            Diese Website dient nur zu Informationszwecken. Für rechtlich
+            verbindliche Auskünfte wenden Sie sich bitte an die zuständigen
+            Behörden.
           </p>
         </div>
       </footer>
+      <Analytics />
     </NextIntlClientProvider>
-  )
+  );
 }
 
 export async function generateStaticParams() {
-  return locales.map((locale) => ({ locale }))
+  return locales.map((locale) => ({ locale }));
 }

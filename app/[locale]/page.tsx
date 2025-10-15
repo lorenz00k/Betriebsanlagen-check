@@ -1,11 +1,10 @@
-'use client'
+"use client";
 
-import { useTranslations } from 'next-intl'
-import { Analytics } from "@vercel/analytics/next"
-import Link from 'next/link'
+import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export default function Home() {
-  const t = useTranslations('home')
+  const t = useTranslations("home");
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100">
@@ -13,10 +12,10 @@ export default function Home() {
         {/* Hero Section */}
         <div className="text-center mb-16 animate-fadeIn">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-            {t('title')}
+            {t("title")}
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-            {t('subtitle')}
+            {t("subtitle")}
           </p>
         </div>
 
@@ -42,16 +41,16 @@ export default function Home() {
                 </svg>
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('card1Title')}
+                {t("card1Title")}
               </h2>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                {t('card1Description')}
+                {t("card1Description")}
               </p>
               <Link
                 href="/check"
                 className="inline-flex items-center gap-2 w-full justify-center bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 px-6 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg"
               >
-                {t('card1Button')}
+                {t("card1Button")}
                 <svg
                   className="w-5 h-5 group-hover:translate-x-1 transition-transform"
                   fill="none"
@@ -89,16 +88,16 @@ export default function Home() {
                 </svg>
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('card2Title')}
+                {t("card2Title")}
               </h2>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                {t('card2Description')}
+                {t("card2Description")}
               </p>
               <Link
                 href="/documents"
                 className="inline-flex items-center gap-2 w-full justify-center bg-gradient-to-r from-green-600 to-green-700 text-white py-4 px-6 rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition-all shadow-md hover:shadow-lg"
               >
-                {t('card2Button')}
+                {t("card2Button")}
                 <svg
                   className="w-5 h-5 group-hover:translate-x-1 transition-transform"
                   fill="none"
@@ -181,5 +180,5 @@ export default function Home() {
         </div>
       </div>
     </main>
-  )
+  );
 }
