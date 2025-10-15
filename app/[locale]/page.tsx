@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { Analytics } from "@vercel/analytics/next"
 import Link from 'next/link'
 
 export default function Home() {

@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { locales, Locale } from '@/i18n'
 import LanguageSwitcher from '../components/LanguageSwitcher'
+import { Analytics } from "@vercel/analytics/next"
 
 export default async function LocaleLayout({
   children,
