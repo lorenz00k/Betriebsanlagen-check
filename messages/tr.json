@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "selectLanguage": "Dil seçin"
+  },
+  "home": {
+    "title": "Girişimciler için İşletme İzni Kontrolü",
+    "subtitle": "2 dakikada işletme tesisi izni gerekip gerekmediğini öğrenin",
+    "card1Title": "İzin gerekip gerekmediğini kontrol edin",
+    "card1Description": "Birkaç soruyu cevaplayın ve işletme tesisiniz için izin gerekip gerekmediğini öğrenin",
+    "card1Button": "Kontrole başla",
+    "card2Title": "Yolunuz ve gerekli belgeler",
+    "card2Description": "İşletme tesisi izni için ihtiyacınız olan tüm adımların ve belgelerin genel bakışı",
+    "card2Button": "Daha fazla bilgi"
+  },
+  "questionnaire": {
+    "title": "İşletme İzni Kontrolü",
+    "subtitle": "İzin gerekip gerekmediğini değerlendirebilmemiz için aşağıdaki soruları cevaplayın",
+    "next": "İleri",
+    "back": "Geri",
+    "submit": "Gönder",
+    "businessType": {
+      "question": "İşletmenizin türü nedir?",
+      "retail": "Perakende",
+      "office": "Ofis",
+      "warehouse": "Depo (kapalı binalarda)",
+      "beauty": "Kozmetik/Bakım",
+      "tailor": "Terzi",
+      "photography": "Fotoğraf stüdyosu",
+      "dental": "Diş teknisyeni laboratuvarı",
+      "accommodation": "Konaklama",
+      "gastronomy": "Gastronomi (sadece dondurma salonu)",
+      "textilePickup": "Tekstil teslim alma",
+      "dataCenter": "Veri işleme merkezi",
+      "specialized": "Özel tesis",
+      "other": "Diğer"
+    },
+    "address": {
+      "question": "İşletme tesisiniz nerede bulunuyor?",
+      "placeholder": "Tam adresi girin",
+      "street": "Sokak ve numara",
+      "postalCode": "Posta kodu",
+      "city": "Şehir"
+    },
+    "businessArea": {
+      "question": "İşletme alanı ne kadar büyük?",
+      "upTo400": "400 m²'ye kadar",
+      "upTo600": "600 m²'ye kadar",
+      "over600": "600 m²'den fazla"
+    },
+    "guestBeds": {
+      "question": "Kaç misafir yatağı sunuyorsunuz?",
+      "upTo30": "30 yatağa kadar",
+      "over30": "30'dan fazla yatak"
+    },
+    "buildingUse": {
+      "question": "Bina nasıl kullanılıyor?",
+      "accommodationOnly": "Sadece konaklama için",
+      "accommodationAndPrivate": "Konaklama ve özel konut",
+      "accommodationAndCommercial": "Konaklama ve diğer ticari amaçlar"
+    },
+    "swimmingPool": {
+      "question": "Tesiste havuzlar veya benzeri tesisler var mı?",
+      "yes": "Evet",
+      "no": "Hayır"
+    },
+    "meals": {
+      "question": "Misafirlere hangi yemekleri sunuyorsunuz?",
+      "breakfastOnly": "Sadece kahvaltı veya küçük atıştırmalıklar",
+      "fullMeals": "Tam öğünler"
+    },
+    "operatingHours": {
+      "question": "Çalışma saatleriniz",
+      "monFri": "Pazartesi - Cuma: 6:00 - 22:00",
+      "saturday": "Cumartesi: 6:00 - 19:00",
+      "delivery": "Teslimat",
+      "compliant": "Çalışma saatlerim bu süre içinde",
+      "nonCompliant": "Bu saatlerin dışında çalışma saatlerine ihtiyacım var"
+    },
+    "ventilation": {
+      "question": "Bina dışında havalandırma veya ısı transferi için mekanik sistem parçalarınız var mı?",
+      "yes": "Evet",
+      "no": "Hayır"
+    },
+    "hazardousMaterials": {
+      "question": "Özel etiketleme gerektiren tehlikeli maddeler veya malzemeler depolıyor musunuz?",
+      "yes": "Evet",
+      "no": "Hayır"
+    },
+    "music": {
+      "question": "Müzik çalıyor veya müzik yeniden üretiyor musunuz (fon müziğinden daha yüksek)?",
+      "yes": "Evet",
+      "no": "Hayır"
+    },
+    "ippcStorage": {
+      "question": "Deponuz IPPC tanımlarına (Ticaret Yasası Ek 3 veya 5) uyuyor mu?",
+      "yes": "Evet",
+      "no": "Hayır"
+    }
+  },
+  "result": {
+    "title": "Sonucunuz",
+    "noPermitNeeded": "İzne ihtiyacınız yok!",
+    "noPermitDescription": "Bilgilerinize göre, işletme tesisiniz izinden muaftır.",
+    "permitNeeded": "İzne ihtiyacınız var",
+    "permitDescription": "Bilgilerinize göre, işletme tesisiniz izin gerektiriyor.",
+    "nextSteps": "Sonraki adımlar:",
+    "contactAuthority": "Yetkili makamlarla iletişime geçin",
+    "prepareDocuments": "Gerekli belgeleri hazırlayın",
+    "startOver": "Baştan başla",
+    "viewDocuments": "Gerekli belgeleri görüntüle"
+  },
+  "documents": {
+    "title": "İşletme tesisi iznine giden yolunuz",
+    "subtitle": "Tüm adımların ve belgelerin genel bakışı",
+    "intro": "Burada hangi belgeleri hazırlamanız ve hangi adımları atmanız gerektiğini öğrenebilirsiniz."
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "selectLanguage": "Select language"
+  },
+  "home": {
+    "title": "Business Facility Permit Check for Founders",
+    "subtitle": "Find out in 2 minutes if you need a business facility permit",
+    "card1Title": "Check if a permit is needed",
+    "card1Description": "Answer a few questions and find out if a permit is required for your business facility",
+    "card1Button": "Start Check",
+    "card2Title": "Your path and required documents",
+    "card2Description": "Overview of all steps and documents you need for a business facility permit",
+    "card2Button": "Learn more"
+  },
+  "questionnaire": {
+    "title": "Business Facility Permit Check",
+    "subtitle": "Answer the following questions so we can assess whether you need a permit",
+    "next": "Next",
+    "back": "Back",
+    "submit": "Submit",
+    "businessType": {
+      "question": "What type of business do you operate?",
+      "retail": "Retail",
+      "office": "Office",
+      "warehouse": "Warehouse (in closed buildings)",
+      "beauty": "Beauty/Care",
+      "tailor": "Tailor",
+      "photography": "Photography Studio",
+      "dental": "Dental Laboratory",
+      "accommodation": "Accommodation",
+      "gastronomy": "Gastronomy (ice cream parlor only)",
+      "textilePickup": "Textile Pickup",
+      "dataCenter": "Data Center",
+      "specialized": "Specialized Facility",
+      "other": "Other"
+    },
+    "address": {
+      "question": "Where is your business facility located?",
+      "placeholder": "Enter full address",
+      "street": "Street and number",
+      "postalCode": "Postal code",
+      "city": "City"
+    },
+    "businessArea": {
+      "question": "How large is the business area?",
+      "upTo400": "Up to 400 m²",
+      "upTo600": "Up to 600 m²",
+      "over600": "Over 600 m²"
+    },
+    "guestBeds": {
+      "question": "How many guest beds do you offer?",
+      "upTo30": "Up to 30 beds",
+      "over30": "More than 30 beds"
+    },
+    "buildingUse": {
+      "question": "How is the building used?",
+      "accommodationOnly": "Only for accommodation",
+      "accommodationAndPrivate": "Accommodation and private residence",
+      "accommodationAndCommercial": "Accommodation and other commercial purposes"
+    },
+    "swimmingPool": {
+      "question": "Does the facility have swimming pools or similar facilities?",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "meals": {
+      "question": "What meals do you offer to guests?",
+      "breakfastOnly": "Only breakfast or small snacks",
+      "fullMeals": "Full meals"
+    },
+    "operatingHours": {
+      "question": "Your operating hours",
+      "monFri": "Monday - Friday: 6:00 AM - 10:00 PM",
+      "saturday": "Saturday: 6:00 AM - 7:00 PM",
+      "delivery": "Delivery",
+      "compliant": "My operating hours are within these times",
+      "nonCompliant": "I need operating hours outside these times"
+    },
+    "ventilation": {
+      "question": "Do you have mechanical system parts for ventilation or heat transfer outside the building envelope?",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "hazardousMaterials": {
+      "question": "Do you store hazardous materials or substances that require special labeling?",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "music": {
+      "question": "Do you play live music or reproduce music (louder than background music)?",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "ippcStorage": {
+      "question": "Does your storage correspond to IPPC definitions (Annex 3 or 5 of the Trade Act)?",
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "result": {
+    "title": "Your Result",
+    "noPermitNeeded": "You don't need a permit!",
+    "noPermitDescription": "Based on your information, your business facility is exempt from permits.",
+    "permitNeeded": "You need a permit",
+    "permitDescription": "Based on your information, your business facility requires a permit.",
+    "nextSteps": "Next steps:",
+    "contactAuthority": "Contact the relevant authority",
+    "prepareDocuments": "Prepare the required documents",
+    "startOver": "Start over",
+    "viewDocuments": "View required documents"
+  },
+  "documents": {
+    "title": "Your path to a business facility permit",
+    "subtitle": "Overview of all steps and documents",
+    "intro": "Here you can find out which documents you need to prepare and which steps to take."
+  }
+}

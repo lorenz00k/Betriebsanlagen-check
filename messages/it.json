@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "selectLanguage": "Seleziona lingua"
+  },
+  "home": {
+    "title": "Controllo Autorizzazione Impianto Aziendale per Fondatori",
+    "subtitle": "Scopri in 2 minuti se hai bisogno di un'autorizzazione per l'impianto aziendale",
+    "card1Title": "Verifica se hai bisogno di un'autorizzazione",
+    "card1Description": "Rispondi ad alcune domande e scopri se è necessaria un'autorizzazione per il tuo impianto aziendale",
+    "card1Button": "Avvia il controllo",
+    "card2Title": "Il tuo percorso e i documenti necessari",
+    "card2Description": "Panoramica di tutti i passaggi e i documenti necessari per l'autorizzazione dell'impianto aziendale",
+    "card2Button": "Scopri di più"
+  },
+  "questionnaire": {
+    "title": "Controllo Autorizzazione Impianto Aziendale",
+    "subtitle": "Rispondi alle seguenti domande in modo da poter valutare se hai bisogno di un'autorizzazione",
+    "next": "Avanti",
+    "back": "Indietro",
+    "submit": "Invia",
+    "businessType": {
+      "question": "Qual è il tipo della tua attività?",
+      "retail": "Commercio al dettaglio",
+      "office": "Ufficio",
+      "warehouse": "Magazzino (in edifici chiusi)",
+      "beauty": "Cosmetica/Cura",
+      "tailor": "Sartoria",
+      "photography": "Studio fotografico",
+      "dental": "Laboratorio odontotecnico",
+      "accommodation": "Alloggio",
+      "gastronomy": "Gastronomia (solo gelateria)",
+      "textilePickup": "Ritiro tessili",
+      "dataCenter": "Centro di elaborazione dati",
+      "specialized": "Struttura specializzata",
+      "other": "Altro"
+    },
+    "address": {
+      "question": "Dove si trova il tuo impianto aziendale?",
+      "placeholder": "Inserisci l'indirizzo completo",
+      "street": "Via e numero",
+      "postalCode": "Codice postale",
+      "city": "Città"
+    },
+    "businessArea": {
+      "question": "Quanto è grande l'area aziendale?",
+      "upTo400": "Fino a 400 m²",
+      "upTo600": "Fino a 600 m²",
+      "over600": "Oltre 600 m²"
+    },
+    "guestBeds": {
+      "question": "Quanti letti per gli ospiti offri?",
+      "upTo30": "Fino a 30 letti",
+      "over30": "Più di 30 letti"
+    },
+    "buildingUse": {
+      "question": "Come viene utilizzato l'edificio?",
+      "accommodationOnly": "Solo per alloggio",
+      "accommodationAndPrivate": "Alloggio e abitazione privata",
+      "accommodationAndCommercial": "Alloggio e altri scopi commerciali"
+    },
+    "swimmingPool": {
+      "question": "La struttura ha piscine o strutture simili?",
+      "yes": "Sì",
+      "no": "No"
+    },
+    "meals": {
+      "question": "Quali pasti offri agli ospiti?",
+      "breakfastOnly": "Solo colazione o piccoli spuntini",
+      "fullMeals": "Pasti completi"
+    },
+    "operatingHours": {
+      "question": "I tuoi orari di apertura",
+      "monFri": "Lunedì - Venerdì: 6:00 - 22:00",
+      "saturday": "Sabato: 6:00 - 19:00",
+      "delivery": "Consegna",
+      "compliant": "I miei orari di apertura rientrano in questi orari",
+      "nonCompliant": "Ho bisogno di orari di apertura al di fuori di questi orari"
+    },
+    "ventilation": {
+      "question": "Hai parti meccaniche del sistema di ventilazione o trasferimento del calore all'esterno dell'edificio?",
+      "yes": "Sì",
+      "no": "No"
+    },
+    "hazardousMaterials": {
+      "question": "Conservi materiali pericolosi o sostanze che richiedono un'etichettatura speciale?",
+      "yes": "Sì",
+      "no": "No"
+    },
+    "music": {
+      "question": "Suoni musica dal vivo o riproduci musica (più forte della musica di sottofondo)?",
+      "yes": "Sì",
+      "no": "No"
+    },
+    "ippcStorage": {
+      "question": "Il tuo magazzino corrisponde alle definizioni IPPC (Allegato 3 o 5 della Legge sul Commercio)?",
+      "yes": "Sì",
+      "no": "No"
+    }
+  },
+  "result": {
+    "title": "Il tuo risultato",
+    "noPermitNeeded": "Non hai bisogno di un'autorizzazione!",
+    "noPermitDescription": "In base alle tue informazioni, il tuo impianto aziendale è esente dall'autorizzazione.",
+    "permitNeeded": "Hai bisogno di un'autorizzazione",
+    "permitDescription": "In base alle tue informazioni, il tuo impianto aziendale richiede un'autorizzazione.",
+    "nextSteps": "Prossimi passi:",
+    "contactAuthority": "Contatta le autorità competenti",
+    "prepareDocuments": "Prepara i documenti necessari",
+    "startOver": "Ricomincia",
+    "viewDocuments": "Visualizza i documenti necessari"
+  },
+  "documents": {
+    "title": "Il tuo percorso verso l'autorizzazione dell'impianto aziendale",
+    "subtitle": "Panoramica di tutti i passaggi e i documenti",
+    "intro": "Qui puoi scoprire quali documenti devi preparare e quali passaggi devi compiere."
+  }
+}

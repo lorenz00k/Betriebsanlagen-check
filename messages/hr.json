@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "selectLanguage": "Odaberite jezik"
+  },
+  "home": {
+    "title": "Provjera dozvola za poslovne objekte za osnivače",
+    "subtitle": "Saznajte za 2 minute trebate li dozvolu za poslovni objekt",
+    "card1Title": "Provjerite trebate li dozvolu",
+    "card1Description": "Odgovorite na nekoliko pitanja i saznajte je li dozvola potrebna za vaš poslovni objekt",
+    "card1Button": "Započnite provjeru",
+    "card2Title": "Vaš put i potrebni dokumenti",
+    "card2Description": "Pregled svih koraka i dokumenata koji su vam potrebni za dozvolu za poslovni objekt",
+    "card2Button": "Saznajte više"
+  },
+  "questionnaire": {
+    "title": "Provjera dozvole za poslovni objekt",
+    "subtitle": "Odgovorite na sljedeća pitanja kako bismo mogli procijeniti trebate li dozvolu",
+    "next": "Dalje",
+    "back": "Natrag",
+    "submit": "Pošalji",
+    "businessType": {
+      "question": "Koja je vrsta vašeg poslovanja?",
+      "retail": "Maloprodaja",
+      "office": "Ured",
+      "warehouse": "Skladište (u zatvorenim zgradama)",
+      "beauty": "Kozmetika/Njega",
+      "tailor": "Krojački salon",
+      "photography": "Fotografski studio",
+      "dental": "Zubotehnička laboratorija",
+      "accommodation": "Smještaj",
+      "gastronomy": "Gastronomija (samo slastičarnica)",
+      "textilePickup": "Preuzimanje tekstila",
+      "dataCenter": "Centar za obradu podataka",
+      "specialized": "Specijalizirani objekt",
+      "other": "Ostalo"
+    },
+    "address": {
+      "question": "Gdje se nalazi vaš poslovni objekt?",
+      "placeholder": "Unesite potpunu adresu",
+      "street": "Ulica i broj",
+      "postalCode": "Poštanski broj",
+      "city": "Grad"
+    },
+    "businessArea": {
+      "question": "Kolika je poslovna površina?",
+      "upTo400": "Do 400 m²",
+      "upTo600": "Do 600 m²",
+      "over600": "Preko 600 m²"
+    },
+    "guestBeds": {
+      "question": "Koliko kreveta za goste nudite?",
+      "upTo30": "Do 30 kreveta",
+      "over30": "Više od 30 kreveta"
+    },
+    "buildingUse": {
+      "question": "Kako se koristi zgrada?",
+      "accommodationOnly": "Samo za smještaj",
+      "accommodationAndPrivate": "Smještaj i privatno stanovanje",
+      "accommodationAndCommercial": "Smještaj i drugi komercijalni ciljevi"
+    },
+    "swimmingPool": {
+      "question": "Ima li objekt bazene ili slične objekte?",
+      "yes": "Da",
+      "no": "Ne"
+    },
+    "meals": {
+      "question": "Koje obroke nudite gostima?",
+      "breakfastOnly": "Samo doručak ili male zalogaje",
+      "fullMeals": "Puni obroci"
+    },
+    "operatingHours": {
+      "question": "Vaše radno vrijeme",
+      "monFri": "Ponedjeljak - Petak: 6:00 - 22:00",
+      "saturday": "Subota: 6:00 - 19:00",
+      "delivery": "Dostava",
+      "compliant": "Moje radno vrijeme je unutar ovih vremena",
+      "nonCompliant": "Trebam radno vrijeme izvan ovih vremena"
+    },
+    "ventilation": {
+      "question": "Imate li mehaničke dijelove sustava za ventilaciju ili prijenos topline izvan zgrade?",
+      "yes": "Da",
+      "no": "Ne"
+    },
+    "hazardousMaterials": {
+      "question": "Skladištite li opasne materijale ili tvari koje zahtijevaju posebno označavanje?",
+      "yes": "Da",
+      "no": "Ne"
+    },
+    "music": {
+      "question": "Svirate li glazbu ili reproducirate glazbu (glasniju od pozadinske glazbe)?",
+      "yes": "Da",
+      "no": "Ne"
+    },
+    "ippcStorage": {
+      "question": "Odgovara li vaše skladište IPPC definicijama (Prilog 3 ili 5 Zakona o trgovini)?",
+      "yes": "Da",
+      "no": "Ne"
+    }
+  },
+  "result": {
+    "title": "Vaš rezultat",
+    "noPermitNeeded": "Ne treba vam dozvola!",
+    "noPermitDescription": "Na temelju vaših podataka, vaš poslovni objekt je oslobođen dozvole.",
+    "permitNeeded": "Treba vam dozvola",
+    "permitDescription": "Na temelju vaših podataka, vaš poslovni objekt zahtijeva dozvolu.",
+    "nextSteps": "Sljedeći koraci:",
+    "contactAuthority": "Kontaktirajte nadležne organe",
+    "prepareDocuments": "Pripremite potrebne dokumente",
+    "startOver": "Započnite ponovo",
+    "viewDocuments": "Pregledajte potrebne dokumente"
+  },
+  "documents": {
+    "title": "Vaš put do dozvole za poslovni objekt",
+    "subtitle": "Pregled svih koraka i dokumenata",
+    "intro": "Ovdje možete saznati koje dokumente trebate pripremiti i koje korake trebate poduzeti."
+  }
+}

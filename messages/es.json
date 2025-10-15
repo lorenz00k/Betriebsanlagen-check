@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "selectLanguage": "Seleccionar idioma"
+  },
+  "home": {
+    "title": "Verificación de Permisos de Instalaciones Comerciales para Fundadores",
+    "subtitle": "Descubre en 2 minutos si necesitas un permiso para tu instalación comercial",
+    "card1Title": "Verifica si necesitas un permiso",
+    "card1Description": "Responde algunas preguntas y descubre si es necesario un permiso para tu instalación comercial",
+    "card1Button": "Iniciar verificación",
+    "card2Title": "Tu camino y los documentos necesarios",
+    "card2Description": "Resumen de todos los pasos y documentos que necesitas para el permiso de instalación comercial",
+    "card2Button": "Más información"
+  },
+  "questionnaire": {
+    "title": "Verificación de Permiso de Instalación Comercial",
+    "subtitle": "Responde las siguientes preguntas para que podamos evaluar si necesitas un permiso",
+    "next": "Siguiente",
+    "back": "Atrás",
+    "submit": "Enviar",
+    "businessType": {
+      "question": "¿Cuál es el tipo de tu negocio?",
+      "retail": "Comercio minorista",
+      "office": "Oficina",
+      "warehouse": "Almacén (en edificios cerrados)",
+      "beauty": "Cosmética/Cuidado",
+      "tailor": "Sastrería",
+      "photography": "Estudio fotográfico",
+      "dental": "Laboratorio dental",
+      "accommodation": "Alojamiento",
+      "gastronomy": "Gastronomía (solo heladería)",
+      "textilePickup": "Recogida de textiles",
+      "dataCenter": "Centro de procesamiento de datos",
+      "specialized": "Instalación especializada",
+      "other": "Otro"
+    },
+    "address": {
+      "question": "¿Dónde se encuentra tu instalación comercial?",
+      "placeholder": "Introduce la dirección completa",
+      "street": "Calle y número",
+      "postalCode": "Código postal",
+      "city": "Ciudad"
+    },
+    "businessArea": {
+      "question": "¿Cuál es el tamaño del área comercial?",
+      "upTo400": "Hasta 400 m²",
+      "upTo600": "Hasta 600 m²",
+      "over600": "Más de 600 m²"
+    },
+    "guestBeds": {
+      "question": "¿Cuántas camas para huéspedes ofreces?",
+      "upTo30": "Hasta 30 camas",
+      "over30": "Más de 30 camas"
+    },
+    "buildingUse": {
+      "question": "¿Cómo se utiliza el edificio?",
+      "accommodationOnly": "Solo para alojamiento",
+      "accommodationAndPrivate": "Alojamiento y vivienda privada",
+      "accommodationAndCommercial": "Alojamiento y otros fines comerciales"
+    },
+    "swimmingPool": {
+      "question": "¿Tiene la instalación piscinas o instalaciones similares?",
+      "yes": "Sí",
+      "no": "No"
+    },
+    "meals": {
+      "question": "¿Qué comidas ofreces a los huéspedes?",
+      "breakfastOnly": "Solo desayuno o pequeños aperitivos",
+      "fullMeals": "Comidas completas"
+    },
+    "operatingHours": {
+      "question": "Tus horarios de apertura",
+      "monFri": "Lunes - Viernes: 6:00 - 22:00",
+      "saturday": "Sábado: 6:00 - 19:00",
+      "delivery": "Entrega",
+      "compliant": "Mis horarios de apertura están dentro de estos horarios",
+      "nonCompliant": "Necesito horarios de apertura fuera de estos horarios"
+    },
+    "ventilation": {
+      "question": "¿Tienes partes mecánicas del sistema de ventilación o transferencia de calor fuera del edificio?",
+      "yes": "Sí",
+      "no": "No"
+    },
+    "hazardousMaterials": {
+      "question": "¿Almacenas materiales peligrosos o sustancias que requieren etiquetado especial?",
+      "yes": "Sí",
+      "no": "No"
+    },
+    "music": {
+      "question": "¿Tocas música en vivo o reproduces música (más alta que la música de fondo)?",
+      "yes": "Sí",
+      "no": "No"
+    },
+    "ippcStorage": {
+      "question": "¿Corresponde tu almacén a las definiciones IPPC (Anexo 3 o 5 de la Ley de Comercio)?",
+      "yes": "Sí",
+      "no": "No"
+    }
+  },
+  "result": {
+    "title": "Tu resultado",
+    "noPermitNeeded": "¡No necesitas un permiso!",
+    "noPermitDescription": "Según tu información, tu instalación comercial está exenta de permiso.",
+    "permitNeeded": "Necesitas un permiso",
+    "permitDescription": "Según tu información, tu instalación comercial requiere un permiso.",
+    "nextSteps": "Próximos pasos:",
+    "contactAuthority": "Contacta con las autoridades competentes",
+    "prepareDocuments": "Prepara los documentos necesarios",
+    "startOver": "Empezar de nuevo",
+    "viewDocuments": "Ver documentos necesarios"
+  },
+  "documents": {
+    "title": "Tu camino hacia el permiso de instalación comercial",
+    "subtitle": "Resumen de todos los pasos y documentos",
+    "intro": "Aquí puedes descubrir qué documentos debes preparar y qué pasos debes seguir."
+  }
+}

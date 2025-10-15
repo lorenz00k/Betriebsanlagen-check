@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "selectLanguage": "Sprache wählen"
+  },
+  "home": {
+    "title": "Betriebsanlagen-Check für Gründer",
+    "subtitle": "Finden Sie in 2 Minuten heraus, ob Sie eine Betriebsanlagengenehmigung benötigen",
+    "card1Title": "Prüfen Sie, ob eine Genehmigung benötigt wird",
+    "card1Description": "Beantworten Sie ein paar Fragen und finden Sie heraus, ob für Ihre Betriebsanlage eine Genehmigung erforderlich ist",
+    "card1Button": "Check starten",
+    "card2Title": "Ihr Weg und benötigte Dokumente",
+    "card2Description": "Überblick über alle Schritte und Dokumente, die Sie für eine Betriebsanlagengenehmigung benötigen",
+    "card2Button": "Mehr erfahren"
+  },
+  "questionnaire": {
+    "title": "Betriebsanlagen-Genehmigungscheck",
+    "subtitle": "Beantworten Sie die folgenden Fragen, damit wir einschätzen können, ob Sie eine Genehmigung benötigen",
+    "next": "Weiter",
+    "back": "Zurück",
+    "submit": "Absenden",
+    "businessType": {
+      "question": "Welche Art von Betrieb führen Sie?",
+      "retail": "Einzelhandel",
+      "office": "Bürobetrieb",
+      "warehouse": "Lager (in geschlossenen Gebäuden)",
+      "beauty": "Kosmetik/Pflege",
+      "tailor": "Schneiderei",
+      "photography": "Fotografenbetrieb",
+      "dental": "Zahntechnisches Labor",
+      "accommodation": "Beherbergung",
+      "gastronomy": "Gastronomie (nur Eissalon)",
+      "textilePickup": "Textilübernahme",
+      "dataCenter": "Rechenzentrum",
+      "specialized": "Spezialisierte Anlage",
+      "other": "Anderes"
+    },
+    "address": {
+      "question": "Wo befindet sich Ihre Betriebsanlage?",
+      "placeholder": "Vollständige Adresse eingeben",
+      "street": "Straße und Hausnummer",
+      "postalCode": "Postleitzahl",
+      "city": "Stadt"
+    },
+    "businessArea": {
+      "question": "Wie groß ist die Betriebsfläche?",
+      "upTo400": "Bis zu 400 m²",
+      "upTo600": "Bis zu 600 m²",
+      "over600": "Über 600 m²"
+    },
+    "guestBeds": {
+      "question": "Wie viele Gästebetten bieten Sie an?",
+      "upTo30": "Bis zu 30 Betten",
+      "over30": "Mehr als 30 Betten"
+    },
+    "buildingUse": {
+      "question": "Wie wird das Gebäude genutzt?",
+      "accommodationOnly": "Nur für Beherbergung",
+      "accommodationAndPrivate": "Beherbergung und privates Wohnen",
+      "accommodationAndCommercial": "Beherbergung und andere gewerbliche Zwecke"
+    },
+    "swimmingPool": {
+      "question": "Verfügt die Anlage über Schwimmbäder oder ähnliche Einrichtungen?",
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "meals": {
+      "question": "Welche Speisen bieten Sie den Gästen an?",
+      "breakfastOnly": "Nur Frühstück oder kleine Imbisse",
+      "fullMeals": "Vollständige Mahlzeiten"
+    },
+    "operatingHours": {
+      "question": "Ihre Betriebszeiten",
+      "monFri": "Montag - Freitag: 6:00 - 22:00 Uhr",
+      "saturday": "Samstag: 6:00 - 19:00 Uhr",
+      "delivery": "Lieferverkehr",
+      "compliant": "Meine Betriebszeiten liegen innerhalb dieser Zeiten",
+      "nonCompliant": "Ich benötige Betriebszeiten außerhalb dieser Zeiten"
+    },
+    "ventilation": {
+      "question": "Haben Sie mechanische Anlagenteile zur Be-/Entlüftung oder Wärmeübertragung außerhalb der Gebäudehülle?",
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "hazardousMaterials": {
+      "question": "Lagern Sie gefährliche Stoffe oder Gemische, die kennzeichnungspflichtig sind?",
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "music": {
+      "question": "Wird in Ihrem Betrieb musiziert oder Musik wiedergegeben (lauter als Hintergrundmusik)?",
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "ippcStorage": {
+      "question": "Entspricht Ihr Lager den IPPC-Definitionen (Anlage 3 oder 5 der Gewerbeordnung)?",
+      "yes": "Ja",
+      "no": "Nein"
+    }
+  },
+  "result": {
+    "title": "Ihr Ergebnis",
+    "noPermitNeeded": "Sie benötigen keine Genehmigung!",
+    "noPermitDescription": "Basierend auf Ihren Angaben ist Ihre Betriebsanlage genehmigungsfrei.",
+    "permitNeeded": "Sie benötigen eine Genehmigung",
+    "permitDescription": "Basierend auf Ihren Angaben benötigt Ihre Betriebsanlage eine Genehmigung.",
+    "nextSteps": "Nächste Schritte:",
+    "contactAuthority": "Kontaktieren Sie die zuständige Behörde",
+    "prepareDocuments": "Bereiten Sie die erforderlichen Dokumente vor",
+    "startOver": "Von vorne beginnen",
+    "viewDocuments": "Erforderliche Dokumente ansehen"
+  },
+  "documents": {
+    "title": "Ihr Weg zur Betriebsanlagengenehmigung",
+    "subtitle": "Überblick über alle Schritte und Dokumente",
+    "intro": "Hier erfahren Sie, welche Dokumente Sie vorbereiten müssen und welche Schritte zu unternehmen sind."
+  }
+}
