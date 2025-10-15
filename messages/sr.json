@@ -134,5 +134,51 @@
     "title": "Vaš put do dozvole za poslovni objekat",
     "subtitle": "Pregled svih koraka i dokumenata",
     "intro": "Ovde možete saznati koje dokumente treba da pripremite i koje korake treba da preduzmete."
+  },
+  "faq": {
+    "title": "Često postavljana pitanja",
+    "subtitle": "Sve važno o dozvolama za poslovne objekte, registraciji i osnivanju preduzeća u Beču",
+    "questions": {
+      "q1": {
+        "question": "Šta je poslovni objekat i da li mi treba dozvola?",
+        "answer": "Poslovni objekat (Betriebsanlage) je svaka instalacija koja se koristi za obavljanje zanatske delatnosti. To uključuje poslovne prostorije, radionice, skladišta, ugostiteljske objekte i mnogo više. Da li vam je potrebna dozvola zavisi od različitih faktora: vrsta poslovanja, veličina, lokacija, radno vreme i potencijalni problemi (buka, miris). Uredba o izuzeću (Genehmigungsfreistellungsverordnung) određuje koji preduzeća mogu da rade bez dozvole. Koristite našu besplatnu proveru da saznate da li vam je potrebna dozvola."
+      },
+      "q2": {
+        "question": "Koliko traje dobijanje dozvole za poslovni objekat u Beču?",
+        "answer": "Trajanje varira u zavisnosti od složenosti vašeg poslovanja. Jednostavni slučajevi bez učešća komšija: 4-8 nedelja. Složeni objekti sa obavestenjem komšija: 3-6 meseci. MA 36 (Bečka zanatska uprava) je nadležna institucija. Savet: Kompletan zahtev sa svim dokumentima značajno ubrzava proces."
+      },
+      "q3": {
+        "question": "Koliko košta dozvola za poslovni objekat?",
+        "answer": "Naknade zavise od administrativnog napora. Pojednostavljeni postupak: oko 100-300 evra. Normalan postupak sa veštačenjima: 500-2000 evra. Veliki ili složeni objekti: 2000-5000 evra i više. Mogu se dodati dodatni troškovi za veštake, planove i tehničke dokaze. Tačne tarife možete naći na wien.gv.at."
+      },
+      "q4": {
+        "question": "Mogu li da otvorim posao pre dobijanja dozvole?",
+        "answer": "Ne, ako vaše preduzeće zahteva dozvolu, NE SMETE da počnete pre nego što dobijete odobrenje. To bi bila administrativna prekršaj sa kaznama do 50.000 evra. Za preduzeća izuzeta od dozvole (prema uredbi o izuzeću) možete odmah da počnete nakon registracije zanata. Naša provera vam pomaže da utvrdite da li vam je potrebna dozvola."
+      },
+      "q5": {
+        "question": "Koji dokumenti su mi potrebni za dozvolu za poslovni objekat?",
+        "answer": "Standardni dokumenti: Zanatska dozvola ili koncesija, osnova i situacioni plan, opis objekta, dokaz o pravu korišćenja (ugovor o zakupu/vlasništvo), tehnički opisi (npr. ventilacija, buka). U zavisnosti od poslovanja, dodatno: procena buke, koncept zaštite od požara, dokaz statike, procena uticaja na životnu sredinu. MA 36 savetuje koje dokumente konkretno treba."
+      },
+      "q6": {
+        "question": "Koja je razlika između registracije zanata i dozvole za poslovni objekat?",
+        "answer": "Registracija zanata: Ovlašćuje vas da obavljate zanat (kod zanatske uprave). Dozvola za poslovni objekat: Dozvoljava rad na određenoj lokaciji (uzima u obzir buku, sigurnost, komšije). Potrebno je OBE: Prvo zanatska dozvola, zatim dozvola za poslovni objekat za lokaciju. Neka preduzeća su izuzeta od zahteva za dozvolu (pogledajte uredbu o izuzeću)."
+      },
+      "q7": {
+        "question": "Da li se uredba o izuzeću odnosi na mene?",
+        "answer": "Bečka uredba o izuzeću oslobađa određena preduzeća od zahteva za dozvolu ako ispunjavaju određene kriterijume. Primeri: maloprodaja do 600 m², kancelarije (gotovo uvek), male radionice, kozmetički saloni, smeštaj do 30 kreveta bez bazena. ALI: Izuzeci važe za buku, muziku, opasne supstance, mehaničku ventilaciju izvan omotača zgrade. Koristite našu proveru za brzu procenu."
+      },
+      "q8": {
+        "question": "Da li mi kao ugostitelju treba dozvola za poslovni objekat u Beču?",
+        "answer": "Da, u većini slučajeva. Ugostiteljska preduzeća (restorani, kafići, barovi) obično zahtevaju dozvole zbog: emisija mirisa (kuhinja), buka (gosti, muzika), separatori masti, ventilacioni sistemi. Izuzeci: Male prodavnice sladoleda bez sedišta mogu biti izuzete. Proces može trajati 3-6 meseci - planirajte to u svoj raspored otvaranja!"
+      },
+      "q9": {
+        "question": "Ne govorim nemački - mogu li ipak da pokrenem posao?",
+        "answer": "Da! Naša veb stranica podržava 8 jezika: nemački, engleski, srpski, hrvatski, turski, italijanski, španski i ukrajinski. Za zvanične postupke: MA 36 i Privredna komora nude višejezično savetovanje. Za registraciju zanata trebate: pasoš/ličnu kartu, broj socijalnog osiguranja, eventualno prevodilac za dokumente. Mnoge startup usluge u Beču su višejezične."
+      },
+      "q10": {
+        "question": "Šta se dešava ako moji komšije prigovaraju mom poslovnom objektu?",
+        "answer": "Za objekte koji zahtevaju dozvolu, komšije se obaveštavaju tokom procesa (učešće komšija). Oni mogu da podnesu prigovore u vezi: preterane buke, neugodnog mirisa, sigurnosnih problema, saobraćajnih problema. Uprava preispituje prigovore i može da nametne uslove (npr. zaštita od buke, ograničenja radnog vremena). Dobro planiranje i rana komunikacija sa komšijama mogu sprečiti mnoge konflikte."
+      }
+    }
   }
 }
