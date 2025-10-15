@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function FAQPage() {
   const t = useTranslations('faq')
@@ -100,12 +101,12 @@ export default function FAQPage() {
             Nutzen Sie unseren kostenlosen Check und finden Sie heraus, ob Ihr
             Betrieb eine Genehmigung benötigt.
           </p>
-          <a
+          <Link
             href="/check"
             className="inline-block bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors shadow-lg"
           >
             Jetzt Check starten
-          </a>
+          </Link>
         </div>
         </div>
       </div>
