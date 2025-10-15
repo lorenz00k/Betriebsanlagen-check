@@ -134,5 +134,51 @@
     "title": "Ihr Weg zur Betriebsanlagengenehmigung",
     "subtitle": "Überblick über alle Schritte und Dokumente",
     "intro": "Hier erfahren Sie, welche Dokumente Sie vorbereiten müssen und welche Schritte zu unternehmen sind."
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Alles Wichtige rund um Betriebsanlagengenehmigung, Gewerbeanmeldung und Unternehmensgründung in Wien",
+    "questions": {
+      "q1": {
+        "question": "Was ist eine Betriebsanlage und brauche ich eine Genehmigung?",
+        "answer": "Eine Betriebsanlage ist jede Anlage, die zur Ausübung eines Gewerbes verwendet wird. Dazu gehören Geschäftslokale, Werkstätten, Lager, Gastronomie-Betriebe und vieles mehr. Ob Sie eine Genehmigung benötigen, hängt von verschiedenen Faktoren ab: Art des Betriebs, Größe, Lage, Betriebszeiten und mögliche Belästigungen (Lärm, Geruch). Die Genehmigungsfreistellungsverordnung regelt, welche Betriebe ohne Genehmigung betrieben werden können. Nutzen Sie unseren kostenlosen Check, um herauszufinden, ob Ihr Betrieb genehmigungspflichtig ist."
+      },
+      "q2": {
+        "question": "Wie lange dauert die Genehmigung meiner Betriebsanlage in Wien?",
+        "answer": "Die Dauer variiert je nach Komplexität Ihres Betriebs. Bei einfachen Fällen ohne Anrainerbeteiligung: 4-8 Wochen. Bei komplexen Anlagen mit Nachbarverständigung: 3-6 Monate. Die MA 36 (Gewerbebehörde Wien) ist die zuständige Stelle. Tipp: Eine vollständige Einreichung mit allen Unterlagen beschleunigt das Verfahren erheblich."
+      },
+      "q3": {
+        "question": "Was kostet eine Betriebsanlagengenehmigung?",
+        "answer": "Die Gebühren richten sich nach dem Verwaltungsaufwand. Vereinfachtes Verfahren: ca. 100-300 Euro. Normales Verfahren mit Gutachten: 500-2000 Euro. Große oder komplexe Anlagen: 2000-5000 Euro und mehr. Hinzu können Kosten für Gutachter, Pläne und technische Nachweise kommen. Die genauen Tarife finden Sie auf wien.gv.at."
+      },
+      "q4": {
+        "question": "Kann ich mein Geschäft schon vor der Genehmigung eröffnen?",
+        "answer": "Nein, wenn Ihr Betrieb genehmigungspflichtig ist, dürfen Sie NICHT vor Erteilung der Genehmigung starten. Das wäre eine Verwaltungsübertretung mit Strafen bis zu 50.000 Euro. Bei genehmigungsfreien Betrieben (nach Freistellungsverordnung) können Sie sofort nach der Gewerbeanmeldung starten. Unser Check hilft Ihnen festzustellen, ob Sie eine Genehmigung benötigen."
+      },
+      "q5": {
+        "question": "Welche Unterlagen brauche ich für die Betriebsanlagengenehmigung?",
+        "answer": "Standardunterlagen: Gewerbeberechtigung oder Konzession, Grundriss und Lageplan, Beschreibung der Betriebsanlage, Nachweis über Nutzungsrecht (Mietvertrag/Eigentumsnachweis), technische Beschreibungen (z.B. Lüftung, Lärm). Je nach Betrieb zusätzlich: Lärmgutachten, Brandschutzkonzept, Statik-Nachweis, Umweltverträglichkeitsprüfung. Die MA 36 berät Sie im Vorfeld, welche Unterlagen konkret nötig sind."
+      },
+      "q6": {
+        "question": "Was ist der Unterschied zwischen Gewerbeanmeldung und Betriebsanlagengenehmigung?",
+        "answer": "Gewerbeanmeldung: Berechtigt Sie zur Ausübung eines Gewerbes (bei der Gewerbebehörde). Betriebsanlagengenehmigung: Erlaubt den Betrieb an einem konkreten Standort (berücksichtigt Lärm, Sicherheit, Nachbarn). Sie brauchen BEIDES: Erst die Gewerbeberechtigung, dann die Betriebsanlagengenehmigung für den Standort. Manche Betriebe sind von der Genehmigungspflicht befreit (siehe Freistellungsverordnung)."
+      },
+      "q7": {
+        "question": "Gilt die Freistellungsverordnung auch für mich?",
+        "answer": "Die Wiener Genehmigungsfreistellungsverordnung befreit bestimmte Betriebe von der Genehmigungspflicht, wenn sie bestimmte Kriterien erfüllen. Beispiele: Einzelhandel bis 600 m², Büros (fast immer), kleine Werkstätten, Kosmetik-Betriebe, Beherbergung bis 30 Betten ohne Schwimmbad. ABER: Ausnahmen gelten bei Lärm, Musik, gefährlichen Stoffen, mechanischer Lüftung außerhalb der Gebäudehülle. Nutzen Sie unseren Check für eine schnelle Einschätzung."
+      },
+      "q8": {
+        "question": "Brauche ich als Gastronom in Wien eine Betriebsanlagengenehmigung?",
+        "answer": "Ja, in den meisten Fällen. Gastronomiebetriebe (Restaurants, Cafés, Bars) sind normalerweise genehmigungspflichtig wegen: Geruchsemissionen (Küche), Lärm (Gäste, Musik), Fettabscheider, Lüftungsanlagen. Ausnahmen: Kleine Eisdielen ohne Sitzplätze können freigestellt sein. Das Verfahren kann 3-6 Monate dauern - planen Sie das bei Ihrer Eröffnung ein!"
+      },
+      "q9": {
+        "question": "Ich spreche kein Deutsch - kann ich trotzdem ein Gewerbe gründen?",
+        "answer": "Ja! Unsere Website unterstützt 8 Sprachen: Deutsch, Englisch, Serbisch, Kroatisch, Türkisch, Italienisch, Spanisch und Ukrainisch. Für offizielle Behördengänge: Die MA 36 und Wirtschaftskammer bieten Beratung in mehreren Sprachen an. Für die Gewerbeanmeldung brauchen Sie: Reisepass/Ausweis, Sozialversicherungsnummer, ggf. Übersetzer für Dokumente. Viele Gründer-Services in Wien sind mehrsprachig."
+      },
+      "q10": {
+        "question": "Was passiert, wenn meine Nachbarn gegen meine Betriebsanlage sind?",
+        "answer": "Bei genehmigungspflichtigen Anlagen werden Nachbarn im Verfahren informiert (Anrainerbeteiligung). Sie können Einwendungen erheben bei: Zu viel Lärm, Geruchsbelästigung, Sicherheitsbedenken, Verkehrsproblemen. Die Behörde prüft die Einwände und kann Auflagen erteilen (z.B. Lärmschutz, Betriebszeiten-Einschränkung). Mit guter Planung und frühzeitiger Nachbar-Information lassen sich viele Konflikte vermeiden."
+      }
+    }
   }
 }

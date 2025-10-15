@@ -51,7 +51,15 @@ export default async function LocaleLayout({
               Betriebsanlagen Check
             </h1>
           </Link>
-          <LanguageSwitcher />
+          <div className="flex items-center gap-6">
+            <Link
+              href={`/${locale}/faq`}
+              className="hidden md:block text-gray-700 hover:text-blue-600 transition-colors font-medium"
+            >
+              FAQ
+            </Link>
+            <LanguageSwitcher />
+          </div>
         </div>
       </nav>
       <main className="min-h-screen">{children}</main>

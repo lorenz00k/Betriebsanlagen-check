@@ -134,5 +134,51 @@
     "title": "Your path to a business facility permit",
     "subtitle": "Overview of all steps and documents",
     "intro": "Here you can find out which documents you need to prepare and which steps to take."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything important about business facility permits, trade registration and starting a business in Vienna",
+    "questions": {
+      "q1": {
+        "question": "What is a business facility and do I need a permit?",
+        "answer": "A business facility (Betriebsanlage) is any installation used for operating a trade. This includes commercial premises, workshops, warehouses, restaurants, and much more. Whether you need a permit depends on various factors: type of business, size, location, operating hours, and potential disturbances (noise, odor). The exemption regulation (Genehmigungsfreistellungsverordnung) specifies which businesses can operate without a permit. Use our free check to find out if your business requires authorization."
+      },
+      "q2": {
+        "question": "How long does it take to get a business facility permit in Vienna?",
+        "answer": "Duration varies depending on your business complexity. Simple cases without neighbor participation: 4-8 weeks. Complex facilities with neighbor notification: 3-6 months. MA 36 (Vienna Trade Authority) is the responsible agency. Tip: Complete submission with all documents significantly speeds up the process."
+      },
+      "q3": {
+        "question": "What does a business facility permit cost?",
+        "answer": "Fees depend on administrative effort. Simplified procedure: approx. 100-300 euros. Normal procedure with expert reports: 500-2000 euros. Large or complex facilities: 2000-5000 euros and more. Additional costs may apply for experts, plans and technical evidence. Exact tariffs can be found on wien.gv.at."
+      },
+      "q4": {
+        "question": "Can I open my business before getting the permit?",
+        "answer": "No, if your business requires a permit, you must NOT start before receiving authorization. This would be an administrative offense with penalties up to 50,000 euros. For permit-exempt businesses (according to exemption regulation), you can start immediately after trade registration. Our check helps you determine if you need a permit."
+      },
+      "q5": {
+        "question": "What documents do I need for a business facility permit?",
+        "answer": "Standard documents: Trade license or concession, floor plan and site plan, description of the facility, proof of usage rights (rental contract/ownership), technical descriptions (e.g. ventilation, noise). Depending on business, additionally: noise assessment, fire protection concept, structural engineering proof, environmental impact assessment. MA 36 advises which documents are specifically needed."
+      },
+      "q6": {
+        "question": "What's the difference between trade registration and business facility permit?",
+        "answer": "Trade registration: Authorizes you to operate a trade (at the trade authority). Business facility permit: Allows operation at a specific location (considers noise, safety, neighbors). You need BOTH: First the trade license, then the business facility permit for the location. Some businesses are exempt from permit requirements (see exemption regulation)."
+      },
+      "q7": {
+        "question": "Does the exemption regulation apply to me?",
+        "answer": "The Vienna exemption regulation exempts certain businesses from permit requirements if they meet specific criteria. Examples: retail up to 600 m², offices (almost always), small workshops, beauty salons, accommodation up to 30 beds without pool. BUT: Exceptions apply for noise, music, hazardous substances, mechanical ventilation outside the building envelope. Use our check for a quick assessment."
+      },
+      "q8": {
+        "question": "Do I need a business facility permit as a restaurateur in Vienna?",
+        "answer": "Yes, in most cases. Gastronomy businesses (restaurants, cafés, bars) normally require permits due to: odor emissions (kitchen), noise (guests, music), grease traps, ventilation systems. Exceptions: Small ice cream parlors without seating may be exempt. The process can take 3-6 months - plan this into your opening schedule!"
+      },
+      "q9": {
+        "question": "I don't speak German - can I still start a business?",
+        "answer": "Yes! Our website supports 8 languages: German, English, Serbian, Croatian, Turkish, Italian, Spanish and Ukrainian. For official procedures: MA 36 and Chamber of Commerce offer multilingual consulting. For trade registration you need: passport/ID, social security number, possibly translator for documents. Many startup services in Vienna are multilingual."
+      },
+      "q10": {
+        "question": "What happens if my neighbors object to my business facility?",
+        "answer": "For permit-required facilities, neighbors are informed during the process (neighbor participation). They can raise objections regarding: excessive noise, odor nuisance, safety concerns, traffic problems. The authority reviews objections and may impose conditions (e.g. noise protection, operating hour restrictions). Good planning and early neighbor communication can prevent many conflicts."
+      }
+    }
   }
 }

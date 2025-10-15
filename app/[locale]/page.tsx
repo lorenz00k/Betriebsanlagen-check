@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import AnimatedStats from "../components/AnimatedStats";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 
 export default function Home() {
   const t = useTranslations("home");
