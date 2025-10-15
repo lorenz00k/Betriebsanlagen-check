@@ -2,8 +2,10 @@ import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { locales, Locale } from "@/i18n";
 import LanguageSwitcher from "../components/LanguageSwitcher";
+import LanguageBanner from "../components/LanguageBanner";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Link from "next/link";
 
 export default async function LocaleLayout({
   children,
@@ -25,10 +27,11 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
+      <LanguageBanner />
       <nav className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center shadow-md">
+          <Link href={`/${locale}`} className="flex items-center gap-3 group cursor-pointer">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
               <svg
                 className="w-6 h-6 text-white"
                 fill="none"
@@ -43,10 +46,10 @@ export default async function LocaleLayout({
                 />
               </svg>
             </div>
-            <h1 className="text-xl font-bold text-gray-800">
+            <h1 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
               Betriebsanlagen Check
             </h1>
-          </div>
+          </Link>
           <LanguageSwitcher />
         </div>
       </nav>

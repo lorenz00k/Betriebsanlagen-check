@@ -47,11 +47,12 @@ export const questions: Question[] = [
     type: 'select',
     required: true,
   },
-  {
-    id: 'address',
-    type: 'address',
-    required: true,
-  },
+  // Address question commented out - will be added back later for API integration
+  // {
+  //   id: 'address',
+  //   type: 'address',
+  //   required: true,
+  // },
   {
     id: 'businessArea',
     type: 'radio',
