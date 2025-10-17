@@ -134,5 +134,51 @@
     "title": "Il tuo percorso verso l'autorizzazione dell'impianto aziendale",
     "subtitle": "Panoramica di tutti i passaggi e i documenti",
     "intro": "Qui puoi scoprire quali documenti devi preparare e quali passaggi devi compiere."
+  },
+  "faq": {
+    "title": "Domande Frequenti",
+    "subtitle": "Tutto ciò che è importante sull'autorizzazione dell'impianto aziendale, la registrazione dell'attività e la fondazione d'impresa a Vienna",
+    "questions": {
+      "q1": {
+        "question": "Cos'è un impianto aziendale e ho bisogno di un'autorizzazione?",
+        "answer": "Un impianto aziendale è qualsiasi struttura utilizzata per l'esercizio di un'attività commerciale. Ciò include negozi, officine, magazzini, ristoranti e molto altro. Se hai bisogno di un'autorizzazione dipende da vari fattori: tipo di attività, dimensioni, ubicazione, orari di apertura e possibili disturbi (rumore, odori). Il regolamento di esenzione dall'autorizzazione determina quali attività possono essere gestite senza autorizzazione. Utilizza il nostro controllo gratuito per scoprire se la tua attività richiede un'autorizzazione."
+      },
+      "q2": {
+        "question": "Quanto tempo richiede l'autorizzazione del mio impianto aziendale a Vienna?",
+        "answer": "La durata varia a seconda della complessità della tua attività. Per casi semplici senza coinvolgimento dei vicini: 4-8 settimane. Per impianti complessi con notifica ai vicini: 3-6 mesi. La MA 36 (Ufficio del Commercio di Vienna) è l'autorità competente. Suggerimento: una presentazione completa con tutti i documenti accelera notevolmente la procedura."
+      },
+      "q3": {
+        "question": "Quanto costa un'autorizzazione per l'impianto aziendale?",
+        "answer": "Le tariffe dipendono dall'onere amministrativo. Procedura semplificata: circa 100-300 euro. Procedura normale con perizie: 500-2000 euro. Impianti grandi o complessi: 2000-5000 euro e oltre. A questi si aggiungono i costi per periti, planimetrie e certificati tecnici. Le tariffe esatte si trovano su wien.gv.at."
+      },
+      "q4": {
+        "question": "Posso aprire la mia attività prima di ricevere l'autorizzazione?",
+        "answer": "No, se la tua attività richiede un'autorizzazione, NON puoi iniziare prima di riceverla. Sarebbe una violazione amministrativa con multe fino a 50.000 euro. Per le attività esenti dall'autorizzazione (secondo il regolamento di esenzione) puoi iniziare immediatamente dopo la registrazione commerciale. Il nostro controllo ti aiuta a determinare se hai bisogno di un'autorizzazione."
+      },
+      "q5": {
+        "question": "Quali documenti mi servono per l'autorizzazione dell'impianto aziendale?",
+        "answer": "Documenti standard: licenza commerciale o concessione, planimetria e mappa dell'ubicazione, descrizione dell'impianto aziendale, prova del diritto d'uso (contratto di affitto/prova di proprietà), descrizioni tecniche (es. ventilazione, rumore). A seconda dell'attività inoltre: perizia acustica, piano di protezione antincendio, certificato statico, valutazione di impatto ambientale. La MA 36 ti consiglia preventivamente quali documenti sono necessari nello specifico."
+      },
+      "q6": {
+        "question": "Qual è la differenza tra registrazione commerciale e autorizzazione dell'impianto aziendale?",
+        "answer": "Registrazione commerciale: ti autorizza a esercitare un'attività commerciale (presso l'ufficio del commercio). Autorizzazione dell'impianto aziendale: permette l'esercizio in una specifica ubicazione (considera rumore, sicurezza, vicini). Ti servono ENTRAMBI: prima la licenza commerciale, poi l'autorizzazione dell'impianto per l'ubicazione. Alcune attività sono esentate dall'obbligo di autorizzazione (vedi regolamento di esenzione)."
+      },
+      "q7": {
+        "question": "Il regolamento di esenzione si applica anche a me?",
+        "answer": "Il regolamento di esenzione dall'autorizzazione di Vienna esenta determinate attività dall'obbligo di autorizzazione se soddisfano determinati criteri. Esempi: commercio al dettaglio fino a 600 m², uffici (quasi sempre), piccole officine, centri estetici, alloggi fino a 30 letti senza piscina. MA: si applicano eccezioni in caso di rumore, musica, sostanze pericolose, ventilazione meccanica all'esterno dell'edificio. Utilizza il nostro controllo per una valutazione rapida."
+      },
+      "q8": {
+        "question": "Come ristoratore a Vienna ho bisogno di un'autorizzazione per l'impianto aziendale?",
+        "answer": "Sì, nella maggior parte dei casi. Le attività di ristorazione (ristoranti, caffè, bar) sono normalmente soggette ad autorizzazione a causa di: emissioni di odori (cucina), rumore (ospiti, musica), separatore di grassi, sistemi di ventilazione. Eccezioni: le piccole gelaterie senza posti a sedere possono essere esentate. La procedura può richiedere 3-6 mesi - pianificalo per la tua apertura!"
+      },
+      "q9": {
+        "question": "Non parlo tedesco - posso comunque avviare un'attività?",
+        "answer": "Sì! Il nostro sito web supporta 8 lingue: tedesco, inglese, serbo, croato, turco, italiano, spagnolo e ucraino. Per le pratiche amministrative ufficiali: la MA 36 e la Camera dell'Economia offrono consulenza in più lingue. Per la registrazione commerciale hai bisogno di: passaporto/carta d'identità, numero di previdenza sociale, eventualmente traduttore per i documenti. Molti servizi per fondatori a Vienna sono multilingue."
+      },
+      "q10": {
+        "question": "Cosa succede se i miei vicini sono contrari al mio impianto aziendale?",
+        "answer": "Per gli impianti soggetti ad autorizzazione, i vicini vengono informati durante la procedura (partecipazione dei residenti). Possono presentare obiezioni in caso di: troppo rumore, disturbo da odori, preoccupazioni per la sicurezza, problemi di traffico. L'autorità esamina le obiezioni e può imporre condizioni (es. protezione acustica, limitazione degli orari di apertura). Con una buona pianificazione e informazione tempestiva dei vicini, molti conflitti possono essere evitati."
+      }
+    }
   }
 }
