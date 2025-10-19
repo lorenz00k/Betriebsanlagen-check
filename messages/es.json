@@ -329,6 +329,50 @@
     }
   },
   "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Todo lo importante sobre la autorización de instalaciones comerciales, el registro mercantil y la creación de empresas en Viena",
+    "questions": {
+      "q1": {
+        "question": "¿Qué es una instalación comercial y necesito un permiso?",
+        "answer": "Una instalación comercial (Betriebsanlage) es cualquier instalación utilizada para ejercer una actividad económica. Incluye locales comerciales, talleres, almacenes, restaurantes y mucho más. Si necesitas un permiso depende de varios factores: tipo de actividad, tamaño, ubicación, horarios de apertura y posibles molestias (ruido, olores). El Reglamento de Exención de Autorización (Genehmigungsfreistellungsverordnung) determina qué negocios pueden operar sin permiso. Utiliza nuestro chequeo gratuito para averiguar si tu actividad requiere autorización."
+      },
+      "q2": {
+        "question": "¿Cuánto tarda obtener el permiso de mi instalación comercial en Viena?",
+        "answer": "La duración varía según la complejidad de tu negocio. Casos sencillos sin participación de vecinos: 4-8 semanas. Instalaciones complejas con notificación a vecinos: 3-6 meses. La MA 36 (autoridad comercial de Viena) es el organismo competente. Consejo: una presentación completa con todos los documentos acelera considerablemente el proceso."
+      },
+      "q3": {
+        "question": "¿Cuánto cuesta un permiso de instalación comercial?",
+        "answer": "Las tasas dependen del esfuerzo administrativo. Procedimiento simplificado: aprox. 100-300 euros. Procedimiento normal con peritajes: 500-2000 euros. Instalaciones grandes o complejas: 2000-5000 euros o más. Pueden añadirse costes adicionales para expertos, planos y comprobantes técnicos. Las tarifas exactas están disponibles en wien.gv.at."
+      },
+      "q4": {
+        "question": "¿Puedo abrir mi negocio antes de obtener el permiso?",
+        "answer": "No, si tu negocio requiere un permiso, NO debes comenzar antes de recibir la autorización. Sería una infracción administrativa con multas de hasta 50.000 euros. Para negocios exentos (según el reglamento de exención) puedes comenzar inmediatamente después de registrar la actividad. Nuestro chequeo te ayuda a determinar si necesitas autorización."
+      },
+      "q5": {
+        "question": "¿Qué documentos necesito para el permiso de instalación comercial?",
+        "answer": "Documentos estándar: licencia comercial o concesión, plano y plano de situación, descripción de la instalación, prueba del derecho de uso (contrato de alquiler/título de propiedad), descripciones técnicas (p. ej. ventilación, ruido). Según el tipo de negocio, adicionalmente: informe acústico, plan de protección contra incendios, certificado estructural, evaluación de impacto ambiental. La MA 36 asesora de antemano qué documentos se requieren en cada caso."
+      },
+      "q6": {
+        "question": "¿Cuál es la diferencia entre el registro mercantil y el permiso de instalación comercial?",
+        "answer": "Registro mercantil: te autoriza a ejercer una actividad económica (ante la autoridad comercial). Permiso de instalación comercial: permite operar en una ubicación concreta (considera ruido, seguridad, vecinos). Necesitas AMBOS: primero la licencia comercial, luego el permiso de instalación para el lugar. Algunos negocios están exentos del requisito de autorización (véase el reglamento de exención)."
+      },
+      "q7": {
+        "question": "¿Se me aplica el reglamento de exención?",
+        "answer": "El Reglamento de Exención de Viena exime a determinados negocios del requisito de autorización si cumplen ciertos criterios. Ejemplos: comercio minorista hasta 600 m², oficinas (casi siempre), pequeños talleres, salones de belleza, alojamientos hasta 30 camas sin piscina. PERO: existen excepciones en caso de ruido, música, sustancias peligrosas o ventilación mecánica fuera de la envolvente del edificio. Usa nuestro chequeo para una evaluación rápida."
+      },
+      "q8": {
+        "question": "¿Necesito un permiso de instalación comercial como restaurador en Viena?",
+        "answer": "Sí, en la mayoría de los casos. Los negocios de gastronomía (restaurantes, cafés, bares) normalmente necesitan permisos debido a: emisiones de olores (cocina), ruido (clientes, música), separadores de grasa, sistemas de ventilación. Excepciones: las heladerías pequeñas sin asientos pueden estar exentas. El proceso puede durar 3-6 meses, ¡tenlo en cuenta al planificar la apertura!"
+      },
+      "q9": {
+        "question": "No hablo alemán, ¿aun así puedo iniciar un negocio?",
+        "answer": "¡Sí! Nuestro sitio web está disponible en 8 idiomas: alemán, inglés, serbio, croata, turco, italiano, español y ucraniano. Para los trámites oficiales: la MA 36 y la Cámara de Comercio ofrecen asesoramiento multilingüe. Para registrar la actividad necesitas: pasaporte/documento de identidad, número de seguridad social y, si es necesario, un traductor para los documentos. Muchos servicios para emprendedores en Viena son multilingües."
+      },
+      "q10": {
+        "question": "¿Qué ocurre si mis vecinos se oponen a mi instalación comercial?",
+        "answer": "Para las instalaciones que requieren permiso, los vecinos son informados durante el procedimiento (participación vecinal). Pueden presentar objeciones relacionadas con: ruido excesivo, molestias por olores, problemas de seguridad, tráfico. La autoridad revisa las objeciones y puede imponer condiciones (p. ej. protección acústica, limitación de horarios). Una buena planificación y la comunicación temprana con los vecinos previenen muchos conflictos."
+      }
+    },
     "cta": {
       "title": "¿Todavía tienes preguntas?",
       "description": "Utiliza nuestro chequeo gratuito y descubre si tu negocio necesita una autorización.",

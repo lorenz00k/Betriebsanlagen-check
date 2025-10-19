@@ -329,6 +329,50 @@
     }
   },
   "faq": {
+    "title": "Često postavljana pitanja",
+    "subtitle": "Sve važno o dozvolama za poslovne objekte, prijavi obrta i pokretanju poduzeća u Beču",
+    "questions": {
+      "q1": {
+        "question": "Što je poslovni objekt i trebam li dozvolu?",
+        "answer": "Poslovni objekt (Betriebsanlage) je svaka instalacija koja se koristi za obavljanje djelatnosti. U to spadaju poslovni prostori, radionice, skladišta, ugostiteljski objekti i mnogo više. Trebate li dozvolu ovisi o raznim čimbenicima: vrsti djelatnosti, veličini, lokaciji, radnom vremenu i mogućim smetnjama (buka, miris). Uredba o izuzeću od dozvole (Genehmigungsfreistellungsverordnung) propisuje koji se obrti mogu voditi bez odobrenja. Iskoristite naš besplatni check kako biste saznali je li vaš objekt podložan odobrenju."
+      },
+      "q2": {
+        "question": "Koliko traje dobivanje dozvole za poslovni objekt u Beču?",
+        "answer": "Trajanje ovisi o složenosti vašeg poslovanja. Jednostavni slučajevi bez sudjelovanja susjeda: 4-8 tjedana. Kompleksni objekti s obavještavanjem susjeda: 3-6 mjeseci. Nadležno tijelo je MA 36 (Bečko trgovačko tijelo). Savjet: potpuna predaja dokumentacije s cjelokupnom dokumentacijom znatno ubrzava postupak."
+      },
+      "q3": {
+        "question": "Koliko košta dozvola za poslovni objekt?",
+        "answer": "Naknade ovise o upravnom opterećenju. Pojednostavljeni postupak: oko 100-300 eura. Redoviti postupak s vještačenjima: 500-2000 eura. Veliki ili složeni objekti: 2000-5000 eura i više. Dodatno mogu nastati troškovi za stručnjake, nacrte i tehničke dokaze. Točne tarife objavljene su na wien.gv.at."
+      },
+      "q4": {
+        "question": "Mogu li otvoriti poslovanje prije nego što dobijem dozvolu?",
+        "answer": "Ne, ako vaš obrt zahtijeva odobrenje, NE smijete započeti prije nego što ga dobijete. To bi bio prekršaj s mogućim kaznama do 50.000 eura. Za poslove izuzete od odobrenja (prema Uredbi o izuzeću) možete započeti odmah nakon prijave obrta. Naš check pomaže vam utvrditi trebate li dozvolu."
+      },
+      "q5": {
+        "question": "Koju dokumentaciju trebam za dozvolu poslovnog objekta?",
+        "answer": "Standardni dokumenti: obrtnica ili koncesija, tlocrt i situacijski plan, opis objekta, dokaz o pravu korištenja (ugovor o najmu/vlasništvu), tehnički opisi (npr. ventilacija, buka). Ovisno o djelatnosti dodatno: elaborat buke, plan zaštite od požara, dokaz statike, studija utjecaja na okoliš. MA 36 unaprijed savjetuje koje su isprave konkretno potrebne."
+      },
+      "q6": {
+        "question": "Koja je razlika između prijave obrta i dozvole za poslovni objekt?",
+        "answer": "Prijava obrta: ovlašćuje vas za obavljanje djelatnosti (kod nadležne trgovačke institucije). Dozvola za poslovni objekt: dopušta rad na konkretnoj lokaciji (uzimajući u obzir buku, sigurnost, susjede). Potrebna su vam OBA dokumenta: najprije obrtnica, zatim dozvola za objekt na lokaciji. Neke djelatnosti izuzete su od obveze odobrenja (vidi Uredbu o izuzeću)."
+      },
+      "q7": {
+        "question": "Odnosi li se Uredba o izuzeću i na mene?",
+        "answer": "Bečka Uredba o izuzeću oslobađa određene djelatnosti obveze odobrenja ako ispunjavaju posebne kriterije. Primjeri: maloprodaja do 600 m², uredi (gotovo uvijek), male radionice, kozmetički saloni, smještaj do 30 kreveta bez bazena. ALI: postoje iznimke kod buke, glazbe, opasnih tvari ili mehaničke ventilacije izvan ovojnice zgrade. Za brzu procjenu upotrijebite naš check."
+      },
+      "q8": {
+        "question": "Trebam li kao ugostitelj u Beču dozvolu za poslovni objekt?",
+        "answer": "Da, u većini slučajeva. Ugostiteljski objekti (restorani, kafići, barovi) obično su podložni odobrenju zbog: emisija mirisa (kuhinja), buke (gosti, glazba), separatora masti, ventilacijskih sustava. Iznimke: male slastičarnice bez sjedećih mjesta mogu biti izuzete. Postupak može trajati 3-6 mjeseci – uključite to u plan otvaranja!"
+      },
+      "q9": {
+        "question": "Ne govorim njemački – mogu li ipak pokrenuti posao?",
+        "answer": "Da! Naša web-stranica podržava 8 jezika: njemački, engleski, srpski, hrvatski, turski, talijanski, španjolski i ukrajinski. Za službene postupke: MA 36 i Gospodarska komora nude višejezično savjetovanje. Za prijavu obrta trebate: putovnicu/osobnu iskaznicu, broj socijalnog osiguranja te, po potrebi, prevoditelja za dokumente. Mnoge usluge za poduzetnike u Beču dostupne su na više jezika."
+      },
+      "q10": {
+        "question": "Što se događa ako susjedi ulože prigovor na moj poslovni objekt?",
+        "answer": "Za objekte koji zahtijevaju dozvolu susjedi se obavještavaju tijekom postupka (sudjelovanje susjeda). Mogu podnijeti prigovore zbog: prevelike buke, neugodnih mirisa, sigurnosnih rizika, problema u prometu. Nadležno tijelo pregledava prigovore i može propisati uvjete (npr. zaštitu od buke, ograničenje radnog vremena). Dobra priprema i rano informiranje susjeda sprječavaju mnoge konflikte."
+      }
+    },
     "cta": {
       "title": "Imate još pitanja?",
       "description": "Iskoristite naš besplatni provjeru i saznajte treba li vaš objekt dozvolu.",

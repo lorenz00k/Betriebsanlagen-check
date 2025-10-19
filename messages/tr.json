@@ -329,6 +329,50 @@
     }
   },
   "faq": {
+    "title": "Sıkça Sorulan Sorular",
+    "subtitle": "Viyana'da işletme tesisi izni, ticaret kaydı ve şirket kuruluşu hakkında bilmeniz gerekenler",
+    "questions": {
+      "q1": {
+        "question": "İşletme tesisi nedir ve izin almam gerekir mi?",
+        "answer": "Bir işletme tesisi (Betriebsanlage), bir ticari faaliyeti yürütmek için kullanılan her türlü kurulumdur. Buna iş yerleri, atölyeler, depolar, restoranlar ve çok daha fazlası dahildir. İzin gerekip gerekmediği; işletmenin türüne, büyüklüğüne, konumuna, çalışma saatlerine ve olası rahatsızlıklara (gürültü, koku) bağlıdır. İzin muafiyeti yönetmeliği (Genehmigungsfreistellungsverordnung), hangi işletmelerin izin almadan faaliyet gösterebileceğini belirler. İşletmenizin izne tabi olup olmadığını öğrenmek için ücretsiz kontrolümüzü kullanın."
+      },
+      "q2": {
+        "question": "Viyana'da işletme tesisi iznini almak ne kadar sürer?",
+        "answer": "Süre, işletmenizin karmaşıklığına göre değişir. Komşu katılımı olmayan basit durumlar: 4-8 hafta. Komşuların bilgilendirildiği karmaşık tesisler: 3-6 ay. Yetkili kurum Viyana Ticaret Dairesi MA 36'dır. İpucu: Tüm belgelerle birlikte eksiksiz bir başvuru süreci önemli ölçüde hızlandırır."
+      },
+      "q3": {
+        "question": "İşletme tesisi izni ne kadar tutar?",
+        "answer": "Ücretler idari iş yüküne bağlıdır. Basitleştirilmiş prosedür: yaklaşık 100-300 avro. Uzman raporlu normal prosedür: 500-2000 avro. Büyük veya karmaşık tesisler: 2000-5000 avro ve üzeri. Uzmanlar, planlar ve teknik kanıtlar için ek maliyetler doğabilir. Kesin tarifeler wien.gv.at adresinde yer alır."
+      },
+      "q4": {
+        "question": "İzni almadan önce işletmemi açabilir miyim?",
+        "answer": "Hayır, işletmeniz izne tabi ise onay almadan başlamamalısınız. Bu durum 50.000 avroya kadar para cezası içeren bir idari suçtur. Muaf işletmeler (muafiyet yönetmeliğine göre) ticaret kaydından hemen sonra başlayabilir. İzne ihtiyacınız olup olmadığını belirlemek için kontrolümüzden yararlanın."
+      },
+      "q5": {
+        "question": "İşletme tesisi izni için hangi belgelere ihtiyacım var?",
+        "answer": "Standart belgeler: Ticaret ruhsatı veya imtiyaz, kat planı ve vaziyet planı, tesis açıklaması, kullanım hakkı kanıtı (kira sözleşmesi/mülkiyet belgesi), teknik açıklamalar (ör. havalandırma, gürültü). İşletmeye bağlı olarak ayrıca: gürültü raporu, yangın koruma planı, statik raporu, çevresel etki değerlendirmesi. MA 36 hangi belgelerin gerekli olduğunu önceden danışmanlıkla açıklar."
+      },
+      "q6": {
+        "question": "Ticaret kaydı ile işletme tesisi izni arasındaki fark nedir?",
+        "answer": "Ticaret kaydı: Bir ticari faaliyeti yürütmenize izin verir (ticaret idaresinde). İşletme tesisi izni: Belirli bir lokasyonda faaliyete olanak tanır (gürültü, güvenlik, komşular dikkate alınır). İKİSİNE de ihtiyacınız var: önce ticaret ruhsatı, ardından lokasyon için işletme tesisi izni. Bazı işletmeler izin yükümlülüğünden muaftır (muafiyet yönetmeliğine bakın)."
+      },
+      "q7": {
+        "question": "Muafiyet yönetmeliği benim için geçerli mi?",
+        "answer": "Viyana muafiyet yönetmeliği, belirli kriterleri karşılayan bazı işletmeleri izin yükümlülüğünden muaf tutar. Örnekler: 600 m²'ye kadar perakende, ofisler (neredeyse her zaman), küçük atölyeler, güzellik salonları, havuzsuz 30 yatağa kadar konaklama. ANCAK: Gürültü, müzik, tehlikeli maddeler veya bina kabuğu dışına çıkan mekanik havalandırma durumlarında istisnalar vardır. Hızlı bir değerlendirme için kontrolümüzü kullanın."
+      },
+      "q8": {
+        "question": "Viyana'da bir restoran işletmecisi olarak işletme tesisi iznine ihtiyacım var mı?",
+        "answer": "Evet, çoğu durumda. Gastronomi işletmeleri (restoranlar, kafeler, barlar) genellikle şu nedenlerle izne tabidir: koku emisyonları (mutfak), gürültü (misafirler, müzik), yağ tutucular, havalandırma sistemleri. İstisnalar: Oturma alanı olmayan küçük dondurmacılar muaf olabilir. Süreç 3-6 ay sürebilir – açılış planlamanıza bunu dahil edin!"
+      },
+      "q9": {
+        "question": "Almanca konuşmuyorum – yine de iş kurabilir miyim?",
+        "answer": "Evet! Web sitemiz 8 dili destekliyor: Almanca, İngilizce, Sırpça, Hırvatça, Türkçe, İtalyanca, İspanyolca ve Ukraynaca. Resmî işlemler için: MA 36 ve Ticaret Odası çok dilli danışmanlık sunar. Ticaret kaydı için gerekli belgeler: pasaport/kimlik, sosyal güvenlik numarası ve gerekirse belgeler için tercüman. Viyana'daki birçok girişim hizmeti çok dillidir."
+      },
+      "q10": {
+        "question": "Komşularım işletme tesisime itiraz ederse ne olur?",
+        "answer": "İzne tabi tesislerde komşular süreç boyunca bilgilendirilir (komşu katılımı). Şu konularda itirazda bulunabilirler: aşırı gürültü, koku rahatsızlığı, güvenlik endişeleri, trafik sorunları. Yetkili makam itirazları inceler ve koşullar getirebilir (ör. gürültü koruması, çalışma saatleri kısıtlamaları). İyi planlama ve komşularla erken iletişim pek çok çatışmayı önler."
+      }
+    },
     "cta": {
       "title": "Başka sorunuz var mı?",
       "description": "Ücretsiz kontrolümüzle işletmenizin izin gerektirip gerektirmediğini öğrenin.",
