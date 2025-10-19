@@ -30,7 +30,9 @@
     },
     "footer": {
       "copyright": "Betriebsanlagen Check - Ihr Helfer für Wiener Bürokratie",
-      "disclaimer": "Diese Website dient nur zu Informationszwecken. Für rechtlich verbindliche Auskünfte wenden Sie sich bitte an die zuständigen Behörden."
+      "disclaimer": "Diese Website dient nur zu Informationszwecken. Für rechtlich verbindliche Auskünfte wenden Sie sich bitte an die zuständigen Behörden.",
+      "imprint": "Impressum",
+      "privacy": "Datenschutz"
     }
   },
   "questionnaire": {
@@ -60,7 +62,10 @@
       "placeholder": "Vollständige Adresse eingeben",
       "street": "Straße und Hausnummer",
       "postalCode": "Postleitzahl",
-      "city": "Stadt"
+      "city": "Stadt",
+      "streetPlaceholder": "Straße und Hausnummer",
+      "postalCodePlaceholder": "Postleitzahl",
+      "cityPlaceholder": "Stadt"
     },
     "businessArea": {
       "question": "Wie groß ist die Betriebsfläche?",
@@ -128,12 +133,182 @@
     "contactAuthority": "Kontaktieren Sie die zuständige Behörde",
     "prepareDocuments": "Bereiten Sie die erforderlichen Dokumente vor",
     "startOver": "Von vorne beginnen",
-    "viewDocuments": "Erforderliche Dokumente ansehen"
+    "viewDocuments": "Erforderliche Dokumente ansehen",
+    "reasonsTitlePermit": "Gründe:",
+    "reasonsTitleNoPermit": "Begründung:",
+    "disclaimerTitle": "Wichtiger Hinweis:",
+    "disclaimerText": "Diese Prüfung dient nur zu Informationszwecken und ersetzt keine rechtliche Beratung. Für verbindliche Auskünfte wenden Sie sich bitte an die zuständige Behörde."
   },
   "documents": {
     "title": "Ihr Weg zur Betriebsanlagengenehmigung",
     "subtitle": "Überblick über alle Schritte und Dokumente",
-    "intro": "Hier erfahren Sie, welche Dokumente Sie vorbereiten müssen und welche Schritte zu unternehmen sind."
+    "intro": "Hier erfahren Sie, welche Dokumente Sie vorbereiten müssen und welche Schritte zu unternehmen sind.",
+    "steps": {
+      "step1": {
+        "title": "Vorprüfung und Beratung",
+        "description": "Kontaktieren Sie die zuständige MA 36 (Technische Gewerbeangelegenheiten) für eine erste Beratung.",
+        "contactTitle": "Kontakt:",
+        "contact": {
+          "phone": {
+            "icon": "📞",
+            "label": "Telefon",
+            "value": "+43 1 4000-25310"
+          },
+          "email": {
+            "icon": "📧",
+            "label": "E-Mail",
+            "value": "post@ma36.wien.gv.at"
+          },
+          "website": {
+            "icon": "🌐",
+            "value": "www.wien.gv.at/ma36"
+          }
+        }
+      },
+      "step2": {
+        "title": "Erforderliche Dokumente vorbereiten",
+        "description": "Typischerweise benötigte Unterlagen:",
+        "items": {
+          "applicationForm": {
+            "title": "Antragsformular",
+            "description": "Vollständig ausgefüllt und unterschrieben"
+          },
+          "businessLicense": {
+            "title": "Gewerbeberechtigung",
+            "description": "Nachweis der Gewerbeberechtigung"
+          },
+          "plans": {
+            "title": "Pläne und Skizzen",
+            "description": "Lagepläne, Grundrisse, Schnitte (maßstabsgetreu)"
+          },
+          "technicalDescription": {
+            "title": "Technische Beschreibung",
+            "description": "Detaillierte Beschreibung der Betriebsanlage und ihrer Einrichtungen"
+          },
+          "neighbors": {
+            "title": "Nachbarschaftsinformation",
+            "description": "Zustimmung oder Information der Nachbar:innen"
+          },
+          "tenancy": {
+            "title": "Miet-/Eigentumsnachweis",
+            "description": "Nachweis über das Recht zur Nutzung der Räumlichkeiten"
+          }
+        }
+      },
+      "step3": {
+        "title": "Antrag einreichen",
+        "description": "Reichen Sie alle Unterlagen vollständig bei der MA 36 ein. Die Einreichung kann erfolgen:",
+        "options": {
+          "inPerson": {
+            "title": "📮 Persönlich",
+            "line1": "Dresdner Straße 73-75, 1200 Wien",
+            "line2": "Mo–Fr: 8:00–15:30 Uhr"
+          },
+          "mail": {
+            "title": "✉️ Postweg",
+            "line1": "MA 36 – Technische Gewerbeangelegenheiten",
+            "line2": "Dresdner Straße 73-75, 1200 Wien"
+          }
+        }
+      },
+      "step4": {
+        "title": "Nach der Einreichung",
+        "description": "Was passiert nach der Einreichung?",
+        "items": {
+          "confirmation": {
+            "icon": "✅",
+            "title": "Eingangsbestätigung",
+            "description": "Sie erhalten eine Bestätigung über den Eingang der Unterlagen."
+          },
+          "assessment": {
+            "icon": "📝",
+            "title": "Prüfung",
+            "description": "Die Behörde prüft die Unterlagen und holt ggf. Stellungnahmen ein."
+          },
+          "questions": {
+            "icon": "📞",
+            "title": "Rückfragen",
+            "description": "Bei Unklarheiten werden Sie kontaktiert, um weitere Informationen zu liefern."
+          },
+          "decision": {
+            "icon": "📄",
+            "title": "Bescheid",
+            "description": "Sie erhalten einen Bescheid über die Genehmigung oder Auflagen."
+          }
+        },
+        "processingTime": "Durchschnittliche Bearbeitungszeit: 4–8 Wochen"
+      }
+    },
+    "expertReports": {
+      "title": "Häufig benötigte Fachgutachten",
+      "items": {
+        "noise": {
+          "icon": "🔊",
+          "title": "Schallschutz / Lärmschutz",
+          "description": "Besonders bei Maschinen, Lüftungsanlagen oder Musikbetrieb."
+        },
+        "ventilation": {
+          "icon": "🌬️",
+          "title": "Lüftung / Klima",
+          "description": "Nachweis einer ausreichenden Be- und Entlüftung."
+        },
+        "fireProtection": {
+          "icon": "🔥",
+          "title": "Brandschutz",
+          "description": "Brandalarm, Fluchtwege, Feuerlöscher, ggf. Sprinkler."
+        }
+      }
+    },
+    "fees": {
+      "title": "Kosten & Gebühren",
+      "items": {
+        "federalFees": {
+          "icon": "💶",
+          "title": "Bundesabgaben",
+          "description": "Abhängig von Betriebsart und Umfang (ca. 70–300 €)."
+        },
+        "expertFees": {
+          "icon": "📄",
+          "title": "Sachverständigenkosten",
+          "description": "Behördliche Gutachter (je nach Aufwand, mehrere hundert Euro möglich)."
+        },
+        "ownExperts": {
+          "icon": "🛠️",
+          "title": "Eigene Expert:innen",
+          "description": "Z. B. Ingenieurbüros, Planer:innen, Brandschutzexpert:innen."
+        },
+        "time": {
+          "icon": "⏱️",
+          "title": "Zeit",
+          "description": "Planen Sie ausreichend Zeit für Vorbereitung und eventuelle Nachbesserungen ein."
+        }
+      }
+    },
+    "tips": {
+      "title": "Tipps für einen reibungslosen Ablauf",
+      "items": {
+        "planEarly": {
+          "icon": "🗂️",
+          "title": "Frühzeitig planen",
+          "description": "Beginnen Sie mindestens 2–3 Monate vor geplanter Inbetriebnahme."
+        },
+        "contactAuthority": {
+          "icon": "🤝",
+          "title": "MA 36 kontaktieren",
+          "description": "Nutzen Sie die Beratung – viele Fragen lassen sich schon vorab klären."
+        },
+        "useChecklists": {
+          "icon": "📋",
+          "title": "Checklisten verwenden",
+          "description": "Überprüfen Sie, ob alle Pläne, Gutachten und Formulare vollständig sind."
+        },
+        "stayFlexible": {
+          "icon": "🔄",
+          "title": "Flexibel bleiben",
+          "description": "Seien Sie auf Nachbesserungen oder Auflagen vorbereitet."
+        }
+      }
+    }
   },
   "faq": {
     "title": "Häufig gestellte Fragen",
@@ -179,6 +354,29 @@
         "question": "Was passiert, wenn meine Nachbarn gegen meine Betriebsanlage sind?",
         "answer": "Bei genehmigungspflichtigen Anlagen werden Nachbarn im Verfahren informiert (Anrainerbeteiligung). Sie können Einwendungen erheben bei: Zu viel Lärm, Geruchsbelästigung, Sicherheitsbedenken, Verkehrsproblemen. Die Behörde prüft die Einwände und kann Auflagen erteilen (z.B. Lärmschutz, Betriebszeiten-Einschränkung). Mit guter Planung und frühzeitiger Nachbar-Information lassen sich viele Konflikte vermeiden."
       }
+    },
+    "cta": {
+      "title": "Noch Fragen offen?",
+      "description": "Nutzen Sie unseren kostenlosen Check und finden Sie heraus, ob Ihr Betrieb eine Genehmigung benötigt.",
+      "button": "Jetzt Check starten"
+    }
+  },
+  "metadata": {
+    "title": "Betriebsanlagen-Check – In 2 Minuten zur Genehmigungseinschätzung",
+    "description": "Kostenloser Betriebsanlagen-Check für Wien: Erfahren Sie schnell, ob Ihre Unternehmensanlage eine Genehmigung braucht und welche Dokumente dafür nötig sind.",
+    "keywords": [
+      "Betriebsanlagengenehmigung",
+      "Gewerbeanmeldung Wien",
+      "Genehmigung Betriebsanlage"
+    ],
+    "openGraph": {
+      "title": "Betriebsanlagen-Check für Gründer in Wien",
+      "description": "Prüfen Sie mit unserem kostenlosen Online-Check, ob Ihre Betriebsanlage eine Genehmigung benötigt – mehrsprachig, sicher und schnell.",
+      "siteName": "Betriebsanlagen Check"
+    },
+    "twitter": {
+      "title": "Betriebsanlagen-Check: Genehmigungspflicht jetzt prüfen",
+      "description": "Finden Sie in wenigen Minuten heraus, ob Ihre Betriebsanlage in Wien genehmigungspflichtig ist und welche Unterlagen Sie brauchen."
     }
   }
 }

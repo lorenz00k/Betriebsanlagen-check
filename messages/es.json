@@ -30,7 +30,9 @@
     },
     "footer": {
       "copyright": "Betriebsanlagen Check - Tu ayudante para la burocracia vienesa",
-      "disclaimer": "Este sitio web es solo con fines informativos. Para información legalmente vinculante, por favor contacta con las autoridades competentes."
+      "disclaimer": "Este sitio web es solo con fines informativos. Para información legalmente vinculante, por favor contacta con las autoridades competentes.",
+      "imprint": "Aviso legal",
+      "privacy": "Protección de datos"
     }
   },
   "questionnaire": {
@@ -60,7 +62,10 @@
       "placeholder": "Introduce la dirección completa",
       "street": "Calle y número",
       "postalCode": "Código postal",
-      "city": "Ciudad"
+      "city": "Ciudad",
+      "streetPlaceholder": "Calle y número",
+      "postalCodePlaceholder": "Código postal",
+      "cityPlaceholder": "Ciudad"
     },
     "businessArea": {
       "question": "¿Cuál es el tamaño del área comercial?",
@@ -128,11 +133,250 @@
     "contactAuthority": "Contacta con las autoridades competentes",
     "prepareDocuments": "Prepara los documentos necesarios",
     "startOver": "Empezar de nuevo",
-    "viewDocuments": "Ver documentos necesarios"
+    "viewDocuments": "Ver documentos necesarios",
+    "reasonsTitlePermit": "Motivos:",
+    "reasonsTitleNoPermit": "Justificación:",
+    "disclaimerTitle": "Aviso importante:",
+    "disclaimerText": "Este chequeo es solo informativo y no sustituye el asesoramiento jurídico. Para información vinculante, ponte en contacto con la autoridad competente."
   },
   "documents": {
     "title": "Tu camino hacia el permiso de instalación comercial",
     "subtitle": "Resumen de todos los pasos y documentos",
-    "intro": "Aquí puedes descubrir qué documentos debes preparar y qué pasos debes seguir."
+    "intro": "Aquí puedes descubrir qué documentos debes preparar y qué pasos debes seguir.",
+    "steps": {
+      "step1": {
+        "title": "Revisión previa y asesoramiento",
+        "description": "Contacta con la MA 36 (Asuntos Comerciales Técnicos) para una consulta inicial.",
+        "contactTitle": "Contacto:",
+        "contact": {
+          "phone": {
+            "icon": "📞",
+            "label": "Teléfono",
+            "value": "+43 1 4000-25310"
+          },
+          "email": {
+            "icon": "📧",
+            "label": "Correo electrónico",
+            "value": "post@ma36.wien.gv.at"
+          },
+          "website": {
+            "icon": "🌐",
+            "value": "www.wien.gv.at/ma36"
+          }
+        }
+      },
+      "step2": {
+        "title": "Preparar los documentos necesarios",
+        "description": "Documentos normalmente necesarios:",
+        "items": {
+          "applicationForm": {
+            "title": "Formulario de solicitud",
+            "description": "Rellenado por completo y firmado"
+          },
+          "businessLicense": {
+            "title": "Licencia comercial",
+            "description": "Prueba de tu autorización comercial"
+          },
+          "plans": {
+            "title": "Planos y dibujos",
+            "description": "Planos de situación, plantas, secciones (a escala)"
+          },
+          "technicalDescription": {
+            "title": "Descripción técnica",
+            "description": "Descripción detallada de la instalación y sus equipos"
+          },
+          "neighbors": {
+            "title": "Información a los vecinos",
+            "description": "Consentimiento o comunicación a los vecinos"
+          },
+          "tenancy": {
+            "title": "Justificante de alquiler/propiedad",
+            "description": "Prueba del derecho a usar el local"
+          }
+        }
+      },
+      "step3": {
+        "title": "Presentar la solicitud",
+        "description": "Entrega la documentación completa a la MA 36. La presentación puede realizarse:",
+        "options": {
+          "inPerson": {
+            "title": "📮 Presencial",
+            "line1": "Dresdner Straße 73-75, 1200 Viena",
+            "line2": "Lun–Vie: 8:00–15:30"
+          },
+          "mail": {
+            "title": "✉️ Por correo",
+            "line1": "MA 36 – Asuntos Comerciales Técnicos",
+            "line2": "Dresdner Straße 73-75, 1200 Viena"
+          }
+        }
+      },
+      "step4": {
+        "title": "Después de la presentación",
+        "description": "¿Qué ocurre después de la presentación?",
+        "items": {
+          "confirmation": {
+            "icon": "✅",
+            "title": "Confirmación de recepción",
+            "description": "Recibirás una confirmación de que la documentación fue recibida."
+          },
+          "assessment": {
+            "icon": "📝",
+            "title": "Revisión",
+            "description": "La autoridad revisa los documentos y solicita informes si es necesario."
+          },
+          "questions": {
+            "icon": "📞",
+            "title": "Consultas",
+            "description": "Podrían contactarte para solicitar información adicional."
+          },
+          "decision": {
+            "icon": "📄",
+            "title": "Resolución",
+            "description": "Recibirás la resolución con la autorización y posibles condiciones."
+          }
+        },
+        "processingTime": "Tiempo medio de tramitación: 4–8 semanas"
+      }
+    },
+    "expertReports": {
+      "title": "Informes especializados frecuentes",
+      "items": {
+        "noise": {
+          "icon": "🔊",
+          "title": "Protección acústica",
+          "description": "Especialmente para maquinaria, sistemas de ventilación o música."
+        },
+        "ventilation": {
+          "icon": "🌬️",
+          "title": "Ventilación / climatización",
+          "description": "Prueba de una ventilación suficiente."
+        },
+        "fireProtection": {
+          "icon": "🔥",
+          "title": "Protección contra incendios",
+          "description": "Alarma, vías de evacuación, extintores y posibles rociadores."
+        }
+      }
+    },
+    "fees": {
+      "title": "Costes y tasas",
+      "items": {
+        "federalFees": {
+          "icon": "💶",
+          "title": "Tasas federales",
+          "description": "Según el tipo y tamaño del negocio (aprox. 70–300 €)."
+        },
+        "expertFees": {
+          "icon": "📄",
+          "title": "Peritajes oficiales",
+          "description": "Honorarios de expertos de la autoridad según el esfuerzo requerido."
+        },
+        "ownExperts": {
+          "icon": "🛠️",
+          "title": "Expertos propios",
+          "description": "p. ej., ingenierías, proyectistas, especialistas en incendios."
+        },
+        "time": {
+          "icon": "⏱️",
+          "title": "Tiempo",
+          "description": "Reserva tiempo suficiente para la preparación y posibles ajustes."
+        }
+      }
+    },
+    "tips": {
+      "title": "Consejos para un proceso fluido",
+      "items": {
+        "planEarly": {
+          "icon": "🗂️",
+          "title": "Planifica con anticipación",
+          "description": "Empieza al menos 2–3 meses antes de la apertura prevista."
+        },
+        "contactAuthority": {
+          "icon": "🤝",
+          "title": "Habla con la MA 36",
+          "description": "Aprovecha el asesoramiento; muchas dudas se aclaran previamente."
+        },
+        "useChecklists": {
+          "icon": "📋",
+          "title": "Usa listas de verificación",
+          "description": "Comprueba que todos los planos, informes y formularios estén completos."
+        },
+        "stayFlexible": {
+          "icon": "🔄",
+          "title": "Mantente flexible",
+          "description": "Prepárate para posibles modificaciones o condiciones."
+        }
+      }
+    }
+  },
+  "metadata": {
+    "title": "Verificador de permisos para instalaciones comerciales – Evaluación rápida",
+    "description": "Comprobación gratuita en Viena: descubra en minutos si su establecimiento necesita autorización y qué documentos debe preparar.",
+    "keywords": [
+      "licencia empresarial Viena",
+      "permiso de actividad Austria",
+      "autorización de instalaciones"
+    ],
+    "openGraph": {
+      "title": "Verificador de permisos para fundadores en Viena",
+      "description": "Use nuestro cuestionario multilingüe gratuito para saber si su instalación comercial necesita permiso y qué pasos siguen.",
+      "siteName": "Betriebsanlagen Check"
+    },
+    "twitter": {
+      "title": "Verificador de permisos: ¿necesita autorización?",
+      "description": "Responda algunas preguntas para saber si su instalación en Viena requiere permiso y reciba orientación sobre los siguientes pasos."
+    }
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Todo lo importante sobre la autorización de instalaciones comerciales, el registro mercantil y la creación de empresas en Viena",
+    "questions": {
+      "q1": {
+        "question": "¿Qué es una instalación comercial y necesito un permiso?",
+        "answer": "Una instalación comercial (Betriebsanlage) es cualquier instalación utilizada para ejercer una actividad económica. Incluye locales comerciales, talleres, almacenes, restaurantes y mucho más. Si necesitas un permiso depende de varios factores: tipo de actividad, tamaño, ubicación, horarios de apertura y posibles molestias (ruido, olores). El Reglamento de Exención de Autorización (Genehmigungsfreistellungsverordnung) determina qué negocios pueden operar sin permiso. Utiliza nuestro chequeo gratuito para averiguar si tu actividad requiere autorización."
+      },
+      "q2": {
+        "question": "¿Cuánto tarda obtener el permiso de mi instalación comercial en Viena?",
+        "answer": "La duración varía según la complejidad de tu negocio. Casos sencillos sin participación de vecinos: 4-8 semanas. Instalaciones complejas con notificación a vecinos: 3-6 meses. La MA 36 (autoridad comercial de Viena) es el organismo competente. Consejo: una presentación completa con todos los documentos acelera considerablemente el proceso."
+      },
+      "q3": {
+        "question": "¿Cuánto cuesta un permiso de instalación comercial?",
+        "answer": "Las tasas dependen del esfuerzo administrativo. Procedimiento simplificado: aprox. 100-300 euros. Procedimiento normal con peritajes: 500-2000 euros. Instalaciones grandes o complejas: 2000-5000 euros o más. Pueden añadirse costes adicionales para expertos, planos y comprobantes técnicos. Las tarifas exactas están disponibles en wien.gv.at."
+      },
+      "q4": {
+        "question": "¿Puedo abrir mi negocio antes de obtener el permiso?",
+        "answer": "No, si tu negocio requiere un permiso, NO debes comenzar antes de recibir la autorización. Sería una infracción administrativa con multas de hasta 50.000 euros. Para negocios exentos (según el reglamento de exención) puedes comenzar inmediatamente después de registrar la actividad. Nuestro chequeo te ayuda a determinar si necesitas autorización."
+      },
+      "q5": {
+        "question": "¿Qué documentos necesito para el permiso de instalación comercial?",
+        "answer": "Documentos estándar: licencia comercial o concesión, plano y plano de situación, descripción de la instalación, prueba del derecho de uso (contrato de alquiler/título de propiedad), descripciones técnicas (p. ej. ventilación, ruido). Según el tipo de negocio, adicionalmente: informe acústico, plan de protección contra incendios, certificado estructural, evaluación de impacto ambiental. La MA 36 asesora de antemano qué documentos se requieren en cada caso."
+      },
+      "q6": {
+        "question": "¿Cuál es la diferencia entre el registro mercantil y el permiso de instalación comercial?",
+        "answer": "Registro mercantil: te autoriza a ejercer una actividad económica (ante la autoridad comercial). Permiso de instalación comercial: permite operar en una ubicación concreta (considera ruido, seguridad, vecinos). Necesitas AMBOS: primero la licencia comercial, luego el permiso de instalación para el lugar. Algunos negocios están exentos del requisito de autorización (véase el reglamento de exención)."
+      },
+      "q7": {
+        "question": "¿Se me aplica el reglamento de exención?",
+        "answer": "El Reglamento de Exención de Viena exime a determinados negocios del requisito de autorización si cumplen ciertos criterios. Ejemplos: comercio minorista hasta 600 m², oficinas (casi siempre), pequeños talleres, salones de belleza, alojamientos hasta 30 camas sin piscina. PERO: existen excepciones en caso de ruido, música, sustancias peligrosas o ventilación mecánica fuera de la envolvente del edificio. Usa nuestro chequeo para una evaluación rápida."
+      },
+      "q8": {
+        "question": "¿Necesito un permiso de instalación comercial como restaurador en Viena?",
+        "answer": "Sí, en la mayoría de los casos. Los negocios de gastronomía (restaurantes, cafés, bares) normalmente necesitan permisos debido a: emisiones de olores (cocina), ruido (clientes, música), separadores de grasa, sistemas de ventilación. Excepciones: las heladerías pequeñas sin asientos pueden estar exentas. El proceso puede durar 3-6 meses, ¡tenlo en cuenta al planificar la apertura!"
+      },
+      "q9": {
+        "question": "No hablo alemán, ¿aun así puedo iniciar un negocio?",
+        "answer": "¡Sí! Nuestro sitio web está disponible en 8 idiomas: alemán, inglés, serbio, croata, turco, italiano, español y ucraniano. Para los trámites oficiales: la MA 36 y la Cámara de Comercio ofrecen asesoramiento multilingüe. Para registrar la actividad necesitas: pasaporte/documento de identidad, número de seguridad social y, si es necesario, un traductor para los documentos. Muchos servicios para emprendedores en Viena son multilingües."
+      },
+      "q10": {
+        "question": "¿Qué ocurre si mis vecinos se oponen a mi instalación comercial?",
+        "answer": "Para las instalaciones que requieren permiso, los vecinos son informados durante el procedimiento (participación vecinal). Pueden presentar objeciones relacionadas con: ruido excesivo, molestias por olores, problemas de seguridad, tráfico. La autoridad revisa las objeciones y puede imponer condiciones (p. ej. protección acústica, limitación de horarios). Una buena planificación y la comunicación temprana con los vecinos previenen muchos conflictos."
+      }
+    },
+    "cta": {
+      "title": "¿Todavía tienes preguntas?",
+      "description": "Utiliza nuestro chequeo gratuito y descubre si tu negocio necesita una autorización.",
+      "button": "Iniciar chequeo"
+    }
   }
 }

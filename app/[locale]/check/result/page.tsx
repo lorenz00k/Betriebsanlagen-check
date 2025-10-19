@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { defaultLocale } from '@/i18n'
 
 interface Result {
   needsPermit: boolean
@@ -13,6 +14,9 @@ interface Result {
 export default function ResultPage() {
   const t = useTranslations('result')
   const router = useRouter()
+  const params = useParams<{ locale: string }>()
+  const paramLocale = params?.locale
+  const locale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale
   const [result, setResult] = useState<Result | null>(null)
   const [loading, setLoading] = useState(true)
 
@@ -21,10 +25,10 @@ export default function ResultPage() {
     if (storedResult) {
       setResult(JSON.parse(storedResult))
     } else {
-      router.push('/check')
+      router.push(`/${locale}/check`)
     }
     setLoading(false)
-  }, [router])
+  }, [locale, router])
 
   if (loading) {
     return (
@@ -104,7 +108,7 @@ export default function ResultPage() {
           {/* Reasons */}
           <div className="bg-gray-50 rounded-xl p-6 mb-8">
             <h3 className="font-semibold text-gray-900 mb-4">
-              {result.needsPermit ? 'Gründe:' : 'Begründung:'}
+              {result.needsPermit ? t('reasonsTitlePermit') : t('reasonsTitleNoPermit')}
             </h3>
             <ul className="space-y-2">
               {result.reasons.map((reason, index) => (
@@ -160,14 +164,14 @@ export default function ResultPage() {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/check"
+              href={`/${locale}/check`}
               className="flex-1 text-center px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all"
             >
               {t('startOver')}
             </Link>
             {result.needsPermit && (
               <Link
-                href="/documents"
+                href={`/${locale}/documents`}
                 className="flex-1 text-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg"
               >
                 {t('viewDocuments')}
@@ -177,11 +181,9 @@ export default function ResultPage() {
         </div>
 
         {/* Disclaimer */}
-        <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 text-center">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 text-center">
           <p className="text-sm text-gray-700">
-            <strong>Wichtiger Hinweis:</strong> Diese Prüfung dient nur zu Informationszwecken und ersetzt
-            keine rechtliche Beratung. Für verbindliche Auskünfte wenden Sie sich bitte an die zuständige
-            Behörde.
+            <strong>{t('disclaimerTitle')}</strong> {t('disclaimerText')}
           </p>
         </div>
       </div>

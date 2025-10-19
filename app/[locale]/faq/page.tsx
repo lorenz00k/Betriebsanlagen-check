@@ -3,10 +3,15 @@
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
+import { defaultLocale } from '@/i18n'
 
 export default function FAQPage() {
   const t = useTranslations('faq')
   const [openQuestion, setOpenQuestion] = useState<string | null>(null)
+  const params = useParams<{ locale: string }>()
+  const paramLocale = params?.locale
+  const locale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale
 
   const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10']
 
@@ -94,18 +99,13 @@ export default function FAQPage() {
 
         {/* CTA Section */}
         <div className="mt-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-center text-white">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Noch Fragen offen?
-          </h2>
-          <p className="text-lg mb-6 opacity-90">
-            Nutzen Sie unseren kostenlosen Check und finden Sie heraus, ob Ihr
-            Betrieb eine Genehmigung benötigt.
-          </p>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">{t('cta.title')}</h2>
+          <p className="text-lg mb-6 opacity-90">{t('cta.description')}</p>
           <Link
-            href="/check"
+            href={`/${locale}/check`}
             className="inline-block bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors shadow-lg"
           >
-            Jetzt Check starten
+            {t('cta.button')}
           </Link>
         </div>
         </div>

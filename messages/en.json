@@ -30,7 +30,9 @@
     },
     "footer": {
       "copyright": "Betriebsanlagen Check - Your helper for Viennese bureaucracy",
-      "disclaimer": "This website is for informational purposes only. For legally binding information, please contact the relevant authorities."
+      "disclaimer": "This website is for informational purposes only. For legally binding information, please contact the relevant authorities.",
+      "imprint": "Legal notice",
+      "privacy": "Privacy"
     }
   },
   "questionnaire": {
@@ -60,7 +62,10 @@
       "placeholder": "Enter full address",
       "street": "Street and number",
       "postalCode": "Postal code",
-      "city": "City"
+      "city": "City",
+      "streetPlaceholder": "Street and house number",
+      "postalCodePlaceholder": "Postal code",
+      "cityPlaceholder": "City"
     },
     "businessArea": {
       "question": "How large is the business area?",
@@ -128,12 +133,182 @@
     "contactAuthority": "Contact the relevant authority",
     "prepareDocuments": "Prepare the required documents",
     "startOver": "Start over",
-    "viewDocuments": "View required documents"
+    "viewDocuments": "View required documents",
+    "reasonsTitlePermit": "Reasons:",
+    "reasonsTitleNoPermit": "Explanation:",
+    "disclaimerTitle": "Important notice:",
+    "disclaimerText": "This check is for information purposes only and does not replace legal advice. For binding information, please contact the competent authority."
   },
   "documents": {
     "title": "Your path to a business facility permit",
     "subtitle": "Overview of all steps and documents",
-    "intro": "Here you can find out which documents you need to prepare and which steps to take."
+    "intro": "Here you can find out which documents you need to prepare and which steps to take.",
+    "steps": {
+      "step1": {
+        "title": "Preliminary review and consultation",
+        "description": "Contact MA 36 (Technical Commercial Affairs) for an initial consultation.",
+        "contactTitle": "Contact:",
+        "contact": {
+          "phone": {
+            "icon": "📞",
+            "label": "Phone",
+            "value": "+43 1 4000-25310"
+          },
+          "email": {
+            "icon": "📧",
+            "label": "Email",
+            "value": "post@ma36.wien.gv.at"
+          },
+          "website": {
+            "icon": "🌐",
+            "value": "www.wien.gv.at/ma36"
+          }
+        }
+      },
+      "step2": {
+        "title": "Prepare the required documents",
+        "description": "Typically required documents:",
+        "items": {
+          "applicationForm": {
+            "title": "Application form",
+            "description": "Completed in full and signed"
+          },
+          "businessLicense": {
+            "title": "Trade license",
+            "description": "Proof of your business authorization"
+          },
+          "plans": {
+            "title": "Plans and drawings",
+            "description": "Site plan, floor plans, sections (to scale)"
+          },
+          "technicalDescription": {
+            "title": "Technical description",
+            "description": "Detailed description of the facility and its installations"
+          },
+          "neighbors": {
+            "title": "Neighbour notification",
+            "description": "Proof of informing or obtaining consent from neighbours"
+          },
+          "tenancy": {
+            "title": "Proof of tenancy/ownership",
+            "description": "Document showing your right to use the premises"
+          }
+        }
+      },
+      "step3": {
+        "title": "Submit the application",
+        "description": "Submit the complete documents to MA 36. Submission is possible:",
+        "options": {
+          "inPerson": {
+            "title": "📮 In person",
+            "line1": "Dresdner Straße 73-75, 1200 Vienna",
+            "line2": "Mon–Fri: 8:00–15:30"
+          },
+          "mail": {
+            "title": "✉️ By mail",
+            "line1": "MA 36 – Technical Commercial Affairs",
+            "line2": "Dresdner Straße 73-75, 1200 Vienna"
+          }
+        }
+      },
+      "step4": {
+        "title": "After submission",
+        "description": "What happens after submission?",
+        "items": {
+          "confirmation": {
+            "icon": "✅",
+            "title": "Submission confirmation",
+            "description": "You receive confirmation that your documents were received."
+          },
+          "assessment": {
+            "icon": "📝",
+            "title": "Assessment",
+            "description": "The authority reviews the documents and obtains statements if needed."
+          },
+          "questions": {
+            "icon": "📞",
+            "title": "Clarifications",
+            "description": "You may be contacted for additional information."
+          },
+          "decision": {
+            "icon": "📄",
+            "title": "Decision",
+            "description": "You receive the permit decision and any conditions."
+          }
+        },
+        "processingTime": "Average processing time: 4–8 weeks"
+      }
+    },
+    "expertReports": {
+      "title": "Frequently required expert reports",
+      "items": {
+        "noise": {
+          "icon": "🔊",
+          "title": "Noise protection",
+          "description": "Especially for machinery, ventilation systems, or music."
+        },
+        "ventilation": {
+          "icon": "🌬️",
+          "title": "Ventilation / climate",
+          "description": "Proof of sufficient air supply and extraction."
+        },
+        "fireProtection": {
+          "icon": "🔥",
+          "title": "Fire safety",
+          "description": "Fire alarm, escape routes, extinguishers, and possible sprinklers."
+        }
+      }
+    },
+    "fees": {
+      "title": "Costs & fees",
+      "items": {
+        "federalFees": {
+          "icon": "💶",
+          "title": "Federal fees",
+          "description": "Depending on business type and scope (approx. €70–300)."
+        },
+        "expertFees": {
+          "icon": "📄",
+          "title": "Official experts",
+          "description": "Fees for authority-appointed experts, varying by effort."
+        },
+        "ownExperts": {
+          "icon": "🛠️",
+          "title": "Own specialists",
+          "description": "e.g. engineering firms, planners, fire safety experts."
+        },
+        "time": {
+          "icon": "⏱️",
+          "title": "Time",
+          "description": "Plan enough time for preparation and possible revisions."
+        }
+      }
+    },
+    "tips": {
+      "title": "Tips for a smooth process",
+      "items": {
+        "planEarly": {
+          "icon": "🗂️",
+          "title": "Plan early",
+          "description": "Start at least 2–3 months before opening."
+        },
+        "contactAuthority": {
+          "icon": "🤝",
+          "title": "Talk to MA 36",
+          "description": "Use the consultation—many questions can be clarified in advance."
+        },
+        "useChecklists": {
+          "icon": "📋",
+          "title": "Use checklists",
+          "description": "Ensure all plans, reports, and forms are complete."
+        },
+        "stayFlexible": {
+          "icon": "🔄",
+          "title": "Stay flexible",
+          "description": "Be prepared for adjustments or conditions."
+        }
+      }
+    }
   },
   "faq": {
     "title": "Frequently Asked Questions",
@@ -179,6 +354,29 @@
         "question": "What happens if my neighbors object to my business facility?",
         "answer": "For permit-required facilities, neighbors are informed during the process (neighbor participation). They can raise objections regarding: excessive noise, odor nuisance, safety concerns, traffic problems. The authority reviews objections and may impose conditions (e.g. noise protection, operating hour restrictions). Good planning and early neighbor communication can prevent many conflicts."
       }
+    },
+    "cta": {
+      "title": "Still have questions?",
+      "description": "Use our free check to find out whether your business needs a permit.",
+      "button": "Start the check"
+    }
+  },
+  "metadata": {
+    "title": "Business Facility Permit Check – Your quick assessment",
+    "description": "Free operating permit check for Vienna: Discover in minutes if your business facility needs approval and which documents to prepare.",
+    "keywords": [
+      "Vienna business permit",
+      "operating licence Austria",
+      "business facility approval"
+    ],
+    "openGraph": {
+      "title": "Business Facility Permit Check for Founders in Vienna",
+      "description": "Use our free multilingual questionnaire to learn whether your business facility requires an operating permit and which steps follow next.",
+      "siteName": "Betriebsanlagen Check"
+    },
+    "twitter": {
+      "title": "Business Facility Permit Check: Do you need approval?",
+      "description": "Answer a few questions to see if your Vienna business facility needs a permit and get guidance on the next steps."
     }
   }
 }

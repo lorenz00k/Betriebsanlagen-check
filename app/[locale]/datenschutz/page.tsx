@@ -22,10 +22,10 @@ export default function DatenschutzPage() {
             <p className="text-gray-700 leading-relaxed mb-4">
               E-Mail:{' '}
               <a
-                href="mailto:betriebsanlage.checker@gmail.com"
+                href="mailto:betriebsanlage.check@gmx.at"
                 className="text-blue-600 hover:text-blue-700 underline"
               >
-                betriebsanlage.checker@gmail.com
+                betriebsanlage.check@gmx.at
               </a>
             </p>
             <p className="text-gray-700 leading-relaxed">
@@ -240,10 +240,10 @@ export default function DatenschutzPage() {
             <p className="text-gray-700 leading-relaxed">
               Zur Ausübung wenden Sie sich an:{' '}
               <a
-                href="mailto:betriebsanlage.checker@gmail.com"
+                href="mailto:betriebsanlage.check@gmx.at"
                 className="text-blue-600 hover:text-blue-700 underline"
               >
-                betriebsanlage.checker@gmail.com
+                betriebsanlage.check@gmx.at
               </a>
             </p>
           </section>
