@@ -1,6 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
-import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import type { AbstractIntlMessages } from "next-intl";
 import { notFound } from "next/navigation";
@@ -37,7 +36,6 @@ type MetadataContent = {
 
 type MessagesWithMetadata = AbstractIntlMessages & { metadata?: MetadataContent };
 
-const inter = Inter({ subsets: ["latin"] });
 
 const FALLBACK_METADATA: MetadataContent = {
   title: "Betriebsanlagen Check",
@@ -60,10 +58,10 @@ const isMessagesWithMetadata = (messages: AbstractIntlMessages): messages is Mes
   (messages as MessagesWithMetadata).metadata !== null;
 
 export async function generateMetadata(
-  { params }: { params: { locale: string } },
+  { params }: { params: { locale: string } | Promise<{ locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { locale } = params;
+  const { locale } = await params;
 
   if (!locales.includes(locale as Locale)) {
     return {};
@@ -86,7 +84,11 @@ export async function generateMetadata(
   const images = openGraphConfig.images ?? parentMetadata.openGraph?.images;
   const fallbackTwitterImages = Array.isArray(images)
     ? images
-        .map((image) => (typeof image === "string" ? image : image?.url))
+        .map((image) => {
+          if (typeof image === "string") return image;
+          if (image instanceof URL) return image.toString();
+          return image?.url;
+        })
         .filter((value): value is string => Boolean(value))
     : typeof images === "string"
       ? [images]
@@ -127,9 +129,9 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: { locale: string } | Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   if (!locales.includes(locale as Locale)) notFound();
 
@@ -155,7 +157,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${inter.className} bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100`}>
+      <body className="bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100">
         <script
           type="application/ld+json"
           suppressHydrationWarning
