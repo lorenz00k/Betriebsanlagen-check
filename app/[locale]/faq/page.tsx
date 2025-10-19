@@ -1,11 +1,12 @@
 // Server entry point for the localized FAQ route that resolves metadata and
 // renders the client accordion once the locale has been validated.
+
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { locales, type Locale } from '@/i18n'
-
 import FAQPageClient from './FAQPageClient'
+
 import {
   ROUTE_FALLBACK_METADATA,
   buildLocalizedMetadata,
@@ -22,7 +23,9 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { locale } = await resolveLocaleParam(params)
 
-  const importedMessages = (await import(`@/messages/${locale}.json`)).default as MessagesWithMetadata
+  const importedMessages = (await import(`@/messages/${locale}.json`))
+    .default as MessagesWithMetadata
+
   const metadataMessages = isMessagesWithMetadata(importedMessages)
     ? importedMessages.metadata?.faq ?? ROUTE_FALLBACK_METADATA.faq
     : ROUTE_FALLBACK_METADATA.faq
