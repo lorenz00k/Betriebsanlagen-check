@@ -1,5 +1,7 @@
 'use client'
 
+// ResultPageClient presents the permit recommendation, supporting reasons, and next steps
+// while emitting breadcrumb and action structured data for the current locale.
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
@@ -14,6 +16,7 @@ type ResultPageClientProps = {
   locale: string
 }
 
+// Displays the localized result experience and syncs structured data for search engines.
 export default function ResultPageClient({ locale }: ResultPageClientProps) {
   const t = useTranslations('result')
   const homeT = useTranslations('home')

@@ -1,5 +1,7 @@
 'use client'
 
+// FAQPageClient renders the interactive accordion and structured FAQ schema for
+// the currently selected locale using translated question and answer content.
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import Link from 'next/link'
@@ -8,6 +10,7 @@ type FAQPageClientProps = {
   locale: string
 }
 
+// Displays localized FAQ copy with accordion interactions and emits FAQPage JSON-LD.
 export default function FAQPageClient({ locale }: FAQPageClientProps) {
   const t = useTranslations('faq')
   const [openQuestion, setOpenQuestion] = useState<string | null>(null)

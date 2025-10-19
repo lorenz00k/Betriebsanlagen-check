@@ -1,3 +1,5 @@
+// Server entry point for the localized documents route that prepares SEO metadata
+// and renders the client checklist after validating the locale.
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -13,6 +15,7 @@ import {
 
 type LocaleParams = { params: Promise<{ locale: string }> }
 
+// generateMetadata assembles localized metadata for the documents workflow instructions.
 export async function generateMetadata(
   { params }: LocaleParams,
   parent: ResolvingMetadata,
@@ -32,6 +35,7 @@ export async function generateMetadata(
   })
 }
 
+// DocumentsPage resolves the active locale on the server and delegates UI to the client component.
 export default async function DocumentsPage({ params }: LocaleParams) {
   const { locale } = await params
 

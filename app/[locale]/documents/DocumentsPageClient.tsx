@@ -1,5 +1,7 @@
 'use client'
 
+// DocumentsPageClient renders the localized permitting checklist, helper content,
+// and HowTo structured data that describes the submission process in each language.
 import { useTranslations } from 'next-intl'
 
 const STEP_IDS = ['step1', 'step2', 'step3', 'step4'] as const
@@ -32,6 +34,7 @@ const FEES = ['federalFees', 'expertFees', 'ownExperts', 'time'] as const
 const TIPS = ['planEarly', 'contactAuthority', 'useChecklists', 'stayFlexible'] as const
 const STEP1_CONTACT = ['phone', 'email', 'website'] as const
 
+// Displays localized document instructions and emits a HowTo schema for search engines.
 export default function DocumentsPageClient() {
   const t = useTranslations('documents')
 

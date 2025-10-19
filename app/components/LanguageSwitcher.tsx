@@ -1,5 +1,7 @@
 'use client'
 
+// LanguageSwitcher provides a dropdown that rewrites the current path to the selected locale
+// while keeping the navigation context for each page.
 import { useTranslations } from 'next-intl'
 import { usePathname, useRouter, useParams } from 'next/navigation'
 import { useState, useRef, useEffect } from 'react'
@@ -16,6 +18,7 @@ const languages = [
   { code: 'uk', name: 'Українська', flag: '🇺🇦' },
 ]
 
+// Renders the interactive locale picker and routes users to the matching translation.
 export default function LanguageSwitcher() {
   const router = useRouter()
   const pathname = usePathname()

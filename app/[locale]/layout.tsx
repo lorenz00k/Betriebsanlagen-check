@@ -1,3 +1,5 @@
+// LocaleLayout bootstraps every localized route by loading translations, metadata,
+// and shared navigation while exposing locale-aware structured data for search engines.
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { NextIntlClientProvider } from "next-intl";
@@ -18,6 +20,8 @@ import {
   type MessagesWithMetadata,
 } from "./metadataConfig";
 
+// generateMetadata builds locale-scoped metadata for the current route by combining
+// localized message bundles with inherited parent metadata values.
 export async function generateMetadata(
   { params }: { params: { locale: string } | Promise<{ locale: string }> },
   parent: ResolvingMetadata,
@@ -34,6 +38,8 @@ export async function generateMetadata(
   });
 }
 
+// LocaleLayout renders the shared shell (html/body/nav/footer) for all localized pages
+// after verifying the requested locale and wiring up analytics plus organization schema.
 export default async function LocaleLayout({
   children,
   params,
@@ -119,5 +125,6 @@ export default async function LocaleLayout({
 }
 
 export async function generateStaticParams() {
+  // Pre-render every supported locale during build time for the localized routes.
   return locales.map((locale) => ({ locale }));
 }

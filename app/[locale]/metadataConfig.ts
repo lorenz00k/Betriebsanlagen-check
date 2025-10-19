@@ -1,3 +1,5 @@
+// Helper utilities for building locale-aware metadata objects used across multiple routes,
+// including canonical URLs, hreflang alternates, and social previews derived from messages.
 import type { Metadata, ResolvingMetadata } from "next"
 import type { AbstractIntlMessages } from "next-intl"
 
@@ -88,6 +90,8 @@ export const isMessagesWithMetadata = (
 ): messages is MessagesWithMetadata => typeof (messages as MessagesWithMetadata).metadata === "object" && (messages as MessagesWithMetadata).metadata !== null
 
 const getLanguageAlternates = (pathname: string) => {
+  // Compose a hreflang map for each supported locale so search engines understand the
+  // available translations for a given pathname.
   return locales.reduce<Record<string, string>>((acc, currentLocale) => {
     const localePath = pathname ? `/${currentLocale}${pathname}` : `/${currentLocale}`
     acc[currentLocale] = new URL(localePath, SITE_URL).toString()
@@ -95,6 +99,8 @@ const getLanguageAlternates = (pathname: string) => {
   }, {})
 }
 
+// buildLocalizedMetadata centralizes canonical URL, alternates, and social metadata generation
+// so that every route can hydrate consistent SEO output from translated message bundles.
 export const buildLocalizedMetadata = async ({
   locale,
   pathname = "",

@@ -1,3 +1,5 @@
+// Server entry point for the localized FAQ route that resolves metadata and
+// renders the client accordion once the locale has been validated.
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -13,6 +15,7 @@ import {
 
 type LocaleParams = { params: Promise<{ locale: string }> }
 
+// generateMetadata hydrates translated titles, descriptions, and alternates for the FAQ page.
 export async function generateMetadata(
   { params }: LocaleParams,
   parent: ResolvingMetadata,
@@ -32,6 +35,7 @@ export async function generateMetadata(
   })
 }
 
+// FAQPage loads the validated locale and delegates rendering to the client-side component.
 export default async function FAQPage({ params }: LocaleParams) {
   const { locale } = await params
 

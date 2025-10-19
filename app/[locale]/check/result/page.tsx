@@ -1,3 +1,5 @@
+// Server entry point for the localized questionnaire result view that wires up SEO metadata
+// before handing rendering off to the interactive client component.
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -13,6 +15,7 @@ import {
 
 type LocaleParams = { params: Promise<{ locale: string }> }
 
+// generateMetadata composes localized metadata for the questionnaire result screen.
 export async function generateMetadata(
   { params }: LocaleParams,
   parent: ResolvingMetadata,
@@ -32,6 +35,7 @@ export async function generateMetadata(
   })
 }
 
+// ResultPage validates the locale on the server and renders the client result experience.
 export default async function ResultPage({ params }: LocaleParams) {
   const { locale } = await params
 
