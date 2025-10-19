@@ -30,7 +30,9 @@
     },
     "footer": {
       "copyright": "Betriebsanlagen Check - Ваш помоћник за бечку бирократију",
-      "disclaimer": "Ова веб страница је само у информативне сврхе. За правно обавезујуће информације, молимо контактирајте надлежне органе."
+      "disclaimer": "Ова веб страница је само у информативне сврхе. За правно обавезујуће информације, молимо контактирајте надлежне органе.",
+      "imprint": "Impresum",
+      "privacy": "Zaštita podataka"
     }
   },
   "questionnaire": {
@@ -60,7 +62,10 @@
       "placeholder": "Unesite potpunu adresu",
       "street": "Ulica i broj",
       "postalCode": "Poštanski broj",
-      "city": "Grad"
+      "city": "Grad",
+      "streetPlaceholder": "Ulica i kućni broj",
+      "postalCodePlaceholder": "Poštanski broj",
+      "cityPlaceholder": "Grad"
     },
     "businessArea": {
       "question": "Kolika je poslovna površina?",
@@ -128,12 +133,182 @@
     "contactAuthority": "Kontaktirajte nadležne organe",
     "prepareDocuments": "Pripremite potrebne dokumente",
     "startOver": "Započnite ponovo",
-    "viewDocuments": "Pregledajte potrebne dokumente"
+    "viewDocuments": "Pregledajte potrebne dokumente",
+    "reasonsTitlePermit": "Razlozi:",
+    "reasonsTitleNoPermit": "Obrazloženje:",
+    "disclaimerTitle": "Važna napomena:",
+    "disclaimerText": "Ova provera služi samo u informativne svrhe i ne predstavlja pravni savet. Za obavezujuće informacije obratite se nadležnom organu."
   },
   "documents": {
     "title": "Vaš put do dozvole za poslovni objekat",
     "subtitle": "Pregled svih koraka i dokumenata",
-    "intro": "Ovde možete saznati koje dokumente treba da pripremite i koje korake treba da preduzmete."
+    "intro": "Ovde možete saznati koje dokumente treba da pripremite i koje korake treba da preduzmete.",
+    "steps": {
+      "step1": {
+        "title": "Prethodna provera i savetovanje",
+        "description": "Kontaktirajte MA 36 (Tehnički poslovi u privredi) za početne konsultacije.",
+        "contactTitle": "Kontakt:",
+        "contact": {
+          "phone": {
+            "icon": "📞",
+            "label": "Telefon",
+            "value": "+43 1 4000-25310"
+          },
+          "email": {
+            "icon": "📧",
+            "label": "E-pošta",
+            "value": "post@ma36.wien.gv.at"
+          },
+          "website": {
+            "icon": "🌐",
+            "value": "www.wien.gv.at/ma36"
+          }
+        }
+      },
+      "step2": {
+        "title": "Pripremite potrebna dokumenta",
+        "description": "Tipični potrebni dokumenti:",
+        "items": {
+          "applicationForm": {
+            "title": "Prijavni obrazac",
+            "description": "Potpuno popunjen i potpisan"
+          },
+          "businessLicense": {
+            "title": "Dozvola za obavljanje delatnosti",
+            "description": "Dokaz o vašem pravu na obavljanje delatnosti"
+          },
+          "plans": {
+            "title": "Planovi i crteži",
+            "description": "Situacioni plan, osnove, preseci (u razmeri)"
+          },
+          "technicalDescription": {
+            "title": "Tehnički opis",
+            "description": "Detaljan opis postrojenja i opreme"
+          },
+          "neighbors": {
+            "title": "Obaveštavanje komšija",
+            "description": "Potvrda da su komšije obaveštene ili da su dale saglasnost"
+          },
+          "tenancy": {
+            "title": "Dokaz o zakupu/vlasništvu",
+            "description": "Dokument koji potvrđuje pravo korišćenja prostora"
+          }
+        }
+      },
+      "step3": {
+        "title": "Predaja zahteva",
+        "description": "Predajte kompletnu dokumentaciju MA 36. Predaja je moguća:",
+        "options": {
+          "inPerson": {
+            "title": "📮 Lično",
+            "line1": "Dresdner Straße 73-75, 1200 Beč",
+            "line2": "Pon–Pet: 8:00–15:30"
+          },
+          "mail": {
+            "title": "✉️ Poštom",
+            "line1": "MA 36 – Tehnički poslovi u privredi",
+            "line2": "Dresdner Straße 73-75, 1200 Beč"
+          }
+        }
+      },
+      "step4": {
+        "title": "Posle predaje",
+        "description": "Šta se dešava nakon predaje?",
+        "items": {
+          "confirmation": {
+            "icon": "✅",
+            "title": "Potvrda o prijemu",
+            "description": "Dobijate potvrdu da je dokumentacija primljena."
+          },
+          "assessment": {
+            "icon": "📝",
+            "title": "Provera",
+            "description": "Nadležni organ pregleda dokumenta i po potrebi traži mišljenja."
+          },
+          "questions": {
+            "icon": "📞",
+            "title": "Dodatna pitanja",
+            "description": "Mogu vas kontaktirati radi dodatnih informacija."
+          },
+          "decision": {
+            "icon": "📄",
+            "title": "Rešenje",
+            "description": "Dobijate rešenje o dozvoli i eventualnim uslovima."
+          }
+        },
+        "processingTime": "Prosečno vreme obrade: 4–8 nedelja"
+      }
+    },
+    "expertReports": {
+      "title": "Često tražena stručna mišljenja",
+      "items": {
+        "noise": {
+          "icon": "🔊",
+          "title": "Zaštita od buke",
+          "description": "Posebno za mašine, ventilaciju ili muziku."
+        },
+        "ventilation": {
+          "icon": "🌬️",
+          "title": "Ventilacija / klima",
+          "description": "Dokaz o dovoljnoj ventilaciji."
+        },
+        "fireProtection": {
+          "icon": "🔥",
+          "title": "Protivpožarna zaštita",
+          "description": "Protivpožarni alarm, izlazi u slučaju opasnosti, aparati, eventualno sprinkler."
+        }
+      }
+    },
+    "fees": {
+      "title": "Troškovi i takse",
+      "items": {
+        "federalFees": {
+          "icon": "💶",
+          "title": "Državne takse",
+          "description": "U zavisnosti od vrste i obima posla (oko 70–300 €)."
+        },
+        "expertFees": {
+          "icon": "📄",
+          "title": "Troškovi službenih veštaka",
+          "description": "Naknade veštaka nadležnog organa, u zavisnosti od obima."
+        },
+        "ownExperts": {
+          "icon": "🛠️",
+          "title": "Vlastiti stručnjaci",
+          "description": "npr. inženjerske firme, projektanti, stručnjaci za zaštitu od požara."
+        },
+        "time": {
+          "icon": "⏱️",
+          "title": "Vreme",
+          "description": "Planirajte dovoljno vremena za pripremu i moguće izmene."
+        }
+      }
+    },
+    "tips": {
+      "title": "Saveti za nesmetan postupak",
+      "items": {
+        "planEarly": {
+          "icon": "🗂️",
+          "title": "Planirajte unapred",
+          "description": "Počnite najmanje 2–3 meseca pre planiranog otvaranja."
+        },
+        "contactAuthority": {
+          "icon": "🤝",
+          "title": "Kontaktirajte MA 36",
+          "description": "Iskoristite savetovanje – mnoga pitanja možete rešiti unapred."
+        },
+        "useChecklists": {
+          "icon": "📋",
+          "title": "Koristite kontrolne liste",
+          "description": "Proverite da li su svi planovi, mišljenja i obrasci kompletni."
+        },
+        "stayFlexible": {
+          "icon": "🔄",
+          "title": "Budite fleksibilni",
+          "description": "Budite spremni na moguće korekcije ili uslove."
+        }
+      }
+    }
   },
   "faq": {
     "title": "Često postavljana pitanja",
@@ -179,6 +354,11 @@
         "question": "Šta se dešava ako moji komšije prigovaraju mom poslovnom objektu?",
         "answer": "Za objekte koji zahtevaju dozvolu, komšije se obaveštavaju tokom procesa (učešće komšija). Oni mogu da podnesu prigovore u vezi: preterane buke, neugodnog mirisa, sigurnosnih problema, saobraćajnih problema. Uprava preispituje prigovore i može da nametne uslove (npr. zaštita od buke, ograničenja radnog vremena). Dobro planiranje i rana komunikacija sa komšijama mogu sprečiti mnoge konflikte."
       }
+    },
+    "cta": {
+      "title": "Imate još pitanja?",
+      "description": "Iskoristite naš besplatan proveru i saznajte da li je vašem objektu potrebna dozvola.",
+      "button": "Pokreni proveru"
     }
   },
   "metadata": {

@@ -30,7 +30,9 @@
     },
     "footer": {
       "copyright": "Betriebsanlagen Check - Viyana bürokrasisi için yardımcınız",
-      "disclaimer": "Bu web sitesi yalnızca bilgilendirme amaçlıdır. Yasal olarak bağlayıcı bilgiler için lütfen ilgili makamlarla iletişime geçin."
+      "disclaimer": "Bu web sitesi yalnızca bilgilendirme amaçlıdır. Yasal olarak bağlayıcı bilgiler için lütfen ilgili makamlarla iletişime geçin.",
+      "imprint": "Künye",
+      "privacy": "Gizlilik"
     }
   },
   "questionnaire": {
@@ -60,7 +62,10 @@
       "placeholder": "Tam adresi girin",
       "street": "Sokak ve numara",
       "postalCode": "Posta kodu",
-      "city": "Şehir"
+      "city": "Şehir",
+      "streetPlaceholder": "Sokak ve bina numarası",
+      "postalCodePlaceholder": "Posta kodu",
+      "cityPlaceholder": "Şehir"
     },
     "businessArea": {
       "question": "İşletme alanı ne kadar büyük?",
@@ -128,12 +133,182 @@
     "contactAuthority": "Yetkili makamlarla iletişime geçin",
     "prepareDocuments": "Gerekli belgeleri hazırlayın",
     "startOver": "Baştan başla",
-    "viewDocuments": "Gerekli belgeleri görüntüle"
+    "viewDocuments": "Gerekli belgeleri görüntüle",
+    "reasonsTitlePermit": "Gerekçeler:",
+    "reasonsTitleNoPermit": "Açıklama:",
+    "disclaimerTitle": "Önemli not:",
+    "disclaimerText": "Bu kontrol yalnızca bilgilendirme amaçlıdır ve hukuki danışmanlık yerine geçmez. Bağlayıcı bilgiler için lütfen yetkili kurumla iletişime geçin."
   },
   "documents": {
     "title": "İşletme tesisi iznine giden yolunuz",
     "subtitle": "Tüm adımların ve belgelerin genel bakışı",
-    "intro": "Burada hangi belgeleri hazırlamanız ve hangi adımları atmanız gerektiğini öğrenebilirsiniz."
+    "intro": "Burada hangi belgeleri hazırlamanız ve hangi adımları atmanız gerektiğini öğrenebilirsiniz.",
+    "steps": {
+      "step1": {
+        "title": "Ön değerlendirme ve danışmanlık",
+        "description": "İlk görüşme için MA 36 (Teknik Ticari İşler) ile iletişime geçin.",
+        "contactTitle": "İletişim:",
+        "contact": {
+          "phone": {
+            "icon": "📞",
+            "label": "Telefon",
+            "value": "+43 1 4000-25310"
+          },
+          "email": {
+            "icon": "📧",
+            "label": "E-posta",
+            "value": "post@ma36.wien.gv.at"
+          },
+          "website": {
+            "icon": "🌐",
+            "value": "www.wien.gv.at/ma36"
+          }
+        }
+      },
+      "step2": {
+        "title": "Gerekli belgeleri hazırlayın",
+        "description": "Genellikle gerekli belgeler:",
+        "items": {
+          "applicationForm": {
+            "title": "Başvuru formu",
+            "description": "Eksiksiz doldurulmuş ve imzalanmış"
+          },
+          "businessLicense": {
+            "title": "İşletme ruhsatı",
+            "description": "Faaliyet izninin kanıtı"
+          },
+          "plans": {
+            "title": "Planlar ve çizimler",
+            "description": "Vaziyet planı, kat planları, kesitler (ölçekli)"
+          },
+          "technicalDescription": {
+            "title": "Teknik açıklama",
+            "description": "Tesis ve ekipmanların ayrıntılı tanımı"
+          },
+          "neighbors": {
+            "title": "Komşu bilgilendirmesi",
+            "description": "Komşuların bilgilendirildiğine veya onay verdiğine dair belge"
+          },
+          "tenancy": {
+            "title": "Kira/mülkiyet belgesi",
+            "description": "Mekânı kullanma hakkınızı gösteren belge"
+          }
+        }
+      },
+      "step3": {
+        "title": "Başvuruyu gönderin",
+        "description": "Belgelerin tamamını MA 36'ya teslim edin. Teslim şu şekillerde yapılabilir:",
+        "options": {
+          "inPerson": {
+            "title": "📮 Şahsen",
+            "line1": "Dresdner Straße 73-75, 1200 Viyana",
+            "line2": "Pzt–Cum: 8:00–15:30"
+          },
+          "mail": {
+            "title": "✉️ Posta ile",
+            "line1": "MA 36 – Teknik Ticari İşler",
+            "line2": "Dresdner Straße 73-75, 1200 Viyana"
+          }
+        }
+      },
+      "step4": {
+        "title": "Başvurudan sonra",
+        "description": "Başvurudan sonra neler olur?",
+        "items": {
+          "confirmation": {
+            "icon": "✅",
+            "title": "Alındı onayı",
+            "description": "Belgelerin ulaştığına dair onay alırsınız."
+          },
+          "assessment": {
+            "icon": "📝",
+            "title": "İnceleme",
+            "description": "Kurum belgeleri inceler ve gerekirse görüş talep eder."
+          },
+          "questions": {
+            "icon": "📞",
+            "title": "Ek sorular",
+            "description": "Ek bilgi için sizinle iletişime geçilebilir."
+          },
+          "decision": {
+            "icon": "📄",
+            "title": "Karar",
+            "description": "İzin kararı ve olası şartlar size iletilir."
+          }
+        },
+        "processingTime": "Ortalama işlem süresi: 4–8 hafta"
+      }
+    },
+    "expertReports": {
+      "title": "Sık talep edilen uzman raporları",
+      "items": {
+        "noise": {
+          "icon": "🔊",
+          "title": "Gürültü koruması",
+          "description": "Özellikle makineler, havalandırma sistemleri veya müzik için."
+        },
+        "ventilation": {
+          "icon": "🌬️",
+          "title": "Havalandırma / iklimlendirme",
+          "description": "Yeterli hava giriş-çıkışının kanıtı."
+        },
+        "fireProtection": {
+          "icon": "🔥",
+          "title": "Yangın güvenliği",
+          "description": "Yangın alarmı, kaçış yolları, yangın söndürücüler ve gerekirse sprinkler."
+        }
+      }
+    },
+    "fees": {
+      "title": "Maliyetler ve ücretler",
+      "items": {
+        "federalFees": {
+          "icon": "💶",
+          "title": "Resmî harçlar",
+          "description": "İşletme türüne ve kapsamına bağlı (yaklaşık 70–300 €)."
+        },
+        "expertFees": {
+          "icon": "📄",
+          "title": "Resmî uzman ücretleri",
+          "description": "Kurum uzmanlarının masrafları, iş yüküne göre değişir."
+        },
+        "ownExperts": {
+          "icon": "🛠️",
+          "title": "Kendi uzmanlarınız",
+          "description": "örn. mühendislik büroları, planlayıcılar, yangın güvenliği uzmanları."
+        },
+        "time": {
+          "icon": "⏱️",
+          "title": "Zaman",
+          "description": "Hazırlık ve olası revizyonlar için yeterli zaman ayırın."
+        }
+      }
+    },
+    "tips": {
+      "title": "Sorunsuz bir süreç için ipuçları",
+      "items": {
+        "planEarly": {
+          "icon": "🗂️",
+          "title": "Önceden planlayın",
+          "description": "Planlanan açılıştan en az 2–3 ay önce başlayın."
+        },
+        "contactAuthority": {
+          "icon": "🤝",
+          "title": "MA 36 ile iletişime geçin",
+          "description": "Danışmanlıktan yararlanın – birçok soru önceden netleşebilir."
+        },
+        "useChecklists": {
+          "icon": "📋",
+          "title": "Kontrol listeleri kullanın",
+          "description": "Tüm planların, raporların ve formların eksiksiz olduğundan emin olun."
+        },
+        "stayFlexible": {
+          "icon": "🔄",
+          "title": "Esnek kalın",
+          "description": "Olası düzeltmelere veya şartlara hazırlıklı olun."
+        }
+      }
+    }
   },
   "metadata": {
     "title": "İşletme tesisi izni kontrolü – Hızlı değerlendirme",
@@ -151,6 +326,13 @@
     "twitter": {
       "title": "İzin kontrolü: Onaya ihtiyacınız var mı?",
       "description": "Birkaç soruyu yanıtlayarak Viyana'daki işletme tesisinizin izne ihtiyaç duyup duymadığını öğrenin ve sonraki adımlar hakkında rehberlik alın."
+    }
+  },
+  "faq": {
+    "cta": {
+      "title": "Başka sorunuz var mı?",
+      "description": "Ücretsiz kontrolümüzle işletmenizin izin gerektirip gerektirmediğini öğrenin.",
+      "button": "Kontrolü başlat"
     }
   }
 }
