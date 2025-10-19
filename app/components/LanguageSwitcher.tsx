@@ -1,8 +1,11 @@
 'use client'
 
-import { useLocale, useTranslations } from 'next-intl'
-import { usePathname, useRouter } from 'next/navigation'
+// LanguageSwitcher provides a dropdown that rewrites the current path to the selected locale
+// while keeping the navigation context for each page.
+import { useTranslations } from 'next-intl'
+import { usePathname, useRouter, useParams } from 'next/navigation'
 import { useState, useRef, useEffect } from 'react'
+import { defaultLocale } from '@/i18n'
 
 const languages = [
   { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
@@ -15,13 +18,16 @@ const languages = [
   { code: 'uk', name: 'Українська', flag: '🇺🇦' },
 ]
 
+// Renders the interactive locale picker and routes users to the matching translation.
 export default function LanguageSwitcher() {
-  const locale = useLocale()
   const router = useRouter()
   const pathname = usePathname()
   const t = useTranslations('nav')
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const params = useParams<{ locale: string }>()
+  const paramLocale = params?.locale
+  const locale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale
 
   const currentLanguage = languages.find(lang => lang.code === locale) || languages[0]
 
@@ -37,7 +43,16 @@ export default function LanguageSwitcher() {
   }, [])
 
   const handleLanguageChange = (langCode: string) => {
-    const newPathname = pathname.replace(`/${locale}`, `/${langCode}`)
+    const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`
+    let newPathname: string
+    if (normalizedPath === '/' || normalizedPath === '') {
+      newPathname = `/${langCode}`
+    } else if (normalizedPath.startsWith(`/${locale}`)) {
+      const rest = normalizedPath.slice(locale.length + 1).replace(/^\/+/, '')
+      newPathname = rest ? `/${langCode}/${rest}` : `/${langCode}`
+    } else {
+      newPathname = `/${langCode}${normalizedPath}`
+    }
     router.push(newPathname)
     setIsOpen(false)
   }

@@ -1,14 +1,21 @@
 'use client'
 
+// QuestionnairePage runs the multi-step permit assessment, persisting answers and
+// routing to the localized result screen once the evaluation is complete.
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import type { QuestionnaireData, BusinessType } from '@/app/lib/questionnaireLogic'
 import { getVisibleQuestions, evaluatePermitNeed } from '@/app/lib/questionnaireLogic'
+import { defaultLocale } from '@/i18n'
 
+// Renders the localized questionnaire wizard and writes the outcome to session storage.
 export default function QuestionnairePage() {
   const t = useTranslations('questionnaire')
   const router = useRouter()
+  const params = useParams<{ locale: string }>()
+  const paramLocale = params?.locale
+  const locale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale
   const [currentStep, setCurrentStep] = useState(0)
   const [data, setData] = useState<QuestionnaireData>({})
   const [questionAnimation, setQuestionAnimation] = useState(true)
@@ -64,7 +71,7 @@ export default function QuestionnairePage() {
         const result = evaluatePermitNeed(data)
         sessionStorage.setItem('questionnaireResult', JSON.stringify(result))
         sessionStorage.setItem('questionnaireData', JSON.stringify(data))
-        router.push('/check/result')
+        router.push(`/${locale}/check/result`)
       } else {
         setCurrentStep(currentStep + 1)
       }
@@ -157,7 +164,7 @@ export default function QuestionnairePage() {
                   value={data.address?.street || ''}
                   onChange={(e) => handleAddressChange('street', e.target.value)}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Mustergasse 123"
+                  placeholder={t('address.streetPlaceholder')}
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -170,7 +177,7 @@ export default function QuestionnairePage() {
                     value={data.address?.postalCode || ''}
                     onChange={(e) => handleAddressChange('postalCode', e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="1010"
+                    placeholder={t('address.postalCodePlaceholder')}
                   />
                 </div>
                 <div>
@@ -182,7 +189,7 @@ export default function QuestionnairePage() {
                     value={data.address?.city || ''}
                     onChange={(e) => handleAddressChange('city', e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Wien"
+                    placeholder={t('address.cityPlaceholder')}
                   />
                 </div>
               </div>

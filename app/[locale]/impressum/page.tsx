@@ -20,10 +20,10 @@ export default function ImpressumPage() {
             <p className="text-gray-700 leading-relaxed">
               E-Mail:{' '}
               <a
-                href="mailto:betriebsanlage.checker@gmail.com"
+                href="mailto:betriebsanlage.check@gmx.at"
                 className="text-blue-600 hover:text-blue-700 underline"
               >
-                betriebsanlage.checker@gmail.com
+                betriebsanlage.check@gmx.at
               </a>
             </p>
           </section>
