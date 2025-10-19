@@ -11,7 +11,7 @@ import {
   ROUTE_FALLBACK_METADATA,
   buildLocalizedMetadata,
   isMessagesWithMetadata,
-  resolveLocaleParam
+  resolveLocaleParam,
   type MessagesWithMetadata,
 } from '../../metadataConfig'
 
