@@ -30,7 +30,9 @@
     },
     "footer": {
       "copyright": "Betriebsanlagen Check - Vaš pomoćnik za bečku birokraciju",
-      "disclaimer": "Ova web stranica je samo u informativne svrhe. Za pravno obvezujuće informacije, molimo kontaktirajte nadležne organe."
+      "disclaimer": "Ova web stranica je samo u informativne svrhe. Za pravno obvezujuće informacije, molimo kontaktirajte nadležne organe.",
+      "imprint": "Impresum",
+      "privacy": "Zaštita podataka"
     }
   },
   "questionnaire": {
@@ -60,7 +62,10 @@
       "placeholder": "Unesite potpunu adresu",
       "street": "Ulica i broj",
       "postalCode": "Poštanski broj",
-      "city": "Grad"
+      "city": "Grad",
+      "streetPlaceholder": "Ulica i kućni broj",
+      "postalCodePlaceholder": "Poštanski broj",
+      "cityPlaceholder": "Grad"
     },
     "businessArea": {
       "question": "Kolika je poslovna površina?",
@@ -128,11 +133,301 @@
     "contactAuthority": "Kontaktirajte nadležne organe",
     "prepareDocuments": "Pripremite potrebne dokumente",
     "startOver": "Započnite ponovo",
-    "viewDocuments": "Pregledajte potrebne dokumente"
+    "viewDocuments": "Pregledajte potrebne dokumente",
+    "reasonsTitlePermit": "Razlozi:",
+    "reasonsTitleNoPermit": "Obrazloženje:",
+    "disclaimerTitle": "Važna napomena:",
+    "disclaimerText": "Ova provjera služi samo informativno i ne zamjenjuje pravni savjet. Za obvezujuće informacije obratite se nadležnom tijelu."
   },
   "documents": {
     "title": "Vaš put do dozvole za poslovni objekt",
     "subtitle": "Pregled svih koraka i dokumenata",
-    "intro": "Ovdje možete saznati koje dokumente trebate pripremiti i koje korake trebate poduzeti."
+    "intro": "Ovdje možete saznati koje dokumente trebate pripremiti i koje korake trebate poduzeti.",
+    "steps": {
+      "step1": {
+        "title": "Prethodna provjera i savjetovanje",
+        "description": "Kontaktirajte MA 36 (Odjel za tehničke gospodarske poslove) za početno savjetovanje.",
+        "contactTitle": "Kontakt:",
+        "contact": {
+          "phone": {
+            "icon": "📞",
+            "label": "Telefon",
+            "value": "+43 1 4000-25310"
+          },
+          "email": {
+            "icon": "📧",
+            "label": "E-pošta",
+            "value": "post@ma36.wien.gv.at"
+          },
+          "website": {
+            "icon": "🌐",
+            "value": "www.wien.gv.at/ma36"
+          }
+        }
+      },
+      "step2": {
+        "title": "Pripremite potrebne dokumente",
+        "description": "Najčešće potrebni dokumenti:",
+        "items": {
+          "applicationForm": {
+            "title": "Prijavni obrazac",
+            "description": "Potpuno ispunjen i potpisan"
+          },
+          "businessLicense": {
+            "title": "Dozvola za obavljanje djelatnosti",
+            "description": "Dokaz o pravu na obavljanje djelatnosti"
+          },
+          "plans": {
+            "title": "Planovi i nacrti",
+            "description": "Situacijski plan, tlocrti, presjeci (u mjerilu)"
+          },
+          "technicalDescription": {
+            "title": "Tehnički opis",
+            "description": "Detaljan opis postrojenja i opreme"
+          },
+          "neighbors": {
+            "title": "Obavijest susjedima",
+            "description": "Potvrda o obavještavanju ili suglasnosti susjeda"
+          },
+          "tenancy": {
+            "title": "Dokaz o najmu/vlasništvu",
+            "description": "Dokument koji pokazuje pravo korištenja prostora"
+          }
+        }
+      },
+      "step3": {
+        "title": "Predaja zahtjeva",
+        "description": "Predajte potpunu dokumentaciju MA 36. Predaja je moguća:",
+        "options": {
+          "inPerson": {
+            "title": "📮 Osobno",
+            "line1": "Dresdner Straße 73-75, 1200 Beč",
+            "line2": "Pon–Pet: 8:00–15:30"
+          },
+          "mail": {
+            "title": "✉️ Poštom",
+            "line1": "MA 36 – Tehnički gospodarski poslovi",
+            "line2": "Dresdner Straße 73-75, 1200 Beč"
+          }
+        }
+      },
+      "step4": {
+        "title": "Nakon predaje",
+        "description": "Što slijedi nakon predaje?",
+        "items": {
+          "confirmation": {
+            "icon": "✅",
+            "title": "Potvrda o zaprimanju",
+            "description": "Dobivate potvrdu da je dokumentacija zaprimljena."
+          },
+          "assessment": {
+            "icon": "📝",
+            "title": "Pregled",
+            "description": "Nadležno tijelo pregledava dokumente i po potrebi traži mišljenja."
+          },
+          "questions": {
+            "icon": "📞",
+            "title": "Dodatna pitanja",
+            "description": "Mogu vas kontaktirati radi dodatnih informacija."
+          },
+          "decision": {
+            "icon": "📄",
+            "title": "Rješenje",
+            "description": "Dobivate rješenje s odobrenjem i mogućim uvjetima."
+          }
+        },
+        "processingTime": "Prosječno vrijeme obrade: 4–8 tjedana"
+      }
+    },
+    "expertReports": {
+      "title": "Često potrebna stručna izvješća",
+      "items": {
+        "noise": {
+          "icon": "🔊",
+          "title": "Zaštita od buke",
+          "description": "Posebno za strojeve, ventilaciju ili glazbu."
+        },
+        "ventilation": {
+          "icon": "🌬️",
+          "title": "Ventilacija / klima",
+          "description": "Dokaz o dostatnoj ventilaciji."
+        },
+        "fireProtection": {
+          "icon": "🔥",
+          "title": "Protupožarna zaštita",
+          "description": "Protupožarni alarm, evakuacijski putevi, aparati za gašenje, eventualno sprinkler."
+        }
+      }
+    },
+    "fees": {
+      "title": "Troškovi i pristojbe",
+      "items": {
+        "federalFees": {
+          "icon": "💶",
+          "title": "Državne pristojbe",
+          "description": "Ovise o vrsti i opsegu poslovanja (oko 70–300 €)."
+        },
+        "expertFees": {
+          "icon": "📄",
+          "title": "Troškovi službenih vještaka",
+          "description": "Naknade vještaka nadležnog tijela, ovisno o opsegu."
+        },
+        "ownExperts": {
+          "icon": "🛠️",
+          "title": "Vlastiti stručnjaci",
+          "description": "npr. inženjerski uredi, projektanti, stručnjaci za zaštitu od požara."
+        },
+        "time": {
+          "icon": "⏱️",
+          "title": "Vrijeme",
+          "description": "Planirajte dovoljno vremena za pripremu i moguće dorade."
+        }
+      }
+    },
+    "tips": {
+      "title": "Savjeti za nesmetan postupak",
+      "items": {
+        "planEarly": {
+          "icon": "🗂️",
+          "title": "Planirajte na vrijeme",
+          "description": "Započnite najmanje 2–3 mjeseca prije planiranog otvaranja."
+        },
+        "contactAuthority": {
+          "icon": "🤝",
+          "title": "Kontaktirajte MA 36",
+          "description": "Iskoristite savjetovanje – mnoga pitanja mogu se razjasniti unaprijed."
+        },
+        "useChecklists": {
+          "icon": "📋",
+          "title": "Koristite kontrolne liste",
+          "description": "Provjerite jesu li svi planovi, izvješća i obrasci potpuni."
+        },
+        "stayFlexible": {
+          "icon": "🔄",
+          "title": "Ostanite fleksibilni",
+          "description": "Budite spremni na moguće prilagodbe ili uvjete."
+        }
+      }
+    }
+  },
+  "metadata": {
+    "title": "Provjera poslovne instalacije – Brza procjena dozvole",
+    "description": "Besplatan alat za Beč: saznajte za nekoliko minuta treba li vaš poslovni prostor odobrenje i koje dokumente pripremiti.",
+    "keywords": [
+      "dozvola za poslovni prostor",
+      "Beč poslovna dozvola",
+      "odobrenje za pogon"
+    ],
+    "openGraph": {
+      "title": "Provjera dozvola za osnivače u Beču",
+      "description": "Koristite naš besplatni višejezični upitnik kako biste saznali treba li vašem poslovnom prostoru dozvola i koji su sljedeći koraci.",
+      "siteName": "Betriebsanlagen Check"
+    },
+    "twitter": {
+      "title": "Provjera dozvole: treba li vam odobrenje?",
+      "description": "Odgovorite na nekoliko pitanja i saznajte treba li vašem poslovnom prostoru u Beču dozvola te koje korake zatim poduzeti."
+    },
+    "faq": {
+      "title": "FAQ o dozvoli poslovnog objekta u Beču",
+      "description": "Saznajte odgovore o uvjetima, rokovima, troškovima i kontaktima za postupak odobrenja poslovnog objekta u Beču.",
+      "keywords": [
+        "FAQ dozvola poslovni objekt",
+        "pitanja odobrenje Beč",
+        "informacije poslovni pogon"
+      ],
+      "openGraph": {
+        "title": "FAQ: Najvažnija pitanja o odobrenju poslovnog objekta",
+        "description": "Brzo pronađite informacije o obvezama, inspekcijama i rokovima za vaš poslovni prostor."
+      },
+      "twitter": {
+        "title": "FAQ dozvola za poslovni objekt",
+        "description": "Sve ključne informacije o dozvolama, dokumentima i rokovima na jednom mjestu."
+      }
+    },
+    "documents": {
+      "title": "Dokumentacija za dozvolu poslovnog objekta u Beču",
+      "description": "Pregled potrebnih obrazaca, nacrta, stručnih mišljenja i načina predaje zahtjeva.",
+      "keywords": [
+        "dokumentacija dozvola Beč",
+        "checklista poslovni objekt",
+        "postupak odobrenja pogona"
+      ],
+      "openGraph": {
+        "title": "Checklista: Dokumenti za odobrenje poslovnog objekta",
+        "description": "Pripremite prijavu, nacrte i stručne elaborata prema zahtjevima MA 36."
+      },
+      "twitter": {
+        "title": "Dokumenti za dozvolu poslovnog objekta",
+        "description": "Saznajte koje priloge trebate prikupiti prije podnošenja zahtjeva u Beču."
+      }
+    },
+    "checkResult": {
+      "title": "Rezultat vaše provjere poslovnog objekta",
+      "description": "Pogledajte treba li vašem poslu dozvola i koje sljedeće korake preporučujemo.",
+      "keywords": [
+        "rezultat provjere dozvole",
+        "sljedeći koraci odobrenje",
+        "procjena poslovnog objekta"
+      ],
+      "openGraph": {
+        "title": "Rezultat: Treba li vaš poslovni objekt dozvolu?",
+        "description": "Razumijte ishod i nastavite s pravim kontaktima i dokumentima."
+      },
+      "twitter": {
+        "title": "Vaš rezultat provjere dozvole",
+        "description": "Personalizirane preporuke o statusu dozvole, dokumentima i daljnjim koracima."
+      }
+    }
+  },
+  "faq": {
+    "title": "Često postavljana pitanja",
+    "subtitle": "Sve važno o dozvolama za poslovne objekte, prijavi obrta i pokretanju poduzeća u Beču",
+    "questions": {
+      "q1": {
+        "question": "Što je poslovni objekt i trebam li dozvolu?",
+        "answer": "Poslovni objekt (Betriebsanlage) je svaka instalacija koja se koristi za obavljanje djelatnosti. U to spadaju poslovni prostori, radionice, skladišta, ugostiteljski objekti i mnogo više. Trebate li dozvolu ovisi o raznim čimbenicima: vrsti djelatnosti, veličini, lokaciji, radnom vremenu i mogućim smetnjama (buka, miris). Uredba o izuzeću od dozvole (Genehmigungsfreistellungsverordnung) propisuje koji se obrti mogu voditi bez odobrenja. Iskoristite naš besplatni check kako biste saznali je li vaš objekt podložan odobrenju."
+      },
+      "q2": {
+        "question": "Koliko traje dobivanje dozvole za poslovni objekt u Beču?",
+        "answer": "Trajanje ovisi o složenosti vašeg poslovanja. Jednostavni slučajevi bez sudjelovanja susjeda: 4-8 tjedana. Kompleksni objekti s obavještavanjem susjeda: 3-6 mjeseci. Nadležno tijelo je MA 36 (Bečko trgovačko tijelo). Savjet: potpuna predaja dokumentacije s cjelokupnom dokumentacijom znatno ubrzava postupak."
+      },
+      "q3": {
+        "question": "Koliko košta dozvola za poslovni objekt?",
+        "answer": "Naknade ovise o upravnom opterećenju. Pojednostavljeni postupak: oko 100-300 eura. Redoviti postupak s vještačenjima: 500-2000 eura. Veliki ili složeni objekti: 2000-5000 eura i više. Dodatno mogu nastati troškovi za stručnjake, nacrte i tehničke dokaze. Točne tarife objavljene su na wien.gv.at."
+      },
+      "q4": {
+        "question": "Mogu li otvoriti poslovanje prije nego što dobijem dozvolu?",
+        "answer": "Ne, ako vaš obrt zahtijeva odobrenje, NE smijete započeti prije nego što ga dobijete. To bi bio prekršaj s mogućim kaznama do 50.000 eura. Za poslove izuzete od odobrenja (prema Uredbi o izuzeću) možete započeti odmah nakon prijave obrta. Naš check pomaže vam utvrditi trebate li dozvolu."
+      },
+      "q5": {
+        "question": "Koju dokumentaciju trebam za dozvolu poslovnog objekta?",
+        "answer": "Standardni dokumenti: obrtnica ili koncesija, tlocrt i situacijski plan, opis objekta, dokaz o pravu korištenja (ugovor o najmu/vlasništvu), tehnički opisi (npr. ventilacija, buka). Ovisno o djelatnosti dodatno: elaborat buke, plan zaštite od požara, dokaz statike, studija utjecaja na okoliš. MA 36 unaprijed savjetuje koje su isprave konkretno potrebne."
+      },
+      "q6": {
+        "question": "Koja je razlika između prijave obrta i dozvole za poslovni objekt?",
+        "answer": "Prijava obrta: ovlašćuje vas za obavljanje djelatnosti (kod nadležne trgovačke institucije). Dozvola za poslovni objekt: dopušta rad na konkretnoj lokaciji (uzimajući u obzir buku, sigurnost, susjede). Potrebna su vam OBA dokumenta: najprije obrtnica, zatim dozvola za objekt na lokaciji. Neke djelatnosti izuzete su od obveze odobrenja (vidi Uredbu o izuzeću)."
+      },
+      "q7": {
+        "question": "Odnosi li se Uredba o izuzeću i na mene?",
+        "answer": "Bečka Uredba o izuzeću oslobađa određene djelatnosti obveze odobrenja ako ispunjavaju posebne kriterije. Primjeri: maloprodaja do 600 m², uredi (gotovo uvijek), male radionice, kozmetički saloni, smještaj do 30 kreveta bez bazena. ALI: postoje iznimke kod buke, glazbe, opasnih tvari ili mehaničke ventilacije izvan ovojnice zgrade. Za brzu procjenu upotrijebite naš check."
+      },
+      "q8": {
+        "question": "Trebam li kao ugostitelj u Beču dozvolu za poslovni objekt?",
+        "answer": "Da, u većini slučajeva. Ugostiteljski objekti (restorani, kafići, barovi) obično su podložni odobrenju zbog: emisija mirisa (kuhinja), buke (gosti, glazba), separatora masti, ventilacijskih sustava. Iznimke: male slastičarnice bez sjedećih mjesta mogu biti izuzete. Postupak može trajati 3-6 mjeseci – uključite to u plan otvaranja!"
+      },
+      "q9": {
+        "question": "Ne govorim njemački – mogu li ipak pokrenuti posao?",
+        "answer": "Da! Naša web-stranica podržava 8 jezika: njemački, engleski, srpski, hrvatski, turski, talijanski, španjolski i ukrajinski. Za službene postupke: MA 36 i Gospodarska komora nude višejezično savjetovanje. Za prijavu obrta trebate: putovnicu/osobnu iskaznicu, broj socijalnog osiguranja te, po potrebi, prevoditelja za dokumente. Mnoge usluge za poduzetnike u Beču dostupne su na više jezika."
+      },
+      "q10": {
+        "question": "Što se događa ako susjedi ulože prigovor na moj poslovni objekt?",
+        "answer": "Za objekte koji zahtijevaju dozvolu susjedi se obavještavaju tijekom postupka (sudjelovanje susjeda). Mogu podnijeti prigovore zbog: prevelike buke, neugodnih mirisa, sigurnosnih rizika, problema u prometu. Nadležno tijelo pregledava prigovore i može propisati uvjete (npr. zaštitu od buke, ograničenje radnog vremena). Dobra priprema i rano informiranje susjeda sprječavaju mnoge konflikte."
+      }
+    },
+    "cta": {
+      "title": "Imate još pitanja?",
+      "description": "Iskoristite naš besplatni provjeru i saznajte treba li vaš objekt dozvolu.",
+      "button": "Pokreni provjeru"
+    }
   }
 }
