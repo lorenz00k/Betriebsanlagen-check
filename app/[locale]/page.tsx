@@ -1,12 +1,13 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import AnimatedStats from "../components/AnimatedStats";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const t = useTranslations("home");
+  const locale = useLocale();
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -69,7 +70,7 @@ export default function Home() {
                 {t("card1Description")}
               </p>
               <Link
-                href="/check"
+                href={`/${locale}/check`}
                 className="button-shine inline-flex items-center gap-2 w-full justify-center bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 px-6 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg active:scale-95"
               >
                 {t("card1Button")}
@@ -116,7 +117,7 @@ export default function Home() {
                 {t("card2Description")}
               </p>
               <Link
-                href="/documents"
+                href={`/${locale}/documents`}
                 className="button-shine inline-flex items-center gap-2 w-full justify-center bg-gradient-to-r from-green-600 to-green-700 text-white py-4 px-6 rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition-all shadow-md hover:shadow-lg active:scale-95"
               >
                 {t("card2Button")}

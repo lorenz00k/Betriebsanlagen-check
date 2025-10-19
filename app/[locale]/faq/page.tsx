@@ -1,11 +1,12 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useState } from 'react'
 import Link from 'next/link'
 
 export default function FAQPage() {
   const t = useTranslations('faq')
+  const locale = useLocale()
   const [openQuestion, setOpenQuestion] = useState<string | null>(null)
 
   const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10']
@@ -102,7 +103,7 @@ export default function FAQPage() {
             Betrieb eine Genehmigung benötigt.
           </p>
           <Link
-            href="/check"
+            href={`/${locale}/check`}
             className="inline-block bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors shadow-lg"
           >
             Jetzt Check starten

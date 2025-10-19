@@ -1,13 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import type { QuestionnaireData, BusinessType } from '@/app/lib/questionnaireLogic'
 import { getVisibleQuestions, evaluatePermitNeed } from '@/app/lib/questionnaireLogic'
 
 export default function QuestionnairePage() {
   const t = useTranslations('questionnaire')
+  const locale = useLocale()
   const router = useRouter()
   const [currentStep, setCurrentStep] = useState(0)
   const [data, setData] = useState<QuestionnaireData>({})
@@ -64,7 +65,7 @@ export default function QuestionnairePage() {
         const result = evaluatePermitNeed(data)
         sessionStorage.setItem('questionnaireResult', JSON.stringify(result))
         sessionStorage.setItem('questionnaireData', JSON.stringify(data))
-        router.push('/check/result')
+        router.push(`/${locale}/check/result`)
       } else {
         setCurrentStep(currentStep + 1)
       }

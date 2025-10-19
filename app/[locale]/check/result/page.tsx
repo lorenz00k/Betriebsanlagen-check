@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
@@ -12,6 +12,7 @@ interface Result {
 
 export default function ResultPage() {
   const t = useTranslations('result')
+  const locale = useLocale()
   const router = useRouter()
   const [result, setResult] = useState<Result | null>(null)
   const [loading, setLoading] = useState(true)
@@ -21,10 +22,10 @@ export default function ResultPage() {
     if (storedResult) {
       setResult(JSON.parse(storedResult))
     } else {
-      router.push('/check')
+      router.push(`/${locale}/check`)
     }
     setLoading(false)
-  }, [router])
+  }, [locale, router])
 
   if (loading) {
     return (
@@ -160,14 +161,14 @@ export default function ResultPage() {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/check"
+              href={`/${locale}/check`}
               className="flex-1 text-center px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all"
             >
               {t('startOver')}
             </Link>
             {result.needsPermit && (
               <Link
-                href="/documents"
+                href={`/${locale}/documents`}
                 className="flex-1 text-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg"
               >
                 {t('viewDocuments')}
