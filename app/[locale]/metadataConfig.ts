@@ -37,11 +37,11 @@ export type MetadataCollection = MetadataContent & {
 export type MessagesWithMetadata = AbstractIntlMessages & { metadata?: MetadataCollection }
 
 // Accept both the App Router's `{ params: { locale } }` and the Promise variant.
-export type LocaleParam = { locale: string } | Promise<{ locale: string }>
+export type LocaleParam = { locale: string }
 
 // Small helper so call sites can always `await resolveLocaleParam(params)`
 export const resolveLocaleParam = async (
-  params: LocaleParam,
+  params: LocaleParam | Promise<LocaleParam>,
 ): Promise<{ locale: string }> => await params
 
 export const SITE_URL =
@@ -139,12 +139,12 @@ export const buildLocalizedMetadata = async ({
 
   const fallbackTwitterImages = Array.isArray(images)
     ? images
-        .map((image) => {
-          if (typeof image === 'string') return image
-          if (image instanceof URL) return image.toString()
-          return image?.url
-        })
-        .filter((value): value is string => Boolean(value))
+      .map((image) => {
+        if (typeof image === 'string') return image
+        if (image instanceof URL) return image.toString()
+        return image?.url
+      })
+      .filter((value): value is string => Boolean(value))
     : typeof images === 'string'
       ? [images]
       : undefined
