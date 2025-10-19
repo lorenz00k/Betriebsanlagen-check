@@ -134,5 +134,23 @@
     "title": "İşletme tesisi iznine giden yolunuz",
     "subtitle": "Tüm adımların ve belgelerin genel bakışı",
     "intro": "Burada hangi belgeleri hazırlamanız ve hangi adımları atmanız gerektiğini öğrenebilirsiniz."
+  },
+  "metadata": {
+    "title": "İşletme tesisi izni kontrolü – Hızlı değerlendirme",
+    "description": "Viyana için ücretsiz kontrol: İşletme tesisinizin izne ihtiyacı olup olmadığını ve hangi belgeleri hazırlamanız gerektiğini dakikalar içinde öğrenin.",
+    "keywords": [
+      "Viyana işletme izni",
+      "Avusturya işletme ruhsatı",
+      "tesis izni"
+    ],
+    "openGraph": {
+      "title": "Viyana'daki girişimciler için işletme izni kontrolü",
+      "description": "Ücretsiz çok dilli anketimizi kullanarak işletme tesisiniz için izin gerekip gerekmediğini ve sonraki adımları öğrenin.",
+      "siteName": "Betriebsanlagen Check"
+    },
+    "twitter": {
+      "title": "İzin kontrolü: Onaya ihtiyacınız var mı?",
+      "description": "Birkaç soruyu yanıtlayarak Viyana'daki işletme tesisinizin izne ihtiyaç duyup duymadığını öğrenin ve sonraki adımlar hakkında rehberlik alın."
+    }
   }
 }

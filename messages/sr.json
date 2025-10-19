@@ -180,5 +180,23 @@
         "answer": "Za objekte koji zahtevaju dozvolu, komšije se obaveštavaju tokom procesa (učešće komšija). Oni mogu da podnesu prigovore u vezi: preterane buke, neugodnog mirisa, sigurnosnih problema, saobraćajnih problema. Uprava preispituje prigovore i može da nametne uslove (npr. zaštita od buke, ograničenja radnog vremena). Dobro planiranje i rana komunikacija sa komšijama mogu sprečiti mnoge konflikte."
       }
     }
+  },
+  "metadata": {
+    "title": "Provera dozvole za poslovni objekat – Brza procena",
+    "description": "Besplatan vodič za Beč: saznajte za nekoliko minuta da li vašem poslovnom prostoru treba dozvola i koja dokumenta treba da pripremite.",
+    "keywords": [
+      "dozvola za poslovni objekat",
+      "Beč poslovna dozvola",
+      "odobrenje za objekat"
+    ],
+    "openGraph": {
+      "title": "Provera dozvola za osnivače u Beču",
+      "description": "Iskoristite naš besplatan višejezični upitnik da proverite da li je vašem poslovnom objektu potrebna dozvola i koji koraci slede.",
+      "siteName": "Betriebsanlagen Check"
+    },
+    "twitter": {
+      "title": "Provera dozvole: da li vam je potrebno odobrenje?",
+      "description": "Odgovorite na nekoliko pitanja kako biste saznali da li je vašem poslovnom prostoru u Beču potrebna dozvola i koje korake potom preduzeti."
+    }
   }
 }

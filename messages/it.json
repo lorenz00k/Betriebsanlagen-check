@@ -180,5 +180,23 @@
         "answer": "Per gli impianti soggetti ad autorizzazione, i vicini vengono informati durante la procedura (partecipazione dei residenti). Possono presentare obiezioni in caso di: troppo rumore, disturbo da odori, preoccupazioni per la sicurezza, problemi di traffico. L'autorità esamina le obiezioni e può imporre condizioni (es. protezione acustica, limitazione degli orari di apertura). Con una buona pianificazione e informazione tempestiva dei vicini, molti conflitti possono essere evitati."
       }
     }
+  },
+  "metadata": {
+    "title": "Verifica impianto aziendale – Valutazione rapida della licenza",
+    "description": "Controllo gratuito a Vienna: scopri in pochi minuti se la tua attività ha bisogno di un'autorizzazione e quali documenti preparare.",
+    "keywords": [
+      "permesso aziendale Vienna",
+      "licenza operativa Austria",
+      "autorizzazione impianto"
+    ],
+    "openGraph": {
+      "title": "Verifica dei permessi per fondatori a Vienna",
+      "description": "Usa il nostro questionario multilingue gratuito per capire se il tuo impianto aziendale richiede un'autorizzazione e quali passaggi seguire.",
+      "siteName": "Betriebsanlagen Check"
+    },
+    "twitter": {
+      "title": "Verifica permessi: hai bisogno di un'autorizzazione?",
+      "description": "Rispondi a poche domande per scoprire se la tua attività a Vienna necessita di un permesso e ricevi indicazioni sui prossimi passi."
+    }
   }
 }

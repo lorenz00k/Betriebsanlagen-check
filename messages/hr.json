@@ -134,5 +134,23 @@
     "title": "Vaš put do dozvole za poslovni objekt",
     "subtitle": "Pregled svih koraka i dokumenata",
     "intro": "Ovdje možete saznati koje dokumente trebate pripremiti i koje korake trebate poduzeti."
+  },
+  "metadata": {
+    "title": "Provjera poslovne instalacije – Brza procjena dozvole",
+    "description": "Besplatan alat za Beč: saznajte za nekoliko minuta treba li vaš poslovni prostor odobrenje i koje dokumente pripremiti.",
+    "keywords": [
+      "dozvola za poslovni prostor",
+      "Beč poslovna dozvola",
+      "odobrenje za pogon"
+    ],
+    "openGraph": {
+      "title": "Provjera dozvola za osnivače u Beču",
+      "description": "Koristite naš besplatni višejezični upitnik kako biste saznali treba li vašem poslovnom prostoru dozvola i koji su sljedeći koraci.",
+      "siteName": "Betriebsanlagen Check"
+    },
+    "twitter": {
+      "title": "Provjera dozvole: treba li vam odobrenje?",
+      "description": "Odgovorite na nekoliko pitanja i saznajte treba li vašem poslovnom prostoru u Beču dozvola te koje korake zatim poduzeti."
+    }
   }
 }

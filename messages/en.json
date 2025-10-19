@@ -180,5 +180,23 @@
         "answer": "For permit-required facilities, neighbors are informed during the process (neighbor participation). They can raise objections regarding: excessive noise, odor nuisance, safety concerns, traffic problems. The authority reviews objections and may impose conditions (e.g. noise protection, operating hour restrictions). Good planning and early neighbor communication can prevent many conflicts."
       }
     }
+  },
+  "metadata": {
+    "title": "Business Facility Permit Check – Your quick assessment",
+    "description": "Free operating permit check for Vienna: Discover in minutes if your business facility needs approval and which documents to prepare.",
+    "keywords": [
+      "Vienna business permit",
+      "operating licence Austria",
+      "business facility approval"
+    ],
+    "openGraph": {
+      "title": "Business Facility Permit Check for Founders in Vienna",
+      "description": "Use our free multilingual questionnaire to learn whether your business facility requires an operating permit and which steps follow next.",
+      "siteName": "Betriebsanlagen Check"
+    },
+    "twitter": {
+      "title": "Business Facility Permit Check: Do you need approval?",
+      "description": "Answer a few questions to see if your Vienna business facility needs a permit and get guidance on the next steps."
+    }
   }
 }

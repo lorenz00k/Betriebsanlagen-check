@@ -180,5 +180,23 @@
         "answer": "Bei genehmigungspflichtigen Anlagen werden Nachbarn im Verfahren informiert (Anrainerbeteiligung). Sie können Einwendungen erheben bei: Zu viel Lärm, Geruchsbelästigung, Sicherheitsbedenken, Verkehrsproblemen. Die Behörde prüft die Einwände und kann Auflagen erteilen (z.B. Lärmschutz, Betriebszeiten-Einschränkung). Mit guter Planung und frühzeitiger Nachbar-Information lassen sich viele Konflikte vermeiden."
       }
     }
+  },
+  "metadata": {
+    "title": "Betriebsanlagen-Check – In 2 Minuten zur Genehmigungseinschätzung",
+    "description": "Kostenloser Betriebsanlagen-Check für Wien: Erfahren Sie schnell, ob Ihre Unternehmensanlage eine Genehmigung braucht und welche Dokumente dafür nötig sind.",
+    "keywords": [
+      "Betriebsanlagengenehmigung",
+      "Gewerbeanmeldung Wien",
+      "Genehmigung Betriebsanlage"
+    ],
+    "openGraph": {
+      "title": "Betriebsanlagen-Check für Gründer in Wien",
+      "description": "Prüfen Sie mit unserem kostenlosen Online-Check, ob Ihre Betriebsanlage eine Genehmigung benötigt – mehrsprachig, sicher und schnell.",
+      "siteName": "Betriebsanlagen Check"
+    },
+    "twitter": {
+      "title": "Betriebsanlagen-Check: Genehmigungspflicht jetzt prüfen",
+      "description": "Finden Sie in wenigen Minuten heraus, ob Ihre Betriebsanlage in Wien genehmigungspflichtig ist und welche Unterlagen Sie brauchen."
+    }
   }
 }

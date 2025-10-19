@@ -134,5 +134,23 @@
     "title": "Tu camino hacia el permiso de instalación comercial",
     "subtitle": "Resumen de todos los pasos y documentos",
     "intro": "Aquí puedes descubrir qué documentos debes preparar y qué pasos debes seguir."
+  },
+  "metadata": {
+    "title": "Verificador de permisos para instalaciones comerciales – Evaluación rápida",
+    "description": "Comprobación gratuita en Viena: descubra en minutos si su establecimiento necesita autorización y qué documentos debe preparar.",
+    "keywords": [
+      "licencia empresarial Viena",
+      "permiso de actividad Austria",
+      "autorización de instalaciones"
+    ],
+    "openGraph": {
+      "title": "Verificador de permisos para fundadores en Viena",
+      "description": "Use nuestro cuestionario multilingüe gratuito para saber si su instalación comercial necesita permiso y qué pasos siguen.",
+      "siteName": "Betriebsanlagen Check"
+    },
+    "twitter": {
+      "title": "Verificador de permisos: ¿necesita autorización?",
+      "description": "Responda algunas preguntas para saber si su instalación en Viena requiere permiso y reciba orientación sobre los siguientes pasos."
+    }
   }
 }
