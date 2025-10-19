@@ -1,41 +1,44 @@
 // LocaleLayout bootstraps every localized route by loading translations, metadata,
 // and shared navigation while exposing locale-aware structured data for search engines.
-import type { Metadata, ResolvingMetadata } from "next";
-import Link from "next/link";
-import { NextIntlClientProvider } from "next-intl";
-import type { AbstractIntlMessages } from "next-intl";
-import { notFound } from "next/navigation";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata, ResolvingMetadata } from 'next'
+import Link from 'next/link'
+import { NextIntlClientProvider } from 'next-intl'
+import type { AbstractIntlMessages } from 'next-intl'
+import { notFound } from 'next/navigation'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
-import { locales, type Locale } from "@/i18n";
-import Footer from "../components/Footer";
-import LanguageBanner from "../components/LanguageBanner";
-import LanguageSwitcher from "../components/LanguageSwitcher";
+import { locales, type Locale } from '@/i18n'
+import Footer from '../components/Footer'
+import LanguageBanner from '../components/LanguageBanner'
+import LanguageSwitcher from '../components/LanguageSwitcher'
 import {
   FALLBACK_METADATA,
   SITE_URL,
   buildLocalizedMetadata,
   isMessagesWithMetadata,
+  resolveLocaleParam,
+  type LocaleParam,
   type MessagesWithMetadata,
-} from "./metadataConfig";
+} from './metadataConfig'
 
 // generateMetadata builds locale-scoped metadata for the current route by combining
 // localized message bundles with inherited parent metadata values.
 export async function generateMetadata(
-  { params }: { params: { locale: string } | Promise<{ locale: string }> },
+  { params }: { params: LocaleParam },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = await resolveLocaleParam(params)
 
-  const importedMessages = (await import(`@/messages/${locale}.json`)).default as MessagesWithMetadata;
-  const metadataMessages = importedMessages.metadata ?? FALLBACK_METADATA;
+  const importedMessages = (await import(`@/messages/${locale}.json`))
+    .default as MessagesWithMetadata
+  const metadataMessages = importedMessages.metadata ?? FALLBACK_METADATA
 
   return buildLocalizedMetadata({
     locale,
     metadataMessages,
     parent,
-  });
+  })
 }
 
 // LocaleLayout renders the shared shell (html/body/nav/footer) for all localized pages
@@ -44,32 +47,34 @@ export default async function LocaleLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
-  params: { locale: string } | Promise<{ locale: string }>;
+  children: React.ReactNode
+  params: LocaleParam
 }) {
-  const { locale } = await params;
+  const { locale } = await resolveLocaleParam(params)
 
-  if (!locales.includes(locale as Locale)) notFound();
+  if (!locales.includes(locale as Locale)) notFound()
 
-  let messages: AbstractIntlMessages;
+  let messages: AbstractIntlMessages
   try {
-    messages = (await import(`@/messages/${locale}.json`)).default;
+    messages = (await import(`@/messages/${locale}.json`)).default
   } catch {
-    notFound();
+    notFound()
   }
 
-  const metadataMessages = isMessagesWithMetadata(messages) ? messages.metadata ?? FALLBACK_METADATA : FALLBACK_METADATA;
+  const metadataMessages = isMessagesWithMetadata(messages)
+    ? messages.metadata ?? FALLBACK_METADATA
+    : FALLBACK_METADATA
 
   const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: metadataMessages.openGraph?.siteName ?? "Betriebsanlagen Check",
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: metadataMessages.openGraph?.siteName ?? 'Betriebsanlagen Check',
     alternateName: metadataMessages.title,
     url: SITE_URL,
     description: metadataMessages.description,
     logo: `${SITE_URL}/file.svg`,
-    areaServed: "AT",
-  };
+    areaServed: 'AT',
+  }
 
   return (
     <html lang={locale}>
@@ -121,10 +126,10 @@ export default async function LocaleLayout({
         </NextIntlClientProvider>
       </body>
     </html>
-  );
+  )
 }
 
 export async function generateStaticParams() {
   // Pre-render every supported locale during build time for the localized routes.
-  return locales.map((locale) => ({ locale }));
+  return locales.map((locale) => ({ locale }))
 }
