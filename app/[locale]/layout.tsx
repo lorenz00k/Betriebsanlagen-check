@@ -18,14 +18,13 @@ import {
   buildLocalizedMetadata,
   isMessagesWithMetadata,
   resolveLocaleParam,
-  type LocaleParam,
   type MessagesWithMetadata,
 } from './metadataConfig'
 
 // generateMetadata builds locale-scoped metadata for the current route by combining
 // localized message bundles with inherited parent metadata values.
 export async function generateMetadata(
-  { params }: { params: { locale: string } },
+  { params }: { params: Promise<{ locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale } = await resolveLocaleParam(params)
@@ -48,7 +47,7 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode
-  params: LocaleParam
+  params: Promise<{ locale: string }>
 }) {
   const { locale } = await resolveLocaleParam(params)
 

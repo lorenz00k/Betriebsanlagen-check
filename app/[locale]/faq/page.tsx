@@ -17,7 +17,7 @@ import {
 
 // generateMetadata hydrates translated titles, descriptions, and alternates for the FAQ page.
 export async function generateMetadata(
-  { params }: { params: { locale: string } },
+  { params }: { params: Promise<{ locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale } = await resolveLocaleParam(params)
@@ -38,7 +38,9 @@ export async function generateMetadata(
 }
 
 // FAQPage loads the validated locale and delegates rendering to the client-side component.
-export default async function FAQPage({ params }: { params: { locale: string } }) {
+export default async function FAQPage(
+  { params }: { params: Promise<{ locale: string }> },
+) {
   const { locale } = await resolveLocaleParam(params)
 
   if (!locales.includes(locale as Locale)) {

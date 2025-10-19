@@ -17,7 +17,7 @@ import {
 
 // Compose localized metadata for the questionnaire result screen.
 export async function generateMetadata(
-  { params }: { params: { locale: string } },
+  { params }: { params: Promise<{ locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale } = await resolveLocaleParam(params)
@@ -38,7 +38,9 @@ export async function generateMetadata(
 }
 
 // Validate locale on the server and render the client result experience.
-export default async function ResultPage({ params }: { params: { locale: string } }) {
+export default async function ResultPage(
+  { params }: { params: Promise<{ locale: string }> },
+) {
   const { locale } = await resolveLocaleParam(params)
 
   if (!locales.includes(locale as Locale)) {
