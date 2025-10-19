@@ -12,13 +12,12 @@ import {
   buildLocalizedMetadata,
   isMessagesWithMetadata,
   resolveLocaleParam,
-  type LocaleParam,
   type MessagesWithMetadata,
 } from '../metadataConfig'
 
 // generateMetadata assembles localized metadata for the documents workflow instructions.
 export async function generateMetadata(
-  { params }: { params: LocaleParam },
+  { params }: { params: { locale: string } },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale } = await resolveLocaleParam(params)
@@ -39,7 +38,7 @@ export async function generateMetadata(
 }
 
 // DocumentsPage resolves the active locale on the server and delegates UI to the client component.
-export default async function DocumentsPage({ params }: { params: LocaleParam }) {
+export default async function DocumentsPage({ params }: { params: { locale: string } }) {
   const { locale } = await resolveLocaleParam(params)
 
   if (!locales.includes(locale as Locale)) {

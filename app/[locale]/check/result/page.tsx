@@ -11,14 +11,13 @@ import {
   ROUTE_FALLBACK_METADATA,
   buildLocalizedMetadata,
   isMessagesWithMetadata,
-  resolveLocaleParam,
-  type LocaleParam,
+  resolveLocaleParam
   type MessagesWithMetadata,
 } from '../../metadataConfig'
 
 // Compose localized metadata for the questionnaire result screen.
 export async function generateMetadata(
-  { params }: { params: LocaleParam },
+  { params }: { params: { locale: string } },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale } = await resolveLocaleParam(params)
@@ -39,7 +38,7 @@ export async function generateMetadata(
 }
 
 // Validate locale on the server and render the client result experience.
-export default async function ResultPage({ params }: { params: LocaleParam }) {
+export default async function ResultPage({ params }: { params: { locale: string } }) {
   const { locale } = await resolveLocaleParam(params)
 
   if (!locales.includes(locale as Locale)) {

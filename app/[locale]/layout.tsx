@@ -25,7 +25,7 @@ import {
 // generateMetadata builds locale-scoped metadata for the current route by combining
 // localized message bundles with inherited parent metadata values.
 export async function generateMetadata(
-  { params }: { params: LocaleParam },
+  { params }: { params: { locale: string } },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale } = await resolveLocaleParam(params)
