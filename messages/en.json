@@ -377,6 +377,57 @@
     "twitter": {
       "title": "Business Facility Permit Check: Do you need approval?",
       "description": "Answer a few questions to see if your Vienna business facility needs a permit and get guidance on the next steps."
+    },
+    "faq": {
+      "title": "Business facility permit FAQ – Answers for Vienna entrepreneurs",
+      "description": "Get clear answers on permit requirements, timelines, costs, and responsible contacts for the Vienna operating licence.",
+      "keywords": [
+        "business permit FAQ",
+        "Vienna operating licence questions",
+        "facility approval information"
+      ],
+      "openGraph": {
+        "title": "FAQ: Vienna business facility permit requirements",
+        "description": "Find quick answers about obligations, inspections, and timelines for your business facility."
+      },
+      "twitter": {
+        "title": "FAQ: Operating permit for Vienna businesses",
+        "description": "Everything you need to know about permit duties, documents, and timelines in one place."
+      }
+    },
+    "documents": {
+      "title": "Documents for your Vienna business facility permit",
+      "description": "Step-by-step overview of mandatory forms, plans, expert reports, and submission channels for the operating permit.",
+      "keywords": [
+        "business permit documents Vienna",
+        "operating licence checklist",
+        "facility approval paperwork"
+      ],
+      "openGraph": {
+        "title": "Checklist: Documents for the Vienna operating permit",
+        "description": "Prepare applications, plans, and expert opinions with our structured guidance."
+      },
+      "twitter": {
+        "title": "Vienna permit documents checklist",
+        "description": "See which forms and attachments you need before submitting your business facility application."
+      }
+    },
+    "checkResult": {
+      "title": "Your business facility check result",
+      "description": "Review whether your business needs an operating permit and which next steps we recommend.",
+      "keywords": [
+        "business permit result",
+        "Vienna operating licence advice",
+        "next steps facility approval"
+      ],
+      "openGraph": {
+        "title": "Result: Does your Vienna business need a permit?",
+        "description": "Understand your outcome and move forward with the right contacts and documents."
+      },
+      "twitter": {
+        "title": "Your operating permit check result",
+        "description": "Personalised guidance on permit status, documentation, and follow-up actions."
+      }
     }
   }
 }

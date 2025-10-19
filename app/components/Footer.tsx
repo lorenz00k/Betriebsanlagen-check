@@ -1,10 +1,12 @@
 'use client'
 
+// Footer renders the localized legal links and disclaimers while preserving the active locale.
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { defaultLocale } from '@/i18n'
 
+// Displays a localized footer with imprint/privacy shortcuts tied to the current locale.
 export default function Footer() {
   const t = useTranslations('home.footer')
   const params = useParams<{ locale: string }>()

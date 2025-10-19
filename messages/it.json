@@ -377,6 +377,57 @@
     "twitter": {
       "title": "Verifica permessi: hai bisogno di un'autorizzazione?",
       "description": "Rispondi a poche domande per scoprire se la tua attività a Vienna necessita di un permesso e ricevi indicazioni sui prossimi passi."
+    },
+    "faq": {
+      "title": "FAQ sull'autorizzazione degli impianti aziendali a Vienna",
+      "description": "Risposte chiare su requisiti, tempistiche, costi e referenti per ottenere l'autorizzazione del tuo impianto a Vienna.",
+      "keywords": [
+        "FAQ autorizzazione impianto",
+        "domande licenza Vienna",
+        "informazioni permesso aziendale"
+      ],
+      "openGraph": {
+        "title": "FAQ: Domande principali sull'autorizzazione dell'impianto",
+        "description": "Trova rapidamente informazioni su obblighi, ispezioni e scadenze per la tua attività."
+      },
+      "twitter": {
+        "title": "FAQ permesso impianto aziendale",
+        "description": "Tutto ciò che devi sapere su permessi, documenti e tempistiche, tradotto nella tua lingua."
+      }
+    },
+    "documents": {
+      "title": "Documenti per l'autorizzazione dell'impianto aziendale a Vienna",
+      "description": "Panoramica passo passo dei moduli obbligatori, dei piani, delle perizie tecniche e delle modalità di presentazione.",
+      "keywords": [
+        "documenti permesso Vienna",
+        "checklist licenza operativa",
+        "iter autorizzazione impianto"
+      ],
+      "openGraph": {
+        "title": "Checklist: Documenti per la licenza operativa a Vienna",
+        "description": "Prepara domande, piani e perizie richieste dalla MA 36 con la nostra guida."
+      },
+      "twitter": {
+        "title": "Documenti essenziali per l'autorizzazione",
+        "description": "Scopri quali allegati servono prima di presentare la domanda per il tuo impianto a Vienna."
+      }
+    },
+    "checkResult": {
+      "title": "Risultato della tua verifica dell'impianto",
+      "description": "Verifica se la tua attività necessita di autorizzazione e quali passi ti consigliamo di seguire.",
+      "keywords": [
+        "risultato verifica permesso",
+        "prossimi passi autorizzazione",
+        "valutazione impianto aziendale"
+      ],
+      "openGraph": {
+        "title": "Risultato: La tua attività ha bisogno di un permesso?",
+        "description": "Comprendi l'esito e organizza contatti e documenti corretti per proseguire."
+      },
+      "twitter": {
+        "title": "Il risultato della tua verifica permessi",
+        "description": "Indicazioni personalizzate su stato dell'autorizzazione, documentazione e azioni successive."
+      }
     }
   }
 }

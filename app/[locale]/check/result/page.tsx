@@ -1,45 +1,46 @@
-'use client'
+// Server entry point for the localized questionnaire result view that wires up SEO metadata
+// before handing rendering off to the interactive client component.
+import type { Metadata, ResolvingMetadata } from 'next'
+import { notFound } from 'next/navigation'
 
-import { useEffect, useState } from 'react'
-import { useTranslations } from 'next-intl'
-import { useParams, useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { defaultLocale } from '@/i18n'
+import { locales, type Locale } from '@/i18n'
 
-interface Result {
-  needsPermit: boolean
-  reasons: string[]
+import ResultPageClient from './ResultPageClient'
+import {
+  ROUTE_FALLBACK_METADATA,
+  buildLocalizedMetadata,
+  isMessagesWithMetadata,
+  type MessagesWithMetadata,
+} from '../../metadataConfig'
+
+type LocaleParams = { params: Promise<{ locale: string }> }
+
+// generateMetadata composes localized metadata for the questionnaire result screen.
+export async function generateMetadata(
+  { params }: LocaleParams,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const { locale } = await params
+
+  const importedMessages = (await import(`@/messages/${locale}.json`)).default as MessagesWithMetadata
+  const metadataMessages = isMessagesWithMetadata(importedMessages)
+    ? importedMessages.metadata?.checkResult ?? ROUTE_FALLBACK_METADATA.checkResult
+    : ROUTE_FALLBACK_METADATA.checkResult
+
+  return buildLocalizedMetadata({
+    locale,
+    pathname: '/check/result',
+    metadataMessages,
+    parent,
+  })
 }
 
-export default function ResultPage() {
-  const t = useTranslations('result')
-  const router = useRouter()
-  const params = useParams<{ locale: string }>()
-  const paramLocale = params?.locale
-  const locale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale
-  const [result, setResult] = useState<Result | null>(null)
-  const [loading, setLoading] = useState(true)
+// ResultPage validates the locale on the server and renders the client result experience.
+export default async function ResultPage({ params }: LocaleParams) {
+  const { locale } = await params
 
-  useEffect(() => {
-    const storedResult = sessionStorage.getItem('questionnaireResult')
-    if (storedResult) {
-      setResult(JSON.parse(storedResult))
-    } else {
-      router.push(`/${locale}/check`)
-    }
-    setLoading(false)
-  }, [locale, router])
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600"></div>
-      </div>
-    )
-  }
-
-  if (!result) {
-    return null
+  if (!locales.includes(locale as Locale)) {
+    notFound()
   }
 
   return (

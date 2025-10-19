@@ -1,5 +1,7 @@
 "use client";
 
+// Home renders the localized landing page experience, including hero messaging,
+// CTA cards, and animated visuals tailored to the active locale.
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -7,6 +9,7 @@ import AnimatedStats from "../components/AnimatedStats";
 import { useEffect, useState } from "react";
 import { defaultLocale } from "@/i18n";
 
+// Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
   const t = useTranslations("home");
   const params = useParams<{ locale: string }>();

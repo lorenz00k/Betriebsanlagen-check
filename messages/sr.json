@@ -377,6 +377,57 @@
     "twitter": {
       "title": "Provera dozvole: da li vam je potrebno odobrenje?",
       "description": "Odgovorite na nekoliko pitanja kako biste saznali da li je vašem poslovnom prostoru u Beču potrebna dozvola i koje korake potom preduzeti."
+    },
+    "faq": {
+      "title": "Česta pitanja o dozvoli za poslovni objekat u Beču",
+      "description": "Saznajte sve o uslovima, rokovima, troškovima i kontaktima za dobijanje dozvole za poslovni objekat u Beču.",
+      "keywords": [
+        "FAQ dozvola poslovni objekat",
+        "pitanja odobrenje Beč",
+        "informacije poslovni objekat"
+      ],
+      "openGraph": {
+        "title": "FAQ: Najvažnija pitanja o odobrenju poslovnog objekta",
+        "description": "Brzo pronađite informacije o obavezama, kontrolama i rokovima za vaš poslovni prostor."
+      },
+      "twitter": {
+        "title": "FAQ dozvola za poslovni objekat",
+        "description": "Ključne informacije o dozvolama, dokumentima i rokovima na jednom mestu."
+      }
+    },
+    "documents": {
+      "title": "Dokumenta za dozvolu poslovnog objekta u Beču",
+      "description": "Pregled obaveznih obrazaca, planova, stručnih izveštaja i načina predaje zahteva.",
+      "keywords": [
+        "dokumenta dozvola Beč",
+        "checklista poslovni objekat",
+        "postupak odobrenja objekta"
+      ],
+      "openGraph": {
+        "title": "Checklista: Dokumenta za odobrenje poslovnog objekta",
+        "description": "Pripremite prijavu, planove i stručne elaborate prema zahtevima MA 36."
+      },
+      "twitter": {
+        "title": "Dokumenta potrebna za dozvolu",
+        "description": "Saznajte koje priloge treba prikupiti pre predaje zahteva u Beču."
+      }
+    },
+    "checkResult": {
+      "title": "Rezultat vaše provere poslovnog objekta",
+      "description": "Pogledajte da li je vašoj delatnosti potrebna dozvola i koje sledeće korake preporučujemo.",
+      "keywords": [
+        "rezultat provere dozvole",
+        "sledeći koraci odobrenje",
+        "procena poslovnog objekta"
+      ],
+      "openGraph": {
+        "title": "Rezultat: Da li je vašem poslovnom objektu potrebna dozvola?",
+        "description": "Razumite ishod i nastavite sa pravim kontaktima i dokumentima."
+      },
+      "twitter": {
+        "title": "Vaš rezultat provere dozvole",
+        "description": "Personalizovane preporuke o statusu dozvole, dokumentaciji i narednim koracima."
+      }
     }
   }
 }

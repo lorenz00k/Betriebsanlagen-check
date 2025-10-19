@@ -326,6 +326,57 @@
     "twitter": {
       "title": "İzin kontrolü: Onaya ihtiyacınız var mı?",
       "description": "Birkaç soruyu yanıtlayarak Viyana'daki işletme tesisinizin izne ihtiyaç duyup duymadığını öğrenin ve sonraki adımlar hakkında rehberlik alın."
+    },
+    "faq": {
+      "title": "Viyana'da işletme tesisi izni hakkında SSS",
+      "description": "İzin şartları, süreler, maliyetler ve sorumlu kurumlar hakkında net yanıtlar alın.",
+      "keywords": [
+        "işletme izni SSS",
+        "Viyana izin soruları",
+        "tesis izni bilgileri"
+      ],
+      "openGraph": {
+        "title": "SSS: İşletme tesisi izniyle ilgili en önemli sorular",
+        "description": "Yükümlülükler, denetimler ve zaman çizelgeleri hakkında hızlı bilgi edinin."
+      },
+      "twitter": {
+        "title": "SSS: İşletme izni ve belgeler",
+        "description": "İzinler, belgeler ve süreler hakkında bilmeniz gereken her şey tek bir sayfada."
+      }
+    },
+    "documents": {
+      "title": "Viyana'da işletme tesisi izni için gerekli belgeler",
+      "description": "Zorunlu formlar, planlar, uzman raporları ve başvuru kanallarına dair adım adım rehber.",
+      "keywords": [
+        "izin belgeleri Viyana",
+        "işletme izni kontrol listesi",
+        "tesis izni başvurusu"
+      ],
+      "openGraph": {
+        "title": "Kontrol listesi: İşletme izni için belgeler",
+        "description": "MA 36'nın talep ettiği başvuruları, planları ve raporları düzenli bir şekilde hazırlayın."
+      },
+      "twitter": {
+        "title": "İşletme izni belgeleri rehberi",
+        "description": "Başvuru öncesinde hangi ekleri toplamanız gerektiğini öğrenin."
+      }
+    },
+    "checkResult": {
+      "title": "İşletme tesisi kontrolünüzün sonucu",
+      "description": "İşletmenizin izne ihtiyaç duyup duymadığını ve önerdiğimiz sonraki adımları görüntüleyin.",
+      "keywords": [
+        "izin kontrolü sonucu",
+        "sonraki adımlar işletme izni",
+        "işletme tesisi değerlendirmesi"
+      ],
+      "openGraph": {
+        "title": "Sonuç: İşletmeniz için izin gerekiyor mu?",
+        "description": "Sonucunuzu yorumlayın ve doğru iletişimler ile belgelerle ilerleyin."
+      },
+      "twitter": {
+        "title": "İzin kontrolü sonucunuz",
+        "description": "İzin durumu, belgeler ve eylemler hakkında kişiselleştirilmiş öneriler."
+      }
     }
   },
   "faq": {

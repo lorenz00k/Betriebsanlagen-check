@@ -326,6 +326,57 @@
     "twitter": {
       "title": "Verificador de permisos: ¿necesita autorización?",
       "description": "Responda algunas preguntas para saber si su instalación en Viena requiere permiso y reciba orientación sobre los siguientes pasos."
+    },
+    "faq": {
+      "title": "FAQ sobre permisos de instalaciones comerciales en Viena",
+      "description": "Resuelve dudas sobre requisitos, plazos, costes y contactos para la autorización de tu negocio en Viena.",
+      "keywords": [
+        "preguntas permiso Viena",
+        "FAQ licencia comercial",
+        "información autorización instalación"
+      ],
+      "openGraph": {
+        "title": "FAQ: Preguntas clave sobre la autorización de instalaciones comerciales",
+        "description": "Encuentra respuestas rápidas sobre obligaciones, inspecciones y requisitos para emprender en Viena."
+      },
+      "twitter": {
+        "title": "FAQ autorización de instalaciones en Viena",
+        "description": "Todo lo esencial sobre permisos, documentos y plazos explicado en tu idioma."
+      }
+    },
+    "documents": {
+      "title": "Documentos para tu permiso de instalación comercial en Viena",
+      "description": "Resumen paso a paso de formularios, planos, informes periciales y vías de presentación para tu solicitud.",
+      "keywords": [
+        "documentos permiso Viena",
+        "checklist licencia comercial",
+        "trámite autorización instalación"
+      ],
+      "openGraph": {
+        "title": "Checklist: Documentación necesaria para el permiso en Viena",
+        "description": "Prepárate con formularios, planos y peritajes según exige la MA 36."
+      },
+      "twitter": {
+        "title": "Documentos clave para la autorización comercial",
+        "description": "Conoce qué anexos debes reunir antes de presentar tu solicitud en Viena."
+      }
+    },
+    "checkResult": {
+      "title": "Resultado de tu verificación de instalación comercial",
+      "description": "Comprueba si tu negocio necesita permiso y qué pasos recomendamos a continuación.",
+      "keywords": [
+        "resultado permiso Viena",
+        "siguientes pasos autorización",
+        "evaluación instalación comercial"
+      ],
+      "openGraph": {
+        "title": "Resultado: ¿Necesita permiso tu negocio en Viena?",
+        "description": "Interpreta tu resultado y descubre contactos y documentos relevantes."
+      },
+      "twitter": {
+        "title": "Tu resultado del chequeo de permisos",
+        "description": "Recomendaciones personalizadas sobre documentos, contactos y próximos pasos."
+      }
     }
   },
   "faq": {

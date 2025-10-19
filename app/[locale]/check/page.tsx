@@ -1,5 +1,7 @@
 'use client'
 
+// QuestionnairePage runs the multi-step permit assessment, persisting answers and
+// routing to the localized result screen once the evaluation is complete.
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { useParams, useRouter } from 'next/navigation'
@@ -7,6 +9,7 @@ import type { QuestionnaireData, BusinessType } from '@/app/lib/questionnaireLog
 import { getVisibleQuestions, evaluatePermitNeed } from '@/app/lib/questionnaireLogic'
 import { defaultLocale } from '@/i18n'
 
+// Renders the localized questionnaire wizard and writes the outcome to session storage.
 export default function QuestionnairePage() {
   const t = useTranslations('questionnaire')
   const router = useRouter()

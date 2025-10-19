@@ -1,3 +1,5 @@
+// LocaleLayout bootstraps every localized route by loading translations, metadata,
+// and shared navigation while exposing locale-aware structured data for search engines.
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { NextIntlClientProvider } from "next-intl";
@@ -6,124 +8,38 @@ import { notFound } from "next/navigation";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import { defaultLocale, locales, type Locale } from "@/i18n";
+import { locales, type Locale } from "@/i18n";
 import Footer from "../components/Footer";
 import LanguageBanner from "../components/LanguageBanner";
 import LanguageSwitcher from "../components/LanguageSwitcher";
+import {
+  FALLBACK_METADATA,
+  SITE_URL,
+  buildLocalizedMetadata,
+  isMessagesWithMetadata,
+  type MessagesWithMetadata,
+} from "./metadataConfig";
 
-type MetadataContent = {
-  title: string;
-  description: string;
-  keywords?: string[];
-  openGraph?: {
-    title?: string;
-    description?: string;
-    siteName?: string;
-    images?: {
-      url: string;
-      width?: number;
-      height?: number;
-      alt?: string;
-    }[];
-  };
-  twitter?: {
-    title?: string;
-    description?: string;
-    creator?: string;
-    images?: string[];
-  };
-};
-
-type MessagesWithMetadata = AbstractIntlMessages & { metadata?: MetadataContent };
-
-
-const FALLBACK_METADATA: MetadataContent = {
-  title: "Betriebsanlagen Check",
-  description:
-    "Prüfen Sie online, ob Sie für Ihre Betriebsanlage eine Genehmigung benötigen, und erhalten Sie eine Schritt-für-Schritt-Anleitung.",
-  openGraph: {
-    siteName: "Betriebsanlagen Check",
-  },
-  twitter: {
-    title: "Betriebsanlagen Check",
-    description:
-      "Finden Sie in wenigen Minuten heraus, ob Ihre Betriebsanlage genehmigungspflichtig ist.",
-  },
-};
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://betriebsanlagen-check.vercel.app";
-
-const isMessagesWithMetadata = (messages: AbstractIntlMessages): messages is MessagesWithMetadata =>
-  typeof (messages as MessagesWithMetadata).metadata === "object" &&
-  (messages as MessagesWithMetadata).metadata !== null;
-
+// generateMetadata builds locale-scoped metadata for the current route by combining
+// localized message bundles with inherited parent metadata values.
 export async function generateMetadata(
   { params }: { params: { locale: string } | Promise<{ locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale } = await params;
 
-  if (!locales.includes(locale as Locale)) {
-    return {};
-  }
-
   const importedMessages = (await import(`@/messages/${locale}.json`)).default as MessagesWithMetadata;
   const metadataMessages = importedMessages.metadata ?? FALLBACK_METADATA;
 
-  const metadataBase = new URL(SITE_URL);
-  const canonical = new URL(`/${locale}`, metadataBase).toString();
-  const languageAlternates = locales.reduce<Record<string, string>>((acc, currentLocale) => {
-    acc[currentLocale] = new URL(`/${currentLocale}`, metadataBase).toString();
-    return acc;
-  }, {});
-  languageAlternates["x-default"] = languageAlternates[defaultLocale];
-
-  const openGraphConfig = metadataMessages.openGraph ?? {};
-  const twitterConfig = metadataMessages.twitter ?? {};
-  const parentMetadata = await parent;
-  const images = openGraphConfig.images ?? parentMetadata.openGraph?.images;
-  const fallbackTwitterImages = Array.isArray(images)
-    ? images
-        .map((image) => {
-          if (typeof image === "string") return image;
-          if (image instanceof URL) return image.toString();
-          return image?.url;
-        })
-        .filter((value): value is string => Boolean(value))
-    : typeof images === "string"
-      ? [images]
-      : undefined;
-  const twitterImages = twitterConfig.images ?? fallbackTwitterImages;
-
-  return {
-    metadataBase,
-    title: metadataMessages.title,
-    description: metadataMessages.description,
-    keywords: metadataMessages.keywords,
-    alternates: {
-      canonical,
-      languages: languageAlternates,
-    },
-    openGraph: {
-      ...parentMetadata.openGraph,
-      type: "website",
-      url: canonical,
-      locale,
-      siteName: openGraphConfig.siteName ?? metadataMessages.title,
-      title: openGraphConfig.title ?? metadataMessages.title,
-      description: openGraphConfig.description ?? metadataMessages.description,
-      images,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: twitterConfig.title ?? metadataMessages.title,
-      description: twitterConfig.description ?? metadataMessages.description,
-      creator: twitterConfig.creator,
-      images: twitterImages,
-    },
-  };
+  return buildLocalizedMetadata({
+    locale,
+    metadataMessages,
+    parent,
+  });
 }
 
+// LocaleLayout renders the shared shell (html/body/nav/footer) for all localized pages
+// after verifying the requested locale and wiring up analytics plus organization schema.
 export default async function LocaleLayout({
   children,
   params,
@@ -209,5 +125,6 @@ export default async function LocaleLayout({
 }
 
 export async function generateStaticParams() {
+  // Pre-render every supported locale during build time for the localized routes.
   return locales.map((locale) => ({ locale }));
 }
