@@ -5,9 +5,9 @@
   "home": {
     "title": "Business Facility Permit Check for Founders",
     "subtitle": "Find out in 2 minutes if you need a business facility permit",
-    "card1Title": "Betriebsanlagen Codex",
+    "card1Title": "Betriebsanlagen checker",
     "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
-    "card1Button": "Start codex",
+    "card1Button": "Start checker",
     "card2Title": "Your path and required documents",
     "card2Description": "Overview of all steps and documents you need for a business facility permit",
     "card2Button": "Learn more",
@@ -33,10 +33,7 @@
       "disclaimer": "This website is for informational purposes only. For legally binding information, please contact the relevant authorities.",
       "imprint": "Legal notice",
       "privacy": "Privacy"
-    },
-    "card3Title": "2nd GFVO decision path",
-    "card3Description": "Answer three questions and receive a legally grounded indication whether your facility can operate permit-free.",
-    "card3Button": "Start 2nd GFVO check"
+    }
   },
   "documents": {
     "title": "Your path to a business facility permit",
@@ -329,173 +326,9 @@
       }
     }
   },
-  "gfvoChecker": {
-    "badge": "New decision aid",
-    "title": "Assess permit exemption under the 2nd GFVO",
-    "intro": "Answer three questions to receive a legally grounded assessment of whether your facility is permit-free.",
-    "disclaimer": "Note: This tool provides orientation.\nIt checks whether your business generally falls under an exemption of Vienna’s 2nd Permit Exemption Ordinance.\nThe result is not an administrative decision or legal advice under the Legal Services Act.\nThe binding decision is made by MA 36 (Vienna business facilities authority).",
-    "progress": {
-      "title": "Progress",
-      "step": "Step {current} of {total}"
-    },
-    "buttons": {
-      "back": "Back",
-      "next": "Next",
-      "finish": "Show evaluation",
-      "startOver": "Start over",
-      "adjustAnswers": "Adjust answers"
-    },
-    "steps": {
-      "category": {
-        "title": "Which category applies to the facility?",
-        "description": "Select the category from § 1 (1) nos. 1–13 of the 2nd GFVO that best matches your planned operation.",
-        "hint": "Tip: If none apply, choose “None of the categories” to receive an immediate permit-required result.",
-        "timeExemptBadge": "Time rule not applicable"
-      },
-      "operatingTimes": {
-        "title": "Do you comply with the operating time limits?",
-        "description": "Permit-free facilities must run Monday–Friday 06:00–22:00 and Saturday 06:00–19:00 (deliveries until 19:00/18:00).",
-        "options": {
-          "compliant": {
-            "title": "Yes, we stay within these windows",
-            "description": "Operation is limited to the hours specified in § 1 (2) of the 2nd GFVO."
-          },
-          "notCompliant": {
-            "title": "No, longer opening/delivery times planned",
-            "description": "Night-time, Sunday business or deliveries outside the permitted windows are foreseen."
-          }
-        },
-        "reminder": "Exceptions apply only to accommodation, ice-cream parlours, textile pick-up stations, data centres as well as facilities in stations, airports, ports or approved complexes (§ 1 (2) 2nd GFVO)."
-      },
-      "exclusions": {
-        "title": "Do any § 2 2nd GFVO exclusions apply?",
-        "description": "Check every statement that fits. A single exclusion triggers the permit requirement.",
-        "reminder": "Only if none of the § 2 2nd GFVO exclusions are triggered will the facility remain permit-free."
-      }
-    },
-    "categories": {
-      "retail": {
-        "title": "Retail up to 600 m²",
-        "description": "e.g. shop, boutique or store with max. 600 m² sales area."
-      },
-      "office": {
-        "title": "Office operation",
-        "description": "Pure office/service rooms without noise-intensive machinery."
-      },
-      "warehouse": {
-        "title": "Indoor warehouse up to 600 m²",
-        "description": "Closed storage for goods or supplies up to 600 m²."
-      },
-      "beauty": {
-        "title": "Cosmetics & personal care",
-        "description": "Cosmetic, foot care, hairdresser, massage and bandagist businesses."
-      },
-      "tailor": {
-        "title": "Tailoring & shoe service",
-        "description": "Alteration tailors, household-type sewing shops or cobblers."
-      },
-      "photography": {
-        "title": "Photo studio",
-        "description": "Photographer businesses including studio areas."
-      },
-      "dental": {
-        "title": "Dental studio/lab",
-        "description": "Without smelting furnace or only with a furnace connected to a chimney."
-      },
-      "accommodation": {
-        "title": "Accommodation (max. 30 beds)",
-        "description": "Hotels/guesthouses without wellness area, offering at most breakfast or light snacks."
-      },
-      "iceCreamParlor": {
-        "title": "Ice-cream parlour",
-        "description": "Catering business operated purely as an ice-cream parlour."
-      },
-      "textilePickup": {
-        "title": "Textile pick-up station",
-        "description": "Drop-off points for dry-cleaning/ironing without on-site processing."
-      },
-      "dataCenter": {
-        "title": "Data centre",
-        "description": "Electronic data processing without own firing systems (emergency power allowed)."
-      },
-      "insideInfrastructure": {
-        "title": "Facility inside station, airport, port or hospital",
-        "description": "Facility located within an already approved transport hub or hospital."
-      },
-      "withinComplex": {
-        "title": "Small facility up to 400 m² in an approved complex",
-        "description": "e.g. shop inside a shopping mall with an existing overall permit."
-      },
-      "none": {
-        "title": "None of the categories apply",
-        "description": "The planned facility cannot be assigned to the types listed in § 1 (1) of the 2nd GFVO."
-      }
-    },
-    "exclusions": {
-      "externalVentilation": {
-        "question": "Are there outdoor ventilation or AC units?",
-        "description": "External fans, AC units or exhaust/waste-heat devices fall under § 2 (1) of the 2nd GFVO."
-      },
-      "regulatedStorage": {
-        "question": "Do you store hazardous substances with special legal storage rules?",
-        "description": "E.g. larger amounts of flammable liquids, gas cylinders or LPG requiring specific storage (§ 2 (2) 2nd GFVO)."
-      },
-      "unregulatedHazards": {
-        "question": "Do you store labelled hazardous substances without special rules?",
-        "description": "Even without specific regulations, storing labelled hazardous chemicals triggers § 2 (3) 2nd GFVO."
-      },
-      "loudMusic": {
-        "question": "Is loud music or live performance planned?",
-        "description": "Anything beyond low-level background music (≈ 58 dB(A)) counts as music activity under § 2 (4) 2nd GFVO."
-      },
-      "ippcSeveso": {
-        "question": "Does the project fall under IPPC or Seveso?",
-        "description": "Large-scale plants subject to EIA/major-accident rules (§ 2 (5) 2nd GFVO) remain permit-bound."
-      }
-    },
-    "result": {
-      "permitFree": {
-        "title": "Permit-free under the 2nd GFVO",
-        "subtitle": "All requirements of the 2nd GFVO are met – no facility permit is currently required.",
-        "note": "Continue to comply with the stated assumptions (category, operating times, no exclusions). Any change requires a new assessment or the exemption no longer applies."
-      },
-      "permitRequired": {
-        "title": "Permit requirement applies",
-        "subtitle": "At least one condition of the 2nd GFVO is not fulfilled. A facility permit under § 74 GewO is therefore required.",
-        "nextStepsTitle": "Next steps in Vienna",
-        "nextStepsIntro": "Submit an application to MA 36 – Betriebsanlagen (responsible regional centre) before construction or start-up.",
-        "documentsTitle": "Typical documents requested by the City of Vienna",
-        "documents": [
-          "Completed application form (MA 36)",
-          "Detailed description of operations (multiple copies)",
-          "List of machines and equipment with performance/emission data",
-          "Site plan, floor plans and sections of the premises (multiple copies)",
-          "Waste management concept where applicable",
-          "Technical descriptions of special installations (e.g. ventilation, heating, cooling)",
-          "Evidence for related legal areas (e.g. building, water, labour or fire safety law)"
-        ],
-        "contactHint": "Recommendation: Contact the responsible centre in advance (project consultation day) or file a declaratory application if unclear."
-      },
-      "reasonsTitle": "Decision rationale",
-      "reasons": {
-        "categoryMet": "The facility belongs to {category} and is covered by the permit-free categories in § 1 (1) of the 2nd GFVO.",
-        "operatingTimesMet": "Planned operating and delivery times follow the limits of § 1 (2) 2nd GFVO.",
-        "operatingTimesExempt": "{category} is exempt from the operating time limits according to § 1 (2) 2nd GFVO.",
-        "noExclusions": "None of the exclusion criteria in § 2 2nd GFVO are triggered.",
-        "categoryMissing": "The facility cannot be assigned to any category in § 1 (1) 2nd GFVO – a permit is required.",
-        "operatingTimesMissing": "Planned operating or delivery hours exceed the permitted windows (§ 1 (2) 2nd GFVO) – exemption no longer applies.",
-        "externalVentilation": "Outdoor ventilation or AC units trigger § 2 (1) 2nd GFVO, making the facility permit-bound.",
-        "regulatedStorage": "Hazardous materials subject to special storage rules (§ 2 (2) 2nd GFVO) prevent exemption.",
-        "unregulatedHazards": "Storing labelled hazardous substances without special rules falls under § 2 (3) 2nd GFVO, requiring a permit.",
-        "loudMusic": "Planned loud music or performances exceed the background music allowance (§ 2 (4) 2nd GFVO).",
-        "ippcSeveso": "The project is within the IPPC/Seveso scope (§ 2 (5) 2nd GFVO) and remains permit-bound.",
-        "genericCategoryLabel": "the selected category"
-      }
-    }
-  },
   "complianceChecker": {
-    "badge": "Codex 2.0",
-    "title": "Betriebsanlagen codex (Austrian Trade Act)",
+    "badge": "Checker 2.0",
+    "title": "Betriebsanlagen checker (Austrian Trade Act)",
     "subtitle": "Work through the structured review covering facility status, permit duty, submission documents, worker protection metrics, and operational duties.",
     "progress": "Step {current} of {total}",
     "actions": {
@@ -510,7 +343,7 @@
       },
       "sector": {
         "question": "Which business type are you planning?",
-        "helper": "The codex covers retail, services, hospitality/accommodation, workshops, logistics, cosmetics, data centres, and self-service concepts.",
+        "helper": "The checker covers retail, services, hospitality/accommodation, workshops, logistics, cosmetics, data centres, and self-service concepts.",
         "options": {
           "retail": "Retail / shop",
           "office": "Office or service space",
@@ -634,9 +467,9 @@
     }
   },
   "complianceResult": {
-    "title": "Betriebsanlagen codex assessment",
+    "title": "Betriebsanlagen checker assessment",
     "actions": {
-      "restart": "Restart codex"
+      "restart": "Restart checker"
     },
     "sections": {
       "procedural": "Competent authority & procedure",
@@ -652,12 +485,13 @@
       "title": "Classification under the 2nd GFVO"
     },
     "reasons": {
+      "title": "Legal reasoning",
       "externalVentilation": "Outdoor ventilation or cooling units trigger permit duty under Sec. 2 item 2 2nd GFVO.",
       "regulatedHazardousStorage": "Hazardous materials governed by special regulations exclude the exemption (Sec. 2 item 3).",
       "labelledHazardousStorage": "Label-required hazardous substances without specific storage rules remain permit-required (Sec. 2 item 4).",
       "musicExclusion": "Music performances or loud sound exclude the exemption (Sec. 2 item 5).",
       "ippcSeveso": "IPPC / Seveso relevant plants are always permit cases (Sec. 2 item 6).",
-      "noFacilityDefinition": "No stationary, non-temporary facility – therefore the codex stops here.",
+      "noFacilityDefinition": "No stationary, non-temporary facility – therefore the checker stops here.",
       "operatingHours": "Planned hours exceed the 2nd GFVO window (Sec. 1 (2)).",
       "areaExceeded": "The given area exceeds the threshold of the selected exemption category.",
       "accommodationBeds": "More than 30 beds require a permit (Sec. 1 (1) item 8).",

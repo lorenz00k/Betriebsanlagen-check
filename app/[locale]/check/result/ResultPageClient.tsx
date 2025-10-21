@@ -1,6 +1,6 @@
 "use client"
 
-// ResultPageClient presents the codex evaluation with detailed reasoning,
+// ResultPageClient presents the checker evaluation with detailed reasoning,
 // document lists, occupational safety guidance, and operational obligations.
 import { useEffect, useMemo, useState } from "react"
 import { useTranslations } from "next-intl"
@@ -18,7 +18,7 @@ type Section = {
   items: string[]
 }
 
-// Displays the localized compliance codex result and falls back to the wizard if no data is present.
+// Displays the localized compliance checker result and falls back to the wizard if no data is present.
 export default function ResultPageClient({ locale }: ResultPageClientProps) {
   const t = useTranslations("complianceResult")
   const translate = useTranslations()

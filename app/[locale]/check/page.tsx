@@ -1,6 +1,6 @@
 "use client"
 
-// ComplianceCheckerPage renders the multi-step codex that captures the
+// ComplianceCheckerPage renders the multi-step checker that captures the
 // information required to assess Betriebsanlagen status, GFVO exemptions,
 // document requirements, and ongoing duties.
 import { useMemo, useState, type ChangeEvent } from "react"
