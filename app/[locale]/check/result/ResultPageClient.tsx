@@ -21,6 +21,7 @@ type Section = {
 // Displays the localized compliance codex result and falls back to the wizard if no data is present.
 export default function ResultPageClient({ locale }: ResultPageClientProps) {
   const t = useTranslations("complianceResult")
+  const translate = useTranslations()
   const homeT = useTranslations("home")
   const router = useRouter()
   const [result, setResult] = useState<ComplianceResult | null>(null)
@@ -42,41 +43,41 @@ export default function ResultPageClient({ locale }: ResultPageClientProps) {
     return [
       {
         title: t("sections.procedural"),
-        items: result.proceduralKeys.map((key) => t(key)),
+        items: result.proceduralKeys.map((key) => translate(key)),
       },
       {
         title: t("sections.documents"),
         items: [
-          ...result.documentGeneralKeys.map((key) => t(key)),
-          ...result.documentSectorKeys.map((key) => t(key)),
+          ...result.documentGeneralKeys.map((key) => translate(key)),
+          ...result.documentSectorKeys.map((key) => translate(key)),
         ],
       },
       {
         title: t("sections.labour"),
-        items: result.labourKeys.map((key) => t(key)),
+        items: result.labourKeys.map((key) => translate(key)),
       },
       {
         title: t("sections.operationalDuties"),
-        items: result.operationalDutyKeys.map((key) => t(key)),
+        items: result.operationalDutyKeys.map((key) => translate(key)),
       },
       {
         title: t("sections.changeDuties"),
-        items: result.changeDutyKeys.map((key) => t(key)),
+        items: result.changeDutyKeys.map((key) => translate(key)),
       },
       {
         title: t("sections.preCheck"),
-        items: result.preCheckKeys.map((key) => t(key)),
+        items: result.preCheckKeys.map((key) => translate(key)),
       },
       {
         title: t("sections.specialNotes"),
-        items: result.specialNoteKeys.map((key) => t(key)),
+        items: result.specialNoteKeys.map((key) => translate(key)),
       },
       {
         title: t("sections.quickReferences"),
-        items: result.quickReferenceKeys.map((key) => t(key)),
+        items: result.quickReferenceKeys.map((key) => translate(key)),
       },
     ].filter((section) => section.items.length > 0)
-  }, [result, t])
+  }, [result, t, translate])
 
   if (loading) {
     return (
@@ -90,8 +91,8 @@ export default function ResultPageClient({ locale }: ResultPageClientProps) {
     return null
   }
 
-  const classificationTitle = t(result.classificationKey)
-  const classificationSummary = t(result.summaryKey)
+  const classificationTitle = translate(result.classificationKey)
+  const classificationSummary = translate(result.summaryKey)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 py-12">
@@ -118,7 +119,7 @@ export default function ResultPageClient({ locale }: ResultPageClientProps) {
           {result.gfvoCategoryKey ? (
             <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 mb-6">
               <h3 className="text-xl font-semibold text-emerald-700 mb-2">{t("gfvoMatch.title")}</h3>
-              <p className="text-emerald-800">{t(result.gfvoCategoryKey)}</p>
+              <p className="text-emerald-800">{translate(result.gfvoCategoryKey)}</p>
             </div>
           ) : null}
 
@@ -128,7 +129,7 @@ export default function ResultPageClient({ locale }: ResultPageClientProps) {
               {result.reasonKeys.map((key) => (
                 <li key={key} className="flex items-start gap-3">
                   <span className="w-2 h-2 rounded-full bg-blue-600 mt-2"></span>
-                  <span className="text-gray-700 leading-relaxed">{t(key)}</span>
+                  <span className="text-gray-700 leading-relaxed">{translate(key)}</span>
                 </li>
               ))}
             </ul>
@@ -155,7 +156,7 @@ export default function ResultPageClient({ locale }: ResultPageClientProps) {
           <h3 className="text-xl font-semibold text-yellow-800 mb-4">{t("disclaimer.title")}</h3>
           <ul className="space-y-3">
             {result.disclaimerKeys.map((key) => (
-              <li key={key} className="text-yellow-900 leading-relaxed">{t(key)}</li>
+              <li key={key} className="text-yellow-900 leading-relaxed">{translate(key)}</li>
             ))}
           </ul>
         </div>
