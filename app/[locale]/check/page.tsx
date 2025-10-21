@@ -1,340 +1,596 @@
-'use client'
+"use client"
 
-// QuestionnairePage runs the multi-step permit assessment, persisting answers and
-// routing to the localized result screen once the evaluation is complete.
-import { useState, useEffect } from 'react'
-import { useTranslations } from 'next-intl'
-import { useParams, useRouter } from 'next/navigation'
-import type { QuestionnaireData, BusinessType } from '@/app/lib/questionnaireLogic'
-import { getVisibleQuestions, evaluatePermitNeed } from '@/app/lib/questionnaireLogic'
-import { defaultLocale } from '@/i18n'
+// ComplianceCheckerPage renders the multi-step codex that captures the
+// information required to assess Betriebsanlagen status, GFVO exemptions,
+// document requirements, and ongoing duties.
+import { useMemo, useState, type ChangeEvent } from "react"
+import { useTranslations } from "next-intl"
+import { useParams, useRouter } from "next/navigation"
 
-// Renders the localized questionnaire wizard and writes the outcome to session storage.
-export default function QuestionnairePage() {
-  const t = useTranslations('questionnaire')
+import {
+  type BusinessSector,
+  type HospitalitySubtype,
+  type WorkshopSubtype,
+  type BooleanChoice,
+  type OperatingPattern,
+  type ComplianceInput,
+  evaluateCompliance,
+} from "@/app/lib/complianceCheckerLogic"
+import { defaultLocale } from "@/i18n"
+
+type StepId = "basics" | "location" | "operations" | "context"
+
+const steps: StepId[] = ["basics", "location", "operations", "context"]
+
+interface Option<T extends string> {
+  value: T
+  label: string
+  description?: string
+}
+
+const BOOLEAN_OPTIONS = (t: (key: string) => string): Option<BooleanChoice>[] => [
+  { value: "yes", label: t("form.options.yes") },
+  { value: "no", label: t("form.options.no") },
+]
+
+function parseNumber(value: string): number | undefined {
+  if (!value) return undefined
+  const parsed = Number(value.replace(",", "."))
+  return Number.isFinite(parsed) ? parsed : undefined
+}
+
+// Renders selectable buttons used for boolean and categorical answers.
+function SelectionGrid<T extends string>({
+  options,
+  selected,
+  onSelect,
+}: {
+  options: Option<T>[]
+  selected?: T
+  onSelect: (value: T) => void
+}) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      {options.map((option) => (
+        <button
+          key={option.value}
+          onClick={() => onSelect(option.value)}
+          type="button"
+          className={`group p-4 rounded-xl border-2 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-md ${
+            selected === option.value
+              ? "border-blue-600 bg-gradient-to-r from-blue-50 to-blue-100 shadow-md"
+              : "border-gray-200 hover:border-blue-300 hover:bg-gray-50"
+          }`}
+        >
+          <div className="flex flex-col gap-1">
+            <span className="font-semibold text-gray-900">{option.label}</span>
+            {option.description ? (
+              <span className="text-sm text-gray-600 leading-relaxed">{option.description}</span>
+            ) : null}
+          </div>
+        </button>
+      ))}
+    </div>
+  )
+}
+
+// Displays the localized compliance questionnaire and routes to the result view.
+export default function ComplianceCheckerPage() {
+  const t = useTranslations("complianceChecker")
   const router = useRouter()
   const params = useParams<{ locale: string }>()
   const paramLocale = params?.locale
   const locale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale
-  const [currentStep, setCurrentStep] = useState(0)
-  const [data, setData] = useState<QuestionnaireData>({})
-  const [questionAnimation, setQuestionAnimation] = useState(true)
 
-  const visibleQuestions = getVisibleQuestions(data)
-  const currentQuestion = visibleQuestions[currentStep]
-  const isLastQuestion = currentStep === visibleQuestions.length - 1
+  const [currentStep, setCurrentStep] = useState<StepId>("basics")
+  const [form, setForm] = useState<ComplianceInput>({})
 
-  // Trigger animation on step change
-  useEffect(() => {
-    setQuestionAnimation(false)
-    const timer = setTimeout(() => setQuestionAnimation(true), 50)
-    return () => clearTimeout(timer)
-  }, [currentStep])
+  const stepIndex = steps.indexOf(currentStep)
 
-  const handleBusinessTypeChange = (value: string) => {
-    setData({ ...data, businessType: value as BusinessType })
-  }
+  const sectorOptions = useMemo<Option<BusinessSector>[]>(
+    () => [
+      { value: "retail", label: t("form.sector.options.retail") },
+      { value: "office", label: t("form.sector.options.office") },
+      { value: "gastronomyHotel", label: t("form.sector.options.gastronomyHotel") },
+      { value: "accommodation", label: t("form.sector.options.accommodation") },
+      { value: "workshop", label: t("form.sector.options.workshop") },
+      { value: "warehouse", label: t("form.sector.options.warehouse") },
+      { value: "cosmetics", label: t("form.sector.options.cosmetics") },
+      { value: "dataCenter", label: t("form.sector.options.dataCenter") },
+      { value: "selfService", label: t("form.sector.options.selfService") },
+      { value: "other", label: t("form.sector.options.other") },
+    ],
+    [t],
+  )
 
-  const handleAddressChange = (field: string, value: string) => {
-    setData({
-      ...data,
-      address: {
-        ...data.address,
-        street: field === 'street' ? value : data.address?.street || '',
-        postalCode: field === 'postalCode' ? value : data.address?.postalCode || '',
-        city: field === 'city' ? value : data.address?.city || '',
+  const hospitalityOptions: Option<HospitalitySubtype>[] = useMemo(
+    () => [
+      {
+        value: "beherbergung",
+        label: t("form.hospitalitySubtype.options.beherbergung"),
+        description: t("form.hospitalitySubtype.descriptions.beherbergung"),
       },
-    })
+      {
+        value: "iceSalon",
+        label: t("form.hospitalitySubtype.options.iceSalon"),
+        description: t("form.hospitalitySubtype.descriptions.iceSalon"),
+      },
+      {
+        value: "otherGastro",
+        label: t("form.hospitalitySubtype.options.otherGastro"),
+        description: t("form.hospitalitySubtype.descriptions.otherGastro"),
+      },
+    ],
+    [t],
+  )
+
+  const workshopOptions: Option<WorkshopSubtype>[] = useMemo(
+    () => [
+      { value: "tailor", label: t("form.workshopSubtype.options.tailor") },
+      { value: "shoeService", label: t("form.workshopSubtype.options.shoeService") },
+      { value: "textilePickup", label: t("form.workshopSubtype.options.textilePickup") },
+      { value: "otherWorkshop", label: t("form.workshopSubtype.options.otherWorkshop") },
+    ],
+    [t],
+  )
+
+  const operatingOptions: Option<OperatingPattern>[] = useMemo(
+    () => [
+      {
+        value: "gfvoWindow",
+        label: t("form.operatingPattern.options.gfvoWindow"),
+        description: t("form.operatingPattern.descriptions.gfvoWindow"),
+      },
+      {
+        value: "extendedHours",
+        label: t("form.operatingPattern.options.extendedHours"),
+        description: t("form.operatingPattern.descriptions.extendedHours"),
+      },
+      {
+        value: "roundTheClock",
+        label: t("form.operatingPattern.options.roundTheClock"),
+        description: t("form.operatingPattern.descriptions.roundTheClock"),
+      },
+    ],
+    [t],
+  )
+
+  const setField = <K extends keyof ComplianceInput>(field: K, value: ComplianceInput[K]) => {
+    setForm((prev) => ({ ...prev, [field]: value }))
   }
 
-  const handleRadioChange = (questionId: string, value: string) => {
-    setData({ ...data, [questionId]: value } as QuestionnaireData)
-  }
-
-  const canProceed = () => {
-    if (!currentQuestion) return false
-
-    switch (currentQuestion.id) {
-      case 'businessType':
-        return !!data.businessType
-      case 'address':
-        return !!(data.address?.street && data.address?.postalCode && data.address?.city)
-      default:
-        return !!(data as Record<string, unknown>)[currentQuestion.id]
+  const handleNumericChange = (field: keyof ComplianceInput) =>
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setField(field, parseNumber(event.target.value) as ComplianceInput[typeof field])
     }
-  }
 
   const handleNext = () => {
-    if (canProceed()) {
-      if (isLastQuestion) {
-        // Calculate result and navigate to result page
-        const result = evaluatePermitNeed(data)
-        sessionStorage.setItem('questionnaireResult', JSON.stringify(result))
-        sessionStorage.setItem('questionnaireData', JSON.stringify(data))
-        router.push(`/${locale}/check/result`)
-      } else {
-        setCurrentStep(currentStep + 1)
-      }
+    if (stepIndex === steps.length - 1) {
+      const result = evaluateCompliance(form)
+      sessionStorage.setItem("complianceResult", JSON.stringify(result))
+      sessionStorage.setItem("complianceInput", JSON.stringify(form))
+      router.push(`/${locale}/check/result`)
+      return
     }
+
+    setCurrentStep(steps[stepIndex + 1])
   }
 
   const handleBack = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1)
-    }
+    if (stepIndex === 0) return
+    setCurrentStep(steps[stepIndex - 1])
   }
 
-  const renderQuestion = () => {
-    if (!currentQuestion) return null
+  const canProceed = useMemo(() => {
+    if (currentStep === "basics") {
+      if (!form.sector || !form.isStationary || !form.isOnlyTemporary) return false
 
-    switch (currentQuestion.id) {
-      case 'businessType':
+      if (
+        (form.sector === "gastronomyHotel" || form.sector === "accommodation") &&
+        !form.hospitalitySubtype
+      ) {
+        return false
+      }
+
+      if (form.sector === "workshop" && !form.workshopSubtype) return false
+      if (form.areaSqm === undefined) return false
+
+      if (
+        (form.sector === "accommodation" || form.hospitalitySubtype === "beherbergung") &&
+        ((form.bedCount ?? undefined) === undefined ||
+          !form.buildingUseExclusive ||
+          form.hasWellnessFacilities === undefined ||
+          form.servesFullMeals === undefined)
+      ) {
+        return false
+      }
+
+      return true
+    }
+
+    if (currentStep === "location") {
+      return Boolean(form.zoningClarified && form.buildingConsentPresent)
+    }
+
+    if (currentStep === "operations") {
+      return Boolean(
+        form.operatingPattern &&
+          form.hasExternalVentilation &&
+          form.storesRegulatedHazardous &&
+          form.storesLabelledHazardous &&
+          form.usesLoudMusic &&
+          form.ippcOrSevesoRelevant,
+      )
+    }
+
+    if (currentStep === "context") {
+      return Boolean(
+        form.expectedImpairments &&
+          form.locatedInInfrastructureSite &&
+          form.locatedInApprovedComplex &&
+          form.existingPermitHistory,
+      )
+    }
+
+    return false
+  }, [currentStep, form])
+
+  const renderStep = () => {
+    switch (currentStep) {
+      case "basics":
         return (
-          <div className="space-y-4">
-            <label className="block text-lg font-semibold text-gray-900 mb-4">
-              {t('businessType.question')}
-            </label>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {[
-                'retail',
-                'office',
-                'warehouse',
-                'beauty',
-                'tailor',
-                'photography',
-                'dental',
-                'accommodation',
-                'gastronomy',
-                'textilePickup',
-                'dataCenter',
-                'specialized',
-                'other',
-              ].map((type, index) => (
-                <button
-                  key={type}
-                  onClick={() => handleBusinessTypeChange(type)}
-                  className={`group p-4 rounded-xl border-2 text-left transition-all duration-300 hover:scale-105 hover:shadow-md ${
-                    data.businessType === type
-                      ? 'border-blue-600 bg-gradient-to-r from-blue-50 to-blue-100 shadow-md'
-                      : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
-                  }`}
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${
-                      data.businessType === type
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-100 text-gray-600 group-hover:bg-blue-100 group-hover:text-blue-600'
-                    }`}>
-                      {type === 'retail' && '🏪'}
-                      {type === 'office' && '🏢'}
-                      {type === 'warehouse' && '📦'}
-                      {type === 'beauty' && '💅'}
-                      {type === 'tailor' && '✂️'}
-                      {type === 'photography' && '📸'}
-                      {type === 'dental' && '🦷'}
-                      {type === 'accommodation' && '🏨'}
-                      {type === 'gastronomy' && '🍦'}
-                      {type === 'textilePickup' && '👔'}
-                      {type === 'dataCenter' && '💻'}
-                      {type === 'specialized' && '⚙️'}
-                      {type === 'other' && '🏭'}
-                    </div>
-                    <span className="font-medium text-gray-900">{t(`businessType.${type}`)}</span>
-                  </div>
-                </button>
-              ))}
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">{t("form.sector.question")}</h2>
+              <p className="text-gray-600 mb-4">{t("form.sector.helper")}</p>
+              <SelectionGrid<BusinessSector>
+                options={sectorOptions}
+                selected={form.sector}
+                onSelect={(value) => {
+                  setField("sector", value)
+                  if (value !== "gastronomyHotel" && value !== "accommodation") {
+                    setField("hospitalitySubtype", undefined)
+                  }
+                  if (value === "accommodation") {
+                    setField("hospitalitySubtype", "beherbergung")
+                  }
+                  if (value !== "workshop") {
+                    setField("workshopSubtype", undefined)
+                  }
+                }}
+              />
             </div>
-          </div>
-        )
 
-      case 'address':
-        return (
-          <div className="space-y-4">
-            <label className="block text-lg font-semibold text-gray-900 mb-4">
-              {t('address.question')}
-            </label>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('address.street')}
-                </label>
-                <input
-                  type="text"
-                  value={data.address?.street || ''}
-                  onChange={(e) => handleAddressChange('street', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder={t('address.streetPlaceholder')}
+            {(form.sector === "gastronomyHotel" || form.sector === "accommodation") && (
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-gray-900">{t("form.hospitalitySubtype.question")}</h3>
+                <SelectionGrid<HospitalitySubtype>
+                  options={hospitalityOptions}
+                  selected={form.hospitalitySubtype}
+                  onSelect={(value) => setField("hospitalitySubtype", value)}
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('address.postalCode')}
-                  </label>
-                  <input
-                    type="text"
-                    value={data.address?.postalCode || ''}
-                    onChange={(e) => handleAddressChange('postalCode', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder={t('address.postalCodePlaceholder')}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('address.city')}
-                  </label>
-                  <input
-                    type="text"
-                    value={data.address?.city || ''}
-                    onChange={(e) => handleAddressChange('city', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder={t('address.cityPlaceholder')}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        )
+            )}
 
-      case 'businessArea':
-      case 'guestBeds':
-      case 'buildingUse':
-      case 'swimmingPool':
-      case 'meals':
-      case 'operatingHours':
-      case 'ventilation':
-      case 'hazardousMaterials':
-      case 'music':
-      case 'ippcStorage':
-        const options =
-          currentQuestion.id === 'businessArea'
-            ? ['upTo400', 'upTo600', 'over600']
-            : currentQuestion.id === 'guestBeds'
-            ? ['upTo30', 'over30']
-            : currentQuestion.id === 'buildingUse'
-            ? ['accommodationOnly', 'accommodationAndPrivate', 'accommodationAndCommercial']
-            : currentQuestion.id === 'swimmingPool'
-            ? ['yes', 'no']
-            : currentQuestion.id === 'meals'
-            ? ['breakfastOnly', 'fullMeals']
-            : currentQuestion.id === 'operatingHours'
-            ? ['compliant', 'nonCompliant']
-            : ['yes', 'no']
-
-        return (
-          <div className="space-y-4">
-            <label className="block text-lg font-semibold text-gray-900 mb-4">
-              {t(`${currentQuestion.id}.question`)}
-            </label>
-            {currentQuestion.id === 'operatingHours' && (
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                <p className="text-sm text-gray-700 mb-2 font-medium">Erlaubte Betriebszeiten:</p>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• {t('operatingHours.monFri')}</li>
-                  <li>• {t('operatingHours.saturday')}</li>
-                </ul>
+            {form.sector === "workshop" && (
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-gray-900">{t("form.workshopSubtype.question")}</h3>
+                <SelectionGrid<WorkshopSubtype>
+                  options={workshopOptions}
+                  selected={form.workshopSubtype}
+                  onSelect={(value) => setField("workshopSubtype", value)}
+                />
               </div>
             )}
-            <div className="space-y-3">
-              {options.map((option, index) => (
-                <button
-                  key={option}
-                  onClick={() => handleRadioChange(currentQuestion.id, option)}
-                  className={`group w-full p-4 rounded-xl border-2 text-left transition-all duration-300 hover:scale-102 ${
-                    (data as Record<string, unknown>)[currentQuestion.id] === option
-                      ? 'border-blue-600 bg-gradient-to-r from-blue-50 to-blue-100 shadow-md'
-                      : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50 hover:shadow-sm'
-                  }`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
-                        (data as Record<string, unknown>)[currentQuestion.id] === option
-                          ? 'border-blue-600 bg-blue-600 scale-110'
-                          : 'border-gray-300 group-hover:border-blue-400'
-                      }`}
-                    >
-                      {(data as Record<string, unknown>)[currentQuestion.id] === option && (
-                        <div className="w-2 h-2 bg-white rounded-full animate-scaleIn"></div>
-                      )}
-                    </div>
-                    <span className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">{t(`${currentQuestion.id}.${option}`)}</span>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t("form.areaSqm.label")}
+                </label>
+                <input
+                  type="number"
+                  min={0}
+                  value={form.areaSqm ?? ""}
+                  onChange={handleNumericChange("areaSqm")}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder={t("form.areaSqm.placeholder")}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t("form.personCount.label")}
+                </label>
+                <input
+                  type="number"
+                  min={0}
+                  value={form.personCount ?? ""}
+                  onChange={handleNumericChange("personCount")}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder={t("form.personCount.placeholder")}
+                />
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.isStationary.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.isStationary}
+                  onSelect={(value) => setField("isStationary", value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.isOnlyTemporary.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.isOnlyTemporary}
+                  onSelect={(value) => setField("isOnlyTemporary", value)}
+                />
+              </div>
+            </div>
+
+            {(form.sector === "accommodation" || form.hospitalitySubtype === "beherbergung") && (
+              <div className="space-y-4">
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {t("form.bedCount.label")}
+                    </label>
+                    <input
+                      type="number"
+                      min={0}
+                      value={form.bedCount ?? ""}
+                      onChange={handleNumericChange("bedCount")}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder={t("form.bedCount.placeholder")}
+                    />
                   </div>
-                </button>
-              ))}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      {t("form.buildingUseExclusive.question")}
+                    </label>
+                    <SelectionGrid<BooleanChoice>
+                      options={BOOLEAN_OPTIONS(t)}
+                      selected={form.buildingUseExclusive}
+                      onSelect={(value) => setField("buildingUseExclusive", value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      {t("form.hasWellnessFacilities.question")}
+                    </label>
+                    <SelectionGrid<BooleanChoice>
+                      options={BOOLEAN_OPTIONS(t)}
+                      selected={form.hasWellnessFacilities}
+                      onSelect={(value) => setField("hasWellnessFacilities", value)}
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    {t("form.servesFullMeals.question")}
+                  </label>
+                  <SelectionGrid<BooleanChoice>
+                    options={BOOLEAN_OPTIONS(t)}
+                    selected={form.servesFullMeals}
+                    onSelect={(value) => setField("servesFullMeals", value)}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        )
+
+      case "location":
+        return (
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">{t("form.location.heading")}</h2>
+              <p className="text-gray-600">{t("form.location.helper")}</p>
+            </div>
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.zoningClarified.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.zoningClarified}
+                  onSelect={(value) => setField("zoningClarified", value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.buildingConsentPresent.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.buildingConsentPresent}
+                  onSelect={(value) => setField("buildingConsentPresent", value)}
+                />
+              </div>
             </div>
           </div>
         )
 
-      default:
-        return null
+      case "operations":
+        return (
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">{t("form.operations.heading")}</h2>
+              <p className="text-gray-600">{t("form.operations.helper")}</p>
+            </div>
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.operatingPattern.question")}
+                </label>
+                <SelectionGrid<OperatingPattern>
+                  options={operatingOptions}
+                  selected={form.operatingPattern}
+                  onSelect={(value) => setField("operatingPattern", value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.hasExternalVentilation.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.hasExternalVentilation}
+                  onSelect={(value) => setField("hasExternalVentilation", value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.storesRegulatedHazardous.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.storesRegulatedHazardous}
+                  onSelect={(value) => setField("storesRegulatedHazardous", value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.storesLabelledHazardous.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.storesLabelledHazardous}
+                  onSelect={(value) => setField("storesLabelledHazardous", value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.usesLoudMusic.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.usesLoudMusic}
+                  onSelect={(value) => setField("usesLoudMusic", value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.ippcOrSevesoRelevant.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.ippcOrSevesoRelevant}
+                  onSelect={(value) => setField("ippcOrSevesoRelevant", value)}
+                />
+              </div>
+            </div>
+          </div>
+        )
+
+      case "context":
+        return (
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">{t("form.context.heading")}</h2>
+              <p className="text-gray-600">{t("form.context.helper")}</p>
+            </div>
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.expectedImpairments.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.expectedImpairments}
+                  onSelect={(value) => setField("expectedImpairments", value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.locatedInInfrastructureSite.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.locatedInInfrastructureSite}
+                  onSelect={(value) => setField("locatedInInfrastructureSite", value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.locatedInApprovedComplex.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.locatedInApprovedComplex}
+                  onSelect={(value) => setField("locatedInApprovedComplex", value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  {t("form.existingPermitHistory.question")}
+                </label>
+                <SelectionGrid<BooleanChoice>
+                  options={BOOLEAN_OPTIONS(t)}
+                  selected={form.existingPermitHistory}
+                  onSelect={(value) => setField("existingPermitHistory", value)}
+                />
+              </div>
+            </div>
+          </div>
+        )
     }
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 py-12">
-      <div className="max-w-3xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">{t('title')}</h1>
-          <p className="text-lg text-gray-600">{t('subtitle')}</p>
-        </div>
-
-        {/* Progress bar */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">
-              Frage {currentStep + 1} von {visibleQuestions.length}
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-blue-100">
+          <div className="mb-10 text-center">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold">
+              {t("badge")}
             </span>
-            <span className="text-sm font-medium text-gray-700">
-              {Math.round(((currentStep + 1) / visibleQuestions.length) * 100)}%
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-4">
+              {t("title")}
+            </h1>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">{t("subtitle")}</p>
+          </div>
+
+          <div className="flex items-center justify-between mb-10">
+            <div className="flex-1 h-2 bg-gray-100 rounded-full mr-4">
+              <div
+                className="h-2 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full transition-all duration-300"
+                style={{ width: `${((stepIndex + 1) / steps.length) * 100}%` }}
+              ></div>
+            </div>
+            <span className="text-sm font-medium text-gray-600">
+              {t("progress", { current: stepIndex + 1, total: steps.length })}
             </span>
           </div>
-          <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-300"
-              style={{ width: `${((currentStep + 1) / visibleQuestions.length) * 100}%` }}
-            ></div>
-          </div>
-        </div>
 
-        {/* Question card */}
-        <div className={`bg-white rounded-2xl shadow-xl p-8 mb-6 border border-gray-100 transition-all duration-500 ${
-          questionAnimation ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}>
-          {renderQuestion()}
-        </div>
+          <div className="space-y-8">{renderStep()}</div>
 
-        {/* Navigation buttons */}
-        <div className="flex gap-4">
-          {currentStep > 0 && (
+          <div className="mt-12 flex flex-col md:flex-row gap-4 justify-between">
             <button
+              type="button"
               onClick={handleBack}
-              className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all"
+              disabled={stepIndex === 0}
+              className="inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
             >
-              {t('back')}
+              {t("actions.back")}
             </button>
-          )}
-          <button
-            onClick={handleNext}
-            disabled={!canProceed()}
-            className={`button-shine flex-1 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-              canProceed()
-                ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-md hover:shadow-lg active:scale-95'
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            }`}
-          >
-            <span className="flex items-center justify-center gap-2">
-              {isLastQuestion ? t('submit') : t('next')}
-              {!isLastQuestion && (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              )}
-            </span>
-          </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              disabled={!canProceed}
+              className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold shadow-lg hover:from-blue-700 hover:to-blue-800 transition disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              {stepIndex === steps.length - 1 ? t("actions.finish") : t("actions.next")}
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -5,9 +5,9 @@
   "home": {
     "title": "Перевірка дозволу на комерційні установи для засновників",
     "subtitle": "Дізнайтеся за 2 хвилини, чи потрібен вам дозвіл на комерційну установу",
-    "card1Title": "Перевірте, чи потрібен вам дозвіл",
-    "card1Description": "Дайте відповідь на кілька запитань і дізнайтеся, чи потрібен дозвіл для вашої комерційної установи",
-    "card1Button": "Розпочати перевірку",
+    "card1Title": "Betriebsanlagen Codex",
+    "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
+    "card1Button": "Start codex",
     "card2Title": "Ваш шлях і необхідні документи",
     "card2Description": "Огляд усіх кроків і документів, які вам потрібні для отримання дозволу на комерційну установу",
     "card2Button": "Дізнатися більше",
@@ -35,112 +35,8 @@
       "privacy": "Захист даних"
     },
     "card3Title": "2nd GFVO decision path",
-    "card3Description": "Follow the structured questions on categories, operating hours and exclusions from the 2nd GFVO.",
+    "card3Description": "Answer three questions and receive a legally grounded indication whether your facility can operate permit-free.",
     "card3Button": "Start 2nd GFVO check"
-  },
-  "questionnaire": {
-    "title": "Перевірка дозволу на комерційну установу",
-    "subtitle": "Дайте відповідь на наступні запитання, щоб ми могли оцінити, чи потрібен вам дозвіл",
-    "next": "Далі",
-    "back": "Назад",
-    "submit": "Надіслати",
-    "businessType": {
-      "question": "Який тип вашого бізнесу?",
-      "retail": "Роздрібна торгівля",
-      "office": "Офіс",
-      "warehouse": "Склад (у закритих будівлях)",
-      "beauty": "Косметика/Догляд",
-      "tailor": "Кравецька майстерня",
-      "photography": "Фотостудія",
-      "dental": "Зуботехнічна лабораторія",
-      "accommodation": "Розміщення",
-      "gastronomy": "Гастрономія (тільки морозивна)",
-      "textilePickup": "Прийом текстилю",
-      "dataCenter": "Центр обробки даних",
-      "specialized": "Спеціалізована установа",
-      "other": "Інше"
-    },
-    "address": {
-      "question": "Де розташована ваша комерційна установа?",
-      "placeholder": "Введіть повну адресу",
-      "street": "Вулиця та номер",
-      "postalCode": "Поштовий індекс",
-      "city": "Місто",
-      "streetPlaceholder": "Вулиця та номер будинку",
-      "postalCodePlaceholder": "Поштовий індекс",
-      "cityPlaceholder": "Місто"
-    },
-    "businessArea": {
-      "question": "Яка площа комерційної зони?",
-      "upTo400": "До 400 м²",
-      "upTo600": "До 600 м²",
-      "over600": "Понад 600 м²"
-    },
-    "guestBeds": {
-      "question": "Скільки ліжок для гостей ви пропонуєте?",
-      "upTo30": "До 30 ліжок",
-      "over30": "Більше 30 ліжок"
-    },
-    "buildingUse": {
-      "question": "Як використовується будівля?",
-      "accommodationOnly": "Тільки для розміщення",
-      "accommodationAndPrivate": "Розміщення та приватне житло",
-      "accommodationAndCommercial": "Розміщення та інші комерційні цілі"
-    },
-    "swimmingPool": {
-      "question": "Чи є в установі басейни або подібні об'єкти?",
-      "yes": "Так",
-      "no": "Ні"
-    },
-    "meals": {
-      "question": "Які страви ви пропонуєте гостям?",
-      "breakfastOnly": "Тільки сніданок або легкі закуски",
-      "fullMeals": "Повноцінні страви"
-    },
-    "operatingHours": {
-      "question": "Ваш робочий час",
-      "monFri": "Понеділок - П'ятниця: 6:00 - 22:00",
-      "saturday": "Субота: 6:00 - 19:00",
-      "delivery": "Доставка",
-      "compliant": "Мій робочий час у межах цього часу",
-      "nonCompliant": "Мені потрібен робочий час поза цим часом"
-    },
-    "ventilation": {
-      "question": "Чи є у вас механічні частини системи вентиляції або теплопередачі зовні будівлі?",
-      "yes": "Так",
-      "no": "Ні"
-    },
-    "hazardousMaterials": {
-      "question": "Чи зберігаєте ви небезпечні матеріали або речовини, що потребують спеціального маркування?",
-      "yes": "Так",
-      "no": "Ні"
-    },
-    "music": {
-      "question": "Чи граєте ви музику наживо або відтворюєте музику (голосніше за фонову музику)?",
-      "yes": "Так",
-      "no": "Ні"
-    },
-    "ippcStorage": {
-      "question": "Чи відповідає ваш склад визначенням IPPC (Додаток 3 або 5 Закону про торгівлю)?",
-      "yes": "Так",
-      "no": "Ні"
-    }
-  },
-  "result": {
-    "title": "Ваш результат",
-    "noPermitNeeded": "Вам не потрібен дозвіл!",
-    "noPermitDescription": "Згідно з вашою інформацією, ваша комерційна установа звільнена від дозволу.",
-    "permitNeeded": "Вам потрібен дозвіл",
-    "permitDescription": "Згідно з вашою інформацією, ваша комерційна установа потребує дозволу.",
-    "nextSteps": "Наступні кроки:",
-    "contactAuthority": "Зв'яжіться з відповідними органами",
-    "prepareDocuments": "Підготуйте необхідні документи",
-    "startOver": "Почати спочатку",
-    "viewDocuments": "Переглянути необхідні документи",
-    "reasonsTitlePermit": "Підстави:",
-    "reasonsTitleNoPermit": "Пояснення:",
-    "disclaimerTitle": "Важливе зауваження:",
-    "disclaimerText": "Ця перевірка має лише інформаційний характер і не є юридичною консультацією. За обов'язковою інформацією зверніться до компетентного органу."
   },
   "documents": {
     "title": "Ваш шлях до дозволу на комерційну установу",
@@ -595,6 +491,286 @@
         "ippcSeveso": "The project is within the IPPC/Seveso scope (§ 2 (5) 2nd GFVO) and remains permit-bound.",
         "genericCategoryLabel": "the selected category"
       }
+    }
+  },
+  "complianceChecker": {
+    "badge": "Codex 2.0",
+    "title": "Betriebsanlagen codex (Austrian Trade Act)",
+    "subtitle": "Work through the structured review covering facility status, permit duty, submission documents, worker protection metrics, and operational duties.",
+    "progress": "Step {current} of {total}",
+    "actions": {
+      "next": "Continue",
+      "back": "Back",
+      "finish": "Show assessment"
+    },
+    "form": {
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "sector": {
+        "question": "Which business type are you planning?",
+        "helper": "The codex covers retail, services, hospitality/accommodation, workshops, logistics, cosmetics, data centres, and self-service concepts.",
+        "options": {
+          "retail": "Retail / shop",
+          "office": "Office or service space",
+          "gastronomyHotel": "Hospitality / hotel",
+          "accommodation": "Accommodation only",
+          "workshop": "Workshop",
+          "warehouse": "Warehouse",
+          "cosmetics": "Cosmetics / foot care / massage",
+          "dataCenter": "Data centre",
+          "selfService": "Container shop / self-service",
+          "other": "Other activity"
+        }
+      },
+      "hospitalitySubtype": {
+        "question": "Which hospitality variant applies?",
+        "options": {
+          "beherbergung": "Accommodation (guesthouse, small hotel)",
+          "iceSalon": "Ice-cream parlour (Austrian Eissalon)",
+          "otherGastro": "Other gastronomy"
+        },
+        "descriptions": {
+          "beherbergung": "Max. 30 beds, building used only for living/accommodation, no wellness facilities, breakfast or small snacks only.",
+          "iceSalon": "Pure ice-cream parlour without a full kitchen.",
+          "otherGastro": "Gastronomy concepts outside the GFVO ice-cream exemption."
+        }
+      },
+      "workshopSubtype": {
+        "question": "Which workshop type applies?",
+        "options": {
+          "tailor": "Alteration tailoring / household-type sewing machines",
+          "shoeService": "Shoe repair service",
+          "textilePickup": "Textile cleaning pick-up desk",
+          "otherWorkshop": "Other workshop"
+        }
+      },
+      "areaSqm": {
+        "label": "Operating area in m²",
+        "placeholder": "e.g. 250"
+      },
+      "personCount": {
+        "label": "Maximum people on site (staff + guests/customers)",
+        "placeholder": "e.g. 20"
+      },
+      "isStationary": {
+        "question": "Is the activity tied to a fixed location?"
+      },
+      "isOnlyTemporary": {
+        "question": "Is it only a temporary or short-term use?"
+      },
+      "bedCount": {
+        "label": "Total number of guest beds",
+        "placeholder": "e.g. 18"
+      },
+      "buildingUseExclusive": {
+        "question": "Is the building used exclusively for living/accommodation purposes?"
+      },
+      "hasWellnessFacilities": {
+        "question": "Are wellness or bathing facilities (pool, sauna, spa) planned?"
+      },
+      "servesFullMeals": {
+        "question": "Will meals beyond breakfast/snacks be served?"
+      },
+      "location": {
+        "heading": "Location & building compliance",
+        "helper": "Confirm zoning, land-use designation, and existing building approvals."
+      },
+      "zoningClarified": {
+        "question": "Is the zoning / land-use plan suitable for the intended use?"
+      },
+      "buildingConsentPresent": {
+        "question": "Is there a valid building and usage permit for the premises?"
+      },
+      "operations": {
+        "heading": "Operations & emissions",
+        "helper": "Review opening hours, emissions, hazardous materials, and technical plant."
+      },
+      "operatingPattern": {
+        "question": "Which operating hours do you require?",
+        "options": {
+          "gfvoWindow": "Within the 2nd GFVO window (Mon–Fri 6–22, Sat 6–19)",
+          "extendedHours": "Extended hours (evenings, Sundays, etc.)",
+          "roundTheClock": "24/7 or night-time operation"
+        },
+        "descriptions": {
+          "gfvoWindow": "Standard daytime hours including the GFVO delivery window.",
+          "extendedHours": "Hours outside the exemption but not permanently round-the-clock.",
+          "roundTheClock": "Continuous or night-time operation."
+        }
+      },
+      "hasExternalVentilation": {
+        "question": "Do you install outdoor ventilation, condenser, or exhaust units?"
+      },
+      "storesRegulatedHazardous": {
+        "question": "Do you store hazardous materials subject to special regulations (flammable liquids, gas, etc.)?"
+      },
+      "storesLabelledHazardous": {
+        "question": "Do you store other label-required hazardous substances in relevant quantities?"
+      },
+      "usesLoudMusic": {
+        "question": "Will music performances or amplified sound above background level take place?"
+      },
+      "ippcOrSevesoRelevant": {
+        "question": "Do IPPC/Seveso thresholds (Trade Act Annex 3, major accident rules) apply?"
+      },
+      "context": {
+        "heading": "Impacts & special cases",
+        "helper": "Assess environmental impacts, infrastructure locations, and existing permits."
+      },
+      "expectedImpairments": {
+        "question": "Are adverse effects under § 74 (2) Trade Act expected?"
+      },
+      "locatedInInfrastructureSite": {
+        "question": "Is the business located within a railway, airport, port, or hospital site?"
+      },
+      "locatedInApprovedComplex": {
+        "question": "Is the business inside an already approved overall complex (e.g. shopping centre)?"
+      },
+      "existingPermitHistory": {
+        "question": "Do existing permits or suitability rulings for the site exist?"
+      }
+    }
+  },
+  "complianceResult": {
+    "title": "Betriebsanlagen codex assessment",
+    "actions": {
+      "restart": "Restart codex"
+    },
+    "sections": {
+      "procedural": "Competent authority & procedure",
+      "documents": "Submission documents",
+      "labour": "Worker protection planning values",
+      "operationalDuties": "Duties during operation",
+      "changeDuties": "Notifications & changes",
+      "preCheck": "Preparatory steps",
+      "specialNotes": "Special notes",
+      "quickReferences": "Quick reference sources"
+    },
+    "gfvoMatch": {
+      "title": "Classification under the 2nd GFVO"
+    },
+    "reasons": {
+      "externalVentilation": "Outdoor ventilation or cooling units trigger permit duty under Sec. 2 item 2 2nd GFVO.",
+      "regulatedHazardousStorage": "Hazardous materials governed by special regulations exclude the exemption (Sec. 2 item 3).",
+      "labelledHazardousStorage": "Label-required hazardous substances without specific storage rules remain permit-required (Sec. 2 item 4).",
+      "musicExclusion": "Music performances or loud sound exclude the exemption (Sec. 2 item 5).",
+      "ippcSeveso": "IPPC / Seveso relevant plants are always permit cases (Sec. 2 item 6).",
+      "noFacilityDefinition": "No stationary, non-temporary facility – therefore the codex stops here.",
+      "operatingHours": "Planned hours exceed the 2nd GFVO window (Sec. 1 (2)).",
+      "areaExceeded": "The given area exceeds the threshold of the selected exemption category.",
+      "accommodationBeds": "More than 30 beds require a permit (Sec. 1 (1) item 8).",
+      "accommodationBuildingUse": "The building is not used exclusively for living/accommodation – exemption condition missing.",
+      "accommodationWellness": "Wellness or bathing facilities are not covered by the exemption.",
+      "accommodationMeals": "Serving full meals exceeds the breakfast/snack limitation of the exemption.",
+      "expectedImpairments": "§ 74 (2) Trade Act impacts (emissions, hazards, disturbances) are expected.",
+      "individualAssessment": "No clear exemption – request a declaratory ruling for certainty.",
+      "freistellungSummary": "All requirements of the 2nd exemption ordinance are met – the facility remains permit-free as long as the conditions are respected."
+    },
+    "classifications": {
+      "noFacility": {
+        "title": "No business facility under the Trade Act",
+        "summary": "The activity is mobile or only temporary and therefore outside the facility definition (§ 74 Trade Act)."
+      },
+      "freistellungGFVO": {
+        "title": "Permit-free under the 2nd GFVO",
+        "summary": "All category, time, and exclusion requirements of the 2nd exemption ordinance are fulfilled."
+      },
+      "needsPermit": {
+        "title": "Permit-required facility",
+        "summary": "Exclusion grounds or expected impacts apply – a § 74 Trade Act procedure is necessary."
+      },
+      "individualAssessment": {
+        "title": "Individual assessment recommended",
+        "summary": "No clear exemption applies; the authority can issue a declaratory ruling on permit exemption."
+      }
+    },
+    "gfvoCategories": {
+      "retail": "Retail up to 600 m² (Sec. 1 (1) item 1 2nd GFVO)",
+      "office": "Office operations without noisy machinery (Sec. 1 (1) item 2)",
+      "warehouse": "Indoor warehouses up to 600 m² (Sec. 1 (1) item 3)",
+      "cosmetics": "Cosmetics, foot care, massage businesses (Sec. 1 (1) item 4)",
+      "tailor": "Alteration tailoring / household sewing or shoe service (Sec. 1 (1) item 5)",
+      "textilePickup": "Textile cleaning drop-off points (Sec. 1 (1) item 10)",
+      "accommodation": "Accommodation ≤ 30 beds, no wellness, breakfast/snacks only (Sec. 1 (1) item 8)",
+      "iceSalon": "Ice-cream parlour gastronomy (Sec. 1 (1) item 9)",
+      "dataCenter": "Data centre without own firing plant (only emergency power engines) (Sec. 1 (1) item 11)",
+      "infrastructureSite": "Facility inside approved railway, airport, port, or hospital sites (Sec. 1 (1) item 12)",
+      "embeddedFacility": "Facility up to 400 m² inside an already approved complex (Sec. 1 (1) item 13)"
+    },
+    "procedural": {
+      "authority": "The competent authority is the district authority (Vienna: MA 36 – Betriebsanlagen).",
+      "projectProcedure": "Permit cases require a full project submission with complete documentation.",
+      "permitEffect": "Construction and operation may start only after the permit becomes legally effective.",
+      "eignungsfeststellung": "Existing suitability rulings continue to act as facility-specific permits.",
+      "projectSprech": "Authority project consultation days speed up expert coordination.",
+      "feeHint": "Federal fees were abolished in 2017; start-ups may claim NeuföG fee relief."
+    },
+    "documents": {
+      "general": {
+        "application": "Application form for establishing/modifying the facility (signed).",
+        "description": "Operational description covering activity, hours, staffing, traffic, storage, ventilation, etc.",
+        "sitePlans": "Site plan plus floor plans/sections (typically scale 1:100).",
+        "ventilationPlan": "Plan or description of the ventilation/exhaust system including discharge path.",
+        "machineList": "Machine and equipment list with ratings, media, and layout plan.",
+        "emissionStatement": "Statement on noise, air, traffic emissions including planned mitigation.",
+        "wasteConcept": "Waste management concept in line with Trade Act / City of Vienna guidance.",
+        "wasteWater": "Evidence of wastewater discharge notification or permit where required."
+      },
+      "sector": {
+        "gastroExhaust": "Hospitality/accommodation: kitchen exhaust proof according to state of the art (e.g. EN 16282-1).",
+        "guestSanitary": "Guest sanitary rooms per building code (OIB guideline 3, Austrian 'Kellner' rule).",
+        "hygiene": "Sector-specific hygiene documentation (food hygiene, grease separators, etc.)."
+      }
+    },
+    "labour": {
+      "roomHeight": "Work rooms generally require 3.0 m room height (deviations to be agreed with labour inspectorate).",
+      "daylight": "Natural daylight openings ≥ 10% of floor area; justify exceptions for basements, etc.",
+      "ventilation": "Natural ventilation ≥ 2% of floor area or mechanical systems providing 35/50/70 m³/h fresh air per person (load dependent).",
+      "exhaustDischarge": "Discharge exhaust over the roof or sufficiently high with filtration (30–40 dB(A) at outlet).",
+      "escapeRoutes": "Escape routes: maximum 10 m to reach a route; ensure cross ventilation if depth > 10 m.",
+      "escapeWidths": "Escape widths by occupancy: 1–20 people 1.0 m | 21–120 people 1.2 m | add 0.1 m per extra 10 people.",
+      "emergencyDoors": "Emergency exit widths: up to 40 people 0.8 m, up to 80 people 0.9 m, up to 120 people 1.0 m; doors >15 people must open in escape direction.",
+      "safetyLighting": "Provide emergency lighting where no natural light or evening/night operation exists.",
+      "staffSanitary": "Staff sanitary rooms: at least one lockable cubicle per 15 persons, separate units from 5 female/male upwards, include lobby/ventilation."
+    },
+    "operationalDuties": {
+      "startAfterPermit": "Operation may only begin after the permit has become final (§ 74 Trade Act).",
+      "periodicInspection": "§ 82b Trade Act: periodic inspection every 5 years (6 years for simplified procedure), except UMG register facilities.",
+      "inspectionScope": "Inspection covers compliance with permit, plans, and co-applicable regulations (§ 356b).",
+      "inspectionCertificate": "Inspection report must list facility, site, inspector competence, permits, checked regulations, and findings.",
+      "deficiencyDuties": "Remedy deficiencies promptly; non-compliance can trigger administrative fines (§ 366)."
+    },
+    "changeDuties": {
+      "notifyChanges": "Significant changes must be reported before implementation (§ 81 (3) Trade Act).",
+      "operationAfterNotice": "Operate modified installations only after the authority's acknowledgement (within 2 months)."
+    },
+    "preCheck": {
+      "contactChamber": "Contact the chamber / business support service early.",
+      "clarifyBuildingLaw": "Clarify zoning, land-use and building permits before starting the project.",
+      "engageNeighbours": "Inform neighbours early to avoid conflicts.",
+      "reviewOSH": "Incorporate occupational safety requirements (AStV, OSH) in the design.",
+      "clarifyPermitNeed": "Clarify permit duty with the authority or request a declaratory ruling.",
+      "prepareCompleteSet": "Prepare a complete documentation set – full submissions speed up processing."
+    },
+    "specialNotes": {
+      "selfService": "Container shops/self-service outlets: check zoning and building compliance; permits may be needed depending on emissions.",
+      "buildingProcedure": "Building and trade procedures run separately – changes of use require separate building approval.",
+      "existingPermits": "Document existing permits or suitability rulings and include them in the submission."
+    },
+    "quickReferences": {
+      "definition": "Definition & five steps: WKO guide 'Weg zum genehmigten Betrieb'.",
+      "gfvo": "2nd exemption ordinance (consolidated version).",
+      "guideline": "Business facility permit guide (WKW 2022).",
+      "gastro": "Hospitality/Hotel guide (WKNÖ 06/2024).",
+      "procedure": "Trade permit procedure guide (Lower Austria 06/2024).",
+      "section82b": "Regular inspection under § 82b Trade Act – authorised inspectors, intervals, report content."
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "orientation": "Note: this tool provides orientation. It checks whether your business could fall under exemptions of the 2nd exemption ordinance.",
+      "legal": "The result is not a binding authority decision nor legal advice. MA 36 (Vienna business facility authority) issues binding rulings."
     }
   }
 }
