@@ -72,10 +72,6 @@ export default function ResultPageClient({ locale }: ResultPageClientProps) {
         title: t("sections.specialNotes"),
         items: result.specialNoteKeys.map((key) => translate(key)),
       },
-      {
-        title: t("sections.quickReferences"),
-        items: result.quickReferenceKeys.map((key) => translate(key)),
-      },
     ].filter((section) => section.items.length > 0)
   }, [result, t, translate])
 
@@ -105,6 +101,15 @@ export default function ResultPageClient({ locale }: ResultPageClientProps) {
           >
             <span className="text-lg">{t("actions.restart")}</span>
           </Link>
+        </div>
+
+        <div className="bg-yellow-50 border border-yellow-200 rounded-2xl p-6 md:p-8 mb-10">
+          <h3 className="text-xl font-semibold text-yellow-800 mb-4">{t("disclaimer.title")}</h3>
+          <ul className="space-y-3">
+            {result.disclaimerKeys.map((key) => (
+              <li key={key} className="text-yellow-900 leading-relaxed">{translate(key)}</li>
+            ))}
+          </ul>
         </div>
 
         <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-blue-100 mb-10">
@@ -152,14 +157,6 @@ export default function ResultPageClient({ locale }: ResultPageClientProps) {
           ))}
         </div>
 
-        <div className="bg-yellow-50 border border-yellow-200 rounded-2xl p-6 md:p-8 mt-10">
-          <h3 className="text-xl font-semibold text-yellow-800 mb-4">{t("disclaimer.title")}</h3>
-          <ul className="space-y-3">
-            {result.disclaimerKeys.map((key) => (
-              <li key={key} className="text-yellow-900 leading-relaxed">{translate(key)}</li>
-            ))}
-          </ul>
-        </div>
       </div>
     </div>
   )
