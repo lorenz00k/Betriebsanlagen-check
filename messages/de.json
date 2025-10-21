@@ -33,7 +33,10 @@
       "disclaimer": "Diese Website dient nur zu Informationszwecken. Für rechtlich verbindliche Auskünfte wenden Sie sich bitte an die zuständigen Behörden.",
       "imprint": "Impressum",
       "privacy": "Datenschutz"
-    }
+    },
+    "card3Title": "2. GFVO Entscheidungspfad",
+    "card3Description": "Prüfe Schritt für Schritt Kategorien, Betriebszeiten und Ausschlussgründe der 2. GFVO.",
+    "card3Button": "2. GFVO Check starten"
   },
   "questionnaire": {
     "title": "Betriebsanlagen-Genehmigungscheck",
@@ -427,6 +430,169 @@
       "twitter": {
         "title": "Ihr Betriebsanlagen-Check Ergebnis",
         "description": "Empfehlungen zu Genehmigungspflicht, Dokumenten und nächsten Schritten auf einen Blick."
+      }
+    }
+  },
+  "gfvoChecker": {
+    "badge": "Neue Entscheidungshilfe",
+    "title": "Genehmigungsfreiheit nach der 2. GFVO prüfen",
+    "intro": "Beantworte drei Fragen und erhalte eine rechtlich begründete Einschätzung, ob deine Betriebsanlage nach der 2. Genehmigungsfreistellungsverordnung (Wien) genehmigungsfrei ist oder ein Antrag nötig bleibt.",
+    "progress": {
+      "title": "Fortschritt",
+      "step": "Schritt {current} von {total}"
+    },
+    "buttons": {
+      "back": "Zurück",
+      "next": "Weiter",
+      "finish": "Auswertung anzeigen",
+      "startOver": "Neu starten",
+      "adjustAnswers": "Antworten anpassen"
+    },
+    "steps": {
+      "category": {
+        "title": "Welche Kategorie trifft auf die Anlage zu?",
+        "description": "Wähle jene Kategorie aus § 1 Abs. 1 Z 1–13 2. GFVO, die am besten zum geplanten Betrieb passt.",
+        "hint": "Tipp: Kennst du die Kategorie nicht, wähle \"Keine der Kategorien\" für eine direkte Einstufung.",
+        "timeExemptBadge": "Zeitregel entfällt"
+      },
+      "operatingTimes": {
+        "title": "Werden die Betriebszeiten der 2. GFVO eingehalten?",
+        "description": "Für genehmigungsfreie Anlagen gelten Montag–Freitag 06:00–22:00 Uhr und Samstag 06:00–19:00 Uhr (Lieferungen bis 19:00 bzw. 18:00 Uhr).",
+        "options": {
+          "compliant": {
+            "title": "Ja, wir bleiben innerhalb dieser Zeiten",
+            "description": "Der Betrieb findet ausschließlich innerhalb der in § 1 Abs. 2 2. GFVO genannten Zeitfenster statt."
+          },
+          "notCompliant": {
+            "title": "Nein, längere Öffnungs-/Lieferzeiten geplant",
+            "description": "Es sind z.B. Nachtbetrieb, Sonntagsöffnungen oder Lieferungen außerhalb der erlaubten Zeiten vorgesehen."
+          }
+        },
+        "reminder": "Ausnahmen gelten nur für Beherbergungsbetriebe, Eissalons, Textil-Übernahmestellen, Rechenzentren sowie Anlagen in Bahnhöfen, Flugplätzen, Häfen oder genehmigten Gesamtanlagen (§ 1 Abs. 2 2. GFVO)."
+      },
+      "exclusions": {
+        "title": "Treffen Ausschlussgründe des § 2 2. GFVO zu?",
+        "description": "Markiere alle Punkte, die auf die Anlage zutreffen. Schon ein Ausschlussgrund führt zur Genehmigungspflicht.",
+        "reminder": "Nur wenn keiner der Ausschlussgründe ausgelöst wird, bleibt die Anlage genehmigungsfrei. Die Aufzählung basiert auf § 2 2. GFVO."
+      }
+    },
+    "categories": {
+      "retail": {
+        "title": "Einzelhandel bis 600 m²",
+        "description": "z.B. Geschäft, Boutique oder Verkaufslokal mit höchstens 600 m² Verkaufsfläche."
+      },
+      "office": {
+        "title": "Bürobetrieb",
+        "description": "Reine Büro- bzw. Dienstleistungsräume ohne lärmintensive Maschinen."
+      },
+      "warehouse": {
+        "title": "Lager bis 600 m² in Gebäuden",
+        "description": "Geschlossene Lager für Waren oder Betriebsmittel bis 600 m²."
+      },
+      "beauty": {
+        "title": "Kosmetik & Körperpflege",
+        "description": "Kosmetik-, Fußpflege-, Frisör-, Massage- sowie Bandagistenbetriebe."
+      },
+      "tailor": {
+        "title": "Schneiderei & Schuhservice",
+        "description": "Änderungsschneidereien, haushaltsähnliche Schneidereien oder Schustereien."
+      },
+      "photography": {
+        "title": "Fotostudio",
+        "description": "Fotografenbetriebe samt Studioflächen."
+      },
+      "dental": {
+        "title": "Dentalstudio/zahntechnisches Labor",
+        "description": "Ohne Schmelzofen oder nur mit Ofen am Kamin zur Emissionsreduktion."
+      },
+      "accommodation": {
+        "title": "Beherbergungsbetrieb (max. 30 Betten)",
+        "description": "Hotels/Pensionen ohne Wellnessanlage, mit maximal Frühstück oder kleinem Imbiss."
+      },
+      "iceCreamParlor": {
+        "title": "Eissalon",
+        "description": "Gastgewerbebetrieb in der Betriebsart Eissalon."
+      },
+      "textilePickup": {
+        "title": "Textil-Übernahmestelle",
+        "description": "Annahmestellen für Textilreinigung oder Bügelservice ohne eigene Reinigung."
+      },
+      "dataCenter": {
+        "title": "Rechenzentrum",
+        "description": "Elektronische Datenverarbeitung ohne eigene Feuerungsanlagen (Notstrom erlaubt)."
+      },
+      "insideInfrastructure": {
+        "title": "Anlage in Bahnhof, Flugplatz, Hafen oder Spital",
+        "description": "Betriebsanlage innerhalb bereits genehmigter Verkehrsanlagen oder Krankenanstalten."
+      },
+      "withinComplex": {
+        "title": "Kleinbetrieb bis 400 m² in genehmigter Gesamtanlage",
+        "description": "z.B. Shop in Einkaufszentrum mit bestehender Gesamtgenehmigung."
+      },
+      "none": {
+        "title": "Keine der Kategorien trifft zu",
+        "description": "Die geplante Anlage lässt sich nicht einem der in § 1 Abs. 1 2. GFVO genannten Typen zuordnen."
+      }
+    },
+    "exclusions": {
+      "externalVentilation": {
+        "question": "Gibt es außenliegende Lüftungs- oder Klimageräte?",
+        "description": "Außen montierte Ventilatoren, Klimageräte, Abluft- oder Wärmetauscheranlagen fallen unter § 2 Z 1 2. GFVO."
+      },
+      "regulatedStorage": {
+        "question": "Werden Gefahrstoffe in Mengen mit Spezialvorschriften gelagert?",
+        "description": "Z.B. größere Mengen brennbarer Flüssigkeiten, Druckgaspackungen oder Flüssiggas mit gesetzlichen Lagerauflagen (§ 2 Z 2 2. GFVO)."
+      },
+      "unregulatedHazards": {
+        "question": "Werden kennzeichnungspflichtige Gefahrstoffe ohne spezielle Auflagen gelagert?",
+        "description": "Wenn keine Spezialvorschriften existieren, führt bereits die Lagerung kennzeichnungspflichtiger Stoffe zur Genehmigungspflicht (§ 2 Z 3 2. GFVO)."
+      },
+      "loudMusic": {
+        "question": "Ist laute Musikdarbietung oder Beschallung vorgesehen?",
+        "description": "Alles über leiser Hintergrundmusik (≈ 58 dB(A)) gilt als Musikbetrieb nach § 2 Z 4 2. GFVO."
+      },
+      "ippcSeveso": {
+        "question": "Fällt die Anlage unter IPPC oder Seveso?",
+        "description": "Großanlagen mit Umweltverträglichkeits- bzw. Störfallpflicht (§ 2 Z 5 2. GFVO) bleiben genehmigungspflichtig."
+      }
+    },
+    "result": {
+      "permitFree": {
+        "title": "Genehmigungsfrei nach 2. GFVO",
+        "subtitle": "Alle Voraussetzungen der 2. GFVO sind erfüllt – eine Betriebsanlagengenehmigung ist nach aktuellem Stand nicht erforderlich.",
+        "note": "Bleibe unbedingt innerhalb der genannten Auflagen (Kategorie, Betriebszeiten, keine Ausschlussgründe). Bei Änderungen muss erneut geprüft werden, sonst geht die Genehmigungsfreiheit verloren."
+      },
+      "permitRequired": {
+        "title": "Genehmigungspflicht besteht",
+        "subtitle": "Mindestens eine Voraussetzung der 2. GFVO ist nicht erfüllt. Damit ist eine Betriebsanlagengenehmigung nach § 74 GewO einzuholen.",
+        "nextStepsTitle": "Nächste Schritte in Wien",
+        "nextStepsIntro": "Reiche vor Errichtung/Inbetriebnahme einen Antrag bei der MA 36 – Betriebsanlagen (zuständiges Betriebsanlagenzentrum) ein.",
+        "documentsTitle": "Typische Unterlagen laut Stadt Wien",
+        "documents": [
+          "Ausgefülltes Antragsformular (MA 36)",
+          "Detaillierte Betriebsbeschreibung (mehrfache Ausfertigung)",
+          "Maschinen- und Geräteverzeichnis mit Leistungs- und Emissionsdaten",
+          "Lageplan, Grundrisse und Schnitte der Betriebsräume (mehrfach)",
+          "Abfallwirtschaftskonzept, sofern anwendbar",
+          "Technische Beschreibungen besonderer Anlagen (z.B. Lüftung, Heizung, Kühlung)",
+          "Unterlagen zu weiteren Rechtsbereichen (z.B. Bau-, Wasser-, Arbeits- oder Brandschutzrecht)"
+        ],
+        "contactHint": "Empfehlung: Nimm vorab Kontakt mit dem Betriebsanlagenzentrum auf (Projektsprechtag) oder stelle bei Unklarheiten einen Feststellungsantrag."
+      },
+      "reasonsTitle": "Begründung nach Entscheidungsbaum",
+      "reasons": {
+        "categoryMet": "Die Anlage gehört zu {category} und fällt damit unter die genehmigungsfreien Kategorien des § 1 Abs. 1 2. GFVO.",
+        "operatingTimesMet": "Die geplanten Betriebs- und Lieferzeiten entsprechen den Vorgaben des § 1 Abs. 2 2. GFVO.",
+        "operatingTimesExempt": "Für {category} gelten laut § 1 Abs. 2 2. GFVO keine Zeitbeschränkungen – die Ausnahme greift.",
+        "noExclusions": "Keiner der Ausschlussgründe des § 2 2. GFVO wurde ausgelöst.",
+        "categoryMissing": "Die Anlage lässt sich keiner Kategorie des § 1 Abs. 1 2. GFVO zuordnen – daher besteht Genehmigungspflicht.",
+        "operatingTimesMissing": "Die geplanten Betriebs- oder Lieferzeiten überschreiten die erlaubten Werktagsfenster (§ 1 Abs. 2 2. GFVO) – die Freistellung entfällt.",
+        "externalVentilation": "Außenliegende Lüftungs- oder Klimageräte lösen gemäß § 2 Z 1 2. GFVO eine Genehmigungspflicht aus.",
+        "regulatedStorage": "Für die vorgesehenen Gefahrstoffmengen gelten Spezialvorschriften (§ 2 Z 2 2. GFVO) – die Freistellung greift nicht.",
+        "unregulatedHazards": "Die Lagerung kennzeichnungspflichtiger Gefahrstoffe ohne Spezialregelung fällt unter § 2 Z 3 2. GFVO und bleibt genehmigungspflichtig.",
+        "loudMusic": "Geplante Musikdarbietungen oder laute Beschallungen überschreiten die zulässige Hintergrundmusik (§ 2 Z 4 2. GFVO).",
+        "ippcSeveso": "Das Vorhaben ist einem IPPC-/Seveso-Bereich zuzuordnen (§ 2 Z 5 2. GFVO) und kann nicht freigestellt werden.",
+        "genericCategoryLabel": "der ausgewählten Kategorie"
       }
     }
   }

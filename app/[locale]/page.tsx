@@ -61,7 +61,7 @@ export default function Home() {
         </div>
 
         {/* Two Main Cards */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {/* Card 1: Check if permit is needed */}
           <div className="group card-lift bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-blue-300 relative transition-all duration-200" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
             <div className="h-1.5 bg-gradient-to-r from-blue-600 to-blue-700"></div>
@@ -105,6 +105,30 @@ export default function Home() {
                 style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
               >
                 {t("card2Button")}
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Card 3: 2nd GFVO checker */}
+          <div className="group card-lift bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-emerald-400 relative transition-all duration-200" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+            <div className="h-1.5 bg-gradient-to-r from-emerald-500 to-emerald-600"></div>
+            <div className="p-8">
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-105 transition-all duration-200" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+                <Sparkles className="w-8 h-8 text-white" strokeWidth={2.5} />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                {t("card3Title")}
+              </h2>
+              <p className="text-gray-600 mb-8 leading-relaxed font-normal">
+                {t("card3Description")}
+              </p>
+              <Link
+                href={`/${activeLocale}/gfvo-check`}
+                className="button-shine button-click inline-flex items-center gap-2 w-full justify-center bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-4 px-6 rounded-xl font-semibold hover:from-emerald-600 hover:to-emerald-700 transition-all duration-200"
+                style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+              >
+                {t("card3Button")}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
