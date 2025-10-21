@@ -3,28 +3,31 @@
 // DocumentsPageClient renders the localized permitting checklist, helper content,
 // and HowTo structured data that describes the submission process in each language.
 import { useTranslations } from 'next-intl'
+import {
+  Phone,
+  Mail,
+  Globe,
+  FileText,
+  CheckCircle,
+  MapPin,
+  Building,
+  Clock,
+  AlertCircle,
+  Info,
+  Volume2,
+  Wind,
+  Flame,
+  Euro,
+  FileSearch,
+  Wrench,
+  CalendarClock,
+  FolderOpen,
+  Handshake,
+  ClipboardList,
+  RotateCw
+} from 'lucide-react'
 
 const STEP_IDS = ['step1', 'step2', 'step3', 'step4'] as const
-const STEP_GRADIENTS: Record<(typeof STEP_IDS)[number], string> = {
-  step1: 'from-blue-600 to-blue-700',
-  step2: 'from-green-600 to-green-700',
-  step3: 'from-purple-600 to-purple-700',
-  step4: 'from-pink-600 to-pink-700',
-}
-
-const STEP_BADGE_COLORS: Record<(typeof STEP_IDS)[number], string> = {
-  step1: 'text-blue-600',
-  step2: 'text-green-600',
-  step3: 'text-purple-600',
-  step4: 'text-pink-600',
-}
-
-const STEP_NUMBERS: Record<(typeof STEP_IDS)[number], string> = {
-  step1: '1',
-  step2: '2',
-  step3: '3',
-  step4: '4',
-}
 
 const STEP2_ITEMS = ['applicationForm', 'businessLicense', 'plans', 'technicalDescription', 'neighbors', 'tenancy'] as const
 const STEP3_OPTIONS = ['inPerson', 'mail'] as const
@@ -148,45 +151,62 @@ export default function DocumentsPageClient() {
     .replace(/&/g, '\\u0026')
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 py-16">
       <script
         type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: howToSchemaJson }}
       />
       <div className="max-w-5xl mx-auto px-4">
-        <div className="text-center mb-12">
+        {/* Header */}
+        <div className="text-center mb-12 animate-fadeIn">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{t('title')}</h1>
-          <p className="text-xl text-gray-600">{t('subtitle')}</p>
+          <p className="text-xl text-gray-600 font-normal">{t('subtitle')}</p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-gray-100">
-          <p className="text-lg text-gray-700 leading-relaxed">{t('intro')}</p>
+        {/* Intro Card */}
+        <div className="bg-white rounded-2xl p-8 mb-12 border border-gray-200 animate-fadeIn" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Info className="w-6 h-6 text-blue-600" strokeWidth={2} />
+              </div>
+            </div>
+            <p className="text-lg text-gray-700 leading-relaxed font-normal">{t('intro')}</p>
+          </div>
         </div>
 
-        <div className="space-y-6">
-          {STEP_IDS.map(stepId => (
+        {/* Steps */}
+        <div className="space-y-8 mb-16">
+          {STEP_IDS.map((stepId, index) => (
             <div
               key={stepId}
-              className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow"
+              className="bg-white rounded-2xl overflow-hidden border border-gray-200 card-lift transition-all duration-200"
+              style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
             >
-              <div className={`bg-gradient-to-r ${STEP_GRADIENTS[stepId]} px-6 py-4`}>
-                <h2 className="text-xl font-bold text-white flex items-center gap-3">
-                  <span
-                    className={`flex items-center justify-center w-8 h-8 bg-white ${STEP_BADGE_COLORS[stepId]} rounded-full font-bold`}
-                  >
-                    {STEP_NUMBERS[stepId]}
-                  </span>
-                  {t(`steps.${stepId}.title`)}
-                </h2>
+              {/* Step Header */}
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-5">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center justify-center w-10 h-10 bg-white rounded-lg">
+                    <span className="text-blue-600 font-bold text-lg">{index + 1}</span>
+                  </div>
+                  <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    {t(`steps.${stepId}.title`)}
+                  </h2>
+                </div>
               </div>
-              <div className="p-6">
-                <p className="text-gray-700 mb-4">{t(`steps.${stepId}.description`)}</p>
+
+              {/* Step Content */}
+              <div className="p-8">
+                <p className="text-gray-700 mb-6 leading-relaxed font-normal">{t(`steps.${stepId}.description`)}</p>
 
                 {stepId === 'step1' && (
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h3 className="font-semibold text-gray-900 mb-2">{t('steps.step1.contactTitle')}</h3>
-                    <ul className="space-y-1 text-sm text-gray-700">
+                  <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                    <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                      <Handshake className="w-5 h-5 text-blue-600" strokeWidth={2} />
+                      {t('steps.step1.contactTitle')}
+                    </h3>
+                    <ul className="space-y-3">
                       {STEP1_CONTACT.map(contactId => {
                         const href =
                           contactId === 'phone'
@@ -195,23 +215,29 @@ export default function DocumentsPageClient() {
                               ? 'mailto:post@ma36.wien.gv.at'
                               : 'https://www.wien.gv.at/ma36'
 
+                        const icon = contactId === 'phone' ? <Phone className="w-4 h-4" /> :
+                                     contactId === 'email' ? <Mail className="w-4 h-4" /> :
+                                     <Globe className="w-4 h-4" />
+
                         return (
-                          <li key={contactId} className="flex items-center gap-2">
-                            <span>{t(`steps.step1.contact.${contactId}.icon`)}</span>
+                          <li key={contactId} className="flex items-center gap-3 text-gray-700">
+                            <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                              {icon}
+                            </div>
                             {contactId === 'website' ? (
                               <a
                                 href={href}
-                                className="hover:text-blue-600 hover:underline transition-colors"
+                                className="hover:text-blue-600 transition-colors font-medium"
                                 target="_blank"
                                 rel="noreferrer"
                               >
                                 {t(`steps.step1.contact.${contactId}.value`)}
                               </a>
                             ) : (
-                              <span>
-                                <strong>{t(`steps.step1.contact.${contactId}.label`)}:</strong>{' '}
+                              <span className="font-normal">
+                                <strong className="font-semibold">{t(`steps.step1.contact.${contactId}.label`)}:</strong>{' '}
                                 {contactId === 'email' ? (
-                                  <a href={href} className="hover:text-blue-600 hover:underline transition-colors">
+                                  <a href={href} className="hover:text-blue-600 transition-colors">
                                     {t(`steps.step1.contact.${contactId}.value`)}
                                   </a>
                                 ) : (
@@ -227,52 +253,87 @@ export default function DocumentsPageClient() {
                 )}
 
                 {stepId === 'step2' && (
-                  <ul className="space-y-3">
-                    {STEP2_ITEMS.map(itemId => (
-                      <li key={itemId} className="flex items-start gap-3">
-                        <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <div>
-                          <strong className="text-gray-900">{t(`steps.step2.items.${itemId}.title`)}</strong>
-                          <p className="text-sm text-gray-600">{t(`steps.step2.items.${itemId}.description`)}</p>
+                  <div className="space-y-4">
+                    {STEP2_ITEMS.map(itemId => {
+                      const itemIcon = itemId === 'applicationForm' ? <FileText className="w-5 h-5" strokeWidth={2} /> :
+                                       itemId === 'businessLicense' ? <CheckCircle className="w-5 h-5" strokeWidth={2} /> :
+                                       itemId === 'plans' ? <MapPin className="w-5 h-5" strokeWidth={2} /> :
+                                       itemId === 'technicalDescription' ? <FileSearch className="w-5 h-5" strokeWidth={2} /> :
+                                       itemId === 'neighbors' ? <Handshake className="w-5 h-5" strokeWidth={2} /> :
+                                       <Building className="w-5 h-5" strokeWidth={2} />
+
+                      return (
+                        <div key={itemId} className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                          <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                            {itemIcon}
+                          </div>
+                          <div className="flex-1">
+                            <strong className="text-gray-900 font-semibold block mb-1">
+                              {t(`steps.step2.items.${itemId}.title`)}
+                            </strong>
+                            <p className="text-sm text-gray-600 font-normal leading-relaxed">
+                              {t(`steps.step2.items.${itemId}.description`)}
+                            </p>
+                          </div>
                         </div>
-                      </li>
-                    ))}
-                  </ul>
+                      )
+                    })}
+                  </div>
                 )}
 
                 {stepId === 'step3' && (
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {STEP3_OPTIONS.map(optionId => (
-                      <div key={optionId} className="bg-blue-50 rounded-lg p-4">
-                        <h3 className="font-semibold text-gray-900 mb-2">{t(`steps.step3.options.${optionId}.title`)}</h3>
-                        <p className="text-sm text-gray-700">{t(`steps.step3.options.${optionId}.line1`)}</p>
-                        <p className="text-sm text-gray-700">{t(`steps.step3.options.${optionId}.line2`)}</p>
-                      </div>
-                    ))}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {STEP3_OPTIONS.map(optionId => {
+                      const optionIcon = optionId === 'inPerson' ? <Building className="w-6 h-6" strokeWidth={2} /> :
+                                        <Mail className="w-6 h-6" strokeWidth={2} />
+
+                      return (
+                        <div key={optionId} className="bg-blue-50 rounded-xl p-6 border border-blue-200">
+                          <div className="flex items-center gap-3 mb-4">
+                            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                              {optionIcon}
+                            </div>
+                            <h3 className="font-bold text-gray-900">{t(`steps.step3.options.${optionId}.title`).replace(/[📮✉️]/g, '').trim()}</h3>
+                          </div>
+                          <p className="text-sm text-gray-700 font-normal mb-2">{t(`steps.step3.options.${optionId}.line1`)}</p>
+                          <p className="text-sm text-gray-700 font-normal">{t(`steps.step3.options.${optionId}.line2`)}</p>
+                        </div>
+                      )
+                    })}
                   </div>
                 )}
 
                 {stepId === 'step4' && (
                   <>
-                    <ul className="space-y-3">
-                      {STEP4_ITEMS.map(itemId => (
-                        <li key={itemId} className="flex items-start gap-3">
-                          <span className="text-xl">{t(`steps.step4.items.${itemId}.icon`)}</span>
-                          <div>
-                            <strong className="text-gray-900">{t(`steps.step4.items.${itemId}.title`)}</strong>
-                            <p className="text-sm text-gray-600">{t(`steps.step4.items.${itemId}.description`)}</p>
+                    <div className="space-y-4">
+                      {STEP4_ITEMS.map(itemId => {
+                        const itemIcon = itemId === 'confirmation' ? <CheckCircle className="w-5 h-5" strokeWidth={2} /> :
+                                        itemId === 'assessment' ? <FileSearch className="w-5 h-5" strokeWidth={2} /> :
+                                        itemId === 'questions' ? <Phone className="w-5 h-5" strokeWidth={2} /> :
+                                        <FileText className="w-5 h-5" strokeWidth={2} />
+
+                        return (
+                          <div key={itemId} className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                              {itemIcon}
+                            </div>
+                            <div>
+                              <strong className="text-gray-900 font-semibold block mb-1">
+                                {t(`steps.step4.items.${itemId}.title`)}
+                              </strong>
+                              <p className="text-sm text-gray-600 font-normal leading-relaxed">
+                                {t(`steps.step4.items.${itemId}.description`)}
+                              </p>
+                            </div>
                           </div>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-4 bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
-                      {t('steps.step4.processingTime')}
+                        )
+                      })}
+                    </div>
+                    <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-5 flex items-start gap-3">
+                      <Clock className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" strokeWidth={2} />
+                      <p className="text-sm text-blue-900 font-normal">
+                        {t('steps.step4.processingTime')}
+                      </p>
                     </div>
                   </>
                 )}
@@ -281,49 +342,107 @@ export default function DocumentsPageClient() {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-10">
-          <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">{t('expertReports.title')}</h3>
-            <ul className="space-y-3 text-gray-700">
-              {EXPERT_REPORTS.map(reportId => (
-                <li key={reportId} className="flex items-start gap-3">
-                  <span className="text-2xl">{t(`expertReports.items.${reportId}.icon`)}</span>
-                  <div>
-                    <strong className="text-gray-900">{t(`expertReports.items.${reportId}.title`)}</strong>
-                    <p className="text-sm text-gray-600">{t(`expertReports.items.${reportId}.description`)}</p>
-                  </div>
-                </li>
-              ))}
+        {/* Additional Information Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {/* Expert Reports */}
+          <div className="bg-white rounded-xl p-8 border border-gray-200" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                <FileSearch className="w-5 h-5 text-blue-600" strokeWidth={2} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900">{t('expertReports.title')}</h3>
+            </div>
+            <ul className="space-y-4">
+              {EXPERT_REPORTS.map(reportId => {
+                const reportIcon = reportId === 'noise' ? <Volume2 className="w-5 h-5" strokeWidth={2} /> :
+                                   reportId === 'ventilation' ? <Wind className="w-5 h-5" strokeWidth={2} /> :
+                                   <Flame className="w-5 h-5" strokeWidth={2} />
+
+                return (
+                  <li key={reportId} className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600">
+                      {reportIcon}
+                    </div>
+                    <div>
+                      <strong className="text-gray-900 font-semibold block mb-1">
+                        {t(`expertReports.items.${reportId}.title`)}
+                      </strong>
+                      <p className="text-sm text-gray-600 font-normal leading-relaxed">
+                        {t(`expertReports.items.${reportId}.description`)}
+                      </p>
+                    </div>
+                  </li>
+                )
+              })}
             </ul>
           </div>
-          <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">{t('fees.title')}</h3>
-            <ul className="space-y-3 text-gray-700">
-              {FEES.map(feeId => (
-                <li key={feeId} className="flex items-start gap-3">
-                  <span className="text-2xl">{t(`fees.items.${feeId}.icon`)}</span>
-                  <div>
-                    <strong className="text-gray-900">{t(`fees.items.${feeId}.title`)}</strong>
-                    <p className="text-sm text-gray-600">{t(`fees.items.${feeId}.description`)}</p>
-                  </div>
-                </li>
-              ))}
+
+          {/* Fees */}
+          <div className="bg-white rounded-xl p-8 border border-gray-200" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Euro className="w-5 h-5 text-blue-600" strokeWidth={2} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900">{t('fees.title')}</h3>
+            </div>
+            <ul className="space-y-4">
+              {FEES.map(feeId => {
+                const feeIcon = feeId === 'federalFees' ? <Euro className="w-5 h-5" strokeWidth={2} /> :
+                                feeId === 'expertFees' ? <FileText className="w-5 h-5" strokeWidth={2} /> :
+                                feeId === 'ownExperts' ? <Wrench className="w-5 h-5" strokeWidth={2} /> :
+                                <CalendarClock className="w-5 h-5" strokeWidth={2} />
+
+                return (
+                  <li key={feeId} className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600">
+                      {feeIcon}
+                    </div>
+                    <div>
+                      <strong className="text-gray-900 font-semibold block mb-1">
+                        {t(`fees.items.${feeId}.title`)}
+                      </strong>
+                      <p className="text-sm text-gray-600 font-normal leading-relaxed">
+                        {t(`fees.items.${feeId}.description`)}
+                      </p>
+                    </div>
+                  </li>
+                )
+              })}
             </ul>
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl p-8 mt-10 border border-gray-100">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">{t('tips.title')}</h3>
-          <ul className="grid md:grid-cols-2 gap-6 text-gray-700">
-            {TIPS.map(tipId => (
-              <li key={tipId} className="flex items-start gap-4">
-                <span className="text-3xl">{t(`tips.items.${tipId}.icon`)}</span>
-                <div>
-                  <strong className="text-gray-900">{t(`tips.items.${tipId}.title`)}</strong>
-                  <p className="text-sm text-gray-600">{t(`tips.items.${tipId}.description`)}</p>
-                </div>
-              </li>
-            ))}
+        {/* Tips Section */}
+        <div className="bg-gradient-to-r from-blue-50 to-blue-100/50 rounded-2xl p-8 md:p-10 border border-blue-200">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+              <AlertCircle className="w-6 h-6 text-white" strokeWidth={2} />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900">{t('tips.title')}</h3>
+          </div>
+          <ul className="grid md:grid-cols-2 gap-6">
+            {TIPS.map(tipId => {
+              const tipIcon = tipId === 'planEarly' ? <FolderOpen className="w-5 h-5" strokeWidth={2} /> :
+                             tipId === 'contactAuthority' ? <Handshake className="w-5 h-5" strokeWidth={2} /> :
+                             tipId === 'useChecklists' ? <ClipboardList className="w-5 h-5" strokeWidth={2} /> :
+                             <RotateCw className="w-5 h-5" strokeWidth={2} />
+
+              return (
+                <li key={tipId} className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                    {tipIcon}
+                  </div>
+                  <div>
+                    <strong className="text-gray-900 font-bold block mb-1">
+                      {t(`tips.items.${tipId}.title`)}
+                    </strong>
+                    <p className="text-sm text-gray-700 font-normal leading-relaxed">
+                      {t(`tips.items.${tipId}.description`)}
+                    </p>
+                  </div>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </div>
