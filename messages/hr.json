@@ -436,7 +436,8 @@
   "gfvoChecker": {
     "badge": "New decision aid",
     "title": "Assess permit exemption under the 2nd GFVO",
-    "intro": "Answer three focused steps to determine whether your facility remains permit-free under Vienna’s 2nd Permit Exemption Ordinance or if a formal permit is required.",
+    "intro": "Answer three questions to receive a legally grounded assessment of whether your facility is permit-free.",
+    "disclaimer": "Note: This tool provides orientation.\nIt checks whether your business generally falls under an exemption of Vienna’s 2nd Permit Exemption Ordinance.\nThe result is not an administrative decision or legal advice under the Legal Services Act.\nThe binding decision is made by MA 36 (Vienna business facilities authority).",
     "progress": {
       "title": "Progress",
       "step": "Step {current} of {total}"

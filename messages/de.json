@@ -436,7 +436,8 @@
   "gfvoChecker": {
     "badge": "Neue Entscheidungshilfe",
     "title": "Genehmigungsfreiheit nach der 2. GFVO prüfen",
-    "intro": "Beantworte drei Fragen und erhalte eine rechtlich begründete Einschätzung, ob deine Betriebsanlage nach der 2. Genehmigungsfreistellungsverordnung (Wien) genehmigungsfrei ist oder ein Antrag nötig bleibt.",
+    "intro": "Beantworte drei Fragen und erhalte eine rechtlich fundierte Einschätzung, ob deine Betriebsanlage genehmigungsfrei ist.",
+    "disclaimer": "Hinweis: Dieses Tool dient der Orientierung.\nEs prüft, ob dein Betrieb grundsätzlich unter eine Ausnahme der 2. Genehmigungsfreistellungsverordnung fällt.\nDas Ergebnis ist keine behördliche Entscheidung und keine Rechtsberatung im Sinn des RDLG.\nVerbindlich entscheidet darüber die MA 36 (Betriebsanlagenbehörde Wien).",
     "progress": {
       "title": "Fortschritt",
       "step": "Schritt {current} von {total}"

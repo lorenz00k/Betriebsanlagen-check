@@ -214,6 +214,10 @@ export default function GfvoCheckerPage() {
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">{t('intro')}</p>
         </header>
 
+        <div className="rounded-2xl border border-slate-200 bg-white/80 p-4 text-sm text-slate-600 shadow-sm whitespace-pre-line">
+          {t('disclaimer')}
+        </div>
+
         {currentStep !== 'result' && (
           <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-6 py-4 shadow-sm">
             <div>
@@ -512,6 +516,10 @@ export default function GfvoCheckerPage() {
                 >
                   {t('buttons.adjustAnswers')}
                 </button>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-white/80 p-5 text-sm text-slate-600 shadow-sm whitespace-pre-line">
+                {t('disclaimer')}
               </div>
             </div>
           )}
