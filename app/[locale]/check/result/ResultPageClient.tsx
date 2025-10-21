@@ -1,39 +1,79 @@
-'use client'
+"use client"
 
-// ResultPageClient presents the permit recommendation, supporting reasons, and next steps
-// while emitting breadcrumb and action structured data for the current locale.
-import { useEffect, useState } from 'react'
-import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
+// ResultPageClient presents the checker evaluation with detailed reasoning,
+// document lists, occupational safety guidance, and operational obligations.
+import { useEffect, useMemo, useState } from "react"
+import { useTranslations } from "next-intl"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 
-type Result = {
-  needsPermit: boolean
-  reasons: string[]
-}
+import type { ComplianceResult } from "@/app/lib/complianceCheckerLogic"
 
 type ResultPageClientProps = {
   locale: string
 }
 
-// Displays the localized result experience and syncs structured data for search engines.
+type Section = {
+  title: string
+  items: string[]
+}
+
+// Displays the localized compliance checker result and falls back to the wizard if no data is present.
 export default function ResultPageClient({ locale }: ResultPageClientProps) {
-  const t = useTranslations('result')
-  const homeT = useTranslations('home')
-  const questionnaireT = useTranslations('questionnaire')
+  const t = useTranslations("complianceResult")
+  const translate = useTranslations()
+  const homeT = useTranslations("home")
   const router = useRouter()
-  const [result, setResult] = useState<Result | null>(null)
+  const [result, setResult] = useState<ComplianceResult | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const storedResult = sessionStorage.getItem('questionnaireResult')
+    const storedResult = sessionStorage.getItem("complianceResult")
     if (storedResult) {
-      setResult(JSON.parse(storedResult))
+      setResult(JSON.parse(storedResult) as ComplianceResult)
     } else {
       router.push(`/${locale}/check`)
     }
     setLoading(false)
   }, [locale, router])
+
+  const sections: Section[] = useMemo(() => {
+    if (!result) return []
+
+    return [
+      {
+        title: t("sections.procedural"),
+        items: result.proceduralKeys.map((key) => translate(key)),
+      },
+      {
+        title: t("sections.documents"),
+        items: [
+          ...result.documentGeneralKeys.map((key) => translate(key)),
+          ...result.documentSectorKeys.map((key) => translate(key)),
+        ],
+      },
+      {
+        title: t("sections.labour"),
+        items: result.labourKeys.map((key) => translate(key)),
+      },
+      {
+        title: t("sections.operationalDuties"),
+        items: result.operationalDutyKeys.map((key) => translate(key)),
+      },
+      {
+        title: t("sections.changeDuties"),
+        items: result.changeDutyKeys.map((key) => translate(key)),
+      },
+      {
+        title: t("sections.preCheck"),
+        items: result.preCheckKeys.map((key) => translate(key)),
+      },
+      {
+        title: t("sections.specialNotes"),
+        items: result.specialNoteKeys.map((key) => translate(key)),
+      },
+    ].filter((section) => section.items.length > 0)
+  }, [result, t, translate])
 
   if (loading) {
     return (
@@ -47,228 +87,76 @@ export default function ResultPageClient({ locale }: ResultPageClientProps) {
     return null
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://betriebsanlagen-check.vercel.app'
-  const buildUrl = (path: string) => {
-    try {
-      return new URL(path, siteUrl).toString()
-    } catch {
-      const trimmedBase = siteUrl.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl
-      return `${trimmedBase}${path}`
-    }
-  }
-
-  const breadcrumbSchema = {
-    "@context": 'https://schema.org',
-    "@type": 'BreadcrumbList',
-    itemListElement: [
-      {
-        "@type": 'ListItem',
-        position: 1,
-        name: homeT('title'),
-        item: buildUrl(`/${locale}`),
-      },
-      {
-        "@type": 'ListItem',
-        position: 2,
-        name: questionnaireT('title'),
-        item: buildUrl(`/${locale}/check`),
-      },
-      {
-        "@type": 'ListItem',
-        position: 3,
-        name: t('title'),
-        item: buildUrl(`/${locale}/check/result`),
-      },
-    ],
-  }
-
-  const recommendedSteps = result.needsPermit
-    ? [
-        { name: t('contactAuthority') },
-        { name: t('prepareDocuments') },
-        { name: t('viewDocuments'), url: buildUrl(`/${locale}/documents`) },
-      ]
-    : [
-        { name: t('noPermitDescription') },
-        { name: t('disclaimerText') },
-      ]
-
-  const recommendedStepsSchema = {
-    "@context": 'https://schema.org',
-    "@type": 'ItemList',
-    name: result.needsPermit ? t('nextSteps') : t('noPermitDescription'),
-    itemListElement: recommendedSteps.map((step, index) => {
-      const item: Record<string, unknown> = {
-        "@type": 'ListItem',
-        position: index + 1,
-        name: step.name,
-      }
-
-      if (step.url) {
-        item.item = step.url
-      }
-
-      return item
-    }),
-  }
-
-  const reasonsSchema = {
-    "@context": 'https://schema.org',
-    "@type": 'ItemList',
-    name: result.needsPermit ? t('reasonsTitlePermit') : t('reasonsTitleNoPermit'),
-    itemListElement: result.reasons.map((reason, index) => ({
-      "@type": 'ListItem',
-      position: index + 1,
-      name: reason,
-    })),
-  }
-
-  const breadcrumbJson = JSON.stringify(breadcrumbSchema)
-    .replace(/</g, '\\u003C')
-    .replace(/>/g, '\\u003E')
-    .replace(/&/g, '\\u0026')
-
-  const recommendedStepsJson = JSON.stringify(recommendedStepsSchema)
-    .replace(/</g, '\\u003C')
-    .replace(/>/g, '\\u003E')
-    .replace(/&/g, '\\u0026')
-
-  const reasonsJson = JSON.stringify(reasonsSchema)
-    .replace(/</g, '\\u003C')
-    .replace(/>/g, '\\u003E')
-    .replace(/&/g, '\\u0026')
+  const classificationTitle = translate(result.classificationKey)
+  const classificationSummary = translate(result.summaryKey)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 py-12">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: breadcrumbJson }}
-      />
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: recommendedStepsJson }}
-      />
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: reasonsJson }}
-      />
-      <div className="max-w-4xl mx-auto px-4">
-        {/* Result Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">{t('title')}</h1>
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-4xl font-bold text-gray-900">{t("title")}</h1>
+          <Link
+            href={`/${locale}/check`}
+            className="inline-flex items-center gap-2 text-blue-700 font-semibold hover:text-blue-800"
+          >
+            <span className="text-lg">{t("actions.restart")}</span>
+          </Link>
         </div>
 
-        {/* Result Card */}
-        <div
-          className={`bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-6 border-4 ${
-            result.needsPermit ? 'border-red-400' : 'border-green-400'
-          }`}
-        >
-          {/* Icon and Main Result */}
-          <div className="text-center mb-8">
-            <div
-              className={`inline-flex items-center justify-center w-24 h-24 rounded-full mb-6 ${
-                result.needsPermit ? 'bg-red-100' : 'bg-green-100'
-              }`}
-            >
-              {result.needsPermit ? (
-                <svg className="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-              ) : (
-                <svg className="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              )}
-            </div>
-            <h2
-              className={`text-3xl md:text-4xl font-bold mb-4 ${
-                result.needsPermit ? 'text-red-600' : 'text-green-600'
-              }`}
-            >
-              {result.needsPermit ? t('permitNeeded') : t('noPermitNeeded')}
-            </h2>
-            <p className="text-lg text-gray-600">
-              {result.needsPermit ? t('permitDescription') : t('noPermitDescription')}
-            </p>
+        <div className="bg-yellow-50 border border-yellow-200 rounded-2xl p-6 md:p-8 mb-10">
+          <h3 className="text-xl font-semibold text-yellow-800 mb-4">{t("disclaimer.title")}</h3>
+          <ul className="space-y-3">
+            {result.disclaimerKeys.map((key) => (
+              <li key={key} className="text-yellow-900 leading-relaxed">{translate(key)}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-blue-100 mb-10">
+          <div className="text-center mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold">
+              {homeT("card1Title")}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-3">{classificationTitle}</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">{classificationSummary}</p>
           </div>
 
-          {/* Reasons */}
-          <div className="bg-gray-50 rounded-xl p-6 mb-8">
-            <h3 className="font-semibold text-gray-900 mb-4">
-              {result.needsPermit ? t('reasonsTitlePermit') : t('reasonsTitleNoPermit')}
-            </h3>
-            <ul className="space-y-2">
-              {result.reasons.map((reason, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <span
-                    className={`mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full ${
-                      result.needsPermit ? 'bg-red-600' : 'bg-green-600'
-                    }`}
-                  ></span>
-                  <span className="text-gray-700">{reason}</span>
+          {result.gfvoCategoryKey ? (
+            <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 mb-6">
+              <h3 className="text-xl font-semibold text-emerald-700 mb-2">{t("gfvoMatch.title")}</h3>
+              <p className="text-emerald-800">{translate(result.gfvoCategoryKey)}</p>
+            </div>
+          ) : null}
+
+          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">{t("reasons.title")}</h3>
+            <ul className="space-y-3">
+              {result.reasonKeys.map((key) => (
+                <li key={key} className="flex items-start gap-3">
+                  <span className="w-2 h-2 rounded-full bg-blue-600 mt-2"></span>
+                  <span className="text-gray-700 leading-relaxed">{translate(key)}</span>
                 </li>
               ))}
             </ul>
           </div>
+        </div>
 
-          {/* Next Steps */}
-          {result.needsPermit && (
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
-              <h3 className="font-semibold text-gray-900 mb-4">{t('nextSteps')}</h3>
+        <div className="space-y-8">
+          {sections.map((section) => (
+            <div key={section.title} className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">{section.title}</h3>
               <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-gray-700">{t('contactAuthority')}</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-gray-700">{t('prepareDocuments')}</span>
-                </li>
+                {section.items.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span>
+                    <span className="text-gray-700 leading-relaxed">{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
-          )}
-
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href={`/${locale}/check`}
-              className="flex-1 text-center px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all"
-            >
-              {t('startOver')}
-            </Link>
-            {result.needsPermit && (
-              <Link
-                href={`/${locale}/documents`}
-                className="flex-1 text-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg"
-              >
-                {t('viewDocuments')}
-              </Link>
-            )}
-          </div>
+          ))}
         </div>
 
-        {/* Disclaimer */}
-        <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 text-center">
-          <p className="text-sm text-gray-700">
-            <strong>{t('disclaimerTitle')}</strong> {t('disclaimerText')}
-          </p>
-        </div>
       </div>
     </div>
   )

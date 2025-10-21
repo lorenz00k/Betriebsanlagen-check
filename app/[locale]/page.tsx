@@ -8,15 +8,7 @@ import { useParams } from "next/navigation";
 import AnimatedStats from "../components/AnimatedStats";
 import { useEffect, useState } from "react";
 import { defaultLocale } from "@/i18n";
-import {
-  CheckCircle2,
-  FileText,
-  Zap,
-  Languages,
-  Shield,
-  ArrowRight,
-  Sparkles,
-} from "lucide-react";
+import { CheckCircle2, FileText, Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -60,7 +52,7 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Two Main Cards */}
+        {/* Primary actions */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {/* Card 1: Check if permit is needed */}
           <div className="group card-lift bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-blue-300 relative transition-all duration-200" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
@@ -109,6 +101,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
+
         </div>
 
         {/* Animated Stats */}
