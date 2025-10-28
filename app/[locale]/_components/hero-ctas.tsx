@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 type SupportedLocale = "de" | "en";
 
@@ -17,28 +16,23 @@ export function HeroCtas({ locale = "de" }: HeroCtasProps) {
 
   return (
     <div className="mt-8 flex flex-col items-stretch justify-center gap-3 md:flex-row md:flex-wrap md:items-center">
-      <Button
-        asChild
-        size="lg"
-        className="w-full rounded-2xl px-6 py-6 text-base focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 md:w-auto"
+      <Link
+        href={`/${locale}/check`}
+        prefetch
         aria-label={t.primary}
+        className="inline-flex w-full items-center justify-center rounded-2xl bg-blue-600 px-6 py-6 text-base font-semibold text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 md:w-auto"
       >
-        <Link href={`/${locale}/check`} prefetch>
-          {t.primary}
-        </Link>
-      </Button>
+        {t.primary}
+      </Link>
 
-      <Button
-        asChild
-        variant="outline"
-        size="lg"
-        className="w-full rounded-2xl px-6 py-6 text-base focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 md:w-auto"
+      <Link
+        href={`/${locale}/documents`}
+        prefetch
         aria-label={t.secondary}
+        className="inline-flex w-full items-center justify-center rounded-2xl border border-blue-600 px-6 py-6 text-base font-semibold text-blue-600 transition-colors hover:border-blue-500 hover:text-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 md:w-auto"
       >
-        <Link href={`/${locale}/documents`} prefetch>
-          {t.secondary}
-        </Link>
-      </Button>
+        {t.secondary}
+      </Link>
     </div>
   );
 }
