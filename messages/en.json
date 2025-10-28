@@ -4,7 +4,7 @@
   },
   "home": {
     "title": "Business Facility Permit Check for Founders",
-    "subtitle": "Get a legally grounded orientation in 2 minutes on whether your business facility is likely permit-exempt under the 2nd Exemption Regulation (2. GFVO). This is not legal advice and not a binding authority decision.",
+    "subtitle": "Find out in 2 minutes if you need a business facility permit",
     "card1Title": "Betriebsanlagen checker",
     "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
     "card1Button": "Start checker",
@@ -26,7 +26,7 @@
       "feature3Title": "Free & Anonymous",
       "feature3Text": "The check is completely free and your data remains private. No registration required, no hidden costs.",
       "whyTitle": "When do you need a business facility permit?",
-      "whyText": "A business facility permit is required in Austria for many commercial activities. The 2nd Exemption Regulation (2. GFVO, federal law; applies Austria-wide) determines which businesses are exempt from the permit requirement. Factors such as business area, noise, operating hours and type of activity play an important role."
+      "whyText": "A business facility permit is required in Austria for many commercial activities. The exemption regulation determines which businesses are exempt from the permit requirement. Factors such as business area, noise, operating hours and type of activity play an important role."
     },
     "footer": {
       "copyright": "Betriebsanlagen Check - Your helper for Viennese bureaucracy",
@@ -82,8 +82,8 @@
             "description": "Detailed description of the facility and its installations"
           },
           "neighbors": {
-            "title": "Neighbour participation (handled by the authority)",
-            "description": "Neighbour participation in the commercial permit procedure is handled by the authority (MA 36 in Vienna) as part of the administrative process (e.g., announcement/party rights). Applicants are not generally required to prove prior neighbour notification. Optional: you may attach voluntary statements of consent from neighbours."
+            "title": "Neighbour notification",
+            "description": "Proof of informing or obtaining consent from neighbours"
           },
           "tenancy": {
             "title": "Proof of tenancy/ownership",
@@ -212,7 +212,7 @@
     "questions": {
       "q1": {
         "question": "What is a business facility and do I need a permit?",
-        "answer": "A business facility (Betriebsanlage) is any installation used for operating a trade. This includes commercial premises, workshops, warehouses, restaurants, and much more. Whether you need a permit depends on various factors: type of business, size, location, operating hours, and potential disturbances (noise, odor). The 2nd Exemption Regulation for Commercial Installations (2. GFVO, federal law; applies Austria-wide) specifies which businesses can operate without a permit. Use our free check to find out if your business requires authorization."
+        "answer": "A business facility (Betriebsanlage) is any installation used for operating a trade. This includes commercial premises, workshops, warehouses, restaurants, and much more. Whether you need a permit depends on various factors: type of business, size, location, operating hours, and potential disturbances (noise, odor). The exemption regulation (Genehmigungsfreistellungsverordnung) specifies which businesses can operate without a permit. Use our free check to find out if your business requires authorization."
       },
       "q2": {
         "question": "How long does it take to get a business facility permit in Vienna?",
@@ -224,7 +224,7 @@
       },
       "q4": {
         "question": "Can I open my business before getting the permit?",
-        "answer": "No, if your business requires a permit, you must NOT start before receiving authorization. This would be an administrative offense with an administrative fine of up to €3,600 (Section 366 (1) (2) GewO). For permit-exempt businesses (according to the 2nd Exemption Regulation (2. GFVO)) you can start immediately after trade registration. Regardless of permit exemption, other legal regimes may still apply (e.g., building law, fire safety). Please verify any additional requirements. Our check helps you determine if you need a permit."
+        "answer": "No, if your business requires a permit, you must NOT start before receiving authorization. This would be an administrative offense with penalties up to 50,000 euros. For permit-exempt businesses (according to exemption regulation), you can start immediately after trade registration. Our check helps you determine if you need a permit."
       },
       "q5": {
         "question": "What documents do I need for a business facility permit?",
@@ -232,11 +232,11 @@
       },
       "q6": {
         "question": "What's the difference between trade registration and business facility permit?",
-        "answer": "Trade registration: Authorizes you to operate a trade (at the trade authority). Business facility permit: Allows operation at a specific location (considers noise, safety, neighbors). You need BOTH: First the trade license, then the business facility permit for the location. Some businesses are exempt from permit requirements (see the 2nd Exemption Regulation (2. GFVO, federal law; applies Austria-wide))."
+        "answer": "Trade registration: Authorizes you to operate a trade (at the trade authority). Business facility permit: Allows operation at a specific location (considers noise, safety, neighbors). You need BOTH: First the trade license, then the business facility permit for the location. Some businesses are exempt from permit requirements (see exemption regulation)."
       },
       "q7": {
-        "question": "Does the 2nd Exemption Regulation (2. GFVO, federal law; applies Austria-wide) apply to me?",
-        "answer": "The 2nd Exemption Regulation for Commercial Installations (2. GFVO, federal law; applies Austria-wide) exempts certain businesses from permit requirements if they meet specific criteria. Examples: retail up to 600 m², offices (almost always), small workshops, beauty salons, accommodation up to 30 beds without pool. BUT: Exceptions apply for noise, music, hazardous substances, mechanical ventilation outside the building envelope. Use our check for a quick assessment."
+        "question": "Does the exemption regulation apply to me?",
+        "answer": "The Vienna exemption regulation exempts certain businesses from permit requirements if they meet specific criteria. Examples: retail up to 600 m², offices (almost always), small workshops, beauty salons, accommodation up to 30 beds without pool. BUT: Exceptions apply for noise, music, hazardous substances, mechanical ventilation outside the building envelope. Use our check for a quick assessment."
       },
       "q8": {
         "question": "Do I need a business facility permit as a restaurateur in Vienna?",
@@ -329,7 +329,7 @@
   "complianceChecker": {
     "badge": "Checker 2.0",
     "title": "Betriebsanlagen checker (Austrian Trade Act)",
-    "subtitle": "This tool provides a legally grounded orientation based on your inputs (Sections 1 and 2 of the 2nd Exemption Regulation (2. GFVO)). It is not legal advice and not a binding authority decision.",
+    "subtitle": "Work through the structured review covering facility status, permit duty, submission documents, worker protection metrics, and operational duties.",
     "progress": "Step {current} of {total}",
     "actions": {
       "next": "Continue",
@@ -500,7 +500,7 @@
       "accommodationMeals": "Serving full meals exceeds the breakfast/snack limitation of the exemption.",
       "expectedImpairments": "§ 74 (2) Trade Act impacts (emissions, hazards, disturbances) are expected.",
       "individualAssessment": "No clear exemption – request a declaratory ruling for certainty.",
-      "freistellungSummary": "All requirements of the 2nd Exemption Regulation (2. GFVO, federal law; applies Austria-wide) are met – the facility remains permit-free as long as the conditions are respected."
+      "freistellungSummary": "All requirements of the 2nd exemption ordinance are met – the facility remains permit-free as long as the conditions are respected."
     },
     "classifications": {
       "noFacility": {
@@ -509,7 +509,7 @@
       },
       "freistellungGFVO": {
         "title": "Permit-free under the 2nd GFVO",
-        "summary": "All category, time, and exclusion requirements of the 2nd Exemption Regulation (2. GFVO, federal law; applies Austria-wide) are fulfilled."
+        "summary": "All category, time, and exclusion requirements of the 2nd exemption ordinance are fulfilled."
       },
       "needsPermit": {
         "title": "Permit-required facility",
@@ -595,7 +595,7 @@
     },
     "quickReferences": {
       "definition": "Definition & five steps: WKO guide 'Weg zum genehmigten Betrieb'.",
-      "gfvo": "2nd Exemption Regulation (2. GFVO, federal law; applies Austria-wide) (consolidated version).",
+      "gfvo": "2nd exemption ordinance (consolidated version).",
       "guideline": "Business facility permit guide (WKW 2022).",
       "gastro": "Hospitality/Hotel guide (WKNÖ 06/2024).",
       "procedure": "Trade permit procedure guide (Lower Austria 06/2024).",
@@ -603,7 +603,7 @@
     },
     "disclaimer": {
       "title": "Disclaimer",
-      "orientation": "Note: this tool provides orientation. It checks whether your business could fall under exemptions of the 2nd Exemption Regulation (2. GFVO, federal law; applies Austria-wide).",
+      "orientation": "Note: this tool provides orientation. It checks whether your business could fall under exemptions of the 2nd exemption ordinance.",
       "legal": "The result is not a binding authority decision nor legal advice. MA 36 (Vienna business facility authority) issues binding rulings."
     }
   }

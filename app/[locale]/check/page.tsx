@@ -6,7 +6,6 @@
 import { useMemo, useState, type ChangeEvent } from "react"
 import { useTranslations } from "next-intl"
 import { useParams, useRouter } from "next/navigation"
-import LegalDisclaimer from "@/components/LegalDisclaimer"
 
 import {
   type BusinessSector,
@@ -559,8 +558,6 @@ export default function ComplianceCheckerPage() {
             </h1>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">{t("subtitle")}</p>
           </div>
-
-          <LegalDisclaimer lang={locale === "en" ? "en" : "de"} />
 
           <div className="flex items-center justify-between mb-10">
             <div className="flex-1 h-2 bg-gray-100 rounded-full mr-4">

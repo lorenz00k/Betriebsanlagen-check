@@ -5,7 +5,6 @@
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import Link from 'next/link'
-import LegalDisclaimer from '@/components/LegalDisclaimer'
 
 type FAQPageClientProps = {
   locale: string
@@ -56,8 +55,6 @@ export default function FAQPageClient({ locale }: FAQPageClientProps) {
             </h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">{t('subtitle')}</p>
           </div>
-
-          <LegalDisclaimer lang={locale === 'en' ? 'en' : 'de'} />
 
           {/* FAQ Accordion */}
           <div className="space-y-4">
