@@ -17,6 +17,8 @@ import {
   evaluateCompliance,
 } from "@/app/lib/complianceCheckerLogic"
 import { defaultLocale } from "@/i18n"
+import { InfoBox } from "../_components/info-box"
+import { helpTexts } from "../_data/help-texts"
 
 type StepId = "basics" | "location" | "operations" | "context"
 
@@ -81,6 +83,8 @@ export default function ComplianceCheckerPage() {
   const params = useParams<{ locale: string }>()
   const paramLocale = params?.locale
   const locale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale
+  const infoLocale: "de" | "en" = locale === "en" ? "en" : "de"
+  const info = helpTexts[infoLocale]
 
   const [currentStep, setCurrentStep] = useState<StepId>("basics")
   const [form, setForm] = useState<ComplianceInput>({})
@@ -241,7 +245,10 @@ export default function ComplianceCheckerPage() {
         return (
           <div className="space-y-8">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">{t("form.sector.question")}</h2>
+              <div className="mb-3 flex items-start gap-2">
+                <h2 className="text-2xl font-bold text-gray-900">{t("form.sector.question")}</h2>
+                <InfoBox text={info.category} />
+              </div>
               <p className="text-gray-600 mb-4">{t("form.sector.helper")}</p>
               <SelectionGrid<BusinessSector>
                 options={sectorOptions}
@@ -285,10 +292,11 @@ export default function ComplianceCheckerPage() {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="areaSqm" className="block text-sm font-medium text-gray-700 mb-2">
                   {t("form.areaSqm.label")}
                 </label>
                 <input
+                  id="areaSqm"
                   type="number"
                   min={0}
                   value={form.areaSqm ?? ""}
@@ -298,10 +306,14 @@ export default function ComplianceCheckerPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t("form.personCount.label")}
-                </label>
+                <div className="mb-2 flex items-start gap-2">
+                  <label htmlFor="personCount" className="text-sm font-medium text-gray-700">
+                    {t("form.personCount.label")}
+                  </label>
+                  <InfoBox text={info.seats} />
+                </div>
                 <input
+                  id="personCount"
                   type="number"
                   min={0}
                   value={form.personCount ?? ""}
@@ -324,9 +336,12 @@ export default function ComplianceCheckerPage() {
                 />
               </div>
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  {t("form.isOnlyTemporary.question")}
-                </label>
+                <div className="flex items-start gap-2">
+                  <span className="text-sm font-medium text-gray-700">
+                    {t("form.isOnlyTemporary.question")}
+                  </span>
+                  <InfoBox text={info.temporary} />
+                </div>
                 <SelectionGrid<BooleanChoice>
                   options={BOOLEAN_OPTIONS(t)}
                   selected={form.isOnlyTemporary}
@@ -339,10 +354,14 @@ export default function ComplianceCheckerPage() {
               <div className="space-y-4">
                 <div className="grid md:grid-cols-3 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {t("form.bedCount.label")}
-                    </label>
+                    <div className="mb-2 flex items-start gap-2">
+                      <label htmlFor="bedCount" className="text-sm font-medium text-gray-700">
+                        {t("form.bedCount.label")}
+                      </label>
+                      <InfoBox text={info.sanitation} />
+                    </div>
                     <input
+                      id="bedCount"
                       type="number"
                       min={0}
                       value={form.bedCount ?? ""}
@@ -352,9 +371,12 @@ export default function ComplianceCheckerPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
-                      {t("form.buildingUseExclusive.question")}
-                    </label>
+                    <div className="flex items-start gap-2">
+                      <span className="text-sm font-medium text-gray-700">
+                        {t("form.buildingUseExclusive.question")}
+                      </span>
+                      <InfoBox text={info.fireEscape} />
+                    </div>
                     <SelectionGrid<BooleanChoice>
                       options={BOOLEAN_OPTIONS(t)}
                       selected={form.buildingUseExclusive}
@@ -373,9 +395,12 @@ export default function ComplianceCheckerPage() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
-                    {t("form.servesFullMeals.question")}
-                  </label>
+                  <div className="flex items-start gap-2">
+                    <span className="text-sm font-medium text-gray-700">
+                      {t("form.servesFullMeals.question")}
+                    </span>
+                    <InfoBox text={info.kitchen} />
+                  </div>
                   <SelectionGrid<BooleanChoice>
                     options={BOOLEAN_OPTIONS(t)}
                     selected={form.servesFullMeals}
@@ -428,9 +453,12 @@ export default function ComplianceCheckerPage() {
             </div>
             <div className="space-y-6">
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  {t("form.operatingPattern.question")}
-                </label>
+                <div className="flex items-start gap-2">
+                  <span className="text-sm font-medium text-gray-700">
+                    {t("form.operatingPattern.question")}
+                  </span>
+                  <InfoBox text={info.openingHours} />
+                </div>
                 <SelectionGrid<OperatingPattern>
                   options={operatingOptions}
                   selected={form.operatingPattern}
@@ -438,9 +466,12 @@ export default function ComplianceCheckerPage() {
                 />
               </div>
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  {t("form.hasExternalVentilation.question")}
-                </label>
+                <div className="flex items-start gap-2">
+                  <span className="text-sm font-medium text-gray-700">
+                    {t("form.hasExternalVentilation.question")}
+                  </span>
+                  <InfoBox text={info.ventilation} />
+                </div>
                 <SelectionGrid<BooleanChoice>
                   options={BOOLEAN_OPTIONS(t)}
                   selected={form.hasExternalVentilation}
@@ -448,9 +479,12 @@ export default function ComplianceCheckerPage() {
                 />
               </div>
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  {t("form.storesRegulatedHazardous.question")}
-                </label>
+                <div className="flex items-start gap-2">
+                  <span className="text-sm font-medium text-gray-700">
+                    {t("form.storesRegulatedHazardous.question")}
+                  </span>
+                  <InfoBox text={info.chemicals} />
+                </div>
                 <SelectionGrid<BooleanChoice>
                   options={BOOLEAN_OPTIONS(t)}
                   selected={form.storesRegulatedHazardous}
@@ -458,9 +492,12 @@ export default function ComplianceCheckerPage() {
                 />
               </div>
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  {t("form.storesLabelledHazardous.question")}
-                </label>
+                <div className="flex items-start gap-2">
+                  <span className="text-sm font-medium text-gray-700">
+                    {t("form.storesLabelledHazardous.question")}
+                  </span>
+                  <InfoBox text={info.chemicals} />
+                </div>
                 <SelectionGrid<BooleanChoice>
                   options={BOOLEAN_OPTIONS(t)}
                   selected={form.storesLabelledHazardous}
@@ -468,9 +505,12 @@ export default function ComplianceCheckerPage() {
                 />
               </div>
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  {t("form.usesLoudMusic.question")}
-                </label>
+                <div className="flex items-start gap-2">
+                  <span className="text-sm font-medium text-gray-700">
+                    {t("form.usesLoudMusic.question")}
+                  </span>
+                  <InfoBox text={info.noise} />
+                </div>
                 <SelectionGrid<BooleanChoice>
                   options={BOOLEAN_OPTIONS(t)}
                   selected={form.usesLoudMusic}
