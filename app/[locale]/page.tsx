@@ -9,6 +9,7 @@ import AnimatedStats from "../components/AnimatedStats";
 import { useEffect, useState } from "react";
 import { defaultLocale } from "@/i18n";
 import { CheckCircle2, FileText, Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
+import LegalDisclaimer from "@/components/LegalDisclaimer";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -51,6 +52,8 @@ export default function Home() {
             {t("subtitle")}
           </p>
         </div>
+
+        <LegalDisclaimer lang={activeLocale === "en" ? "en" : "de"} />
 
         {/* Primary actions */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
