@@ -1,23 +1,21 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
 
-const locales = ['de', 'en', 'sr', 'hr', 'tr', 'it', 'es', 'uk']
-const baseUrl = 'https://betriebsanlagen-check.vercel.app'
+const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://betriebsanlage-check.at';
+
+// falls defaultLocale ohne Präfix geroutet wird, hier anpassen:
+const locales = ['de', 'en', 'sr', 'hr', 'tr', 'it', 'es', 'uk'] as const;
+const defaultLocale = 'de';            // ggf. anpassen
+const withPrefix = (l: string) => l === defaultLocale ? '' : `/${l}`;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/check', '/documents', '/faq', '/impressum', '/datenschutz']
+  const routes = ['', '/check', '/documents', '/faq', '/impressum', '/datenschutz'];
 
-  const sitemapEntries: MetadataRoute.Sitemap = []
-
-  locales.forEach(locale => {
-    routes.forEach(route => {
-      sitemapEntries.push({
-        url: `${baseUrl}/${locale}${route}`,
-        lastModified: new Date(),
-        changeFrequency: route === '' || route === '/faq' ? 'weekly' : 'monthly',
-        priority: route === '' ? 1.0 : route === '/check' || route === '/faq' ? 0.9 : 0.7,
-      })
-    })
-  })
-
-  return sitemapEntries
+  return locales.flatMap((l) =>
+    routes.map((r) => ({
+      url: `${base}${withPrefix(l)}${r}`,
+      lastModified: new Date(),
+      changeFrequency: (r === '' || r === '/faq') ? 'weekly' : 'monthly',
+      priority: r === '' ? 1.0 : (r === '/check' || r === '/faq') ? 0.9 : 0.7
+    }))
+  );
 }
