@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import AnimatedStats from "../components/AnimatedStats";
 import { useEffect, useState } from "react";
 import { defaultLocale } from "@/i18n";
+import { HeroCtas, type SupportedLocale } from "./_components/hero-ctas";
 import { CheckCircle2, FileText, Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
 
 // Displays the localized homepage with locale-aware navigation targets.
@@ -16,6 +17,9 @@ export default function Home() {
   const params = useParams<{ locale: string }>();
   const paramLocale = params?.locale;
   const activeLocale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale;
+  const isSupportedLocale = (value: string | undefined): value is SupportedLocale =>
+    value === "de" || value === "en";
+  const heroLocale = isSupportedLocale(activeLocale) ? activeLocale : "de";
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -50,6 +54,7 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-normal leading-relaxed">
             {t("subtitle")}
           </p>
+          <HeroCtas locale={heroLocale} />
         </div>
 
         {/* Primary actions */}
