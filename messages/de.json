@@ -4,7 +4,7 @@
   },
   "home": {
     "title": "Betriebsanlagen-Check für Gründer",
-    "subtitle": "Finden Sie in 2 Minuten heraus, ob Sie eine Betriebsanlagengenehmigung benötigen",
+    "subtitle": "Erhalte in 2 Minuten eine rechtlich fundierte Orientierung, ob deine Betriebsanlage voraussichtlich nach der 2. Genehmigungsfreistellungsverordnung (2. GFVO) genehmigungsfrei ist. Keine Rechtsberatung und keine behördliche Entscheidung.",
     "card1Title": "Betriebsanlagen checker",
     "card1Description": "Erhalte eine vollständige Auswertung zu Betriebsanlage, Genehmigungspflicht, Unterlagen, Arbeitnehmerschutz und Betriebspflichten.",
     "card1Button": "Checker starten",
@@ -26,7 +26,7 @@
       "feature3Title": "Kostenlos & Anonym",
       "feature3Text": "Der Check ist völlig kostenlos und Ihre Daten bleiben privat. Keine Registrierung erforderlich, keine versteckten Kosten.",
       "whyTitle": "Wann brauchen Sie eine Betriebsanlagengenehmigung?",
-      "whyText": "Eine Betriebsanlagengenehmigung ist in Österreich für viele gewerbliche Tätigkeiten erforderlich. Die Genehmigungsfreistellungsverordnung regelt, welche Betriebe von der Genehmigungspflicht ausgenommen sind. Faktoren wie Betriebsfläche, Lärm, Öffnungszeiten und Art der Tätigkeit spielen eine wichtige Rolle."
+      "whyText": "Eine Betriebsanlagengenehmigung ist in Österreich für viele gewerbliche Tätigkeiten erforderlich. Die 2. Genehmigungsfreistellungsverordnung (2. GFVO, Bundesrecht; gilt österreichweit) regelt, welche Betriebe von der Genehmigungspflicht ausgenommen sind. Faktoren wie Betriebsfläche, Lärm, Öffnungszeiten und Art der Tätigkeit spielen eine wichtige Rolle."
     },
     "footer": {
       "copyright": "Betriebsanlagen Check - Ihr Helfer für Wiener Bürokratie",
@@ -38,7 +38,7 @@
   "complianceChecker": {
     "badge": "Checker 2.0",
     "title": "Betriebsanlagen checker nach GewO",
-    "subtitle": "Führe die strukturierte Prüfung zu Betriebsanlage, Genehmigungspflicht, Unterlagen und Pflichten durch.",
+    "subtitle": "Dieses Tool liefert eine rechtlich fundierte Orientierung auf Basis deiner Angaben (§ 1 und § 2 2. GFVO). Keine Rechtsberatung, keine behördliche Entscheidung.",
     "progress": "Schritt {current} von {total}",
     "actions": {
       "next": "Weiter",
@@ -363,8 +363,8 @@
             "description": "Detaillierte Beschreibung der Betriebsanlage und ihrer Einrichtungen"
           },
           "neighbors": {
-            "title": "Nachbarschaftsinformation",
-            "description": "Zustimmung oder Information der Nachbar:innen"
+            "title": "Nachbarbeteiligung (behördlich)",
+            "description": "Die Nachbarbeteiligung im Betriebsanlagengenehmigungsverfahren erfolgt durch die Behörde (in Wien: MA 36) im Rahmen des Verwaltungsverfahrens (z. B. Kundmachung/Parteiengehör). Ein gesonderter Nachweis der vorherigen Verständigung durch den Antragsteller ist grundsätzlich nicht erforderlich. Optional können freiwillige Zustimmungserklärungen von Nachbarn beigelegt werden."
           },
           "tenancy": {
             "title": "Miet-/Eigentumsnachweis",
@@ -493,7 +493,7 @@
     "questions": {
       "q1": {
         "question": "Was ist eine Betriebsanlage und brauche ich eine Genehmigung?",
-        "answer": "Eine Betriebsanlage ist jede Anlage, die zur Ausübung eines Gewerbes verwendet wird. Dazu gehören Geschäftslokale, Werkstätten, Lager, Gastronomie-Betriebe und vieles mehr. Ob Sie eine Genehmigung benötigen, hängt von verschiedenen Faktoren ab: Art des Betriebs, Größe, Lage, Betriebszeiten und mögliche Belästigungen (Lärm, Geruch). Die Genehmigungsfreistellungsverordnung regelt, welche Betriebe ohne Genehmigung betrieben werden können. Nutzen Sie unseren kostenlosen Check, um herauszufinden, ob Ihr Betrieb genehmigungspflichtig ist."
+        "answer": "Eine Betriebsanlage ist jede Einrichtung, die für die Ausübung eines Gewerbes verwendet wird. Dazu zählen Geschäftsräume, Werkstätten, Lager, Gastronomiebetriebe und vieles mehr. Ob du eine Genehmigung brauchst, hängt von Art, Größe, Standort, Öffnungszeiten und möglichen Beeinträchtigungen (Lärm, Geruch) ab. Die 2. Genehmigungsfreistellungsverordnung (2. GFVO, Bundesrecht; gilt österreichweit) regelt, welche Betriebe genehmigungsfrei betrieben werden können. Nutze unseren kostenlosen Check, um herauszufinden, ob dein Betrieb eine Genehmigung benötigt."
       },
       "q2": {
         "question": "Wie lange dauert die Genehmigung meiner Betriebsanlage in Wien?",
@@ -505,7 +505,7 @@
       },
       "q4": {
         "question": "Kann ich mein Geschäft schon vor der Genehmigung eröffnen?",
-        "answer": "Nein, wenn Ihr Betrieb genehmigungspflichtig ist, dürfen Sie NICHT vor Erteilung der Genehmigung starten. Das wäre eine Verwaltungsübertretung mit Strafen bis zu 50.000 Euro. Bei genehmigungsfreien Betrieben (nach Freistellungsverordnung) können Sie sofort nach der Gewerbeanmeldung starten. Unser Check hilft Ihnen festzustellen, ob Sie eine Genehmigung benötigen."
+        "answer": "Nein, wenn dein Betrieb genehmigungspflichtig ist, darfst du NICHT vor Erteilung der Genehmigung starten. Das wäre eine Verwaltungsübertretung mit einer Verwaltungsstrafe bis zu 3.600 € (§ 366 Abs. 1 Z 2 GewO). Bei genehmigungsfreien Betrieben (nach der 2. Genehmigungsfreistellungsverordnung (2. GFVO)) kannst du unmittelbar nach der Gewerbeanmeldung starten. Unabhängig von der Freistellung können andere Rechtsmaterien weiterhin gelten (z. B. Baurecht, Brandschutz). Bitte zusätzliche Anforderungen prüfen. Unser Check hilft dir festzustellen, ob du eine Genehmigung brauchst."
       },
       "q5": {
         "question": "Welche Unterlagen brauche ich für die Betriebsanlagengenehmigung?",
@@ -513,11 +513,11 @@
       },
       "q6": {
         "question": "Was ist der Unterschied zwischen Gewerbeanmeldung und Betriebsanlagengenehmigung?",
-        "answer": "Gewerbeanmeldung: Berechtigt Sie zur Ausübung eines Gewerbes (bei der Gewerbebehörde). Betriebsanlagengenehmigung: Erlaubt den Betrieb an einem konkreten Standort (berücksichtigt Lärm, Sicherheit, Nachbarn). Sie brauchen BEIDES: Erst die Gewerbeberechtigung, dann die Betriebsanlagengenehmigung für den Standort. Manche Betriebe sind von der Genehmigungspflicht befreit (siehe Freistellungsverordnung)."
+        "answer": "Gewerbeanmeldung: berechtigt zur Ausübung eines Gewerbes (bei der Gewerbebehörde). Betriebsanlagengenehmigung: erlaubt den Betrieb an einem konkreten Standort (berücksichtigt Lärm, Sicherheit, Nachbarn). Du brauchst BEIDES: zuerst die Gewerbeanmeldung, dann die Betriebsanlagengenehmigung für den Standort. Manche Betriebe sind von der Genehmigungspflicht ausgenommen (siehe 2. Genehmigungsfreistellungsverordnung (2. GFVO, Bundesrecht; gilt österreichweit))."
       },
       "q7": {
-        "question": "Gilt die Freistellungsverordnung auch für mich?",
-        "answer": "Die Wiener Genehmigungsfreistellungsverordnung befreit bestimmte Betriebe von der Genehmigungspflicht, wenn sie bestimmte Kriterien erfüllen. Beispiele: Einzelhandel bis 600 m², Büros (fast immer), kleine Werkstätten, Kosmetik-Betriebe, Beherbergung bis 30 Betten ohne Schwimmbad. ABER: Ausnahmen gelten bei Lärm, Musik, gefährlichen Stoffen, mechanischer Lüftung außerhalb der Gebäudehülle. Nutzen Sie unseren Check für eine schnelle Einschätzung."
+        "question": "Gilt die 2. Genehmigungsfreistellungsverordnung (2. GFVO, Bundesrecht; gilt österreichweit) auch für mich?",
+        "answer": "Die 2. Genehmigungsfreistellungsverordnung (2. GFVO, Bundesrecht; gilt österreichweit) befreit bestimmte Betriebe von der Genehmigungspflicht, wenn sie konkrete Kriterien erfüllen. Beispiele: Einzelhandel bis 600 m², Büros (fast immer), kleine Werkstätten, Kosmetikbetriebe, Beherbergung bis 30 Betten ohne Pool. ABER: Ausnahmen gelten bei Lärm, Musik, gefährlichen Stoffen, mechanischer Lüftung außerhalb der Gebäudehülle. Nutze unseren Check für eine schnelle Orientierung."
       },
       "q8": {
         "question": "Brauche ich als Gastronom in Wien eine Betriebsanlagengenehmigung?",
