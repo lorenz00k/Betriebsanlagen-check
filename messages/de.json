@@ -28,6 +28,20 @@
       "whyTitle": "Wann brauchen Sie eine Betriebsanlagengenehmigung?",
       "whyText": "Eine Betriebsanlagengenehmigung ist in Österreich für viele gewerbliche Tätigkeiten erforderlich. Die Genehmigungsfreistellungsverordnung regelt, welche Betriebe von der Genehmigungspflicht ausgenommen sind. Faktoren wie Betriebsfläche, Lärm, Öffnungszeiten und Art der Tätigkeit spielen eine wichtige Rolle."
     },
+    "gruender": {
+      "heading": "Betriebsanlagengenehmigung bei Unternehmensgründung in Wien",
+      "intro": "Sie planen eine Unternehmensgründung in Wien? Beim Gründen eines Gewerbes ist die Frage nach der Betriebsanlagengenehmigung oft der erste wichtige Schritt. Hier erfahren Sie, was Sie als Gründer beachten müssen.",
+      "question1": "Brauche ich als Gründer in Wien eine Betriebsanlagengenehmigung?",
+      "answer1": "Nicht jedes Gewerbe benötigt eine Betriebsanlagengenehmigung. Bei der Unternehmensgründung in Wien hängt die Genehmigungspflicht von mehreren Faktoren ab: Betriebsart (z.B. Handel, Gastro, Werkstatt), Betriebsfläche, Lärmentwicklung und Öffnungszeiten. Die Gewerbliche Freistellungsverordnung (GFVO) befreit viele kleinere Betriebe von der Genehmigungspflicht.",
+      "question2": "Welche Betriebsanlagen sind beim Gründen in Wien genehmigungspflichtig?",
+      "answer2": "Genehmigungspflichtige Betriebsanlagen bei der Unternehmensgründung umfassen typischerweise: Gastronomiebetriebe mit Küche, Werkstätten mit Lärmentwicklung, Einzelhandel über 600 m², Betriebe mit geregelten Gefahrenstoffen, Beherbergungsbetriebe über 30 Betten. Die MA 36 (Magistratsabteilung 36) in Wien ist die zuständige Behörde für Betriebsanlagengenehmigungen.",
+      "question3": "Wie lange dauert eine Betriebsanlagengenehmigung in Wien?",
+      "answer3": "Die Bearbeitungsdauer für eine Betriebsanlagengenehmigung bei der MA 36 in Wien beträgt üblicherweise 2-6 Monate. Bei der Unternehmensgründung sollten Gründer diesen Zeitraum einplanen. Unvollständige Unterlagen können die Dauer verlängern. Für schnellere Genehmigungen empfiehlt sich eine Vorabklärung mit der Behörde.",
+      "question4": "Was kostet eine Betriebsanlagengenehmigung für Gründer?",
+      "answer4": "Die Kosten für eine Betriebsanlagengenehmigung in Wien setzen sich zusammen aus: Amtsgebühren (abhängig von Betriebsgröße), Sachverständigenkosten (z.B. für Lärmgutachten, Brandschutz), Planungskosten. Für kleine Gewerbebetriebe bei der Gründung können Gesamtkosten zwischen 500-3000 Euro anfallen. Gründer sollten diese Kosten in der Startfinanzierung berücksichtigen.",
+      "ctaTitle": "Jetzt kostenlos Genehmigungspflicht prüfen",
+      "ctaText": "Sparen Sie Zeit und Geld bei Ihrer Unternehmensgründung in Wien. Finden Sie in 2 Minuten heraus, ob Ihr Gewerbe eine Betriebsanlagengenehmigung benötigt."
+    },
     "footer": {
       "copyright": "Betriebsanlagen Check - Ihr Helfer für Wiener Bürokratie",
       "disclaimer": "Diese Website dient nur zu Informationszwecken. Für rechtlich verbindliche Auskünfte wenden Sie sich bitte an die zuständigen Behörden.",
@@ -539,12 +553,19 @@
     }
   },
   "metadata": {
-    "title": "Betriebsanlagen-Check – In 2 Minuten zur Genehmigungseinschätzung",
-    "description": "Kostenloser Betriebsanlagen-Check für Wien: Erfahren Sie schnell, ob Ihre Unternehmensanlage eine Genehmigung braucht und welche Dokumente dafür nötig sind.",
+    "title": "Betriebsanlagengenehmigung Wien – Genehmigung prüfen für Gründer",
+    "description": "Kostenloser Betriebsanlagen-Check für Gründer in Wien: Erfahren Sie in 2 Minuten, ob Ihr Gewerbe bei der Unternehmensgründung eine Betriebsanlagengenehmigung braucht. MA 36 Wien, GFVO, alle Infos.",
     "keywords": [
-      "Betriebsanlagengenehmigung",
+      "Betriebsanlagengenehmigung Wien",
+      "Unternehmensgründung Wien",
+      "Gründen Gewerbe Wien",
+      "Betriebsanlage Gründer",
       "Gewerbeanmeldung Wien",
-      "Genehmigung Betriebsanlage"
+      "Genehmigung Betriebsanlage",
+      "MA 36 Wien",
+      "Betriebsanlage GFVO",
+      "Gewerbe gründen Wien",
+      "Startup Wien Genehmigung"
     ],
     "openGraph": {
       "title": "Betriebsanlagen-Check für Gründer in Wien",
