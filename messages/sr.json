@@ -268,11 +268,20 @@
     "openGraph": {
       "title": "Provera dozvola za osnivače u Beču",
       "description": "Iskoristite naš besplatan višejezični upitnik da proverite da li je vašem poslovnom objektu potrebna dozvola i koji koraci slede.",
-      "siteName": "Betriebsanlagen Check"
+      "siteName": "Betriebsanlagen Check",
+      "images": [
+        {
+          "url": "/og-image.png",
+          "width": 1200,
+          "height": 630,
+          "alt": "Betriebsanlagen Check Wien - Business Permit Check"
+        }
+      ]
     },
     "twitter": {
       "title": "Provera dozvole: da li vam je potrebno odobrenje?",
-      "description": "Odgovorite na nekoliko pitanja kako biste saznali da li je vašem poslovnom prostoru u Beču potrebna dozvola i koje korake potom preduzeti."
+      "description": "Odgovorite na nekoliko pitanja kako biste saznali da li je vašem poslovnom prostoru u Beču potrebna dozvola i koje korake potom preduzeti.",
+      "images": ["/og-image.png"]
     },
     "faq": {
       "title": "Česta pitanja o dozvoli za poslovni objekat u Beču",

@@ -549,11 +549,20 @@
     "openGraph": {
       "title": "Betriebsanlagen-Check für Gründer in Wien",
       "description": "Prüfen Sie mit unserem kostenlosen Online-Check, ob Ihre Betriebsanlage eine Genehmigung benötigt – mehrsprachig, sicher und schnell.",
-      "siteName": "Betriebsanlagen Check"
+      "siteName": "Betriebsanlagen Check",
+      "images": [
+        {
+          "url": "/og-image.png",
+          "width": 1200,
+          "height": 630,
+          "alt": "Betriebsanlagen Check Wien - Genehmigung prüfen"
+        }
+      ]
     },
     "twitter": {
       "title": "Betriebsanlagen-Check: Genehmigungspflicht jetzt prüfen",
-      "description": "Finden Sie in wenigen Minuten heraus, ob Ihre Betriebsanlage in Wien genehmigungspflichtig ist und welche Unterlagen Sie brauchen."
+      "description": "Finden Sie in wenigen Minuten heraus, ob Ihre Betriebsanlage in Wien genehmigungspflichtig ist und welche Unterlagen Sie brauchen.",
+      "images": ["/og-image.png"]
     },
     "faq": {
       "title": "FAQ zum Betriebsanlagen-Check – Häufig gestellte Fragen",

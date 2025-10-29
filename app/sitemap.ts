@@ -9,12 +9,13 @@ const withPrefix = (l: string) => l === defaultLocale ? '' : `/${l}`;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ['', '/check', '/documents', '/faq', '/impressum', '/datenschutz'];
+  const now = new Date();
 
   return locales.flatMap((l) =>
     routes.map((r) => ({
       url: `${base}${withPrefix(l)}${r}`,
-      lastModified: new Date(),
-      changeFrequency: (r === '' || r === '/faq') ? 'weekly' : 'monthly',
+      lastModified: now,
+      changeFrequency: (r === '' || r === '/faq') ? 'weekly' as const : 'monthly' as const,
       priority: r === '' ? 1.0 : (r === '/check' || r === '/faq') ? 0.9 : 0.7
     }))
   );

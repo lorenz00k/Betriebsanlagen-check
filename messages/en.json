@@ -268,11 +268,20 @@
     "openGraph": {
       "title": "Business Facility Permit Check for Founders in Vienna",
       "description": "Use our free multilingual questionnaire to learn whether your business facility requires an operating permit and which steps follow next.",
-      "siteName": "Betriebsanlagen Check"
+      "siteName": "Betriebsanlagen Check",
+      "images": [
+        {
+          "url": "/og-image.png",
+          "width": 1200,
+          "height": 630,
+          "alt": "Business Facility Permit Check Vienna"
+        }
+      ]
     },
     "twitter": {
       "title": "Business Facility Permit Check: Do you need approval?",
-      "description": "Answer a few questions to see if your Vienna business facility needs a permit and get guidance on the next steps."
+      "description": "Answer a few questions to see if your Vienna business facility needs a permit and get guidance on the next steps.",
+      "images": ["/og-image.png"]
     },
     "faq": {
       "title": "Business facility permit FAQ – Answers for Vienna entrepreneurs",

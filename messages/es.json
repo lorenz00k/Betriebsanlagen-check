@@ -217,11 +217,20 @@
     "openGraph": {
       "title": "Verificador de permisos para fundadores en Viena",
       "description": "Use nuestro cuestionario multilingüe gratuito para saber si su instalación comercial necesita permiso y qué pasos siguen.",
-      "siteName": "Betriebsanlagen Check"
+      "siteName": "Betriebsanlagen Check",
+      "images": [
+        {
+          "url": "/og-image.png",
+          "width": 1200,
+          "height": 630,
+          "alt": "Betriebsanlagen Check Wien - Business Permit Check"
+        }
+      ]
     },
     "twitter": {
       "title": "Verificador de permisos: ¿necesita autorización?",
-      "description": "Responda algunas preguntas para saber si su instalación en Viena requiere permiso y reciba orientación sobre los siguientes pasos."
+      "description": "Responda algunas preguntas para saber si su instalación en Viena requiere permiso y reciba orientación sobre los siguientes pasos.",
+      "images": ["/og-image.png"]
     },
     "faq": {
       "title": "FAQ sobre permisos de instalaciones comerciales en Viena",
