@@ -317,12 +317,17 @@
       "existingPermits": "Bestehende Genehmigungen/Eignungsfeststellungen dokumentieren und dem Antrag beilegen."
     },
     "quickReferences": {
-      "definition": "Definition & Schritte: WKO Leitfaden „Weg zum genehmigten Betrieb“.",
+      "definition": "Definition & Schritte: WKO Leitfaden „Weg zum genehmigten Betrieb".",
       "gfvo": "2. Genehmigungsfreistellungsverordnung (konsolidierte Fassung).",
       "guideline": "Leitfaden Betriebsanlagengenehmigung (WKW 2022).",
       "gastro": "Gastronomie/Hotellerie Leitfaden (WKNÖ 06/2024).",
       "procedure": "Gewerberechtliches Genehmigungsverfahren (NÖ Leitfaden 06/2024).",
       "section82b": "Regelmäßige Prüfung § 82b GewO – Prüfer, Fristen, Bescheinigung."
+    },
+    "downloadDocuments": {
+      "title": "Benötigte Dokumente herunterladen",
+      "description": "Laden Sie alle erforderlichen Formulare für Ihren Antrag bei der MA 36 herunter. Alle Dokumente sind kostenlos verfügbar.",
+      "button": "Zu den Dokumenten"
     },
     "disclaimer": {
       "title": "Hinweis zur Verbindlichkeit",
@@ -636,5 +641,33 @@
         "description": "Empfehlungen zu Genehmigungspflicht, Dokumenten und nächsten Schritten auf einen Blick."
       }
     }
+  },
+  "documents": {
+    "pageTitle": "Dokumente & Formulare",
+    "pageDescription": "Alle erforderlichen Dokumente für Ihre Betriebsanlagengenehmigung zum Download",
+    "disclaimer": {
+      "title": "⚖️ Wichtiger rechtlicher Hinweis",
+      "text": "Diese Plattform bietet ausschließlich Informationen und technische Unterstützung beim Ausfüllen von Formularen. Wir bieten keine Rechtsberatung an. Die Überprüfung auf Vollständigkeit und Richtigkeit liegt in Ihrer Verantwortung. Für rechtliche Fragen wenden Sie sich bitte an einen Fachanwalt oder die MA 36."
+    },
+    "filter": {
+      "all": "Alle Dokumente",
+      "required": "Pflichtdokumente",
+      "guides": "Anleitungen"
+    },
+    "category": {
+      "required": "Pflicht",
+      "optional": "Optional",
+      "guide": "Anleitung"
+    },
+    "pages": "Seiten",
+    "download": "Herunterladen",
+    "downloading": "Lädt...",
+    "downloadFailed": "Download fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "needHelp": {
+      "title": "Hilfe beim Ausfüllen?",
+      "text": "Diese Formulare können komplex sein. Nutzen Sie unseren kostenlosen Checker, um herauszufinden, welche Dokumente Sie genau benötigen."
+    },
+    "startChecker": "Jetzt Checker starten",
+    "officialSource": "Quelle: Stadt Wien"
   }
 }

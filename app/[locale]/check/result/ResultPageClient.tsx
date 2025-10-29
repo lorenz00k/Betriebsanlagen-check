@@ -157,6 +157,32 @@ export default function ResultPageClient({ locale }: ResultPageClientProps) {
           ))}
         </div>
 
+        {/* Documents Download Section */}
+        <div className="mt-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 shadow-xl">
+          <div className="text-center text-white mb-6">
+            <h3 className="text-2xl md:text-3xl font-bold mb-3">
+              {t('downloadDocuments.title') || 'Benötigte Dokumente herunterladen'}
+            </h3>
+            <p className="text-blue-100 leading-relaxed max-w-2xl mx-auto">
+              {t('downloadDocuments.description') || 'Laden Sie alle erforderlichen Formulare für Ihren Antrag bei der MA 36 herunter.'}
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <Link
+              href={`/${locale}/dokumente`}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-gray-100 text-blue-600 rounded-xl font-bold transition-colors shadow-lg"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              {t('downloadDocuments.button') || 'Zu den Dokumenten'}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+
       </div>
     </div>
   )

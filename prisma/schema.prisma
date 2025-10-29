@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+// ============================================
+// MODELS - Datenbank-Tabellen
+// ============================================
+
+// Formular-Session: Eine "Sitzung" wenn jemand ein Formular ausfüllt
+model FormSession {
+  id           String   @id @default(uuid())
+  sessionToken String   @unique
+  formType     String   // 'ansuchen', 'betriebsbeschreibung', 'komplett'
+  language     String   @default("de")
+  status       String   @default("in_progress") // 'in_progress', 'completed', 'downloaded'
+  currentStep  Int      @default(1)
+  totalSteps   Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  expiresAt    DateTime // Session läuft nach 30 Tagen ab
+
+  // Relationen
+  formData  FormData[]
+  documents GeneratedDocument[]
+
+  @@index([sessionToken])
+  @@index([status])
+  @@index([createdAt])
+}
+
+// Formular-Daten: Die einzelnen Felder die ausgefüllt werden
+model FormData {
+  id         String   @id @default(uuid())
+  sessionId  String
+  fieldName  String   // z.B. 'antragsteller.name'
+  fieldValue String   @db.Text // JSON oder Plain Text
+  section    String?  // z.B. 'general_info', 'machinery'
+  stepNumber Int?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relation zu Session
+  session FormSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, fieldName])
+  @@index([sessionId])
+}
+
+// Generierte Dokumente: Die fertigen PDFs
+model GeneratedDocument {
+  id            String   @id @default(uuid())
+  sessionId     String
+  documentType  String   // 'ansuchen_pdf', 'betriebsbeschreibung_pdf', 'complete_zip'
+  fileUrl       String   // URL zum Download
+  fileSize      Int?
+  mimeType      String?
+  generatedAt   DateTime @default(now())
+  downloadCount Int      @default(0)
+  expiresAt     DateTime // Link läuft nach 7 Tagen ab
+
+  // Relation zu Session
+  session FormSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([documentType])
+}
+
+// Download-Tracking: Statistik welche Dokumente wie oft heruntergeladen werden
+model DocumentDownload {
+  id           String   @id @default(uuid())
+  documentId   String   // z.B. 'ansuchen', 'betriebsbeschreibung'
+  format       String   // 'pdf'
+  language     String   // z.B. 'de', 'en', 'tr'
+  userAgent    String?
+  ipAddress    String?  // Anonymisiert (nur erste 3 Oktetten)
+  downloadedAt DateTime @default(now())
+
+  @@index([documentId])
+  @@index([downloadedAt])
+}

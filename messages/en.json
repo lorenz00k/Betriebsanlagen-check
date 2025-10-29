@@ -602,6 +602,11 @@
       "buildingProcedure": "Building and trade procedures run separately – changes of use require separate building approval.",
       "existingPermits": "Document existing permits or suitability rulings and include them in the submission."
     },
+    "downloadDocuments": {
+      "title": "Download Required Documents",
+      "description": "Download all required forms for your application at MA 36. All documents are available free of charge.",
+      "button": "Go to Documents"
+    },
     "quickReferences": {
       "definition": "Definition & five steps: WKO guide 'Weg zum genehmigten Betrieb'.",
       "gfvo": "2nd exemption ordinance (consolidated version).",
@@ -615,5 +620,33 @@
       "orientation": "Note: this tool provides orientation. It checks whether your business could fall under exemptions of the 2nd exemption ordinance.",
       "legal": "The result is not a binding authority decision nor legal advice. MA 36 (Vienna business facility authority) issues binding rulings."
     }
+  },
+  "documents": {
+    "pageTitle": "Documents & Forms",
+    "pageDescription": "All required documents for your business facility permit application available for download",
+    "disclaimer": {
+      "title": "⚖️ Important Legal Notice",
+      "text": "This platform provides information and technical assistance with form completion only. We do not provide legal advice. You are responsible for verifying completeness and accuracy. For legal questions, please consult a specialized lawyer or MA 36."
+    },
+    "filter": {
+      "all": "All Documents",
+      "required": "Required Documents",
+      "guides": "Guides"
+    },
+    "category": {
+      "required": "Required",
+      "optional": "Optional",
+      "guide": "Guide"
+    },
+    "pages": "Pages",
+    "download": "Download",
+    "downloading": "Loading...",
+    "downloadFailed": "Download failed. Please try again.",
+    "needHelp": {
+      "title": "Need help filling out forms?",
+      "text": "These forms can be complex. Use our free checker to find out exactly which documents you need."
+    },
+    "startChecker": "Start Checker Now",
+    "officialSource": "Source: City of Vienna"
   }
 }
