@@ -27,7 +27,7 @@ export default function CookieBanner() {
         <div role="dialog" className="fixed bottom-4 left-4 right-4 max-w-xl mx-auto rounded-xl border p-4 bg-white shadow">
             <p className="text-sm">
                 Wir verwenden Google Analytics (GA4) zur Reichweitenmessung. Sie können zustimmen
-                oder nur notwendige Dienste erlauben. Mehr in unserer <a href="/datenschutz" className="underline">Datenschutzerklärung</a>.
+                oder nur notwendige Dienste erlauben. Mehr in unserer <link href="/datenschutz" className="underline">Datenschutzerklärung</link>.
             </p>
             <div className="mt-3 flex gap-2 justify-end">
                 <button onClick={() => updateConsent(false)} className="px-3 py-2 rounded border">Nur notwendig</button>
