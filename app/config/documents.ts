@@ -34,8 +34,8 @@ export const DOCUMENTS: Document[] = [
       },
       tr: {
         title: 'İşletme Tesisi Ruhsatı Başvurusu',
-        description: 'Viyana'da işletme tesisi ruhsatınız için ana başvuru formu',
-        help: 'Bu form MA 36'ya her başvuru için zorunludur'
+        description: "Viyana'da işletme tesisi ruhsatınız için ana başvuru formu",
+        help: "Bu form MA 36'ya her başvuru için zorunludur"
       },
       sr: {
         title: 'Zahtev za dozvolu za poslovni objekat',
