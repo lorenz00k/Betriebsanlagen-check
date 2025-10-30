@@ -45,12 +45,15 @@ export default function DocumentCard({ document, language }: DocumentCardProps) 
       globalThis.document.body.removeChild(a);
 
       // Analytics (Vercel)
-      if (typeof window !== 'undefined' && (window as any).va) {
-        (window as any).va('track', 'document_download', {
-          document_id: document.id,
-          format: format,
-          language: language
-        });
+      if (typeof window !== 'undefined' && 'va' in window) {
+        const va = (window as Window & { va?: (event: string, properties?: Record<string, string>) => void }).va;
+        if (va) {
+          va('document_download', {
+            document_id: document.id,
+            format: format,
+            language: language
+          });
+        }
       }
     } catch (error) {
       console.error('Download failed:', error);

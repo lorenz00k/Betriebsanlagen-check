@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!document.formats.includes(format as any)) {
+    if (!document.formats.includes(format as 'pdf')) {
       return NextResponse.json(
         { error: 'Format not available' },
         { status: 400 }
