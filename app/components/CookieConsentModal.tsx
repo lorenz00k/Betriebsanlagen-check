@@ -49,7 +49,7 @@ export default function CookieConsentModal() {
 
   function updateConsent(granted: boolean) {
     // Consent Mode v2 Update
-    // @ts-ignore
+    // @ts-expect-error 
     window.gtag?.('consent', 'update', {
       ad_storage: granted ? 'granted' : 'denied',
       analytics_storage: granted ? 'granted' : 'denied',
