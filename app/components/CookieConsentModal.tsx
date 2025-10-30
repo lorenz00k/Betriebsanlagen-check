@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
 type Consent = 'accepted' | 'rejected'
@@ -101,7 +102,7 @@ export default function CookieConsentModal() {
             <p id="cookie-desc" className="text-sm text-gray-700 mb-3">
               Wir verwenden <strong>Google Analytics</strong> nur nach Ihrer Einwilligung
               (Statistik/Analyse). Ohne Zustimmung bleibt Analytics blockiert. Details in unserer{' '}
-              <a href="/datenschutz" className="underline">Datenschutzerklärung</a>.
+              <Link href="/datenschutz" className="underline">Datenschutzerklärung</Link>.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-2 justify-end mt-4">
