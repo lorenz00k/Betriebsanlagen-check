@@ -64,8 +64,8 @@ export async function POST(request: NextRequest) {
       console.warn('DB tracking failed, continuing with download:', dbError);
     }
 
-    // Datei zurückgeben
-    return new NextResponse(fileBuffer, {
+    // Datei zurückgeben (Buffer zu Uint8Array konvertieren für NextResponse)
+    return new NextResponse(new Uint8Array(fileBuffer), {
       headers: {
         'Content-Type': mimeTypes[format as keyof typeof mimeTypes],
         'Content-Disposition': `attachment; filename="${documentId}.${format}"`,
