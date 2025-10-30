@@ -1,13 +1,5 @@
 import './globals.css'
 
-/*export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return children
-}*/
-
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
