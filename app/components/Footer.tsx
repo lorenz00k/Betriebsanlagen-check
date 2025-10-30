@@ -35,6 +35,14 @@ export default function Footer() {
           >
             {t('privacy')}
           </Link>
+          <button
+            type="button"
+            onClick={() => window.showCookieSettings?.()}
+            className="text-xs text-gray-500 underline"
+          >
+            Cookie-Einstellungen
+          </button>
+
         </div>
       </div>
     </footer>
