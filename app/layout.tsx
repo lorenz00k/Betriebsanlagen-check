@@ -12,7 +12,8 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next' // keep if you want Vercel Analytics
-import CookieBanner from './components/CookieBanner'
+//import CookieBanner from './components/CookieBanner'
+import CookieConsentModal from './components/CookieConsentModal'
 
 export const metadata: Metadata = { title: 'Betriebsanlagen Check' }
 
@@ -38,12 +39,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         {children}
-        <CookieBanner />
+
         {/* Vercel Web Analytics (cookie-less). Remove this line if you decide to disable it. */}
         <VercelAnalytics />
 
         {/* GA4 loader. This injects gtag.js and auto-tracks pageviews on client-side route changes */}
         {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
+        <CookieConsentModal />
       </body>
     </html>
   )
