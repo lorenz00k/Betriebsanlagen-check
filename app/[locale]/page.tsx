@@ -54,7 +54,6 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-normal leading-relaxed">
             {t("subtitle")}
           </p>
-          <HeroCtas locale={heroLocale} />
         </div>
 
         {/* Primary actions */}

@@ -131,6 +131,64 @@ export default function DatenschutzPage() {
             </ul>
 
             <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              2.4. Webanalyse (Google Analytics 4 – nur nach Einwilligung)
+            </h3>
+            <ul className="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+              <li>
+                <strong>Dienst:</strong> Google Analytics 4 (GA4).
+              </li>
+              <li>
+                <strong>Anbieter:</strong> Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland
+                (ggf. Verarbeitung auch durch Google LLC, USA).
+              </li>
+              <li>
+                <strong>Einsatz:</strong> GA4 wird <u>erst</u> geladen, wenn Sie in unserem Cookie-Banner der
+                Kategorie „Statistik/Analyse“ zustimmen. Ohne Einwilligung findet keine Messung über GA4 statt
+                (Consent Mode v2: Standard „denied“).
+              </li>
+              <li>
+                <strong>Daten:</strong> Seitenaufrufe, Ereignisse/Interaktionen, ungefähre Standortdaten
+                (Land/Region), Geräte-/Browser-Informationen, Referrer/UTM-Parameter, pseudonyme Kennungen;
+                nach Angaben von Google keine Speicherung vollständiger IP-Adressen.
+              </li>
+              <li>
+                <strong>Zweck:</strong> Reichweitenmessung, Fehleranalyse und Verbesserung von Inhalten/Usability.
+              </li>
+              <li>
+                <strong>Rechtsgrundlage:</strong> Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können Ihre
+                Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.
+              </li>
+              <li>
+                <strong>Widerruf/Opt-Out:</strong> Über die{" "}
+                <button
+                  type="button"
+                  onClick={() => {
+                    // Banner erneut anzeigen, damit Nutzer Auswahl ändern kann
+                    localStorage.removeItem('cookie-consent');
+                    location.reload();
+                  }}
+                  className="underline"
+                >
+                  Cookie-Einstellungen
+                </button>{" "}
+                können Sie Ihre Auswahl jederzeit ändern (Analytics erlauben/ablehnen).
+              </li>
+              <li>
+                <strong>Drittlandtransfer:</strong> Eine Übermittlung in die USA kann nicht ausgeschlossen werden.
+                Rechtsgrundlage sind die EU-Standardvertragsklauseln; dennoch kann ein Restrisiko bestehen.
+              </li>
+              <li>
+                <strong>Speicherdauer:</strong> Ereignisdaten in GA4 werden i. d. R. <em>2 oder 14 Monate</em>
+                vorgehalten (je nach Kontoeinstellung); sonstige Daten bis zur Zweckerreichung bzw. Widerruf.
+              </li>
+              <li>
+                <strong>Weitere Infos:</strong> Datenschutzhinweise von Google unter
+                <span className="whitespace-nowrap"> policies.google.com/privacy </span>.
+              </li>
+            </ul>
+
+
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
               2.4. Kontaktaufnahme (Formular/E-Mail)
             </h3>
             <ul className="list-disc pl-6 text-gray-700 space-y-2 mb-4">
