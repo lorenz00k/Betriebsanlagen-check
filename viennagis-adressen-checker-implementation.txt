@@ -1,0 +1,1524 @@
+# IMPLEMENTIERUNGSANLEITUNG: ADRESSEN-CHECKER MIT VIENNAGIS API
+# Für betriebsanlage-check.at
+# Version: 1.0
+
+===============================================================================
+ÜBERSICHT
+===============================================================================
+
+Diese Anleitung beschreibt die vollständige Integration eines Adressen-Checkers
+in die bestehende Website betriebsanlage-check.at. Der Adressen-Checker wird:
+
+1. Als neuer Menüpunkt in der Navigation erscheinen
+2. Eine eigene Seite/Route haben (/de/adressen-check)
+3. Die ViennaGIS API nutzen um:
+   - Adressen zu suchen und anzuzeigen
+   - Umliegende POIs (Kirchen, Krankenhäuser, etc.) zu identifizieren
+   - Potenzielle Probleme für Betriebsanlagengenehmigungen zu erkennen
+4. Einen herunterladbaren Bericht generieren
+
+===============================================================================
+TEIL 1: PROJEKTSTRUKTUR
+===============================================================================
+
+Erstelle folgende neue Dateien und Ordner:
+
+/pages/de/adressen-check.js          (Hauptseite für den Adressen-Checker)
+/components/AddressChecker.js        (Hauptkomponente)
+/components/ViennaGISMap.js          (Kartenkomponente)
+/components/POIList.js               (Liste der gefundenen POIs)
+/components/RiskAssessment.js        (Risikobewertung)
+/lib/viennagis-api.js                (API-Wrapper)
+/utils/poi-checker.js                (Logik für POI-Analyse)
+/styles/address-checker.module.css   (Styles)
+
+===============================================================================
+TEIL 2: NAVIGATION ERWEITERN
+===============================================================================
+
+In der Haupt-Navigationsdatei (z.B. components/Navigation.js oder Layout.js)
+füge einen neuen Menüpunkt hinzu:
+
+```javascript
+const navigationItems = [
+  { href: '/de/check', label: 'Betriebsanlagen Checker' },
+  { href: '/de/documents', label: 'Dokumente' },
+  { href: '/de/adressen-check', label: 'Adressen-Check' }, // NEU
+  // ... weitere Menüpunkte
+];
+```
+
+Falls du ein anderes Navigationsystem verwendest, füge entsprechend hinzu:
+
+```html
+<nav>
+  <a href="/de/check">Betriebsanlagen Checker</a>
+  <a href="/de/documents">Dokumente</a>
+  <a href="/de/adressen-check">Adressen-Check</a>
+</nav>
+```
+
+===============================================================================
+TEIL 3: HAUPTSEITE ERSTELLEN
+===============================================================================
+
+Erstelle /pages/de/adressen-check.js (oder entsprechend für dein Framework):
+
+```javascript
+import { useState } from 'react';
+import Head from 'next/head';
+import Layout from '@/components/Layout';
+import AddressChecker from '@/components/AddressChecker';
+
+export default function AddressCheckPage() {
+  return (
+    <Layout>
+      <Head>
+        <title>Adressen-Check | Betriebsanlagen-Check</title>
+        <meta name="description" content="Überprüfen Sie Ihre Adresse auf potenzielle Probleme bei der Betriebsanlagengenehmigung" />
+        
+        {/* ViennaGIS API Einbindung */}
+        <link 
+          href="https://www.wien.gv.at/stadtplan/ApiGetControlCss.ctrl" 
+          rel="stylesheet" 
+          type="text/css" 
+        />
+        <script 
+          src="https://www.wien.gv.at/stadtplan/ApiGetControlScript.ctrl" 
+          type="text/javascript"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+      </Head>
+
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold mb-4">
+          Adressen-Check für Betriebsanlagen
+        </h1>
+        
+        <p className="text-lg text-gray-600 mb-8">
+          Überprüfen Sie Ihre geplante Betriebsadresse auf potenzielle Probleme
+          mit der Umgebung. Wir zeigen Ihnen Kirchen, Krankenhäuser, Schulen
+          und andere relevante Einrichtungen in der Nähe.
+        </p>
+
+        <AddressChecker />
+      </div>
+    </Layout>
+  );
+}
+```
+
+===============================================================================
+TEIL 4: HAUPTKOMPONENTE ADDRESSCHECKER
+===============================================================================
+
+Erstelle /components/AddressChecker.js:
+
+```javascript
+import { useState, useEffect } from 'react';
+import ViennaGISMap from './ViennaGISMap';
+import POIList from './POIList';
+import RiskAssessment from './RiskAssessment';
+import { searchAddress, getNearbyPOIs } from '@/lib/viennagis-api';
+import { analyzePOIs } from '@/utils/poi-checker';
+import styles from '@/styles/address-checker.module.css';
+
+export default function AddressChecker() {
+  const [address, setAddress] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [selectedAddress, setSelectedAddress] = useState(null);
+  const [nearbyPOIs, setNearbyPOIs] = useState([]);
+  const [riskAssessment, setRiskAssessment] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Adresssuche
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    if (!address.trim()) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const results = await searchAddress(address);
+      setSearchResults(results);
+      
+      if (results.length === 1) {
+        // Wenn nur ein Ergebnis, direkt auswählen
+        handleSelectAddress(results[0]);
+      }
+    } catch (err) {
+      setError('Fehler bei der Adresssuche. Bitte versuchen Sie es erneut.');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Adresse auswählen
+  const handleSelectAddress = async (addressData) => {
+    setSelectedAddress(addressData);
+    setLoading(true);
+
+    try {
+      // POIs in der Nähe laden
+      const pois = await getNearbyPOIs(
+        addressData.coordinates.x, 
+        addressData.coordinates.y
+      );
+      setNearbyPOIs(pois);
+
+      // Risikobewertung durchführen
+      const assessment = analyzePOIs(pois, addressData);
+      setRiskAssessment(assessment);
+    } catch (err) {
+      setError('Fehler beim Laden der Umgebungsdaten.');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      {/* Suchformular */}
+      <div className={styles.searchSection}>
+        <form onSubmit={handleSearch} className={styles.searchForm}>
+          <div className={styles.inputGroup}>
+            <label htmlFor="address-input">
+              Adresse in Wien eingeben
+            </label>
+            <input
+              id="address-input"
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="z.B. Rathausstraße 1, 1010 Wien"
+              className={styles.addressInput}
+              disabled={loading}
+            />
+          </div>
+          <button 
+            type="submit" 
+            className={styles.searchButton}
+            disabled={loading || !address.trim()}
+          >
+            {loading ? 'Suche läuft...' : 'Adresse prüfen'}
+          </button>
+        </form>
+
+        {error && (
+          <div className={styles.error}>
+            {error}
+          </div>
+        )}
+
+        {/* Suchergebnisse (falls mehrere) */}
+        {searchResults.length > 1 && !selectedAddress && (
+          <div className={styles.searchResults}>
+            <h3>Bitte wählen Sie die richtige Adresse:</h3>
+            <ul>
+              {searchResults.map((result, index) => (
+                <li key={index}>
+                  <button 
+                    onClick={() => handleSelectAddress(result)}
+                    className={styles.resultButton}
+                  >
+                    {result.fullAddress}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      {/* Ergebnisse */}
+      {selectedAddress && (
+        <div className={styles.resultsSection}>
+          <div className={styles.resultsGrid}>
+            {/* Karte */}
+            <div className={styles.mapContainer}>
+              <h2>Kartenansicht</h2>
+              <ViennaGISMap 
+                address={selectedAddress}
+                pois={nearbyPOIs}
+              />
+              <div className={styles.mapLegend}>
+                <p className={styles.attribution}>
+                  Datenquelle: Stadt Wien – data.wien.gv.at
+                </p>
+              </div>
+            </div>
+
+            {/* POI-Liste */}
+            <div className={styles.poiContainer}>
+              <h2>Umgebung</h2>
+              <POIList pois={nearbyPOIs} />
+            </div>
+          </div>
+
+          {/* Risikobewertung */}
+          {riskAssessment && (
+            <RiskAssessment 
+              assessment={riskAssessment}
+              address={selectedAddress}
+            />
+          )}
+
+          {/* Download-Button */}
+          <div className={styles.actionButtons}>
+            <button 
+              className={styles.downloadButton}
+              onClick={() => generatePDFReport(selectedAddress, nearbyPOIs, riskAssessment)}
+            >
+              📄 Bericht als PDF herunterladen
+            </button>
+            <button 
+              className={styles.resetButton}
+              onClick={() => {
+                setSelectedAddress(null);
+                setNearbyPOIs([]);
+                setRiskAssessment(null);
+                setSearchResults([]);
+              }}
+            >
+              Neue Adresse prüfen
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// PDF-Generierung (vereinfacht)
+function generatePDFReport(address, pois, assessment) {
+  // TODO: PDF-Generierung implementieren mit jsPDF oder ähnlicher Library
+  console.log('PDF-Generierung für:', address);
+  alert('PDF-Generierung wird noch implementiert');
+}
+```
+
+===============================================================================
+TEIL 5: KARTEN-KOMPONENTE
+===============================================================================
+
+Erstelle /components/ViennaGISMap.js:
+
+```javascript
+import { useEffect, useRef } from 'react';
+
+export default function ViennaGISMap({ address, pois }) {
+  const mapContainerRef = useRef(null);
+  const mapInstanceRef = useRef(null);
+
+  useEffect(() => {
+    // Warten bis ViennaGIS API geladen ist
+    if (typeof window === 'undefined' || !window.ViennaGisMap) {
+      console.log('ViennaGIS API noch nicht geladen');
+      return;
+    }
+
+    // Karte initialisieren
+    if (!mapInstanceRef.current && mapContainerRef.current) {
+      try {
+        mapInstanceRef.current = new window.ViennaGisMap(
+          'viennaGisMapContainer',
+          'https://www.wien.gv.at/stadtplan/',
+          'de'
+        );
+
+        // Größe setzen
+        mapInstanceRef.current.Resize(800, 600);
+
+        // Layer aktivieren: Karte + relevante POIs
+        mapInstanceRef.current.ShowLayers(
+          'karte', // Hintergrund
+          'krankenhaus,kath,evangkirche,orthodox,islam,israel,juedwien,buddh,sonstkirch,baustelle,kindergarten,polizei,friedhof', // POI-Layer
+          false
+        );
+      } catch (error) {
+        console.error('Fehler beim Initialisieren der Karte:', error);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    // Adresse auf der Karte anzeigen
+    if (mapInstanceRef.current && address) {
+      try {
+        // Pin setzen
+        mapInstanceRef.current.SetPin({
+          MapPosX: address.coordinates.x,
+          MapPosY: address.coordinates.y,
+          SinglePin: true,
+          CenterMap: true,
+          ZoomLevel: 10, // Hoher Zoom für Details
+          Tooltip: address.fullAddress
+        });
+
+        // Optional: Bereich um die Adresse setzen
+        const buffer = 200; // Meter
+        mapInstanceRef.current.SetExtent(
+          address.coordinates.x - buffer,
+          address.coordinates.y - buffer,
+          address.coordinates.x + buffer,
+          address.coordinates.y + buffer
+        );
+      } catch (error) {
+        console.error('Fehler beim Anzeigen der Adresse:', error);
+      }
+    }
+  }, [address]);
+
+  return (
+    <div style={{ width: '100%', height: '100%', minHeight: '600px' }}>
+      <div 
+        id="viennaGisMapContainer" 
+        ref={mapContainerRef}
+        style={{ width: '100%', height: '100%' }}
+      />
+    </div>
+  );
+}
+```
+
+===============================================================================
+TEIL 6: POI-LISTE KOMPONENTE
+===============================================================================
+
+Erstelle /components/POIList.js:
+
+```javascript
+import styles from '@/styles/address-checker.module.css';
+
+const POI_LABELS = {
+  krankenhaus: { label: 'Krankenhäuser', icon: '🏥', risk: 'medium' },
+  kath: { label: 'Katholische Kirchen', icon: '⛪', risk: 'high' },
+  evangkirche: { label: 'Evangelische Kirchen', icon: '⛪', risk: 'high' },
+  orthodox: { label: 'Orthodoxe Kirchen', icon: '⛪', risk: 'high' },
+  islam: { label: 'Moscheen', icon: '🕌', risk: 'high' },
+  israel: { label: 'Synagogen', icon: '🕍', risk: 'high' },
+  buddh: { label: 'Buddhistische Tempel', icon: '🛕', risk: 'high' },
+  kindergarten: { label: 'Kindergärten', icon: '👶', risk: 'medium' },
+  friedhof: { label: 'Friedhöfe', icon: '🪦', risk: 'low' },
+  baustelle: { label: 'Baustellen', icon: '🚧', risk: 'low' },
+  polizei: { label: 'Polizei', icon: '👮', risk: 'low' },
+};
+
+export default function POIList({ pois }) {
+  // POIs nach Typ gruppieren
+  const groupedPOIs = pois.reduce((acc, poi) => {
+    if (!acc[poi.type]) {
+      acc[poi.type] = [];
+    }
+    acc[poi.type].push(poi);
+    return acc;
+  }, {});
+
+  if (pois.length === 0) {
+    return (
+      <div className={styles.emptyState}>
+        <p>✅ Keine problematischen Einrichtungen in unmittelbarer Nähe gefunden.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.poiList}>
+      {Object.entries(groupedPOIs).map(([type, items]) => {
+        const poiInfo = POI_LABELS[type] || { label: type, icon: '📍', risk: 'low' };
+        
+        return (
+          <div key={type} className={styles.poiGroup}>
+            <h3 className={styles.poiGroupTitle}>
+              <span className={styles.poiIcon}>{poiInfo.icon}</span>
+              {poiInfo.label}
+              <span className={styles.poiCount}>({items.length})</span>
+              <span className={`${styles.riskBadge} ${styles[poiInfo.risk]}`}>
+                {poiInfo.risk === 'high' ? '⚠️ Achtung' : 
+                 poiInfo.risk === 'medium' ? '⚡ Beachten' : 'ℹ️ Info'}
+              </span>
+            </h3>
+            <ul className={styles.poiItems}>
+              {items.map((poi, index) => (
+                <li key={index} className={styles.poiItem}>
+                  <span className={styles.poiName}>{poi.name || 'Unbenannt'}</span>
+                  <span className={styles.poiDistance}>
+                    {poi.distance ? `${Math.round(poi.distance)}m` : 'Nähe'}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+```
+
+===============================================================================
+TEIL 7: RISIKOBEWERTUNG KOMPONENTE
+===============================================================================
+
+Erstelle /components/RiskAssessment.js:
+
+```javascript
+import styles from '@/styles/address-checker.module.css';
+
+export default function RiskAssessment({ assessment, address }) {
+  const getRiskColor = (level) => {
+    switch(level) {
+      case 'high': return '#dc2626';
+      case 'medium': return '#f59e0b';
+      case 'low': return '#10b981';
+      default: return '#6b7280';
+    }
+  };
+
+  const getRiskLabel = (level) => {
+    switch(level) {
+      case 'high': return 'Hohes Risiko';
+      case 'medium': return 'Mittleres Risiko';
+      case 'low': return 'Geringes Risiko';
+      default: return 'Keine Bewertung';
+    }
+  };
+
+  return (
+    <div className={styles.riskAssessment}>
+      <h2>Bewertung für Betriebsanlagengenehmigung</h2>
+      
+      <div 
+        className={styles.riskScore}
+        style={{ borderColor: getRiskColor(assessment.overallRisk) }}
+      >
+        <div className={styles.riskScoreHeader}>
+          <span 
+            className={styles.riskLevel}
+            style={{ color: getRiskColor(assessment.overallRisk) }}
+          >
+            {getRiskLabel(assessment.overallRisk)}
+          </span>
+          <span className={styles.riskPoints}>
+            {assessment.riskPoints}/100 Punkte
+          </span>
+        </div>
+        
+        <div className={styles.riskBar}>
+          <div 
+            className={styles.riskBarFill}
+            style={{ 
+              width: `${assessment.riskPoints}%`,
+              backgroundColor: getRiskColor(assessment.overallRisk)
+            }}
+          />
+        </div>
+      </div>
+
+      <div className={styles.riskDetails}>
+        <h3>Wichtige Hinweise:</h3>
+        <ul>
+          {assessment.warnings.map((warning, index) => (
+            <li key={index} className={styles.warningItem}>
+              <span className={styles.warningIcon}>⚠️</span>
+              {warning}
+            </li>
+          ))}
+        </ul>
+
+        {assessment.recommendations.length > 0 && (
+          <>
+            <h3>Empfehlungen:</h3>
+            <ul>
+              {assessment.recommendations.map((rec, index) => (
+                <li key={index} className={styles.recommendationItem}>
+                  <span className={styles.recommendationIcon}>💡</span>
+                  {rec}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
+
+      <div className={styles.infoBox}>
+        <p>
+          <strong>Hinweis:</strong> Diese Bewertung ist eine erste Einschätzung.
+          Für eine rechtsverbindliche Auskunft kontaktieren Sie bitte das
+          zuständige Magistratische Bezirksamt.
+        </p>
+      </div>
+    </div>
+  );
+}
+```
+
+===============================================================================
+TEIL 8: API-WRAPPER
+===============================================================================
+
+Erstelle /lib/viennagis-api.js:
+
+```javascript
+// ViennaGIS API Wrapper
+
+/**
+ * Adresse suchen
+ * @param {string} address - Die zu suchende Adresse
+ * @returns {Promise<Array>} - Array mit Adressergebnissen
+ */
+export async function searchAddress(address) {
+  // Dies ist eine vereinfachte Version
+  // Die echte ViennaGIS API hat keine direkte REST-Schnittstelle für die Adresssuche
+  // Du müsstest entweder:
+  // 1. Die JavaScript API nutzen (window.ViennaGisMap)
+  // 2. Oder eine eigene Backend-Schnittstelle bauen, die die Wien.at APIs nutzt
+  
+  // Beispiel mit data.wien.gv.at OGD API:
+  try {
+    const response = await fetch(
+      `https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:ADRESSEOGD&outputFormat=json&srsName=EPSG:4326&cql_filter=STRWHERE LIKE '${encodeURIComponent(address)}%'`
+    );
+    
+    if (!response.ok) {
+      throw new Error('Adresssuche fehlgeschlagen');
+    }
+
+    const data = await response.json();
+    
+    // Daten umwandeln
+    return data.features.map(feature => ({
+      fullAddress: `${feature.properties.ADRESSE}`,
+      street: feature.properties.STRNAME,
+      houseNumber: feature.properties.HSNR,
+      postalCode: feature.properties.PLZ,
+      district: feature.properties.BEZIRK,
+      coordinates: {
+        x: feature.geometry.coordinates[0], // Längengrad
+        y: feature.geometry.coordinates[1], // Breitengrad
+        // Für ViennaGIS brauchst du Gauß-Krüger M34 Koordinaten
+        // Diese müssen ggf. konvertiert werden
+      }
+    }));
+  } catch (error) {
+    console.error('Fehler bei Adresssuche:', error);
+    throw error;
+  }
+}
+
+/**
+ * POIs in der Nähe einer Adresse finden
+ * @param {number} x - X-Koordinate (Gauß-Krüger M34)
+ * @param {number} y - Y-Koordinate (Gauß-Krüger M34)
+ * @param {number} radius - Suchradius in Metern (default: 200m)
+ * @returns {Promise<Array>} - Array mit POIs
+ */
+export async function getNearbyPOIs(x, y, radius = 200) {
+  // Dies ist eine vereinfachte Version
+  // In der Realität müsstest du mehrere Anfragen an verschiedene
+  // OGD-Datensätze der Stadt Wien machen
+  
+  const poiTypes = [
+    { type: 'krankenhaus', dataset: 'KRANKENANSTALTENOGD' },
+    { type: 'kindergarten', dataset: 'KINDERGARTENOGD' },
+    // ... weitere
+  ];
+
+  const allPOIs = [];
+
+  // Für jeden POI-Typ Daten abrufen
+  for (const poiType of poiTypes) {
+    try {
+      // Beispiel-Query (anpassen je nach Dataset)
+      const response = await fetch(
+        `https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:${poiType.dataset}&outputFormat=json&srsName=EPSG:4326`
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        
+        // POIs filtern die im Radius liegen
+        data.features.forEach(feature => {
+          const distance = calculateDistance(
+            x, y,
+            feature.geometry.coordinates[0],
+            feature.geometry.coordinates[1]
+          );
+
+          if (distance <= radius) {
+            allPOIs.push({
+              type: poiType.type,
+              name: feature.properties.NAME || feature.properties.BEZEICHNUNG,
+              distance: distance,
+              coordinates: {
+                x: feature.geometry.coordinates[0],
+                y: feature.geometry.coordinates[1]
+              }
+            });
+          }
+        });
+      }
+    } catch (error) {
+      console.error(`Fehler beim Laden von ${poiType.type}:`, error);
+    }
+  }
+
+  return allPOIs;
+}
+
+/**
+ * Distanz zwischen zwei Punkten berechnen (vereinfacht)
+ * @param {number} x1 - X-Koordinate Punkt 1
+ * @param {number} y1 - Y-Koordinate Punkt 1
+ * @param {number} x2 - X-Koordinate Punkt 2
+ * @param {number} y2 - Y-Koordinate Punkt 2
+ * @returns {number} - Distanz in Metern
+ */
+function calculateDistance(x1, y1, x2, y2) {
+  // Haversine-Formel für Lat/Lng
+  const R = 6371e3; // Erdradius in Metern
+  const φ1 = y1 * Math.PI / 180;
+  const φ2 = y2 * Math.PI / 180;
+  const Δφ = (y2 - y1) * Math.PI / 180;
+  const Δλ = (x2 - x1) * Math.PI / 180;
+
+  const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+          Math.cos(φ1) * Math.cos(φ2) *
+          Math.sin(Δλ/2) * Math.sin(Δλ/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+  return R * c;
+}
+
+/**
+ * Koordinaten von WGS84 (Lat/Lng) zu Gauß-Krüger M34 konvertieren
+ * Diese Funktion ist vereinfacht - für präzise Konvertierung eine Bibliothek nutzen
+ */
+export function convertToGaussKruger(lng, lat) {
+  // TODO: Implementiere Koordinatentransformation
+  // Nutze z.B. proj4js Library
+  // Beispiel:
+  // import proj4 from 'proj4';
+  // const gk = proj4('EPSG:4326', 'EPSG:31256', [lng, lat]);
+  // return { x: gk[0], y: gk[1] };
+  
+  // Vorläufig: Rückgabe der WGS84 Koordinaten
+  return { x: lng, y: lat };
+}
+```
+
+===============================================================================
+TEIL 9: POI-ANALYSE LOGIK
+===============================================================================
+
+Erstelle /utils/poi-checker.js:
+
+```javascript
+// Logik zur Analyse von POIs und Risikobewertung
+
+/**
+ * POIs analysieren und Risikobewertung erstellen
+ * @param {Array} pois - Array mit POIs
+ * @param {Object} address - Adressdaten
+ * @returns {Object} - Risikobewertung
+ */
+export function analyzePOIs(pois, address) {
+  let riskPoints = 0;
+  const warnings = [];
+  const recommendations = [];
+
+  // Kategorisierung der POIs
+  const categories = {
+    churches: ['kath', 'evangkirche', 'orthodox', 'islam', 'israel', 'juedwien', 'buddh'],
+    hospitals: ['krankenhaus'],
+    schools: ['kindergarten'],
+    construction: ['baustelle'],
+  };
+
+  // POIs nach Kategorien gruppieren
+  const categorizedPOIs = {
+    churches: pois.filter(p => categories.churches.includes(p.type)),
+    hospitals: pois.filter(p => categories.hospitals.includes(p.type)),
+    schools: pois.filter(p => categories.schools.includes(p.type)),
+    construction: pois.filter(p => categories.construction.includes(p.type)),
+  };
+
+  // KIRCHEN - Höchstes Risiko
+  if (categorizedPOIs.churches.length > 0) {
+    const nearChurches = categorizedPOIs.churches.filter(p => p.distance < 100);
+    
+    if (nearChurches.length > 0) {
+      riskPoints += 40;
+      warnings.push(
+        `${nearChurches.length} religiöse Einrichtung(en) im Umkreis von 100m. ` +
+        `Dies kann die Genehmigung deutlich erschweren, besonders bei Lärm- oder Geruchsemissionen.`
+      );
+      recommendations.push(
+        'Planen Sie Lärmschutzmaßnahmen ein und beschränken Sie laute Tätigkeiten auf Werktage.'
+      );
+    } else {
+      riskPoints += 15;
+      warnings.push(
+        `${categorizedPOIs.churches.length} religiöse Einrichtung(en) in der Nähe (100-200m). ` +
+        `Beachten Sie Ruhezeiten, besonders an Sonn- und Feiertagen.`
+      );
+    }
+  }
+
+  // KRANKENHÄUSER
+  if (categorizedPOIs.hospitals.length > 0) {
+    const nearHospitals = categorizedPOIs.hospitals.filter(p => p.distance < 150);
+    
+    if (nearHospitals.length > 0) {
+      riskPoints += 30;
+      warnings.push(
+        `${nearHospitals.length} Krankenhaus/Krankenhäuser in unmittelbarer Nähe. ` +
+        `Lärmemissionen sind besonders kritisch.`
+      );
+      recommendations.push(
+        'Implementieren Sie umfassende Lärmschutzmaßnahmen und vermeiden Sie Nachtbetrieb.'
+      );
+    } else {
+      riskPoints += 10;
+      warnings.push(
+        `${categorizedPOIs.hospitals.length} Krankenhaus/Krankenhäuser in der Umgebung.`
+      );
+    }
+  }
+
+  // KINDERGÄRTEN/SCHULEN
+  if (categorizedPOIs.schools.length > 0) {
+    const nearSchools = categorizedPOIs.schools.filter(p => p.distance < 100);
+    
+    if (nearSchools.length > 0) {
+      riskPoints += 25;
+      warnings.push(
+        `${nearSchools.length} Kindergarten/Kindergärten in unmittelbarer Nähe. ` +
+        `Besondere Auflagen für Sicherheit und Emissionen sind zu erwarten.`
+      );
+      recommendations.push(
+        'Stellen Sie sicher, dass keine gefährlichen Stoffe für Kinder zugänglich sind.'
+      );
+    } else {
+      riskPoints += 10;
+      warnings.push(
+        `${categorizedPOIs.schools.length} Kindergarten/Kindergärten in der Umgebung.`
+      );
+    }
+  }
+
+  // BAUSTELLEN
+  if (categorizedPOIs.construction.length > 0) {
+    riskPoints += 5;
+    warnings.push(
+      `Aktive Baustelle(n) in der Nähe. Dies könnte Verzögerungen im Genehmigungsverfahren verursachen.`
+    );
+  }
+
+  // Gesamtrisiko bestimmen
+  let overallRisk;
+  if (riskPoints >= 60) {
+    overallRisk = 'high';
+    recommendations.push(
+      'Bei diesem Risikoprofil empfehlen wir dringend eine Vorabklärung mit dem zuständigen Bezirksamt.'
+    );
+  } else if (riskPoints >= 30) {
+    overallRisk = 'medium';
+    recommendations.push(
+      'Eine sorgfältige Planung der Lärmschutz- und Emissionsminderungsmaßnahmen ist ratsam.'
+    );
+  } else {
+    overallRisk = 'low';
+    if (warnings.length === 0) {
+      warnings.push('Keine besonderen Probleme mit der Umgebung erkennbar.');
+    }
+    recommendations.push(
+      'Die Umgebung scheint für eine Betriebsanlage geeignet zu sein. ' +
+      'Beachten Sie dennoch alle allgemeinen Auflagen.'
+    );
+  }
+
+  return {
+    riskPoints,
+    overallRisk,
+    warnings,
+    recommendations,
+    categorizedPOIs
+  };
+}
+```
+
+===============================================================================
+TEIL 10: STYLING
+===============================================================================
+
+Erstelle /styles/address-checker.module.css:
+
+```css
+/* Adressen-Checker Styles */
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Suchbereich */
+.searchSection {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.searchForm {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.inputGroup {
+  flex: 1;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.addressInput {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.addressInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.addressInput:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.searchButton {
+  padding: 12px 32px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.searchButton:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.searchButton:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Fehleranzeige */
+.error {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #fee2e2;
+  border-left: 4px solid #dc2626;
+  border-radius: 4px;
+  color: #991b1b;
+}
+
+/* Suchergebnisse */
+.searchResults {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 6px;
+}
+
+.searchResults h3 {
+  margin-bottom: 15px;
+  color: #374151;
+}
+
+.searchResults ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.searchResults li {
+  margin-bottom: 10px;
+}
+
+.resultButton {
+  width: 100%;
+  padding: 12px;
+  text-align: left;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultButton:hover {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+/* Ergebnisbereich */
+.resultsSection {
+  margin-top: 30px;
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 1024px) {
+  .resultsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Karte */
+.mapContainer {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.mapContainer h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #111827;
+}
+
+.mapLegend {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.attribution {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* POI-Container */
+.poiContainer {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-height: 700px;
+  overflow-y: auto;
+}
+
+.poiContainer h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #111827;
+}
+
+/* POI-Liste */
+.poiList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.emptyState {
+  padding: 40px;
+  text-align: center;
+  color: #10b981;
+  font-size: 18px;
+}
+
+.poiGroup {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 15px;
+}
+
+.poiGroup:last-child {
+  border-bottom: none;
+}
+
+.poiGroupTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #374151;
+}
+
+.poiIcon {
+  font-size: 20px;
+}
+
+.poiCount {
+  color: #6b7280;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.riskBadge {
+  margin-left: auto;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.riskBadge.high {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.riskBadge.medium {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.riskBadge.low {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.poiItems {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.poiItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: #f9fafb;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.poiName {
+  color: #374151;
+}
+
+.poiDistance {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+/* Risikobewertung */
+.riskAssessment {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.riskAssessment h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.riskScore {
+  border: 3px solid;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.riskScoreHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.riskLevel {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.riskPoints {
+  font-size: 18px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.riskBar {
+  height: 12px;
+  background-color: #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.riskBarFill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.riskDetails h3 {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  color: #374151;
+  font-size: 18px;
+}
+
+.riskDetails ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.warningItem,
+.recommendationItem {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  line-height: 1.6;
+}
+
+.warningItem {
+  background-color: #fef3c7;
+  border-left: 4px solid #f59e0b;
+}
+
+.recommendationItem {
+  background-color: #dbeafe;
+  border-left: 4px solid #3b82f6;
+}
+
+.warningIcon,
+.recommendationIcon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.infoBox {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f0fdf4;
+  border-left: 4px solid #10b981;
+  border-radius: 6px;
+}
+
+.infoBox p {
+  margin: 0;
+  color: #065f46;
+  line-height: 1.6;
+}
+
+/* Aktionsbuttons */
+.actionButtons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.downloadButton,
+.resetButton {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.downloadButton {
+  background-color: #10b981;
+  color: white;
+}
+
+.downloadButton:hover {
+  background-color: #059669;
+}
+
+.resetButton {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.resetButton:hover {
+  background-color: #d1d5db;
+}
+```
+
+===============================================================================
+TEIL 11: DEPLOYMENT & TESTING
+===============================================================================
+
+SCHRITT 1: Dependencies installieren
+-------------------------------------
+npm install
+# Falls proj4js für Koordinatenkonvertierung benötigt:
+npm install proj4
+
+SCHRITT 2: Development Server starten
+-------------------------------------
+npm run dev
+
+SCHRITT 3: Testen
+-------------------------------------
+1. Öffne http://localhost:3000/de/adressen-check
+2. Teste verschiedene Adressen:
+   - "Rathausstraße 1, 1010 Wien"
+   - "Stephansplatz 1, 1010 Wien"
+   - Eine Adresse in deiner Nähe
+
+3. Überprüfe:
+   - Lädt die Karte korrekt?
+   - Werden POIs angezeigt?
+   - Funktioniert die Risikobewertung?
+
+SCHRITT 4: Build für Production
+-------------------------------------
+npm run build
+npm start
+
+===============================================================================
+TEIL 12: ERWEITERTE FEATURES (Optional)
+===============================================================================
+
+FEATURE 1: PDF-Export
+---------------------
+Installiere: npm install jspdf jspdf-autotable
+
+Implementiere in AddressChecker.js:
+
+```javascript
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
+function generatePDFReport(address, pois, assessment) {
+  const doc = new jsPDF();
+  
+  // Titel
+  doc.setFontSize(20);
+  doc.text('Adressen-Check Bericht', 20, 20);
+  
+  // Adresse
+  doc.setFontSize(12);
+  doc.text(`Adresse: ${address.fullAddress}`, 20, 40);
+  doc.text(`Datum: ${new Date().toLocaleDateString('de-AT')}`, 20, 50);
+  
+  // Risikobewertung
+  doc.setFontSize(16);
+  doc.text('Risikobewertung', 20, 70);
+  doc.setFontSize(12);
+  doc.text(`Risiko-Level: ${assessment.overallRisk}`, 20, 80);
+  doc.text(`Punkte: ${assessment.riskPoints}/100`, 20, 90);
+  
+  // POI-Tabelle
+  const poiData = pois.map(poi => [
+    poi.type,
+    poi.name || 'Unbenannt',
+    `${Math.round(poi.distance)}m`
+  ]);
+  
+  doc.autoTable({
+    startY: 100,
+    head: [['Typ', 'Name', 'Entfernung']],
+    body: poiData,
+  });
+  
+  // Hinweise
+  let y = doc.lastAutoTable.finalY + 20;
+  doc.setFontSize(14);
+  doc.text('Wichtige Hinweise:', 20, y);
+  doc.setFontSize(10);
+  y += 10;
+  
+  assessment.warnings.forEach((warning, i) => {
+    const lines = doc.splitTextToSize(warning, 170);
+    doc.text(lines, 20, y);
+    y += lines.length * 7;
+  });
+  
+  // Fußzeile
+  doc.setFontSize(8);
+  doc.text('Datenquelle: Stadt Wien – data.wien.gv.at', 20, 280);
+  doc.text('betriebsanlage-check.at', 20, 285);
+  
+  // Download
+  doc.save(`adressen-check-${address.postalCode}-${Date.now()}.pdf`);
+}
+```
+
+FEATURE 2: Email-Versand
+------------------------
+Erstelle einen API-Endpunkt /api/send-report.js:
+
+```javascript
+import nodemailer from 'nodemailer';
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const { email, address, reportData } = req.body;
+
+  // Email senden via nodemailer
+  const transporter = nodemailer.createTransport({
+    // Konfiguration
+  });
+
+  try {
+    await transporter.sendMail({
+      from: 'noreply@betriebsanlage-check.at',
+      to: email,
+      subject: `Adressen-Check für ${address}`,
+      html: `<h1>Ihr Adressen-Check Bericht</h1>...`
+    });
+
+    res.status(200).json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error: 'Fehler beim Senden' });
+  }
+}
+```
+
+FEATURE 3: Speichern von Checks
+-------------------------------
+Implementiere Datenbank-Integration (z.B. mit Supabase, Firebase):
+
+```javascript
+// In AddressChecker.js
+import { supabase } from '@/lib/supabase';
+
+async function saveCheck(address, pois, assessment) {
+  const { data, error } = await supabase
+    .from('address_checks')
+    .insert([
+      {
+        address: address.fullAddress,
+        coordinates: address.coordinates,
+        poi_count: pois.length,
+        risk_level: assessment.overallRisk,
+        risk_points: assessment.riskPoints,
+        created_at: new Date()
+      }
+    ]);
+
+  if (error) {
+    console.error('Fehler beim Speichern:', error);
+  }
+}
+```
+
+===============================================================================
+TEIL 13: WICHTIGE HINWEISE
+===============================================================================
+
+1. KOORDINATENSYSTEM
+   Die ViennaGIS API nutzt Gauß-Krüger M34 Koordinaten (EPSG:31256)
+   Die OGD-APIs nutzen oft WGS84 (EPSG:4326)
+   → Implementiere Koordinatentransformation mit proj4js
+
+2. RATE LIMITS
+   Beachte die Nutzungsbedingungen der Stadt Wien APIs
+   Implementiere ggf. Caching für häufig abgefragte Daten
+
+3. DATENSCHUTZ
+   Speichere keine personenbezogenen Daten ohne Einwilligung
+   DSGVO-konforme Datenschutzerklärung hinzufügen
+
+4. DISCLAIMER
+   Füge einen rechtlichen Hinweis hinzu, dass dies eine
+   unverbindliche Ersteinschätzung ist
+
+5. MOBILE OPTIMIERUNG
+   Teste die Kartenansicht auf mobilen Geräten
+   Implementiere responsive Breakpoints
+
+===============================================================================
+TEIL 14: TROUBLESHOOTING
+===============================================================================
+
+Problem: Karte lädt nicht
+Lösung: Überprüfe, ob ViennaGIS Scripts korrekt geladen wurden
+        Schaue in Browser Console nach Fehlermeldungen
+
+Problem: Keine POIs werden angezeigt
+Lösung: Überprüfe API-Anfragen in Network-Tab
+        Validiere Koordinatenformat
+
+Problem: Koordinaten stimmen nicht
+Lösung: Implementiere korrekte Koordinatentransformation
+        Nutze proj4js Library
+
+Problem: Performance-Probleme
+Lösung: Implementiere Debouncing für Adresssuche
+        Nutze Lazy Loading für Karte
+        Cache API-Responses
+
+===============================================================================
+TEIL 15: NÄCHSTE SCHRITTE
+===============================================================================
+
+1. Implementiere die Basis-Funktionalität wie beschrieben
+2. Teste ausgiebig mit verschiedenen Wiener Adressen
+3. Füge PDF-Export hinzu
+4. Implementiere erweiterte POI-Filter
+5. Füge Statistiken hinzu (z.B. häufigste Probleme)
+6. Erstelle Admin-Dashboard für gespeicherte Checks
+7. Implementiere Benachrichtigungen bei neuen Baustellen
+8. Füge Mehrsprachigkeit hinzu (wie bei den anderen Seiten)
+
+===============================================================================
+SUPPORT & WEITERE RESSOURCEN
+===============================================================================
+
+Wien Open Data Portal:
+https://www.data.gv.at/katalog/dataset/stadt-wien_adressenogd
+
+ViennaGIS API Dokumentation:
+https://www.wien.gv.at/inhalt/stadtplan-viennagis-api-javascript
+
+Creative Commons Lizenz:
+https://digitales.wien.gv.at/ogd-nutzungsbedingungen/
+
+Wien Stadtplan:
+https://www.wien.gv.at/stadtplan/
+
+Bei Fragen zur Implementierung:
+- Überprüfe die Browser Console auf Fehler
+- Validiere API-Responses
+- Teste mit verschiedenen Adressen
+- Kontaktiere den Wien.at Support bei API-Problemen
+
+===============================================================================
+ENDE DER IMPLEMENTIERUNGSANLEITUNG
+===============================================================================

@@ -1,0 +1,3 @@
+filename,status, issue_cause downloadURL, issue_cause accessURL
+WMTS GetCapabilities,delivered,no download url available
+WMTS (JPEG),delivered,no download url available

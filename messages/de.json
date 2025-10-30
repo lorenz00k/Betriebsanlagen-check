@@ -667,5 +667,68 @@
         "description": "Empfehlungen zu Genehmigungspflicht, Dokumenten und nächsten Schritten auf einen Blick."
       }
     }
+  },
+  "addressChecker": {
+    "title": "Adressen-Check für Betriebsanlagen",
+    "subtitle": "Überprüfen Sie Ihre geplante Betriebsadresse auf potenzielle Probleme",
+    "description": "Wir zeigen Ihnen Kirchen, Krankenhäuser, Schulen und andere relevante Einrichtungen in der Nähe, die bei der Betriebsanlagengenehmigung eine Rolle spielen können.",
+    "search": {
+      "label": "Straßenname in Wien eingeben",
+      "placeholder": "z.B. Rathausstraße, Mariahilfer Straße",
+      "button": "Adresse prüfen",
+      "searching": "Suche läuft...",
+      "error": "Fehler bei der Adresssuche. Bitte versuchen Sie es erneut.",
+      "noResults": "Keine Adresse gefunden. Bitte überprüfen Sie Ihre Eingabe.",
+      "multipleResults": "Bitte wählen Sie die richtige Adresse:"
+    },
+    "map": {
+      "title": "Kartenansicht",
+      "attribution": "Datenquelle: Stadt Wien – data.wien.gv.at",
+      "loading": "Karte wird geladen..."
+    },
+    "pois": {
+      "title": "Umgebung",
+      "empty": "Keine problematischen Einrichtungen in unmittelbarer Nähe gefunden.",
+      "categories": {
+        "krankenhaus": "Krankenhäuser",
+        "kath": "Katholische Kirchen",
+        "evangkirche": "Evangelische Kirchen",
+        "orthodox": "Orthodoxe Kirchen",
+        "islam": "Moscheen",
+        "israel": "Synagogen",
+        "buddh": "Buddhistische Tempel",
+        "kindergarten": "Kindergärten",
+        "friedhof": "Friedhöfe",
+        "baustelle": "Baustellen",
+        "polizei": "Polizei"
+      },
+      "distance": "Entfernung",
+      "nearby": "Nähe"
+    },
+    "risk": {
+      "title": "Bewertung für Betriebsanlagengenehmigung",
+      "levels": {
+        "high": "Hohes Risiko",
+        "medium": "Mittleres Risiko",
+        "low": "Geringes Risiko"
+      },
+      "points": "Punkte",
+      "warnings": "Wichtige Hinweise:",
+      "recommendations": "Empfehlungen:",
+      "disclaimer": {
+        "title": "Hinweis",
+        "text": "Diese Bewertung ist eine erste Einschätzung. Für eine rechtsverbindliche Auskunft kontaktieren Sie bitte die MA 36 (Magistratische Bezirksamt)."
+      }
+    },
+    "actions": {
+      "download": "Bericht als PDF herunterladen",
+      "newCheck": "Neue Adresse prüfen",
+      "backToChecker": "Zurück zum Betriebsanlagen-Check"
+    },
+    "badges": {
+      "high": "Achtung",
+      "medium": "Beachten",
+      "low": "Info"
+    }
   }
 }
