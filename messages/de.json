@@ -504,7 +504,33 @@
           "description": "Seien Sie auf Nachbesserungen oder Auflagen vorbereitet."
         }
       }
-    }
+    },
+    "pageTitle": "Dokumente & Formulare",
+    "pageDescription": "Alle erforderlichen Dokumente für Ihre Betriebsanlagengenehmigung zum Download",
+    "disclaimer": {
+      "title": "⚖️ Wichtiger rechtlicher Hinweis",
+      "text": "Diese Plattform bietet ausschließlich Informationen und technische Unterstützung beim Ausfüllen von Formularen. Wir bieten keine Rechtsberatung an. Die Überprüfung auf Vollständigkeit und Richtigkeit liegt in Ihrer Verantwortung. Für rechtliche Fragen wenden Sie sich bitte an einen Fachanwalt oder die MA 36."
+    },
+    "filter": {
+      "all": "Alle Dokumente",
+      "required": "Pflichtdokumente",
+      "guides": "Anleitungen"
+    },
+    "category": {
+      "required": "Pflicht",
+      "optional": "Optional",
+      "guide": "Anleitung"
+    },
+    "pages": "Seiten",
+    "download": "Herunterladen",
+    "downloading": "Lädt...",
+    "downloadFailed": "Download fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "needHelp": {
+      "title": "Hilfe beim Ausfüllen?",
+      "text": "Diese Formulare können komplex sein. Nutzen Sie unseren kostenlosen Checker, um herauszufinden, welche Dokumente Sie genau benötigen."
+    },
+    "startChecker": "Jetzt Checker starten",
+    "officialSource": "Quelle: Stadt Wien"
   },
   "faq": {
     "title": "Häufig gestellte Fragen",
@@ -641,33 +667,5 @@
         "description": "Empfehlungen zu Genehmigungspflicht, Dokumenten und nächsten Schritten auf einen Blick."
       }
     }
-  },
-  "documents": {
-    "pageTitle": "Dokumente & Formulare",
-    "pageDescription": "Alle erforderlichen Dokumente für Ihre Betriebsanlagengenehmigung zum Download",
-    "disclaimer": {
-      "title": "⚖️ Wichtiger rechtlicher Hinweis",
-      "text": "Diese Plattform bietet ausschließlich Informationen und technische Unterstützung beim Ausfüllen von Formularen. Wir bieten keine Rechtsberatung an. Die Überprüfung auf Vollständigkeit und Richtigkeit liegt in Ihrer Verantwortung. Für rechtliche Fragen wenden Sie sich bitte an einen Fachanwalt oder die MA 36."
-    },
-    "filter": {
-      "all": "Alle Dokumente",
-      "required": "Pflichtdokumente",
-      "guides": "Anleitungen"
-    },
-    "category": {
-      "required": "Pflicht",
-      "optional": "Optional",
-      "guide": "Anleitung"
-    },
-    "pages": "Seiten",
-    "download": "Herunterladen",
-    "downloading": "Lädt...",
-    "downloadFailed": "Download fehlgeschlagen. Bitte versuchen Sie es erneut.",
-    "needHelp": {
-      "title": "Hilfe beim Ausfüllen?",
-      "text": "Diese Formulare können komplex sein. Nutzen Sie unseren kostenlosen Checker, um herauszufinden, welche Dokumente Sie genau benötigen."
-    },
-    "startChecker": "Jetzt Checker starten",
-    "officialSource": "Quelle: Stadt Wien"
   }
 }
