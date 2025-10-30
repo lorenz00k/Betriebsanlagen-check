@@ -141,7 +141,7 @@ export default function Home() {
                 {t("card2Description")}
               </p>
               <Link
-                href={`/${activeLocale}/documents`}
+                href={`/${activeLocale}/dokumente`}
                 className="button-shine button-click inline-flex items-center gap-2 w-full justify-center bg-gradient-to-r from-[#FF6B35] to-[#e55a28] text-white py-4 px-6 rounded-xl font-semibold hover:from-[#e55a28] hover:to-[#cc4d1f] transition-all duration-200"
                 style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
               >
