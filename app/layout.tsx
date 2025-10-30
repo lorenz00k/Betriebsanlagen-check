@@ -12,7 +12,6 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next' // keep if you want Vercel Analytics
-//import CookieBanner from './components/CookieBanner'
 import CookieConsentModal from './components/CookieConsentModal'
 
 export const metadata: Metadata = { title: 'Betriebsanlagen Check' }
