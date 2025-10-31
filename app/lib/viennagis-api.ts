@@ -1,6 +1,14 @@
 // ViennaGIS API Wrapper für Betriebsanlagen-Check
 // Nutzt die öffentlichen Open Government Data (OGD) APIs der Stadt Wien
 
+import proj4 from 'proj4';
+
+// Definiere Koordinatensysteme
+// EPSG:31256 - MGI Austria GK Central (M34)
+// EPSG:4326 - WGS84 (Standard für GPS/Leaflet)
+proj4.defs('EPSG:31256', '+proj=tmerc +lat_0=0 +lon_0=13.33333333333333 +k=1 +x_0=0 +y_0=-5000000 +ellps=bessel +towgs84=577.326,90.129,463.919,5.137,1.474,5.297,2.4232 +units=m +no_defs');
+proj4.defs('EPSG:4326', '+proj=longlat +datum=WGS84 +no_defs');
+
 export interface Address {
   fullAddress: string;
   street: string;
@@ -25,14 +33,11 @@ export interface POI {
 
 /**
  * Koordinaten von EPSG:31256 (MGI Austria GK Central) nach EPSG:4326 (WGS84) konvertieren
- * Verwendet Proj4js-kompatible Transformation
+ * Verwendet Proj4js für präzise Transformation
  */
 function convertMGItoWGS84(x: number, y: number): { lng: number; lat: number } {
-  // Approximative Umrechnung (für genauere Ergebnisse würde man proj4js verwenden)
-  // MGI Austria GK Central Zone M34 -> WGS84
-  // Diese Werte sind für Wien kalibriert
-  const lng = 16.0 + (x - 0) / 111320.0;
-  const lat = 48.0 + (y - 340000) / 111320.0;
+  // Transformiere von MGI (EPSG:31256) nach WGS84 (EPSG:4326)
+  const [lng, lat] = proj4('EPSG:31256', 'EPSG:4326', [x, y]);
 
   return { lng, lat };
 }
