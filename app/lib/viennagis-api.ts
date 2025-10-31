@@ -4,9 +4,9 @@
 import proj4 from 'proj4';
 
 // Definiere Koordinatensysteme
-// EPSG:31256 - MGI Austria GK Central (M34)
+// EPSG:31256 - MGI Austria GK Central (M34) - Central meridian at 16.333°E for Vienna
 // EPSG:4326 - WGS84 (Standard für GPS/Leaflet)
-proj4.defs('EPSG:31256', '+proj=tmerc +lat_0=0 +lon_0=13.33333333333333 +k=1 +x_0=0 +y_0=-5000000 +ellps=bessel +towgs84=577.326,90.129,463.919,5.137,1.474,5.297,2.4232 +units=m +no_defs');
+proj4.defs('EPSG:31256', '+proj=tmerc +lat_0=0 +lon_0=16.3333333333333 +k=1 +x_0=0 +y_0=-5000000 +ellps=bessel +towgs84=577.326,90.129,463.919,5.137,1.474,5.297,2.4232 +units=m +no_defs +type=crs');
 proj4.defs('EPSG:4326', '+proj=longlat +datum=WGS84 +no_defs');
 
 export interface Address {
@@ -79,14 +79,28 @@ export async function searchAddress(query: string): Promise<Address[]> {
     }
 
     // Features zu Address-Objekten umwandeln
-    return data.features.map((feature: { properties: Record<string, unknown>; geometry: { coordinates: [number, number] } }) => {
+    return data.features.map((feature: { properties: Record<string, unknown>; geometry: { coordinates: [number, number]; type?: string } }) => {
       const props = feature.properties;
+
+      console.log('🔧 Raw API data:', {
+        address: props.Adresse,
+        geometryType: feature.geometry.type,
+        rawCoordinates: feature.geometry.coordinates,
+        x: feature.geometry.coordinates[0],
+        y: feature.geometry.coordinates[1]
+      });
 
       // Koordinaten von EPSG:31256 nach WGS84 konvertieren
       const coords = convertMGItoWGS84(
         feature.geometry.coordinates[0],
         feature.geometry.coordinates[1]
       );
+
+      console.log('📍 Converted coordinates:', {
+        address: props.Adresse,
+        original: { x: feature.geometry.coordinates[0], y: feature.geometry.coordinates[1] },
+        converted: coords
+      });
 
       return {
         fullAddress: (props.Adresse as string) || 'Unbekannte Adresse',
