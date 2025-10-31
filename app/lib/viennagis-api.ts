@@ -79,28 +79,14 @@ export async function searchAddress(query: string): Promise<Address[]> {
     }
 
     // Features zu Address-Objekten umwandeln
-    return data.features.map((feature: { properties: Record<string, unknown>; geometry: { coordinates: [number, number]; type?: string } }) => {
+    return data.features.map((feature: { properties: Record<string, unknown>; geometry: { coordinates: [number, number] } }) => {
       const props = feature.properties;
-
-      console.log('🔧 Raw API data:', {
-        address: props.Adresse,
-        geometryType: feature.geometry.type,
-        rawCoordinates: feature.geometry.coordinates,
-        x: feature.geometry.coordinates[0],
-        y: feature.geometry.coordinates[1]
-      });
 
       // Koordinaten von EPSG:31256 nach WGS84 konvertieren
       const coords = convertMGItoWGS84(
         feature.geometry.coordinates[0],
         feature.geometry.coordinates[1]
       );
-
-      console.log('📍 Converted coordinates:', {
-        address: props.Adresse,
-        original: { x: feature.geometry.coordinates[0], y: feature.geometry.coordinates[1] },
-        converted: coords
-      });
 
       return {
         fullAddress: (props.Adresse as string) || 'Unbekannte Adresse',
