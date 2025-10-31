@@ -103,7 +103,7 @@ export default function FormularWizard() {
 
   const handlePDFErstellen = async () => {
     try {
-      await generiereEinfachesPDF(formularDaten, t);
+      await generiereEinfachesPDF(formularDaten);
       // Erfolgreiche Erstellung - Entwurf löschen
       localStorage.removeItem('formular_entwurf');
       alert(t('pdfErfolgreich'));

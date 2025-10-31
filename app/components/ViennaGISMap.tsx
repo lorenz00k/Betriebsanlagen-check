@@ -12,7 +12,7 @@ interface ViennaGISMapProps {
 }
 
 export default function ViennaGISMap({ address, pois }: ViennaGISMapProps) {
-  const mapRef = useRef<any>(null);
+  const mapRef = useRef<unknown>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

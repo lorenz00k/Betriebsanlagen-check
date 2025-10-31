@@ -12,7 +12,7 @@ import POIList from '@/app/components/POIList';
 
 interface SchrittStandortProps {
   daten: FormularDaten;
-  onChange: (feld: keyof FormularDaten, wert: any) => void;
+  onChange: (feld: keyof FormularDaten, wert: string | FormularDaten['addressCheckerData']) => void;
 }
 
 export default function SchrittStandort({ daten, onChange }: SchrittStandortProps) {

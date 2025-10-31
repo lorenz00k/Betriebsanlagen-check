@@ -74,7 +74,7 @@ export async function searchAddress(query: string): Promise<Address[]> {
     }
 
     // Features zu Address-Objekten umwandeln
-    return data.features.map((feature: any) => {
+    return data.features.map((feature: { properties: Record<string, unknown>; geometry: { coordinates: [number, number] } }) => {
       const props = feature.properties;
 
       // Koordinaten von EPSG:31256 nach WGS84 konvertieren
@@ -84,11 +84,11 @@ export async function searchAddress(query: string): Promise<Address[]> {
       );
 
       return {
-        fullAddress: props.Adresse || 'Unbekannte Adresse',
-        street: props.StreetName || '',
-        houseNumber: props.StreetNumber || '',
+        fullAddress: (props.Adresse as string) || 'Unbekannte Adresse',
+        street: (props.StreetName as string) || '',
+        houseNumber: (props.StreetNumber as string) || '',
         postalCode: props.PostalCode?.toString() || '',
-        district: props.Bezirk || '',
+        district: (props.Bezirk as string) || '',
         coordinates: coords
       };
     });

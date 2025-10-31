@@ -1,7 +1,7 @@
 import jsPDF from 'jspdf';
 import type { FormularDaten } from './types';
 
-export async function generiereEinfachesPDF(daten: FormularDaten, t: any) {
+export async function generiereEinfachesPDF(daten: FormularDaten) {
   const doc = new jsPDF();
 
   // Hilfsfunktionen
