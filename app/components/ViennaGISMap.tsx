@@ -102,8 +102,8 @@ export default function ViennaGISMap({ address, pois }: ViennaGISMapProps) {
       // Fit map to show all markers if there are POIs
       if (pois.length > 0) {
         const bounds = L.latLngBounds([
-          [address.coordinates.lat, address.coordinates.lng],
-          ...pois.map(poi => [poi.coordinates.lat, poi.coordinates.lng])
+          [address.coordinates.lat, address.coordinates.lng] as [number, number],
+          ...pois.map(poi => [poi.coordinates.lat, poi.coordinates.lng] as [number, number])
         ]);
         map.fitBounds(bounds, { padding: [50, 50] });
       }
