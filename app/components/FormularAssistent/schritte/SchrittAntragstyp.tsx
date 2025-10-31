@@ -4,14 +4,12 @@ import { useTranslations } from 'next-intl';
 import { FileText, Factory, RefreshCw } from 'lucide-react';
 import type { FormularDaten } from '../types';
 
-interface SchrittAntragstyp
-
-Props {
+interface SchrittAntragstyppProps {
   daten: FormularDaten;
   onChange: (feld: keyof FormularDaten, wert: string) => void;
 }
 
-export default function SchrittAntragstyp({ daten, onChange }: SchrittAntragsty pProps) {
+export default function SchrittAntragstyp({ daten, onChange }: SchrittAntragstyppProps) {
   const t = useTranslations('formularAssistent.schritte.antragstyp');
 
   return (
