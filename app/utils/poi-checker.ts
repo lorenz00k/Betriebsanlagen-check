@@ -11,6 +11,7 @@ export interface RiskAssessment {
     churches: POI[];
     hospitals: POI[];
     schools: POI[];
+    cemeteries: POI[];
     other: POI[];
   };
 }
@@ -24,16 +25,23 @@ export function analyzePOIs(pois: POI[], address: Address): RiskAssessment {
   const recommendations: string[] = [];
 
   // POI-Kategorien
-  const churchTypes = ['kath', 'evangkirche', 'orthodox', 'islam', 'israel', 'juedwien', 'buddh'];
+  const churchTypes = ['religion', 'kath', 'evangkirche', 'orthodox', 'islam', 'israel', 'juedwien', 'buddh'];
   const hospitalTypes = ['krankenhaus'];
-  const schoolTypes = ['kindergarten'];
+  const schoolTypes = ['kindergarten', 'schule'];
+  const cemeteryTypes = ['friedhof'];
 
   // POIs kategorisieren
   const categorizedPOIs = {
     churches: pois.filter(p => churchTypes.includes(p.type)),
     hospitals: pois.filter(p => hospitalTypes.includes(p.type)),
     schools: pois.filter(p => schoolTypes.includes(p.type)),
-    other: pois.filter(p => !churchTypes.includes(p.type) && !hospitalTypes.includes(p.type) && !schoolTypes.includes(p.type))
+    cemeteries: pois.filter(p => cemeteryTypes.includes(p.type)),
+    other: pois.filter(p =>
+      !churchTypes.includes(p.type) &&
+      !hospitalTypes.includes(p.type) &&
+      !schoolTypes.includes(p.type) &&
+      !cemeteryTypes.includes(p.type)
+    )
   };
 
   // KIRCHEN - Höchstes Risiko
@@ -95,20 +103,43 @@ export function analyzePOIs(pois: POI[], address: Address): RiskAssessment {
 
     if (nearSchools.length > 0) {
       riskPoints += 25;
+      const type = nearSchools.some(s => s.type === 'schule') ? 'Schule/Kindergarten' : 'Kindergarten';
       warnings.push(
-        `${nearSchools.length} ${nearSchools.length === 1 ? 'Kindergarten' : 'Kindergärten'} in unmittelbarer Nähe (unter 100m). ` +
+        `${nearSchools.length} ${type}${nearSchools.length > 1 ? 'en' : ''} in unmittelbarer Nähe (unter 100m). ` +
         `Besondere Auflagen für Sicherheit und Emissionen sind zu erwarten.`
       );
       recommendations.push(
         'Stellen Sie sicher, dass keine gefährlichen Stoffe oder Maschinen für Kinder zugänglich sind.'
       );
       recommendations.push(
-        'Vermeiden Sie Lärmbelästigung während der Betreuungszeiten (Mo-Fr 7:00-17:00 Uhr).'
+        'Vermeiden Sie Lärmbelästigung während der Unterrichts-/Betreuungszeiten (Mo-Fr 7:00-17:00 Uhr).'
       );
     } else {
       riskPoints += 10;
+      const type = categorizedPOIs.schools.some(s => s.type === 'schule') ? 'Schulen/Kindergärten' : 'Kindergärten';
       warnings.push(
-        `${categorizedPOIs.schools.length} ${categorizedPOIs.schools.length === 1 ? 'Kindergarten' : 'Kindergärten'} in der Umgebung.`
+        `${categorizedPOIs.schools.length} ${type} in der Umgebung.`
+      );
+    }
+  }
+
+  // FRIEDHÖFE
+  if (categorizedPOIs.cemeteries.length > 0) {
+    const nearCemeteries = categorizedPOIs.cemeteries.filter(p => p.distance < 100);
+
+    if (nearCemeteries.length > 0) {
+      riskPoints += 20;
+      warnings.push(
+        `${nearCemeteries.length} ${nearCemeteries.length === 1 ? 'Friedhof' : 'Friedhöfe'} in unmittelbarer Nähe (unter 100m). ` +
+        `Besondere Auflagen für Geruchsemissionen und Pietät sind zu erwarten.`
+      );
+      recommendations.push(
+        'Vermeiden Sie Geruchsemissionen (Gastronomie, Produktion). Lärm während Beerdigungen minimieren.'
+      );
+    } else {
+      riskPoints += 5;
+      warnings.push(
+        `${categorizedPOIs.cemeteries.length} ${categorizedPOIs.cemeteries.length === 1 ? 'Friedhof' : 'Friedhöfe'} in der Umgebung.`
       );
     }
   }
@@ -167,6 +198,7 @@ export function analyzePOIs(pois: POI[], address: Address): RiskAssessment {
 export function getPOILabel(type: string): string {
   const labels: Record<string, string> = {
     krankenhaus: 'Krankenhaus',
+    religion: 'Religiöse Einrichtung',
     kath: 'Katholische Kirche',
     evangkirche: 'Evangelische Kirche',
     orthodox: 'Orthodoxe Kirche',
@@ -175,6 +207,7 @@ export function getPOILabel(type: string): string {
     juedwien: 'Jüdische Einrichtung',
     buddh: 'Buddhistischer Tempel',
     kindergarten: 'Kindergarten',
+    schule: 'Schule',
     friedhof: 'Friedhof',
     baustelle: 'Baustelle',
     polizei: 'Polizei'
@@ -189,6 +222,7 @@ export function getPOILabel(type: string): string {
 export function getPOIIcon(type: string): string {
   const icons: Record<string, string> = {
     krankenhaus: '🏥',
+    religion: '🛐',
     kath: '⛪',
     evangkirche: '⛪',
     orthodox: '☦️',
@@ -197,6 +231,7 @@ export function getPOIIcon(type: string): string {
     juedwien: '✡️',
     buddh: '🛕',
     kindergarten: '👶',
+    schule: '🏫',
     friedhof: '🪦',
     baustelle: '🚧',
     polizei: '👮'
@@ -209,11 +244,13 @@ export function getPOIIcon(type: string): string {
  * Risiko-Level eines POI-Typs
  */
 export function getPOIRiskLevel(type: string): 'high' | 'medium' | 'low' {
-  const churchTypes = ['kath', 'evangkirche', 'orthodox', 'islam', 'israel', 'juedwien', 'buddh'];
+  const churchTypes = ['religion', 'kath', 'evangkirche', 'orthodox', 'islam', 'israel', 'juedwien', 'buddh'];
 
   if (churchTypes.includes(type)) return 'high';
   if (type === 'krankenhaus') return 'medium';
   if (type === 'kindergarten') return 'medium';
+  if (type === 'schule') return 'medium';
+  if (type === 'friedhof') return 'medium';
 
   return 'low';
 }

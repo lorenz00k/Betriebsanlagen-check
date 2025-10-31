@@ -100,7 +100,7 @@ export async function searchAddress(query: string): Promise<Address[]> {
 
 /**
  * POIs in der Nähe einer Adresse finden
- * Fokus auf kritische POIs: Kirchen, Krankenhäuser, Kindergärten
+ * Fokus auf kritische POIs: Kirchen, Krankenhäuser, Kindergärten, Schulen, Friedhöfe
  */
 export async function getNearbyPOIs(
   lng: number,
@@ -109,37 +109,35 @@ export async function getNearbyPOIs(
 ): Promise<POI[]> {
   const allPOIs: POI[] = [];
 
+  // Liste aller POI-Typen die geladen werden sollen
+  // Korrekte Namen von GetCapabilities: https://data.wien.gv.at/daten/geo?service=WFS&request=GetCapabilities
+  const poiTypes = [
+    // Hochkritisch
+    { dataset: 'KRANKENHAUSOGD', type: 'krankenhaus' },
+    { dataset: 'RELIGIONOGD', type: 'religion' }, // Alle religiösen Einrichtungen
+
+    // Kritisch
+    { dataset: 'KINDERGARTENOGD', type: 'kindergarten' },
+    { dataset: 'SCHULEOGD', type: 'schule' },
+
+    // Potenziell kritisch
+    { dataset: 'FRIEDHOFOGD', type: 'friedhof' },
+  ];
+
   try {
-    // Krankenhäuser laden
-    const hospitals = await fetchPOIType(
-      'KRANKENANSTALTENOGD',
-      lng,
-      lat,
-      radius,
-      'krankenhaus'
+    // Alle POI-Typen parallel laden (schneller!)
+    const results = await Promise.allSettled(
+      poiTypes.map(({ dataset, type }) =>
+        fetchPOIType(dataset, lng, lat, radius, type)
+      )
     );
-    allPOIs.push(...hospitals);
 
-    // Kindergärten laden
-    const kindergartens = await fetchPOIType(
-      'KINDERGARTENOGD',
-      lng,
-      lat,
-      radius,
-      'kindergarten'
-    );
-    allPOIs.push(...kindergartens);
-
-    // Kirchen - mehrere Datasets
-    // Katholische Kirchen
-    const kathChurches = await fetchPOIType(
-      'KATHOLISCHEKIRCHENPFLEGOGD',
-      lng,
-      lat,
-      radius,
-      'kath'
-    );
-    allPOIs.push(...kathChurches);
+    // Erfolgreiche Ergebnisse sammeln
+    results.forEach((result) => {
+      if (result.status === 'fulfilled') {
+        allPOIs.push(...result.value);
+      }
+    });
 
   } catch (error) {
     console.error('Fehler beim Laden der POIs:', error);
@@ -159,12 +157,19 @@ async function fetchPOIType(
   type: string
 ): Promise<POI[]> {
   try {
-    const url = `https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:${dataset}&outputFormat=json&srsName=EPSG:4326`;
+    // outputFormat muss 'application/json' sein (nicht 'json')
+    const url = `https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:${dataset}&outputFormat=application/json&srsName=EPSG:4326`;
 
     const response = await fetch(url);
 
     if (!response.ok) {
       console.warn(`Konnte ${dataset} nicht laden:`, response.status);
+      return [];
+    }
+
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('xml')) {
+      console.warn(`${dataset} gibt XML zurück - überspringe`);
       return [];
     }
 

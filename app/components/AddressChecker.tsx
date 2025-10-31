@@ -20,6 +20,7 @@ export default function AddressChecker() {
   const [riskAssessment, setRiskAssessment] = useState<RiskAssessmentType | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [searchRadius, setSearchRadius] = useState(200); // Default: 200m
 
   // Adresssuche
   const handleSearch = async (e: React.FormEvent) => {
@@ -55,10 +56,8 @@ export default function AddressChecker() {
     }
   };
 
-  // Adresse auswählen
-  const handleSelectAddress = async (addressData: Address) => {
-    setSelectedAddress(addressData);
-    setSearchResults([]);
+  // POIs laden (helper function)
+  const loadPOIs = async (addressData: Address, radius: number) => {
     setLoading(true);
     setError(null);
 
@@ -67,7 +66,7 @@ export default function AddressChecker() {
       const pois = await getNearbyPOIs(
         addressData.coordinates.lng,
         addressData.coordinates.lat,
-        200 // 200m Radius
+        radius
       );
 
       setNearbyPOIs(pois);
@@ -80,6 +79,21 @@ export default function AddressChecker() {
       setError('Fehler beim Laden der Umgebungsdaten.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Adresse auswählen
+  const handleSelectAddress = async (addressData: Address) => {
+    setSelectedAddress(addressData);
+    setSearchResults([]);
+    await loadPOIs(addressData, searchRadius);
+  };
+
+  // Radius ändern
+  const handleRadiusChange = async (newRadius: number) => {
+    setSearchRadius(newRadius);
+    if (selectedAddress) {
+      await loadPOIs(selectedAddress, newRadius);
     }
   };
 
@@ -186,6 +200,43 @@ export default function AddressChecker() {
               >
                 {t('actions.newCheck')}
               </button>
+            </div>
+          </div>
+
+          {/* Radius-Einstellung */}
+          <div className="bg-white rounded-xl shadow-md p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-gray-900">
+                Suchradius anpassen
+              </h3>
+              <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full font-semibold text-sm">
+                {searchRadius}m
+              </span>
+            </div>
+
+            <div className="space-y-4">
+              <input
+                type="range"
+                min="100"
+                max="500"
+                step="50"
+                value={searchRadius}
+                onChange={(e) => handleRadiusChange(Number(e.target.value))}
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+
+              <div className="flex justify-between text-xs text-gray-600">
+                <span>100m</span>
+                <span>200m</span>
+                <span>300m</span>
+                <span>400m</span>
+                <span>500m</span>
+              </div>
+
+              <p className="text-sm text-gray-600">
+                Zeigt kritische Einrichtungen im Umkreis von {searchRadius} Metern an.
+                Größerer Radius = mehr POIs, umfassendere Analyse.
+              </p>
             </div>
           </div>
 

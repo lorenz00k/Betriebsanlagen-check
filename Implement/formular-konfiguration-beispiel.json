@@ -1,0 +1,613 @@
+{
+  "formular": {
+    "id": "betriebsanlage-antrag-wien",
+    "version": "2024-v1",
+    "titel": {
+      "de": "Antrag auf Betriebsanlagengenehmigung",
+      "en": "Application for Operating Facility Permit",
+      "sr": "Zahtev za dozvolu za pogon",
+      "hr": "Zahtjev za dozvolu za pogon",
+      "tr": "İşletme Tesisi İzni Başvurusu",
+      "it": "Domanda di autorizzazione all'esercizio",
+      "es": "Solicitud de autorización de instalación operativa",
+      "uk": "Заява на дозвіл на експлуатацію об'єкта"
+    },
+    "beschreibung": {
+      "de": "Dieser Assistent hilft Ihnen beim Ausfüllen des Antrags für eine Betriebsanlagengenehmigung in Wien.",
+      "en": "This assistant helps you complete the application for an operating facility permit in Vienna.",
+      "tr": "Bu asistan, Viyana'da işletme tesisi izni başvurusunu doldurmanıza yardımcı olur."
+    },
+    "disclaimer": {
+      "de": "⚖️ Diese Ausfüllhilfe ist eine unabhängige Serviceleistung und ersetzt keine rechtliche Beratung. Für rechtsverbindliche Auskünfte wenden Sie sich bitte an das zuständige Magistratische Bezirksamt oder die Wirtschaftskammer Wien.",
+      "en": "⚖️ This filling aid is an independent service and does not replace legal advice. For legally binding information, please contact the responsible district office or the Vienna Chamber of Commerce."
+    },
+    "schritte": [
+      {
+        "id": "antragsteller",
+        "nummer": 1,
+        "titel": {
+          "de": "Angaben zum Antragsteller",
+          "en": "Applicant Information",
+          "tr": "Başvuru Sahibi Bilgileri",
+          "sr": "Podaci o podnosiocu zahteva",
+          "hr": "Podaci o podnositelju zahtjeva"
+        },
+        "icon": "👤",
+        "beschreibung": {
+          "de": "Bitte geben Sie Ihre persönlichen bzw. Unternehmensdaten an.",
+          "en": "Please provide your personal or company details."
+        },
+        "felder": [
+          {
+            "id": "name",
+            "typ": "text",
+            "label": {
+              "de": "Name und Anschrift",
+              "en": "Name and Address",
+              "tr": "Ad ve Adres",
+              "sr": "Ime i adresa",
+              "hr": "Ime i adresa"
+            },
+            "hilfe": {
+              "de": "Vollständiger Name der Person oder des Unternehmens, das den Antrag stellt. Bei Unternehmen: Firmenwortlaut laut Firmenbuch.",
+              "en": "Full name of the person or company submitting the application. For companies: company name according to commercial register.",
+              "tr": "Başvuruyu yapan kişinin veya şirketin tam adı."
+            },
+            "beispiel": {
+              "de": "z.B. Max Mustermann GmbH, Musterstraße 123, 1010 Wien",
+              "en": "e.g. John Doe Ltd, Sample Street 123, 1010 Vienna"
+            },
+            "platzhalter": {
+              "de": "Ihr Name und vollständige Adresse",
+              "en": "Your name and complete address"
+            },
+            "pflicht": true,
+            "validierung": {
+              "minLaenge": 5,
+              "maxLaenge": 500
+            }
+          },
+          {
+            "id": "kontaktperson",
+            "typ": "text",
+            "label": {
+              "de": "Kontaktdaten der Ansprechperson",
+              "en": "Contact Person Details",
+              "tr": "İletişim Kişisi Bilgileri"
+            },
+            "hilfe": {
+              "de": "Name, Adresse und Telefonnummer der Person, die für Rückfragen zur Verfügung steht.",
+              "en": "Name, address and phone number of the person available for inquiries."
+            },
+            "pflicht": true
+          },
+          {
+            "id": "telefon",
+            "typ": "tel",
+            "label": {
+              "de": "Telefonnummer",
+              "en": "Phone Number",
+              "tr": "Telefon Numarası"
+            },
+            "platzhalter": {
+              "de": "+43 1 234 5678",
+              "en": "+43 1 234 5678"
+            },
+            "pflicht": true,
+            "validierung": {
+              "pattern": "^\\+?[0-9\\s\\-\\/()]+$"
+            }
+          },
+          {
+            "id": "email",
+            "typ": "email",
+            "label": {
+              "de": "E-Mail-Adresse",
+              "en": "Email Address",
+              "tr": "E-posta Adresi"
+            },
+            "hilfe": {
+              "de": "Wichtig für die Kommunikation mit der Behörde",
+              "en": "Important for communication with the authority"
+            },
+            "platzhalter": {
+              "de": "ihre.email@beispiel.at",
+              "en": "your.email@example.com"
+            },
+            "pflicht": true,
+            "validierung": {
+              "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standort",
+        "nummer": 2,
+        "titel": {
+          "de": "Standort der Betriebsanlage",
+          "en": "Location of Operating Facility",
+          "tr": "İşletme Tesisi Konumu"
+        },
+        "icon": "📍",
+        "beschreibung": {
+          "de": "Wo soll die Betriebsanlage errichtet oder betrieben werden?",
+          "en": "Where will the operating facility be constructed or operated?"
+        },
+        "felder": [
+          {
+            "id": "bezirk",
+            "typ": "select",
+            "label": {
+              "de": "Bezirk",
+              "en": "District",
+              "tr": "Bölge"
+            },
+            "optionen": [
+              { "wert": "1", "label": { "de": "1. Innere Stadt", "en": "1st District" } },
+              { "wert": "2", "label": { "de": "2. Leopoldstadt", "en": "2nd District" } },
+              { "wert": "3", "label": { "de": "3. Landstraße", "en": "3rd District" } },
+              { "wert": "4", "label": { "de": "4. Wieden", "en": "4th District" } },
+              { "wert": "5", "label": { "de": "5. Margareten", "en": "5th District" } },
+              { "wert": "6", "label": { "de": "6. Mariahilf", "en": "6th District" } },
+              { "wert": "7", "label": { "de": "7. Neubau", "en": "7th District" } },
+              { "wert": "8", "label": { "de": "8. Josefstadt", "en": "8th District" } },
+              { "wert": "9", "label": { "de": "9. Alsergrund", "en": "9th District" } },
+              { "wert": "10", "label": { "de": "10. Favoriten", "en": "10th District" } },
+              { "wert": "11", "label": { "de": "11. Simmering", "en": "11th District" } },
+              { "wert": "12", "label": { "de": "12. Meidling", "en": "12th District" } },
+              { "wert": "13", "label": { "de": "13. Hietzing", "en": "13th District" } },
+              { "wert": "14", "label": { "de": "14. Penzing", "en": "14th District" } },
+              { "wert": "15", "label": { "de": "15. Rudolfsheim-Fünfhaus", "en": "15th District" } },
+              { "wert": "16", "label": { "de": "16. Ottakring", "en": "16th District" } },
+              { "wert": "17", "label": { "de": "17. Hernals", "en": "17th District" } },
+              { "wert": "18", "label": { "de": "18. Währing", "en": "18th District" } },
+              { "wert": "19", "label": { "de": "19. Döbling", "en": "19th District" } },
+              { "wert": "20", "label": { "de": "20. Brigittenau", "en": "20th District" } },
+              { "wert": "21", "label": { "de": "21. Floridsdorf", "en": "21st District" } },
+              { "wert": "22", "label": { "de": "22. Donaustadt", "en": "22nd District" } },
+              { "wert": "23", "label": { "de": "23. Liesing", "en": "23rd District" } }
+            ],
+            "pflicht": true
+          },
+          {
+            "id": "gemeinde",
+            "typ": "text",
+            "label": {
+              "de": "Gemeinde",
+              "en": "Municipality"
+            },
+            "standardWert": "Wien",
+            "pflicht": true,
+            "readonly": true
+          },
+          {
+            "id": "strasse",
+            "typ": "text",
+            "label": {
+              "de": "Straße, Hausnummer",
+              "en": "Street, House Number",
+              "tr": "Sokak, Kapı Numarası"
+            },
+            "platzhalter": {
+              "de": "z.B. Rathausstraße 1",
+              "en": "e.g. City Hall Street 1"
+            },
+            "pflicht": true
+          },
+          {
+            "id": "grundstueck",
+            "typ": "text",
+            "label": {
+              "de": "Grundstücksnummer/n und Katastralgemeinde",
+              "en": "Plot Number(s) and Cadastral Municipality"
+            },
+            "hilfe": {
+              "de": "Diese Information finden Sie im Grundbuch oder auf www.bev.gv.at (Bundesamt für Eich- und Vermessungswesen). Bei Unklarheiten: Notar oder Immobilienmakler fragen.",
+              "en": "Find this information in the land register or on www.bev.gv.at. If unclear: ask your notary or real estate agent."
+            },
+            "beispiel": {
+              "de": "z.B. 1234/5 KG Innere Stadt",
+              "en": "e.g. 1234/5 KG Inner City"
+            },
+            "platzhalter": {
+              "de": "1234/5 KG ...",
+              "en": "1234/5 KG ..."
+            },
+            "pflicht": true
+          }
+        ]
+      },
+      {
+        "id": "antragstyp",
+        "nummer": 3,
+        "titel": {
+          "de": "Art des Antrags",
+          "en": "Type of Application",
+          "tr": "Başvuru Türü"
+        },
+        "icon": "📋",
+        "felder": [
+          {
+            "id": "typ",
+            "typ": "radio",
+            "label": {
+              "de": "Was möchten Sie beantragen?",
+              "en": "What would you like to apply for?",
+              "tr": "Ne başvurmak istiyorsunuz?"
+            },
+            "optionen": [
+              {
+                "wert": "neu",
+                "label": {
+                  "de": "Errichtung und Betrieb einer neuen Betriebsanlage",
+                  "en": "Construction and operation of a new facility",
+                  "tr": "Yeni bir tesisin inşası ve işletilmesi"
+                },
+                "beschreibung": {
+                  "de": "Wählen Sie diese Option, wenn Sie eine komplett neue Betriebsanlage errichten möchten.",
+                  "en": "Choose this option if you want to construct a completely new facility."
+                },
+                "icon": "🏭"
+              },
+              {
+                "wert": "aenderung",
+                "label": {
+                  "de": "Änderung einer bestehenden genehmigten Betriebsanlage",
+                  "en": "Modification of an existing approved facility",
+                  "tr": "Mevcut onaylı bir tesisin değiştirilmesi"
+                },
+                "beschreibung": {
+                  "de": "Wählen Sie diese Option, wenn Sie eine bereits genehmigte Anlage ändern, erweitern oder modernisieren möchten.",
+                  "en": "Choose this option if you want to modify, expand or modernize an already approved facility."
+                },
+                "icon": "🔄"
+              }
+            ],
+            "pflicht": true
+          },
+          {
+            "id": "art_der_anlage",
+            "typ": "text",
+            "label": {
+              "de": "Art der Anlage",
+              "en": "Type of Facility",
+              "tr": "Tesis Türü"
+            },
+            "platzhalter": {
+              "de": "z.B. Tischlerei, KFZ-Werkstätte, Bäckerei, Restaurant",
+              "en": "e.g. Carpentry, Car Workshop, Bakery, Restaurant",
+              "tr": "ör. Marangoz, Oto Tamircisi, Fırın, Restoran"
+            },
+            "hilfe": {
+              "de": "Beschreiben Sie in wenigen Worten, welche Art von Betrieb Sie führen möchten. Beispiele: Tischlerei, Friseursalon, Bäckerei, Restaurant, KFZ-Werkstätte, Druck erei, Metallverarbeitung",
+              "en": "Briefly describe what type of business you want to operate."
+            },
+            "pflicht": true
+          },
+          {
+            "id": "anlagenteile",
+            "typ": "textarea",
+            "label": {
+              "de": "Wesentliche Anlagenteile und Tätigkeiten",
+              "en": "Main Facility Components and Activities",
+              "tr": "Ana Tesis Bileşenleri ve Faaliyetler"
+            },
+            "platzhalter": {
+              "de": "Anlagenteile: z.B. Produktionshalle 200m², Büro 30m², Lager 50m², Heizungsanlage, Parkplatz\n\nTätigkeiten: z.B. Holzverarbeitung, Möbelherstellung, Verkauf, Montage beim Kunden",
+              "en": "Components: e.g. Production hall 200m², office 30m², warehouse 50m², heating system, parking\n\nActivities: e.g. wood processing, furniture manufacturing, sales, customer installation"
+            },
+            "hilfe": {
+              "de": "Listen Sie alle wichtigen Teile Ihrer Anlage (Räume, Maschinen, Freiflächen) und die geplanten Tätigkeiten auf. Je genauer, desto besser!",
+              "en": "List all important parts of your facility (rooms, machines, outdoor areas) and the planned activities. The more precise, the better!"
+            },
+            "pflicht": true,
+            "zeilen": 6
+          }
+        ]
+      },
+      {
+        "id": "aenderung_details",
+        "nummer": 4,
+        "titel": {
+          "de": "Details zur Änderung",
+          "en": "Modification Details"
+        },
+        "icon": "🔄",
+        "bedingung": {
+          "feld": "typ",
+          "operator": "equals",
+          "wert": "aenderung"
+        },
+        "beschreibung": {
+          "de": "Da Sie eine Änderung beantragen, benötigen wir Details zur bestehenden Genehmigung.",
+          "en": "Since you are applying for a modification, we need details about the existing permit."
+        },
+        "felder": [
+          {
+            "id": "beschreibung_aenderung",
+            "typ": "textarea",
+            "label": {
+              "de": "Beschreibung der Änderung",
+              "en": "Description of Modification"
+            },
+            "platzhalter": {
+              "de": "z.B. Zubau von 80m² zur bestehenden Maschinenhalle, Aufstellung von 3 zusätzlichen CNC-Maschinen, Errichtung einer neuen Laderampe",
+              "en": "e.g. Extension of 80m² to existing machine hall, installation of 3 additional CNC machines, construction of new loading ramp"
+            },
+            "hilfe": {
+              "de": "Beschreiben Sie möglichst genau, was geändert, erweitert, abgerissen oder neu gebaut werden soll. Geben Sie auch Gründe an, wenn möglich.",
+              "en": "Describe as precisely as possible what will be changed, expanded, demolished or newly built."
+            },
+            "pflicht": true,
+            "zeilen": 5
+          },
+          {
+            "id": "letzte_genehmigung_datum",
+            "typ": "date",
+            "label": {
+              "de": "Datum der letzten Genehmigung",
+              "en": "Date of Last Approval"
+            },
+            "hilfe": {
+              "de": "Finden Sie auf Ihrem Genehmigungsbescheid",
+              "en": "Find this on your approval document"
+            },
+            "pflicht": true
+          },
+          {
+            "id": "letzte_genehmigung_zahl",
+            "typ": "text",
+            "label": {
+              "de": "Geschäftszahl der letzten Genehmigung",
+              "en": "Reference Number of Last Approval"
+            },
+            "platzhalter": {
+              "de": "z.B. MA 36-1234/2023",
+              "en": "e.g. MA 36-1234/2023"
+            },
+            "hilfe": {
+              "de": "Die Geschäftszahl steht ganz oben auf Ihrem Genehmigungsbescheid",
+              "en": "The reference number is at the top of your approval document"
+            },
+            "pflicht": true
+          }
+        ]
+      },
+      {
+        "id": "flaechen",
+        "nummer": 5,
+        "titel": {
+          "de": "Betriebsflächen",
+          "en": "Operating Areas"
+        },
+        "icon": "📐",
+        "beschreibung": {
+          "de": "Angaben über die Größe und Art der gewerblich genutzten Flächen",
+          "en": "Information about the size and type of commercially used areas"
+        },
+        "felder": [
+          {
+            "id": "flaechen_beschreibung",
+            "typ": "textarea",
+            "label": {
+              "de": "Beschreibung aller gewerblich genutzten Flächen",
+              "en": "Description of all commercially used areas"
+            },
+            "platzhalter": {
+              "de": "z.B.:\n- Produktionsräume: 200m²\n- Büro: 30m²\n- Lager: 50m²\n- Sanitärräume: 20m²\n- Pausenraum: 15m²\n- Parkplatz (Außen): 100m²",
+              "en": "e.g.:\n- Production rooms: 200m²\n- Office: 30m²\n- Warehouse: 50m²\n- Sanitary rooms: 20m²\n- Break room: 15m²\n- Parking (outdoor): 100m²"
+            },
+            "hilfe": {
+              "de": "Listen Sie ALLE Flächen auf, die betrieblich genutzt werden. Dazu gehören:\n• Produktions- und Werkstatträume\n• Büros\n• Lager\n• Sozialräume (WC, Aufenthaltsraum, Umkleide)\n• Freiflächen wie Parkplätze, Lagerflächen im Freien\n• Verkehrsflächen",
+              "en": "List ALL areas that are used commercially. This includes:\n• Production and workshop rooms\n• Offices\n• Warehouses\n• Social rooms (toilets, lounge, changing rooms)\n• Outdoor areas such as parking lots, outdoor storage\n• Traffic areas"
+            },
+            "pflicht": true,
+            "zeilen": 8
+          },
+          {
+            "id": "gesamtflaeche",
+            "typ": "number",
+            "label": {
+              "de": "Gesamte betrieblich genutzte Fläche",
+              "en": "Total commercially used area"
+            },
+            "einheit": "m²",
+            "hilfe": {
+              "de": "Summe aller oben genannten Flächen. Diese Zahl ist wichtig für die Bestimmung, ob ein vereinfachtes Verfahren möglich ist.",
+              "en": "Sum of all areas mentioned above. This number is important for determining if a simplified procedure is possible."
+            },
+            "pflicht": true,
+            "min": 1,
+            "max": 999999
+          },
+          {
+            "id": "anschlussleistung",
+            "typ": "radio",
+            "label": {
+              "de": "Gesamte elektrische Anschlussleistung aller Maschinen und Geräte",
+              "en": "Total electrical connection capacity of all machines and equipment"
+            },
+            "optionen": [
+              {
+                "wert": "unter300",
+                "label": {
+                  "de": "Unter 300 Kilowatt",
+                  "en": "Below 300 kilowatts"
+                },
+                "info": {
+                  "de": "Vereinfachtes Verfahren möglich",
+                  "en": "Simplified procedure possible"
+                }
+              },
+              {
+                "wert": "ueber300",
+                "label": {
+                  "de": "Über 300 Kilowatt",
+                  "en": "Above 300 kilowatts"
+                },
+                "info": {
+                  "de": "Normales Verfahren erforderlich",
+                  "en": "Normal procedure required"
+                }
+              },
+              {
+                "wert": "keine",
+                "label": {
+                  "de": "Keine Maschinen oder Geräte vorhanden",
+                  "en": "No machines or equipment present"
+                }
+              }
+            ],
+            "hilfe": {
+              "de": "Diese Angabe bestimmt mit, ob ein vereinfachtes Verfahren durchgeführt werden kann. Wenn Sie unsicher sind: Die Anschlussleistung steht auf den Typenschildern der Maschinen oder in den technischen Unterlagen.",
+              "en": "This information helps determine if a simplified procedure can be conducted."
+            },
+            "pflicht": true
+          }
+        ]
+      },
+      {
+        "id": "produktionsablaeufe",
+        "nummer": 6,
+        "titel": {
+          "de": "Produktions- und Arbeitsabläufe",
+          "en": "Production and Work Processes"
+        },
+        "icon": "⚙️",
+        "felder": [
+          {
+            "id": "betriebsablauf",
+            "typ": "textarea",
+            "label": {
+              "de": "Beschreibung des Betriebsablaufs",
+              "en": "Description of operational workflow"
+            },
+            "platzhalter": {
+              "de": "Beschreiben Sie den kompletten Ablauf:\n1. Anlieferung von Rohmaterialien (wie oft, mit welchen Fahrzeugen?)\n2. Lagerung\n3. Produktionsschritte\n4. Lagerung der Fertigprodukte\n5. Auslieferung (wie oft, mit welchen Fahrzeugen?)\n6. Produktionskapazität pro Tag/Woche/Monat",
+              "en": "Describe the complete workflow:\n1. Delivery of raw materials (how often, with what vehicles?)\n2. Storage\n3. Production steps\n4. Storage of finished products\n5. Delivery (how often, with what vehicles?)\n6. Production capacity per day/week/month"
+            },
+            "hilfe": {
+              "de": "Geben Sie eine allgemein verständliche Beschreibung aller Arbeitsabläufe. Wichtig sind auch Angaben über:\n• Produktionskapazität\n• Anzahl und Art der Lieferfahrzeuge\n• Häufigkeit von An- und Auslieferungen\n• Arbeitsspitzen (gibt es Stoßzeiten?)",
+              "en": "Provide a generally understandable description of all work processes."
+            },
+            "pflicht": true,
+            "zeilen": 10
+          }
+        ]
+      },
+      {
+        "id": "betriebszeiten",
+        "nummer": 7,
+        "titel": {
+          "de": "Betriebszeiten",
+          "en": "Operating Hours"
+        },
+        "icon": "🕐",
+        "felder": [
+          {
+            "id": "betriebszeiten_werktags",
+            "typ": "text",
+            "label": {
+              "de": "Betriebszeiten Montag bis Freitag",
+              "en": "Operating hours Monday to Friday"
+            },
+            "platzhalter": {
+              "de": "z.B. 07:00 - 19:00 Uhr",
+              "en": "e.g. 07:00 - 19:00"
+            },
+            "hilfe": {
+              "de": "Geben Sie die Zeiten an, in denen tatsächlich gearbeitet wird. Berücksichtigen Sie auch Zeiten für An- und Ablieferungen!",
+              "en": "Specify the times when work is actually performed. Also consider times for deliveries!"
+            },
+            "pflicht": true
+          },
+          {
+            "id": "betriebszeiten_samstag",
+            "typ": "text",
+            "label": {
+              "de": "Betriebszeiten Samstag",
+              "en": "Operating hours Saturday"
+            },
+            "platzhalter": {
+              "de": "z.B. 08:00 - 13:00 Uhr oder 'kein Betrieb'",
+              "en": "e.g. 08:00 - 13:00 or 'no operation'"
+            },
+            "pflicht": false
+          },
+          {
+            "id": "betriebszeiten_sonntag",
+            "typ": "text",
+            "label": {
+              "de": "Betriebszeiten Sonntag und Feiertage",
+              "en": "Operating hours Sunday and holidays"
+            },
+            "platzhalter": {
+              "de": "z.B. 'kein Betrieb' oder Zeiten angeben",
+              "en": "e.g. 'no operation' or specify times"
+            },
+            "pflicht": false
+          }
+        ]
+      },
+      {
+        "id": "arbeitnehmerschutz",
+        "nummer": 8,
+        "titel": {
+          "de": "Arbeitnehmerschutz",
+          "en": "Employee Protection"
+        },
+        "icon": "👷",
+        "beschreibung": {
+          "de": "Angaben zum Schutz der Arbeitnehmer",
+          "en": "Information about employee protection"
+        },
+        "felder": [
+          {
+            "id": "anzahl_arbeitnehmer_m",
+            "typ": "number",
+            "label": {
+              "de": "Anzahl männlicher Arbeitnehmer",
+              "en": "Number of male employees"
+            },
+            "min": 0,
+            "standardWert": 0,
+            "pflicht": true
+          },
+          {
+            "id": "anzahl_arbeitnehmer_w",
+            "typ": "number",
+            "label": {
+              "de": "Anzahl weiblicher Arbeitnehmer",
+              "en": "Number of female employees"
+            },
+            "min": 0,
+            "standardWert": 0,
+            "pflicht": true
+          },
+          {
+            "id": "sanitaerraeume_info",
+            "typ": "info",
+            "inhalt": {
+              "de": "ℹ️ Hinweis: Getrennte Toiletten, Waschräume und Umkleideräume für Männer und Frauen sind erforderlich, wenn gleichzeitig mindestens 5 männliche UND 5 weibliche Arbeitnehmer beschäftigt sind.",
+              "en": "ℹ️ Note: Separate toilets, washrooms and changing rooms for men and women are required if at least 5 male AND 5 female employees are employed simultaneously."
+            }
+          },
+          {
+            "id": "toiletten_anzahl",
+            "typ": "text",
+            "label": {
+              "de": "Anzahl Toiletten (für Männer / für Frauen)",
+              "en": "Number of toilets (for men / for women)"
+            },
+            "platzhalter": {
+              "de": "z.B. 2 / 2 oder 3 (gemischt)",
+              "en": "e.g. 2 / 2 or 3 (mixed)"
+            },
+            "pflicht": true
+          }
+        ]
+      }
+    ]
+  }
+}
