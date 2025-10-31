@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import FormularWizard from '@/app/components/FormularAssistent/FormularWizard';
 

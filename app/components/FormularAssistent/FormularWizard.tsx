@@ -80,7 +80,7 @@ export default function FormularWizard() {
     }
   }, [t]);
 
-  const handleChange = (feld: keyof FormularDaten, wert: any) => {
+  const handleChange = (feld: keyof FormularDaten, wert: string | FormularDaten['addressCheckerData']) => {
     setFormularDaten(prev => ({
       ...prev,
       [feld]: wert
