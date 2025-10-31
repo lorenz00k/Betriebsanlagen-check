@@ -614,7 +614,9 @@
     "twitter": {
       "title": "Betriebsanlagen-Check: Genehmigungspflicht jetzt prüfen",
       "description": "Finden Sie in wenigen Minuten heraus, ob Ihre Betriebsanlage in Wien genehmigungspflichtig ist und welche Unterlagen Sie brauchen.",
-      "images": ["/og-image.png"]
+      "images": [
+        "/og-image.png"
+      ]
     },
     "faq": {
       "title": "FAQ zum Betriebsanlagen-Check – Häufig gestellte Fragen",
@@ -731,6 +733,133 @@
       "high": "Achtung",
       "medium": "Beachten",
       "low": "Info"
+    }
+  },
+  "formularAssistent": {
+    "meta": {
+      "title": "Formular-Assistent | Betriebsanlage-Check",
+      "description": "Interaktiver Assistent zum Ausfüllen des Betriebsanlagen-Antrags"
+    },
+    "titel": "Antrag auf Betriebsanlagengenehmigung",
+    "beschreibung": "Dieser Assistent hilft Ihnen Schritt für Schritt beim Ausfüllen des Antrags. Am Ende erhalten Sie ein ausgefülltes PDF zum Herunterladen.",
+    "disclaimer": "⚖️ Diese Ausfüllhilfe ist eine unabhängige Serviceleistung und ersetzt keine rechtliche Beratung. Für rechtsverbindliche Auskünfte wenden Sie sich bitte an das zuständige Magistratische Bezirksamt oder die Wirtschaftskammer Wien.",
+    "entwurfGefunden": "Es wurde ein gespeicherter Entwurf gefunden. Möchten Sie diesen wiederherstellen?",
+    "entwurfGespeichert": "Ihr Fortschritt wurde gespeichert.",
+    "entwurfSpeichern": "Entwurf speichern",
+    "zurueck": "Zurück",
+    "weiter": "Weiter",
+    "pdfErstellen": "PDF erstellen & herunterladen",
+    "pdfErfolgreich": "PDF wurde erfolgreich erstellt und heruntergeladen!",
+    "pdfFehler": "Fehler bei der PDF-Erstellung. Bitte versuchen Sie es erneut.",
+    "schritte": {
+      "antragsteller": {
+        "titel": "Antragsteller",
+        "beschreibung": "Bitte geben Sie Ihre persönlichen bzw. Unternehmensdaten an.",
+        "felder": {
+          "name": {
+            "label": "Name und Anschrift",
+            "platzhalter": "Max Mustermann GmbH, Musterstraße 123, 1010 Wien",
+            "hilfe": "Vollständiger Name der Person oder des Unternehmens. Bei Unternehmen: Firmenwortlaut laut Firmenbuch."
+          },
+          "kontaktperson": {
+            "label": "Kontaktdaten der Ansprechperson",
+            "platzhalter": "Name, Adresse und Telefonnummer",
+            "hilfe": "Person, die für Rückfragen zur Verfügung steht."
+          },
+          "telefon": {
+            "label": "Telefonnummer",
+            "platzhalter": "+43 1 234 5678"
+          },
+          "email": {
+            "label": "E-Mail-Adresse",
+            "platzhalter": "ihre.email@beispiel.at",
+            "hilfe": "Wichtig für die Kommunikation mit der Behörde."
+          }
+        }
+      },
+      "standort": {
+        "titel": "Standort",
+        "beschreibung": "Wo soll die Betriebsanlage errichtet oder betrieben werden?",
+        "felder": {
+          "bezirk": {
+            "label": "Bezirk"
+          },
+          "strasse": {
+            "label": "Straße, Hausnummer",
+            "platzhalter": "z.B. Rathausstraße 1"
+          },
+          "grundstueck": {
+            "label": "Grundstücksnummer/n und Katastralgemeinde",
+            "platzhalter": "1234/5 KG Innere Stadt",
+            "hilfe": "Diese Information finden Sie im Grundbuch oder auf www.bev.gv.at"
+          }
+        }
+      },
+      "antragstyp": {
+        "titel": "Antragstyp",
+        "beschreibung": "Welche Art von Antrag möchten Sie stellen?",
+        "felder": {
+          "typ": {
+            "label": "Was möchten Sie beantragen?",
+            "optionen": {
+              "neu": {
+                "label": "Neue Betriebsanlage",
+                "beschreibung": "Errichtung und Betrieb einer komplett neuen Anlage"
+              },
+              "aenderung": {
+                "label": "Änderung bestehender Anlage",
+                "beschreibung": "Änderung, Erweiterung oder Modernisierung einer genehmigten Anlage"
+              }
+            }
+          },
+          "art": {
+            "label": "Art der Anlage",
+            "platzhalter": "z.B. Tischlerei, KFZ-Werkstätte, Bäckerei, Restaurant",
+            "hilfe": "Beschreiben Sie in wenigen Worten, welche Art von Betrieb Sie führen möchten."
+          },
+          "anlagenteile": {
+            "label": "Wesentliche Anlagenteile und Tätigkeiten",
+            "platzhalter": "Anlagenteile: z.B. Produktionshalle 200m², Büro 30m², Lager 50m²\\n\\nTätigkeiten: z.B. Holzverarbeitung, Möbelherstellung, Verkauf",
+            "hilfe": "Listen Sie alle wichtigen Teile Ihrer Anlage und die geplanten Tätigkeiten auf."
+          }
+        }
+      },
+      "flaechen": {
+        "titel": "Betriebsflächen",
+        "beschreibung": "Angaben über die Größe und Art der gewerblich genutzten Flächen",
+        "felder": {
+          "beschreibung": {
+            "label": "Beschreibung aller gewerblich genutzten Flächen",
+            "platzhalter": "z.B.:\\n- Produktionsräume: 200m²\\n- Büro: 30m²\\n- Lager: 50m²\\n- Sanitärräume: 20m²\\n- Parkplatz: 100m²",
+            "hilfe": "Listen Sie ALLE Flächen auf, die betrieblich genutzt werden, inkl. Freiflächen und Parkplätze."
+          },
+          "gesamtflaeche": {
+            "label": "Gesamte betrieblich genutzte Fläche",
+            "hilfe": "Summe aller oben genannten Flächen in m²"
+          },
+          "anschlussleistung": {
+            "label": "Gesamte elektrische Anschlussleistung",
+            "optionen": {
+              "unter300": {
+                "label": "Unter 300 Kilowatt",
+                "info": "✓ Vereinfachtes Verfahren möglich"
+              },
+              "ueber300": {
+                "label": "Über 300 Kilowatt",
+                "info": "Normales Verfahren erforderlich"
+              },
+              "keine": {
+                "label": "Keine Maschinen oder Geräte vorhanden"
+              }
+            },
+            "hilfe": "Diese Angabe bestimmt, ob ein vereinfachtes Verfahren möglich ist."
+          }
+        }
+      },
+      "zusammenfassung": {
+        "titel": "Zusammenfassung",
+        "beschreibung": "Überprüfen Sie alle Ihre Angaben vor der PDF-Erstellung."
+      }
     }
   }
 }

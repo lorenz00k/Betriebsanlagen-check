@@ -36,175 +36,32 @@
     }
   },
   "documents": {
-    "title": "Your path to a business facility permit",
-    "subtitle": "Overview of all steps and documents",
-    "intro": "Here you can find out which documents you need to prepare and which steps to take.",
-    "steps": {
-      "step1": {
-        "title": "Preliminary review and consultation",
-        "description": "Contact MA 36 (Technical Commercial Affairs) for an initial consultation.",
-        "contactTitle": "Contact:",
-        "contact": {
-          "phone": {
-            "icon": "📞",
-            "label": "Phone",
-            "value": "+43 1 4000-25310"
-          },
-          "email": {
-            "icon": "📧",
-            "label": "Email",
-            "value": "post@ma36.wien.gv.at"
-          },
-          "website": {
-            "icon": "🌐",
-            "value": "www.wien.gv.at/ma36"
-          }
-        }
-      },
-      "step2": {
-        "title": "Prepare the required documents",
-        "description": "Typically required documents:",
-        "items": {
-          "applicationForm": {
-            "title": "Application form",
-            "description": "Completed in full and signed"
-          },
-          "businessLicense": {
-            "title": "Trade license",
-            "description": "Proof of your business authorization"
-          },
-          "plans": {
-            "title": "Plans and drawings",
-            "description": "Site plan, floor plans, sections (to scale)"
-          },
-          "technicalDescription": {
-            "title": "Technical description",
-            "description": "Detailed description of the facility and its installations"
-          },
-          "neighbors": {
-            "title": "Neighbour notification",
-            "description": "Proof of informing or obtaining consent from neighbours"
-          },
-          "tenancy": {
-            "title": "Proof of tenancy/ownership",
-            "description": "Document showing your right to use the premises"
-          }
-        }
-      },
-      "step3": {
-        "title": "Submit the application",
-        "description": "Submit the complete documents to MA 36. Submission is possible:",
-        "options": {
-          "inPerson": {
-            "title": "📮 In person",
-            "line1": "Dresdner Straße 73-75, 1200 Vienna",
-            "line2": "Mon–Fri: 8:00–15:30"
-          },
-          "mail": {
-            "title": "✉️ By mail",
-            "line1": "MA 36 – Technical Commercial Affairs",
-            "line2": "Dresdner Straße 73-75, 1200 Vienna"
-          }
-        }
-      },
-      "step4": {
-        "title": "After submission",
-        "description": "What happens after submission?",
-        "items": {
-          "confirmation": {
-            "icon": "✅",
-            "title": "Submission confirmation",
-            "description": "You receive confirmation that your documents were received."
-          },
-          "assessment": {
-            "icon": "📝",
-            "title": "Assessment",
-            "description": "The authority reviews the documents and obtains statements if needed."
-          },
-          "questions": {
-            "icon": "📞",
-            "title": "Clarifications",
-            "description": "You may be contacted for additional information."
-          },
-          "decision": {
-            "icon": "📄",
-            "title": "Decision",
-            "description": "You receive the permit decision and any conditions."
-          }
-        },
-        "processingTime": "Average processing time: 4–8 weeks"
-      }
+    "pageTitle": "Documents & Forms",
+    "pageDescription": "All required documents for your business facility permit application available for download",
+    "disclaimer": {
+      "title": "⚖️ Important Legal Notice",
+      "text": "This platform provides information and technical assistance with form completion only. We do not provide legal advice. You are responsible for verifying completeness and accuracy. For legal questions, please consult a specialized lawyer or MA 36."
     },
-    "expertReports": {
-      "title": "Frequently required expert reports",
-      "items": {
-        "noise": {
-          "icon": "🔊",
-          "title": "Noise protection",
-          "description": "Especially for machinery, ventilation systems, or music."
-        },
-        "ventilation": {
-          "icon": "🌬️",
-          "title": "Ventilation / climate",
-          "description": "Proof of sufficient air supply and extraction."
-        },
-        "fireProtection": {
-          "icon": "🔥",
-          "title": "Fire safety",
-          "description": "Fire alarm, escape routes, extinguishers, and possible sprinklers."
-        }
-      }
+    "filter": {
+      "all": "All Documents",
+      "required": "Required Documents",
+      "guides": "Guides"
     },
-    "fees": {
-      "title": "Costs & fees",
-      "items": {
-        "federalFees": {
-          "icon": "💶",
-          "title": "Federal fees",
-          "description": "Depending on business type and scope (approx. €70–300)."
-        },
-        "expertFees": {
-          "icon": "📄",
-          "title": "Official experts",
-          "description": "Fees for authority-appointed experts, varying by effort."
-        },
-        "ownExperts": {
-          "icon": "🛠️",
-          "title": "Own specialists",
-          "description": "e.g. engineering firms, planners, fire safety experts."
-        },
-        "time": {
-          "icon": "⏱️",
-          "title": "Time",
-          "description": "Plan enough time for preparation and possible revisions."
-        }
-      }
+    "category": {
+      "required": "Required",
+      "optional": "Optional",
+      "guide": "Guide"
     },
-    "tips": {
-      "title": "Tips for a smooth process",
-      "items": {
-        "planEarly": {
-          "icon": "🗂️",
-          "title": "Plan early",
-          "description": "Start at least 2–3 months before opening."
-        },
-        "contactAuthority": {
-          "icon": "🤝",
-          "title": "Talk to MA 36",
-          "description": "Use the consultation—many questions can be clarified in advance."
-        },
-        "useChecklists": {
-          "icon": "📋",
-          "title": "Use checklists",
-          "description": "Ensure all plans, reports, and forms are complete."
-        },
-        "stayFlexible": {
-          "icon": "🔄",
-          "title": "Stay flexible",
-          "description": "Be prepared for adjustments or conditions."
-        }
-      }
-    }
+    "pages": "Pages",
+    "download": "Download",
+    "downloading": "Loading...",
+    "downloadFailed": "Download failed. Please try again.",
+    "needHelp": {
+      "title": "Need help filling out forms?",
+      "text": "These forms can be complex. Use our free checker to find out exactly which documents you need."
+    },
+    "startChecker": "Start Checker Now",
+    "officialSource": "Source: City of Vienna"
   },
   "faq": {
     "title": "Frequently Asked Questions",
@@ -281,7 +138,9 @@
     "twitter": {
       "title": "Business Facility Permit Check: Do you need approval?",
       "description": "Answer a few questions to see if your Vienna business facility needs a permit and get guidance on the next steps.",
-      "images": ["/og-image.png"]
+      "images": [
+        "/og-image.png"
+      ]
     },
     "faq": {
       "title": "Business facility permit FAQ – Answers for Vienna entrepreneurs",
@@ -621,32 +480,131 @@
       "legal": "The result is not a binding authority decision nor legal advice. MA 36 (Vienna business facility authority) issues binding rulings."
     }
   },
-  "documents": {
-    "pageTitle": "Documents & Forms",
-    "pageDescription": "All required documents for your business facility permit application available for download",
-    "disclaimer": {
-      "title": "⚖️ Important Legal Notice",
-      "text": "This platform provides information and technical assistance with form completion only. We do not provide legal advice. You are responsible for verifying completeness and accuracy. For legal questions, please consult a specialized lawyer or MA 36."
+  "formularAssistent": {
+    "meta": {
+      "title": "Form Assistant | Operating Facility Check",
+      "description": "Interactive assistant for completing the operating facility application"
     },
-    "filter": {
-      "all": "All Documents",
-      "required": "Required Documents",
-      "guides": "Guides"
-    },
-    "category": {
-      "required": "Required",
-      "optional": "Optional",
-      "guide": "Guide"
-    },
-    "pages": "Pages",
-    "download": "Download",
-    "downloading": "Loading...",
-    "downloadFailed": "Download failed. Please try again.",
-    "needHelp": {
-      "title": "Need help filling out forms?",
-      "text": "These forms can be complex. Use our free checker to find out exactly which documents you need."
-    },
-    "startChecker": "Start Checker Now",
-    "officialSource": "Source: City of Vienna"
+    "titel": "Application for Operating Facility Permit",
+    "beschreibung": "This assistant will guide you step by step through completing the application. At the end, you'll receive a filled PDF to download.",
+    "disclaimer": "⚖️ This filling aid is an independent service and does not replace legal advice. For legally binding information, please contact the responsible district office or the Vienna Chamber of Commerce.",
+    "entwurfGefunden": "A saved draft was found. Would you like to restore it?",
+    "entwurfGespeichert": "Your progress has been saved.",
+    "entwurfSpeichern": "Save Draft",
+    "zurueck": "Back",
+    "weiter": "Next",
+    "pdfErstellen": "Create & Download PDF",
+    "pdfErfolgreich": "PDF was successfully created and downloaded!",
+    "pdfFehler": "Error creating PDF. Please try again.",
+    "schritte": {
+      "antragsteller": {
+        "titel": "Applicant",
+        "beschreibung": "Please provide your personal or company information.",
+        "felder": {
+          "name": {
+            "label": "Name and Address",
+            "platzhalter": "John Doe Ltd, Sample Street 123, 1010 Vienna",
+            "hilfe": "Full name of the person or company. For companies: official company name according to commercial register."
+          },
+          "kontaktperson": {
+            "label": "Contact Person Details",
+            "platzhalter": "Name, address and phone number",
+            "hilfe": "Person available for inquiries."
+          },
+          "telefon": {
+            "label": "Phone Number",
+            "platzhalter": "+43 1 234 5678"
+          },
+          "email": {
+            "label": "Email Address",
+            "platzhalter": "your.email@example.com",
+            "hilfe": "Important for communication with the authority."
+          }
+        }
+      },
+      "standort": {
+        "titel": "Location",
+        "beschreibung": "Where will the operating facility be constructed or operated?",
+        "felder": {
+          "bezirk": {
+            "label": "District"
+          },
+          "strasse": {
+            "label": "Street, House Number",
+            "platzhalter": "e.g. City Hall Street 1"
+          },
+          "grundstueck": {
+            "label": "Plot Number(s) and Cadastral Municipality",
+            "platzhalter": "1234/5 KG Inner City",
+            "hilfe": "Find this information in the land register or on www.bev.gv.at"
+          }
+        }
+      },
+      "antragstyp": {
+        "titel": "Application Type",
+        "beschreibung": "What type of application would you like to submit?",
+        "felder": {
+          "typ": {
+            "label": "What would you like to apply for?",
+            "optionen": {
+              "neu": {
+                "label": "New Operating Facility",
+                "beschreibung": "Construction and operation of a completely new facility"
+              },
+              "aenderung": {
+                "label": "Modification of Existing Facility",
+                "beschreibung": "Modification, expansion or modernization of an approved facility"
+              }
+            }
+          },
+          "art": {
+            "label": "Type of Facility",
+            "platzhalter": "e.g. Carpentry, Car Workshop, Bakery, Restaurant",
+            "hilfe": "Briefly describe what type of business you want to operate."
+          },
+          "anlagenteile": {
+            "label": "Main Facility Components and Activities",
+            "platzhalter": "Components: e.g. Production hall 200m², office 30m², warehouse 50m²\\n\\nActivities: e.g. wood processing, furniture manufacturing, sales",
+            "hilfe": "List all important parts of your facility and the planned activities."
+          }
+        }
+      },
+      "flaechen": {
+        "titel": "Operating Areas",
+        "beschreibung": "Information about the size and type of commercially used areas",
+        "felder": {
+          "beschreibung": {
+            "label": "Description of all commercially used areas",
+            "platzhalter": "e.g.:\\n- Production rooms: 200m²\\n- Office: 30m²\\n- Warehouse: 50m²\\n- Sanitary rooms: 20m²\\n- Parking: 100m²",
+            "hilfe": "List ALL areas that are used commercially, including outdoor areas and parking."
+          },
+          "gesamtflaeche": {
+            "label": "Total commercially used area",
+            "hilfe": "Sum of all areas mentioned above in m²"
+          },
+          "anschlussleistung": {
+            "label": "Total electrical connection capacity",
+            "optionen": {
+              "unter300": {
+                "label": "Below 300 kilowatts",
+                "info": "✓ Simplified procedure possible"
+              },
+              "ueber300": {
+                "label": "Above 300 kilowatts",
+                "info": "Normal procedure required"
+              },
+              "keine": {
+                "label": "No machines or equipment present"
+              }
+            },
+            "hilfe": "This information determines if a simplified procedure is possible."
+          }
+        }
+      },
+      "zusammenfassung": {
+        "titel": "Summary",
+        "beschreibung": "Review all your information before creating the PDF."
+      }
+    }
   }
 }
