@@ -11,21 +11,6 @@ export async function generiereEinfachesPDF(daten: FormularDaten) {
   const pageWidth = doc.internal.pageSize.getWidth();
   const contentWidth = pageWidth - (margin * 2);
 
-  const addText = (text: string, size: number = 12, isBold: boolean = false) => {
-    if (y > 270) {
-      doc.addPage();
-      y = 20;
-    }
-    doc.setFontSize(size);
-    if (isBold) {
-      doc.setFont('helvetica', 'bold');
-    } else {
-      doc.setFont('helvetica', 'normal');
-    }
-    doc.text(text, margin, y);
-    y += lineHeight;
-  };
-
   const addWrappedText = (text: string, size: number = 10) => {
     doc.setFontSize(size);
     doc.setFont('helvetica', 'normal');

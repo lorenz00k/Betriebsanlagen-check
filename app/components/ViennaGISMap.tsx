@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import type { Map as LeafletMap } from 'leaflet';
 import type { Address, POI } from '@/app/lib/viennagis-api';
 import { ExternalLink } from 'lucide-react';
 import { getPOIIcon, getPOILabel, getPOIRiskLevel } from '@/app/utils/poi-checker';
@@ -12,7 +13,7 @@ interface ViennaGISMapProps {
 }
 
 export default function ViennaGISMap({ address, pois }: ViennaGISMapProps) {
-  const mapRef = useRef<unknown>(null);
+  const mapRef = useRef<LeafletMap | null>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
