@@ -69,6 +69,14 @@ export default function CookieConsentModal() {
         document.cookie = `${name}=;${opts('.' + domain)}`
       })
     }
+    if (granted) {
+      // sofortigen Pageview senden, weil der initiale blockiert war
+      window.gtag?.('event', 'page_view', {
+        page_title: document.title,
+        page_location: location.href,
+        page_path: location.pathname,
+      });
+    }
 
     const val: Consent = granted ? 'accepted' : 'rejected'
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ value: val, v: CONSENT_VERSION, t: Date.now() }))
