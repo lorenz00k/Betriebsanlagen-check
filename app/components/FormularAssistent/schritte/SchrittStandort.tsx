@@ -81,7 +81,7 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
       <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
         <h3 className="font-semibold text-blue-900 mb-3 flex items-center gap-2">
           <Search className="w-5 h-5" />
-          Adresse automatisch finden
+          {t('adresssuche.titel')}
         </h3>
         <div className="flex gap-2">
           <input
@@ -89,7 +89,7 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
             value={adresssuche}
             onChange={(e) => setAdresssuche(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleAdresssuche()}
-            placeholder="z.B. Rathausstraße 1, 1010 Wien"
+            placeholder={t('adresssuche.platzhalter')}
             className="flex-1 px-4 py-2 border-2 border-blue-300 rounded-lg focus:border-blue-500 outline-none"
           />
           <button
@@ -98,7 +98,7 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white rounded-lg font-medium transition-colors flex items-center gap-2"
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Search className="w-5 h-5" />}
-            Suchen
+            {t('adresssuche.button')}
           </button>
         </div>
 
@@ -195,11 +195,11 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
                 <CheckCircle className="w-6 h-6 text-green-600" />
               )}
               <div>
-                <h4 className="font-bold text-gray-900">Umgebungsanalyse für Ihren Standort</h4>
+                <h4 className="font-bold text-gray-900">{t('umgebungsanalyse.titel')}</h4>
                 <p className="text-sm text-gray-700">
-                  Risikobewertung: <span className="font-semibold">
-                    {daten.addressCheckerData.riskAssessment.overallRisk === 'high' ? 'Hoch' :
-                     daten.addressCheckerData.riskAssessment.overallRisk === 'medium' ? 'Mittel' : 'Gering'}
+                  {t('umgebungsanalyse.risikobewertung')}: <span className="font-semibold">
+                    {daten.addressCheckerData.riskAssessment.overallRisk === 'high' ? t('umgebungsanalyse.risiko.hoch') :
+                     daten.addressCheckerData.riskAssessment.overallRisk === 'medium' ? t('umgebungsanalyse.risiko.mittel') : t('umgebungsanalyse.risiko.gering')}
                   </span>
                 </p>
               </div>
@@ -208,7 +208,7 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
 
           {/* Karte */}
           <div>
-            <h4 className="font-bold text-gray-900 mb-3">Standortkarte</h4>
+            <h4 className="font-bold text-gray-900 mb-3">{t('umgebungsanalyse.kartenTitel')}</h4>
             <ViennaGISMap
               address={daten.addressCheckerData.address}
               pois={daten.addressCheckerData.pois}
@@ -219,7 +219,7 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
           {daten.addressCheckerData.pois.length > 0 && (
             <div>
               <h4 className="font-bold text-gray-900 mb-3">
-                Kritische Einrichtungen in der Nähe ({daten.addressCheckerData.pois.length})
+                {t('umgebungsanalyse.poisTitel')} ({daten.addressCheckerData.pois.length})
               </h4>
               <POIList pois={daten.addressCheckerData.pois} />
             </div>
@@ -228,7 +228,7 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
           {/* Warnungen */}
           {daten.addressCheckerData.riskAssessment.warnings.length > 0 && (
             <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
-              <h4 className="font-bold text-amber-900 mb-2">⚠️ Wichtige Hinweise:</h4>
+              <h4 className="font-bold text-amber-900 mb-2">{t('umgebungsanalyse.warnungenTitel')}</h4>
               <ul className="list-disc list-inside space-y-1 text-sm text-amber-900">
                 {daten.addressCheckerData.riskAssessment.warnings.map((warning, i) => (
                   <li key={i}>{warning}</li>
@@ -240,7 +240,7 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
           {/* Empfehlungen */}
           {daten.addressCheckerData.riskAssessment.recommendations.length > 0 && (
             <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-              <h4 className="font-bold text-blue-900 mb-2">💡 Empfehlungen:</h4>
+              <h4 className="font-bold text-blue-900 mb-2">{t('umgebungsanalyse.empfehlungenTitel')}</h4>
               <ul className="list-disc list-inside space-y-1 text-sm text-blue-900">
                 {daten.addressCheckerData.riskAssessment.recommendations.map((rec, i) => (
                   <li key={i}>{rec}</li>

@@ -525,6 +525,24 @@
       "standort": {
         "titel": "Location",
         "beschreibung": "Where will the operating facility be constructed or operated?",
+        "adresssuche": {
+          "titel": "Find address automatically",
+          "platzhalter": "e.g. Rathausstraße 1, 1010 Vienna",
+          "button": "Search"
+        },
+        "umgebungsanalyse": {
+          "titel": "Environmental Analysis for Your Location",
+          "risikobewertung": "Risk Assessment",
+          "risiko": {
+            "hoch": "High",
+            "mittel": "Medium",
+            "gering": "Low"
+          },
+          "kartenTitel": "Location Map",
+          "poisTitel": "Critical Facilities Nearby",
+          "warnungenTitel": "⚠️ Important Notes:",
+          "empfehlungenTitel": "💡 Recommendations:"
+        },
         "felder": {
           "bezirk": {
             "label": "District"

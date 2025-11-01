@@ -780,6 +780,24 @@
       "standort": {
         "titel": "Standort",
         "beschreibung": "Wo soll die Betriebsanlage errichtet oder betrieben werden?",
+        "adresssuche": {
+          "titel": "Adresse automatisch finden",
+          "platzhalter": "z.B. Rathausstraße 1, 1010 Wien",
+          "button": "Suchen"
+        },
+        "umgebungsanalyse": {
+          "titel": "Umgebungsanalyse für Ihren Standort",
+          "risikobewertung": "Risikobewertung",
+          "risiko": {
+            "hoch": "Hoch",
+            "mittel": "Mittel",
+            "gering": "Gering"
+          },
+          "kartenTitel": "Standortkarte",
+          "poisTitel": "Kritische Einrichtungen in der Nähe",
+          "warnungenTitel": "⚠️ Wichtige Hinweise:",
+          "empfehlungenTitel": "💡 Empfehlungen:"
+        },
         "felder": {
           "bezirk": {
             "label": "Bezirk"
