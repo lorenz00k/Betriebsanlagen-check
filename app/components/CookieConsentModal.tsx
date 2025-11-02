@@ -18,7 +18,7 @@ export default function CookieConsentModal() {
   const [decision, setDecision] = useState<Consent | null>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
 
-  /*useEffect(() => {
+  useEffect(() => {
     const saved = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null
     // Banner nur zeigen, wenn noch keine Entscheidung ODER Version geändert
     if (!saved) setOpen(true)
@@ -31,7 +31,9 @@ export default function CookieConsentModal() {
         setOpen(true)
       }
     }
-  }, [])*/
+  }, [])
+
+  //für GA-Status nach geload
   useEffect(() => {
     const saved = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null
     if (!saved) return
