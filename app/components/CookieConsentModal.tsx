@@ -18,7 +18,7 @@ export default function CookieConsentModal() {
   const [decision, setDecision] = useState<Consent | null>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  /*useEffect(() => {
     const saved = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null
     // Banner nur zeigen, wenn noch keine Entscheidung ODER Version geändert
     if (!saved) setOpen(true)
@@ -31,6 +31,23 @@ export default function CookieConsentModal() {
         setOpen(true)
       }
     }
+  }, [])*/
+  useEffect(() => {
+    const saved = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null
+    if (!saved) return
+    try {
+      const { value, v } = JSON.parse(saved)
+      if (v === CONSENT_VERSION) {
+        const granted = value === 'accepted'
+        window.gtag?.('consent', 'update', {
+          ad_storage: granted ? 'granted' : 'denied',
+          analytics_storage: granted ? 'granted' : 'denied',
+          ad_user_data: granted ? 'granted' : 'denied',
+          // Wenn ihr wirklich *keine* Personalisierung nutzt, bleibt 'denied' korrekt:
+          ad_personalization: granted ? 'granted' : 'denied'
+        })
+      }
+    } catch { }
   }, [])
 
   // Scroll lock solange offen
@@ -59,7 +76,7 @@ export default function CookieConsentModal() {
     if (!granted) {
       // versucht gängige GA4-Cookies zu löschen
       const domain = window.location.hostname
-      const opts = (d: string) => `; Path=/; Domain=${d}; Max-Age=0; SameSite=Lax`
+      const opts = (d: string) => `; Path=/; Domain=${d}; Max-Age=0; SameSite=Lax; ${location.protocol === 'https:' ? 'Secure' : ''}`
       document.cookie = `_ga=;${opts(domain)}`
       document.cookie = `_ga=;${opts('.' + domain)}`
       // Beispiel für property-spezifisches Cookie
