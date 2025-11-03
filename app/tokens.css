@@ -1,0 +1,56 @@
+:root {
+  color-scheme: light;
+  /* Core palette */
+  --color-bg: #f4f6fb;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f1f3f8;
+  --color-fg: #1f2430;
+  --color-fg-subtle: #4f5563;
+  --color-muted: #8a92a3;
+  --color-border: #d7dce6;
+  --color-accent: #365ddb;
+  --color-accent-strong: #2547b4;
+  --color-accent-soft: #dee5ff;
+  --color-success: #2f9a6b;
+  --color-warning: #d77d2f;
+
+  /* Layout */
+  --container-w: 1200px;
+  --container-padding: clamp(1.25rem, 3vw, 2.5rem);
+
+  /* Elevation & radius */
+  --radius-xs: 10px;
+  --radius-sm: 14px;
+  --radius: 18px;
+  --radius-lg: 28px;
+  --shadow-xs: 0 4px 12px -8px rgba(30, 40, 58, 0.22);
+  --shadow-sm: 0 10px 30px -18px rgba(30, 40, 58, 0.22);
+  --shadow: 0 28px 60px -32px rgba(30, 40, 58, 0.28);
+
+  /* Motion */
+  --transition-fade: 180ms ease;
+  --transition-move: 260ms ease;
+
+  /* Typography */
+  --font-sans: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+html.dark {
+  color-scheme: dark;
+  --color-bg: #11131b;
+  --color-surface: #161a25;
+  --color-surface-muted: #1e2330;
+  --color-fg: #f2f4ff;
+  --color-fg-subtle: #c4c9d8;
+  --color-muted: #7f879a;
+  --color-border: #2e3443;
+  --color-accent: #5c7bff;
+  --color-accent-strong: #4660d6;
+  --color-accent-soft: #1f2a4d;
+  --color-success: #44c08e;
+  --color-warning: #f0a960;
+  --shadow-xs: 0 4px 12px -8px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 12px 40px -24px rgba(0, 0, 0, 0.45);
+  --shadow: 0 30px 70px -36px rgba(0, 0, 0, 0.55);
+}
