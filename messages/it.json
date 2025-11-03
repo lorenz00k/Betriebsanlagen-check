@@ -268,11 +268,20 @@
     "openGraph": {
       "title": "Verifica dei permessi per fondatori a Vienna",
       "description": "Usa il nostro questionario multilingue gratuito per capire se il tuo impianto aziendale richiede un'autorizzazione e quali passaggi seguire.",
-      "siteName": "Betriebsanlagen Check"
+      "siteName": "Betriebsanlagen Check",
+      "images": [
+        {
+          "url": "/og-image.png",
+          "width": 1200,
+          "height": 630,
+          "alt": "Betriebsanlagen Check Wien - Business Permit Check"
+        }
+      ]
     },
     "twitter": {
       "title": "Verifica permessi: hai bisogno di un'autorizzazione?",
-      "description": "Rispondi a poche domande per scoprire se la tua attività a Vienna necessita di un permesso e ricevi indicazioni sui prossimi passi."
+      "description": "Rispondi a poche domande per scoprire se la tua attività a Vienna necessita di un permesso e ricevi indicazioni sui prossimi passi.",
+      "images": ["/og-image.png"]
     },
     "faq": {
       "title": "FAQ sull'autorizzazione degli impianti aziendali a Vienna",

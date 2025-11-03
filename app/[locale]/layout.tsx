@@ -72,7 +72,45 @@ export default async function LocaleLayout({
     url: SITE_URL,
     description: metadataMessages.description,
     logo: `${SITE_URL}/file.svg`,
-    areaServed: 'AT',
+    areaServed: {
+      '@type': 'City',
+      name: 'Vienna',
+      '@id': 'https://www.wikidata.org/wiki/Q1741'
+    },
+    availableLanguage: ['de', 'en', 'sr', 'hr', 'tr', 'it', 'es', 'uk'],
+  }
+
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'GovernmentService',
+    name: 'Betriebsanlagen Check Wien',
+    description: 'Kostenloser Online-Check für Betriebsanlagengenehmigung in Wien',
+    provider: {
+      '@type': 'GovernmentOrganization',
+      name: 'MA 36 - Technische Gewerbeangelegenheiten',
+      telephone: '+43 1 4000 86440',
+      email: 'post@ma36.wien.gv.at',
+      url: 'https://www.wien.gv.at/kontakte/ma36/',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Dresdner Straße 73-75',
+        addressLocality: 'Wien',
+        postalCode: '1200',
+        addressCountry: 'AT',
+        addressRegion: 'Wien'
+      }
+    },
+    areaServed: {
+      '@type': 'City',
+      name: 'Vienna',
+      '@id': 'https://www.wikidata.org/wiki/Q1741'
+    },
+    serviceType: 'Business Permit Check',
+    availableLanguage: ['de', 'en', 'sr', 'hr', 'tr', 'it', 'es', 'uk'],
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'Entrepreneurs, Business Owners, Startups'
+    }
   }
 
   return (
@@ -82,6 +120,11 @@ export default async function LocaleLayout({
           type="application/ld+json"
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <LanguageBanner />
@@ -108,6 +151,24 @@ export default async function LocaleLayout({
                 </h1>
               </Link>
               <div className="flex items-center gap-6">
+                <Link
+                  href={`/${locale}/adressen-check`}
+                  className="hidden md:block text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                >
+                  Adressen-Check
+                </Link>
+                <Link
+                  href={`/${locale}/formular-assistent`}
+                  className="hidden md:block text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                >
+                  Formular-Assistent
+                </Link>
+                <Link
+                  href={`/${locale}/dokumente`}
+                  className="hidden md:block text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                >
+                  Dokumente
+                </Link>
                 <Link
                   href={`/${locale}/faq`}
                   className="hidden md:block text-gray-700 hover:text-blue-600 transition-colors font-medium"

@@ -14,6 +14,7 @@ import { CheckCircle2, FileText, Zap, Languages, Shield, ArrowRight, Sparkles } 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
   const t = useTranslations("home");
+  const gruenderT = useTranslations("home.gruender");
   const params = useParams<{ locale: string }>();
   const paramLocale = params?.locale;
   const activeLocale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale;
@@ -21,6 +22,46 @@ export default function Home() {
     value === "de" || value === "en";
   const heroLocale = isSupportedLocale(activeLocale) ? activeLocale : "de";
   const [scrollY, setScrollY] = useState(0);
+
+  // QA Page schema for AI search and Google Featured Snippets
+  const qaSchema = {
+    "@context": "https://schema.org",
+    "@type": "QAPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": gruenderT("question1"),
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": gruenderT("answer1")
+        }
+      },
+      {
+        "@type": "Question",
+        "name": gruenderT("question2"),
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": gruenderT("answer2")
+        }
+      },
+      {
+        "@type": "Question",
+        "name": gruenderT("question3"),
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": gruenderT("answer3")
+        }
+      },
+      {
+        "@type": "Question",
+        "name": gruenderT("question4"),
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": gruenderT("answer4")
+        }
+      }
+    ]
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,9 +73,17 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 relative overflow-hidden">
-      {/* Animated background shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <>
+      {/* QA Schema for AI Search and Featured Snippets */}
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(qaSchema) }}
+      />
+
+      <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 relative overflow-hidden">
+        {/* Animated background shapes */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl animate-float"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s', animationDuration: '4s' }}></div>
         <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-green-200/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s', animationDuration: '5s' }}></div>
@@ -96,7 +145,7 @@ export default function Home() {
                 {t("card2Description")}
               </p>
               <Link
-                href={`/${activeLocale}/documents`}
+                href={`/${activeLocale}/dokumente`}
                 className="button-shine button-click inline-flex items-center gap-2 w-full justify-center bg-gradient-to-r from-[#FF6B35] to-[#e55a28] text-white py-4 px-6 rounded-xl font-semibold hover:from-[#e55a28] hover:to-[#cc4d1f] transition-all duration-200"
                 style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
               >
@@ -209,8 +258,75 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Founders / Gründer Section - AI Search Optimized Q&A */}
+          <div className="mt-12 animate-fadeIn">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                {t("gruender.heading")}
+              </h2>
+              <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-normal">
+                {t("gruender.intro")}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Question 1 */}
+              <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 transition-all duration-200 shadow-sm hover:shadow-md">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {t("gruender.question1")}
+                </h3>
+                <p className="text-gray-700 leading-relaxed font-normal">
+                  {t("gruender.answer1")}
+                </p>
+              </div>
+
+              {/* Question 2 */}
+              <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 transition-all duration-200 shadow-sm hover:shadow-md">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {t("gruender.question2")}
+                </h3>
+                <p className="text-gray-700 leading-relaxed font-normal">
+                  {t("gruender.answer2")}
+                </p>
+              </div>
+
+              {/* Question 3 */}
+              <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 transition-all duration-200 shadow-sm hover:shadow-md">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {t("gruender.question3")}
+                </h3>
+                <p className="text-gray-700 leading-relaxed font-normal">
+                  {t("gruender.answer3")}
+                </p>
+              </div>
+
+              {/* Question 4 */}
+              <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 transition-all duration-200 shadow-sm hover:shadow-md">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {t("gruender.question4")}
+                </h3>
+                <p className="text-gray-700 leading-relaxed font-normal">
+                  {t("gruender.answer4")}
+                </p>
+              </div>
+            </div>
+
+            {/* CTA for Founders */}
+            <div className="mt-8 bg-gradient-to-r from-green-600 to-green-700 rounded-2xl p-8 text-center text-white">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">{t("gruender.ctaTitle")}</h3>
+              <p className="text-lg mb-6 opacity-90">{t("gruender.ctaText")}</p>
+              <Link
+                href={`/${activeLocale}/check`}
+                className="inline-block bg-white text-green-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors shadow-lg"
+              >
+                {t("card1Button")}
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

@@ -28,6 +28,20 @@
       "whyTitle": "Wann brauchen Sie eine Betriebsanlagengenehmigung?",
       "whyText": "Eine Betriebsanlagengenehmigung ist in Österreich für viele gewerbliche Tätigkeiten erforderlich. Die Genehmigungsfreistellungsverordnung regelt, welche Betriebe von der Genehmigungspflicht ausgenommen sind. Faktoren wie Betriebsfläche, Lärm, Öffnungszeiten und Art der Tätigkeit spielen eine wichtige Rolle."
     },
+    "gruender": {
+      "heading": "Betriebsanlagengenehmigung bei Unternehmensgründung in Wien",
+      "intro": "Sie planen eine Unternehmensgründung in Wien? Beim Gründen eines Gewerbes ist die Frage nach der Betriebsanlagengenehmigung oft der erste wichtige Schritt. Hier erfahren Sie, was Sie als Gründer beachten müssen.",
+      "question1": "Brauche ich als Gründer in Wien eine Betriebsanlagengenehmigung?",
+      "answer1": "Nicht jedes Gewerbe benötigt eine Betriebsanlagengenehmigung. Bei der Unternehmensgründung in Wien hängt die Genehmigungspflicht von mehreren Faktoren ab: Betriebsart (z.B. Handel, Gastro, Werkstatt), Betriebsfläche, Lärmentwicklung und Öffnungszeiten. Die Gewerbliche Freistellungsverordnung (GFVO) befreit viele kleinere Betriebe von der Genehmigungspflicht.",
+      "question2": "Welche Betriebsanlagen sind beim Gründen in Wien genehmigungspflichtig?",
+      "answer2": "Genehmigungspflichtige Betriebsanlagen bei der Unternehmensgründung umfassen typischerweise: Gastronomiebetriebe mit Küche, Werkstätten mit Lärmentwicklung, Einzelhandel über 600 m², Betriebe mit geregelten Gefahrenstoffen, Beherbergungsbetriebe über 30 Betten. Die MA 36 (Magistratsabteilung 36) in Wien ist die zuständige Behörde für Betriebsanlagengenehmigungen.",
+      "question3": "Wie lange dauert eine Betriebsanlagengenehmigung in Wien?",
+      "answer3": "Die Bearbeitungsdauer für eine Betriebsanlagengenehmigung bei der MA 36 in Wien beträgt üblicherweise 2-6 Monate. Bei der Unternehmensgründung sollten Gründer diesen Zeitraum einplanen. Unvollständige Unterlagen können die Dauer verlängern. Für schnellere Genehmigungen empfiehlt sich eine Vorabklärung mit der Behörde.",
+      "question4": "Was kostet eine Betriebsanlagengenehmigung für Gründer?",
+      "answer4": "Die Kosten für eine Betriebsanlagengenehmigung in Wien setzen sich zusammen aus: Amtsgebühren (abhängig von Betriebsgröße), Sachverständigenkosten (z.B. für Lärmgutachten, Brandschutz), Planungskosten. Für kleine Gewerbebetriebe bei der Gründung können Gesamtkosten zwischen 500-3000 Euro anfallen. Gründer sollten diese Kosten in der Startfinanzierung berücksichtigen.",
+      "ctaTitle": "Jetzt kostenlos Genehmigungspflicht prüfen",
+      "ctaText": "Sparen Sie Zeit und Geld bei Ihrer Unternehmensgründung in Wien. Finden Sie in 2 Minuten heraus, ob Ihr Gewerbe eine Betriebsanlagengenehmigung benötigt."
+    },
     "footer": {
       "copyright": "Betriebsanlagen Check - Ihr Helfer für Wiener Bürokratie",
       "disclaimer": "Diese Website dient nur zu Informationszwecken. Für rechtlich verbindliche Auskünfte wenden Sie sich bitte an die zuständigen Behörden.",
@@ -303,12 +317,17 @@
       "existingPermits": "Bestehende Genehmigungen/Eignungsfeststellungen dokumentieren und dem Antrag beilegen."
     },
     "quickReferences": {
-      "definition": "Definition & Schritte: WKO Leitfaden „Weg zum genehmigten Betrieb“.",
+      "definition": "Definition & Schritte: WKO Leitfaden \"Weg zum genehmigten Betrieb\".",
       "gfvo": "2. Genehmigungsfreistellungsverordnung (konsolidierte Fassung).",
       "guideline": "Leitfaden Betriebsanlagengenehmigung (WKW 2022).",
       "gastro": "Gastronomie/Hotellerie Leitfaden (WKNÖ 06/2024).",
       "procedure": "Gewerberechtliches Genehmigungsverfahren (NÖ Leitfaden 06/2024).",
       "section82b": "Regelmäßige Prüfung § 82b GewO – Prüfer, Fristen, Bescheinigung."
+    },
+    "downloadDocuments": {
+      "title": "Benötigte Dokumente herunterladen",
+      "description": "Laden Sie alle erforderlichen Formulare für Ihren Antrag bei der MA 36 herunter. Alle Dokumente sind kostenlos verfügbar.",
+      "button": "Zu den Dokumenten"
     },
     "disclaimer": {
       "title": "Hinweis zur Verbindlichkeit",
@@ -485,7 +504,33 @@
           "description": "Seien Sie auf Nachbesserungen oder Auflagen vorbereitet."
         }
       }
-    }
+    },
+    "pageTitle": "Dokumente & Formulare",
+    "pageDescription": "Alle erforderlichen Dokumente für Ihre Betriebsanlagengenehmigung zum Download",
+    "disclaimer": {
+      "title": "⚖️ Wichtiger rechtlicher Hinweis",
+      "text": "Diese Plattform bietet ausschließlich Informationen und technische Unterstützung beim Ausfüllen von Formularen. Wir bieten keine Rechtsberatung an. Die Überprüfung auf Vollständigkeit und Richtigkeit liegt in Ihrer Verantwortung. Für rechtliche Fragen wenden Sie sich bitte an einen Fachanwalt oder die MA 36."
+    },
+    "filter": {
+      "all": "Alle Dokumente",
+      "required": "Pflichtdokumente",
+      "guides": "Anleitungen"
+    },
+    "category": {
+      "required": "Pflicht",
+      "optional": "Optional",
+      "guide": "Anleitung"
+    },
+    "pages": "Seiten",
+    "download": "Herunterladen",
+    "downloading": "Lädt...",
+    "downloadFailed": "Download fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "needHelp": {
+      "title": "Hilfe beim Ausfüllen?",
+      "text": "Diese Formulare können komplex sein. Nutzen Sie unseren kostenlosen Checker, um herauszufinden, welche Dokumente Sie genau benötigen."
+    },
+    "startChecker": "Jetzt Checker starten",
+    "officialSource": "Quelle: Stadt Wien"
   },
   "faq": {
     "title": "Häufig gestellte Fragen",
@@ -539,21 +584,39 @@
     }
   },
   "metadata": {
-    "title": "Betriebsanlagen-Check – In 2 Minuten zur Genehmigungseinschätzung",
-    "description": "Kostenloser Betriebsanlagen-Check für Wien: Erfahren Sie schnell, ob Ihre Unternehmensanlage eine Genehmigung braucht und welche Dokumente dafür nötig sind.",
+    "title": "Betriebsanlagengenehmigung Wien – Genehmigung prüfen für Gründer",
+    "description": "Kostenloser Betriebsanlagen-Check für Gründer in Wien: Erfahren Sie in 2 Minuten, ob Ihr Gewerbe bei der Unternehmensgründung eine Betriebsanlagengenehmigung braucht. MA 36 Wien, GFVO, alle Infos.",
     "keywords": [
-      "Betriebsanlagengenehmigung",
+      "Betriebsanlagengenehmigung Wien",
+      "Unternehmensgründung Wien",
+      "Gründen Gewerbe Wien",
+      "Betriebsanlage Gründer",
       "Gewerbeanmeldung Wien",
-      "Genehmigung Betriebsanlage"
+      "Genehmigung Betriebsanlage",
+      "MA 36 Wien",
+      "Betriebsanlage GFVO",
+      "Gewerbe gründen Wien",
+      "Startup Wien Genehmigung"
     ],
     "openGraph": {
       "title": "Betriebsanlagen-Check für Gründer in Wien",
       "description": "Prüfen Sie mit unserem kostenlosen Online-Check, ob Ihre Betriebsanlage eine Genehmigung benötigt – mehrsprachig, sicher und schnell.",
-      "siteName": "Betriebsanlagen Check"
+      "siteName": "Betriebsanlagen Check",
+      "images": [
+        {
+          "url": "/og-image.png",
+          "width": 1200,
+          "height": 630,
+          "alt": "Betriebsanlagen Check Wien - Genehmigung prüfen"
+        }
+      ]
     },
     "twitter": {
       "title": "Betriebsanlagen-Check: Genehmigungspflicht jetzt prüfen",
-      "description": "Finden Sie in wenigen Minuten heraus, ob Ihre Betriebsanlage in Wien genehmigungspflichtig ist und welche Unterlagen Sie brauchen."
+      "description": "Finden Sie in wenigen Minuten heraus, ob Ihre Betriebsanlage in Wien genehmigungspflichtig ist und welche Unterlagen Sie brauchen.",
+      "images": [
+        "/og-image.png"
+      ]
     },
     "faq": {
       "title": "FAQ zum Betriebsanlagen-Check – Häufig gestellte Fragen",
@@ -604,6 +667,216 @@
       "twitter": {
         "title": "Ihr Betriebsanlagen-Check Ergebnis",
         "description": "Empfehlungen zu Genehmigungspflicht, Dokumenten und nächsten Schritten auf einen Blick."
+      }
+    }
+  },
+  "addressChecker": {
+    "title": "Adressen-Check für Betriebsanlagen",
+    "subtitle": "Überprüfen Sie Ihre geplante Betriebsadresse auf potenzielle Probleme",
+    "description": "Wir zeigen Ihnen Kirchen, Krankenhäuser, Schulen und andere relevante Einrichtungen in der Nähe, die bei der Betriebsanlagengenehmigung eine Rolle spielen können.",
+    "search": {
+      "label": "Straßenname in Wien eingeben",
+      "placeholder": "z.B. Rathausstraße, Mariahilfer Straße",
+      "button": "Adresse prüfen",
+      "searching": "Suche läuft...",
+      "error": "Fehler bei der Adresssuche. Bitte versuchen Sie es erneut.",
+      "noResults": "Keine Adresse gefunden. Bitte überprüfen Sie Ihre Eingabe.",
+      "multipleResults": "Bitte wählen Sie die richtige Adresse:"
+    },
+    "map": {
+      "title": "Kartenansicht",
+      "attribution": "Datenquelle: Stadt Wien – data.wien.gv.at",
+      "loading": "Karte wird geladen..."
+    },
+    "pois": {
+      "title": "Umgebung",
+      "empty": "Keine problematischen Einrichtungen in unmittelbarer Nähe gefunden.",
+      "categories": {
+        "krankenhaus": "Krankenhäuser",
+        "religion": "Religiöse Einrichtungen",
+        "kath": "Katholische Kirchen",
+        "evangkirche": "Evangelische Kirchen",
+        "orthodox": "Orthodoxe Kirchen",
+        "islam": "Moscheen",
+        "israel": "Synagogen",
+        "buddh": "Buddhistische Tempel",
+        "kindergarten": "Kindergärten",
+        "schule": "Schulen",
+        "friedhof": "Friedhöfe",
+        "baustelle": "Baustellen",
+        "polizei": "Polizei"
+      },
+      "distance": "Entfernung",
+      "nearby": "Nähe"
+    },
+    "risk": {
+      "title": "Bewertung für Betriebsanlagengenehmigung",
+      "levels": {
+        "high": "Hohes Risiko",
+        "medium": "Mittleres Risiko",
+        "low": "Geringes Risiko"
+      },
+      "points": "Punkte",
+      "warnings": "Wichtige Hinweise:",
+      "recommendations": "Empfehlungen:",
+      "disclaimer": {
+        "title": "Hinweis",
+        "text": "Diese Bewertung ist eine erste Einschätzung. Für eine rechtsverbindliche Auskunft kontaktieren Sie bitte die MA 36 (Magistratische Bezirksamt)."
+      }
+    },
+    "actions": {
+      "download": "Bericht als PDF herunterladen",
+      "newCheck": "Neue Adresse prüfen",
+      "backToChecker": "Zurück zum Betriebsanlagen-Check"
+    },
+    "badges": {
+      "high": "Achtung",
+      "medium": "Beachten",
+      "low": "Info"
+    }
+  },
+  "formularAssistent": {
+    "meta": {
+      "title": "Formular-Assistent | Betriebsanlage-Check",
+      "description": "Interaktiver Assistent zum Ausfüllen des Betriebsanlagen-Antrags"
+    },
+    "titel": "Antrag auf Betriebsanlagengenehmigung",
+    "beschreibung": "Dieser Assistent hilft Ihnen Schritt für Schritt beim Ausfüllen des Antrags. Am Ende erhalten Sie ein ausgefülltes PDF zum Herunterladen.",
+    "disclaimer": "⚖️ Diese Ausfüllhilfe ist eine unabhängige Serviceleistung und ersetzt keine rechtliche Beratung. Für rechtsverbindliche Auskünfte wenden Sie sich bitte an das zuständige Magistratische Bezirksamt oder die Wirtschaftskammer Wien.",
+    "entwurfGefunden": "Es wurde ein gespeicherter Entwurf gefunden. Möchten Sie diesen wiederherstellen?",
+    "entwurfGespeichert": "Ihr Fortschritt wurde gespeichert.",
+    "entwurfSpeichern": "Entwurf speichern",
+    "zurueck": "Zurück",
+    "weiter": "Weiter",
+    "pdfErstellen": "PDF erstellen & herunterladen",
+    "pdfErfolgreich": "PDF wurde erfolgreich erstellt und heruntergeladen!",
+    "pdfFehler": "Fehler bei der PDF-Erstellung. Bitte versuchen Sie es erneut.",
+    "schritte": {
+      "antragsteller": {
+        "titel": "Antragsteller",
+        "beschreibung": "Bitte geben Sie Ihre persönlichen bzw. Unternehmensdaten an.",
+        "felder": {
+          "name": {
+            "label": "Name und Anschrift",
+            "platzhalter": "Max Mustermann GmbH, Musterstraße 123, 1010 Wien",
+            "hilfe": "Vollständiger Name der Person oder des Unternehmens. Bei Unternehmen: Firmenwortlaut laut Firmenbuch."
+          },
+          "kontaktperson": {
+            "label": "Kontaktdaten der Ansprechperson",
+            "platzhalter": "Name, Adresse und Telefonnummer",
+            "hilfe": "Person, die für Rückfragen zur Verfügung steht."
+          },
+          "telefon": {
+            "label": "Telefonnummer",
+            "platzhalter": "+43 1 234 5678"
+          },
+          "email": {
+            "label": "E-Mail-Adresse",
+            "platzhalter": "ihre.email@beispiel.at",
+            "hilfe": "Wichtig für die Kommunikation mit der Behörde."
+          }
+        }
+      },
+      "standort": {
+        "titel": "Standort",
+        "beschreibung": "Wo soll die Betriebsanlage errichtet oder betrieben werden?",
+        "adresssuche": {
+          "titel": "Adresse automatisch finden",
+          "platzhalter": "z.B. Rathausstraße 1, 1010 Wien",
+          "button": "Suchen"
+        },
+        "umgebungsanalyse": {
+          "titel": "Umgebungsanalyse für Ihren Standort",
+          "risikobewertung": "Risikobewertung",
+          "risiko": {
+            "hoch": "Hoch",
+            "mittel": "Mittel",
+            "gering": "Gering"
+          },
+          "kartenTitel": "Standortkarte",
+          "poisTitel": "Kritische Einrichtungen in der Nähe",
+          "warnungenTitel": "⚠️ Wichtige Hinweise:",
+          "empfehlungenTitel": "💡 Empfehlungen:"
+        },
+        "felder": {
+          "bezirk": {
+            "label": "Bezirk"
+          },
+          "strasse": {
+            "label": "Straße, Hausnummer",
+            "platzhalter": "z.B. Rathausstraße 1"
+          },
+          "grundstueck": {
+            "label": "Grundstücksnummer/n und Katastralgemeinde",
+            "platzhalter": "1234/5 KG Innere Stadt",
+            "hilfe": "Diese Information finden Sie im Grundbuch oder auf www.bev.gv.at"
+          }
+        }
+      },
+      "antragstyp": {
+        "titel": "Antragstyp",
+        "beschreibung": "Welche Art von Antrag möchten Sie stellen?",
+        "felder": {
+          "typ": {
+            "label": "Was möchten Sie beantragen?",
+            "optionen": {
+              "neu": {
+                "label": "Neue Betriebsanlage",
+                "beschreibung": "Errichtung und Betrieb einer komplett neuen Anlage"
+              },
+              "aenderung": {
+                "label": "Änderung bestehender Anlage",
+                "beschreibung": "Änderung, Erweiterung oder Modernisierung einer genehmigten Anlage"
+              }
+            }
+          },
+          "art": {
+            "label": "Art der Anlage",
+            "platzhalter": "z.B. Tischlerei, KFZ-Werkstätte, Bäckerei, Restaurant",
+            "hilfe": "Beschreiben Sie in wenigen Worten, welche Art von Betrieb Sie führen möchten."
+          },
+          "anlagenteile": {
+            "label": "Wesentliche Anlagenteile und Tätigkeiten",
+            "platzhalter": "Anlagenteile: z.B. Produktionshalle 200m², Büro 30m², Lager 50m²\\n\\nTätigkeiten: z.B. Holzverarbeitung, Möbelherstellung, Verkauf",
+            "hilfe": "Listen Sie alle wichtigen Teile Ihrer Anlage und die geplanten Tätigkeiten auf."
+          }
+        }
+      },
+      "flaechen": {
+        "titel": "Betriebsflächen",
+        "beschreibung": "Angaben über die Größe und Art der gewerblich genutzten Flächen",
+        "felder": {
+          "beschreibung": {
+            "label": "Beschreibung aller gewerblich genutzten Flächen",
+            "platzhalter": "z.B.:\\n- Produktionsräume: 200m²\\n- Büro: 30m²\\n- Lager: 50m²\\n- Sanitärräume: 20m²\\n- Parkplatz: 100m²",
+            "hilfe": "Listen Sie ALLE Flächen auf, die betrieblich genutzt werden, inkl. Freiflächen und Parkplätze."
+          },
+          "gesamtflaeche": {
+            "label": "Gesamte betrieblich genutzte Fläche",
+            "hilfe": "Summe aller oben genannten Flächen in m²"
+          },
+          "anschlussleistung": {
+            "label": "Gesamte elektrische Anschlussleistung",
+            "optionen": {
+              "unter300": {
+                "label": "Unter 300 Kilowatt",
+                "info": "✓ Vereinfachtes Verfahren möglich"
+              },
+              "ueber300": {
+                "label": "Über 300 Kilowatt",
+                "info": "Normales Verfahren erforderlich"
+              },
+              "keine": {
+                "label": "Keine Maschinen oder Geräte vorhanden"
+              }
+            },
+            "hilfe": "Diese Angabe bestimmt, ob ein vereinfachtes Verfahren möglich ist."
+          }
+        }
+      },
+      "zusammenfassung": {
+        "titel": "Zusammenfassung",
+        "beschreibung": "Überprüfen Sie alle Ihre Angaben vor der PDF-Erstellung."
       }
     }
   }

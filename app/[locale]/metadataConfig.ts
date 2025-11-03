@@ -45,7 +45,7 @@ export const resolveLocaleParam = async (
 ): Promise<{ locale: string }> => await params
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://betriebsanlagen-check.vercel.app'
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://betriebsanlage-check.at'
 
 export const FALLBACK_METADATA: MetadataCollection = {
   title: 'Betriebsanlagen Check',
@@ -53,11 +53,20 @@ export const FALLBACK_METADATA: MetadataCollection = {
     'Prüfen Sie online, ob Sie für Ihre Betriebsanlage eine Genehmigung benötigen, und erhalten Sie eine Schritt-für-Schritt-Anleitung.',
   openGraph: {
     siteName: 'Betriebsanlagen Check',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Betriebsanlagen Check Wien - Genehmigung prüfen'
+      }
+    ]
   },
   twitter: {
     title: 'Betriebsanlagen Check',
     description:
       'Finden Sie in wenigen Minuten heraus, ob Ihre Betriebsanlage genehmigungspflichtig ist.',
+    images: [`${SITE_URL}/og-image.png`]
   },
 }
 
