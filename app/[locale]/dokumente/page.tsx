@@ -372,31 +372,28 @@ export default function DocumentsPage() {
             <div className="flex flex-wrap gap-3 justify-center">
               <button
                 onClick={() => setFilter('all')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                  filter === 'all'
+                className={`px-6 py-3 rounded-lg font-medium transition-all ${filter === 'all'
                     ? 'bg-blue-600 text-white shadow-lg'
                     : 'bg-white text-gray-700 border-2 border-gray-300 hover:bg-gray-50'
-                }`}
+                  }`}
               >
                 {t('filter.all')} ({DOCUMENTS.length})
               </button>
               <button
                 onClick={() => setFilter('required')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                  filter === 'required'
+                className={`px-6 py-3 rounded-lg font-medium transition-all ${filter === 'required'
                     ? 'bg-blue-600 text-white shadow-lg'
                     : 'bg-white text-gray-700 border-2 border-gray-300 hover:bg-gray-50'
-                }`}
+                  }`}
               >
                 {t('filter.required')} ({DOCUMENTS.filter(d => d.category === 'required').length})
               </button>
               <button
                 onClick={() => setFilter('guide')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                  filter === 'guide'
+                className={`px-6 py-3 rounded-lg font-medium transition-all ${filter === 'guide'
                     ? 'bg-blue-600 text-white shadow-lg'
                     : 'bg-white text-gray-700 border-2 border-gray-300 hover:bg-gray-50'
-                }`}
+                  }`}
               >
                 {t('filter.guides')} ({DOCUMENTS.filter(d => d.category === 'guide').length})
               </button>
@@ -449,7 +446,7 @@ export default function DocumentsPage() {
             <BookOpen className="w-4 h-4" />
             <span>{t('officialSource')} | </span>
             <a
-              href="https://www.wien.gv.at/amtshelfer/wirtschaft/gewerbe/betriebsanlage/"
+              href="https://www.wien.gv.at/amtswege/genehmigung-betriebsanlage"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
