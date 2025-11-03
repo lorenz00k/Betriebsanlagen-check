@@ -525,12 +525,14 @@
     "download": "Herunterladen",
     "downloading": "Lädt...",
     "downloadFailed": "Download fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "openExternal": "Externen Link öffnen",
+    "noExternalLink": "Kein externer Link verfügbar.",
     "needHelp": {
       "title": "Hilfe beim Ausfüllen?",
       "text": "Diese Formulare können komplex sein. Nutzen Sie unseren kostenlosen Checker, um herauszufinden, welche Dokumente Sie genau benötigen."
     },
     "startChecker": "Jetzt Checker starten",
-    "officialSource": "Quelle: Stadt Wien"
+    "officialSource": "Quelle"
   },
   "faq": {
     "title": "Häufig gestellte Fragen",

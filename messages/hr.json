@@ -204,7 +204,19 @@
           "description": "Budite spremni na moguće prilagodbe ili uvjete."
         }
       }
-    }
+    },
+    "pages": "Stranice",
+    "download": "Preuzmi",
+    "downloading": "Preuzimanje...",
+    "downloadFailed": "Preuzimanje nije uspjelo. Pokušajte ponovno.",
+    "openExternal": "Otvori vanjsku poveznicu",
+    "noExternalLink": "Nema dostupne vanjske poveznice.",
+    "needHelp": {
+      "title": "Trebaš pomoć pri ispunjavanju obrazaca?",
+      "text": "Ovi obrasci mogu biti složeni. Iskoristi naš besplatni alat za provjeru kako bi saznao koje dokumente točno trebaš."
+    },
+    "startChecker": "Pokreni provjeru sada",
+    "officialSource": "Izvor"
   },
   "metadata": {
     "title": "Provjera poslovne instalacije – Brza procjena dozvole",

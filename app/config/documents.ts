@@ -14,6 +14,7 @@ export interface Document {
     pdf: number;  // in KB
   };
   officialSource?: string;
+  externalUrl?: string;
   lastUpdated: string;
 }
 
@@ -68,7 +69,8 @@ export const DOCUMENTS: Document[] = [
     fileSize: {
       pdf: 188
     },
-    officialSource: 'https://www.wien.gv.at/amtshelfer/wirtschaft/gewerbe/betriebsanlage/',
+    officialSource: 'https://www.wko.at/ooe/umwelt-energie/',
+    externalUrl: 'https://www.wko.at/ooe/umwelt-energie/einreichunterlagen-ansuchen-002-.pdf',
     lastUpdated: '2024-10-29'
   },
   {
@@ -121,7 +123,8 @@ export const DOCUMENTS: Document[] = [
     fileSize: {
       pdf: 581
     },
-    officialSource: 'https://www.wien.gv.at/amtshelfer/wirtschaft/gewerbe/betriebsanlage/',
+    officialSource: 'https://www.wko.at/ooe/umwelt-energie/',
+    externalUrl: 'https://www.wko.at/ooe/umwelt-energie/einreichunterlagen-komplett-betriebsbeschreibung-005-2.pdf',
     lastUpdated: '2024-10-29'
   },
   {
@@ -174,7 +177,8 @@ export const DOCUMENTS: Document[] = [
     fileSize: {
       pdf: 188
     },
-    officialSource: 'https://www.wien.gv.at/amtshelfer/wirtschaft/gewerbe/betriebsanlage/',
+    officialSource: 'https://www.wko.at/ooe/umwelt-energie/',
+    externalUrl: 'https://www.wko.at/ooe/umwelt-energie/hinweise-zu-den-formularen-und-ausfuellhilfen.pdf',
     lastUpdated: '2024-10-29'
   }
 ];

@@ -204,7 +204,19 @@
           "description": "Budite spremni na moguće korekcije ili uslove."
         }
       }
-    }
+    },
+    "pages": "Strane",
+    "download": "Preuzmi",
+    "downloading": "Preuzimanje...",
+    "downloadFailed": "Preuzimanje nije uspelo. Pokušajte ponovo.",
+    "openExternal": "Otvori spoljašnji link",
+    "noExternalLink": "Nema dostupnog spoljašnjeg linka.",
+    "needHelp": {
+      "title": "Treba vam pomoć pri popunjavanju obrazaca?",
+      "text": "Ovi obrasci mogu biti složeni. Iskoristite naš besplatni proverivač da saznate tačno koja dokumenta su vam potrebna."
+    },
+    "startChecker": "Pokreni proveru sada",
+    "officialSource": "Izvor"
   },
   "faq": {
     "title": "Često postavljana pitanja",
