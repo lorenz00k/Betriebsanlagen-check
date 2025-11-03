@@ -204,7 +204,19 @@
           "description": "Olası düzeltmelere veya şartlara hazırlıklı olun."
         }
       }
-    }
+    },
+    "pages": "Sayfalar",
+    "download": "İndir",
+    "downloading": "İndiriliyor...",
+    "downloadFailed": "İndirme başarısız oldu. Lütfen tekrar deneyin.",
+    "openExternal": "Harici bağlantıyı aç",
+    "noExternalLink": "Harici bağlantı mevcut değil.",
+    "needHelp": {
+      "title": "Formları doldururken yardıma mı ihtiyacınız var?",
+      "text": "Bu formlar karmaşık olabilir. Hangi belgelere ihtiyacınız olduğunu öğrenmek için ücretsiz kontrol aracımızı kullanın."
+    },
+    "startChecker": "Şimdi kontrolü başlat",
+    "officialSource": "Kaynak"
   },
   "metadata": {
     "title": "İşletme tesisi izni kontrolü – Hızlı değerlendirme",

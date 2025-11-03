@@ -204,7 +204,19 @@
           "description": "Prepárate para posibles modificaciones o condiciones."
         }
       }
-    }
+    },
+    "pages": "Páginas",
+    "download": "Descargar",
+    "downloading": "Descargando...",
+    "downloadFailed": "La descarga ha fallado. Inténtalo de nuevo.",
+    "openExternal": "Abrir enlace externo",
+    "noExternalLink": "No hay enlace externo disponible.",
+    "needHelp": {
+      "title": "¿Necesitas ayuda para rellenar los formularios?",
+      "text": "Estos formularios pueden ser complejos. Utiliza nuestro comprobador gratuito para saber exactamente qué documentos necesitas."
+    },
+    "startChecker": "Iniciar comprobación ahora",
+    "officialSource": "Fuente"
   },
   "metadata": {
     "title": "Verificador de permisos para instalaciones comerciales – Evaluación rápida",

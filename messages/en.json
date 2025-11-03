@@ -56,12 +56,14 @@
     "download": "Download",
     "downloading": "Loading...",
     "downloadFailed": "Download failed. Please try again.",
+    "openExternal": "Open external link",
+    "noExternalLink": "No external link available.",
     "needHelp": {
       "title": "Need help filling out forms?",
       "text": "These forms can be complex. Use our free checker to find out exactly which documents you need."
     },
     "startChecker": "Start Checker Now",
-    "officialSource": "Source: City of Vienna"
+    "officialSource": "Source"
   },
   "faq": {
     "title": "Frequently Asked Questions",

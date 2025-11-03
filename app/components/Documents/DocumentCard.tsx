@@ -1,9 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import type { Document } from '@/app/config/documents';
-import { Download, FileText, Loader2 } from 'lucide-react';
+import { Download, ExternalLink, FileText } from 'lucide-react';
 
 interface DocumentCardProps {
   document: Document;
@@ -12,56 +11,8 @@ interface DocumentCardProps {
 
 export default function DocumentCard({ document, language }: DocumentCardProps) {
   const t = useTranslations('documents');
-  const [isDownloading, setIsDownloading] = useState(false);
-
   const translation = document.translations[language] || document.translations.de;
-
-  const handleDownload = async (format: 'pdf') => {
-    setIsDownloading(true);
-
-    try {
-      const response = await fetch('/api/documents/download', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          documentId: document.id,
-          format,
-          language
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Download failed');
-      }
-
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = globalThis.document.createElement('a');
-      a.href = url;
-      a.download = `${document.id}.${format}`;
-      globalThis.document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      globalThis.document.body.removeChild(a);
-
-      // Analytics (Vercel)
-      if (typeof window !== 'undefined' && 'va' in window) {
-        const va = (window as Window & { va?: (event: string, properties?: Record<string, string>) => void }).va;
-        if (va) {
-          va('document_download', {
-            document_id: document.id,
-            format: format,
-            language: language
-          });
-        }
-      }
-    } catch (error) {
-      console.error('Download failed:', error);
-      alert(t('downloadFailed'));
-    } finally {
-      setIsDownloading(false);
-    }
-  };
+  const externalUrl = document.externalUrl || document.officialSource;
 
   // Badge-Farbe nach Kategorie
   const badgeStyles = {
@@ -105,24 +56,26 @@ export default function DocumentCard({ document, language }: DocumentCardProps) 
           </span>
         </div>
 
-        {/* Download Button */}
-        <button
-          onClick={() => handleDownload('pdf')}
-          disabled={isDownloading}
-          className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors shadow-sm"
-        >
-          {isDownloading ? (
-            <>
-              <Loader2 className="w-4 h-4 animate-spin" />
-              {t('downloading')}
-            </>
-          ) : (
-            <>
-              <Download className="w-4 h-4" />
-              {t('download')} PDF
-            </>
-          )}
-        </button>
+        {externalUrl ? (
+          <a
+            href={externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors shadow-sm"
+          >
+            <ExternalLink className="w-4 h-4" />
+            {t('openExternal')}
+          </a>
+        ) : (
+          <p className="text-sm text-gray-500 text-center">
+            {t('noExternalLink')}
+          </p>
+        )}
+
+        {/*
+          Alter Download-Button (deaktiviert):
+          <button>...</button>
+        */}
 
         {/* Help Text */}
         {translation.help && (
@@ -131,6 +84,20 @@ export default function DocumentCard({ document, language }: DocumentCardProps) 
               💡 {translation.help}
             </p>
           </div>
+        )}
+
+        {externalUrl && (
+          <p className="mt-4 text-xs text-gray-500 text-center">
+            {t('officialSource')}:{' '}
+            <a
+              href={externalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline hover:text-blue-700"
+            >
+              {new URL(externalUrl).hostname}
+            </a>
+          </p>
         )}
       </div>
     </div>

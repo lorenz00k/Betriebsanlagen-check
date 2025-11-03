@@ -204,7 +204,19 @@
           "description": "Preparati ad eventuali richieste di adeguamento."
         }
       }
-    }
+    },
+    "pages": "Pagine",
+    "download": "Scarica",
+    "downloading": "Download in corso...",
+    "downloadFailed": "Download non riuscito. Riprova.",
+    "openExternal": "Apri link esterno",
+    "noExternalLink": "Nessun link esterno disponibile.",
+    "needHelp": {
+      "title": "Hai bisogno di aiuto per compilare i moduli?",
+      "text": "Questi moduli possono essere complessi. Usa il nostro controllo gratuito per scoprire esattamente quali documenti ti servono."
+    },
+    "startChecker": "Avvia il check ora",
+    "officialSource": "Fonte"
   },
   "faq": {
     "title": "Domande Frequenti",
