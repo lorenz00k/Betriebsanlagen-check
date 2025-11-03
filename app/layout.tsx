@@ -40,13 +40,10 @@ export const metadata: Metadata = {
   manifest: '/manifest.json'
 }
 
-import type { Metadata } from 'next'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next' // keep if you want Vercel Analytics
 import CookieConsentModal from './components/CookieConsentModal'
-
-export const metadata: Metadata = { title: 'Betriebsanlagen Check' }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID
