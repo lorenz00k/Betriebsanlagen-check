@@ -40,7 +40,7 @@ export default function AnimatedStats({ stats }: AnimatedStatsProps) {
   }, [])
 
   return (
-    <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div ref={sectionRef} className="grid grid-cols-1 gap-6 md:grid-cols-3">
       {stats.map((stat, index) => (
         <AnimatedStatCard
           key={index}
@@ -91,19 +91,15 @@ function AnimatedStatCard({
 
   return (
     <div
-      className="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100"
-      style={{
-        animation: isVisible ? `countUp 0.8s ease-out ${delay}s both` : 'none',
-      }}
+      className="surface-card h-full flex flex-col items-center gap-4 text-center"
+      style={{ animation: isVisible ? `fade-up 0.6s ease ${delay}s both` : 'none' }}
     >
-      <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mb-4 shadow-md">
-        {stat.icon}
-      </div>
-      <div className="text-4xl font-bold text-gray-900 mb-2">
+      <span className="stat-icon !w-12 !h-12">{stat.icon}</span>
+      <div className="text-4xl font-semibold text-[color:var(--color-fg)]">
         {count}
-        <span className="text-blue-600">{stat.suffix}</span>
+        <span className="text-[color:var(--color-muted)] text-2xl align-super">{stat.suffix}</span>
       </div>
-      <p className="text-gray-600 text-center font-medium">{stat.label}</p>
+      <p className="text-sm font-medium text-[color:var(--color-muted)]">{stat.label}</p>
     </div>
   )
 }

@@ -139,29 +139,22 @@ export default function FormularWizard() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-5xl mx-auto space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-6">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-          {t('titel')}
-        </h1>
-        <p className="text-gray-600 mb-4">
-          {t('beschreibung')}
-        </p>
+      <div className="surface-card space-y-4">
+        <h1 className="text-3xl md:text-4xl font-semibold text-[color:var(--color-fg)]">{t('titel')}</h1>
+        <p className="text-[color:var(--color-muted)]">{t('beschreibung')}</p>
 
-        {/* Disclaimer */}
-        <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
+        <div className="rounded-[var(--radius-sm)] border border-[color-mix(in srgb, var(--color-warning) 35%, transparent)] bg-[color-mix(in srgb, var(--color-warning) 12%, white 88%)] p-4">
           <div className="flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-amber-900">
-              {t('disclaimer')}
-            </p>
+            <AlertCircle className="w-5 h-5 text-[color:var(--color-warning)] flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-[color:var(--color-warning)]">{t('disclaimer')}</p>
           </div>
         </div>
       </div>
 
       {/* Fortschrittsanzeige */}
-      <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-6">
+      <div className="surface-card">
         <FortschrittsAnzeige
           schritte={SCHRITTE}
           aktuellerSchritt={aktuellerSchritt}
@@ -175,7 +168,7 @@ export default function FormularWizard() {
       </div>
 
       {/* Haupt-Formular */}
-      <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-6">
+      <div className="surface-card">
         {aktuellerSchritt === 0 && (
           <SchrittAntragsteller
             daten={formularDaten}
@@ -209,23 +202,15 @@ export default function FormularWizard() {
       </div>
 
       {/* Navigation */}
-      <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col sm:flex-row gap-4 justify-between items-center">
-        <div className="flex gap-3">
-          <button
-            onClick={handleEntwurfSpeichern}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-medium transition-colors"
-          >
-            <Save className="w-4 h-4" />
-            {t('entwurfSpeichern')}
-          </button>
-        </div>
+      <div className="surface-card flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <button onClick={handleEntwurfSpeichern} className="btn btn-secondary">
+          <Save className="w-4 h-4" />
+          {t('entwurfSpeichern')}
+        </button>
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           {aktuellerSchritt > 0 && (
-            <button
-              onClick={vorherigerSchritt}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-semibold transition-colors"
-            >
+            <button onClick={vorherigerSchritt} className="btn btn-ghost">
               <ChevronLeft className="w-5 h-5" />
               {t('zurueck')}
             </button>
@@ -235,16 +220,14 @@ export default function FormularWizard() {
             <button
               onClick={naechsterSchritt}
               disabled={!istSchrittValid()}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg font-semibold transition-colors"
+              className="btn btn-primary"
+              style={{ justifyContent: 'center' }}
             >
               {t('weiter')}
               <ChevronRight className="w-5 h-5" />
             </button>
           ) : (
-            <button
-              onClick={handlePDFErstellen}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
-            >
+            <button onClick={handlePDFErstellen} className="btn btn-primary" style={{ justifyContent: 'center' }}>
               <FileDown className="w-5 h-5" />
               {t('pdfErstellen')}
             </button>

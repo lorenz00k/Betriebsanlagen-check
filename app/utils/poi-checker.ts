@@ -1,6 +1,6 @@
 // POI-Analyse und Risikobewertung für Betriebsanlagengenehmigung
 
-import type { POI, Address } from '@/app/lib/viennagis-api';
+import type { POI } from '@/app/lib/viennagis-api';
 
 export interface RiskAssessment {
   riskPoints: number; // 0-100
@@ -19,7 +19,7 @@ export interface RiskAssessment {
 /**
  * POIs analysieren und Risikobewertung erstellen
  */
-export function analyzePOIs(pois: POI[], address: Address): RiskAssessment {
+export function analyzePOIs(pois: POI[]): RiskAssessment {
   let riskPoints = 0;
   const warnings: string[] = [];
   const recommendations: string[] = [];

@@ -15,7 +15,6 @@ declare global {
 
 export default function CookieConsentModal() {
   const [open, setOpen] = useState(false)
-  const [decision, setDecision] = useState<Consent | null>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -24,9 +23,8 @@ export default function CookieConsentModal() {
     if (!saved) setOpen(true)
     else {
       try {
-        const { value, v } = JSON.parse(saved)
+        const { v } = JSON.parse(saved)
         if (v !== CONSENT_VERSION) setOpen(true)
-        else setDecision(value)
       } catch {
         setOpen(true)
       }

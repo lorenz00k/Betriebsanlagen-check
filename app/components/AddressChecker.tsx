@@ -72,7 +72,7 @@ export default function AddressChecker() {
       setNearbyPOIs(pois);
 
       // Risikobewertung durchführen
-      const assessment = analyzePOIs(pois, addressData);
+      const assessment = analyzePOIs(pois);
       setRiskAssessment(assessment);
     } catch (err) {
       console.error('POI loading error:', err);
@@ -108,31 +108,29 @@ export default function AddressChecker() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Suchformular */}
-      <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
+      <div className="surface-card space-y-4">
         <form onSubmit={handleSearch} className="space-y-4">
           <div>
-            <label htmlFor="address-input" className="block text-sm font-semibold text-gray-700 mb-2">
-              {t('search.label')}
-            </label>
-            <div className="flex gap-3">
-              <div className="flex-1 relative">
-                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <label htmlFor="address-input">{t('search.label')}</label>
+            <div className="flex flex-col gap-3 md:flex-row">
+              <div className="relative flex-1">
+                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[color:var(--color-muted)]" />
                 <input
                   id="address-input"
                   type="text"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   placeholder={t('search.placeholder')}
-                  className="w-full pl-11 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  className="w-full pl-12 pr-4"
                   disabled={loading}
                 />
               </div>
               <button
                 type="submit"
                 disabled={loading || !address.trim()}
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white rounded-lg font-semibold transition-colors flex items-center gap-2 disabled:cursor-not-allowed whitespace-nowrap"
+                className="btn btn-primary whitespace-nowrap"
               >
                 {loading ? (
                   <>
@@ -152,24 +150,31 @@ export default function AddressChecker() {
 
         {/* Fehleranzeige */}
         {error && (
-          <div className="mt-4 p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
-            <p className="text-red-800 font-medium">{error}</p>
+          <div
+            className="rounded-[var(--radius-sm)] border p-4"
+            style={{
+              borderColor: 'rgba(182, 61, 61, 0.45)',
+              background: 'color-mix(in srgb, var(--color-danger) 12%, white 88%)',
+            }}
+          >
+            <p style={{ color: 'var(--color-danger)', fontWeight: 600 }}>{error}</p>
           </div>
         )}
 
         {/* Mehrere Suchergebnisse */}
         {searchResults.length > 1 && (
-          <div className="mt-6">
-            <h3 className="font-bold text-gray-900 mb-3">{t('search.multipleResults')}</h3>
+          <div className="space-y-3">
+            <h3 className="text-lg font-semibold text-[color:var(--color-fg)]">{t('search.multipleResults')}</h3>
             <ul className="space-y-2">
               {searchResults.map((result, index) => (
                 <li key={index}>
                   <button
                     onClick={() => handleSelectAddress(result)}
-                    className="w-full text-left p-4 border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 rounded-lg transition-all"
+                    className="w-full text-left rounded-[var(--radius-sm)] border border-[color:var(--color-border)] px-4 py-3 transition hover:border-[color:var(--color-accent)] hover:bg-[color:var(--color-accent-soft)] focus:outline-none"
+                    style={{ background: 'var(--color-surface)' }}
                   >
-                    <div className="font-medium text-gray-900">{result.fullAddress}</div>
-                    <div className="text-sm text-gray-600">
+                    <div className="font-medium text-[color:var(--color-fg)]">{result.fullAddress}</div>
+                    <div className="text-sm text-[color:var(--color-muted)]">
                       {result.postalCode} {result.district}
                     </div>
                   </button>
@@ -184,34 +189,27 @@ export default function AddressChecker() {
       {selectedAddress && !loading && (
         <>
           {/* Ausgewählte Adresse */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <div className="flex items-start justify-between">
-              <div>
-                <h2 className="text-xl font-bold text-gray-900 mb-1">
+          <div className="surface-card space-y-4">
+            <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+              <div className="space-y-1">
+                <h2 className="text-xl font-semibold text-[color:var(--color-fg)]">
                   {selectedAddress.fullAddress}
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-[color:var(--color-muted)]">
                   {selectedAddress.postalCode} Wien, {selectedAddress.district}. Bezirk
                 </p>
               </div>
-              <button
-                onClick={handleReset}
-                className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-medium transition-colors"
-              >
+              <button onClick={handleReset} className="btn btn-ghost whitespace-nowrap">
                 {t('actions.newCheck')}
               </button>
             </div>
           </div>
 
           {/* Radius-Einstellung */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-bold text-gray-900">
-                Suchradius anpassen
-              </h3>
-              <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full font-semibold text-sm">
-                {searchRadius}m
-              </span>
+          <div className="surface-card space-y-5">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-semibold text-[color:var(--color-fg)]">Suchradius anpassen</h3>
+              <span className="badge badge-accent text-sm font-semibold">{searchRadius}m</span>
             </div>
 
             <div className="space-y-4">
@@ -222,10 +220,11 @@ export default function AddressChecker() {
                 step="50"
                 value={searchRadius}
                 onChange={(e) => handleRadiusChange(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                className="w-full"
+                style={{ accentColor: 'var(--color-accent)' }}
               />
 
-              <div className="flex justify-between text-xs text-gray-600">
+              <div className="flex justify-between text-xs text-[color:var(--color-muted)]">
                 <span>100m</span>
                 <span>200m</span>
                 <span>300m</span>
@@ -233,47 +232,40 @@ export default function AddressChecker() {
                 <span>500m</span>
               </div>
 
-              <p className="text-sm text-gray-600">
-                Zeigt kritische Einrichtungen im Umkreis von {searchRadius} Metern an.
-                Größerer Radius = mehr POIs, umfassendere Analyse.
+              <p className="text-sm text-[color:var(--color-muted)]">
+                Zeigt kritische Einrichtungen im Umkreis von {searchRadius} Metern an. Größerer Radius = mehr POIs, umfassendere Analyse.
               </p>
             </div>
           </div>
 
           {/* POI-Liste und Karte Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {/* POI-Liste */}
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('pois.title')}
-              </h2>
+            <div className="surface-card space-y-4">
+              <h2 className="text-2xl font-semibold text-[color:var(--color-fg)]">{t('pois.title')}</h2>
               <POIList pois={nearbyPOIs} />
             </div>
 
             {/* Karte */}
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('map.title')}
-              </h2>
+            <div className="surface-card space-y-4">
+              <h2 className="text-2xl font-semibold text-[color:var(--color-fg)]">{t('map.title')}</h2>
               <ViennaGISMap address={selectedAddress} pois={nearbyPOIs} />
-              <p className="text-xs text-gray-500 mt-2">
+              <p className="text-xs" style={{ color: 'color-mix(in srgb, var(--color-muted) 70%, white 30%)' }}>
                 {t('map.attribution')}
               </p>
             </div>
           </div>
 
           {/* Risikobewertung */}
-          {riskAssessment && (
-            <RiskAssessment assessment={riskAssessment} address={selectedAddress} />
-          )}
+          {riskAssessment && <RiskAssessment assessment={riskAssessment} />}
         </>
       )}
 
       {/* Loading State */}
       {selectedAddress && loading && (
-        <div className="bg-white rounded-xl shadow-md p-12 text-center">
-          <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-blue-600" />
-          <p className="text-gray-600">Analysiere Umgebung...</p>
+        <div className="surface-card p-12 text-center flex flex-col items-center gap-4">
+          <Loader2 className="w-12 h-12 animate-spin text-[color:var(--color-accent)]" />
+          <p className="text-[color:var(--color-muted)]">Analysiere Umgebung...</p>
         </div>
       )}
     </div>

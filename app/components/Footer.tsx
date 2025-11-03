@@ -14,35 +14,24 @@ export default function Footer() {
   const locale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale
 
   return (
-    <footer className="bg-white/50 backdrop-blur-sm border-t border-gray-200 mt-20">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="text-center text-gray-600 text-sm mb-4">
+    <footer className="footer mt-24">
+      <div className="layout-container section-tight text-center">
+        <div className="space-y-3 text-sm" style={{ color: 'var(--color-muted)' }}>
           <p>© 2025 {t('copyright')}</p>
-          <p className="mt-2 text-xs text-gray-500">
+          <p className="text-xs max-w-2xl mx-auto" style={{ color: 'color-mix(in srgb, var(--color-muted) 75%, white 25%)' }}>
             {t('disclaimer')}
           </p>
         </div>
-        <div className="flex justify-center gap-6 text-sm">
-          <Link
-            href={`/${locale}/impressum`}
-            className="text-gray-600 hover:text-blue-600 transition-colors underline"
-          >
-            {t('imprint')}
-          </Link>
-          <Link
-            href={`/${locale}/datenschutz`}
-            className="text-gray-600 hover:text-blue-600 transition-colors underline"
-          >
-            {t('privacy')}
-          </Link>
+        <div className="footer__links mt-6 flex flex-wrap justify-center gap-6 text-sm">
+          <Link href={`/${locale}/impressum`}>{t('imprint')}</Link>
+          <Link href={`/${locale}/datenschutz`}>{t('privacy')}</Link>
           <button
             type="button"
             onClick={() => window.showCookieSettings?.()}
-            className="text-gray-600 hover:text-blue-600 transition-colors underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-sm"
+            className="btn btn-ghost"
           >
             Cookie-Einstellungen
           </button>
-
         </div>
       </div>
     </footer>
