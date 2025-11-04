@@ -31,14 +31,14 @@ export default function SchrittAntragsteller({ daten, onChange }: SchrittAntrags
           {t('felder.name.label')} <span style={{ color: 'var(--color-danger)' }}>*</span>
         </label>
         <div className="relative">
-          <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[color:var(--color-muted)]" />
+          <User className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[color:var(--color-muted)]" />
           <input
             id="name"
             type="text"
             value={daten.name}
             onChange={(e) => onChange('name', e.target.value)}
             placeholder={t('felder.name.platzhalter')}
-            className="w-full pl-12 pr-4"
+            className="w-full input-with-icon"
             required
           />
         </div>
@@ -53,14 +53,14 @@ export default function SchrittAntragsteller({ daten, onChange }: SchrittAntrags
           {t('felder.kontaktperson.label')} <span style={{ color: 'var(--color-danger)' }}>*</span>
         </label>
         <div className="relative">
-          <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[color:var(--color-muted)]" />
+          <Users className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[color:var(--color-muted)]" />
           <input
             id="kontaktperson"
             type="text"
             value={daten.kontaktperson}
             onChange={(e) => onChange('kontaktperson', e.target.value)}
             placeholder={t('felder.kontaktperson.platzhalter')}
-            className="w-full pl-12 pr-4"
+            className="w-full input-with-icon"
             required
           />
         </div>
@@ -75,14 +75,14 @@ export default function SchrittAntragsteller({ daten, onChange }: SchrittAntrags
           {t('felder.telefon.label')} <span style={{ color: 'var(--color-danger)' }}>*</span>
         </label>
         <div className="relative">
-          <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[color:var(--color-muted)]" />
+          <Phone className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[color:var(--color-muted)]" />
           <input
             id="telefon"
             type="tel"
             value={daten.telefon}
             onChange={(e) => onChange('telefon', e.target.value)}
             placeholder={t('felder.telefon.platzhalter')}
-            className="w-full pl-12 pr-4"
+            className="w-full input-with-icon"
             required
           />
         </div>
@@ -94,14 +94,14 @@ export default function SchrittAntragsteller({ daten, onChange }: SchrittAntrags
           {t('felder.email.label')} <span style={{ color: 'var(--color-danger)' }}>*</span>
         </label>
         <div className="relative">
-          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[color:var(--color-muted)]" />
+          <Mail className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[color:var(--color-muted)]" />
           <input
             id="email"
             type="email"
             value={daten.email}
             onChange={(e) => onChange('email', e.target.value)}
             placeholder={t('felder.email.platzhalter')}
-            className="w-full pl-12 pr-4"
+            className="w-full input-with-icon"
             required
           />
         </div>

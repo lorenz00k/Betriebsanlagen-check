@@ -116,14 +116,14 @@ export default function AddressChecker() {
             <label htmlFor="address-input">{t('search.label')}</label>
             <div className="flex flex-col gap-3 md:flex-row">
               <div className="relative flex-1">
-                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[color:var(--color-muted)]" />
+                <MapPin className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[color:var(--color-muted)]" />
                 <input
                   id="address-input"
                   type="text"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   placeholder={t('search.placeholder')}
-                  className="w-full pl-12 pr-4"
+                  className="w-full input-with-icon"
                   disabled={loading}
                 />
               </div>
