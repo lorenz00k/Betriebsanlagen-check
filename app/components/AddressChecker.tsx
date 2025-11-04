@@ -125,7 +125,7 @@ export default function AddressChecker() {
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   placeholder={t('search.placeholder')}
-                  className="w-full pl-11 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  className="input-with-icon w-full border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
                   disabled={loading}
                 />
               </div>

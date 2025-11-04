@@ -438,14 +438,27 @@ h4 {
 input,
 select,
 textarea {
+  --form-padding-block: 0.75rem;
+  --form-padding-inline-start: 1rem;
+  --form-padding-inline-end: 1rem;
   width: 100%;
   background: var(--color-surface);
   border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
   border-radius: var(--radius-xs);
-  padding: 0.85rem 1rem;
+  padding-block: var(--form-padding-block);
+  padding-inline-start: var(--form-padding-inline-start);
+  padding-inline-end: var(--form-padding-inline-end);
   font-size: 1rem;
   color: var(--color-fg);
   transition: border-color var(--transition-fade), box-shadow var(--transition-fade), background var(--transition-fade);
+}
+
+.input-with-icon {
+  --form-padding-inline-start: 2.75rem;
+}
+
+.input-with-unit {
+  --form-padding-inline-end: 4rem;
 }
 
 input:focus-visible,
