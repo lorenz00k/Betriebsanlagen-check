@@ -5,26 +5,16 @@ export default async function AddressCheckPage() {
   const t = await getTranslations('addressChecker');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-12 max-w-6xl">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              {t('title')}
-            </h1>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-2">
-              {t('subtitle')}
-            </p>
-            <p className="text-base text-gray-500 max-w-3xl mx-auto">
-              {t('description')}
-            </p>
-          </div>
-        </div>
-      </div>
+    <div className="section">
+      <div className="layout-container space-y-12">
+        <header className="text-center space-y-4">
+          <h1 className="text-balance">{t('title')}</h1>
+          <p className="mx-auto text-lg md:text-xl text-[color:var(--color-muted)] max-w-3xl">{t('subtitle')}</p>
+          <p className="mx-auto text-sm md:text-base" style={{ color: 'color-mix(in srgb, var(--color-muted) 80%, white 20%)', maxWidth: '60ch' }}>
+            {t('description')}
+          </p>
+        </header>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
         <AddressChecker />
       </div>
     </div>

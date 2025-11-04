@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default function FormularAssistentPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 py-12">
-      <div className="container mx-auto px-4">
+    <div className="section">
+      <div className="layout-container">
         <FormularWizard />
       </div>
     </div>

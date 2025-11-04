@@ -46,31 +46,22 @@ export default function FAQPageClient({ locale }: FAQPageClientProps) {
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: faqSchemaJson }}
       />
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 py-12">
-        <div className="max-w-4xl mx-auto px-4">
+      <div className="section">
+        <div className="layout-container max-w-4xl mx-auto space-y-10">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              {t('title')}
-            </h1>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">{t('subtitle')}</p>
+          <div className="text-center space-y-4">
+            <h1 className="text-balance">{t('title')}</h1>
+            <p className="mx-auto text-lg md:text-xl text-[color:var(--color-muted)] max-w-3xl">{t('subtitle')}</p>
           </div>
 
           {/* FAQ Accordion */}
           <div className="space-y-4">
-            {questions.map((q, index) => (
-              <div
-                key={q}
-                className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <button
-                  onClick={() => toggleQuestion(q)}
-                  className="w-full text-left p-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
-                >
-                  <span className="text-lg font-semibold text-gray-900 pr-4">{t(`questions.${q}.question`)}</span>
+            {questions.map((q) => (
+              <div key={q} className="faq-item" style={{ animation: 'fade-up 0.4s ease forwards' }}>
+                <button onClick={() => toggleQuestion(q)} className="faq-trigger">
+                  <span className="flex-1 text-left text-balance">{t(`questions.${q}.question`)}</span>
                   <svg
-                    className={`w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300 ${openQuestion === q ? 'rotate-180' : ''}`}
+                    className={`w-5 h-5 text-[color:var(--color-accent)] transition-transform ${openQuestion === q ? 'rotate-180' : ''}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -79,25 +70,26 @@ export default function FAQPageClient({ locale }: FAQPageClientProps) {
                   </svg>
                 </button>
                 <div
-                  className={`transition-all duration-300 ease-in-out ${
-                    openQuestion === q ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}
+                  className="overflow-hidden transition-[max-height,opacity] duration-300 ease-out"
+                  style={{
+                    maxHeight: openQuestion === q ? '480px' : '0px',
+                    opacity: openQuestion === q ? 1 : 0,
+                  }}
                 >
-                  <div className="p-6 pt-0 text-gray-700 leading-relaxed border-t border-gray-100">
-                    {t(`questions.${q}.answer`)}
-                  </div>
+                  <div className="faq-content">{t(`questions.${q}.answer`)}</div>
                 </div>
               </div>
             ))}
           </div>
 
           {/* CTA Section */}
-          <div className="mt-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-center text-white">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">{t('cta.title')}</h2>
-            <p className="text-lg mb-6 opacity-90">{t('cta.description')}</p>
+          <div className="surface-card text-center space-y-4" style={{ background: 'var(--color-surface-muted)' }}>
+            <h2 className="text-2xl md:text-3xl font-semibold text-[color:var(--color-fg)]">{t('cta.title')}</h2>
+            <p className="text-lg text-[color:var(--color-muted)]">{t('cta.description')}</p>
             <Link
               href={`/${locale}/check`}
-              className="inline-block bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors shadow-lg"
+              className="btn btn-primary inline-flex"
+              style={{ justifyContent: 'center' }}
             >
               {t('cta.button')}
             </Link>

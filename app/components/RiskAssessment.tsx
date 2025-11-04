@@ -2,15 +2,13 @@
 
 import { useTranslations } from 'next-intl';
 import type { RiskAssessment as RiskAssessmentType } from '@/app/utils/poi-checker';
-import type { Address } from '@/app/lib/viennagis-api';
 import { AlertTriangle, Lightbulb, Info } from 'lucide-react';
 
 interface RiskAssessmentProps {
   assessment: RiskAssessmentType;
-  address: Address;
 }
 
-export default function RiskAssessment({ assessment, address }: RiskAssessmentProps) {
+export default function RiskAssessment({ assessment }: RiskAssessmentProps) {
   const t = useTranslations('addressChecker.risk');
 
   // Risk level styling
@@ -38,32 +36,30 @@ export default function RiskAssessment({ assessment, address }: RiskAssessmentPr
   const colors = riskColors[assessment.overallRisk];
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-        {t('title')}
-      </h2>
+    <div className="surface-card space-y-6">
+      <h2 className="text-2xl md:text-3xl font-semibold text-[color:var(--color-fg)]">{t('title')}</h2>
 
       {/* Risk Score Card */}
       <div
-        className="rounded-xl p-6 mb-6 border-4"
+        className="rounded-[var(--radius)] p-6 border"
         style={{ borderColor: colors.border, backgroundColor: colors.bg }}
       >
-        <div className="flex items-center justify-between mb-4">
-          <span
-            className="text-2xl md:text-3xl font-bold"
-            style={{ color: colors.text }}
-          >
+        <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <span className="text-2xl md:text-3xl font-semibold" style={{ color: colors.text }}>
             {t(`levels.${assessment.overallRisk}`)}
           </span>
-          <span className="text-lg md:text-xl font-semibold text-gray-600">
+          <span className="text-lg md:text-xl font-medium text-[color:var(--color-muted)]">
             {assessment.riskPoints}/100 {t('points')}
           </span>
         </div>
 
         {/* Progress Bar */}
-        <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
+        <div
+          className="mt-4 h-3 rounded-full"
+          style={{ background: 'color-mix(in srgb, var(--color-muted) 18%, white 82%)' }}
+        >
           <div
-            className="h-full transition-all duration-500 ease-out rounded-full"
+            className="h-full rounded-full transition-all duration-500 ease-out"
             style={{
               width: `${assessment.riskPoints}%`,
               backgroundColor: colors.fill
@@ -74,19 +70,19 @@ export default function RiskAssessment({ assessment, address }: RiskAssessmentPr
 
       {/* Warnings */}
       {assessment.warnings.length > 0 && (
-        <div className="mb-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-            <AlertTriangle className="w-6 h-6 text-yellow-600" />
+        <div className="space-y-3">
+          <h3 className="text-xl font-semibold text-[color:var(--color-fg)] flex items-center gap-2">
+            <AlertTriangle className="w-6 h-6 text-[color:var(--color-warning)]" />
             {t('warnings')}
           </h3>
           <ul className="space-y-3">
             {assessment.warnings.map((warning, index) => (
               <li
                 key={index}
-                className="flex gap-3 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg"
+                className="flex gap-3 rounded-[var(--radius-sm)] border border-[color-mix(in srgb, var(--color-warning) 40%, transparent)] bg-[color-mix(in srgb, var(--color-warning) 12%, white 88%)] p-4"
               >
                 <span className="text-2xl flex-shrink-0">⚠️</span>
-                <p className="text-gray-800 leading-relaxed">{warning}</p>
+                <p className="text-[color:var(--color-fg)] leading-relaxed">{warning}</p>
               </li>
             ))}
           </ul>
@@ -95,19 +91,19 @@ export default function RiskAssessment({ assessment, address }: RiskAssessmentPr
 
       {/* Recommendations */}
       {assessment.recommendations.length > 0 && (
-        <div className="mb-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-            <Lightbulb className="w-6 h-6 text-blue-600" />
+        <div className="space-y-3">
+          <h3 className="text-xl font-semibold text-[color:var(--color-fg)] flex items-center gap-2">
+            <Lightbulb className="w-6 h-6 text-[color:var(--color-accent)]" />
             {t('recommendations')}
           </h3>
           <ul className="space-y-3">
             {assessment.recommendations.map((rec, index) => (
               <li
                 key={index}
-                className="flex gap-3 p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg"
+                className="flex gap-3 rounded-[var(--radius-sm)] border border-[color-mix(in srgb, var(--color-accent) 35%, transparent)] bg-[color-mix(in srgb, var(--color-accent) 12%, white 88%)] p-4"
               >
                 <span className="text-2xl flex-shrink-0">💡</span>
-                <p className="text-gray-800 leading-relaxed">{rec}</p>
+                <p className="text-[color:var(--color-fg)] leading-relaxed">{rec}</p>
               </li>
             ))}
           </ul>
@@ -115,14 +111,12 @@ export default function RiskAssessment({ assessment, address }: RiskAssessmentPr
       )}
 
       {/* Disclaimer */}
-      <div className="p-4 bg-green-50 border-l-4 border-green-500 rounded-r-lg">
+      <div className="rounded-[var(--radius-sm)] border border-[color-mix(in srgb, var(--color-success) 35%, transparent)] bg-[color-mix(in srgb, var(--color-success) 12%, white 88%)] p-4">
         <div className="flex gap-3">
-          <Info className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+          <Info className="w-5 h-5 text-[color:var(--color-success)] flex-shrink-0 mt-0.5" />
           <div>
-            <h4 className="font-bold text-green-900 mb-1">{t('disclaimer.title')}</h4>
-            <p className="text-sm text-green-800 leading-relaxed">
-              {t('disclaimer.text')}
-            </p>
+            <h4 className="font-semibold text-[color:var(--color-success)] mb-1">{t('disclaimer.title')}</h4>
+            <p className="text-sm text-[color:var(--color-success)] leading-relaxed">{t('disclaimer.text')}</p>
           </div>
         </div>
       </div>

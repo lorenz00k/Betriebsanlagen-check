@@ -22,8 +22,7 @@ import {
   Wrench,
   FolderOpen,
   Users,
-  CheckSquare,
-  RefreshCw
+  CheckSquare
 } from 'lucide-react';
 import { defaultLocale } from '@/i18n';
 

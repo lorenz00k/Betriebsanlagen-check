@@ -69,62 +69,37 @@ export default function LanguageBanner() {
   if (!show || !detectedLocale) return null
 
   return (
-    <div className="fixed top-16 left-0 right-0 z-50 animate-slideDown">
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="flex-shrink-0">
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-                  />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <p className="text-sm md:text-base font-medium">
-                  {suggestions[detectedLocale]}
-                </p>
-                <p className="text-xs md:text-sm opacity-90 mt-1">
-                  Browser language: {languageNames[detectedLocale].native}
-                </p>
-              </div>
+    <div className="fixed top-16 inset-x-0 z-50" role="status" style={{ animation: 'fade-up 320ms ease forwards' }}>
+      <div className="layout-container">
+        <div className="surface-card flex flex-col gap-4 md:flex-row md:items-center md:justify-between" style={{ boxShadow: '0 24px 60px -32px rgba(15, 23, 32, 0.35)' }}>
+          <div className="flex items-start gap-3 text-left">
+            <span className="stat-icon !w-9 !h-9 rounded-full">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+              </svg>
+            </span>
+            <div className="space-y-2">
+              <p className="text-sm md:text-base font-medium text-[color:var(--color-fg)] text-balance">
+                {suggestions[detectedLocale]}
+              </p>
+              <p className="text-xs md:text-sm" style={{ color: 'color-mix(in srgb, var(--color-muted) 80%, white 20%)' }}>
+                Browser language: {languageNames[detectedLocale].native}
+              </p>
             </div>
-            <div className="flex items-center gap-2 flex-shrink-0">
-              <button
-                onClick={handleChangeLanguage}
-                className="px-4 py-2 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors text-sm md:text-base whitespace-nowrap"
-              >
-                Change to {languageNames[detectedLocale].native}
-              </button>
-              <button
-                onClick={handleDismiss}
-                className="p-2 hover:bg-blue-800 rounded-lg transition-colors"
-                aria-label="Close"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
+          </div>
+          <div className="flex items-center gap-2 md:gap-3 self-end md:self-center">
+            <button onClick={handleChangeLanguage} className="btn btn-primary text-sm md:text-base whitespace-nowrap">
+              Change to {languageNames[detectedLocale].native}
+            </button>
+            <button
+              onClick={handleDismiss}
+              className="btn btn-ghost !p-2"
+              aria-label="Close"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

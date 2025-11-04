@@ -22,9 +22,9 @@ export default function POIList({ pois }: POIListProps) {
 
   if (pois.length === 0) {
     return (
-      <div className="p-8 text-center bg-green-50 border-2 border-green-200 rounded-xl">
-        <span className="text-4xl mb-3 block">✅</span>
-        <p className="text-green-800 font-medium">
+      <div className="surface-card text-center space-y-3">
+        <span className="text-4xl">✅</span>
+        <p className="font-medium" style={{ color: 'var(--color-success)' }}>
           {t('pois.empty')}
         </p>
       </div>
@@ -38,23 +38,38 @@ export default function POIList({ pois }: POIListProps) {
         const icon = getPOIIcon(type);
         const categoryName = t(`pois.categories.${type}`);
 
-        // Risk badge styling
-        const riskBadgeClasses = {
-          high: 'bg-red-100 text-red-800 border-red-200',
-          medium: 'bg-yellow-100 text-yellow-800 border-yellow-200',
-          low: 'bg-blue-100 text-blue-800 border-blue-200'
+        const riskStyles = {
+          high: {
+            background: 'color-mix(in srgb, var(--color-danger) 18%, white 82%)',
+            color: 'var(--color-danger)'
+          },
+          medium: {
+            background: 'color-mix(in srgb, var(--color-warning) 22%, white 78%)',
+            color: 'var(--color-warning)'
+          },
+          low: {
+            background: 'color-mix(in srgb, var(--color-accent) 16%, white 84%)',
+            color: 'var(--color-accent-strong)'
+          }
         }[riskLevel];
 
         return (
-          <div key={type} className="border-b border-gray-200 pb-6 last:border-b-0 last:pb-0">
+          <div key={type} className="border-b border-[color:var(--color-border)] pb-6 last:border-b-0 last:pb-0">
             {/* Category Header */}
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="flex items-center gap-2 text-lg font-bold text-gray-900">
+            <div className="flex items-center justify-between mb-3 gap-3">
+              <h3 className="flex items-center gap-2 text-lg font-semibold text-[color:var(--color-fg)]">
                 <span className="text-2xl">{icon}</span>
                 {categoryName}
-                <span className="text-sm font-normal text-gray-500">({items.length})</span>
+                <span className="text-sm font-normal text-[color:var(--color-muted)]">({items.length})</span>
               </h3>
-              <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${riskBadgeClasses}`}>
+              <span
+                className="badge text-xs"
+                style={{
+                  background: riskStyles.background,
+                  color: riskStyles.color,
+                  border: '1px solid color-mix(in srgb, currentColor 25%, transparent)',
+                }}
+              >
                 {t(`badges.${riskLevel}`)}
               </span>
             </div>
@@ -64,10 +79,10 @@ export default function POIList({ pois }: POIListProps) {
               {items.map((poi, index) => (
                 <li
                   key={index}
-                  className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                  className="flex items-center justify-between rounded-[var(--radius-sm)] border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-4 py-3 transition hover:border-[color:var(--color-accent)] hover:bg-[color:var(--color-accent-soft)]"
                 >
-                  <span className="text-gray-800 font-medium">{poi.name || 'Unbenannt'}</span>
-                  <span className="text-sm font-semibold text-gray-600">
+                  <span className="font-medium text-[color:var(--color-fg)]">{poi.name || 'Unbenannt'}</span>
+                  <span className="text-sm font-semibold text-[color:var(--color-muted)]">
                     {poi.distance ? `${Math.round(poi.distance)}m` : t('pois.nearby')}
                   </span>
                 </li>

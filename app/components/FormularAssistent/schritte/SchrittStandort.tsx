@@ -46,7 +46,7 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
     setLoading(true);
     try {
       const pois = await getNearbyPOIs(address.coordinates.lng, address.coordinates.lat, 200);
-      const riskAssessment = analyzePOIs(pois, address);
+      const riskAssessment = analyzePOIs(pois);
 
       // Alles im addressCheckerData speichern
       onChange('addressCheckerData', {
