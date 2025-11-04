@@ -57,7 +57,7 @@ export default function SchrittFlaechen({ daten, onChange }: SchrittFlaechenProp
             value={daten.gesamtflaeche}
             onChange={(e) => onChange('gesamtflaeche', e.target.value)}
             placeholder="z.B. 415"
-            className="w-full px-4 py-3 pr-16 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+            className="input-with-unit w-full border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
             required
           />
           <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 font-medium">
