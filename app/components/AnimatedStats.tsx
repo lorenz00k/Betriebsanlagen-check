@@ -40,7 +40,7 @@ export default function AnimatedStats({ stats }: AnimatedStatsProps) {
   }, [])
 
   return (
-    <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div ref={sectionRef} className="stat-grid">
       {stats.map((stat, index) => (
         <AnimatedStatCard
           key={index}
@@ -73,37 +73,40 @@ function AnimatedStatCard({
     const stepDuration = duration / steps
 
     let currentStep = 0
+    let interval: ReturnType<typeof setInterval> | undefined
+
     const timer = setTimeout(() => {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         currentStep++
         if (currentStep <= steps) {
           setCount(Math.min(Math.round(increment * currentStep), stat.value))
-        } else {
+        } else if (interval) {
           clearInterval(interval)
         }
       }, stepDuration)
-
-      return () => clearInterval(interval)
     }, delay * 1000)
 
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(timer)
+      if (interval) {
+        clearInterval(interval)
+      }
+    }
   }, [isVisible, stat.value, delay])
 
   return (
     <div
-      className="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100"
+      className="stat-card"
       style={{
         animation: isVisible ? `countUp 0.8s ease-out ${delay}s both` : 'none',
       }}
     >
-      <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mb-4 shadow-md">
-        {stat.icon}
-      </div>
-      <div className="text-4xl font-bold text-gray-900 mb-2">
+      <div className="stat-card__icon">{stat.icon}</div>
+      <div className="stat-card__value">
         {count}
-        <span className="text-blue-600">{stat.suffix}</span>
+        <span className="stat-card__suffix">{stat.suffix}</span>
       </div>
-      <p className="text-gray-600 text-center font-medium">{stat.label}</p>
+      <p className="stat-card__label">{stat.label}</p>
     </div>
   )
 }

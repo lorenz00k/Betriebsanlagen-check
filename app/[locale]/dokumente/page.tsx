@@ -413,23 +413,23 @@ export default function DocumentsPage() {
         </div>
 
         {/* Help Box */}
-        <div className="p-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl text-white shadow-xl">
+        <div className="p-8 bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300 rounded-2xl text-blue-900 shadow-xl">
           <div className="flex items-start gap-4">
             <div className="flex-shrink-0">
-              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                <CheckCircle2 className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 bg-white/60 rounded-lg flex items-center justify-center">
+                <CheckCircle2 className="w-6 h-6 text-blue-600" />
               </div>
             </div>
             <div className="flex-1">
               <h3 className="font-bold text-xl mb-2">
                 {t('needHelp.title')}
               </h3>
-              <p className="text-blue-100 mb-4 leading-relaxed">
+              <p className="text-blue-800 mb-4 leading-relaxed">
                 {t('needHelp.text')}
               </p>
               <Link
                 href={`/${activeLocale}/check`}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-gray-100 text-blue-600 rounded-lg font-bold transition-colors shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold shadow-md transition-colors hover:bg-blue-700"
               >
                 {t('startChecker')}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

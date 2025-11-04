@@ -12,6 +12,7 @@ import { locales, type Locale } from '@/i18n'
 import Footer from '../components/Footer'
 import LanguageBanner from '../components/LanguageBanner'
 import LanguageSwitcher from '../components/LanguageSwitcher'
+import NavLink from '../components/NavLink'
 import {
   FALLBACK_METADATA,
   SITE_URL,
@@ -115,7 +116,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className="bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100">
+      <body>
         <script
           type="application/ld+json"
           suppressHydrationWarning
@@ -128,12 +129,12 @@ export default async function LocaleLayout({
         />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <LanguageBanner />
-          <nav className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-40 shadow-sm">
-            <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-              <Link href={`/${locale}`} className="flex items-center gap-3 group cursor-pointer">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+          <nav className="site-nav">
+            <div className="site-container site-nav__inner">
+              <Link href={`/${locale}`} className="site-brand" aria-label="Betriebsanlagen Check Startseite">
+                <span className="site-brand__mark">
                   <svg
-                    className="w-6 h-6 text-white"
+                    className="w-6 h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -145,38 +146,16 @@ export default async function LocaleLayout({
                       d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                </div>
-                <h1 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
-                  Betriebsanlagen Check
-                </h1>
+                </span>
+                <span>Betriebsanlagen Check</span>
               </Link>
-              <div className="flex items-center gap-6">
-                <Link
-                  href={`/${locale}/adressen-check`}
-                  className="hidden md:block text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                >
-                  Adressen-Check
-                </Link>
-                <Link
-                  href={`/${locale}/formular-assistent`}
-                  className="hidden md:block text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                >
-                  Formular-Assistent
-                </Link>
-                <Link
-                  href={`/${locale}/dokumente`}
-                  className="hidden md:block text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                >
-                  Dokumente
-                </Link>
-                <Link
-                  href={`/${locale}/faq`}
-                  className="hidden md:block text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                >
-                  FAQ
-                </Link>
-                <LanguageSwitcher />
+              <div className="hidden md:flex site-nav__links">
+                <NavLink href={`/${locale}/adressen-check`}>Adressen-Check</NavLink>
+                <NavLink href={`/${locale}/formular-assistent`}>Formular-Assistent</NavLink>
+                <NavLink href={`/${locale}/dokumente`} activeMatch={[`/${locale}/documents`]}>Dokumente</NavLink>
+                <NavLink href={`/${locale}/faq`}>FAQ</NavLink>
               </div>
+              <LanguageSwitcher />
             </div>
           </nav>
           <main className="min-h-screen">{children}</main>

@@ -14,35 +14,28 @@ export default function Footer() {
   const locale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale
 
   return (
-    <footer className="bg-white/50 backdrop-blur-sm border-t border-gray-200 mt-20">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="text-center text-gray-600 text-sm mb-4">
+    <footer className="site-footer">
+      <div className="site-container">
+        <div className="site-footer__meta">
           <p>© 2025 {t('copyright')}</p>
-          <p className="mt-2 text-xs text-gray-500">
+          <p className="mt-3 text-xs">
             {t('disclaimer')}
           </p>
         </div>
-        <div className="flex justify-center gap-6 text-sm">
-          <Link
-            href={`/${locale}/impressum`}
-            className="text-gray-600 hover:text-blue-600 transition-colors underline"
-          >
+        <div className="site-footer__links">
+          <Link href={`/${locale}/impressum`} className="site-footer__link">
             {t('imprint')}
           </Link>
-          <Link
-            href={`/${locale}/datenschutz`}
-            className="text-gray-600 hover:text-blue-600 transition-colors underline"
-          >
+          <Link href={`/${locale}/datenschutz`} className="site-footer__link">
             {t('privacy')}
           </Link>
           <button
             type="button"
             onClick={() => window.showCookieSettings?.()}
-            className="text-gray-600 hover:text-blue-600 transition-colors underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-sm"
+            className="site-footer__link"
           >
             Cookie-Einstellungen
           </button>
-
         </div>
       </div>
     </footer>

@@ -38,7 +38,7 @@ export default function SchrittAntragsteller({ daten, onChange }: SchrittAntrags
             value={daten.name}
             onChange={(e) => onChange('name', e.target.value)}
             placeholder={t('felder.name.platzhalter')}
-            className="w-full pl-11 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+            className="input-with-icon w-full border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
             required
           />
         </div>
@@ -60,7 +60,7 @@ export default function SchrittAntragsteller({ daten, onChange }: SchrittAntrags
             value={daten.kontaktperson}
             onChange={(e) => onChange('kontaktperson', e.target.value)}
             placeholder={t('felder.kontaktperson.platzhalter')}
-            className="w-full pl-11 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+            className="input-with-icon w-full border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
             required
           />
         </div>
@@ -82,7 +82,7 @@ export default function SchrittAntragsteller({ daten, onChange }: SchrittAntrags
             value={daten.telefon}
             onChange={(e) => onChange('telefon', e.target.value)}
             placeholder={t('felder.telefon.platzhalter')}
-            className="w-full pl-11 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+            className="input-with-icon w-full border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
             required
           />
         </div>
@@ -101,7 +101,7 @@ export default function SchrittAntragsteller({ daten, onChange }: SchrittAntrags
             value={daten.email}
             onChange={(e) => onChange('email', e.target.value)}
             placeholder={t('felder.email.platzhalter')}
-            className="w-full pl-11 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+            className="input-with-icon w-full border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
             required
           />
         </div>
