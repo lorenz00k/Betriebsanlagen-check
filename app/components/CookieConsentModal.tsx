@@ -97,7 +97,6 @@ export default function CookieConsentModal() {
 
     const val: Consent = granted ? 'accepted' : 'rejected'
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ value: val, v: CONSENT_VERSION, t: Date.now() }))
-    setDecision(val)
     setOpen(false)
   }
 
