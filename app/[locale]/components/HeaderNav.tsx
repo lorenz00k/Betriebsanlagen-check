@@ -41,7 +41,7 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
             <Link href={`/${locale}`} className="flex items-center gap-2">
               <Image src="/icon.svg" alt="" width={28} height={28} className="h-7 w-7 rounded-lg shadow-sm" />
               <span className="ml-2 text-sm font-semibold text-slate-900 lg:hidden">Betriebsanlagen Check</span>
-              <span className="ml-2 hidden truncate text-sm font-semibold text-slate-900 xl:inline">
+              <span className="ml-2 hidden truncate text-sm font-semibold text-slate-900 lg:inline">
                 Betriebsanlagen Check
               </span>
             </Link>
