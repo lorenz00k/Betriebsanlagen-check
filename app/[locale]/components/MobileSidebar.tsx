@@ -140,7 +140,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
         </div>
 
         <div className="mt-auto pt-4">
-          <LanguageSwitcher />
+          <LanguageSwitcher direction="up" />
         </div>
       </div>
     </div>

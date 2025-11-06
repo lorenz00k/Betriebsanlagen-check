@@ -19,7 +19,11 @@ const languages = [
 ]
 
 // Renders the interactive locale picker and routes users to the matching translation.
-export default function LanguageSwitcher() {
+interface LanguageSwitcherProps {
+  direction?: 'up' | 'down'
+}
+
+export default function LanguageSwitcher({ direction = 'down' }: LanguageSwitcherProps) {
   const router = useRouter()
   const pathname = usePathname()
   const t = useTranslations('nav')
@@ -68,6 +72,11 @@ export default function LanguageSwitcher() {
     setIsOpen(false)
   }
 
+  const dropdownPositionClasses =
+    direction === 'up'
+      ? 'bottom-full mb-2 origin-bottom-right'
+      : 'top-full mt-2 origin-top-right'
+
   return (
     <div className="relative inline-flex" ref={dropdownRef}>
       <button
@@ -97,7 +106,7 @@ export default function LanguageSwitcher() {
 
       {isOpen && (
         <div
-          className="absolute right-0 top-full z-50 mt-2 w-48 origin-top-right rounded-xl border border-slate-200 bg-white p-2 shadow-lg ring-1 ring-black/5"
+          className={`absolute right-0 z-50 w-48 rounded-xl border border-slate-200 bg-white p-2 shadow-lg ring-1 ring-black/5 ${dropdownPositionClasses}`}
           role="listbox"
         >
           {languages.map((lang) => {
