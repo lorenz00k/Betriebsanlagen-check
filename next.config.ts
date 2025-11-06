@@ -8,3 +8,5 @@ const config = {
 }
 
 export default withNextIntl(config)
+
+import type { NextConfig } from "next";

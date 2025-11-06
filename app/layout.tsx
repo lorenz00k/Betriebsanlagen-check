@@ -37,7 +37,7 @@ export const metadata: Metadata = {
       { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }
     ]
   },
-  manifest: '/manifest.json'
+  manifest: '/manifest.webmanifest'
 }
 
 import Script from 'next/script'
