@@ -21,6 +21,7 @@ import {
   resolveLocaleParam,
   type MessagesWithMetadata,
 } from './metadataConfig'
+import HeaderNav from '../components/HeaderNav'
 
 // generateMetadata builds locale-scoped metadata for the current route by combining
 // localized message bundles with inherited parent metadata values.
@@ -129,36 +130,10 @@ export default async function LocaleLayout({
         />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <LanguageBanner />
-          <nav className="site-nav">
-            <div className="site-container site-nav__inner">
-              <Link href={`/${locale}`} className="site-brand" aria-label="Betriebsanlagen Check Startseite">
-                <span className="site-brand__mark">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </span>
-                <span>Betriebsanlagen Check</span>
-              </Link>
-              <div className="hidden md:flex site-nav__links">
-                <NavLink href={`/${locale}/adressen-check`}>Adressen-Check</NavLink>
-                <NavLink href={`/${locale}/formular-assistent`}>Formular-Assistent</NavLink>
-                <NavLink href={`/${locale}/dokumente`} activeMatch={[`/${locale}/documents`]}>Dokumente</NavLink>
-                <NavLink href={`/${locale}/faq`}>FAQ</NavLink>
-              </div>
-              <LanguageSwitcher />
-            </div>
-          </nav>
-          <main className="min-h-screen">{children}</main>
+
+          <HeaderNav locale={locale} />
+
+          <main className="min-h-screen mx-auto max-w-screen-xl w-full px-4">{children}</main>
           <Footer />
           <Analytics />
           <SpeedInsights />
