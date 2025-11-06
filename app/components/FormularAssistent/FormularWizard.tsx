@@ -11,6 +11,7 @@ import SchrittFlaechen from './schritte/SchrittFlaechen';
 import SchrittZusammenfassung from './schritte/SchrittZusammenfassung';
 import { generiereEinfachesPDF } from './PDFGenerator';
 import type { FormularDaten } from './types';
+import BreakText from '@/components/ui/BreakText';
 
 const SCHRITTE = [
   { id: 'antragsteller', icon: '👤' },
@@ -142,20 +143,20 @@ export default function FormularWizard() {
     <div className="max-w-5xl mx-auto">
       {/* Header */}
       <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-6">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-          {t('titel')}
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 min-w-0">
+          <BreakText className="block">{t('titel')}</BreakText>
         </h1>
-        <p className="text-gray-600 mb-4">
+        <BreakText className="block text-gray-600 mb-4">
           {t('beschreibung')}
-        </p>
+        </BreakText>
 
         {/* Disclaimer */}
         <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
-          <div className="flex items-start gap-3">
+          <div className="flex items-start gap-3 min-w-0">
             <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-amber-900">
+            <BreakText className="text-sm text-amber-900 block">
               {t('disclaimer')}
-            </p>
+            </BreakText>
           </div>
         </div>
       </div>
@@ -210,24 +211,24 @@ export default function FormularWizard() {
 
       {/* Navigation */}
       <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col sm:flex-row gap-4 justify-between items-center">
-        <div className="flex gap-3">
+        <div className="flex gap-3 min-w-0">
           <button
             onClick={handleEntwurfSpeichern}
             className="inline-flex items-center gap-2 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-medium transition-colors"
           >
             <Save className="w-4 h-4" />
-            {t('entwurfSpeichern')}
+            <BreakText>{t('entwurfSpeichern')}</BreakText>
           </button>
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex gap-3 flex-wrap justify-center sm:justify-end min-w-0">
           {aktuellerSchritt > 0 && (
             <button
               onClick={vorherigerSchritt}
               className="inline-flex items-center gap-2 px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-semibold transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
-              {t('zurueck')}
+              <BreakText>{t('zurueck')}</BreakText>
             </button>
           )}
 
@@ -237,7 +238,7 @@ export default function FormularWizard() {
               disabled={!istSchrittValid()}
               className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg font-semibold transition-colors"
             >
-              {t('weiter')}
+              <BreakText>{t('weiter')}</BreakText>
               <ChevronRight className="w-5 h-5" />
             </button>
           ) : (
@@ -246,7 +247,7 @@ export default function FormularWizard() {
               className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
             >
               <FileDown className="w-5 h-5" />
-              {t('pdfErstellen')}
+              <BreakText>{t('pdfErstellen')}</BreakText>
             </button>
           )}
         </div>

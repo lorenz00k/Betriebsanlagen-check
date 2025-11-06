@@ -8,6 +8,8 @@ import { analyzePOIs, type RiskAssessment as RiskAssessmentType } from '@/app/ut
 import POIList from './POIList';
 import RiskAssessment from './RiskAssessment';
 import ViennaGISMap from './ViennaGISMap';
+import AutoGrid from '@/components/ui/AutoGrid';
+import BreakText from '@/components/ui/BreakText';
 
 export default function AddressChecker() {
   const t = useTranslations('addressChecker');
@@ -112,12 +114,12 @@ export default function AddressChecker() {
       {/* Suchformular */}
       <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
         <form onSubmit={handleSearch} className="space-y-4">
-          <div>
-            <label htmlFor="address-input" className="block text-sm font-semibold text-gray-700 mb-2">
-              {t('search.label')}
+          <div className="space-y-3">
+            <label htmlFor="address-input" className="block text-sm font-semibold text-gray-700">
+              <BreakText>{t('search.label')}</BreakText>
             </label>
-            <div className="flex gap-3">
-              <div className="flex-1 relative">
+            <AutoGrid min="18rem" className="items-start">
+              <div className="relative min-w-0">
                 <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   id="address-input"
@@ -146,21 +148,23 @@ export default function AddressChecker() {
                   </>
                 )}
               </button>
-            </div>
+            </AutoGrid>
           </div>
         </form>
 
         {/* Fehleranzeige */}
         {error && (
           <div className="mt-4 p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
-            <p className="text-red-800 font-medium">{error}</p>
+            <BreakText className="text-red-800 font-medium block">{error}</BreakText>
           </div>
         )}
 
         {/* Mehrere Suchergebnisse */}
         {searchResults.length > 1 && (
           <div className="mt-6">
-            <h3 className="font-bold text-gray-900 mb-3">{t('search.multipleResults')}</h3>
+            <h3 className="font-bold text-gray-900 mb-3 min-w-0">
+              <BreakText className="block">{t('search.multipleResults')}</BreakText>
+            </h3>
             <ul className="space-y-2">
               {searchResults.map((result, index) => (
                 <li key={index}>
@@ -168,9 +172,11 @@ export default function AddressChecker() {
                     onClick={() => handleSelectAddress(result)}
                     className="w-full text-left p-4 border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 rounded-lg transition-all"
                   >
-                    <div className="font-medium text-gray-900">{result.fullAddress}</div>
-                    <div className="text-sm text-gray-600">
-                      {result.postalCode} {result.district}
+                    <div className="font-medium text-gray-900 min-w-0">
+                      <BreakText className="block">{result.fullAddress}</BreakText>
+                    </div>
+                    <div className="text-sm text-gray-600 min-w-0">
+                      <BreakText className="block">{result.postalCode} {result.district}</BreakText>
                     </div>
                   </button>
                 </li>
@@ -185,20 +191,20 @@ export default function AddressChecker() {
         <>
           {/* Ausgewählte Adresse */}
           <div className="bg-white rounded-xl shadow-md p-6">
-            <div className="flex items-start justify-between">
-              <div>
-                <h2 className="text-xl font-bold text-gray-900 mb-1">
-                  {selectedAddress.fullAddress}
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <h2 className="text-xl font-bold text-gray-900 mb-1 min-w-0">
+                  <BreakText className="block">{selectedAddress.fullAddress}</BreakText>
                 </h2>
-                <p className="text-gray-600">
+                <BreakText className="text-gray-600 block">
                   {selectedAddress.postalCode} Wien, {selectedAddress.district}. Bezirk
-                </p>
+                </BreakText>
               </div>
               <button
                 onClick={handleReset}
                 className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-medium transition-colors"
               >
-                {t('actions.newCheck')}
+                <BreakText>{t('actions.newCheck')}</BreakText>
               </button>
             </div>
           </div>
@@ -233,34 +239,33 @@ export default function AddressChecker() {
                 <span>500m</span>
               </div>
 
-              <p className="text-sm text-gray-600">
-                Zeigt kritische Einrichtungen im Umkreis von {searchRadius} Metern an.
-                Größerer Radius = mehr POIs, umfassendere Analyse.
-              </p>
+              <BreakText className="text-sm text-gray-600 block">
+                Zeigt kritische Einrichtungen im Umkreis von {searchRadius} Metern an. Größerer Radius = mehr POIs, umfassendere Analyse.
+              </BreakText>
             </div>
           </div>
 
           {/* POI-Liste und Karte Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <AutoGrid min="20rem" className="gap-6">
             {/* POI-Liste */}
             <div className="bg-white rounded-xl shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('pois.title')}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 min-w-0">
+                <BreakText className="block">{t('pois.title')}</BreakText>
               </h2>
               <POIList pois={nearbyPOIs} />
             </div>
 
             {/* Karte */}
             <div className="bg-white rounded-xl shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('map.title')}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 min-w-0">
+                <BreakText className="block">{t('map.title')}</BreakText>
               </h2>
               <ViennaGISMap address={selectedAddress} pois={nearbyPOIs} />
-              <p className="text-xs text-gray-500 mt-2">
+              <BreakText className="text-xs text-gray-500 mt-2 block">
                 {t('map.attribution')}
-              </p>
+              </BreakText>
             </div>
-          </div>
+          </AutoGrid>
 
           {/* Risikobewertung */}
           {riskAssessment && (
@@ -273,7 +278,7 @@ export default function AddressChecker() {
       {selectedAddress && loading && (
         <div className="bg-white rounded-xl shadow-md p-12 text-center">
           <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-blue-600" />
-          <p className="text-gray-600">Analysiere Umgebung...</p>
+          <BreakText className="text-gray-600 block">Analysiere Umgebung...</BreakText>
         </div>
       )}
     </div>

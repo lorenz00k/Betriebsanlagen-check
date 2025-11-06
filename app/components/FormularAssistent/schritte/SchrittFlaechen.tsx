@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Ruler, Zap } from 'lucide-react';
+import BreakText from '@/components/ui/BreakText';
 import type { FormularDaten } from '../types';
 
 interface SchrittFlaechenProps {
@@ -20,15 +21,19 @@ export default function SchrittFlaechen({ daten, onChange }: SchrittFlaechenProp
           <Ruler className="w-6 h-6 text-blue-600" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">{t('titel')}</h2>
-          <p className="text-gray-600">{t('beschreibung')}</p>
+          <h2 className="text-2xl font-bold text-gray-900 min-w-0">
+            <BreakText className="block">{t('titel')}</BreakText>
+          </h2>
+          <BreakText className="block text-gray-600">{t('beschreibung')}</BreakText>
         </div>
       </div>
 
       {/* Beschreibung aller Flächen */}
       <div>
         <label htmlFor="flaechen_beschreibung" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t('felder.beschreibung.label')} <span className="text-red-500">*</span>
+          <BreakText>
+            {t('felder.beschreibung.label')} <span className="text-red-500">*</span>
+          </BreakText>
         </label>
         <textarea
           id="flaechen_beschreibung"
@@ -39,15 +44,17 @@ export default function SchrittFlaechen({ daten, onChange }: SchrittFlaechenProp
           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none font-mono text-sm"
           required
         />
-        <p className="mt-1.5 text-sm text-gray-600">
+        <BreakText className="mt-1.5 block text-sm text-gray-600">
           {t('felder.beschreibung.hilfe')}
-        </p>
+        </BreakText>
       </div>
 
       {/* Gesamtfläche */}
       <div>
         <label htmlFor="gesamtflaeche" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t('felder.gesamtflaeche.label')} <span className="text-red-500">*</span>
+          <BreakText>
+            {t('felder.gesamtflaeche.label')} <span className="text-red-500">*</span>
+          </BreakText>
         </label>
         <div className="relative">
           <input
@@ -64,15 +71,17 @@ export default function SchrittFlaechen({ daten, onChange }: SchrittFlaechenProp
             m²
           </div>
         </div>
-        <p className="mt-1.5 text-sm text-gray-600">
+        <BreakText className="mt-1.5 block text-sm text-gray-600">
           {t('felder.gesamtflaeche.hilfe')}
-        </p>
+        </BreakText>
       </div>
 
       {/* Anschlussleistung */}
       <div>
         <label className="block text-sm font-semibold text-gray-700 mb-3">
-          {t('felder.anschlussleistung.label')} <span className="text-red-500">*</span>
+          <BreakText>
+            {t('felder.anschlussleistung.label')} <span className="text-red-500">*</span>
+          </BreakText>
         </label>
         <div className="space-y-3">
           {/* Unter 300 kW */}
@@ -85,16 +94,16 @@ export default function SchrittFlaechen({ daten, onChange }: SchrittFlaechenProp
                 : 'border-gray-300 hover:border-green-300'
             }`}
           >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 min-w-0">
                 <Zap className={`w-5 h-5 ${daten.anschlussleistung === 'unter300' ? 'text-green-600' : 'text-gray-400'}`} />
-                <div>
+                <div className="min-w-0">
                   <div className="font-semibold text-gray-900">
-                    {t('felder.anschlussleistung.optionen.unter300.label')}
+                    <BreakText className="block">{t('felder.anschlussleistung.optionen.unter300.label')}</BreakText>
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <BreakText className="block text-sm text-gray-600">
                     {t('felder.anschlussleistung.optionen.unter300.info')}
-                  </div>
+                  </BreakText>
                 </div>
               </div>
               {daten.anschlussleistung === 'unter300' && (
@@ -117,16 +126,16 @@ export default function SchrittFlaechen({ daten, onChange }: SchrittFlaechenProp
                 : 'border-gray-300 hover:border-amber-300'
             }`}
           >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 min-w-0">
                 <Zap className={`w-5 h-5 ${daten.anschlussleistung === 'ueber300' ? 'text-amber-600' : 'text-gray-400'}`} />
-                <div>
+                <div className="min-w-0">
                   <div className="font-semibold text-gray-900">
-                    {t('felder.anschlussleistung.optionen.ueber300.label')}
+                    <BreakText className="block">{t('felder.anschlussleistung.optionen.ueber300.label')}</BreakText>
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <BreakText className="block text-sm text-gray-600">
                     {t('felder.anschlussleistung.optionen.ueber300.info')}
-                  </div>
+                  </BreakText>
                 </div>
               </div>
               {daten.anschlussleistung === 'ueber300' && (
@@ -149,12 +158,12 @@ export default function SchrittFlaechen({ daten, onChange }: SchrittFlaechenProp
                 : 'border-gray-300 hover:border-gray-400'
             }`}
           >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 min-w-0">
                 <Zap className={`w-5 h-5 ${daten.anschlussleistung === 'keine' ? 'text-gray-600' : 'text-gray-400'}`} />
-                <div>
+                <div className="min-w-0">
                   <div className="font-semibold text-gray-900">
-                    {t('felder.anschlussleistung.optionen.keine.label')}
+                    <BreakText className="block">{t('felder.anschlussleistung.optionen.keine.label')}</BreakText>
                   </div>
                 </div>
               </div>
@@ -168,9 +177,9 @@ export default function SchrittFlaechen({ daten, onChange }: SchrittFlaechenProp
             </div>
           </button>
         </div>
-        <p className="mt-3 text-sm text-gray-600">
+        <BreakText className="mt-3 block text-sm text-gray-600">
           {t('felder.anschlussleistung.hilfe')}
-        </p>
+        </BreakText>
       </div>
     </div>
   );

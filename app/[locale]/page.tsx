@@ -8,6 +8,8 @@ import { useParams } from "next/navigation";
 import AnimatedStats from "../components/AnimatedStats";
 import { defaultLocale } from "@/i18n";
 import { CheckCircle2, FileText, Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
+import BreakText from "@/components/ui/BreakText";
+import AutoGrid from "@/components/ui/AutoGrid";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -70,24 +72,26 @@ export default function Home() {
         <div className="site-container">
           <section className="section page-hero">
             <h1 className="page-hero__title">
-              <span>{t("title")}</span>
+              <BreakText className="block">{t("title")}</BreakText>
             </h1>
-            <p className="page-hero__copy">{t("subtitle")}</p>
+            <BreakText className="page-hero__copy block">{t("subtitle")}</BreakText>
           </section>
 
           <section className="section section--compact">
-            <div className="card-grid card-grid--two page-actions">
+            <AutoGrid min="16rem" className="page-actions">
               <article className="card">
                 <div className="card__icon">
                   <CheckCircle2 className="w-7 h-7" strokeWidth={2.2} />
                 </div>
-                <h2 className="card__title">{t("card1Title")}</h2>
-                <p className="card__body">{t("card1Description")}</p>
+                <h2 className="card__title">
+                  <BreakText className="block">{t("card1Title")}</BreakText>
+                </h2>
+                <BreakText className="card__body block">{t("card1Description")}</BreakText>
                 <Link
                   href={`/${activeLocale}/check`}
                   className="btn btn-primary w-full justify-center"
                 >
-                  {t("card1Button")}
+                  <BreakText>{t("card1Button")}</BreakText>
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </article>
@@ -96,17 +100,19 @@ export default function Home() {
                 <div className="card__icon card__icon--warm">
                   <FileText className="w-7 h-7" strokeWidth={2.2} />
                 </div>
-                <h2 className="card__title">{t("card2Title")}</h2>
-                <p className="card__body">{t("card2Description")}</p>
+                <h2 className="card__title">
+                  <BreakText className="block">{t("card2Title")}</BreakText>
+                </h2>
+                <BreakText className="card__body block">{t("card2Description")}</BreakText>
                 <Link
                   href={`/${activeLocale}/dokumente`}
                   className="btn btn-secondary w-full justify-center"
                 >
-                  {t("card2Button")}
+                  <BreakText>{t("card2Button")}</BreakText>
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </article>
-            </div>
+            </AutoGrid>
           </section>
 
           <section className="section section--compact">
@@ -138,80 +144,102 @@ export default function Home() {
 
           <section className="section">
             <div className="section__heading">
-              <h2>{t("seo.heading")}</h2>
-              <p className="section__copy">{t("seo.intro")}</p>
+              <h2>
+                <BreakText className="block">{t("seo.heading")}</BreakText>
+              </h2>
+              <BreakText className="section__copy block">{t("seo.intro")}</BreakText>
             </div>
 
-            <div className="card-grid card-grid--three mt-12">
+            <AutoGrid min="14rem" className="mt-12">
               <article className="card card--subtle">
                 <div className="card__icon card__icon--accent-soft">
                   <Zap className="w-6 h-6" strokeWidth={2} />
                 </div>
-                <h3 className="card__title">{t("seo.feature1Title")}</h3>
-                <p className="card__body">{t("seo.feature1Text")}</p>
+                <h3 className="card__title">
+                  <BreakText className="block">{t("seo.feature1Title")}</BreakText>
+                </h3>
+                <BreakText className="card__body block">{t("seo.feature1Text")}</BreakText>
               </article>
 
               <article className="card card--subtle">
                 <div className="card__icon card__icon--success">
                   <Languages className="w-6 h-6" strokeWidth={2} />
                 </div>
-                <h3 className="card__title">{t("seo.feature2Title")}</h3>
-                <p className="card__body">{t("seo.feature2Text")}</p>
+                <h3 className="card__title">
+                  <BreakText className="block">{t("seo.feature2Title")}</BreakText>
+                </h3>
+                <BreakText className="card__body block">{t("seo.feature2Text")}</BreakText>
               </article>
 
               <article className="card card--subtle">
                 <div className="card__icon card__icon--shield">
                   <Shield className="w-6 h-6" strokeWidth={2} />
                 </div>
-                <h3 className="card__title">{t("seo.feature3Title")}</h3>
-                <p className="card__body">{t("seo.feature3Text")}</p>
+                <h3 className="card__title">
+                  <BreakText className="block">{t("seo.feature3Title")}</BreakText>
+                </h3>
+                <BreakText className="card__body block">{t("seo.feature3Text")}</BreakText>
               </article>
-            </div>
+            </AutoGrid>
 
             <div className="surface-muted mt-12 flex flex-col gap-6 md:flex-row md:items-center">
               <div className="card__icon">
                 <Sparkles className="w-6 h-6" strokeWidth={2} />
               </div>
               <div className="flex-1 space-y-3">
-                <h3 className="card__title">{t("seo.whyTitle")}</h3>
-                <p className="card__body text-lg">{t("seo.whyText")}</p>
+                <h3 className="card__title">
+                  <BreakText className="block">{t("seo.whyTitle")}</BreakText>
+                </h3>
+                <BreakText className="card__body text-lg block">{t("seo.whyText")}</BreakText>
               </div>
             </div>
           </section>
 
           <section className="section">
             <div className="section__heading">
-              <h2>{t("gruender.heading")}</h2>
-              <p className="section__copy">{t("gruender.intro")}</p>
+              <h2>
+                <BreakText className="block">{t("gruender.heading")}</BreakText>
+              </h2>
+              <BreakText className="section__copy block">{t("gruender.intro")}</BreakText>
             </div>
 
-            <div className="card-grid card-grid--two mt-12">
+            <AutoGrid min="16rem" className="mt-12">
               <article className="card card--subtle">
-                <h3 className="card__title">{t("gruender.question1")}</h3>
-                <p className="card__body">{t("gruender.answer1")}</p>
+                <h3 className="card__title">
+                  <BreakText className="block">{t("gruender.question1")}</BreakText>
+                </h3>
+                <BreakText className="card__body block">{t("gruender.answer1")}</BreakText>
               </article>
 
               <article className="card card--subtle">
-                <h3 className="card__title">{t("gruender.question2")}</h3>
-                <p className="card__body">{t("gruender.answer2")}</p>
+                <h3 className="card__title">
+                  <BreakText className="block">{t("gruender.question2")}</BreakText>
+                </h3>
+                <BreakText className="card__body block">{t("gruender.answer2")}</BreakText>
               </article>
 
               <article className="card card--subtle">
-                <h3 className="card__title">{t("gruender.question3")}</h3>
-                <p className="card__body">{t("gruender.answer3")}</p>
+                <h3 className="card__title">
+                  <BreakText className="block">{t("gruender.question3")}</BreakText>
+                </h3>
+                <BreakText className="card__body block">{t("gruender.answer3")}</BreakText>
               </article>
 
               <article className="card card--subtle">
-                <h3 className="card__title">{t("gruender.question4")}</h3>
-                <p className="card__body">{t("gruender.answer4")}</p>
+                <h3 className="card__title">
+                  <BreakText className="block">{t("gruender.question4")}</BreakText>
+                </h3>
+                <BreakText className="card__body block">{t("gruender.answer4")}</BreakText>
               </article>
-            </div>
+            </AutoGrid>
 
             <div className="cta-panel">
-              <h3>{t("gruender.ctaTitle")}</h3>
-              <p>{t("gruender.ctaText")}</p>
+              <h3>
+                <BreakText className="block">{t("gruender.ctaTitle")}</BreakText>
+              </h3>
+              <BreakText className="block">{t("gruender.ctaText")}</BreakText>
               <Link href={`/${activeLocale}/check`} className="btn btn-primary">
-                {t("card1Button")}
+                <BreakText>{t("card1Button")}</BreakText>
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
