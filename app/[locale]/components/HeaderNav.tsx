@@ -40,14 +40,15 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
           <div className="flex min-w-0 flex-shrink-0 items-center">
             <Link href={`/${locale}`} className="flex items-center gap-2">
               <Image src="/icon.svg" alt="" width={28} height={28} className="h-7 w-7 rounded-lg shadow-sm" />
-              <span className="ml-2 min-w-0 truncate text-sm font-semibold text-slate-900 lg:hidden">
+              <span className="ml-2 text-sm font-semibold text-slate-900 lg:hidden">Betriebsanlagen Check</span>
+              <span className="ml-2 hidden truncate text-sm font-semibold text-slate-900 xl:inline">
                 Betriebsanlagen Check
               </span>
             </Link>
           </div>
 
           <nav
-            className="hidden min-w-0 flex-1 flex-wrap items-center gap-x-6 gap-y-2 lg:flex"
+            className="hidden min-w-0 flex-1 flex-wrap items-center justify-end gap-x-6 gap-y-2 lg:flex"
             aria-label="Hauptnavigation"
           >
             {links.map((link) => (

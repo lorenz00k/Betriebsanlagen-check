@@ -11,7 +11,6 @@ export const primaryLinks = (locale: string): NavItem[] => [
 ]
 
 export const secondaryLinks = (locale: string): NavItem[] => [
-  { href: `/${locale}/kontakt`, label: 'Kontakt' },
   { href: `/${locale}/impressum`, label: 'Impressum' },
   { href: `/${locale}/datenschutz`, label: 'Datenschutz' },
 ]
