@@ -2,6 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { CheckCircle, Edit, User, MapPin, FileText, Ruler, AlertTriangle } from 'lucide-react';
+import AutoGrid from '@/components/ui/AutoGrid';
+import BreakText from '@/components/ui/BreakText';
 import type { FormularDaten } from '../types';
 
 interface SchrittZusammenfassungProps {
@@ -20,68 +22,72 @@ export default function SchrittZusammenfassung({ daten, onZurueck }: SchrittZusa
           <CheckCircle className="w-6 h-6 text-green-600" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">{t('titel')}</h2>
-          <p className="text-gray-600">{t('beschreibung')}</p>
+          <h2 className="text-2xl font-bold text-gray-900 min-w-0">
+            <BreakText className="block">{t('titel')}</BreakText>
+          </h2>
+          <BreakText className="block text-gray-600">{t('beschreibung')}</BreakText>
         </div>
       </div>
 
       {/* Antragsteller */}
       <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between mb-4 gap-3">
+          <div className="flex items-center gap-2 min-w-0">
             <User className="w-5 h-5 text-blue-600" />
-            <h3 className="font-bold text-gray-900">Antragsteller</h3>
+            <h3 className="font-bold text-gray-900 min-w-0">
+              <BreakText className="block">Antragsteller</BreakText>
+            </h3>
           </div>
           <button
             onClick={onZurueck}
             className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center gap-1"
           >
             <Edit className="w-4 h-4" />
-            Bearbeiten
+            <BreakText>Bearbeiten</BreakText>
           </button>
         </div>
-        <dl className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-          <div>
-            <dt className="font-semibold text-gray-700">Name und Anschrift</dt>
-            <dd className="text-gray-600 mt-1">{daten.name || '-'}</dd>
+        <AutoGrid min="18rem" className="gap-y-4 text-sm">
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">Name und Anschrift</BreakText>
+            <BreakText className="text-gray-600 mt-1 block">{daten.name || '-'}</BreakText>
           </div>
-          <div>
-            <dt className="font-semibold text-gray-700">Kontaktperson</dt>
-            <dd className="text-gray-600 mt-1">{daten.kontaktperson || '-'}</dd>
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">Kontaktperson</BreakText>
+            <BreakText className="text-gray-600 mt-1 block">{daten.kontaktperson || '-'}</BreakText>
           </div>
-          <div>
-            <dt className="font-semibold text-gray-700">Telefon</dt>
-            <dd className="text-gray-600 mt-1">{daten.telefon || '-'}</dd>
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">Telefon</BreakText>
+            <BreakText className="text-gray-600 mt-1 block">{daten.telefon || '-'}</BreakText>
           </div>
-          <div>
-            <dt className="font-semibold text-gray-700">E-Mail</dt>
-            <dd className="text-gray-600 mt-1">{daten.email || '-'}</dd>
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">E-Mail</BreakText>
+            <BreakText className="text-gray-600 mt-1 block">{daten.email || '-'}</BreakText>
           </div>
-        </dl>
+        </AutoGrid>
       </div>
 
       {/* Standort */}
       <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <MapPin className="w-5 h-5 text-blue-600" />
-            <h3 className="font-bold text-gray-900">Standort</h3>
-          </div>
+        <div className="flex items-center gap-2 mb-4 min-w-0">
+          <MapPin className="w-5 h-5 text-blue-600" />
+          <h3 className="font-bold text-gray-900 min-w-0">
+            <BreakText className="block">Standort</BreakText>
+          </h3>
         </div>
-        <dl className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-          <div>
-            <dt className="font-semibold text-gray-700">Bezirk</dt>
-            <dd className="text-gray-600 mt-1">{daten.bezirk ? `${daten.bezirk}. Bezirk` : '-'}</dd>
+        <AutoGrid min="18rem" className="gap-y-4 text-sm">
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">Bezirk</BreakText>
+            <BreakText className="text-gray-600 mt-1 block">{daten.bezirk ? `${daten.bezirk}. Bezirk` : '-'}</BreakText>
           </div>
-          <div>
-            <dt className="font-semibold text-gray-700">Straße, Hausnummer</dt>
-            <dd className="text-gray-600 mt-1">{daten.strasse || '-'}</dd>
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">Straße, Hausnummer</BreakText>
+            <BreakText className="text-gray-600 mt-1 block">{daten.strasse || '-'}</BreakText>
           </div>
-          <div className="md:col-span-2">
-            <dt className="font-semibold text-gray-700">Grundstücksnummer</dt>
-            <dd className="text-gray-600 mt-1">{daten.grundstueck || '-'}</dd>
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">Grundstücksnummer</BreakText>
+            <BreakText className="text-gray-600 mt-1 block">{daten.grundstueck || '-'}</BreakText>
           </div>
-        </dl>
+        </AutoGrid>
 
         {/* Risikobewertung falls vorhanden */}
         {daten.addressCheckerData && (
@@ -94,12 +100,12 @@ export default function SchrittZusammenfassung({ daten, onZurueck }: SchrittZusa
                 : 'bg-green-50 text-green-900'
             }`}>
               <AlertTriangle className="w-5 h-5 flex-shrink-0" />
-              <div className="text-sm">
+              <BreakText className="text-sm">
                 <span className="font-semibold">Umgebungsanalyse:</span>{' '}
                 {daten.addressCheckerData.pois.length} kritische Einrichtung(en) im Umkreis • Risiko:{' '}
                 {daten.addressCheckerData.riskAssessment.overallRisk === 'high' ? 'Hoch' :
                  daten.addressCheckerData.riskAssessment.overallRisk === 'medium' ? 'Mittel' : 'Gering'}
-              </div>
+              </BreakText>
             </div>
           </div>
         )}
@@ -107,68 +113,68 @@ export default function SchrittZusammenfassung({ daten, onZurueck }: SchrittZusa
 
       {/* Antragstyp */}
       <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <FileText className="w-5 h-5 text-blue-600" />
-            <h3 className="font-bold text-gray-900">Antragstyp</h3>
-          </div>
+        <div className="flex items-center gap-2 mb-4 min-w-0">
+          <FileText className="w-5 h-5 text-blue-600" />
+          <h3 className="font-bold text-gray-900 min-w-0">
+            <BreakText className="block">Antragstyp</BreakText>
+          </h3>
         </div>
-        <dl className="space-y-4 text-sm">
-          <div>
-            <dt className="font-semibold text-gray-700">Art des Antrags</dt>
-            <dd className="text-gray-600 mt-1">
+        <div className="space-y-4 text-sm">
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">Art des Antrags</BreakText>
+            <BreakText className="text-gray-600 mt-1 block">
               {daten.typ === 'neu' ? 'Errichtung und Betrieb einer neuen Betriebsanlage' :
                daten.typ === 'aenderung' ? 'Änderung einer bestehenden genehmigten Betriebsanlage' : '-'}
-            </dd>
+            </BreakText>
           </div>
-          <div>
-            <dt className="font-semibold text-gray-700">Art der Anlage</dt>
-            <dd className="text-gray-600 mt-1">{daten.art_der_anlage || '-'}</dd>
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">Art der Anlage</BreakText>
+            <BreakText className="text-gray-600 mt-1 block">{daten.art_der_anlage || '-'}</BreakText>
           </div>
-          <div>
-            <dt className="font-semibold text-gray-700">Anlagenteile und Tätigkeiten</dt>
-            <dd className="text-gray-600 mt-1 whitespace-pre-wrap">{daten.anlagenteile || '-'}</dd>
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">Anlagenteile und Tätigkeiten</BreakText>
+            <BreakText className="text-gray-600 mt-1 block whitespace-pre-wrap">{daten.anlagenteile || '-'}</BreakText>
           </div>
-        </dl>
+        </div>
       </div>
 
       {/* Flächen */}
       <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <Ruler className="w-5 h-5 text-blue-600" />
-            <h3 className="font-bold text-gray-900">Betriebsflächen</h3>
-          </div>
+        <div className="flex items-center gap-2 mb-4 min-w-0">
+          <Ruler className="w-5 h-5 text-blue-600" />
+          <h3 className="font-bold text-gray-900 min-w-0">
+            <BreakText className="block">Betriebsflächen</BreakText>
+          </h3>
         </div>
-        <dl className="space-y-4 text-sm">
-          <div>
-            <dt className="font-semibold text-gray-700">Beschreibung der Flächen</dt>
-            <dd className="text-gray-600 mt-1 whitespace-pre-wrap font-mono text-xs bg-gray-50 p-3 rounded">
+        <div className="space-y-4 text-sm">
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">Beschreibung der Flächen</BreakText>
+            <BreakText className="text-gray-600 mt-1 block whitespace-pre-wrap font-mono text-xs bg-gray-50 p-3 rounded">
               {daten.flaechen_beschreibung || '-'}
-            </dd>
+            </BreakText>
           </div>
-          <div>
-            <dt className="font-semibold text-gray-700">Gesamte Fläche</dt>
-            <dd className="text-gray-600 mt-1">
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">Gesamte Fläche</BreakText>
+            <BreakText className="text-gray-600 mt-1 block">
               {daten.gesamtflaeche ? `${daten.gesamtflaeche} m²` : '-'}
-            </dd>
+            </BreakText>
           </div>
-          <div>
-            <dt className="font-semibold text-gray-700">Elektrische Anschlussleistung</dt>
-            <dd className="text-gray-600 mt-1">
+          <div className="min-w-0">
+            <BreakText className="font-semibold text-gray-700 block">Elektrische Anschlussleistung</BreakText>
+            <BreakText className="text-gray-600 mt-1 block">
               {daten.anschlussleistung === 'unter300' ? 'Unter 300 Kilowatt (vereinfachtes Verfahren möglich)' :
                daten.anschlussleistung === 'ueber300' ? 'Über 300 Kilowatt (normales Verfahren erforderlich)' :
                daten.anschlussleistung === 'keine' ? 'Keine Maschinen oder Geräte vorhanden' : '-'}
-            </dd>
+            </BreakText>
           </div>
-        </dl>
+        </div>
       </div>
 
       {/* Hinweis */}
       <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-        <p className="text-sm text-blue-900">
+        <BreakText className="text-sm text-blue-900 block">
           💡 <strong>Tipp:</strong> Überprüfen Sie alle Angaben sorgfältig. Sie können jederzeit zurück zu den einzelnen Schritten gehen, um Änderungen vorzunehmen. Mit Klick auf &quot;PDF erstellen & herunterladen&quot; wird das ausgefüllte Formular als PDF generiert.
-        </p>
+        </BreakText>
       </div>
     </div>
   );

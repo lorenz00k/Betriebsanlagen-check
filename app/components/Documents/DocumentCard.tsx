@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import type { Document } from '@/app/config/documents';
 import { Download, ExternalLink, FileText } from 'lucide-react';
+import BreakText from '@/components/ui/BreakText';
 
 interface DocumentCardProps {
   document: Document;
@@ -35,13 +36,13 @@ export default function DocumentCard({ document, language }: DocumentCardProps) 
 
       {/* Content */}
       <div className="p-5">
-        <h3 className="text-lg font-bold mb-2 text-gray-900">
-          {translation.title}
+        <h3 className="text-lg font-bold mb-2 text-gray-900 min-w-0">
+          <BreakText className="block">{translation.title}</BreakText>
         </h3>
 
-        <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+        <BreakText className="block text-sm text-gray-600 mb-4 line-clamp-3">
           {translation.description}
-        </p>
+        </BreakText>
 
         {/* Metadata */}
         <div className="flex items-center gap-4 text-xs text-gray-500 mb-4 pb-4 border-b border-gray-100">

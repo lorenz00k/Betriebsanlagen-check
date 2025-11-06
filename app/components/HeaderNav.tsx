@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import NavLink from '../components/NavLink';
+import BreakText from '@/components/ui/BreakText';
 
 export default function HeaderNav({ locale }: { locale: string }) {
     const [open, setOpen] = useState(false);
@@ -13,29 +14,38 @@ export default function HeaderNav({ locale }: { locale: string }) {
         <nav className="site-nav sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
             <div className="site-container site-nav__inner mx-auto max-w-screen-xl w-full px-4">
                 {/* Head Row */}
-                <div className="flex h-14 items-center justify-between">
+                <div className="flex h-14 items-center justify-between gap-3 md:gap-6">
                     {/* Brand: Logo + Titel (kurz auf Mobile, voll ab md) */}
                     <Link href={`/${locale}`} className="site-brand flex items-center gap-2 min-w-0" aria-label="Betriebsanlagen Check Startseite">
-                        <span className="site-brand__mark">
-                            {/* verwende dein neues Icon */}
-                            <Image src="/icon.svg" alt="Logo" width={28} height={28} priority />
-                        </span>
-                        <span className="font-semibold text-slate-900 truncate sm:max-w-[12rem] md:max-w-none">
-                            <span className="md:hidden">Betriebsanlagen</span>
-                            <span className="hidden md:inline">Betriebsanlagen Check</span>
-                        </span>
+                        <div className="flex items-center gap-2 min-w-0">
+                            <span className="site-brand__mark">
+                                {/* verwende dein neues Icon */}
+                                <Image src="/icon.svg" alt="Logo" width={28} height={28} priority />
+                            </span>
+                            <BreakText className="hidden md:inline font-semibold text-slate-900">
+                                Betriebsanlagen Check
+                            </BreakText>
+                        </div>
                     </Link>
 
                     {/* Desktop-Navigation */}
-                    <div className="hidden md:flex site-nav__links items-center gap-6">
-                        <NavLink href={`/${locale}/adressen-check`}>Adressen-Check</NavLink>
-                        <NavLink href={`/${locale}/formular-assistent`}>Formular-Assistent</NavLink>
-                        <NavLink href={`/${locale}/dokumente`} activeMatch={[`/${locale}/documents`]}>Dokumente</NavLink>
-                        <NavLink href={`/${locale}/faq`}>FAQ</NavLink>
+                    <div className="hidden md:flex site-nav__links flex-wrap items-center gap-x-6 gap-y-2 min-w-0">
+                        <NavLink href={`/${locale}/adressen-check`}>
+                            <BreakText className="truncate md:truncate-0">Adressen-Check</BreakText>
+                        </NavLink>
+                        <NavLink href={`/${locale}/formular-assistent`}>
+                            <BreakText className="truncate md:truncate-0">Formular-Assistent</BreakText>
+                        </NavLink>
+                        <NavLink href={`/${locale}/dokumente`} activeMatch={[`/${locale}/documents`]}>
+                            <BreakText className="truncate md:truncate-0">Dokumente</BreakText>
+                        </NavLink>
+                        <NavLink href={`/${locale}/faq`}>
+                            <BreakText className="truncate md:truncate-0">FAQ</BreakText>
+                        </NavLink>
                     </div>
 
                     {/* Language + Mobile Toggle */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 min-w-0">
                         <LanguageSwitcher />
                         <button
                             className="md:hidden inline-flex items-center justify-center rounded-md p-2"

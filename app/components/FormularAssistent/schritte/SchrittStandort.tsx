@@ -9,6 +9,8 @@ import type { FormularDaten } from '../types';
 import type { Address } from '@/app/lib/viennagis-api';
 import ViennaGISMap from '@/app/components/ViennaGISMap';
 import POIList from '@/app/components/POIList';
+import AutoGrid from '@/components/ui/AutoGrid';
+import BreakText from '@/components/ui/BreakText';
 
 interface SchrittStandortProps {
   daten: FormularDaten;
@@ -72,35 +74,37 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
           <MapPin className="w-6 h-6 text-blue-600" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">{t('titel')}</h2>
-          <p className="text-gray-600">{t('beschreibung')}</p>
+          <h2 className="text-2xl font-bold text-gray-900 min-w-0">
+            <BreakText className="block">{t('titel')}</BreakText>
+          </h2>
+          <BreakText className="block text-gray-600">{t('beschreibung')}</BreakText>
         </div>
       </div>
 
       {/* Adresssuche */}
       <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
-        <h3 className="font-semibold text-blue-900 mb-3 flex items-center gap-2">
+        <h3 className="font-semibold text-blue-900 mb-3 flex items-center gap-2 min-w-0">
           <Search className="w-5 h-5" />
-          {t('adresssuche.titel')}
+          <BreakText>{t('adresssuche.titel')}</BreakText>
         </h3>
-        <div className="flex gap-2">
+        <AutoGrid min="18rem" className="items-start">
           <input
             type="text"
             value={adresssuche}
             onChange={(e) => setAdresssuche(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleAdresssuche()}
             placeholder={t('adresssuche.platzhalter')}
-            className="flex-1 px-4 py-2 border-2 border-blue-300 rounded-lg focus:border-blue-500 outline-none"
+            className="w-full px-4 py-2 border-2 border-blue-300 rounded-lg focus:border-blue-500 outline-none"
           />
           <button
             onClick={handleAdresssuche}
             disabled={loading}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white rounded-lg font-medium transition-colors flex items-center gap-2"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white rounded-lg font-medium transition-colors flex items-center gap-2 justify-center"
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Search className="w-5 h-5" />}
-            {t('adresssuche.button')}
+            <BreakText>{t('adresssuche.button')}</BreakText>
           </button>
-        </div>
+        </AutoGrid>
 
         {/* Suchergebnisse */}
         {suchergebnisse.length > 0 && (
@@ -111,69 +115,81 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
                 onClick={() => handleAdresseAuswaehlen(result)}
                 className="w-full text-left p-3 bg-white border-2 border-blue-200 hover:border-blue-500 hover:bg-blue-50 rounded-lg transition-all"
               >
-                <div className="font-medium text-gray-900">{result.fullAddress}</div>
-                <div className="text-sm text-gray-600">{result.postalCode} {result.district}</div>
+                <div className="font-medium text-gray-900 min-w-0">
+                  <BreakText className="block">{result.fullAddress}</BreakText>
+                </div>
+                <div className="text-sm text-gray-600 min-w-0">
+                  <BreakText className="block">{result.postalCode} {result.district}</BreakText>
+                </div>
               </button>
             ))}
           </div>
         )}
       </div>
 
-      {/* Bezirk */}
-      <div>
-        <label htmlFor="bezirk" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t('felder.bezirk.label')} <span className="text-red-500">*</span>
-        </label>
-        <select
-          id="bezirk"
-          value={daten.bezirk}
-          onChange={(e) => onChange('bezirk', e.target.value)}
-          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-          required
-        >
-          <option value="">Bitte wählen</option>
-          {Array.from({ length: 23 }, (_, i) => i + 1).map(bezirk => (
-            <option key={bezirk} value={bezirk.toString()}>
-              {bezirk}. Bezirk
-            </option>
-          ))}
-        </select>
-      </div>
+      <AutoGrid min="18rem" className="gap-y-6">
+        {/* Bezirk */}
+        <div className="min-w-0">
+          <label htmlFor="bezirk" className="block text-sm font-semibold text-gray-700 mb-2">
+            <BreakText>
+              {t('felder.bezirk.label')} <span className="text-red-500">*</span>
+            </BreakText>
+          </label>
+          <select
+            id="bezirk"
+            value={daten.bezirk}
+            onChange={(e) => onChange('bezirk', e.target.value)}
+            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+            required
+          >
+            <option value="">Bitte wählen</option>
+            {Array.from({ length: 23 }, (_, i) => i + 1).map(bezirk => (
+              <option key={bezirk} value={bezirk.toString()}>
+                {bezirk}. Bezirk
+              </option>
+            ))}
+          </select>
+        </div>
 
-      {/* Straße */}
-      <div>
-        <label htmlFor="strasse" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t('felder.strasse.label')} <span className="text-red-500">*</span>
-        </label>
-        <input
-          id="strasse"
-          type="text"
-          value={daten.strasse}
-          onChange={(e) => onChange('strasse', e.target.value)}
-          placeholder={t('felder.strasse.platzhalter')}
-          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-          required
-        />
-      </div>
+        {/* Straße */}
+        <div className="min-w-0">
+          <label htmlFor="strasse" className="block text-sm font-semibold text-gray-700 mb-2">
+            <BreakText>
+              {t('felder.strasse.label')} <span className="text-red-500">*</span>
+            </BreakText>
+          </label>
+          <input
+            id="strasse"
+            type="text"
+            value={daten.strasse}
+            onChange={(e) => onChange('strasse', e.target.value)}
+            placeholder={t('felder.strasse.platzhalter')}
+            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+            required
+          />
+        </div>
 
-      {/* Grundstück */}
-      <div>
-        <label htmlFor="grundstueck" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t('felder.grundstueck.label')} <span className="text-red-500">*</span>
-        </label>
-        <input
-          id="grundstueck"
-          type="text"
-          value={daten.grundstueck}
-          onChange={(e) => onChange('grundstueck', e.target.value)}
-          placeholder={t('felder.grundstueck.platzhalter')}
-          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-          required
-        />
-        <p className="mt-1.5 text-sm text-gray-600">
-          {t('felder.grundstueck.hilfe')}
-        </p>
-      </div>
+        {/* Grundstück */}
+        <div className="min-w-0">
+          <label htmlFor="grundstueck" className="block text-sm font-semibold text-gray-700 mb-2">
+            <BreakText>
+              {t('felder.grundstueck.label')} <span className="text-red-500">*</span>
+            </BreakText>
+          </label>
+          <input
+            id="grundstueck"
+            type="text"
+            value={daten.grundstueck}
+            onChange={(e) => onChange('grundstueck', e.target.value)}
+            placeholder={t('felder.grundstueck.platzhalter')}
+            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+            required
+          />
+          <BreakText className="mt-1.5 block text-sm text-gray-600">
+            {t('felder.grundstueck.hilfe')}
+          </BreakText>
+        </div>
+      </AutoGrid>
 
       {/* Adressen-Checker Ergebnisse */}
       {showAddressChecker && daten.addressCheckerData && (
@@ -194,21 +210,25 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
               ) : (
                 <CheckCircle className="w-6 h-6 text-green-600" />
               )}
-              <div>
-                <h4 className="font-bold text-gray-900">{t('umgebungsanalyse.titel')}</h4>
-                <p className="text-sm text-gray-700">
+              <div className="min-w-0">
+                <h4 className="font-bold text-gray-900 min-w-0">
+                  <BreakText className="block">{t('umgebungsanalyse.titel')}</BreakText>
+                </h4>
+                <BreakText className="block text-sm text-gray-700">
                   {t('umgebungsanalyse.risikobewertung')}: <span className="font-semibold">
                     {daten.addressCheckerData.riskAssessment.overallRisk === 'high' ? t('umgebungsanalyse.risiko.hoch') :
                      daten.addressCheckerData.riskAssessment.overallRisk === 'medium' ? t('umgebungsanalyse.risiko.mittel') : t('umgebungsanalyse.risiko.gering')}
                   </span>
-                </p>
+                </BreakText>
               </div>
             </div>
           </div>
 
           {/* Karte */}
           <div>
-            <h4 className="font-bold text-gray-900 mb-3">{t('umgebungsanalyse.kartenTitel')}</h4>
+            <h4 className="font-bold text-gray-900 mb-3 min-w-0">
+              <BreakText className="block">{t('umgebungsanalyse.kartenTitel')}</BreakText>
+            </h4>
             <ViennaGISMap
               address={daten.addressCheckerData.address}
               pois={daten.addressCheckerData.pois}
@@ -218,8 +238,10 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
           {/* POI-Liste */}
           {daten.addressCheckerData.pois.length > 0 && (
             <div>
-              <h4 className="font-bold text-gray-900 mb-3">
-                {t('umgebungsanalyse.poisTitel')} ({daten.addressCheckerData.pois.length})
+              <h4 className="font-bold text-gray-900 mb-3 min-w-0">
+                <BreakText className="block">
+                  {t('umgebungsanalyse.poisTitel')} ({daten.addressCheckerData.pois.length})
+                </BreakText>
               </h4>
               <POIList pois={daten.addressCheckerData.pois} />
             </div>
@@ -228,10 +250,14 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
           {/* Warnungen */}
           {daten.addressCheckerData.riskAssessment.warnings.length > 0 && (
             <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
-              <h4 className="font-bold text-amber-900 mb-2">{t('umgebungsanalyse.warnungenTitel')}</h4>
+              <h4 className="font-bold text-amber-900 mb-2 min-w-0">
+                <BreakText className="block">{t('umgebungsanalyse.warnungenTitel')}</BreakText>
+              </h4>
               <ul className="list-disc list-inside space-y-1 text-sm text-amber-900">
                 {daten.addressCheckerData.riskAssessment.warnings.map((warning, i) => (
-                  <li key={i}>{warning}</li>
+                  <li key={i} className="min-w-0">
+                    <BreakText>{warning}</BreakText>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -240,10 +266,14 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
           {/* Empfehlungen */}
           {daten.addressCheckerData.riskAssessment.recommendations.length > 0 && (
             <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-              <h4 className="font-bold text-blue-900 mb-2">{t('umgebungsanalyse.empfehlungenTitel')}</h4>
+              <h4 className="font-bold text-blue-900 mb-2 min-w-0">
+                <BreakText className="block">{t('umgebungsanalyse.empfehlungenTitel')}</BreakText>
+              </h4>
               <ul className="list-disc list-inside space-y-1 text-sm text-blue-900">
                 {daten.addressCheckerData.riskAssessment.recommendations.map((rec, i) => (
-                  <li key={i}>{rec}</li>
+                  <li key={i} className="min-w-0">
+                    <BreakText>{rec}</BreakText>
+                  </li>
                 ))}
               </ul>
             </div>

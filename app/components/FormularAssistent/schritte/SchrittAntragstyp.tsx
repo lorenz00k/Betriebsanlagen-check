@@ -2,6 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { FileText, Factory, RefreshCw } from 'lucide-react';
+import AutoGrid from '@/components/ui/AutoGrid';
+import BreakText from '@/components/ui/BreakText';
 import type { FormularDaten } from '../types';
 
 interface SchrittAntragstyppProps {
@@ -20,17 +22,21 @@ export default function SchrittAntragstyp({ daten, onChange }: SchrittAntragstyp
           <FileText className="w-6 h-6 text-blue-600" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">{t('titel')}</h2>
-          <p className="text-gray-600">{t('beschreibung')}</p>
+          <h2 className="text-2xl font-bold text-gray-900 min-w-0">
+            <BreakText className="block">{t('titel')}</BreakText>
+          </h2>
+          <BreakText className="block text-gray-600">{t('beschreibung')}</BreakText>
         </div>
       </div>
 
       {/* Typ: Neu oder Änderung */}
       <div>
         <label className="block text-sm font-semibold text-gray-700 mb-3">
-          {t('felder.typ.label')} <span className="text-red-500">*</span>
+          <BreakText>
+            {t('felder.typ.label')} <span className="text-red-500">*</span>
+          </BreakText>
         </label>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <AutoGrid min="18rem" className="gap-y-4">
           {/* Neu */}
           <button
             type="button"
@@ -49,13 +55,13 @@ export default function SchrittAntragstyp({ daten, onChange }: SchrittAntragstyp
                   <Factory className="w-5 h-5" />
                 </div>
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="font-semibold text-gray-900 mb-1">
-                  {t('felder.typ.optionen.neu.label')}
+                  <BreakText className="block">{t('felder.typ.optionen.neu.label')}</BreakText>
                 </div>
-                <div className="text-sm text-gray-600">
+                <BreakText className="block text-sm text-gray-600">
                   {t('felder.typ.optionen.neu.beschreibung')}
-                </div>
+                </BreakText>
               </div>
             </div>
           </button>
@@ -78,23 +84,25 @@ export default function SchrittAntragstyp({ daten, onChange }: SchrittAntragstyp
                   <RefreshCw className="w-5 h-5" />
                 </div>
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="font-semibold text-gray-900 mb-1">
-                  {t('felder.typ.optionen.aenderung.label')}
+                  <BreakText className="block">{t('felder.typ.optionen.aenderung.label')}</BreakText>
                 </div>
-                <div className="text-sm text-gray-600">
+                <BreakText className="block text-sm text-gray-600">
                   {t('felder.typ.optionen.aenderung.beschreibung')}
-                </div>
+                </BreakText>
               </div>
             </div>
           </button>
-        </div>
+        </AutoGrid>
       </div>
 
       {/* Art der Anlage */}
       <div>
         <label htmlFor="art_der_anlage" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t('felder.art.label')} <span className="text-red-500">*</span>
+          <BreakText>
+            {t('felder.art.label')} <span className="text-red-500">*</span>
+          </BreakText>
         </label>
         <input
           id="art_der_anlage"
@@ -105,15 +113,17 @@ export default function SchrittAntragstyp({ daten, onChange }: SchrittAntragstyp
           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
           required
         />
-        <p className="mt-1.5 text-sm text-gray-600">
+        <BreakText className="mt-1.5 block text-sm text-gray-600">
           {t('felder.art.hilfe')}
-        </p>
+        </BreakText>
       </div>
 
       {/* Anlagenteile und Tätigkeiten */}
       <div>
         <label htmlFor="anlagenteile" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t('felder.anlagenteile.label')} <span className="text-red-500">*</span>
+          <BreakText>
+            {t('felder.anlagenteile.label')} <span className="text-red-500">*</span>
+          </BreakText>
         </label>
         <textarea
           id="anlagenteile"
@@ -124,9 +134,9 @@ export default function SchrittAntragstyp({ daten, onChange }: SchrittAntragstyp
           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none"
           required
         />
-        <p className="mt-1.5 text-sm text-gray-600">
+        <BreakText className="mt-1.5 block text-sm text-gray-600">
           {t('felder.anlagenteile.hilfe')}
-        </p>
+        </BreakText>
       </div>
     </div>
   );
