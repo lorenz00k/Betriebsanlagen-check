@@ -1,7 +1,6 @@
 // LocaleLayout bootstraps every localized route by loading translations, metadata,
 // and shared navigation while exposing locale-aware structured data for search engines.
 import type { Metadata, ResolvingMetadata } from 'next'
-import Link from 'next/link'
 import { NextIntlClientProvider } from 'next-intl'
 import type { AbstractIntlMessages } from 'next-intl'
 import { notFound } from 'next/navigation'
@@ -11,8 +10,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { locales, type Locale } from '@/i18n'
 import Footer from '../components/Footer'
 import LanguageBanner from '../components/LanguageBanner'
-import LanguageSwitcher from '../components/LanguageSwitcher'
-import NavLink from '../components/NavLink'
 import {
   FALLBACK_METADATA,
   SITE_URL,
@@ -21,7 +18,7 @@ import {
   resolveLocaleParam,
   type MessagesWithMetadata,
 } from './metadataConfig'
-import HeaderNav from '../components/HeaderNav'
+import HeaderNav from './components/HeaderNav'
 
 // generateMetadata builds locale-scoped metadata for the current route by combining
 // localized message bundles with inherited parent metadata values.
