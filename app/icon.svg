@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title>Interlocking Check</title>
+  <desc>Two interlocking rounded squares creating a negative-space check.</desc>
+  <defs>
+    <linearGradient id="ga" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0FB9B1"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="gb" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#FB7185"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="18" width="52" height="52" rx="12" fill="url(#ga)"/>
+  <rect x="34" y="34" width="52" height="52" rx="12" fill="url(#gb)" opacity="0.9"/>
+  <path d="M26 48l12 12 26-28" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
