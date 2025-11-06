@@ -75,9 +75,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
   if (!open) return null
 
   const primary = primaryLinks(locale)
-  const secondary = secondaryLinks(locale).filter(
-    (link) => link.href !== `/${locale}/angebot`,
-  )
+  const secondary = secondaryLinks(locale)
 
   return (
     <div
@@ -127,14 +125,6 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
             </Link>
           ))}
         </nav>
-
-        <Link
-          href={`/${locale}/angebot`}
-          onClick={onClose}
-          className="mt-2 inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/60"
-        >
-          Angebot anfragen
-        </Link>
 
         <div className="mt-2 flex flex-col gap-1 text-sm text-slate-600">
           {secondary.map((link) => (

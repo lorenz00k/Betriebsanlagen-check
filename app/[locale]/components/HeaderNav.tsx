@@ -19,9 +19,8 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
   const closeSidebar = useCallback(() => setIsSidebarOpen(false), [])
 
   useEffect(() => {
-    if (!isSidebarOpen) return
-    closeSidebar()
-  }, [pathname, isSidebarOpen, closeSidebar])
+    setIsSidebarOpen(false)
+  }, [pathname])
 
   const links = useMemo(() => primaryLinks(locale), [locale])
 
@@ -35,20 +34,20 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur">
+    <header className="border-b border-slate-200 bg-white">
       <div className="mx-auto w-full max-w-screen-xl px-4">
         <div className="flex h-14 items-center justify-between gap-3">
           <div className="flex min-w-0 flex-shrink-0 items-center">
             <Link href={`/${locale}`} className="flex items-center gap-2">
               <Image src="/icon.svg" alt="" width={28} height={28} className="h-7 w-7 rounded-lg shadow-sm" />
-              <span className="hidden min-w-0 truncate text-sm font-semibold text-slate-900 md:inline">
+              <span className="ml-2 min-w-0 truncate text-sm font-semibold text-slate-900 lg:hidden">
                 Betriebsanlagen Check
               </span>
             </Link>
           </div>
 
           <nav
-            className="hidden min-w-0 flex-1 flex-wrap items-center gap-x-6 gap-y-2 md:flex"
+            className="hidden min-w-0 flex-1 flex-wrap items-center gap-x-6 gap-y-2 lg:flex"
             aria-label="Hauptnavigation"
           >
             {links.map((link) => (
@@ -67,7 +66,7 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
             ))}
           </nav>
 
-          <div className="flex flex-shrink-0 items-center md:hidden">
+          <div className="flex flex-shrink-0 items-center lg:hidden">
             <button
               type="button"
               onClick={() => setIsSidebarOpen(true)}
@@ -82,14 +81,8 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
             </button>
           </div>
 
-          <div className="hidden min-w-0 flex-shrink-0 items-center gap-3 md:flex">
+          <div className="hidden min-w-0 flex-shrink-0 items-center gap-3 lg:flex">
             <LanguageSwitcher />
-            <Link
-              href={`/${locale}/angebot`}
-              className="inline-flex items-center justify-center rounded-md border border-blue-600 px-3 py-1.5 text-sm font-semibold text-blue-600 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/60"
-            >
-              Angebot anfragen
-            </Link>
           </div>
         </div>
       </div>
