@@ -556,9 +556,8 @@ export default function DocumentsPageClient() {
           <div className="mt-8 text-center">
             <p className="text-sm text-gray-500 flex items-center justify-center gap-2">
               <BookOpen className="w-4 h-4" />
-              <span>
-                <BreakText className="block">{t('officialSource')}</BreakText> |
-              </span>
+              <BreakText className="inline">{t('officialSource')}</BreakText>
+              <span className="opacity-50">|</span>
               <a
                 href="https://www.wien.gv.at/amtswege/genehmigung-betriebsanlage"
                 target="_blank"
