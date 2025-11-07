@@ -1,0 +1,27 @@
+name: Neon PR cleanup
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  cleanup:
+    # If PRs come from forks, see note below about pull_request_target.
+    runs-on: ubuntu-latest
+    env:
+      NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+      PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
+    steps:
+      - name: Delete Neon branch for this PR
+        run: |
+          BRANCH_NAME="pr-${{ github.event.pull_request.number }}"  # adjust to your Neon naming
+          RESP=$(curl -s -H "Authorization: Bearer $NEON_API_KEY" \
+                  "https://console.neon.tech/api/v2/projects/$PROJECT_ID/branches")
+          BRANCH_ID=$(echo "$RESP" | jq -r --arg n "$BRANCH_NAME" \
+                      '.branches[] | select(.name==$n) | .id' | head -n1)
+          if [ -n "$BRANCH_ID" ] && [ "$BRANCH_ID" != "null" ]; then
+            curl -s -X DELETE -H "Authorization: Bearer $NEON_API_KEY" \
+                 "https://console.neon.tech/api/v2/projects/$PROJECT_ID/branches/$BRANCH_ID"
+            echo "Deleted $BRANCH_NAME ($BRANCH_ID)"
+          else
+            echo "No Neon branch named $BRANCH_NAME; nothing to do."
+          fi

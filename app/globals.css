@@ -132,7 +132,7 @@ h4 {
   opacity: 0.7;
 }
 
-.page-shell > * {
+.page-shell>* {
   position: relative;
   z-index: 1;
 }
@@ -359,7 +359,7 @@ h4 {
   transition: border-color var(--transition-fade), box-shadow var(--transition-fade);
 }
 
-.faq-item + .faq-item {
+.faq-item+.faq-item {
   margin-top: 1rem;
 }
 
@@ -845,6 +845,7 @@ form .form-row {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -852,5 +853,41 @@ form .form-row {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* 1) Flex-Kindern im Header erlauben zu schrumpfen */
+.site-nav__inner>* {
+  min-width: 0;
+}
+
+/* 2) Brand-Text darf umbrechen/ellipsis statt Layout zu sprengen */
+.site-brand {
+  min-width: 0;
+}
+
+.site-brand span {
+  display: inline-block;
+  max-width: 60vw;
+  /* auf Mobile begrenzen */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 3) Language-Switcher im Header: nicht wachsen lassen */
+.language-switcher {
+  flex: 0 0 auto;
+}
+
+/* 4) Absolute Sicherheitsleine gegen horizontales Scrollen im Header */
+.site-nav {
+  overflow-x: clip;
+}
+
+/* 5) Optional: auf sehr kleinen Screens Text ganz ausblenden (nur Logo) */
+@media (max-width: 480px) {
+  .site-brand span {
+    display: none;
   }
 }
