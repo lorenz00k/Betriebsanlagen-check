@@ -105,7 +105,7 @@ export default function Home() {
                 </h2>
                 <BreakText className="card__body block">{t("card2Description")}</BreakText>
                 <Link
-                  href={`/${activeLocale}/dokumente`}
+                  href={`/${activeLocale}/documents`}
                   className="btn btn-secondary w-full justify-center"
                 >
                   <BreakText>{t("card2Button")}</BreakText>
