@@ -169,7 +169,7 @@ export default function ResultPageClient({ locale }: ResultPageClientProps) {
           </div>
           <div className="flex justify-center">
             <Link
-              href={`/${locale}/dokumente`}
+              href={`/${locale}/documents`}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-gray-100 text-blue-600 rounded-xl font-bold transition-colors shadow-lg"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -1,5 +1,13 @@
 import { ReactNode } from "react";
 
+function splitCompoundWords(content: ReactNode): ReactNode {
+  if (typeof content === "string") {
+    return content.replace(/Betriebsanlagengenehmigung/g, "Betriebsanlagen\u00adgenehmigung");
+  }
+
+  return content;
+}
+
 export default function BreakText({
   className = "",
   children,
@@ -9,7 +17,7 @@ export default function BreakText({
 }) {
   return (
     <span className={`min-w-0 break-words [overflow-wrap:anywhere] [hyphens:auto] ${className}`}>
-      {children}
+      {splitCompoundWords(children)}
     </span>
   );
 }

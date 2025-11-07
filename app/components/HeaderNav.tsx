@@ -36,7 +36,7 @@ export default function HeaderNav({ locale }: { locale: string }) {
                         <NavLink href={`/${locale}/formular-assistent`}>
                             <BreakText className="truncate md:truncate-0">Formular-Assistent</BreakText>
                         </NavLink>
-                        <NavLink href={`/${locale}/dokumente`} activeMatch={[`/${locale}/documents`]}>
+                        <NavLink href={`/${locale}/documents`} activeMatch={[`/${locale}/documents`]}>
                             <BreakText className="truncate md:truncate-0">Dokumente</BreakText>
                         </NavLink>
                         <NavLink href={`/${locale}/faq`}>
