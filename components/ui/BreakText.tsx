@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 function splitCompoundWords(content: ReactNode): ReactNode {
   if (typeof content === "string") {
-    return content.replace(/Betriebsanlagengenehmigung/g, "Betriebsanlagen Genehmigung");
+    return content.replace(/Betriebsanlagengenehmigung/g, "Betriebsanlagen\u00adgenehmigung");
   }
 
   return content;
