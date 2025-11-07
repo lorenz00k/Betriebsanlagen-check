@@ -129,8 +129,17 @@ export function FollowUpChat({ initialContext, previousAnalysis, onBack }: Follo
       console.log('[DEBUG] Adding assistant message to chat')
       setMessages((prev) => [...prev, assistantMessage])
     } catch (error) {
-      console.error('[ERROR] Follow-up failed:', error)
+      console.error('[CHAT ERROR]', error)
+      console.error('[CHAT ERROR] Stack:', error instanceof Error ? error.stack : 'No stack')
       setError(error instanceof Error ? error.message : 'Unbekannter Fehler')
+
+      // Add error message to chat
+      const errorMessage: Message = {
+        role: 'assistant',
+        content: `❌ Fehler: ${error instanceof Error ? error.message : 'Unbekannter Fehler'}`,
+        timestamp: new Date(),
+      }
+      setMessages((prev) => [...prev, errorMessage])
 
       // Add error message
       const errorMessage: Message = {
