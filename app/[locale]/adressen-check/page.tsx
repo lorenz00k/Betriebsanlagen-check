@@ -1,5 +1,5 @@
-import { getTranslations } from 'next-intl/server';
 import AddressChecker from '@/app/components/AddressChecker';
+import { getTranslations } from 'next-intl/server';
 
 export default async function AddressCheckPage() {
   const t = await getTranslations('addressChecker');
