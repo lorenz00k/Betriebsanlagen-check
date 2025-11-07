@@ -136,14 +136,6 @@ export function FollowUpChat({ initialContext, previousAnalysis, onBack }: Follo
       // Add error message to chat
       const errorMessage: Message = {
         role: 'assistant',
-        content: `❌ Fehler: ${error instanceof Error ? error.message : 'Unbekannter Fehler'}`,
-        timestamp: new Date(),
-      }
-      setMessages((prev) => [...prev, errorMessage])
-
-      // Add error message
-      const errorMessage: Message = {
-        role: 'assistant',
         content: `Entschuldigung, ich konnte Ihre Frage nicht beantworten. Fehler: ${error instanceof Error ? error.message : 'Unbekannt'}`,
         timestamp: new Date(),
       }
