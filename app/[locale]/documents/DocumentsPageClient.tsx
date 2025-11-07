@@ -2,7 +2,8 @@
 
 // DocumentsPageClient renders the localized permitting checklist, helper content,
 // and HowTo structured data that describes the submission process in each language.
-import { useTranslations } from 'next-intl'
+import { useState } from 'react'
+import { useLocale, useTranslations } from 'next-intl'
 import {
   Phone,
   Mail,
@@ -24,10 +25,13 @@ import {
   FolderOpen,
   Handshake,
   ClipboardList,
-  RotateCw
+  RotateCw,
+  BookOpen
 } from 'lucide-react'
 
 import BreakText from '@/components/ui/BreakText'
+import DocumentCard from '@/app/components/Documents/DocumentCard'
+import { DOCUMENTS } from '@/app/config/documents'
 
 const STEP_IDS = ['step1', 'step2', 'step3', 'step4'] as const
 
@@ -42,6 +46,16 @@ const STEP1_CONTACT = ['phone', 'email', 'website'] as const
 // Displays localized document instructions and emits a HowTo schema for search engines.
 export default function DocumentsPageClient() {
   const t = useTranslations('documents')
+  const activeLocale = useLocale()
+  const [filter, setFilter] = useState<'all' | 'required' | 'optional' | 'guide'>('all')
+
+  const filteredDocuments = filter === 'all'
+    ? DOCUMENTS
+    : DOCUMENTS.filter(doc => doc.category === filter)
+
+  const totalDocumentsCount = DOCUMENTS.length
+  const requiredDocumentsCount = DOCUMENTS.filter(doc => doc.category === 'required').length
+  const guideDocumentsCount = DOCUMENTS.filter(doc => doc.category === 'guide').length
 
   const normalizeUrl = (value: string) => {
     if (/^https?:\/\//i.test(value)) return value
@@ -358,6 +372,91 @@ export default function DocumentsPageClient() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Downloads / Formulare */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+            <FileText className="w-8 h-8 text-blue-600" />
+            Formulare zum Download
+          </h2>
+
+          {/* Disclaimer */}
+          <div className="mb-8 p-6 bg-yellow-50 border-2 border-yellow-200 rounded-xl">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <h3 className="font-bold text-yellow-900 mb-2 text-lg">
+                  <BreakText className="block">{t('disclaimer.title')}</BreakText>
+                </h3>
+                <p className="text-sm text-yellow-800 leading-relaxed">
+                  <BreakText className="block">{t('disclaimer.text')}</BreakText>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Filter Tabs */}
+          <div className="mb-8">
+            <div className="flex flex-wrap gap-3 justify-center">
+              <button
+                onClick={() => setFilter('all')}
+                className={`px-6 py-3 rounded-lg font-medium transition-all ${filter === 'all'
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'bg-white text-gray-700 border-2 border-gray-300 hover:bg-gray-50'
+                  }`}
+              >
+                {t('filter.all')} ({totalDocumentsCount})
+              </button>
+              <button
+                onClick={() => setFilter('required')}
+                className={`px-6 py-3 rounded-lg font-medium transition-all ${filter === 'required'
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'bg-white text-gray-700 border-2 border-gray-300 hover:bg-gray-50'
+                  }`}
+              >
+                {t('filter.required')} ({requiredDocumentsCount})
+              </button>
+              <button
+                onClick={() => setFilter('guide')}
+                className={`px-6 py-3 rounded-lg font-medium transition-all ${filter === 'guide'
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'bg-white text-gray-700 border-2 border-gray-300 hover:bg-gray-50'
+                  }`}
+              >
+                {t('filter.guides')} ({guideDocumentsCount})
+              </button>
+            </div>
+          </div>
+
+          {/* Documents Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredDocuments.map(doc => (
+              <DocumentCard
+                key={doc.id}
+                document={doc}
+                language={activeLocale}
+              />
+            ))}
+          </div>
+
+          {/* Source Info */}
+          <div className="mt-8 text-center">
+            <p className="text-sm text-gray-500 flex items-center justify-center gap-2">
+              <BookOpen className="w-4 h-4" />
+              <span>
+                <BreakText className="block">{t('officialSource')}</BreakText> |
+              </span>
+              <a
+                href="https://www.wien.gv.at/amtswege/genehmigung-betriebsanlage"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                wien.gv.at/betriebsanlage
+              </a>
+            </p>
+          </div>
         </div>
 
         {/* Additional Information Grid */}
