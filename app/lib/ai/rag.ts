@@ -16,9 +16,9 @@ import { generateRAGResponse, type UserContext, type SourceDocument } from './an
  * FIXED: Hardcoded to 0.5 because ENV variable was not being picked up
  */
 export const RAG_CONFIG = {
-  topK: parseInt(process.env.RAG_TOP_K || '5'),           // Anzahl relevanter Dokumente
-  minScore: 0.25,  // LOWERED: Allows all types of questions (was 0.35, still too strict for some queries!)
-  minDocsForFallback: 3,  // If no docs meet threshold, use top 3 anyway
+  topK: parseInt(process.env.RAG_TOP_K || '8'),           // INCREASED: Get more documents (was 5)
+  minScore: 0.15,  // ULTRA-LOW: Accept almost everything (was 0.25, still had edge cases)
+  minDocsForFallback: 5,  // If no docs meet threshold, use top 5 anyway (was 3)
 };
 
 /**
@@ -89,13 +89,22 @@ export async function performRAGQuery(
 
     // STEP 2: Search Pinecone for relevant documents
     console.log('🔎 Searching Pinecone for relevant documents...');
-    const searchResults = await queryVectors(
+    let searchResults = await queryVectors(
       queryEmbedding,
       RAG_CONFIG.topK,
       filter
     );
 
     console.log(`✅ Found ${searchResults.length} documents`);
+
+    // BACKUP QUERY: If Pinecone returns nothing at all, try a generic query
+    if (searchResults.length === 0) {
+      console.log('⚠️  No documents found. Trying backup query with generic keywords...');
+      const backupQuery = 'Betriebsanlagengenehmigung Wien Gastronomie Restaurant Genehmigungsverfahren Unterlagen Antrag';
+      const backupEmbedding = await generateEmbedding(backupQuery);
+      searchResults = await queryVectors(backupEmbedding, RAG_CONFIG.topK, undefined);
+      console.log(`✅ Backup query found ${searchResults.length} documents`);
+    }
 
     // DEBUG: Log all document scores
     console.log('📊 Document scores:');
