@@ -17,7 +17,7 @@ import { generateRAGResponse, type UserContext, type SourceDocument } from './an
  */
 export const RAG_CONFIG = {
   topK: parseInt(process.env.RAG_TOP_K || '5'),           // Anzahl relevanter Dokumente
-  minScore: 0.5,  // HARDCODED: Minimum similarity score (was 0.7, too strict!)
+  minScore: 0.35,  // LOWERED: Allows follow-up questions with lower similarity scores (was 0.5, too strict for follow-ups!)
 };
 
 /**
