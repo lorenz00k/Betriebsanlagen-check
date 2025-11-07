@@ -11,17 +11,61 @@ jobs:
       NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
       PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
     steps:
-      - name: Delete Neon branch for this PR
+      - name: Delete Neon branch for this PR (auto-match)
+        shell: bash
         run: |
-          BRANCH_NAME="pr-${{ github.event.pull_request.number }}"  # adjust to your Neon naming
-          RESP=$(curl -s -H "Authorization: Bearer $NEON_API_KEY" \
-                  "https://console.neon.tech/api/v2/projects/$PROJECT_ID/branches")
-          BRANCH_ID=$(echo "$RESP" | jq -r --arg n "$BRANCH_NAME" \
-                      '.branches[] | select(.name==$n) | .id' | head -n1)
-          if [ -n "$BRANCH_ID" ] && [ "$BRANCH_ID" != "null" ]; then
-            curl -s -X DELETE -H "Authorization: Bearer $NEON_API_KEY" \
-                 "https://console.neon.tech/api/v2/projects/$PROJECT_ID/branches/$BRANCH_ID"
-            echo "Deleted $BRANCH_NAME ($BRANCH_ID)"
-          else
-            echo "No Neon branch named $BRANCH_NAME; nothing to do."
-          fi
+          set -euo pipefail
+
+          PR_NUM="${{ github.event.pull_request.number }}"
+          HEAD_REF_RAW="${{ github.event.pull_request.head.ref }}"  # e.g. codex/use-breaktext-for-document-site-layout
+
+          # also make a sanitized variant (slashes -> dashes etc.) in case your naming changes later
+          HEAD_REF_SANITIZED=$(echo "$HEAD_REF_RAW" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed -E 's#[^a-z0-9-_/]+##g; s#[/_]+#-#g; s#-+#-#g')
+
+          echo "PR: $PR_NUM"
+          echo "head.ref (raw):        $HEAD_REF_RAW"
+          echo "head.ref (sanitized):  $HEAD_REF_SANITIZED"
+
+          # Try likely Neon names in order
+          CANDIDATES=(
+            "preview/$HEAD_REF_RAW"           # <— your current Neon naming
+            "preview-$HEAD_REF_SANITIZED"
+            "$HEAD_REF_RAW"
+            "$HEAD_REF_SANITIZED"
+            "vercel-pr-$PR_NUM"
+            "pr-$PR_NUM"
+          )
+
+          echo "Candidates: ${CANDIDATES[*]}"
+
+          RESP=$(curl -fsS -H "Authorization: Bearer $NEON_API_KEY" \
+                "https://console.neon.tech/api/v2/projects/$PROJECT_ID/branches")
+
+          # 1) exact matches
+          for NAME in "${CANDIDATES[@]}"; do
+            BRANCH_ID=$(echo "$RESP" | jq -r --arg n "$NAME" '.branches[] | select(.name==$n) | .id' | head -n1)
+            if [ -n "${BRANCH_ID:-}" ] && [ "$BRANCH_ID" != "null" ]; then
+              echo "Found exact match: $NAME ($BRANCH_ID) — deleting…"
+              curl -fsS -X DELETE -H "Authorization: Bearer $NEON_API_KEY" \
+                  "https://console.neon.tech/api/v2/projects/$PROJECT_ID/branches/$BRANCH_ID"
+              echo "Deleted."
+              exit 0
+            fi
+          done
+
+          # 2) prefix matches (handles suffixes like hashes)
+          for PREFIX in "${CANDIDATES[@]}"; do
+            BRANCH_ID=$(echo "$RESP" | jq -r --arg p "$PREFIX" '.branches[] | select(.name|startswith($p)) | .id' | head -n1)
+            if [ -n "${BRANCH_ID:-}" ] && [ "$BRANCH_ID" != "null" ]; then
+              ACTUAL_NAME=$(echo "$RESP" | jq -r --arg id "$BRANCH_ID" '.branches[] | select(.id==$id) | .name')
+              echo "Found prefix match: $ACTUAL_NAME ($BRANCH_ID) — deleting…"
+              curl -fsS -X DELETE -H "Authorization: Bearer $NEON_API_KEY" \
+                  "https://console.neon.tech/api/v2/projects/$PROJECT_ID/branches/$BRANCH_ID"
+              echo "Deleted."
+              exit 0
+            fi
+          done
+
+          echo "No Neon branch matched; nothing to delete."
