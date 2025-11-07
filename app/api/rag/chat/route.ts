@@ -79,10 +79,10 @@ export async function POST(request: NextRequest) {
     console.log(`📚 Sources found: ${result.sources.length}`);
     console.log(`🤖 Model: ${result.metadata?.model ?? 'unknown'}`);
 
-    // Safe access to usage data from metadata.tokensUsed
-    const inputTokens = result.metadata?.tokensUsed?.input ?? 0;
-    const outputTokens = result.metadata?.tokensUsed?.output ?? 0;
-    const totalTokens = result.metadata?.tokensUsed?.total ?? 0;
+    // Safe access to usage data from metadata.usage
+    const inputTokens = result.metadata?.usage?.input_tokens ?? 0;
+    const outputTokens = result.metadata?.usage?.output_tokens ?? 0;
+    const totalTokens = result.metadata?.usage?.total_tokens ?? 0;
 
     console.log(`📊 Tokens: ${inputTokens} in / ${outputTokens} out / ${totalTokens} total`);
     console.log('='.repeat(70) + '\n');
@@ -106,8 +106,8 @@ export async function POST(request: NextRequest) {
           total_tokens: totalTokens
         },
         duration_ms: duration,
-        documents_found: result.metadata?.documentsFound ?? 0,
-        documents_used: result.metadata?.documentsUsed ?? 0,
+        documents_found: result.metadata?.documents_found ?? 0,
+        documents_used: result.metadata?.documents_used ?? 0,
         timestamp: new Date().toISOString()
       }
     });

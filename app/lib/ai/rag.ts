@@ -221,14 +221,14 @@ export function getRAGStats(response: RAGQueryResponse) {
   const outputCostPerToken = 1.25 / 1_000_000;
 
   const cost =
-    response.metadata.tokensUsed.input * inputCostPerToken +
-    response.metadata.tokensUsed.output * outputCostPerToken;
+    response.metadata.usage.input_tokens * inputCostPerToken +
+    response.metadata.usage.output_tokens * outputCostPerToken;
 
   return {
-    queryTimeMs: response.metadata.queryTime,
-    documentsFound: response.metadata.documentsFound,
-    documentsUsed: response.metadata.documentsUsed,
-    tokensUsed: response.metadata.tokensUsed.total,
+    queryTimeMs: response.metadata.duration_ms,
+    documentsFound: response.metadata.documents_found,
+    documentsUsed: response.metadata.documents_used,
+    tokensUsed: response.metadata.usage.total_tokens,
     estimatedCost: cost,
     averageSourceScore:
       response.sources.length > 0
