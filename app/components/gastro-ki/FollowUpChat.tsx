@@ -16,9 +16,14 @@ interface Message {
   timestamp: Date
 }
 
+interface AnalysisResult {
+  answer: string;
+  [key: string]: unknown;
+}
+
 interface FollowUpChatProps {
   initialContext: FormData
-  previousAnalysis: any
+  previousAnalysis: AnalysisResult
   onBack: () => void
 }
 

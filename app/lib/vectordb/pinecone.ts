@@ -42,7 +42,7 @@ export function getPineconeIndex() {
 /**
  * Document Metadata Interface
  */
-export interface DocumentMetadata {
+export interface DocumentMetadata extends Record<string, string | number | boolean | string[] | null | undefined> {
   text: string;           // Der eigentliche Text-Chunk
   source: string;         // Dateiname (z.B. "gewerbeordnung.pdf")
   page?: number;          // Seitenzahl im Original-PDF
@@ -51,6 +51,19 @@ export interface DocumentMetadata {
   chunk_index: number;    // Index des Chunks im Dokument
   total_chunks: number;   // Gesamtanzahl Chunks des Dokuments
   date_added: string;     // ISO Timestamp
+}
+
+/**
+ * Remove undefined and null values from metadata to comply with Pinecone requirements
+ */
+function cleanMetadata(metadata: DocumentMetadata): Record<string, string | number | boolean | string[]> {
+  const cleaned: Record<string, string | number | boolean | string[]> = {};
+  for (const [key, value] of Object.entries(metadata)) {
+    if (value !== undefined && value !== null) {
+      cleaned[key] = value as string | number | boolean | string[];
+    }
+  }
+  return cleaned;
 }
 
 /**
@@ -72,7 +85,11 @@ export async function upsertVectors(
     const BATCH_SIZE = 100;
 
     for (let i = 0; i < vectors.length; i += BATCH_SIZE) {
-      const batch = vectors.slice(i, i + BATCH_SIZE);
+      const batch = vectors.slice(i, i + BATCH_SIZE).map(v => ({
+        id: v.id,
+        values: v.values,
+        metadata: cleanMetadata(v.metadata)
+      }));
       await index.upsert(batch);
 
       console.log(`✅ Upserted batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(vectors.length / BATCH_SIZE)}`);
@@ -98,7 +115,7 @@ export async function upsertVectors(
 export async function queryVectors(
   queryVector: number[],
   topK: number = 5,
-  filter?: Record<string, any>
+  filter?: Record<string, unknown>
 ) {
   try {
     const index = getPineconeIndex();

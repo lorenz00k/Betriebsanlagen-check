@@ -15,11 +15,35 @@ interface FormData {
   specialFeatures: string[]
 }
 
+interface AnalysisResult {
+  success: boolean;
+  answer: string;
+  sources: Array<{
+    title: string;
+    content: string;
+    page?: number;
+    section?: string;
+    score: number;
+  }>;
+  metadata: {
+    model: string;
+    usage: {
+      input_tokens: number;
+      output_tokens: number;
+      total_tokens: number;
+    };
+    duration_ms: number;
+    documents_found: number;
+    documents_used: number;
+  };
+  [key: string]: unknown;
+}
+
 export function GastroKIWizard() {
   const [currentStep, setCurrentStep] = useState(0)
   const [formData, setFormData] = useState<Partial<FormData>>({})
   const [isAnalyzing, setIsAnalyzing] = useState(false)
-  const [analysisResult, setAnalysisResult] = useState<any>(null)
+  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null)
   const [showFollowUp, setShowFollowUp] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -117,7 +141,7 @@ export function GastroKIWizard() {
     },
   ]
 
-  const handleStepComplete = (data: any) => {
+  const handleStepComplete = (data: Record<string, unknown>) => {
     const newFormData = { ...formData, ...data }
     setFormData(newFormData)
 
@@ -275,7 +299,7 @@ export function GastroKIWizard() {
   }
 
   // Render Logic - Follow-up Chat
-  if (showFollowUp) {
+  if (showFollowUp && analysisResult) {
     return (
       <FollowUpChat
         initialContext={formData as FormData}

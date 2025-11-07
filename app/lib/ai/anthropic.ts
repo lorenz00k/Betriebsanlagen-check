@@ -45,7 +45,7 @@ export interface UserContext {
   groesse?: string;        // z.B. "50 Gästeplätze", "100 m²"
   bezirk?: string;        // z.B. "1. Bezirk", "Innere Stadt"
   features?: string[];    // z.B. ["Küche", "Schanigarten", "Live-Musik"]
-  [key: string]: any;     // Weitere Felder
+  [key: string]: unknown; // Weitere Felder
 }
 
 /**

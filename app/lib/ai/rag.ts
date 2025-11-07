@@ -57,7 +57,7 @@ export interface RAGQueryResponse {
 export async function performRAGQuery(
   userQuery: string,
   userContext?: UserContext,
-  filter?: Record<string, any>
+  filter?: Record<string, unknown>
 ): Promise<RAGQueryResponse> {
   const startTime = Date.now();
 
@@ -197,7 +197,7 @@ export async function performBatchRAGQuery(
   queries: Array<{
     query: string;
     context?: UserContext;
-    filter?: Record<string, any>;
+    filter?: Record<string, unknown>;
   }>
 ): Promise<RAGQueryResponse[]> {
   console.log(`🔄 Processing ${queries.length} queries in batch...`);

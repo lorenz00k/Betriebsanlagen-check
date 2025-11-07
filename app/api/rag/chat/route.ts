@@ -25,7 +25,7 @@ export const maxDuration = 60; // 60 seconds for RAG query
 interface ChatRequest {
   query: string;
   userContext?: UserContext;
-  filter?: Record<string, any>;
+  filter?: Record<string, unknown>;
 }
 
 /**

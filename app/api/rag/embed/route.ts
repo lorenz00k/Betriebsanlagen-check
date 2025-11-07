@@ -94,10 +94,18 @@ export async function POST(request: NextRequest) {
 
     // STEP 4: Prepare vectors for Pinecone
     console.log('📦 Preparing vectors for Pinecone...');
+    const dateAdded = new Date().toISOString();
     const vectors = chunks.map((chunk, index) => ({
       id: chunk.id,
       values: embeddings[index],
-      metadata: chunk.metadata
+      metadata: {
+        text: chunk.text,
+        source: chunk.metadata.source,
+        page: chunk.metadata.page,
+        chunk_index: chunk.metadata.chunk_index,
+        total_chunks: chunk.metadata.total_chunks,
+        date_added: dateAdded
+      }
     }));
 
     // STEP 5: Upload to Pinecone

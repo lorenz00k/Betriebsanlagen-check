@@ -23,13 +23,13 @@ export interface StepConfig {
 
 interface WizardStepProps {
   step: StepConfig
-  onComplete: (data: Record<string, any>) => void
+  onComplete: (data: Record<string, unknown>) => void
   onBack: () => void
   canGoBack: boolean
 }
 
 export function WizardStep({ step, onComplete, onBack, canGoBack }: WizardStepProps) {
-  const [value, setValue] = useState<any>(step.type === 'multiselect' ? [] : null)
+  const [value, setValue] = useState<string | string[] | boolean | null>(step.type === 'multiselect' ? [] : null)
   const [error, setError] = useState<string | null>(null)
 
   const handleMultiselectToggle = (optionValue: string) => {
@@ -140,7 +140,7 @@ export function WizardStep({ step, onComplete, onBack, canGoBack }: WizardStepPr
             <div className="relative">
               <input
                 type="number"
-                value={value || ''}
+                value={typeof value === 'string' || typeof value === 'number' ? value : ''}
                 onChange={(e) => setValue(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleComplete()}
                 min={step.min}
@@ -166,7 +166,7 @@ export function WizardStep({ step, onComplete, onBack, canGoBack }: WizardStepPr
         return (
           <div className="max-w-md mx-auto">
             <select
-              value={value || ''}
+              value={typeof value === 'string' ? value : ''}
               onChange={(e) => setValue(e.target.value)}
               className="w-full px-6 py-4 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 outline-none transition-all appearance-none bg-white cursor-pointer"
             >
