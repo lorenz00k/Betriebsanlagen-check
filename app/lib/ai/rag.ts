@@ -17,7 +17,8 @@ import { generateRAGResponse, type UserContext, type SourceDocument } from './an
  */
 export const RAG_CONFIG = {
   topK: parseInt(process.env.RAG_TOP_K || '5'),           // Anzahl relevanter Dokumente
-  minScore: 0.35,  // LOWERED: Allows follow-up questions with lower similarity scores (was 0.5, too strict for follow-ups!)
+  minScore: 0.25,  // LOWERED: Allows all types of questions (was 0.35, still too strict for some queries!)
+  minDocsForFallback: 3,  // If no docs meet threshold, use top 3 anyway
 };
 
 /**
@@ -103,17 +104,25 @@ export async function performRAGQuery(
     });
 
     // Filter by minimum score
-    const relevantDocs = searchResults.filter(
+    let relevantDocs = searchResults.filter(
       result => (result.score || 0) >= RAG_CONFIG.minScore
     );
 
     console.log(`✅ ${relevantDocs.length} documents meet minimum score threshold (${RAG_CONFIG.minScore})`);
 
-    // Check if we have any relevant documents
+    // FALLBACK: If no docs meet threshold, use top N docs anyway
+    // This ensures Claude always gets context to work with
+    if (relevantDocs.length === 0 && searchResults.length > 0) {
+      console.log(`⚠️  No documents above threshold. Using top ${RAG_CONFIG.minDocsForFallback} as fallback.`);
+      relevantDocs = searchResults.slice(0, RAG_CONFIG.minDocsForFallback);
+      console.log(`📊 Fallback document scores: ${relevantDocs.map(d => d.score?.toFixed(3)).join(', ')}`);
+    }
+
+    // Only fail if we literally have no documents at all
     if (relevantDocs.length === 0) {
       return {
         success: false,
-        answer: 'Leider wurden keine relevanten Informationen zu Ihrer Frage gefunden. Bitte formulieren Sie Ihre Frage anders oder kontaktieren Sie direkt die MA 36 in Wien.',
+        answer: 'Es tut mir leid, aber ich konnte keine Informationen in der Datenbank finden. Dies könnte bedeuten, dass die Dokumente noch nicht geladen wurden. Bitte versuchen Sie es später erneut oder kontaktieren Sie die MA 36 direkt.',
         sources: [],
         metadata: {
           model: '',
@@ -122,7 +131,7 @@ export async function performRAGQuery(
           documents_found: searchResults.length,
           documents_used: 0
         },
-        error: 'No relevant documents found'
+        error: 'No documents in database'
       };
     }
 
