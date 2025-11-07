@@ -13,11 +13,11 @@ import { generiereEinfachesPDF } from './PDFGenerator';
 import type { FormularDaten } from './types';
 
 const SCHRITTE = [
-  { id: 'antragsteller', icon: '👤' },
-  { id: 'standort', icon: '📍' },
-  { id: 'antragstyp', icon: '📋' },
-  { id: 'flaechen', icon: '📐' },
-  { id: 'zusammenfassung', icon: '✓' },
+  { id: 'antragsteller' },
+  { id: 'standort' },
+  { id: 'antragstyp' },
+  { id: 'flaechen' },
+  { id: 'zusammenfassung' },
 ];
 
 export default function FormularWizard() {

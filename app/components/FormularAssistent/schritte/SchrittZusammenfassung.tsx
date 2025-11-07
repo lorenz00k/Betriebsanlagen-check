@@ -167,7 +167,7 @@ export default function SchrittZusammenfassung({ daten, onZurueck }: SchrittZusa
       {/* Hinweis */}
       <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
         <p className="text-sm text-blue-900">
-          💡 <strong>Tipp:</strong> Überprüfen Sie alle Angaben sorgfältig. Sie können jederzeit zurück zu den einzelnen Schritten gehen, um Änderungen vorzunehmen. Mit Klick auf &quot;PDF erstellen & herunterladen&quot; wird das ausgefüllte Formular als PDF generiert.
+          <strong>Tipp:</strong> Überprüfen Sie alle Angaben sorgfältig. Sie können jederzeit zurück zu den einzelnen Schritten gehen, um Änderungen vorzunehmen. Mit Klick auf &quot;PDF erstellen & herunterladen&quot; wird das ausgefüllte Formular als PDF generiert.
         </p>
       </div>
     </div>
