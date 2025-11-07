@@ -27,6 +27,8 @@ import {
   RotateCw
 } from 'lucide-react'
 
+import BreakText from '@/components/ui/BreakText'
+
 const STEP_IDS = ['step1', 'step2', 'step3', 'step4'] as const
 
 const STEP2_ITEMS = ['applicationForm', 'businessLicense', 'plans', 'technicalDescription', 'neighbors', 'tenancy'] as const
@@ -151,28 +153,34 @@ export default function DocumentsPageClient() {
     .replace(/&/g, '\\u0026')
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 py-16">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 py-16 overflow-x-hidden">
       <script
         type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: howToSchemaJson }}
       />
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="w-full max-w-5xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12 animate-fadeIn">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{t('title')}</h1>
-          <p className="text-xl text-gray-600 font-normal">{t('subtitle')}</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <BreakText className="block">{t('title')}</BreakText>
+          </h1>
+          <p className="text-xl text-gray-600 font-normal">
+            <BreakText className="block">{t('subtitle')}</BreakText>
+          </p>
         </div>
 
         {/* Intro Card */}
-        <div className="bg-white rounded-2xl p-8 mb-12 border border-gray-200 animate-fadeIn" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+        <div className="bg-white rounded-2xl p-6 sm:p-8 mb-12 border border-gray-200 animate-fadeIn" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
           <div className="flex items-start gap-4">
             <div className="flex-shrink-0">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Info className="w-6 h-6 text-blue-600" strokeWidth={2} />
               </div>
             </div>
-            <p className="text-lg text-gray-700 leading-relaxed font-normal">{t('intro')}</p>
+            <p className="text-lg text-gray-700 leading-relaxed font-normal">
+              <BreakText className="block">{t('intro')}</BreakText>
+            </p>
           </div>
         </div>
 
@@ -181,30 +189,32 @@ export default function DocumentsPageClient() {
           {STEP_IDS.map((stepId, index) => (
             <div
               key={stepId}
-              className="bg-white rounded-2xl overflow-hidden border border-gray-200 card-lift transition-all duration-200"
+              className="bg-white rounded-2xl overflow-hidden border border-gray-200 card-lift transition-all duration-200 w-full max-w-full"
               style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
             >
               {/* Step Header */}
-              <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-5">
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 sm:px-8 py-5">
                 <div className="flex items-center gap-4">
                   <div className="flex items-center justify-center w-10 h-10 bg-white rounded-lg">
                     <span className="text-blue-600 font-bold text-lg">{index + 1}</span>
                   </div>
                   <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-                    {t(`steps.${stepId}.title`)}
+                    <BreakText className="block">{t(`steps.${stepId}.title`)}</BreakText>
                   </h2>
                 </div>
               </div>
 
               {/* Step Content */}
-              <div className="p-8">
-                <p className="text-gray-700 mb-6 leading-relaxed font-normal">{t(`steps.${stepId}.description`)}</p>
+              <div className="p-6 sm:p-8">
+                <p className="text-gray-700 mb-6 leading-relaxed font-normal">
+                  <BreakText className="block">{t(`steps.${stepId}.description`)}</BreakText>
+                </p>
 
                 {stepId === 'step1' && (
                   <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
                     <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                       <Handshake className="w-5 h-5 text-blue-600" strokeWidth={2} />
-                      {t('steps.step1.contactTitle')}
+                      <BreakText>{t('steps.step1.contactTitle')}</BreakText>
                     </h3>
                     <ul className="space-y-3">
                       {STEP1_CONTACT.map(contactId => {
@@ -220,7 +230,7 @@ export default function DocumentsPageClient() {
                                      <Globe className="w-4 h-4" />
 
                         return (
-                          <li key={contactId} className="flex items-center gap-3 text-gray-700">
+                          <li key={contactId} className="flex items-center gap-3 text-gray-700 min-w-0">
                             <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
                               {icon}
                             </div>
@@ -231,17 +241,17 @@ export default function DocumentsPageClient() {
                                 target="_blank"
                                 rel="noreferrer"
                               >
-                                {t(`steps.step1.contact.${contactId}.value`)}
+                                <BreakText className="block">{t(`steps.step1.contact.${contactId}.value`)}</BreakText>
                               </a>
                             ) : (
-                              <span className="font-normal">
-                                <strong className="font-semibold">{t(`steps.step1.contact.${contactId}.label`)}:</strong>{' '}
+                              <span className="font-normal flex-1 min-w-0">
+                                <BreakText className="font-semibold">{t(`steps.step1.contact.${contactId}.label`)}:</BreakText>{' '}
                                 {contactId === 'email' ? (
                                   <a href={href} className="hover:text-blue-600 transition-colors">
-                                    {t(`steps.step1.contact.${contactId}.value`)}
+                                    <BreakText>{t(`steps.step1.contact.${contactId}.value`)}</BreakText>
                                   </a>
                                 ) : (
-                                  t(`steps.step1.contact.${contactId}.value`)
+                                  <BreakText>{t(`steps.step1.contact.${contactId}.value`)}</BreakText>
                                 )}
                               </span>
                             )}
@@ -267,12 +277,12 @@ export default function DocumentsPageClient() {
                           <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
                             {itemIcon}
                           </div>
-                          <div className="flex-1">
+                          <div className="flex-1 min-w-0">
                             <strong className="text-gray-900 font-semibold block mb-1">
-                              {t(`steps.step2.items.${itemId}.title`)}
+                              <BreakText className="block">{t(`steps.step2.items.${itemId}.title`)}</BreakText>
                             </strong>
                             <p className="text-sm text-gray-600 font-normal leading-relaxed">
-                              {t(`steps.step2.items.${itemId}.description`)}
+                              <BreakText className="block">{t(`steps.step2.items.${itemId}.description`)}</BreakText>
                             </p>
                           </div>
                         </div>
@@ -288,15 +298,23 @@ export default function DocumentsPageClient() {
                                         <Mail className="w-6 h-6" strokeWidth={2} />
 
                       return (
-                        <div key={optionId} className="bg-blue-50 rounded-xl p-6 border border-blue-200">
+                        <div key={optionId} className="bg-blue-50 rounded-xl p-6 border border-blue-200 min-w-0">
                           <div className="flex items-center gap-3 mb-4">
                             <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white">
                               {optionIcon}
                             </div>
-                            <h3 className="font-bold text-gray-900">{t(`steps.step3.options.${optionId}.title`).replace(/[📮✉️]/g, '').trim()}</h3>
+                            <h3 className="font-bold text-gray-900">
+                              <BreakText className="block">
+                                {t(`steps.step3.options.${optionId}.title`).replace(/[📮✉️]/g, '').trim()}
+                              </BreakText>
+                            </h3>
                           </div>
-                          <p className="text-sm text-gray-700 font-normal mb-2">{t(`steps.step3.options.${optionId}.line1`)}</p>
-                          <p className="text-sm text-gray-700 font-normal">{t(`steps.step3.options.${optionId}.line2`)}</p>
+                          <p className="text-sm text-gray-700 font-normal mb-2">
+                            <BreakText className="block">{t(`steps.step3.options.${optionId}.line1`)}</BreakText>
+                          </p>
+                          <p className="text-sm text-gray-700 font-normal">
+                            <BreakText className="block">{t(`steps.step3.options.${optionId}.line2`)}</BreakText>
+                          </p>
                         </div>
                       )
                     })}
@@ -317,12 +335,12 @@ export default function DocumentsPageClient() {
                             <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
                               {itemIcon}
                             </div>
-                            <div>
+                            <div className="min-w-0">
                               <strong className="text-gray-900 font-semibold block mb-1">
-                                {t(`steps.step4.items.${itemId}.title`)}
+                                <BreakText className="block">{t(`steps.step4.items.${itemId}.title`)}</BreakText>
                               </strong>
                               <p className="text-sm text-gray-600 font-normal leading-relaxed">
-                                {t(`steps.step4.items.${itemId}.description`)}
+                                <BreakText className="block">{t(`steps.step4.items.${itemId}.description`)}</BreakText>
                               </p>
                             </div>
                           </div>
@@ -332,7 +350,7 @@ export default function DocumentsPageClient() {
                     <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-5 flex items-start gap-3">
                       <Clock className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" strokeWidth={2} />
                       <p className="text-sm text-blue-900 font-normal">
-                        {t('steps.step4.processingTime')}
+                        <BreakText className="block">{t('steps.step4.processingTime')}</BreakText>
                       </p>
                     </div>
                   </>
@@ -343,14 +361,16 @@ export default function DocumentsPageClient() {
         </div>
 
         {/* Additional Information Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-16">
           {/* Expert Reports */}
-          <div className="bg-white rounded-xl p-8 border border-gray-200" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+          <div className="bg-white rounded-xl p-6 sm:p-8 border border-gray-200" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                 <FileSearch className="w-5 h-5 text-blue-600" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900">{t('expertReports.title')}</h3>
+              <h3 className="text-xl font-bold text-gray-900">
+                <BreakText className="block">{t('expertReports.title')}</BreakText>
+              </h3>
             </div>
             <ul className="space-y-4">
               {EXPERT_REPORTS.map(reportId => {
@@ -359,16 +379,16 @@ export default function DocumentsPageClient() {
                                    <Flame className="w-5 h-5" strokeWidth={2} />
 
                 return (
-                  <li key={reportId} className="flex items-start gap-3">
+                  <li key={reportId} className="flex items-start gap-3 min-w-0">
                     <div className="flex-shrink-0 w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600">
                       {reportIcon}
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <strong className="text-gray-900 font-semibold block mb-1">
-                        {t(`expertReports.items.${reportId}.title`)}
+                        <BreakText className="block">{t(`expertReports.items.${reportId}.title`)}</BreakText>
                       </strong>
                       <p className="text-sm text-gray-600 font-normal leading-relaxed">
-                        {t(`expertReports.items.${reportId}.description`)}
+                        <BreakText className="block">{t(`expertReports.items.${reportId}.description`)}</BreakText>
                       </p>
                     </div>
                   </li>
@@ -378,12 +398,14 @@ export default function DocumentsPageClient() {
           </div>
 
           {/* Fees */}
-          <div className="bg-white rounded-xl p-8 border border-gray-200" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+          <div className="bg-white rounded-xl p-6 sm:p-8 border border-gray-200" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Euro className="w-5 h-5 text-blue-600" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900">{t('fees.title')}</h3>
+              <h3 className="text-xl font-bold text-gray-900">
+                <BreakText className="block">{t('fees.title')}</BreakText>
+              </h3>
             </div>
             <ul className="space-y-4">
               {FEES.map(feeId => {
@@ -393,16 +415,16 @@ export default function DocumentsPageClient() {
                                 <CalendarClock className="w-5 h-5" strokeWidth={2} />
 
                 return (
-                  <li key={feeId} className="flex items-start gap-3">
+                  <li key={feeId} className="flex items-start gap-3 min-w-0">
                     <div className="flex-shrink-0 w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600">
                       {feeIcon}
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <strong className="text-gray-900 font-semibold block mb-1">
-                        {t(`fees.items.${feeId}.title`)}
+                        <BreakText className="block">{t(`fees.items.${feeId}.title`)}</BreakText>
                       </strong>
                       <p className="text-sm text-gray-600 font-normal leading-relaxed">
-                        {t(`fees.items.${feeId}.description`)}
+                        <BreakText className="block">{t(`fees.items.${feeId}.description`)}</BreakText>
                       </p>
                     </div>
                   </li>
@@ -413,12 +435,14 @@ export default function DocumentsPageClient() {
         </div>
 
         {/* Tips Section */}
-        <div className="bg-gradient-to-r from-blue-50 to-blue-100/50 rounded-2xl p-8 md:p-10 border border-blue-200">
+        <div className="bg-gradient-to-r from-blue-50 to-blue-100/50 rounded-2xl p-6 sm:p-8 md:p-10 border border-blue-200">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
               <AlertCircle className="w-6 h-6 text-white" strokeWidth={2} />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900">{t('tips.title')}</h3>
+            <h3 className="text-2xl font-bold text-gray-900">
+              <BreakText className="block">{t('tips.title')}</BreakText>
+            </h3>
           </div>
           <ul className="grid md:grid-cols-2 gap-6">
             {TIPS.map(tipId => {
@@ -428,16 +452,16 @@ export default function DocumentsPageClient() {
                              <RotateCw className="w-5 h-5" strokeWidth={2} />
 
               return (
-                <li key={tipId} className="flex items-start gap-4">
+                <li key={tipId} className="flex items-start gap-4 min-w-0">
                   <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white">
                     {tipIcon}
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <strong className="text-gray-900 font-bold block mb-1">
-                      {t(`tips.items.${tipId}.title`)}
+                      <BreakText className="block">{t(`tips.items.${tipId}.title`)}</BreakText>
                     </strong>
                     <p className="text-sm text-gray-700 font-normal leading-relaxed">
-                      {t(`tips.items.${tipId}.description`)}
+                      <BreakText className="block">{t(`tips.items.${tipId}.description`)}</BreakText>
                     </p>
                   </div>
                 </li>
