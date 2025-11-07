@@ -35,14 +35,14 @@ export interface RAGQueryResponse {
   }>;
   metadata: {
     model: string;
-    tokensUsed: {
-      input: number;
-      output: number;
-      total: number;
+    usage: {
+      input_tokens: number;
+      output_tokens: number;
+      total_tokens: number;
     };
-    documentsFound: number;
-    documentsUsed: number;
-    queryTime: number;
+    duration_ms: number;
+    documents_found: number;
+    documents_used: number;
   };
   error?: string;
 }
@@ -70,10 +70,10 @@ export async function performRAGQuery(
         sources: [],
         metadata: {
           model: '',
-          tokensUsed: { input: 0, output: 0, total: 0 },
-          documentsFound: 0,
-          documentsUsed: 0,
-          queryTime: 0
+          usage: { input_tokens: 0, output_tokens: 0, total_tokens: 0 },
+          duration_ms: 0,
+          documents_found: 0,
+          documents_used: 0
         },
         error: 'User query cannot be empty'
       };
@@ -117,10 +117,10 @@ export async function performRAGQuery(
         sources: [],
         metadata: {
           model: '',
-          tokensUsed: { input: 0, output: 0, total: 0 },
-          documentsFound: searchResults.length,
-          documentsUsed: 0,
-          queryTime: Date.now() - startTime
+          usage: { input_tokens: 0, output_tokens: 0, total_tokens: 0 },
+          duration_ms: Date.now() - startTime,
+          documents_found: searchResults.length,
+          documents_used: 0
         },
         error: 'No relevant documents found'
       };
@@ -160,14 +160,14 @@ export async function performRAGQuery(
       })),
       metadata: {
         model: claudeResponse.model,
-        tokensUsed: {
-          input: claudeResponse.usage.inputTokens,
-          output: claudeResponse.usage.outputTokens,
-          total: claudeResponse.usage.inputTokens + claudeResponse.usage.outputTokens
+        usage: {
+          input_tokens: claudeResponse.usage.inputTokens,
+          output_tokens: claudeResponse.usage.outputTokens,
+          total_tokens: claudeResponse.usage.inputTokens + claudeResponse.usage.outputTokens
         },
-        documentsFound: searchResults.length,
-        documentsUsed: relevantDocs.length,
-        queryTime
+        duration_ms: queryTime,
+        documents_found: searchResults.length,
+        documents_used: relevantDocs.length
       }
     };
   } catch (error) {
@@ -179,10 +179,10 @@ export async function performRAGQuery(
       sources: [],
       metadata: {
         model: '',
-        tokensUsed: { input: 0, output: 0, total: 0 },
-        documentsFound: 0,
-        documentsUsed: 0,
-        queryTime: Date.now() - startTime
+        usage: { input_tokens: 0, output_tokens: 0, total_tokens: 0 },
+        duration_ms: Date.now() - startTime,
+        documents_found: 0,
+        documents_used: 0
       },
       error: error instanceof Error ? error.message : 'Unknown error'
     };
