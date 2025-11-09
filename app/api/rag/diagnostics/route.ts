@@ -31,15 +31,27 @@ export async function GET() {
 
     // Analyze chunks
     const chunks = queryResponse.matches || [];
+
+    interface ChunkSample {
+      id: string;
+      source: string;
+      page: number;
+      score: number;
+      textLength: number;
+      textPreview: string;
+      hasSection: boolean;
+      section?: string;
+    }
+
     const chunkAnalysis = {
       total: chunks.length,
       avgTextLength: 0,
       minTextLength: Infinity,
       maxTextLength: 0,
       avgScore: 0,
-      sources: new Set(),
-      pages: new Set(),
-      samples: [] as any[]
+      sources: new Set<string>(),
+      pages: new Set<number>(),
+      samples: [] as ChunkSample[]
     };
 
     let totalLength = 0;

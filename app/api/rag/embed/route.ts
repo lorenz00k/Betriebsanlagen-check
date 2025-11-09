@@ -11,7 +11,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
-import { processAllPDFs, type PDFChunk } from '@/app/lib/utils/pdf-processor';
+import { processAllPDFs } from '@/app/lib/utils/pdf-processor';
 import { generateEmbeddings } from '@/app/lib/ai/openai';
 import { upsertVectors, deleteAllVectors } from '@/app/lib/vectordb/pinecone';
 

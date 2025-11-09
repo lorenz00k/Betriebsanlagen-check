@@ -17,7 +17,7 @@ export async function GET() {
 
     // Get Pinecone index
     const indexName = process.env.PINECONE_INDEX_NAME || 'gastro-genehmigung';
-    const index = getPineconeIndex();
+    getPineconeIndex(); // Initialize index connection
 
     // 1. Get index stats
     console.log('📊 Fetching index statistics...');
