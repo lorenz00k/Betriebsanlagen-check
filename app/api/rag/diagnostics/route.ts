@@ -36,7 +36,7 @@ export async function GET() {
       id: string;
       source: string;
       page: number;
-      score: number;
+      score: number | undefined;
       textLength: number;
       textPreview: string;
       hasSection: boolean;
