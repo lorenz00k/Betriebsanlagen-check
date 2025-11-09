@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RAG API Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        #result { margin-top: 20px; padding: 20px; background: #f0f0f0; border-radius: 5px; }
+        .success { color: green; }
+        .error { color: red; }
+        pre { background: white; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>RAG API Test</h1>
+    <button onclick="testRAG()">Test RAG API</button>
+    <div id="result"></div>
+
+    <script>
+        async function testRAG() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>Loading...</p>';
+
+            try {
+                console.log('Sending RAG request...');
+
+                const response = await fetch('/api/rag/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: 'Betriebsanlagengenehmigung Gastro Restaurant Wien',
+                        userContext: {
+                            betriebsart: 'Restaurant',
+                            groesse: '80m²',
+                            bezirk: '1. Bezirk'
+                        }
+                    })
+                });
+
+                console.log('Response status:', response.status);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('Response data:', data);
+
+                let html = `<h2 class="success">✅ Success!</h2>`;
+                html += `<p><strong>Success:</strong> ${data.success}</p>`;
+                html += `<p><strong>Sources:</strong> ${data.sources?.length || 0}</p>`;
+                html += `<p><strong>Answer length:</strong> ${data.answer?.length || 0} characters</p>`;
+                html += `<p><strong>Model:</strong> ${data.metadata?.model || 'N/A'}</p>`;
+                html += `<p><strong>Tokens:</strong> ${data.metadata?.usage?.total_tokens || 0}</p>`;
+                html += `<h3>Answer:</h3>`;
+                html += `<pre>${data.answer || 'No answer'}</pre>`;
+                html += `<h3>Full Response:</h3>`;
+                html += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+
+                resultDiv.innerHTML = html;
+
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.innerHTML = `
+                    <h2 class="error">❌ Error!</h2>
+                    <pre>${error.message}\n${error.stack}</pre>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -46,7 +46,7 @@ export default function ViennaGISMap({ address, pois }: ViennaGISMapProps) {
 
       // Create custom icon for address marker (blue)
       const addressIcon = L.divIcon({
-        html: `<div style="background-color: #2563eb; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); border: 3px solid white;">📍</div>`,
+        html: `<div style="background-color: #2563eb; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.3); border: 3px solid white;"><div style="width: 12px; height: 12px; background-color: white; border-radius: 50%;"></div></div>`,
         className: 'custom-address-marker',
         iconSize: [32, 32],
         iconAnchor: [16, 16],
@@ -132,19 +132,19 @@ export default function ViennaGISMap({ address, pois }: ViennaGISMapProps) {
         <div className="text-xs font-semibold text-gray-700 mb-2">Legende:</div>
         <div className="grid grid-cols-2 gap-2 text-xs">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white">📍</div>
+            <div className="w-6 h-6 bg-blue-600 rounded-full border-2 border-white shadow-sm"></div>
             <span className="text-gray-700">Ihre Adresse</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center text-white">⛪</div>
+            <div className="w-6 h-6 bg-red-600 rounded-full border-2 border-white shadow-sm"></div>
             <span className="text-gray-700">Hohes Risiko</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-amber-500 rounded-full flex items-center justify-center text-white">🏥</div>
+            <div className="w-6 h-6 bg-amber-500 rounded-full border-2 border-white shadow-sm"></div>
             <span className="text-gray-700">Mittleres Risiko</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center text-white">📍</div>
+            <div className="w-6 h-6 bg-green-600 rounded-full border-2 border-white shadow-sm"></div>
             <span className="text-gray-700">Geringes Risiko</span>
           </div>
         </div>

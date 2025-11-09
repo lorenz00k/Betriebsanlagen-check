@@ -82,7 +82,7 @@ export default function DocumentCard({ document, language }: DocumentCardProps) 
         {translation.help && (
           <div className="mt-3 p-3 bg-blue-50 rounded-lg border border-blue-100">
             <p className="text-xs text-blue-800">
-              💡 {translation.help}
+              {translation.help}
             </p>
           </div>
         )}

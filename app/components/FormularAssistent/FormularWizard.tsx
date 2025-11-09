@@ -14,11 +14,11 @@ import type { FormularDaten } from './types';
 import BreakText from '@/components/ui/BreakText';
 
 const SCHRITTE = [
-  { id: 'antragsteller', icon: '👤' },
-  { id: 'standort', icon: '📍' },
-  { id: 'antragstyp', icon: '📋' },
-  { id: 'flaechen', icon: '📐' },
-  { id: 'zusammenfassung', icon: '✓' },
+  { id: 'antragsteller', icon: '1' },
+  { id: 'standort', icon: '2' },
+  { id: 'antragstyp', icon: '3' },
+  { id: 'flaechen', icon: '4' },
+  { id: 'zusammenfassung', icon: '5' },
 ];
 
 export default function FormularWizard() {
