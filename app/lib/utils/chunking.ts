@@ -19,10 +19,11 @@ export interface TextChunk {
 
 /**
  * Default chunking configuration
+ * Optimized for legal texts with paragraphs (§) and sections
  */
 export const DEFAULT_CHUNK_CONFIG: ChunkConfig = {
-  chunkSize: parseInt(process.env.CHUNK_SIZE || '1000'),
-  chunkOverlap: parseInt(process.env.CHUNK_OVERLAP || '200'),
+  chunkSize: parseInt(process.env.CHUNK_SIZE || '1200'),  // INCREASED: More context per chunk for legal texts
+  chunkOverlap: parseInt(process.env.CHUNK_OVERLAP || '300'),  // INCREASED: Better continuity across chunks
   separator: '\n\n'
 };
 
@@ -71,20 +72,31 @@ export function splitTextIntoChunks(
 
     // If this is not the last chunk, try to find a good break point
     if (endIndex < cleanText.length) {
-      // Try to break at separator (paragraph break)
-      const separatorIndex = cleanText.lastIndexOf(separator, endIndex);
-      if (separatorIndex > startIndex) {
-        endIndex = separatorIndex + separator.length;
-      } else {
-        // Try to break at sentence end
-        const sentenceEnd = /[.!?]\s/.exec(cleanText.substring(startIndex, endIndex));
-        if (sentenceEnd && sentenceEnd.index) {
-          endIndex = startIndex + sentenceEnd.index + 2;
+      // PRIORITY 1: Try to break at legal section markers (§ paragraphs)
+      const sectionMatch = cleanText.substring(startIndex, endIndex).match(/§\s*\d+[a-z]?/gi);
+      if (sectionMatch && sectionMatch.length > 0) {
+        const lastSection = cleanText.lastIndexOf(sectionMatch[sectionMatch.length - 1], endIndex);
+        if (lastSection > startIndex + 200) {  // Only if we have enough content before it
+          endIndex = lastSection;
+        }
+      }
+
+      // PRIORITY 2: Try to break at separator (paragraph break)
+      if (endIndex === startIndex + chunkSize) {  // If section break didn't work
+        const separatorIndex = cleanText.lastIndexOf(separator, endIndex);
+        if (separatorIndex > startIndex) {
+          endIndex = separatorIndex + separator.length;
         } else {
-          // Try to break at word boundary
-          const lastSpace = cleanText.lastIndexOf(' ', endIndex);
-          if (lastSpace > startIndex) {
-            endIndex = lastSpace + 1;
+          // PRIORITY 3: Try to break at sentence end
+          const sentenceEnd = /[.!?]\s/.exec(cleanText.substring(startIndex, endIndex));
+          if (sentenceEnd && sentenceEnd.index) {
+            endIndex = startIndex + sentenceEnd.index + 2;
+          } else {
+            // PRIORITY 4: Try to break at word boundary
+            const lastSpace = cleanText.lastIndexOf(' ', endIndex);
+            if (lastSpace > startIndex) {
+              endIndex = lastSpace + 1;
+            }
           }
         }
       }

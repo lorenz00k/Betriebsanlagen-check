@@ -153,17 +153,26 @@ export async function processAllPDFs(
         const fileChars = text.length;
         totalCharacters += fileChars;
 
-        // Convert to PDFChunk format
-        const pdfChunks: PDFChunk[] = textChunks.map((chunk, index) => ({
-          id: `${filename.replace('.pdf', '')}_chunk_${index}`,
-          text: chunk.text,
-          metadata: {
-            source: filename,
-            chunk_index: index,
-            total_chunks: textChunks.length,
-            char_count: chunk.text.length
-          }
-        }));
+        // Convert to PDFChunk format with section extraction
+        const pdfChunks: PDFChunk[] = textChunks.map((chunk, index) => {
+          // Extract § paragraph references from chunk text
+          const sectionMatches = chunk.text.match(/§\s*\d+[a-z]?(\s+[A-Z][a-zäöüß]+)?/gi);
+          const section = sectionMatches && sectionMatches.length > 0
+            ? sectionMatches[0].trim()  // Use first § found in chunk
+            : undefined;
+
+          return {
+            id: `${filename.replace('.pdf', '')}_chunk_${index}`,
+            text: chunk.text,
+            metadata: {
+              source: filename,
+              chunk_index: index,
+              total_chunks: textChunks.length,
+              char_count: chunk.text.length,
+              section: section  // Add § paragraph as section metadata
+            }
+          };
+        });
 
         allChunks.push(...pdfChunks);
 
