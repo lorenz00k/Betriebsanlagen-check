@@ -85,7 +85,7 @@ export async function GET() {
           textLength: text.length,
           textPreview: text.substring(0, 200) + '...',
           hasSection: !!match.metadata?.section,
-          section: match.metadata?.section
+          section: typeof match.metadata?.section === 'string' ? match.metadata.section : undefined
         });
       }
     });
