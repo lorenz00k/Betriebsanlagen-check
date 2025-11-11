@@ -5,6 +5,7 @@ export interface NavItem {
 
 export const primaryLinks = (locale: string): NavItem[] => [
   { href: `/${locale}/adressen-check`, label: 'Adressen-Check' },
+  { href: `/${locale}/gastro-ki`, label: 'Gastro KI' },
   { href: `/${locale}/formular-assistent`, label: 'Formular-Assistent' },
   { href: `/${locale}/documents`, label: 'Dokumente' },
   { href: `/${locale}/faq`, label: 'FAQ' },
