@@ -6,7 +6,6 @@
 
 import fs from 'fs/promises';
 import path from 'path';
-import pdfParse from 'pdf-parse';
 import { splitTextIntoChunks, DEFAULT_CHUNK_CONFIG } from './chunking';
 
 export interface PDFChunk {
@@ -34,11 +33,14 @@ export interface ProcessingMetadata {
 }
 
 /**
- * Extract text from a single PDF file using pdf-parse
+ * Extract text from a single PDF file using pdf-parse (dynamic import)
  */
 async function extractTextFromPDF(pdfPath: string): Promise<string> {
   try {
     const dataBuffer = await fs.readFile(pdfPath);
+
+    // Dynamic import to handle CommonJS module
+    const pdfParse = (await import('pdf-parse')).default;
     const data = await pdfParse(dataBuffer);
 
     return data.text.trim();
