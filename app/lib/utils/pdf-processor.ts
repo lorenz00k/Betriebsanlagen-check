@@ -6,14 +6,8 @@
 
 import fs from 'fs/promises';
 import path from 'path';
-import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.mjs';
+import pdfParse from 'pdf-parse';
 import { splitTextIntoChunks, DEFAULT_CHUNK_CONFIG } from './chunking';
-
-// Configure PDF.js worker for Node.js environment
-// Disable worker in server-side rendering
-if (typeof window === 'undefined') {
-  pdfjsLib.GlobalWorkerOptions.workerSrc = '';
-}
 
 export interface PDFChunk {
   id: string;
@@ -39,42 +33,15 @@ export interface ProcessingMetadata {
   }[];
 }
 
-interface TextContentItem {
-  str: string;
-  [key: string]: unknown;
-}
-
 /**
- * Extract text from a single PDF file
+ * Extract text from a single PDF file using pdf-parse
  */
 async function extractTextFromPDF(pdfPath: string): Promise<string> {
   try {
     const dataBuffer = await fs.readFile(pdfPath);
-    const data = new Uint8Array(dataBuffer);
+    const data = await pdfParse(dataBuffer);
 
-    const loadingTask = pdfjsLib.getDocument({
-      data,
-      verbosity: 0,
-      standardFontDataUrl: undefined,
-    });
-
-    const pdf = await loadingTask.promise;
-    const numPages = pdf.numPages;
-
-    let fullText = '';
-
-    for (let pageNum = 1; pageNum <= numPages; pageNum++) {
-      const page = await pdf.getPage(pageNum);
-      const textContent = await page.getTextContent();
-
-      const pageText = (textContent.items as TextContentItem[])
-        .map((item) => item.str)
-        .join(' ');
-
-      fullText += pageText + '\n\n';
-    }
-
-    return fullText.trim();
+    return data.text.trim();
   } catch (error) {
     console.error(`Error extracting text from ${pdfPath}:`, error);
     throw error;
