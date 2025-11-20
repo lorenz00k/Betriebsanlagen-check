@@ -109,8 +109,41 @@ export default function Home() {
             </div>
 
             <div className="page-hero__visual">
-              <div className="hero-blob" />
-              <div className="hero-spot" />
+              <div className="hero-gallery">
+                <div className="hero-gallery__item hero-gallery__item--tall">
+                  <img
+                    src="https://images.unsplash.com/photo-1450101215322-bf5cd27642fc?auto=format&fit=crop&w=1200&q=80"
+                    alt="Aktenstapel in einem Büro"
+                    className="hero-gallery__img"
+                  />
+                  <span className="hero-gallery__label">Schneller Überblick</span>
+                </div>
+                <div className="hero-gallery__item">
+                  <img
+                    src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80"
+                    alt="Laptop mit Business Dashboard"
+                    className="hero-gallery__img"
+                  />
+                  <span className="hero-gallery__label">Digitale Prüfung</span>
+                </div>
+                <div className="hero-gallery__item">
+                  <img
+                    src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1200&q=80"
+                    alt="Straßenszene in Wien"
+                    className="hero-gallery__img"
+                  />
+                  <span className="hero-gallery__label">Vor Ort relevant</span>
+                </div>
+                <div className="hero-gallery__item hero-gallery__item--wide">
+                  <img
+                    src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=1200&q=80"
+                    alt="Laptop mit Formularen auf einem Holztisch"
+                    className="hero-gallery__img"
+                  />
+                  <span className="hero-gallery__label">Unterlagen im Griff</span>
+                </div>
+              </div>
+
               <div className="hero-card">
                 <div className="hero-card__header">
                   <Sparkles className="w-5 h-5" strokeWidth={2.2} />

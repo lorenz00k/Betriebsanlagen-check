@@ -119,22 +119,7 @@ h4 {
 .page-shell {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at top right, color-mix(in srgb, var(--color-accent) 6%, transparent) 0%, transparent 55%),
-    var(--color-bg);
-}
-
-.page-shell::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--color-accent) 8%, transparent) 0, transparent 55%);
-  opacity: 0.7;
-}
-
-.page-shell>* {
-  position: relative;
-  z-index: 1;
+  background: var(--color-bg);
 }
 
 .page-hero {
@@ -190,10 +175,75 @@ h4 {
   position: relative;
   min-height: 16rem;
   border-radius: var(--radius-lg);
-  background: radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--color-accent) 12%, transparent) 0, transparent 35%),
-    color-mix(in srgb, var(--color-surface) 90%, transparent 10%);
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent 6%);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
+}
+
+.hero-gallery {
+  position: relative;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+  padding: clamp(1.5rem, 3vw, 2rem);
+  isolation: isolate;
+}
+
+.hero-gallery__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  border: 1px solid color-mix(in srgb, var(--color-border) 65%, transparent);
+  box-shadow: var(--shadow-xs);
+  min-height: 8rem;
+}
+
+.hero-gallery__item--tall {
+  grid-column: span 2;
+  grid-row: span 4;
+}
+
+.hero-gallery__item--wide {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.hero-gallery__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-gallery__label {
+  position: absolute;
+  left: 0.85rem;
+  bottom: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent 8%);
+  border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+  color: var(--color-fg);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-xs);
+}
+
+@media (max-width: 720px) {
+  .hero-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .hero-gallery__item,
+  .hero-gallery__item--tall,
+  .hero-gallery__item--wide {
+    grid-column: span 2;
+    grid-row: auto;
+    min-height: 10rem;
+  }
 }
 
 .hero-blob,
