@@ -70,23 +70,80 @@ export default function Home() {
 
       <main className="page-shell">
         <div className="site-container">
-          <section className="section page-hero">
-            <h1 className="page-hero__title">
-              <BreakText className="block">{t("title")}</BreakText>
-            </h1>
-            <BreakText className="page-hero__copy block">{t("subtitle")}</BreakText>
+          <section className="section page-hero page-hero--split">
+            <div className="page-hero__content">
+              <div className="page-hero__eyebrow">
+                <Sparkles className="w-4 h-4" />
+                {t("seo.heading")}
+              </div>
+              <h1 className="page-hero__title">
+                <BreakText className="block">{t("title")}</BreakText>
+              </h1>
+              <BreakText className="page-hero__copy block">{t("subtitle")}</BreakText>
+
+              <div className="hero-points">
+                <div className="hero-point">
+                  <CheckCircle2 className="w-5 h-5" strokeWidth={2.2} />
+                  <span>{t("seo.feature1Title")}</span>
+                </div>
+                <div className="hero-point">
+                  <Languages className="w-5 h-5" strokeWidth={2.2} />
+                  <span>{t("stats.languages")}</span>
+                </div>
+                <div className="hero-point">
+                  <Shield className="w-5 h-5" strokeWidth={2.2} />
+                  <span>{t("seo.feature3Title")}</span>
+                </div>
+              </div>
+
+              <div className="page-hero__actions">
+                <Link href={`/${activeLocale}/check`} className="btn btn-primary">
+                  <BreakText>{t("card1Button")}</BreakText>
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <Link href={`/${activeLocale}/documents`} className="btn btn-secondary">
+                  <BreakText>{t("card2Button")}</BreakText>
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="page-hero__visual">
+              <div className="hero-blob" />
+              <div className="hero-spot" />
+              <div className="hero-card">
+                <div className="hero-card__header">
+                  <Sparkles className="w-5 h-5" strokeWidth={2.2} />
+                  <span>{t("seo.whyTitle")}</span>
+                </div>
+                <p className="hero-card__body">{t("seo.whyText")}</p>
+
+                <div className="hero-metrics">
+                  <div>
+                    <span className="hero-metrics__value">2</span>
+                    <span className="hero-metrics__label">{t("stats.time")}</span>
+                  </div>
+                  <div>
+                    <span className="hero-metrics__value">100%</span>
+                    <span className="hero-metrics__label">{t("stats.free")}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section className="section section--compact">
-            <AutoGrid min="16rem" className="page-actions">
-              <article className="card">
+            <div className="card-rail">
+              <article className="card card--frosted">
                 <div className="card__icon">
                   <CheckCircle2 className="w-7 h-7" strokeWidth={2.2} />
                 </div>
-                <h2 className="card__title">
-                  <BreakText className="block">{t("card1Title")}</BreakText>
-                </h2>
-                <BreakText className="card__body block">{t("card1Description")}</BreakText>
+                <div className="card__stack">
+                  <h2 className="card__title">
+                    <BreakText className="block">{t("card1Title")}</BreakText>
+                  </h2>
+                  <BreakText className="card__body block">{t("card1Description")}</BreakText>
+                </div>
                 <Link
                   href={`/${activeLocale}/check`}
                   className="btn btn-primary w-full justify-center"
@@ -96,14 +153,16 @@ export default function Home() {
                 </Link>
               </article>
 
-              <article className="card">
+              <article className="card card--frosted">
                 <div className="card__icon card__icon--warm">
                   <FileText className="w-7 h-7" strokeWidth={2.2} />
                 </div>
-                <h2 className="card__title">
-                  <BreakText className="block">{t("card2Title")}</BreakText>
-                </h2>
-                <BreakText className="card__body block">{t("card2Description")}</BreakText>
+                <div className="card__stack">
+                  <h2 className="card__title">
+                    <BreakText className="block">{t("card2Title")}</BreakText>
+                  </h2>
+                  <BreakText className="card__body block">{t("card2Description")}</BreakText>
+                </div>
                 <Link
                   href={`/${activeLocale}/documents`}
                   className="btn btn-secondary w-full justify-center"
@@ -112,11 +171,11 @@ export default function Home() {
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </article>
-            </AutoGrid>
+            </div>
           </section>
 
           <section className="section section--compact">
-            <div className="surface-muted">
+            <div className="surface-muted surface-muted--gradient">
               <AnimatedStats
                 stats={[
                   {
@@ -150,9 +209,9 @@ export default function Home() {
               <BreakText className="section__copy block">{t("seo.intro")}</BreakText>
             </div>
 
-            <AutoGrid min="14rem" className="mt-12">
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--accent-soft">
+            <div className="feature-grid">
+              <article className="card card--subtle feature-card">
+                <div className="feature-card__icon">
                   <Zap className="w-6 h-6" strokeWidth={2} />
                 </div>
                 <h3 className="card__title">
@@ -161,8 +220,8 @@ export default function Home() {
                 <BreakText className="card__body block">{t("seo.feature1Text")}</BreakText>
               </article>
 
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--success">
+              <article className="card card--subtle feature-card">
+                <div className="feature-card__icon feature-card__icon--accent">
                   <Languages className="w-6 h-6" strokeWidth={2} />
                 </div>
                 <h3 className="card__title">
@@ -171,8 +230,8 @@ export default function Home() {
                 <BreakText className="card__body block">{t("seo.feature2Text")}</BreakText>
               </article>
 
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--shield">
+              <article className="card card--subtle feature-card">
+                <div className="feature-card__icon feature-card__icon--dark">
                   <Shield className="w-6 h-6" strokeWidth={2} />
                 </div>
                 <h3 className="card__title">
@@ -180,9 +239,9 @@ export default function Home() {
                 </h3>
                 <BreakText className="card__body block">{t("seo.feature3Text")}</BreakText>
               </article>
-            </AutoGrid>
+            </div>
 
-            <div className="surface-muted mt-12 flex flex-col gap-6 md:flex-row md:items-center">
+            <div className="surface-muted surface-muted--stack mt-12">
               <div className="card__icon">
                 <Sparkles className="w-6 h-6" strokeWidth={2} />
               </div>
@@ -192,6 +251,10 @@ export default function Home() {
                 </h3>
                 <BreakText className="card__body text-lg block">{t("seo.whyText")}</BreakText>
               </div>
+              <Link href={`/${activeLocale}/check`} className="btn btn-primary">
+                <BreakText>{t("card1Button")}</BreakText>
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </div>
           </section>
 
@@ -233,11 +296,13 @@ export default function Home() {
               </article>
             </AutoGrid>
 
-            <div className="cta-panel">
-              <h3>
-                <BreakText className="block">{t("gruender.ctaTitle")}</BreakText>
-              </h3>
-              <BreakText className="block">{t("gruender.ctaText")}</BreakText>
+            <div className="cta-panel cta-panel--bordered">
+              <div className="cta-panel__content">
+                <h3>
+                  <BreakText className="block">{t("gruender.ctaTitle")}</BreakText>
+                </h3>
+                <BreakText className="block">{t("gruender.ctaText")}</BreakText>
+              </div>
               <Link href={`/${activeLocale}/check`} className="btn btn-primary">
                 <BreakText>{t("card1Button")}</BreakText>
                 <ArrowRight className="w-5 h-5" />
