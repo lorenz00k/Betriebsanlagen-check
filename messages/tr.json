@@ -3,30 +3,112 @@
     "selectLanguage": "Dil seçin"
   },
   "home": {
-    "title": "Girişimciler için İşletme İzni Kontrolü",
-    "subtitle": "2 dakikada işletme tesisi izni gerekip gerekmediğini öğrenin",
-    "card1Title": "Betriebsanlagen checker",
-    "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
-    "card1Button": "Start checker",
-    "card2Title": "Yolunuz ve gerekli belgeler",
-    "card2Description": "İşletme tesisi izni için ihtiyacınız olan tüm adımların ve belgelerin genel bakışı",
-    "card2Button": "Daha fazla bilgi",
-    "stats": {
-      "languages": "Mevcut diller",
-      "time": "Dakikalar içinde sonuç",
-      "free": "Ücretsiz ve güvenli"
+    "hero": {
+      "eyebrow": "Hizmet rehberi",
+      "headline": "İşletme iznine ihtiyacım var mı?",
+      "subheadline": "Birkaç dakika içinde ücretsiz öğrenin – anonim ve kayıtsız.",
+      "primaryCta": "Kontrole başla",
+      "secondaryCta": "Nasıl çalışır",
+      "highlights": [
+        "Ücretsiz ve anonim",
+        "Dakikalar içinde sonuç",
+        "Kayıt gerekmiyor"
+      ],
+      "visual": {
+        "label": "Genel bakış",
+        "title": "Operasyon güvenliği bir bakışta",
+        "points": [
+          "İzin gerekliliğine net bakış",
+          "Belgeler ve süreler için ipuçları",
+          "Resmi görüşmelere hazırlık"
+        ],
+        "metaTitle": "Önerilen belgeler",
+        "metaValue": "PDF kontrol listesi",
+        "cta": "Belgeleri gör"
+      }
     },
-    "seo": {
-      "heading": "İşletme tesisi izninin neden önemli olduğu",
-      "intro": "Viyana'da ve Avusturya genelinde, birçok işletme Ticaret Yasası'na göre işletme tesisi izni gerektirir. Ücretsiz kontrolümüz, işletmenizin izin gerektirip gerektirmediğini hızlı ve kolay bir şekilde bulmanıza yardımcı olur.",
-      "feature1Title": "Hızlı ve basit",
-      "feature1Text": "Sadece 2 dakikada işletme tesisi iznine ihtiyacınız olup olmadığına dair ilk değerlendirmeyi alacaksınız. Karmaşık formlar yok, bekleme süresi yok.",
-      "feature2Title": "Çok dilli",
-      "feature2Text": "Hizmetimiz 8 dilde mevcuttur: Almanca, İngilizce, Sırpça, Hırvatça, Türkçe, İtalyanca, İspanyolca ve Ukraynaca - Viyana'daki tüm girişimciler için erişilebilir.",
-      "feature3Title": "Ücretsiz ve anonim",
-      "feature3Text": "Kontrol tamamen ücretsizdir ve verileriniz gizli kalır. Kayıt gerekmez, gizli maliyet yoktur.",
-      "whyTitle": "Ne zaman işletme tesisi iznine ihtiyacınız var?",
-      "whyText": "İşletme tesisi izni, Avusturya'da birçok ticari faaliyet için gereklidir. İzin muafiyeti yönetmeliği, hangi işletmelerin izin gereksiniminden muaf olduğunu belirler. İşletme alanı, gürültü, çalışma saatleri ve faaliyet türü gibi faktörler önemli bir rol oynar."
+    "steps": {
+      "kicker": "Süreç",
+      "title": "Kontrol nasıl işler",
+      "copy": "İlk değerlendirme için üç net adım – hızlı ve güvenilir.",
+      "items": [
+        {
+          "title": "Soruları yanıtla",
+          "description": "Sektör, konum ve kapsam hakkında kısa sorular."
+        },
+        {
+          "title": "Değerlendirme al",
+          "description": "İznin gerekip gerekmediğine dair anında gösterge."
+        },
+        {
+          "title": "Belgeleri hazırla",
+          "description": "Sonraki adım için temel belgelerin listesi."
+        }
+      ]
+    },
+    "checker": {
+      "kicker": "Hemen başla",
+      "title": "İşletme kontrolünü başlat",
+      "copy": "İşletmen hakkında birkaç soruya cevap ver ve ilk sonucu al.",
+      "meta": {
+        "time": "2 dakika",
+        "languages": "8 dil",
+        "privacy": "%100 anonim"
+      },
+      "fields": {
+        "sectorLabel": "İşletme türü",
+        "sectorOptions": {
+          "retail": "Perakende",
+          "gastro": "Yeme-içme/Otel",
+          "office": "Ofis/Hizmet",
+          "production": "Atölye/Üretim",
+          "other": "Diğer"
+        },
+        "locationLabel": "İşletme nerede?",
+        "locationOptions": {
+          "vienna": "Viyana",
+          "austria": "Avusturya (Viyana dışı)"
+        }
+      },
+      "note": "Bu ilk adım; ayrıntılı sorular kontrolün içinde gelecek.",
+      "cta": "Başla"
+    },
+    "trust": {
+      "kicker": "Avantajlar",
+      "title": "Bu kontrol neden faydalı",
+      "items": [
+        {
+          "title": "Dakikalar içinde sonuç",
+          "description": "İzne ihtiyaç olup olmadığını hemen görürsün."
+        },
+        {
+          "title": "8 dilde",
+          "description": "Farklı ekipler ve çok dilli planlama için tasarlandı."
+        },
+        {
+          "title": "%100 anonim",
+          "description": "Kişisel veri veya hesap gerekmez."
+        },
+        {
+          "title": "Ücretsiz hizmet",
+          "description": "Ücret veya gizli maliyet yok."
+        }
+      ]
+    },
+    "info": {
+      "kicker": "Daha fazlası",
+      "title": "İzinler hakkında bilmen gerekenler",
+      "copy": "Daha fazla bağlam istersen oku; odak hızlı kontrolde kalıyor.",
+      "cards": [
+        {
+          "title": "İzinler neden önemli",
+          "description": "Çalışanları, komşuları ve müşterileri korur ve güvenli işletme sağlar."
+        },
+        {
+          "title": "Belge desteği",
+          "description": "En yaygın gereklilikleri derleyerek yetkililerle görüşmeye hazırlar."
+        }
+      ]
     },
     "footer": {
       "copyright": "Betriebsanlagen Check - Viyana bürokrasisi için yardımcınız",
@@ -242,7 +324,9 @@
     "twitter": {
       "title": "İzin kontrolü: Onaya ihtiyacınız var mı?",
       "description": "Birkaç soruyu yanıtlayarak Viyana'daki işletme tesisinizin izne ihtiyaç duyup duymadığını öğrenin ve sonraki adımlar hakkında rehberlik alın.",
-      "images": ["/og-image.png"]
+      "images": [
+        "/og-image.png"
+      ]
     },
     "faq": {
       "title": "Viyana'da işletme tesisi izni hakkında SSS",

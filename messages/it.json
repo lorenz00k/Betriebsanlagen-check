@@ -3,30 +3,112 @@
     "selectLanguage": "Seleziona lingua"
   },
   "home": {
-    "title": "Controllo Autorizzazione Impianto Aziendale per Fondatori",
-    "subtitle": "Scopri in 2 minuti se hai bisogno di un'autorizzazione per l'impianto aziendale",
-    "card1Title": "Betriebsanlagen checker",
-    "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
-    "card1Button": "Start checker",
-    "card2Title": "Il tuo percorso e i documenti necessari",
-    "card2Description": "Panoramica di tutti i passaggi e i documenti necessari per l'autorizzazione dell'impianto aziendale",
-    "card2Button": "Scopri di più",
-    "stats": {
-      "languages": "Lingue disponibili",
-      "time": "Risultato in pochi minuti",
-      "free": "Gratuito e sicuro"
+    "hero": {
+      "eyebrow": "Guida al servizio",
+      "headline": "Ho bisogno di un’autorizzazione per l’impianto?",
+      "subheadline": "Scoprilo gratuitamente in pochi minuti – in modo anonimo e senza registrazione.",
+      "primaryCta": "Avvia il check",
+      "secondaryCta": "Come funziona",
+      "highlights": [
+        "Gratuito e anonimo",
+        "Risultato in pochi minuti",
+        "Nessuna registrazione"
+      ],
+      "visual": {
+        "label": "Panoramica",
+        "title": "Sicurezza operativa a colpo d’occhio",
+        "points": [
+          "Chiarezza sulla necessità di autorizzazione",
+          "Indicazioni su documenti e scadenze",
+          "Orientamento per parlare con le autorità"
+        ],
+        "metaTitle": "Documenti consigliati",
+        "metaValue": "Checklist in PDF",
+        "cta": "Vedi documenti"
+      }
     },
-    "seo": {
-      "heading": "Perché un'autorizzazione per l'impianto aziendale è importante",
-      "intro": "A Vienna e in tutta l'Austria, molte aziende richiedono un'autorizzazione per l'impianto aziendale secondo la Legge sul Commercio. Il nostro controllo gratuito ti aiuta a scoprire rapidamente e facilmente se la tua azienda richiede un'autorizzazione.",
-      "feature1Title": "Veloce e semplice",
-      "feature1Text": "In soli 2 minuti riceverai una valutazione iniziale se hai bisogno di un'autorizzazione per l'impianto aziendale. Nessun modulo complicato, nessun tempo di attesa.",
-      "feature2Title": "Multilingue",
-      "feature2Text": "Il nostro servizio è disponibile in 8 lingue: tedesco, inglese, serbo, croato, turco, italiano, spagnolo e ucraino - accessibile a tutti gli imprenditori di Vienna.",
-      "feature3Title": "Gratuito e anonimo",
-      "feature3Text": "Il controllo è completamente gratuito e i tuoi dati rimangono privati. Nessuna registrazione richiesta, nessun costo nascosto.",
-      "whyTitle": "Quando hai bisogno di un'autorizzazione per l'impianto aziendale?",
-      "whyText": "Un'autorizzazione per l'impianto aziendale è richiesta in Austria per molte attività commerciali. Il regolamento di esenzione determina quali aziende sono esentate dall'obbligo di autorizzazione. Fattori come l'area aziendale, il rumore, gli orari di apertura e il tipo di attività svolgono un ruolo importante."
+    "steps": {
+      "kicker": "Percorso",
+      "title": "Come funziona il check",
+      "copy": "Tre passaggi sintetici per ottenere una prima valutazione, senza burocrazia superflua.",
+      "items": [
+        {
+          "title": "Rispondi alle domande",
+          "description": "Domande brevi su settore, sede e dimensioni."
+        },
+        {
+          "title": "Ricevi una valutazione",
+          "description": "Indicazione immediata se serve probabilmente un’autorizzazione."
+        },
+        {
+          "title": "Prepara i documenti",
+          "description": "Checklist dei documenti principali per il passo successivo."
+        }
+      ]
+    },
+    "checker": {
+      "kicker": "Inizia ora",
+      "title": "Avvia il check dell’impianto",
+      "copy": "Rispondi a poche domande sulla tua attività e ricevi una prima indicazione.",
+      "meta": {
+        "time": "2 minuti",
+        "languages": "8 lingue",
+        "privacy": "100% anonimo"
+      },
+      "fields": {
+        "sectorLabel": "Tipo di attività",
+        "sectorOptions": {
+          "retail": "Commercio al dettaglio",
+          "gastro": "Ristorazione/Hotel",
+          "office": "Ufficio/Servizi",
+          "production": "Officina/Produzione",
+          "other": "Altro"
+        },
+        "locationLabel": "Dove si trova l’attività?",
+        "locationOptions": {
+          "vienna": "Vienna",
+          "austria": "Austria (fuori Vienna)"
+        }
+      },
+      "note": "È il primo passaggio – il check completo ti guida nei dettagli.",
+      "cta": "Inizia"
+    },
+    "trust": {
+      "kicker": "Vantaggi",
+      "title": "Perché questo check è utile",
+      "items": [
+        {
+          "title": "Risultato in pochi minuti",
+          "description": "Vedi subito se probabilmente serve un’autorizzazione."
+        },
+        {
+          "title": "Disponibile in 8 lingue",
+          "description": "Pensato per team diversi e pianificazioni multilingue."
+        },
+        {
+          "title": "100% anonimo",
+          "description": "Nessun dato personale o account richiesto."
+        },
+        {
+          "title": "Servizio gratuito",
+          "description": "Senza costi o spese nascoste."
+        }
+      ]
+    },
+    "info": {
+      "kicker": "Approfondisci",
+      "title": "Cosa sapere sulle autorizzazioni",
+      "copy": "Ulteriori informazioni se vuoi leggere di più; il focus resta sul check veloce.",
+      "cards": [
+        {
+          "title": "Perché le autorizzazioni contano",
+          "description": "Proteggono personale, vicinato e clienti garantendo un’attività sicura."
+        },
+        {
+          "title": "Supporto ai documenti",
+          "description": "Raccogliamo i requisiti più comuni per prepararti al dialogo con le autorità."
+        }
+      ]
     },
     "footer": {
       "copyright": "Betriebsanlagen Check - Il tuo aiuto per la burocrazia viennese",
@@ -293,7 +375,9 @@
     "twitter": {
       "title": "Verifica permessi: hai bisogno di un'autorizzazione?",
       "description": "Rispondi a poche domande per scoprire se la tua attività a Vienna necessita di un permesso e ricevi indicazioni sui prossimi passi.",
-      "images": ["/og-image.png"]
+      "images": [
+        "/og-image.png"
+      ]
     },
     "faq": {
       "title": "FAQ sull'autorizzazione degli impianti aziendali a Vienna",

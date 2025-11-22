@@ -3,30 +3,112 @@
     "selectLanguage": "Seleccionar idioma"
   },
   "home": {
-    "title": "Verificación de Permisos de Instalaciones Comerciales para Fundadores",
-    "subtitle": "Descubre en 2 minutos si necesitas un permiso para tu instalación comercial",
-    "card1Title": "Betriebsanlagen checker",
-    "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
-    "card1Button": "Start checker",
-    "card2Title": "Tu camino y los documentos necesarios",
-    "card2Description": "Resumen de todos los pasos y documentos que necesitas para el permiso de instalación comercial",
-    "card2Button": "Más información",
-    "stats": {
-      "languages": "Idiomas disponibles",
-      "time": "Resultado en minutos",
-      "free": "Gratis y seguro"
+    "hero": {
+      "eyebrow": "Guía de servicio",
+      "headline": "¿Necesito una autorización para mi negocio?",
+      "subheadline": "Descúbrelo gratis en pocos minutos: anónimo y sin registrarte.",
+      "primaryCta": "Iniciar check de instalaciones",
+      "secondaryCta": "Así funciona",
+      "highlights": [
+        "Gratis y anónimo",
+        "Resultado en minutos",
+        "Sin registro"
+      ],
+      "visual": {
+        "label": "Resumen",
+        "title": "Seguridad operativa de un vistazo",
+        "points": [
+          "Visión clara sobre la necesidad de permiso",
+          "Pistas sobre documentos y plazos",
+          "Orientación para hablar con autoridades"
+        ],
+        "metaTitle": "Documentos recomendados",
+        "metaValue": "Lista de comprobación en PDF",
+        "cta": "Ver documentos"
+      }
     },
-    "seo": {
-      "heading": "Por qué un permiso de instalación comercial es importante",
-      "intro": "En Viena y en toda Austria, muchas empresas requieren un permiso de instalación comercial según la Ley de Comercio. Nuestra verificación gratuita te ayuda a descubrir rápida y fácilmente si tu empresa requiere un permiso.",
-      "feature1Title": "Rápido y simple",
-      "feature1Text": "En solo 2 minutos recibirás una evaluación inicial de si necesitas un permiso de instalación comercial. Sin formularios complicados, sin tiempos de espera.",
-      "feature2Title": "Multilingüe",
-      "feature2Text": "Nuestro servicio está disponible en 8 idiomas: alemán, inglés, serbio, croata, turco, italiano, español y ucraniano - accesible para todos los empresarios en Viena.",
-      "feature3Title": "Gratis y anónimo",
-      "feature3Text": "La verificación es completamente gratuita y tus datos permanecen privados. No se requiere registro, sin costos ocultos.",
-      "whyTitle": "¿Cuándo necesitas un permiso de instalación comercial?",
-      "whyText": "Un permiso de instalación comercial es requerido en Austria para muchas actividades comerciales. El reglamento de exención determina qué empresas están exentas del requisito de permiso. Factores como el área comercial, el ruido, el horario de apertura y el tipo de actividad juegan un papel importante."
+    "steps": {
+      "kicker": "Proceso",
+      "title": "Cómo funciona el check",
+      "copy": "Tres pasos breves para tu primera valoración, sin burocracia innecesaria.",
+      "items": [
+        {
+          "title": "Responder preguntas",
+          "description": "Preguntas breves sobre sector, ubicación y tamaño."
+        },
+        {
+          "title": "Recibir valoración",
+          "description": "Indicación inmediata de si probablemente necesitas permiso."
+        },
+        {
+          "title": "Preparar documentos",
+          "description": "Lista de documentos clave para tu siguiente paso."
+        }
+      ]
+    },
+    "checker": {
+      "kicker": "Empezar ahora",
+      "title": "Comienza tu check de instalaciones",
+      "copy": "Responde algunas preguntas sobre tu negocio y obtén una primera orientación.",
+      "meta": {
+        "time": "2 minutos",
+        "languages": "8 idiomas",
+        "privacy": "100 % anónimo"
+      },
+      "fields": {
+        "sectorLabel": "Tipo de negocio",
+        "sectorOptions": {
+          "retail": "Comercio minorista",
+          "gastro": "Gastronomía/Hotel",
+          "office": "Oficina/Servicios",
+          "production": "Taller/Producción",
+          "other": "Otro"
+        },
+        "locationLabel": "¿Dónde está el negocio?",
+        "locationOptions": {
+          "vienna": "Viena",
+          "austria": "Austria (fuera de Viena)"
+        }
+      },
+      "note": "Este es el primer paso; el check completo te guía por los detalles.",
+      "cta": "Comenzar"
+    },
+    "trust": {
+      "kicker": "Ventajas",
+      "title": "Por qué este check es útil",
+      "items": [
+        {
+          "title": "Resultado en pocos minutos",
+          "description": "Sabrás enseguida si probablemente necesitas permiso."
+        },
+        {
+          "title": "Disponible en 8 idiomas",
+          "description": "Pensado para equipos diversos y planes multilingües."
+        },
+        {
+          "title": "100 % anónimo",
+          "description": "Sin datos personales ni cuenta; solo información de tu negocio."
+        },
+        {
+          "title": "Servicio gratuito",
+          "description": "Sin costes ni cargos ocultos."
+        }
+      ]
+    },
+    "info": {
+      "kicker": "Saber más",
+      "title": "Lo que debes saber sobre las autorizaciones",
+      "copy": "Más contexto si quieres profundizar; el foco sigue en el check rápido.",
+      "cards": [
+        {
+          "title": "Por qué importan las autorizaciones",
+          "description": "Protegen a personal, vecinos y clientes y garantizan operaciones seguras."
+        },
+        {
+          "title": "Guía de documentos",
+          "description": "Reunimos los requisitos más comunes para que hables preparado con las autoridades."
+        }
+      ]
     },
     "footer": {
       "copyright": "Betriebsanlagen Check - Tu ayudante para la burocracia vienesa",
@@ -242,7 +324,9 @@
     "twitter": {
       "title": "Verificador de permisos: ¿necesita autorización?",
       "description": "Responda algunas preguntas para saber si su instalación en Viena requiere permiso y reciba orientación sobre los siguientes pasos.",
-      "images": ["/og-image.png"]
+      "images": [
+        "/og-image.png"
+      ]
     },
     "faq": {
       "title": "FAQ sobre permisos de instalaciones comerciales en Viena",

@@ -3,30 +3,112 @@
     "selectLanguage": "Izaberite jezik"
   },
   "home": {
-    "title": "Provera dozvola za poslovne objekte za osnivače",
-    "subtitle": "Saznajte za 2 minuta da li vam je potrebna dozvola za poslovni objekat",
-    "card1Title": "Betriebsanlagen checker",
-    "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
-    "card1Button": "Start checker",
-    "card2Title": "Vaš put i potrebni dokumenti",
-    "card2Description": "Pregled svih koraka i dokumenata koji su vam potrebni za dozvolu za poslovni objekat",
-    "card2Button": "Saznajte više",
-    "stats": {
-      "languages": "Доступних језика",
-      "time": "Резултат за неколико минута",
-      "free": "Бесплатно и сигурно"
+    "hero": {
+      "eyebrow": "Vodič kroz uslugu",
+      "headline": "Da li mi je potrebna dozvola za poslovni objekat?",
+      "subheadline": "Saznajte besplatno za nekoliko minuta – anonimno i bez registracije.",
+      "primaryCta": "Pokreni proveru",
+      "secondaryCta": "Kako funkcioniše",
+      "highlights": [
+        "Besplatno i anonimno",
+        "Rezultat za par minuta",
+        "Bez registracije"
+      ],
+      "visual": {
+        "label": "Pregled",
+        "title": "Bezbednost poslovanja na jednom mestu",
+        "points": [
+          "Jasan uvid da li je potrebna dozvola",
+          "Smernice za dokumenta i rokove",
+          "Orijentacija za razgovor sa institucijama"
+        ],
+        "metaTitle": "Preporučena dokumenta",
+        "metaValue": "Kontrolna lista PDF",
+        "cta": "Pogledaj dokumenta"
+      }
     },
-    "seo": {
-      "heading": "Зашто је дозвола за пословни објекат важна",
-      "intro": "У Бечу и широм Аустрије, многим предузећима је потребна дозвола за пословни објекат према Закону о трговини. Наша бесплатна провера вам помаже да брзо и лако сазнате да ли ваше предузеће захтева дозволу.",
-      "feature1Title": "Брзо и једноставно",
-      "feature1Text": "За само 2 минута добићете почетну процену да ли вам је потребна дозвола за пословни објекат. Без компликованих формулара, без чекања.",
-      "feature2Title": "Вишејезично",
-      "feature2Text": "Наша услуга је доступна на 8 језика: немачки, енглески, српски, хрватски, турски, италијански, шпански и украјински - доступна свим предузетницима у Бечу.",
-      "feature3Title": "Бесплатно и анонимно",
-      "feature3Text": "Провера је потпуно бесплатна и ваши подаци остају приватни. Није потребна регистрација, нема скривених трошкова.",
-      "whyTitle": "Када вам је потребна дозвола за пословни објекат?",
-      "whyText": "Дозвола за пословни објекат је потребна у Аустрији за многе комерцијалне активности. Уредба о изузећима од дозволе одређује која предузећа су ослобођена од обавезе дозволе. Фактори као што су пословна површина, бука, радно време и врста делатности играју важну улогу."
+    "steps": {
+      "kicker": "Proces",
+      "title": "Kako radi proverа",
+      "copy": "Tri koraka do početne procene – jednostavno i pouzdano.",
+      "items": [
+        {
+          "title": "Odgovori na pitanja",
+          "description": "Kratka pitanja o delatnosti, lokaciji i obimu."
+        },
+        {
+          "title": "Dobij procenu",
+          "description": "Brza naznaka da li je dozvola verovatno potrebna."
+        },
+        {
+          "title": "Pripremi dokumenta",
+          "description": "Lista ključnih dokumenata za sledeći korak."
+        }
+      ]
+    },
+    "checker": {
+      "kicker": "Pokreni sada",
+      "title": "Pokreni proveru poslovnog objekta",
+      "copy": "Odgovori na nekoliko pitanja o poslu i dobiješ početni rezultat.",
+      "meta": {
+        "time": "2 minuta",
+        "languages": "8 jezika",
+        "privacy": "100 % anonimno"
+      },
+      "fields": {
+        "sectorLabel": "Vrsta delatnosti",
+        "sectorOptions": {
+          "retail": "Maloprodaja",
+          "gastro": "Ugostiteljstvo/Hotel",
+          "office": "Kancelarija/Usluge",
+          "production": "Radionica/Proizvodnja",
+          "other": "Ostalo"
+        },
+        "locationLabel": "Gde se nalazi objekat?",
+        "locationOptions": {
+          "vienna": "Beč",
+          "austria": "Austrija (van Beča)"
+        }
+      },
+      "note": "Ovo je prvi ekran – detaljna pitanja slede u proveri.",
+      "cta": "Započni"
+    },
+    "trust": {
+      "kicker": "Prednosti",
+      "title": "Zašto je ova provera korisna",
+      "items": [
+        {
+          "title": "Rezultat za nekoliko minuta",
+          "description": "Odmah vidiš da li je dozvola verovatno potrebna."
+        },
+        {
+          "title": "Dostupно na 8 језика",
+          "description": "Za raznovrsne timove i višejezično планiranje."
+        },
+        {
+          "title": "100 % anonimно",
+          "description": "Без личних података или налога."
+        },
+        {
+          "title": "Бесплатна услуга",
+          "description": "Без трошкова или скривених накнада."
+        }
+      ]
+    },
+    "info": {
+      "kicker": "Додатне информације",
+      "title": "Шта треба да знате о дозволама",
+      "copy": "Више контекста ако желите детаље; фокус остаје на брзој провери.",
+      "cards": [
+        {
+          "title": "Зашто су дозволе важне",
+          "description": "Штите запослене, комшије и клијенте и обезбеђују безбедан рад."
+        },
+        {
+          "title": "Подршка за документа",
+          "description": "Сакупљамо најчешће захтеве да бисте спремно разговарали са институцијама."
+        }
+      ]
     },
     "footer": {
       "copyright": "Betriebsanlagen Check - Ваш помоћник за бечку бирократију",
@@ -293,7 +375,9 @@
     "twitter": {
       "title": "Provera dozvole: da li vam je potrebno odobrenje?",
       "description": "Odgovorite na nekoliko pitanja kako biste saznali da li je vašem poslovnom prostoru u Beču potrebna dozvola i koje korake potom preduzeti.",
-      "images": ["/og-image.png"]
+      "images": [
+        "/og-image.png"
+      ]
     },
     "faq": {
       "title": "Česta pitanja o dozvoli za poslovni objekat u Beču",
