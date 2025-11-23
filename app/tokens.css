@@ -1,9 +1,9 @@
 :root {
   color-scheme: light;
   /* Core palette */
-  --color-bg: #f4f6fb;
+  --color-bg: #ffffff;
   --color-surface: #ffffff;
-  --color-surface-muted: #f1f3f8;
+  --color-surface-muted: #f6f7fa;
   --color-fg: #1f2430;
   --color-fg-subtle: #4f5563;
   --color-muted: #8a92a3;

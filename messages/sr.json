@@ -11,6 +11,10 @@
     "card2Title": "Vaš put i potrebni dokumenti",
     "card2Description": "Pregled svih koraka i dokumenata koji su vam potrebni za dozvolu za poslovni objekat",
     "card2Button": "Saznajte više",
+    "documents": {
+      "heading": "Преглед свих потребних докумената",
+      "cta": "Иди на најважније документе"
+    },
     "stats": {
       "languages": "Доступних језика",
       "time": "Резултат за неколико минута",

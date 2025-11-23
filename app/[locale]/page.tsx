@@ -5,7 +5,6 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import AnimatedStats from "../components/AnimatedStats";
 import { defaultLocale } from "@/i18n";
 import { Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
 import BreakText from "@/components/ui/BreakText";
@@ -84,102 +83,62 @@ export default function Home() {
           </section>
 
           {/* 2. ABLAUF / FLOW */}
-          <section id="how-it-works" className="section section--compact">
+          <section
+            id="how-it-works"
+            className="section section--compact section--tight-top"
+          >
             <div className="section__heading">
               <h2>
                 <BreakText className="block">{t("flow.heading")}</BreakText>
               </h2>
-              <BreakText className="section__copy block">
-                {t("flow.intro")}
-              </BreakText>
             </div>
 
-            <div className="flow-steps mt-10 flex flex-col gap-4 md:flex-row md:items-stretch md:justify-between md:gap-6">
-              <div className="flow-steps__item card card--subtle flex-1">
-                <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("flow.step1Title")}
+            <div className="flow-modern">
+              {[1, 2, 3].map((step) => (
+                <div key={step} className="flow-modern__item">
+                  <span className="flow-modern__badge">{step}</span>
+                  <h3 className="flow-modern__title">
+                    <BreakText className="block">
+                      {t(`flow.step${step}Title` as const)}
+                    </BreakText>
+                  </h3>
+                  <BreakText className="flow-modern__copy block">
+                    {t(`flow.step${step}Text` as const)}
                   </BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("flow.step1Text")}
-                </BreakText>
-              </div>
-
-              <div className="flow-steps__arrow flex items-center justify-center text-2xl md:px-2">
-                <span aria-hidden="true">→</span>
-              </div>
-
-              <div className="flow-steps__item card card--subtle flex-1">
-                <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("flow.step2Title")}
-                  </BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("flow.step2Text")}
-                </BreakText>
-              </div>
-
-              <div className="flow-steps__arrow flex items-center justify-center text-2xl md:px-2">
-                <span aria-hidden="true">→</span>
-              </div>
-
-              <div className="flow-steps__item card card--subtle flex-1">
-                <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("flow.step3Title")}
-                  </BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("flow.step3Text")}
-                </BreakText>
-              </div>
+                </div>
+              ))}
             </div>
           </section>
 
           {/* 3. CHECKER – direkt unter dem Ablauf, mit eingebettetem ersten Screen */}
           <section className="section section--compact">
-            <div className="surface-muted">
-              <div className="section__heading">
-                <h2>
-                  <BreakText className="block">
-                    {t("checker.heading")}
-                  </BreakText>
-                </h2>
-                <BreakText className="section__copy block">
-                  {t("checker.intro")}
+            <div className="surface-muted text-center">
+              <h2>
+                <BreakText className="block">{t("checker.heading")}</BreakText>
+              </h2>
+              <div className="mt-6 flex justify-center">
+                <Link
+                  href={`/${activeLocale}/check`}
+                  className="btn btn-primary btn-wide"
+                >
+                  <BreakText>{t("card1Button")}</BreakText>
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          <section className="section section--compact">
+            <div className="surface-muted text-center">
+              <h2>
+                <BreakText className="block">
+                  {t("documents.heading")}
                 </BreakText>
-              </div>
-
-              <div className="checker-embed mt-8">
-                {/* 
-                  TODO: Hier den ersten Screen des Checkers einbinden,
-                  z.B. eine gemeinsame Komponente wie:
-                  <CheckWizardFirstStep locale={activeLocale} />
-
-                  Bis dahin zeigt der Platzhalter-Text an, was hier passiert.
-                */}
-                <div className="card">
-                  <BreakText className="card__body block">
-                    {t("checker.placeholder")}
-                  </BreakText>
-                  <div className="mt-4">
-                    <Link
-                      href={`/${activeLocale}/check`}
-                      className="btn btn-primary"
-                    >
-                      <BreakText>{t("card1Button")}</BreakText>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6">
+              </h2>
+              <div className="mt-4 flex justify-center">
                 <Link
                   href={`/${activeLocale}/documents`}
-                  className="btn btn-secondary inline-flex items-center gap-2"
+                  className="btn btn-secondary btn-wide"
                 >
                   <BreakText>{t("documents.cta")}</BreakText>
                   <ArrowRight className="w-5 h-5" />
@@ -197,31 +156,6 @@ export default function Home() {
                 </BreakText>
               </h2>
               {/* Subheadline entfernt – direkt in die Features/Stats */}
-            </div>
-
-            <div className="surface-muted mt-8">
-              <AnimatedStats
-                stats={[
-                  {
-                    value: 8,
-                    suffix: "",
-                    label: t("stats.languages"),
-                    icon: <Languages className="w-6 h-6" strokeWidth={2} />,
-                  },
-                  {
-                    value: 2,
-                    suffix: " Min",
-                    label: t("stats.time"),
-                    icon: <Zap className="w-6 h-6" strokeWidth={2} />,
-                  },
-                  {
-                    value: 100,
-                    suffix: "%",
-                    label: t("stats.free"),
-                    icon: <Shield className="w-6 h-6" strokeWidth={2} />,
-                  },
-                ]}
-              />
             </div>
 
             <AutoGrid min="14rem" className="mt-10">

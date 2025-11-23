@@ -11,6 +11,10 @@
     "card2Title": "Tu camino y los documentos necesarios",
     "card2Description": "Resumen de todos los pasos y documentos que necesitas para el permiso de instalación comercial",
     "card2Button": "Más información",
+    "documents": {
+      "heading": "Resumen de todos los documentos necesarios",
+      "cta": "Ir a los documentos más importantes"
+    },
     "stats": {
       "languages": "Idiomas disponibles",
       "time": "Resultado en minutos",
