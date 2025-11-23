@@ -69,839 +69,838 @@
       "imprint": "Impressum",
       "privacy": "Datenschutz"
     }
-  }
-},
-"complianceChecker": {
-  "badge": "Checker 2.0",
-  "title": "Betriebsanlagen checker nach GewO",
-  "subtitle": "Führe die strukturierte Prüfung zu Betriebsanlage, Genehmigungspflicht, Unterlagen und Pflichten durch.",
-  "progress": "Schritt {current} von {total}",
-  "actions": {
-    "next": "Weiter",
-    "back": "Zurück",
-    "finish": "Auswertung anzeigen"
   },
-  "form": {
-    "options": {
-      "yes": "Ja",
-      "no": "Nein"
+  "complianceChecker": {
+    "badge": "Checker 2.0",
+    "title": "Betriebsanlagen checker nach GewO",
+    "subtitle": "Führe die strukturierte Prüfung zu Betriebsanlage, Genehmigungspflicht, Unterlagen und Pflichten durch.",
+    "progress": "Schritt {current} von {total}",
+    "actions": {
+      "next": "Weiter",
+      "back": "Zurück",
+      "finish": "Auswertung anzeigen"
     },
-    "sector": {
-      "question": "Welche Betriebsart planst du?",
-      "helper": "Der Checker deckt Handel, Dienstleistung, Gastronomie/Beherbergung, Werkstätten und weitere Sonderfälle ab.",
+    "form": {
       "options": {
-        "retail": "Handel/Einzelhandel",
-        "office": "Büro- oder Dienstleistungsbetrieb",
-        "gastronomyHotel": "Gastronomie/Hotel",
-        "accommodation": "Beherbergungsbetrieb",
-        "workshop": "Werkstätte",
-        "warehouse": "Lager",
-        "cosmetics": "Kosmetik/Fußpflege/Massage",
-        "dataCenter": "Rechenzentrum",
-        "selfService": "Containershop/Selbstbedienung",
-        "other": "Andere Tätigkeit"
-      }
-    },
-    "hospitalitySubtype": {
-      "question": "Welche Ausprägung trifft für Gastronomie/Beherbergung zu?",
-      "options": {
-        "beherbergung": "Beherbergung (Pension, kleines Hotel)",
-        "iceSalon": "Gastgewerbe in der Betriebsart Eissalon",
-        "otherGastro": "Andere Gastronomieform"
+        "yes": "Ja",
+        "no": "Nein"
       },
-      "descriptions": {
-        "beherbergung": "Max. 30 Betten, Gebäude ausschließlich Wohn-/Beherbergungszweck, keine Wellnessbereiche, nur Frühstück oder kleiner Imbiss.",
-        "iceSalon": "Reiner Eissalon ohne vollwertige Küche.",
-        "otherGastro": "Gastrobetriebe außerhalb der Eissalon-Freistellung."
-      }
-    },
-    "workshopSubtype": {
-      "question": "Welche Werkstattform trifft zu?",
-      "options": {
-        "tailor": "Änderungsschneiderei/haushaltsähnliche Nähmaschinen",
-        "shoeService": "Schuhservice/Schusterei",
-        "textilePickup": "Textilreinigung-Annahmestelle",
-        "otherWorkshop": "Andere Werkstatt"
-      }
-    },
-    "areaSqm": {
-      "label": "Betriebsfläche in m²",
-      "placeholder": "z. B. 250"
-    },
-    "personCount": {
-      "label": "Maximale Personen gleichzeitig (AN + Kund:innen/Gäste)",
-      "placeholder": "z. B. 20"
-    },
-    "isStationary": {
-      "question": "Ist die Tätigkeit örtlich gebunden?"
-    },
-    "isOnlyTemporary": {
-      "question": "Handelt es sich nur um eine vorübergehende Nutzung?"
-    },
-    "bedCount": {
-      "label": "Gästebetten gesamt",
-      "placeholder": "z. B. 18"
-    },
-    "buildingUseExclusive": {
-      "question": "Wird das Gebäude ausschließlich für Wohnen/Beherbergung genutzt?"
-    },
-    "hasWellnessFacilities": {
-      "question": "Sind Wellness-/Badeeinrichtungen (Pool, Sauna etc.) vorgesehen?"
-    },
-    "servesFullMeals": {
-      "question": "Werden über Frühstück/Imbiss hinausgehende Mahlzeiten angeboten?"
-    },
-    "location": {
-      "heading": "Standort- & Baukonsens",
-      "helper": "Klärung von Widmung, Bebauungsplan und bestehendem Nutzungskonsens."
-    },
-    "zoningClarified": {
-      "question": "Ist Widmung/Bebauungsplan für die geplante Nutzung passend?"
-    },
-    "buildingConsentPresent": {
-      "question": "Liegt ein aufrechter Bau- und Nutzungskonsens für die Räume vor?"
-    },
-    "operations": {
-      "heading": "Betriebsablauf & Emissionen",
-      "helper": "Bewerte Zeiten, Emissionen, Gefahrstoffe und Sonderanlagen."
-    },
-    "operatingPattern": {
-      "question": "Welche Betriebszeiten werden benötigt?",
-      "options": {
-        "gfvoWindow": "Innerhalb der 2. GFVO-Zeiten (Mo–Fr 6–22 Uhr, Sa 6–19 Uhr)",
-        "extendedHours": "Erweiterte Zeiten (z. B. Abende, Sonntag)",
-        "roundTheClock": "24/7 oder Nachtbetrieb"
-      },
-      "descriptions": {
-        "gfvoWindow": "Normale Tagesöffnungszeiten inklusive Lieferzeiten der 2. GFVO.",
-        "extendedHours": "Zeitbedarf außerhalb der Freistellung, aber nicht dauerhaft 24/7.",
-        "roundTheClock": "Durchgehender Betrieb oder Nachtbetrieb."
-      }
-    },
-    "hasExternalVentilation": {
-      "question": "Gibt es außenliegende Ventilatoren/Kälte- oder Abluftgeräte?"
-    },
-    "storesRegulatedHazardous": {
-      "question": "Lagern Gefahrstoffe mit speziellen Rechtsvorschriften (z. B. brennbare Flüssigkeiten, Gas)?"
-    },
-    "storesLabelledHazardous": {
-      "question": "Lagern kennzeichnungspflichtige Gefahrstoffe ohne Spezialvorschrift in relevanten Mengen?"
-    },
-    "usesLoudMusic": {
-      "question": "Sind Musikdarbietungen oder laute Beschallung vorgesehen?"
-    },
-    "ippcOrSevesoRelevant": {
-      "question": "Fallen IPPC-/Seveso-Schwellen (Anlage 3 GewO, Störfallrecht) an?"
-    },
-    "context": {
-      "heading": "Wirkungen & Sonderfälle",
-      "helper": "Bewerte Umweltauswirkungen, Infrastrukturstandorte und bestehende Bescheide."
-    },
-    "expectedImpairments": {
-      "question": "Sind nachteilige Auswirkungen iSd § 74 Abs. 2 GewO zu erwarten?"
-    },
-    "locatedInInfrastructureSite": {
-      "question": "Liegt der Betrieb innerhalb von Bahnhof, Flugplatz, Hafen oder Krankenanstalt?"
-    },
-    "locatedInApprovedComplex": {
-      "question": "Befindet sich der Betrieb in einer bereits genehmigten Gesamtanlage (z. B. Einkaufszentrum)?"
-    },
-    "existingPermitHistory": {
-      "question": "Gibt es bestehende Bescheide/Eignungsfeststellungen für den Standort?"
-    }
-  }
-},
-"complianceResult": {
-  "title": "Auswertung Betriebsanlagen checker",
-  "actions": {
-    "restart": "Checker neu starten"
-  },
-  "sections": {
-    "procedural": "Zuständigkeit & Verfahren",
-    "documents": "Einreichunterlagen",
-    "labour": "Planungswerte Arbeitnehmerschutz",
-    "operationalDuties": "Pflichten im Betrieb",
-    "changeDuties": "Anzeigen & Änderungen",
-    "preCheck": "Vorbereitende Schritte",
-    "specialNotes": "Besondere Hinweise",
-    "quickReferences": "Schnellzugriffe auf Quellen"
-  },
-  "gfvoMatch": {
-    "title": "Einstufung nach 2. GFVO"
-  },
-  "reasons": {
-    "title": "Rechtliche Einschätzung",
-    "externalVentilation": "Außenliegende Lüftungs- oder Klimageräte lösen gemäß § 2 Z 2 2. GFVO Genehmigungspflicht aus.",
-    "regulatedHazardousStorage": "Es werden Gefahrstoffe in Mengen gelagert, für die besondere Rechtsvorschriften gelten (§ 2 Z 3 2. GFVO).",
-    "labelledHazardousStorage": "Kennzeichnungspflichtige Gefahrstoffe ohne spezielle Lagervorschriften schließen die Freistellung aus (§ 2 Z 4 2. GFVO).",
-    "musicExclusion": "Musikdarbietungen oder laute Beschallung sind nach § 2 Z 5 2. GFVO nicht freigestellt.",
-    "ippcSeveso": "IPPC-/Seveso-relevante Anlagen sind stets genehmigungspflichtig (§ 2 Z 6 2. GFVO).",
-    "noFacilityDefinition": "Keine örtlich gebundene, auf Dauer angelegte Betriebsanlage – daher endet der Checker hier.",
-    "operatingHours": "Geplante Betriebszeiten überschreiten den Rahmen der 2. GFVO (§ 1 Abs. 2).",
-    "areaExceeded": "Die angegebene Fläche überschreitet die Höchstgrenze der gewählten Freistellungskategorie.",
-    "accommodationBeds": "Mehr als 30 Gästebetten führen zur Genehmigungspflicht (§ 1 Abs. 1 Z 8 2. GFVO).",
-    "accommodationBuildingUse": "Das Gebäude wird nicht ausschließlich für Wohn-/Beherbergungszwecke genutzt – Voraussetzung der Freistellung fehlt.",
-    "accommodationWellness": "Wellness- bzw. Badeeinrichtungen sind vom Ausnahmetatbestand nicht umfasst.",
-    "accommodationMeals": "Die Abgabe vollwertiger Mahlzeiten überschreitet die Freistellung (nur Frühstück/kleiner Imbiss erlaubt).",
-    "expectedImpairments": "Nach § 74 Abs. 2 GewO sind schädliche Immissionen, Gefährdungen oder Störungen zu erwarten.",
-    "individualAssessment": "Keine eindeutige Freistellung – eine behördliche Feststellung kann Genehmigungsfreiheit bestätigen.",
-    "freistellungSummary": "Alle Voraussetzungen der 2. GFVO sind erfüllt – die Anlage bleibt genehmigungsfrei, solange die Auflagen eingehalten werden."
-  },
-  "classifications": {
-    "noFacility": {
-      "title": "Keine Betriebsanlage nach GewO",
-      "summary": "Die Tätigkeit ist mobil oder bloß vorübergehend und fällt damit nicht unter den Betriebsanlagenbegriff (§ 74 GewO)."
-    },
-    "freistellungGFVO": {
-      "title": "Genehmigungsfrei nach 2. GFVO",
-      "summary": "Die Anlage erfüllt Kategorie, Zeitvorgaben und Ausschlussfreiheit der 2. Genehmigungsfreistellungsverordnung."
-    },
-    "needsPermit": {
-      "title": "Genehmigungspflichtige Betriebsanlage",
-      "summary": "Es greifen Ausschlussgründe oder zu erwartende Immissionen – ein Verfahren nach § 74 GewO ist erforderlich."
-    },
-    "individualAssessment": {
-      "title": "Einzelfallprüfung empfohlen",
-      "summary": "Es liegt keine klare Freistellung vor; die Behörde kann Genehmigungsfreiheit im Einzelfall feststellen."
-    }
-  },
-  "gfvoCategories": {
-    "retail": "Einzelhandel bis 600 m² (§ 1 Abs. 1 Z 1 2. GFVO)",
-    "office": "Bürobetriebe ohne lärmende Maschinen (§ 1 Abs. 1 Z 2 2. GFVO)",
-    "warehouse": "Lager in Gebäuden bis 600 m² (§ 1 Abs. 1 Z 3 2. GFVO)",
-    "cosmetics": "Kosmetik-, Fußpflege-, Massagebetriebe (§ 1 Abs. 1 Z 4 2. GFVO)",
-    "tailor": "Änderungsschneidereien/haushaltsähnliche Nähmaschinen oder Schuhservice (§ 1 Abs. 1 Z 5 2. GFVO)",
-    "textilePickup": "Übernahmestelle für Textilreiniger/Wäschebügler (§ 1 Abs. 1 Z 10 2. GFVO)",
-    "accommodation": "Beherbergungsbetrieb ≤ 30 Betten, ohne Wellness, nur Frühstück (§ 1 Abs. 1 Z 8 2. GFVO)",
-    "iceSalon": "Gastgewerbe in der Betriebsart Eissalon (§ 1 Abs. 1 Z 9 2. GFVO)",
-    "dataCenter": "Rechenzentrum ohne Feuerungsanlagen (nur Notstrom) (§ 1 Abs. 1 Z 11 2. GFVO)",
-    "infrastructureSite": "Betrieb innerhalb genehmigter Eisenbahn-, Flugplatz-, Hafen- oder Krankenanstaltseinrichtungen (§ 1 Abs. 1 Z 12 2. GFVO)",
-    "embeddedFacility": "Betrieb bis 400 m² innerhalb einer genehmigten Gesamtanlage (§ 1 Abs. 1 Z 13 2. GFVO)"
-  },
-  "procedural": {
-    "authority": "Zuständige Behörde ist die Bezirksverwaltungsbehörde (in Wien: MA 36 – Betriebsanlagen).",
-    "projectProcedure": "Genehmigungspflichtige Vorhaben benötigen ein Projektverfahren mit vollständigen Einreichunterlagen.",
-    "permitEffect": "Errichtung und Betrieb sind erst nach rechtskräftigem Genehmigungsbescheid zulässig.",
-    "eignungsfeststellung": "Vorhandene Eignungsfeststellungen wirken als anlagenbezogene Genehmigungen weiter.",
-    "projectSprech": "Projektsprechtage der Behörde beschleunigen Abstimmungen mit Sachverständigen.",
-    "feeHint": "Bundesgebühren entfallen seit der GewO-Novelle 2017; Neugründungen können NeuföG-Befreiungen nutzen."
-  },
-  "documents": {
-    "general": {
-      "application": "Antrag auf Errichtung/Änderung der Betriebsanlage (Formblatt, unterschrieben).",
-      "description": "Betriebsbeschreibung mit Betriebsart, Öffnungszeiten, Mitarbeiteranzahl, Verkehrsaufkommen, Lagerungen, Lüftungssituation.",
-      "sitePlans": "Lageplan sowie Grundrisse/Schnitte (typisch Maßstab 1:100).",
-      "ventilationPlan": "Plan bzw. Beschreibung der Lüftungsanlage inkl. Führung der Abluft.",
-      "machineList": "Maschinen- und Geräteverzeichnis mit Leistungen, Medien und Aufstellungsplan.",
-      "emissionStatement": "Erklärung zu Lärm-, Luft- und Verkehrsbelastungen samt vorgesehenen Maßnahmen.",
-      "wasteConcept": "Abfallwirtschaftskonzept gemäß GewO/Vorgaben der Stadt Wien.",
-      "wasteWater": "Nachweis der Abwassereinleitung (Mitteilung/allenfalls wasserrechtliche Bewilligung)."
-    },
-    "sector": {
-      "gastroExhaust": "Gastronomie/Beherbergung: Nachweis Küchenabluft gemäß Stand der Technik (z. B. ÖNORM EN 16282-1).",
-      "guestSanitary": "Gäste-Sanitäranlagen nach baurechtlichen Vorgaben (OIB-Richtlinie 3, Kellnerregel etc.).",
-      "hygiene": "Branchenspezifische Hygienenachweise (Lebensmittelhygiene, Fett-/Ölabscheider)."
-    }
-  },
-  "labour": {
-    "roomHeight": "Arbeitsräume i. d. R. mit 3,0 m Mindest-Raumhöhe (Ausnahmen nach Abstimmung mit Arbeitsinspektion).",
-    "daylight": "Natürliche Belichtung mind. 10 % der Grundfläche; Sonderfälle wie Kellerlokale gesondert begründen.",
-    "ventilation": "Natürliche Lüftung ≥ 2 % der Bodenfläche bzw. mechanische Be-/Entlüftung mit 35/50/70 m³/h Frischluft pro Person (Belastungsgrad).",
-    "exhaustDischarge": "Abluft nach Stand der Technik über Dach oder gefiltert in ausreichender Höhe (Geräusch 30–40 dB(A) am Auslass).",
-    "escapeRoutes": "Fluchtwege: maximale Entfernung 10 m bis zum Fluchtweg, Querlüftung bei Tiefen > 10 m sicherstellen.",
-    "escapeWidths": "Fluchtwegbreiten nach Personenanzahl: 1–20 Pers 1,0 m | 21–120 Pers 1,2 m | +0,1 m je weitere 10 Personen.",
-    "emergencyDoors": "Notausgänge: lichte Breite bis 40 Pers 0,8 m, bis 80 Pers 0,9 m, bis 120 Pers 1,0 m; Türflügel ab > 15 Personen in Fluchtrichtung.",
-    "safetyLighting": "Sicherheitsbeleuchtung bei fehlender natürlicher Belichtung oder Abend-/Nachtbetrieb vorsehen.",
-    "staffSanitary": "Mitarbeiter-Sanitär: mind. 1 verschließbare Zelle pro 15 Personen, getrennte Anlagen ab je 5 m/w, Vorraum/Lüftung sicherstellen."
-  },
-  "operationalDuties": {
-    "startAfterPermit": "Betriebsaufnahme erst nach Rechtskraft des Genehmigungsbescheids (§ 74 GewO).",
-    "periodicInspection": "§ 82b GewO: wiederkehrende Überprüfung alle 5 Jahre (vereinfachtes Verfahren 6 Jahre), ausgenommen UMG-Registerbetriebe.",
-    "inspectionScope": "Prüfumfang: Abgleich Realität vs. Genehmigungskonsens inkl. Mitnormen (§ 356b GewO).",
-    "inspectionCertificate": "Prüfbescheinigung muss Anlage, Standort, Prüferbefugnis, Bescheide, geprüfte Vorschriften und Befunde enthalten.",
-    "deficiencyDuties": "Festgestellte Mängel sind zu beheben; Verstöße können Verwaltungsstrafen auslösen (§ 366 GewO)."
-  },
-  "changeDuties": {
-    "notifyChanges": "Wesentliche Änderungen sind vor Umsetzung gemäß § 81 Abs. 3 GewO anzuzeigen.",
-    "operationAfterNotice": "Geänderte Betriebsanlage darf erst nach bescheidmäßiger Kenntnisnahme (Frist 2 Monate) betrieben werden."
-  },
-  "preCheck": {
-    "contactChamber": "Frühzeitig mit Wirtschaftskammer/Betriebsanlagenservice Kontakt aufnehmen.",
-    "clarifyBuildingLaw": "Widmung, Bebauungsplan und Baukonsens vor Projektstart prüfen.",
-    "engageNeighbours": "Nachbar:innen informieren und frühzeitig einbinden, um Konflikte zu vermeiden.",
-    "reviewOSH": "Arbeitnehmerschutz-Anforderungen (AStV, ASchG) in der Planung berücksichtigen.",
-    "clarifyPermitNeed": "Genehmigungspflicht mit Behörde klären bzw. Feststellungsbescheid beantragen.",
-    "prepareCompleteSet": "Unterlagen vollständig vorbereiten – vollständige Einreichung beschleunigt das Verfahren."
-  },
-  "specialNotes": {
-    "selfService": "Containershops/Selbstbedienungsläden: Widmung und Baukonsens klären; je nach Immissionen genehmigungspflichtig.",
-    "buildingProcedure": "Bau- und Gewerbeverfahren laufen getrennt – Nutzungsänderungen sind baurechtlich gesondert zu genehmigen.",
-    "existingPermits": "Bestehende Genehmigungen/Eignungsfeststellungen dokumentieren und dem Antrag beilegen."
-  },
-  "quickReferences": {
-    "definition": "Definition & Schritte: WKO Leitfaden \"Weg zum genehmigten Betrieb\".",
-    "gfvo": "2. Genehmigungsfreistellungsverordnung (konsolidierte Fassung).",
-    "guideline": "Leitfaden Betriebsanlagengenehmigung (WKW 2022).",
-    "gastro": "Gastronomie/Hotellerie Leitfaden (WKNÖ 06/2024).",
-    "procedure": "Gewerberechtliches Genehmigungsverfahren (NÖ Leitfaden 06/2024).",
-    "section82b": "Regelmäßige Prüfung § 82b GewO – Prüfer, Fristen, Bescheinigung."
-  },
-  "downloadDocuments": {
-    "title": "Benötigte Dokumente herunterladen",
-    "description": "Laden Sie alle erforderlichen Formulare für Ihren Antrag bei der MA 36 herunter. Alle Dokumente sind kostenlos verfügbar.",
-    "button": "Zu den Dokumenten"
-  },
-  "disclaimer": {
-    "title": "Hinweis zur Verbindlichkeit",
-    "orientation": "Hinweis: Dieses Tool dient der Orientierung. Es prüft, ob dein Betrieb grundsätzlich unter eine Ausnahme der 2. Genehmigungsfreistellungsverordnung fällt.",
-    "legal": "Das Ergebnis ist keine behördliche Entscheidung und keine Rechtsberatung im Sinn des RDLG. Verbindlich entscheidet die MA 36 (Betriebsanlagenbehörde Wien)."
-  }
-},
-"documents": {
-  "title": "Ihr Weg zur Betriebsanlagengenehmigung",
-  "subtitle": "Überblick über alle Schritte und Dokumente",
-  "intro": "Hier erfahren Sie, welche Dokumente Sie vorbereiten müssen und welche Schritte zu unternehmen sind.",
-  "steps": {
-    "step1": {
-      "title": "Vorprüfung und Beratung",
-      "description": "Kontaktieren Sie die zuständige MA 36 (Technische Gewerbeangelegenheiten) für eine erste Beratung.",
-      "contactTitle": "Kontakt:",
-      "contact": {
-        "phone": {
-          "icon": "📞",
-          "label": "Telefon",
-          "value": "+43 1 4000-25310"
-        },
-        "email": {
-          "icon": "📧",
-          "label": "E-Mail",
-          "value": "post@ma36.wien.gv.at"
-        },
-        "website": {
-          "icon": "🌐",
-          "value": "www.wien.gv.at/ma36"
-        }
-      }
-    },
-    "step2": {
-      "title": "Erforderliche Dokumente vorbereiten",
-      "description": "Typischerweise benötigte Unterlagen:",
-      "items": {
-        "applicationForm": {
-          "title": "Antragsformular",
-          "description": "Vollständig ausgefüllt und unterschrieben"
-        },
-        "businessLicense": {
-          "title": "Gewerbeberechtigung",
-          "description": "Nachweis der Gewerbeberechtigung"
-        },
-        "plans": {
-          "title": "Pläne und Skizzen",
-          "description": "Lagepläne, Grundrisse, Schnitte (maßstabsgetreu)"
-        },
-        "technicalDescription": {
-          "title": "Technische Beschreibung",
-          "description": "Detaillierte Beschreibung der Betriebsanlage und ihrer Einrichtungen"
-        },
-        "neighbors": {
-          "title": "Nachbarschaftsinformation",
-          "description": "Zustimmung oder Information der Nachbar:innen"
-        },
-        "tenancy": {
-          "title": "Miet-/Eigentumsnachweis",
-          "description": "Nachweis über das Recht zur Nutzung der Räumlichkeiten"
-        }
-      }
-    },
-    "step3": {
-      "title": "Antrag einreichen",
-      "description": "Reichen Sie alle Unterlagen vollständig bei der MA 36 ein. Die Einreichung kann erfolgen:",
-      "options": {
-        "inPerson": {
-          "title": "📮 Persönlich",
-          "line1": "Dresdner Straße 73-75, 1200 Wien",
-          "line2": "Mo–Fr: 8:00–15:30 Uhr"
-        },
-        "mail": {
-          "title": "✉️ Postweg",
-          "line1": "MA 36 – Technische Gewerbeangelegenheiten",
-          "line2": "Dresdner Straße 73-75, 1200 Wien"
-        }
-      }
-    },
-    "step4": {
-      "title": "Nach der Einreichung",
-      "description": "Was passiert nach der Einreichung?",
-      "items": {
-        "confirmation": {
-          "icon": "✅",
-          "title": "Eingangsbestätigung",
-          "description": "Sie erhalten eine Bestätigung über den Eingang der Unterlagen."
-        },
-        "assessment": {
-          "icon": "📝",
-          "title": "Prüfung",
-          "description": "Die Behörde prüft die Unterlagen und holt ggf. Stellungnahmen ein."
-        },
-        "questions": {
-          "icon": "📞",
-          "title": "Rückfragen",
-          "description": "Bei Unklarheiten werden Sie kontaktiert, um weitere Informationen zu liefern."
-        },
-        "decision": {
-          "icon": "📄",
-          "title": "Bescheid",
-          "description": "Sie erhalten einen Bescheid über die Genehmigung oder Auflagen."
+      "sector": {
+        "question": "Welche Betriebsart planst du?",
+        "helper": "Der Checker deckt Handel, Dienstleistung, Gastronomie/Beherbergung, Werkstätten und weitere Sonderfälle ab.",
+        "options": {
+          "retail": "Handel/Einzelhandel",
+          "office": "Büro- oder Dienstleistungsbetrieb",
+          "gastronomyHotel": "Gastronomie/Hotel",
+          "accommodation": "Beherbergungsbetrieb",
+          "workshop": "Werkstätte",
+          "warehouse": "Lager",
+          "cosmetics": "Kosmetik/Fußpflege/Massage",
+          "dataCenter": "Rechenzentrum",
+          "selfService": "Containershop/Selbstbedienung",
+          "other": "Andere Tätigkeit"
         }
       },
-      "processingTime": "Durchschnittliche Bearbeitungszeit: 4–8 Wochen"
-    }
-  },
-  "expertReports": {
-    "title": "Häufig benötigte Fachgutachten",
-    "items": {
-      "noise": {
-        "icon": "🔊",
-        "title": "Schallschutz / Lärmschutz",
-        "description": "Besonders bei Maschinen, Lüftungsanlagen oder Musikbetrieb."
+      "hospitalitySubtype": {
+        "question": "Welche Ausprägung trifft für Gastronomie/Beherbergung zu?",
+        "options": {
+          "beherbergung": "Beherbergung (Pension, kleines Hotel)",
+          "iceSalon": "Gastgewerbe in der Betriebsart Eissalon",
+          "otherGastro": "Andere Gastronomieform"
+        },
+        "descriptions": {
+          "beherbergung": "Max. 30 Betten, Gebäude ausschließlich Wohn-/Beherbergungszweck, keine Wellnessbereiche, nur Frühstück oder kleiner Imbiss.",
+          "iceSalon": "Reiner Eissalon ohne vollwertige Küche.",
+          "otherGastro": "Gastrobetriebe außerhalb der Eissalon-Freistellung."
+        }
       },
-      "ventilation": {
-        "icon": "🌬️",
-        "title": "Lüftung / Klima",
-        "description": "Nachweis einer ausreichenden Be- und Entlüftung."
+      "workshopSubtype": {
+        "question": "Welche Werkstattform trifft zu?",
+        "options": {
+          "tailor": "Änderungsschneiderei/haushaltsähnliche Nähmaschinen",
+          "shoeService": "Schuhservice/Schusterei",
+          "textilePickup": "Textilreinigung-Annahmestelle",
+          "otherWorkshop": "Andere Werkstatt"
+        }
       },
-      "fireProtection": {
-        "icon": "🔥",
-        "title": "Brandschutz",
-        "description": "Brandalarm, Fluchtwege, Feuerlöscher, ggf. Sprinkler."
+      "areaSqm": {
+        "label": "Betriebsfläche in m²",
+        "placeholder": "z. B. 250"
+      },
+      "personCount": {
+        "label": "Maximale Personen gleichzeitig (AN + Kund:innen/Gäste)",
+        "placeholder": "z. B. 20"
+      },
+      "isStationary": {
+        "question": "Ist die Tätigkeit örtlich gebunden?"
+      },
+      "isOnlyTemporary": {
+        "question": "Handelt es sich nur um eine vorübergehende Nutzung?"
+      },
+      "bedCount": {
+        "label": "Gästebetten gesamt",
+        "placeholder": "z. B. 18"
+      },
+      "buildingUseExclusive": {
+        "question": "Wird das Gebäude ausschließlich für Wohnen/Beherbergung genutzt?"
+      },
+      "hasWellnessFacilities": {
+        "question": "Sind Wellness-/Badeeinrichtungen (Pool, Sauna etc.) vorgesehen?"
+      },
+      "servesFullMeals": {
+        "question": "Werden über Frühstück/Imbiss hinausgehende Mahlzeiten angeboten?"
+      },
+      "location": {
+        "heading": "Standort- & Baukonsens",
+        "helper": "Klärung von Widmung, Bebauungsplan und bestehendem Nutzungskonsens."
+      },
+      "zoningClarified": {
+        "question": "Ist Widmung/Bebauungsplan für die geplante Nutzung passend?"
+      },
+      "buildingConsentPresent": {
+        "question": "Liegt ein aufrechter Bau- und Nutzungskonsens für die Räume vor?"
+      },
+      "operations": {
+        "heading": "Betriebsablauf & Emissionen",
+        "helper": "Bewerte Zeiten, Emissionen, Gefahrstoffe und Sonderanlagen."
+      },
+      "operatingPattern": {
+        "question": "Welche Betriebszeiten werden benötigt?",
+        "options": {
+          "gfvoWindow": "Innerhalb der 2. GFVO-Zeiten (Mo–Fr 6–22 Uhr, Sa 6–19 Uhr)",
+          "extendedHours": "Erweiterte Zeiten (z. B. Abende, Sonntag)",
+          "roundTheClock": "24/7 oder Nachtbetrieb"
+        },
+        "descriptions": {
+          "gfvoWindow": "Normale Tagesöffnungszeiten inklusive Lieferzeiten der 2. GFVO.",
+          "extendedHours": "Zeitbedarf außerhalb der Freistellung, aber nicht dauerhaft 24/7.",
+          "roundTheClock": "Durchgehender Betrieb oder Nachtbetrieb."
+        }
+      },
+      "hasExternalVentilation": {
+        "question": "Gibt es außenliegende Ventilatoren/Kälte- oder Abluftgeräte?"
+      },
+      "storesRegulatedHazardous": {
+        "question": "Lagern Gefahrstoffe mit speziellen Rechtsvorschriften (z. B. brennbare Flüssigkeiten, Gas)?"
+      },
+      "storesLabelledHazardous": {
+        "question": "Lagern kennzeichnungspflichtige Gefahrstoffe ohne Spezialvorschrift in relevanten Mengen?"
+      },
+      "usesLoudMusic": {
+        "question": "Sind Musikdarbietungen oder laute Beschallung vorgesehen?"
+      },
+      "ippcOrSevesoRelevant": {
+        "question": "Fallen IPPC-/Seveso-Schwellen (Anlage 3 GewO, Störfallrecht) an?"
+      },
+      "context": {
+        "heading": "Wirkungen & Sonderfälle",
+        "helper": "Bewerte Umweltauswirkungen, Infrastrukturstandorte und bestehende Bescheide."
+      },
+      "expectedImpairments": {
+        "question": "Sind nachteilige Auswirkungen iSd § 74 Abs. 2 GewO zu erwarten?"
+      },
+      "locatedInInfrastructureSite": {
+        "question": "Liegt der Betrieb innerhalb von Bahnhof, Flugplatz, Hafen oder Krankenanstalt?"
+      },
+      "locatedInApprovedComplex": {
+        "question": "Befindet sich der Betrieb in einer bereits genehmigten Gesamtanlage (z. B. Einkaufszentrum)?"
+      },
+      "existingPermitHistory": {
+        "question": "Gibt es bestehende Bescheide/Eignungsfeststellungen für den Standort?"
       }
     }
   },
-  "fees": {
-    "title": "Kosten & Gebühren",
-    "items": {
-      "federalFees": {
-        "icon": "💶",
-        "title": "Bundesabgaben",
-        "description": "Abhängig von Betriebsart und Umfang (ca. 70–300 €)."
+  "complianceResult": {
+    "title": "Auswertung Betriebsanlagen checker",
+    "actions": {
+      "restart": "Checker neu starten"
+    },
+    "sections": {
+      "procedural": "Zuständigkeit & Verfahren",
+      "documents": "Einreichunterlagen",
+      "labour": "Planungswerte Arbeitnehmerschutz",
+      "operationalDuties": "Pflichten im Betrieb",
+      "changeDuties": "Anzeigen & Änderungen",
+      "preCheck": "Vorbereitende Schritte",
+      "specialNotes": "Besondere Hinweise",
+      "quickReferences": "Schnellzugriffe auf Quellen"
+    },
+    "gfvoMatch": {
+      "title": "Einstufung nach 2. GFVO"
+    },
+    "reasons": {
+      "title": "Rechtliche Einschätzung",
+      "externalVentilation": "Außenliegende Lüftungs- oder Klimageräte lösen gemäß § 2 Z 2 2. GFVO Genehmigungspflicht aus.",
+      "regulatedHazardousStorage": "Es werden Gefahrstoffe in Mengen gelagert, für die besondere Rechtsvorschriften gelten (§ 2 Z 3 2. GFVO).",
+      "labelledHazardousStorage": "Kennzeichnungspflichtige Gefahrstoffe ohne spezielle Lagervorschriften schließen die Freistellung aus (§ 2 Z 4 2. GFVO).",
+      "musicExclusion": "Musikdarbietungen oder laute Beschallung sind nach § 2 Z 5 2. GFVO nicht freigestellt.",
+      "ippcSeveso": "IPPC-/Seveso-relevante Anlagen sind stets genehmigungspflichtig (§ 2 Z 6 2. GFVO).",
+      "noFacilityDefinition": "Keine örtlich gebundene, auf Dauer angelegte Betriebsanlage – daher endet der Checker hier.",
+      "operatingHours": "Geplante Betriebszeiten überschreiten den Rahmen der 2. GFVO (§ 1 Abs. 2).",
+      "areaExceeded": "Die angegebene Fläche überschreitet die Höchstgrenze der gewählten Freistellungskategorie.",
+      "accommodationBeds": "Mehr als 30 Gästebetten führen zur Genehmigungspflicht (§ 1 Abs. 1 Z 8 2. GFVO).",
+      "accommodationBuildingUse": "Das Gebäude wird nicht ausschließlich für Wohn-/Beherbergungszwecke genutzt – Voraussetzung der Freistellung fehlt.",
+      "accommodationWellness": "Wellness- bzw. Badeeinrichtungen sind vom Ausnahmetatbestand nicht umfasst.",
+      "accommodationMeals": "Die Abgabe vollwertiger Mahlzeiten überschreitet die Freistellung (nur Frühstück/kleiner Imbiss erlaubt).",
+      "expectedImpairments": "Nach § 74 Abs. 2 GewO sind schädliche Immissionen, Gefährdungen oder Störungen zu erwarten.",
+      "individualAssessment": "Keine eindeutige Freistellung – eine behördliche Feststellung kann Genehmigungsfreiheit bestätigen.",
+      "freistellungSummary": "Alle Voraussetzungen der 2. GFVO sind erfüllt – die Anlage bleibt genehmigungsfrei, solange die Auflagen eingehalten werden."
+    },
+    "classifications": {
+      "noFacility": {
+        "title": "Keine Betriebsanlage nach GewO",
+        "summary": "Die Tätigkeit ist mobil oder bloß vorübergehend und fällt damit nicht unter den Betriebsanlagenbegriff (§ 74 GewO)."
       },
-      "expertFees": {
-        "icon": "📄",
-        "title": "Sachverständigenkosten",
-        "description": "Behördliche Gutachter (je nach Aufwand, mehrere hundert Euro möglich)."
+      "freistellungGFVO": {
+        "title": "Genehmigungsfrei nach 2. GFVO",
+        "summary": "Die Anlage erfüllt Kategorie, Zeitvorgaben und Ausschlussfreiheit der 2. Genehmigungsfreistellungsverordnung."
       },
-      "ownExperts": {
-        "icon": "🛠️",
-        "title": "Eigene Expert:innen",
-        "description": "Z. B. Ingenieurbüros, Planer:innen, Brandschutzexpert:innen."
+      "needsPermit": {
+        "title": "Genehmigungspflichtige Betriebsanlage",
+        "summary": "Es greifen Ausschlussgründe oder zu erwartende Immissionen – ein Verfahren nach § 74 GewO ist erforderlich."
       },
-      "time": {
-        "icon": "⏱️",
-        "title": "Zeit",
-        "description": "Planen Sie ausreichend Zeit für Vorbereitung und eventuelle Nachbesserungen ein."
+      "individualAssessment": {
+        "title": "Einzelfallprüfung empfohlen",
+        "summary": "Es liegt keine klare Freistellung vor; die Behörde kann Genehmigungsfreiheit im Einzelfall feststellen."
       }
-    }
-  },
-  "tips": {
-    "title": "Tipps für einen reibungslosen Ablauf",
-    "items": {
-      "planEarly": {
-        "icon": "🗂️",
-        "title": "Frühzeitig planen",
-        "description": "Beginnen Sie mindestens 2–3 Monate vor geplanter Inbetriebnahme."
+    },
+    "gfvoCategories": {
+      "retail": "Einzelhandel bis 600 m² (§ 1 Abs. 1 Z 1 2. GFVO)",
+      "office": "Bürobetriebe ohne lärmende Maschinen (§ 1 Abs. 1 Z 2 2. GFVO)",
+      "warehouse": "Lager in Gebäuden bis 600 m² (§ 1 Abs. 1 Z 3 2. GFVO)",
+      "cosmetics": "Kosmetik-, Fußpflege-, Massagebetriebe (§ 1 Abs. 1 Z 4 2. GFVO)",
+      "tailor": "Änderungsschneidereien/haushaltsähnliche Nähmaschinen oder Schuhservice (§ 1 Abs. 1 Z 5 2. GFVO)",
+      "textilePickup": "Übernahmestelle für Textilreiniger/Wäschebügler (§ 1 Abs. 1 Z 10 2. GFVO)",
+      "accommodation": "Beherbergungsbetrieb ≤ 30 Betten, ohne Wellness, nur Frühstück (§ 1 Abs. 1 Z 8 2. GFVO)",
+      "iceSalon": "Gastgewerbe in der Betriebsart Eissalon (§ 1 Abs. 1 Z 9 2. GFVO)",
+      "dataCenter": "Rechenzentrum ohne Feuerungsanlagen (nur Notstrom) (§ 1 Abs. 1 Z 11 2. GFVO)",
+      "infrastructureSite": "Betrieb innerhalb genehmigter Eisenbahn-, Flugplatz-, Hafen- oder Krankenanstaltseinrichtungen (§ 1 Abs. 1 Z 12 2. GFVO)",
+      "embeddedFacility": "Betrieb bis 400 m² innerhalb einer genehmigten Gesamtanlage (§ 1 Abs. 1 Z 13 2. GFVO)"
+    },
+    "procedural": {
+      "authority": "Zuständige Behörde ist die Bezirksverwaltungsbehörde (in Wien: MA 36 – Betriebsanlagen).",
+      "projectProcedure": "Genehmigungspflichtige Vorhaben benötigen ein Projektverfahren mit vollständigen Einreichunterlagen.",
+      "permitEffect": "Errichtung und Betrieb sind erst nach rechtskräftigem Genehmigungsbescheid zulässig.",
+      "eignungsfeststellung": "Vorhandene Eignungsfeststellungen wirken als anlagenbezogene Genehmigungen weiter.",
+      "projectSprech": "Projektsprechtage der Behörde beschleunigen Abstimmungen mit Sachverständigen.",
+      "feeHint": "Bundesgebühren entfallen seit der GewO-Novelle 2017; Neugründungen können NeuföG-Befreiungen nutzen."
+    },
+    "documents": {
+      "general": {
+        "application": "Antrag auf Errichtung/Änderung der Betriebsanlage (Formblatt, unterschrieben).",
+        "description": "Betriebsbeschreibung mit Betriebsart, Öffnungszeiten, Mitarbeiteranzahl, Verkehrsaufkommen, Lagerungen, Lüftungssituation.",
+        "sitePlans": "Lageplan sowie Grundrisse/Schnitte (typisch Maßstab 1:100).",
+        "ventilationPlan": "Plan bzw. Beschreibung der Lüftungsanlage inkl. Führung der Abluft.",
+        "machineList": "Maschinen- und Geräteverzeichnis mit Leistungen, Medien und Aufstellungsplan.",
+        "emissionStatement": "Erklärung zu Lärm-, Luft- und Verkehrsbelastungen samt vorgesehenen Maßnahmen.",
+        "wasteConcept": "Abfallwirtschaftskonzept gemäß GewO/Vorgaben der Stadt Wien.",
+        "wasteWater": "Nachweis der Abwassereinleitung (Mitteilung/allenfalls wasserrechtliche Bewilligung)."
       },
-      "contactAuthority": {
-        "icon": "🤝",
-        "title": "MA 36 kontaktieren",
-        "description": "Nutzen Sie die Beratung – viele Fragen lassen sich schon vorab klären."
-      },
-      "useChecklists": {
-        "icon": "📋",
-        "title": "Checklisten verwenden",
-        "description": "Überprüfen Sie, ob alle Pläne, Gutachten und Formulare vollständig sind."
-      },
-      "stayFlexible": {
-        "icon": "🔄",
-        "title": "Flexibel bleiben",
-        "description": "Seien Sie auf Nachbesserungen oder Auflagen vorbereitet."
+      "sector": {
+        "gastroExhaust": "Gastronomie/Beherbergung: Nachweis Küchenabluft gemäß Stand der Technik (z. B. ÖNORM EN 16282-1).",
+        "guestSanitary": "Gäste-Sanitäranlagen nach baurechtlichen Vorgaben (OIB-Richtlinie 3, Kellnerregel etc.).",
+        "hygiene": "Branchenspezifische Hygienenachweise (Lebensmittelhygiene, Fett-/Ölabscheider)."
       }
-    }
-  },
-  "pageTitle": "Dokumente & Formulare",
-  "pageDescription": "Alle erforderlichen Dokumente für Ihre Betriebsanlagengenehmigung zum Download",
-  "disclaimer": {
-    "title": "⚖️ Wichtiger rechtlicher Hinweis",
-    "text": "Diese Plattform bietet ausschließlich Informationen und technische Unterstützung beim Ausfüllen von Formularen. Wir bieten keine Rechtsberatung an. Die Überprüfung auf Vollständigkeit und Richtigkeit liegt in Ihrer Verantwortung. Für rechtliche Fragen wenden Sie sich bitte an einen Fachanwalt oder die MA 36."
-  },
-  "filter": {
-    "all": "Alle Dokumente",
-    "required": "Pflichtdokumente",
-    "guides": "Anleitungen"
-  },
-  "category": {
-    "required": "Pflicht",
-    "optional": "Optional",
-    "guide": "Anleitung"
-  },
-  "pages": "Seiten",
-  "download": "Herunterladen",
-  "downloading": "Lädt...",
-  "downloadFailed": "Download fehlgeschlagen. Bitte versuchen Sie es erneut.",
-  "openExternal": "Externen Link öffnen",
-  "noExternalLink": "Kein externer Link verfügbar.",
-  "needHelp": {
-    "title": "Hilfe beim Ausfüllen?",
-    "text": "Diese Formulare können komplex sein. Nutzen Sie unseren kostenlosen Checker, um herauszufinden, welche Dokumente Sie genau benötigen."
-  },
-  "startChecker": "Jetzt Checker starten",
-  "officialSource": "Quelle"
-},
-"faq": {
-  "title": "Häufig gestellte Fragen",
-  "subtitle": "Alles Wichtige rund um Betriebsanlagengenehmigung, Gewerbeanmeldung und Unternehmensgründung in Wien",
-  "questions": {
-    "q1": {
-      "question": "Was ist eine Betriebsanlage und brauche ich eine Genehmigung?",
-      "answer": "Eine Betriebsanlage ist jede Anlage, die zur Ausübung eines Gewerbes verwendet wird. Dazu gehören Geschäftslokale, Werkstätten, Lager, Gastronomie-Betriebe und vieles mehr. Ob Sie eine Genehmigung benötigen, hängt von verschiedenen Faktoren ab: Art des Betriebs, Größe, Lage, Betriebszeiten und mögliche Belästigungen (Lärm, Geruch). Die Genehmigungsfreistellungsverordnung regelt, welche Betriebe ohne Genehmigung betrieben werden können. Nutzen Sie unseren kostenlosen Check, um herauszufinden, ob Ihr Betrieb genehmigungspflichtig ist."
     },
-    "q2": {
-      "question": "Wie lange dauert die Genehmigung meiner Betriebsanlage in Wien?",
-      "answer": "Die Dauer variiert je nach Komplexität Ihres Betriebs. Bei einfachen Fällen ohne Anrainerbeteiligung: 4-8 Wochen. Bei komplexen Anlagen mit Nachbarverständigung: 3-6 Monate. Die MA 36 (Gewerbebehörde Wien) ist die zuständige Stelle. Tipp: Eine vollständige Einreichung mit allen Unterlagen beschleunigt das Verfahren erheblich."
+    "labour": {
+      "roomHeight": "Arbeitsräume i. d. R. mit 3,0 m Mindest-Raumhöhe (Ausnahmen nach Abstimmung mit Arbeitsinspektion).",
+      "daylight": "Natürliche Belichtung mind. 10 % der Grundfläche; Sonderfälle wie Kellerlokale gesondert begründen.",
+      "ventilation": "Natürliche Lüftung ≥ 2 % der Bodenfläche bzw. mechanische Be-/Entlüftung mit 35/50/70 m³/h Frischluft pro Person (Belastungsgrad).",
+      "exhaustDischarge": "Abluft nach Stand der Technik über Dach oder gefiltert in ausreichender Höhe (Geräusch 30–40 dB(A) am Auslass).",
+      "escapeRoutes": "Fluchtwege: maximale Entfernung 10 m bis zum Fluchtweg, Querlüftung bei Tiefen > 10 m sicherstellen.",
+      "escapeWidths": "Fluchtwegbreiten nach Personenanzahl: 1–20 Pers 1,0 m | 21–120 Pers 1,2 m | +0,1 m je weitere 10 Personen.",
+      "emergencyDoors": "Notausgänge: lichte Breite bis 40 Pers 0,8 m, bis 80 Pers 0,9 m, bis 120 Pers 1,0 m; Türflügel ab > 15 Personen in Fluchtrichtung.",
+      "safetyLighting": "Sicherheitsbeleuchtung bei fehlender natürlicher Belichtung oder Abend-/Nachtbetrieb vorsehen.",
+      "staffSanitary": "Mitarbeiter-Sanitär: mind. 1 verschließbare Zelle pro 15 Personen, getrennte Anlagen ab je 5 m/w, Vorraum/Lüftung sicherstellen."
     },
-    "q3": {
-      "question": "Was kostet eine Betriebsanlagengenehmigung?",
-      "answer": "Die Gebühren richten sich nach dem Verwaltungsaufwand. Vereinfachtes Verfahren: ca. 100-300 Euro. Normales Verfahren mit Gutachten: 500-2000 Euro. Große oder komplexe Anlagen: 2000-5000 Euro und mehr. Hinzu können Kosten für Gutachter, Pläne und technische Nachweise kommen. Die genauen Tarife finden Sie auf wien.gv.at."
+    "operationalDuties": {
+      "startAfterPermit": "Betriebsaufnahme erst nach Rechtskraft des Genehmigungsbescheids (§ 74 GewO).",
+      "periodicInspection": "§ 82b GewO: wiederkehrende Überprüfung alle 5 Jahre (vereinfachtes Verfahren 6 Jahre), ausgenommen UMG-Registerbetriebe.",
+      "inspectionScope": "Prüfumfang: Abgleich Realität vs. Genehmigungskonsens inkl. Mitnormen (§ 356b GewO).",
+      "inspectionCertificate": "Prüfbescheinigung muss Anlage, Standort, Prüferbefugnis, Bescheide, geprüfte Vorschriften und Befunde enthalten.",
+      "deficiencyDuties": "Festgestellte Mängel sind zu beheben; Verstöße können Verwaltungsstrafen auslösen (§ 366 GewO)."
     },
-    "q4": {
-      "question": "Kann ich mein Geschäft schon vor der Genehmigung eröffnen?",
-      "answer": "Nein, wenn Ihr Betrieb genehmigungspflichtig ist, dürfen Sie NICHT vor Erteilung der Genehmigung starten. Das wäre eine Verwaltungsübertretung mit Strafen bis zu 50.000 Euro. Bei genehmigungsfreien Betrieben (nach Freistellungsverordnung) können Sie sofort nach der Gewerbeanmeldung starten. Unser Check hilft Ihnen festzustellen, ob Sie eine Genehmigung benötigen."
+    "changeDuties": {
+      "notifyChanges": "Wesentliche Änderungen sind vor Umsetzung gemäß § 81 Abs. 3 GewO anzuzeigen.",
+      "operationAfterNotice": "Geänderte Betriebsanlage darf erst nach bescheidmäßiger Kenntnisnahme (Frist 2 Monate) betrieben werden."
     },
-    "q5": {
-      "question": "Welche Unterlagen brauche ich für die Betriebsanlagengenehmigung?",
-      "answer": "Standardunterlagen: Gewerbeberechtigung oder Konzession, Grundriss und Lageplan, Beschreibung der Betriebsanlage, Nachweis über Nutzungsrecht (Mietvertrag/Eigentumsnachweis), technische Beschreibungen (z.B. Lüftung, Lärm). Je nach Betrieb zusätzlich: Lärmgutachten, Brandschutzkonzept, Statik-Nachweis, Umweltverträglichkeitsprüfung. Die MA 36 berät Sie im Vorfeld, welche Unterlagen konkret nötig sind."
+    "preCheck": {
+      "contactChamber": "Frühzeitig mit Wirtschaftskammer/Betriebsanlagenservice Kontakt aufnehmen.",
+      "clarifyBuildingLaw": "Widmung, Bebauungsplan und Baukonsens vor Projektstart prüfen.",
+      "engageNeighbours": "Nachbar:innen informieren und frühzeitig einbinden, um Konflikte zu vermeiden.",
+      "reviewOSH": "Arbeitnehmerschutz-Anforderungen (AStV, ASchG) in der Planung berücksichtigen.",
+      "clarifyPermitNeed": "Genehmigungspflicht mit Behörde klären bzw. Feststellungsbescheid beantragen.",
+      "prepareCompleteSet": "Unterlagen vollständig vorbereiten – vollständige Einreichung beschleunigt das Verfahren."
     },
-    "q6": {
-      "question": "Was ist der Unterschied zwischen Gewerbeanmeldung und Betriebsanlagengenehmigung?",
-      "answer": "Gewerbeanmeldung: Berechtigt Sie zur Ausübung eines Gewerbes (bei der Gewerbebehörde). Betriebsanlagengenehmigung: Erlaubt den Betrieb an einem konkreten Standort (berücksichtigt Lärm, Sicherheit, Nachbarn). Sie brauchen BEIDES: Erst die Gewerbeberechtigung, dann die Betriebsanlagengenehmigung für den Standort. Manche Betriebe sind von der Genehmigungspflicht befreit (siehe Freistellungsverordnung)."
+    "specialNotes": {
+      "selfService": "Containershops/Selbstbedienungsläden: Widmung und Baukonsens klären; je nach Immissionen genehmigungspflichtig.",
+      "buildingProcedure": "Bau- und Gewerbeverfahren laufen getrennt – Nutzungsänderungen sind baurechtlich gesondert zu genehmigen.",
+      "existingPermits": "Bestehende Genehmigungen/Eignungsfeststellungen dokumentieren und dem Antrag beilegen."
     },
-    "q7": {
-      "question": "Gilt die Freistellungsverordnung auch für mich?",
-      "answer": "Die Wiener Genehmigungsfreistellungsverordnung befreit bestimmte Betriebe von der Genehmigungspflicht, wenn sie bestimmte Kriterien erfüllen. Beispiele: Einzelhandel bis 600 m², Büros (fast immer), kleine Werkstätten, Kosmetik-Betriebe, Beherbergung bis 30 Betten ohne Schwimmbad. ABER: Ausnahmen gelten bei Lärm, Musik, gefährlichen Stoffen, mechanischer Lüftung außerhalb der Gebäudehülle. Nutzen Sie unseren Check für eine schnelle Einschätzung."
+    "quickReferences": {
+      "definition": "Definition & Schritte: WKO Leitfaden \"Weg zum genehmigten Betrieb\".",
+      "gfvo": "2. Genehmigungsfreistellungsverordnung (konsolidierte Fassung).",
+      "guideline": "Leitfaden Betriebsanlagengenehmigung (WKW 2022).",
+      "gastro": "Gastronomie/Hotellerie Leitfaden (WKNÖ 06/2024).",
+      "procedure": "Gewerberechtliches Genehmigungsverfahren (NÖ Leitfaden 06/2024).",
+      "section82b": "Regelmäßige Prüfung § 82b GewO – Prüfer, Fristen, Bescheinigung."
     },
-    "q8": {
-      "question": "Brauche ich als Gastronom in Wien eine Betriebsanlagengenehmigung?",
-      "answer": "Ja, in den meisten Fällen. Gastronomiebetriebe (Restaurants, Cafés, Bars) sind normalerweise genehmigungspflichtig wegen: Geruchsemissionen (Küche), Lärm (Gäste, Musik), Fettabscheider, Lüftungsanlagen. Ausnahmen: Kleine Eisdielen ohne Sitzplätze können freigestellt sein. Das Verfahren kann 3-6 Monate dauern - planen Sie das bei Ihrer Eröffnung ein!"
+    "downloadDocuments": {
+      "title": "Benötigte Dokumente herunterladen",
+      "description": "Laden Sie alle erforderlichen Formulare für Ihren Antrag bei der MA 36 herunter. Alle Dokumente sind kostenlos verfügbar.",
+      "button": "Zu den Dokumenten"
     },
-    "q9": {
-      "question": "Ich spreche kein Deutsch - kann ich trotzdem ein Gewerbe gründen?",
-      "answer": "Ja! Unsere Website unterstützt 8 Sprachen: Deutsch, Englisch, Serbisch, Kroatisch, Türkisch, Italienisch, Spanisch und Ukrainisch. Für offizielle Behördengänge: Die MA 36 und Wirtschaftskammer bieten Beratung in mehreren Sprachen an. Für die Gewerbeanmeldung brauchen Sie: Reisepass/Ausweis, Sozialversicherungsnummer, ggf. Übersetzer für Dokumente. Viele Gründer-Services in Wien sind mehrsprachig."
-    },
-    "q10": {
-      "question": "Was passiert, wenn meine Nachbarn gegen meine Betriebsanlage sind?",
-      "answer": "Bei genehmigungspflichtigen Anlagen werden Nachbarn im Verfahren informiert (Anrainerbeteiligung). Sie können Einwendungen erheben bei: Zu viel Lärm, Geruchsbelästigung, Sicherheitsbedenken, Verkehrsproblemen. Die Behörde prüft die Einwände und kann Auflagen erteilen (z.B. Lärmschutz, Betriebszeiten-Einschränkung). Mit guter Planung und frühzeitiger Nachbar-Information lassen sich viele Konflikte vermeiden."
-    }
-  },
-  "cta": {
-    "title": "Noch Fragen offen?",
-    "description": "Nutzen Sie unseren kostenlosen Check und finden Sie heraus, ob Ihr Betrieb eine Genehmigung benötigt.",
-    "button": "Jetzt Check starten"
-  }
-},
-"metadata": {
-  "title": "Betriebsanlagengenehmigung Wien – Genehmigung prüfen für Gründer",
-  "description": "Kostenloser Betriebsanlagen-Check für Gründer in Wien: Erfahren Sie in 2 Minuten, ob Ihr Gewerbe bei der Unternehmensgründung eine Betriebsanlagengenehmigung braucht. MA 36 Wien, GFVO, alle Infos.",
-  "keywords": [
-    "Betriebsanlagengenehmigung Wien",
-    "Unternehmensgründung Wien",
-    "Gründen Gewerbe Wien",
-    "Betriebsanlage Gründer",
-    "Gewerbeanmeldung Wien",
-    "Genehmigung Betriebsanlage",
-    "MA 36 Wien",
-    "Betriebsanlage GFVO",
-    "Gewerbe gründen Wien",
-    "Startup Wien Genehmigung"
-  ],
-  "openGraph": {
-    "title": "Betriebsanlagen-Check für Gründer in Wien",
-    "description": "Prüfen Sie mit unserem kostenlosen Online-Check, ob Ihre Betriebsanlage eine Genehmigung benötigt – mehrsprachig, sicher und schnell.",
-    "siteName": "Betriebsanlagen Check",
-    "images": [
-      {
-        "url": "/og-image.png",
-        "width": 1200,
-        "height": 630,
-        "alt": "Betriebsanlagen Check Wien - Genehmigung prüfen"
-      }
-    ]
-  },
-  "twitter": {
-    "title": "Betriebsanlagen-Check: Genehmigungspflicht jetzt prüfen",
-    "description": "Finden Sie in wenigen Minuten heraus, ob Ihre Betriebsanlage in Wien genehmigungspflichtig ist und welche Unterlagen Sie brauchen.",
-    "images": [
-      "/og-image.png"
-    ]
-  },
-  "faq": {
-    "title": "FAQ zum Betriebsanlagen-Check – Häufig gestellte Fragen",
-    "description": "Antworten zu Genehmigungspflicht, Ablauf und Kosten des Betriebsanlagen-Verfahrens in Wien.",
-    "keywords": [
-      "FAQ Betriebsanlagengenehmigung",
-      "Häufige Fragen Betriebsanlage",
-      "Genehmigung Wien Informationen"
-    ],
-    "openGraph": {
-      "title": "FAQ: Wichtigste Antworten zur Betriebsanlagengenehmigung",
-      "description": "Erhalten Sie klare Antworten zur Genehmigungspflicht, zu Fristen und zu Ansprechpersonen in Wien."
-    },
-    "twitter": {
-      "title": "FAQ zur Betriebsanlagengenehmigung",
-      "description": "Die häufigsten Fragen zum Betriebsanlagen-Check verständlich erklärt."
-    }
-  },
-  "documents": {
-    "title": "Unterlagen für die Betriebsanlagengenehmigung in Wien",
-    "description": "Überblick über erforderliche Dokumente, Expertisen und Bearbeitungsfristen für Ihren Genehmigungsantrag.",
-    "keywords": [
-      "Betriebsanlage Unterlagen",
-      "Genehmigungsprozess Wien",
-      "Behördenwege Betriebsanlage"
-    ],
-    "openGraph": {
-      "title": "Checkliste: Dokumente für Ihre Betriebsanlagengenehmigung",
-      "description": "Schritt-für-Schritt-Anleitung zu Formularen, Plänen und Sachverständigengutachten in Wien."
-    },
-    "twitter": {
-      "title": "Dokumente für den Betriebsanlagen-Antrag",
-      "description": "Welche Unterlagen die Behörde verlangt und wie Sie sich optimal vorbereiten."
-    }
-  },
-  "checkResult": {
-    "title": "Ihr Ergebnis des Betriebsanlagen-Checks",
-    "description": "Auswertung Ihres Checks mit Empfehlungen zu nächsten Schritten, Kontakten und Dokumenten.",
-    "keywords": [
-      "Betriebsanlagen Check Ergebnis",
-      "Nächste Schritte Genehmigung",
-      "Bewertung Betriebsanlage"
-    ],
-    "openGraph": {
-      "title": "Ergebnis: Benötigt Ihre Betriebsanlage eine Genehmigung?",
-      "description": "Sehen Sie sofort, ob Handlungsbedarf besteht und wie Sie weiter vorgehen sollten."
-    },
-    "twitter": {
-      "title": "Ihr Betriebsanlagen-Check Ergebnis",
-      "description": "Empfehlungen zu Genehmigungspflicht, Dokumenten und nächsten Schritten auf einen Blick."
-    }
-  }
-},
-"addressChecker": {
-  "title": "Adressen-Check für Betriebsanlagen",
-  "subtitle": "Überprüfen Sie Ihre geplante Betriebsadresse auf potenzielle Probleme",
-  "description": "Wir zeigen Ihnen Kirchen, Krankenhäuser, Schulen und andere relevante Einrichtungen in der Nähe, die bei der Betriebsanlagengenehmigung eine Rolle spielen können.",
-  "search": {
-    "label": "Straßenname in Wien eingeben",
-    "placeholder": "z.B. Rathausstraße, Mariahilfer Straße",
-    "button": "Adresse prüfen",
-    "searching": "Suche läuft...",
-    "error": "Fehler bei der Adresssuche. Bitte versuchen Sie es erneut.",
-    "noResults": "Keine Adresse gefunden. Bitte überprüfen Sie Ihre Eingabe.",
-    "multipleResults": "Bitte wählen Sie die richtige Adresse:"
-  },
-  "map": {
-    "title": "Kartenansicht",
-    "attribution": "Datenquelle: Stadt Wien – data.wien.gv.at",
-    "loading": "Karte wird geladen..."
-  },
-  "pois": {
-    "title": "Umgebung",
-    "empty": "Keine problematischen Einrichtungen in unmittelbarer Nähe gefunden.",
-    "categories": {
-      "krankenhaus": "Krankenhäuser",
-      "religion": "Religiöse Einrichtungen",
-      "kath": "Katholische Kirchen",
-      "evangkirche": "Evangelische Kirchen",
-      "orthodox": "Orthodoxe Kirchen",
-      "islam": "Moscheen",
-      "israel": "Synagogen",
-      "buddh": "Buddhistische Tempel",
-      "kindergarten": "Kindergärten",
-      "schule": "Schulen",
-      "friedhof": "Friedhöfe",
-      "baustelle": "Baustellen",
-      "polizei": "Polizei"
-    },
-    "distance": "Entfernung",
-    "nearby": "Nähe"
-  },
-  "risk": {
-    "title": "Bewertung für Betriebsanlagengenehmigung",
-    "levels": {
-      "high": "Hohes Risiko",
-      "medium": "Mittleres Risiko",
-      "low": "Geringes Risiko"
-    },
-    "points": "Punkte",
-    "warnings": "Wichtige Hinweise:",
-    "recommendations": "Empfehlungen:",
     "disclaimer": {
-      "title": "Hinweis",
-      "text": "Diese Bewertung ist eine erste Einschätzung. Für eine rechtsverbindliche Auskunft kontaktieren Sie bitte die MA 36 (Magistratische Bezirksamt)."
+      "title": "Hinweis zur Verbindlichkeit",
+      "orientation": "Hinweis: Dieses Tool dient der Orientierung. Es prüft, ob dein Betrieb grundsätzlich unter eine Ausnahme der 2. Genehmigungsfreistellungsverordnung fällt.",
+      "legal": "Das Ergebnis ist keine behördliche Entscheidung und keine Rechtsberatung im Sinn des RDLG. Verbindlich entscheidet die MA 36 (Betriebsanlagenbehörde Wien)."
     }
   },
-  "actions": {
-    "download": "Bericht als PDF herunterladen",
-    "newCheck": "Neue Adresse prüfen",
-    "backToChecker": "Zurück zum Betriebsanlagen-Check"
-  },
-  "badges": {
-    "high": "Achtung",
-    "medium": "Beachten",
-    "low": "Info"
-  }
-},
-"formularAssistent": {
-  "meta": {
-    "title": "Formular-Assistent | Betriebsanlage-Check",
-    "description": "Interaktiver Assistent zum Ausfüllen des Betriebsanlagen-Antrags"
-  },
-  "titel": "Antrag auf Betriebsanlagengenehmigung",
-  "beschreibung": "Dieser Assistent hilft Ihnen Schritt für Schritt beim Ausfüllen des Antrags. Am Ende erhalten Sie ein ausgefülltes PDF zum Herunterladen.",
-  "disclaimer": "⚖️ Diese Ausfüllhilfe ist eine unabhängige Serviceleistung und ersetzt keine rechtliche Beratung. Für rechtsverbindliche Auskünfte wenden Sie sich bitte an das zuständige Magistratische Bezirksamt oder die Wirtschaftskammer Wien.",
-  "entwurfGefunden": "Es wurde ein gespeicherter Entwurf gefunden. Möchten Sie diesen wiederherstellen?",
-  "entwurfGespeichert": "Ihr Fortschritt wurde gespeichert.",
-  "entwurfSpeichern": "Entwurf speichern",
-  "zurueck": "Zurück",
-  "weiter": "Weiter",
-  "pdfErstellen": "PDF erstellen & herunterladen",
-  "pdfErfolgreich": "PDF wurde erfolgreich erstellt und heruntergeladen!",
-  "pdfFehler": "Fehler bei der PDF-Erstellung. Bitte versuchen Sie es erneut.",
-  "schritte": {
-    "antragsteller": {
-      "titel": "Antragsteller",
-      "beschreibung": "Bitte geben Sie Ihre persönlichen bzw. Unternehmensdaten an.",
-      "felder": {
-        "name": {
-          "label": "Name und Anschrift",
-          "platzhalter": "Max Mustermann GmbH, Musterstraße 123, 1010 Wien",
-          "hilfe": "Vollständiger Name der Person oder des Unternehmens. Bei Unternehmen: Firmenwortlaut laut Firmenbuch."
-        },
-        "kontaktperson": {
-          "label": "Kontaktdaten der Ansprechperson",
-          "platzhalter": "Name, Adresse und Telefonnummer",
-          "hilfe": "Person, die für Rückfragen zur Verfügung steht."
-        },
-        "telefon": {
-          "label": "Telefonnummer",
-          "platzhalter": "+43 1 234 5678"
-        },
-        "email": {
-          "label": "E-Mail-Adresse",
-          "platzhalter": "ihre.email@beispiel.at",
-          "hilfe": "Wichtig für die Kommunikation mit der Behörde."
+  "documents": {
+    "title": "Ihr Weg zur Betriebsanlagengenehmigung",
+    "subtitle": "Überblick über alle Schritte und Dokumente",
+    "intro": "Hier erfahren Sie, welche Dokumente Sie vorbereiten müssen und welche Schritte zu unternehmen sind.",
+    "steps": {
+      "step1": {
+        "title": "Vorprüfung und Beratung",
+        "description": "Kontaktieren Sie die zuständige MA 36 (Technische Gewerbeangelegenheiten) für eine erste Beratung.",
+        "contactTitle": "Kontakt:",
+        "contact": {
+          "phone": {
+            "icon": "📞",
+            "label": "Telefon",
+            "value": "+43 1 4000-25310"
+          },
+          "email": {
+            "icon": "📧",
+            "label": "E-Mail",
+            "value": "post@ma36.wien.gv.at"
+          },
+          "website": {
+            "icon": "🌐",
+            "value": "www.wien.gv.at/ma36"
+          }
         }
-      }
-    },
-    "standort": {
-      "titel": "Standort",
-      "beschreibung": "Wo soll die Betriebsanlage errichtet oder betrieben werden?",
-      "adresssuche": {
-        "titel": "Adresse automatisch finden",
-        "platzhalter": "z.B. Rathausstraße 1, 1010 Wien",
-        "button": "Suchen"
       },
-      "umgebungsanalyse": {
-        "titel": "Umgebungsanalyse für Ihren Standort",
-        "risikobewertung": "Risikobewertung",
-        "risiko": {
-          "hoch": "Hoch",
-          "mittel": "Mittel",
-          "gering": "Gering"
-        },
-        "kartenTitel": "Standortkarte",
-        "poisTitel": "Kritische Einrichtungen in der Nähe",
-        "warnungenTitel": "⚠️ Wichtige Hinweise:",
-        "empfehlungenTitel": "💡 Empfehlungen:"
-      },
-      "felder": {
-        "bezirk": {
-          "label": "Bezirk"
-        },
-        "strasse": {
-          "label": "Straße, Hausnummer",
-          "platzhalter": "z.B. Rathausstraße 1"
-        },
-        "grundstueck": {
-          "label": "Grundstücksnummer/n und Katastralgemeinde",
-          "platzhalter": "1234/5 KG Innere Stadt",
-          "hilfe": "Diese Information finden Sie im Grundbuch oder auf www.bev.gv.at"
+      "step2": {
+        "title": "Erforderliche Dokumente vorbereiten",
+        "description": "Typischerweise benötigte Unterlagen:",
+        "items": {
+          "applicationForm": {
+            "title": "Antragsformular",
+            "description": "Vollständig ausgefüllt und unterschrieben"
+          },
+          "businessLicense": {
+            "title": "Gewerbeberechtigung",
+            "description": "Nachweis der Gewerbeberechtigung"
+          },
+          "plans": {
+            "title": "Pläne und Skizzen",
+            "description": "Lagepläne, Grundrisse, Schnitte (maßstabsgetreu)"
+          },
+          "technicalDescription": {
+            "title": "Technische Beschreibung",
+            "description": "Detaillierte Beschreibung der Betriebsanlage und ihrer Einrichtungen"
+          },
+          "neighbors": {
+            "title": "Nachbarschaftsinformation",
+            "description": "Zustimmung oder Information der Nachbar:innen"
+          },
+          "tenancy": {
+            "title": "Miet-/Eigentumsnachweis",
+            "description": "Nachweis über das Recht zur Nutzung der Räumlichkeiten"
+          }
         }
-      }
-    },
-    "antragstyp": {
-      "titel": "Antragstyp",
-      "beschreibung": "Welche Art von Antrag möchten Sie stellen?",
-      "felder": {
-        "typ": {
-          "label": "Was möchten Sie beantragen?",
-          "optionen": {
-            "neu": {
-              "label": "Neue Betriebsanlage",
-              "beschreibung": "Errichtung und Betrieb einer komplett neuen Anlage"
-            },
-            "aenderung": {
-              "label": "Änderung bestehender Anlage",
-              "beschreibung": "Änderung, Erweiterung oder Modernisierung einer genehmigten Anlage"
-            }
+      },
+      "step3": {
+        "title": "Antrag einreichen",
+        "description": "Reichen Sie alle Unterlagen vollständig bei der MA 36 ein. Die Einreichung kann erfolgen:",
+        "options": {
+          "inPerson": {
+            "title": "📮 Persönlich",
+            "line1": "Dresdner Straße 73-75, 1200 Wien",
+            "line2": "Mo–Fr: 8:00–15:30 Uhr"
+          },
+          "mail": {
+            "title": "✉️ Postweg",
+            "line1": "MA 36 – Technische Gewerbeangelegenheiten",
+            "line2": "Dresdner Straße 73-75, 1200 Wien"
+          }
+        }
+      },
+      "step4": {
+        "title": "Nach der Einreichung",
+        "description": "Was passiert nach der Einreichung?",
+        "items": {
+          "confirmation": {
+            "icon": "✅",
+            "title": "Eingangsbestätigung",
+            "description": "Sie erhalten eine Bestätigung über den Eingang der Unterlagen."
+          },
+          "assessment": {
+            "icon": "📝",
+            "title": "Prüfung",
+            "description": "Die Behörde prüft die Unterlagen und holt ggf. Stellungnahmen ein."
+          },
+          "questions": {
+            "icon": "📞",
+            "title": "Rückfragen",
+            "description": "Bei Unklarheiten werden Sie kontaktiert, um weitere Informationen zu liefern."
+          },
+          "decision": {
+            "icon": "📄",
+            "title": "Bescheid",
+            "description": "Sie erhalten einen Bescheid über die Genehmigung oder Auflagen."
           }
         },
-        "art": {
-          "label": "Art der Anlage",
-          "platzhalter": "z.B. Tischlerei, KFZ-Werkstätte, Bäckerei, Restaurant",
-          "hilfe": "Beschreiben Sie in wenigen Worten, welche Art von Betrieb Sie führen möchten."
+        "processingTime": "Durchschnittliche Bearbeitungszeit: 4–8 Wochen"
+      }
+    },
+    "expertReports": {
+      "title": "Häufig benötigte Fachgutachten",
+      "items": {
+        "noise": {
+          "icon": "🔊",
+          "title": "Schallschutz / Lärmschutz",
+          "description": "Besonders bei Maschinen, Lüftungsanlagen oder Musikbetrieb."
         },
-        "anlagenteile": {
-          "label": "Wesentliche Anlagenteile und Tätigkeiten",
-          "platzhalter": "Anlagenteile: z.B. Produktionshalle 200m², Büro 30m², Lager 50m²\\n\\nTätigkeiten: z.B. Holzverarbeitung, Möbelherstellung, Verkauf",
-          "hilfe": "Listen Sie alle wichtigen Teile Ihrer Anlage und die geplanten Tätigkeiten auf."
+        "ventilation": {
+          "icon": "🌬️",
+          "title": "Lüftung / Klima",
+          "description": "Nachweis einer ausreichenden Be- und Entlüftung."
+        },
+        "fireProtection": {
+          "icon": "🔥",
+          "title": "Brandschutz",
+          "description": "Brandalarm, Fluchtwege, Feuerlöscher, ggf. Sprinkler."
         }
       }
     },
-    "flaechen": {
-      "titel": "Betriebsflächen",
-      "beschreibung": "Angaben über die Größe und Art der gewerblich genutzten Flächen",
-      "felder": {
-        "beschreibung": {
-          "label": "Beschreibung aller gewerblich genutzten Flächen",
-          "platzhalter": "z.B.:\\n- Produktionsräume: 200m²\\n- Büro: 30m²\\n- Lager: 50m²\\n- Sanitärräume: 20m²\\n- Parkplatz: 100m²",
-          "hilfe": "Listen Sie ALLE Flächen auf, die betrieblich genutzt werden, inkl. Freiflächen und Parkplätze."
+    "fees": {
+      "title": "Kosten & Gebühren",
+      "items": {
+        "federalFees": {
+          "icon": "💶",
+          "title": "Bundesabgaben",
+          "description": "Abhängig von Betriebsart und Umfang (ca. 70–300 €)."
         },
-        "gesamtflaeche": {
-          "label": "Gesamte betrieblich genutzte Fläche",
-          "hilfe": "Summe aller oben genannten Flächen in m²"
+        "expertFees": {
+          "icon": "📄",
+          "title": "Sachverständigenkosten",
+          "description": "Behördliche Gutachter (je nach Aufwand, mehrere hundert Euro möglich)."
         },
-        "anschlussleistung": {
-          "label": "Gesamte elektrische Anschlussleistung",
-          "optionen": {
-            "unter300": {
-              "label": "Unter 300 Kilowatt",
-              "info": "✓ Vereinfachtes Verfahren möglich"
-            },
-            "ueber300": {
-              "label": "Über 300 Kilowatt",
-              "info": "Normales Verfahren erforderlich"
-            },
-            "keine": {
-              "label": "Keine Maschinen oder Geräte vorhanden"
+        "ownExperts": {
+          "icon": "🛠️",
+          "title": "Eigene Expert:innen",
+          "description": "Z. B. Ingenieurbüros, Planer:innen, Brandschutzexpert:innen."
+        },
+        "time": {
+          "icon": "⏱️",
+          "title": "Zeit",
+          "description": "Planen Sie ausreichend Zeit für Vorbereitung und eventuelle Nachbesserungen ein."
+        }
+      }
+    },
+    "tips": {
+      "title": "Tipps für einen reibungslosen Ablauf",
+      "items": {
+        "planEarly": {
+          "icon": "🗂️",
+          "title": "Frühzeitig planen",
+          "description": "Beginnen Sie mindestens 2–3 Monate vor geplanter Inbetriebnahme."
+        },
+        "contactAuthority": {
+          "icon": "🤝",
+          "title": "MA 36 kontaktieren",
+          "description": "Nutzen Sie die Beratung – viele Fragen lassen sich schon vorab klären."
+        },
+        "useChecklists": {
+          "icon": "📋",
+          "title": "Checklisten verwenden",
+          "description": "Überprüfen Sie, ob alle Pläne, Gutachten und Formulare vollständig sind."
+        },
+        "stayFlexible": {
+          "icon": "🔄",
+          "title": "Flexibel bleiben",
+          "description": "Seien Sie auf Nachbesserungen oder Auflagen vorbereitet."
+        }
+      }
+    },
+    "pageTitle": "Dokumente & Formulare",
+    "pageDescription": "Alle erforderlichen Dokumente für Ihre Betriebsanlagengenehmigung zum Download",
+    "disclaimer": {
+      "title": "⚖️ Wichtiger rechtlicher Hinweis",
+      "text": "Diese Plattform bietet ausschließlich Informationen und technische Unterstützung beim Ausfüllen von Formularen. Wir bieten keine Rechtsberatung an. Die Überprüfung auf Vollständigkeit und Richtigkeit liegt in Ihrer Verantwortung. Für rechtliche Fragen wenden Sie sich bitte an einen Fachanwalt oder die MA 36."
+    },
+    "filter": {
+      "all": "Alle Dokumente",
+      "required": "Pflichtdokumente",
+      "guides": "Anleitungen"
+    },
+    "category": {
+      "required": "Pflicht",
+      "optional": "Optional",
+      "guide": "Anleitung"
+    },
+    "pages": "Seiten",
+    "download": "Herunterladen",
+    "downloading": "Lädt...",
+    "downloadFailed": "Download fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "openExternal": "Externen Link öffnen",
+    "noExternalLink": "Kein externer Link verfügbar.",
+    "needHelp": {
+      "title": "Hilfe beim Ausfüllen?",
+      "text": "Diese Formulare können komplex sein. Nutzen Sie unseren kostenlosen Checker, um herauszufinden, welche Dokumente Sie genau benötigen."
+    },
+    "startChecker": "Jetzt Checker starten",
+    "officialSource": "Quelle"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Alles Wichtige rund um Betriebsanlagengenehmigung, Gewerbeanmeldung und Unternehmensgründung in Wien",
+    "questions": {
+      "q1": {
+        "question": "Was ist eine Betriebsanlage und brauche ich eine Genehmigung?",
+        "answer": "Eine Betriebsanlage ist jede Anlage, die zur Ausübung eines Gewerbes verwendet wird. Dazu gehören Geschäftslokale, Werkstätten, Lager, Gastronomie-Betriebe und vieles mehr. Ob Sie eine Genehmigung benötigen, hängt von verschiedenen Faktoren ab: Art des Betriebs, Größe, Lage, Betriebszeiten und mögliche Belästigungen (Lärm, Geruch). Die Genehmigungsfreistellungsverordnung regelt, welche Betriebe ohne Genehmigung betrieben werden können. Nutzen Sie unseren kostenlosen Check, um herauszufinden, ob Ihr Betrieb genehmigungspflichtig ist."
+      },
+      "q2": {
+        "question": "Wie lange dauert die Genehmigung meiner Betriebsanlage in Wien?",
+        "answer": "Die Dauer variiert je nach Komplexität Ihres Betriebs. Bei einfachen Fällen ohne Anrainerbeteiligung: 4-8 Wochen. Bei komplexen Anlagen mit Nachbarverständigung: 3-6 Monate. Die MA 36 (Gewerbebehörde Wien) ist die zuständige Stelle. Tipp: Eine vollständige Einreichung mit allen Unterlagen beschleunigt das Verfahren erheblich."
+      },
+      "q3": {
+        "question": "Was kostet eine Betriebsanlagengenehmigung?",
+        "answer": "Die Gebühren richten sich nach dem Verwaltungsaufwand. Vereinfachtes Verfahren: ca. 100-300 Euro. Normales Verfahren mit Gutachten: 500-2000 Euro. Große oder komplexe Anlagen: 2000-5000 Euro und mehr. Hinzu können Kosten für Gutachter, Pläne und technische Nachweise kommen. Die genauen Tarife finden Sie auf wien.gv.at."
+      },
+      "q4": {
+        "question": "Kann ich mein Geschäft schon vor der Genehmigung eröffnen?",
+        "answer": "Nein, wenn Ihr Betrieb genehmigungspflichtig ist, dürfen Sie NICHT vor Erteilung der Genehmigung starten. Das wäre eine Verwaltungsübertretung mit Strafen bis zu 50.000 Euro. Bei genehmigungsfreien Betrieben (nach Freistellungsverordnung) können Sie sofort nach der Gewerbeanmeldung starten. Unser Check hilft Ihnen festzustellen, ob Sie eine Genehmigung benötigen."
+      },
+      "q5": {
+        "question": "Welche Unterlagen brauche ich für die Betriebsanlagengenehmigung?",
+        "answer": "Standardunterlagen: Gewerbeberechtigung oder Konzession, Grundriss und Lageplan, Beschreibung der Betriebsanlage, Nachweis über Nutzungsrecht (Mietvertrag/Eigentumsnachweis), technische Beschreibungen (z.B. Lüftung, Lärm). Je nach Betrieb zusätzlich: Lärmgutachten, Brandschutzkonzept, Statik-Nachweis, Umweltverträglichkeitsprüfung. Die MA 36 berät Sie im Vorfeld, welche Unterlagen konkret nötig sind."
+      },
+      "q6": {
+        "question": "Was ist der Unterschied zwischen Gewerbeanmeldung und Betriebsanlagengenehmigung?",
+        "answer": "Gewerbeanmeldung: Berechtigt Sie zur Ausübung eines Gewerbes (bei der Gewerbebehörde). Betriebsanlagengenehmigung: Erlaubt den Betrieb an einem konkreten Standort (berücksichtigt Lärm, Sicherheit, Nachbarn). Sie brauchen BEIDES: Erst die Gewerbeberechtigung, dann die Betriebsanlagengenehmigung für den Standort. Manche Betriebe sind von der Genehmigungspflicht befreit (siehe Freistellungsverordnung)."
+      },
+      "q7": {
+        "question": "Gilt die Freistellungsverordnung auch für mich?",
+        "answer": "Die Wiener Genehmigungsfreistellungsverordnung befreit bestimmte Betriebe von der Genehmigungspflicht, wenn sie bestimmte Kriterien erfüllen. Beispiele: Einzelhandel bis 600 m², Büros (fast immer), kleine Werkstätten, Kosmetik-Betriebe, Beherbergung bis 30 Betten ohne Schwimmbad. ABER: Ausnahmen gelten bei Lärm, Musik, gefährlichen Stoffen, mechanischer Lüftung außerhalb der Gebäudehülle. Nutzen Sie unseren Check für eine schnelle Einschätzung."
+      },
+      "q8": {
+        "question": "Brauche ich als Gastronom in Wien eine Betriebsanlagengenehmigung?",
+        "answer": "Ja, in den meisten Fällen. Gastronomiebetriebe (Restaurants, Cafés, Bars) sind normalerweise genehmigungspflichtig wegen: Geruchsemissionen (Küche), Lärm (Gäste, Musik), Fettabscheider, Lüftungsanlagen. Ausnahmen: Kleine Eisdielen ohne Sitzplätze können freigestellt sein. Das Verfahren kann 3-6 Monate dauern - planen Sie das bei Ihrer Eröffnung ein!"
+      },
+      "q9": {
+        "question": "Ich spreche kein Deutsch - kann ich trotzdem ein Gewerbe gründen?",
+        "answer": "Ja! Unsere Website unterstützt 8 Sprachen: Deutsch, Englisch, Serbisch, Kroatisch, Türkisch, Italienisch, Spanisch und Ukrainisch. Für offizielle Behördengänge: Die MA 36 und Wirtschaftskammer bieten Beratung in mehreren Sprachen an. Für die Gewerbeanmeldung brauchen Sie: Reisepass/Ausweis, Sozialversicherungsnummer, ggf. Übersetzer für Dokumente. Viele Gründer-Services in Wien sind mehrsprachig."
+      },
+      "q10": {
+        "question": "Was passiert, wenn meine Nachbarn gegen meine Betriebsanlage sind?",
+        "answer": "Bei genehmigungspflichtigen Anlagen werden Nachbarn im Verfahren informiert (Anrainerbeteiligung). Sie können Einwendungen erheben bei: Zu viel Lärm, Geruchsbelästigung, Sicherheitsbedenken, Verkehrsproblemen. Die Behörde prüft die Einwände und kann Auflagen erteilen (z.B. Lärmschutz, Betriebszeiten-Einschränkung). Mit guter Planung und frühzeitiger Nachbar-Information lassen sich viele Konflikte vermeiden."
+      }
+    },
+    "cta": {
+      "title": "Noch Fragen offen?",
+      "description": "Nutzen Sie unseren kostenlosen Check und finden Sie heraus, ob Ihr Betrieb eine Genehmigung benötigt.",
+      "button": "Jetzt Check starten"
+    }
+  },
+  "metadata": {
+    "title": "Betriebsanlagengenehmigung Wien – Genehmigung prüfen für Gründer",
+    "description": "Kostenloser Betriebsanlagen-Check für Gründer in Wien: Erfahren Sie in 2 Minuten, ob Ihr Gewerbe bei der Unternehmensgründung eine Betriebsanlagengenehmigung braucht. MA 36 Wien, GFVO, alle Infos.",
+    "keywords": [
+      "Betriebsanlagengenehmigung Wien",
+      "Unternehmensgründung Wien",
+      "Gründen Gewerbe Wien",
+      "Betriebsanlage Gründer",
+      "Gewerbeanmeldung Wien",
+      "Genehmigung Betriebsanlage",
+      "MA 36 Wien",
+      "Betriebsanlage GFVO",
+      "Gewerbe gründen Wien",
+      "Startup Wien Genehmigung"
+    ],
+    "openGraph": {
+      "title": "Betriebsanlagen-Check für Gründer in Wien",
+      "description": "Prüfen Sie mit unserem kostenlosen Online-Check, ob Ihre Betriebsanlage eine Genehmigung benötigt – mehrsprachig, sicher und schnell.",
+      "siteName": "Betriebsanlagen Check",
+      "images": [
+        {
+          "url": "/og-image.png",
+          "width": 1200,
+          "height": 630,
+          "alt": "Betriebsanlagen Check Wien - Genehmigung prüfen"
+        }
+      ]
+    },
+    "twitter": {
+      "title": "Betriebsanlagen-Check: Genehmigungspflicht jetzt prüfen",
+      "description": "Finden Sie in wenigen Minuten heraus, ob Ihre Betriebsanlage in Wien genehmigungspflichtig ist und welche Unterlagen Sie brauchen.",
+      "images": [
+        "/og-image.png"
+      ]
+    },
+    "faq": {
+      "title": "FAQ zum Betriebsanlagen-Check – Häufig gestellte Fragen",
+      "description": "Antworten zu Genehmigungspflicht, Ablauf und Kosten des Betriebsanlagen-Verfahrens in Wien.",
+      "keywords": [
+        "FAQ Betriebsanlagengenehmigung",
+        "Häufige Fragen Betriebsanlage",
+        "Genehmigung Wien Informationen"
+      ],
+      "openGraph": {
+        "title": "FAQ: Wichtigste Antworten zur Betriebsanlagengenehmigung",
+        "description": "Erhalten Sie klare Antworten zur Genehmigungspflicht, zu Fristen und zu Ansprechpersonen in Wien."
+      },
+      "twitter": {
+        "title": "FAQ zur Betriebsanlagengenehmigung",
+        "description": "Die häufigsten Fragen zum Betriebsanlagen-Check verständlich erklärt."
+      }
+    },
+    "documents": {
+      "title": "Unterlagen für die Betriebsanlagengenehmigung in Wien",
+      "description": "Überblick über erforderliche Dokumente, Expertisen und Bearbeitungsfristen für Ihren Genehmigungsantrag.",
+      "keywords": [
+        "Betriebsanlage Unterlagen",
+        "Genehmigungsprozess Wien",
+        "Behördenwege Betriebsanlage"
+      ],
+      "openGraph": {
+        "title": "Checkliste: Dokumente für Ihre Betriebsanlagengenehmigung",
+        "description": "Schritt-für-Schritt-Anleitung zu Formularen, Plänen und Sachverständigengutachten in Wien."
+      },
+      "twitter": {
+        "title": "Dokumente für den Betriebsanlagen-Antrag",
+        "description": "Welche Unterlagen die Behörde verlangt und wie Sie sich optimal vorbereiten."
+      }
+    },
+    "checkResult": {
+      "title": "Ihr Ergebnis des Betriebsanlagen-Checks",
+      "description": "Auswertung Ihres Checks mit Empfehlungen zu nächsten Schritten, Kontakten und Dokumenten.",
+      "keywords": [
+        "Betriebsanlagen Check Ergebnis",
+        "Nächste Schritte Genehmigung",
+        "Bewertung Betriebsanlage"
+      ],
+      "openGraph": {
+        "title": "Ergebnis: Benötigt Ihre Betriebsanlage eine Genehmigung?",
+        "description": "Sehen Sie sofort, ob Handlungsbedarf besteht und wie Sie weiter vorgehen sollten."
+      },
+      "twitter": {
+        "title": "Ihr Betriebsanlagen-Check Ergebnis",
+        "description": "Empfehlungen zu Genehmigungspflicht, Dokumenten und nächsten Schritten auf einen Blick."
+      }
+    }
+  },
+  "addressChecker": {
+    "title": "Adressen-Check für Betriebsanlagen",
+    "subtitle": "Überprüfen Sie Ihre geplante Betriebsadresse auf potenzielle Probleme",
+    "description": "Wir zeigen Ihnen Kirchen, Krankenhäuser, Schulen und andere relevante Einrichtungen in der Nähe, die bei der Betriebsanlagengenehmigung eine Rolle spielen können.",
+    "search": {
+      "label": "Straßenname in Wien eingeben",
+      "placeholder": "z.B. Rathausstraße, Mariahilfer Straße",
+      "button": "Adresse prüfen",
+      "searching": "Suche läuft...",
+      "error": "Fehler bei der Adresssuche. Bitte versuchen Sie es erneut.",
+      "noResults": "Keine Adresse gefunden. Bitte überprüfen Sie Ihre Eingabe.",
+      "multipleResults": "Bitte wählen Sie die richtige Adresse:"
+    },
+    "map": {
+      "title": "Kartenansicht",
+      "attribution": "Datenquelle: Stadt Wien – data.wien.gv.at",
+      "loading": "Karte wird geladen..."
+    },
+    "pois": {
+      "title": "Umgebung",
+      "empty": "Keine problematischen Einrichtungen in unmittelbarer Nähe gefunden.",
+      "categories": {
+        "krankenhaus": "Krankenhäuser",
+        "religion": "Religiöse Einrichtungen",
+        "kath": "Katholische Kirchen",
+        "evangkirche": "Evangelische Kirchen",
+        "orthodox": "Orthodoxe Kirchen",
+        "islam": "Moscheen",
+        "israel": "Synagogen",
+        "buddh": "Buddhistische Tempel",
+        "kindergarten": "Kindergärten",
+        "schule": "Schulen",
+        "friedhof": "Friedhöfe",
+        "baustelle": "Baustellen",
+        "polizei": "Polizei"
+      },
+      "distance": "Entfernung",
+      "nearby": "Nähe"
+    },
+    "risk": {
+      "title": "Bewertung für Betriebsanlagengenehmigung",
+      "levels": {
+        "high": "Hohes Risiko",
+        "medium": "Mittleres Risiko",
+        "low": "Geringes Risiko"
+      },
+      "points": "Punkte",
+      "warnings": "Wichtige Hinweise:",
+      "recommendations": "Empfehlungen:",
+      "disclaimer": {
+        "title": "Hinweis",
+        "text": "Diese Bewertung ist eine erste Einschätzung. Für eine rechtsverbindliche Auskunft kontaktieren Sie bitte die MA 36 (Magistratische Bezirksamt)."
+      }
+    },
+    "actions": {
+      "download": "Bericht als PDF herunterladen",
+      "newCheck": "Neue Adresse prüfen",
+      "backToChecker": "Zurück zum Betriebsanlagen-Check"
+    },
+    "badges": {
+      "high": "Achtung",
+      "medium": "Beachten",
+      "low": "Info"
+    }
+  },
+  "formularAssistent": {
+    "meta": {
+      "title": "Formular-Assistent | Betriebsanlage-Check",
+      "description": "Interaktiver Assistent zum Ausfüllen des Betriebsanlagen-Antrags"
+    },
+    "titel": "Antrag auf Betriebsanlagengenehmigung",
+    "beschreibung": "Dieser Assistent hilft Ihnen Schritt für Schritt beim Ausfüllen des Antrags. Am Ende erhalten Sie ein ausgefülltes PDF zum Herunterladen.",
+    "disclaimer": "⚖️ Diese Ausfüllhilfe ist eine unabhängige Serviceleistung und ersetzt keine rechtliche Beratung. Für rechtsverbindliche Auskünfte wenden Sie sich bitte an das zuständige Magistratische Bezirksamt oder die Wirtschaftskammer Wien.",
+    "entwurfGefunden": "Es wurde ein gespeicherter Entwurf gefunden. Möchten Sie diesen wiederherstellen?",
+    "entwurfGespeichert": "Ihr Fortschritt wurde gespeichert.",
+    "entwurfSpeichern": "Entwurf speichern",
+    "zurueck": "Zurück",
+    "weiter": "Weiter",
+    "pdfErstellen": "PDF erstellen & herunterladen",
+    "pdfErfolgreich": "PDF wurde erfolgreich erstellt und heruntergeladen!",
+    "pdfFehler": "Fehler bei der PDF-Erstellung. Bitte versuchen Sie es erneut.",
+    "schritte": {
+      "antragsteller": {
+        "titel": "Antragsteller",
+        "beschreibung": "Bitte geben Sie Ihre persönlichen bzw. Unternehmensdaten an.",
+        "felder": {
+          "name": {
+            "label": "Name und Anschrift",
+            "platzhalter": "Max Mustermann GmbH, Musterstraße 123, 1010 Wien",
+            "hilfe": "Vollständiger Name der Person oder des Unternehmens. Bei Unternehmen: Firmenwortlaut laut Firmenbuch."
+          },
+          "kontaktperson": {
+            "label": "Kontaktdaten der Ansprechperson",
+            "platzhalter": "Name, Adresse und Telefonnummer",
+            "hilfe": "Person, die für Rückfragen zur Verfügung steht."
+          },
+          "telefon": {
+            "label": "Telefonnummer",
+            "platzhalter": "+43 1 234 5678"
+          },
+          "email": {
+            "label": "E-Mail-Adresse",
+            "platzhalter": "ihre.email@beispiel.at",
+            "hilfe": "Wichtig für die Kommunikation mit der Behörde."
+          }
+        }
+      },
+      "standort": {
+        "titel": "Standort",
+        "beschreibung": "Wo soll die Betriebsanlage errichtet oder betrieben werden?",
+        "adresssuche": {
+          "titel": "Adresse automatisch finden",
+          "platzhalter": "z.B. Rathausstraße 1, 1010 Wien",
+          "button": "Suchen"
+        },
+        "umgebungsanalyse": {
+          "titel": "Umgebungsanalyse für Ihren Standort",
+          "risikobewertung": "Risikobewertung",
+          "risiko": {
+            "hoch": "Hoch",
+            "mittel": "Mittel",
+            "gering": "Gering"
+          },
+          "kartenTitel": "Standortkarte",
+          "poisTitel": "Kritische Einrichtungen in der Nähe",
+          "warnungenTitel": "⚠️ Wichtige Hinweise:",
+          "empfehlungenTitel": "💡 Empfehlungen:"
+        },
+        "felder": {
+          "bezirk": {
+            "label": "Bezirk"
+          },
+          "strasse": {
+            "label": "Straße, Hausnummer",
+            "platzhalter": "z.B. Rathausstraße 1"
+          },
+          "grundstueck": {
+            "label": "Grundstücksnummer/n und Katastralgemeinde",
+            "platzhalter": "1234/5 KG Innere Stadt",
+            "hilfe": "Diese Information finden Sie im Grundbuch oder auf www.bev.gv.at"
+          }
+        }
+      },
+      "antragstyp": {
+        "titel": "Antragstyp",
+        "beschreibung": "Welche Art von Antrag möchten Sie stellen?",
+        "felder": {
+          "typ": {
+            "label": "Was möchten Sie beantragen?",
+            "optionen": {
+              "neu": {
+                "label": "Neue Betriebsanlage",
+                "beschreibung": "Errichtung und Betrieb einer komplett neuen Anlage"
+              },
+              "aenderung": {
+                "label": "Änderung bestehender Anlage",
+                "beschreibung": "Änderung, Erweiterung oder Modernisierung einer genehmigten Anlage"
+              }
             }
           },
-          "hilfe": "Diese Angabe bestimmt, ob ein vereinfachtes Verfahren möglich ist."
+          "art": {
+            "label": "Art der Anlage",
+            "platzhalter": "z.B. Tischlerei, KFZ-Werkstätte, Bäckerei, Restaurant",
+            "hilfe": "Beschreiben Sie in wenigen Worten, welche Art von Betrieb Sie führen möchten."
+          },
+          "anlagenteile": {
+            "label": "Wesentliche Anlagenteile und Tätigkeiten",
+            "platzhalter": "Anlagenteile: z.B. Produktionshalle 200m², Büro 30m², Lager 50m²\\n\\nTätigkeiten: z.B. Holzverarbeitung, Möbelherstellung, Verkauf",
+            "hilfe": "Listen Sie alle wichtigen Teile Ihrer Anlage und die geplanten Tätigkeiten auf."
+          }
         }
+      },
+      "flaechen": {
+        "titel": "Betriebsflächen",
+        "beschreibung": "Angaben über die Größe und Art der gewerblich genutzten Flächen",
+        "felder": {
+          "beschreibung": {
+            "label": "Beschreibung aller gewerblich genutzten Flächen",
+            "platzhalter": "z.B.:\\n- Produktionsräume: 200m²\\n- Büro: 30m²\\n- Lager: 50m²\\n- Sanitärräume: 20m²\\n- Parkplatz: 100m²",
+            "hilfe": "Listen Sie ALLE Flächen auf, die betrieblich genutzt werden, inkl. Freiflächen und Parkplätze."
+          },
+          "gesamtflaeche": {
+            "label": "Gesamte betrieblich genutzte Fläche",
+            "hilfe": "Summe aller oben genannten Flächen in m²"
+          },
+          "anschlussleistung": {
+            "label": "Gesamte elektrische Anschlussleistung",
+            "optionen": {
+              "unter300": {
+                "label": "Unter 300 Kilowatt",
+                "info": "✓ Vereinfachtes Verfahren möglich"
+              },
+              "ueber300": {
+                "label": "Über 300 Kilowatt",
+                "info": "Normales Verfahren erforderlich"
+              },
+              "keine": {
+                "label": "Keine Maschinen oder Geräte vorhanden"
+              }
+            },
+            "hilfe": "Diese Angabe bestimmt, ob ein vereinfachtes Verfahren möglich ist."
+          }
+        }
+      },
+      "zusammenfassung": {
+        "titel": "Zusammenfassung",
+        "beschreibung": "Überprüfen Sie alle Ihre Angaben vor der PDF-Erstellung."
       }
-    },
-    "zusammenfassung": {
-      "titel": "Zusammenfassung",
-      "beschreibung": "Überprüfen Sie alle Ihre Angaben vor der PDF-Erstellung."
     }
   }
-}
 }
