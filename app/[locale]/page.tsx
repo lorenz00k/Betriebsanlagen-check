@@ -7,15 +7,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import AnimatedStats from "../components/AnimatedStats";
 import { defaultLocale } from "@/i18n";
-import {
-  CheckCircle2,
-  FileText,
-  Zap,
-  Languages,
-  Shield,
-  ArrowRight,
-  Sparkles,
-} from "lucide-react";
+import { Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
 import BreakText from "@/components/ui/BreakText";
 import AutoGrid from "@/components/ui/AutoGrid";
 
@@ -88,19 +80,7 @@ export default function Home() {
             <BreakText className="page-hero__copy block">
               {t("subtitle")}
             </BreakText>
-
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Link
-                href={`/${activeLocale}/check`}
-                className="btn btn-primary inline-flex items-center gap-2"
-              >
-                <BreakText>{t("card1Button")}</BreakText>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <a href="#how-it-works" className="btn btn-ghost">
-                <BreakText>{t("flow.ctaLabel")}</BreakText>
-              </a>
-            </div>
+            {/* keine Buttons hier – nur Headline + Subheadline */}
           </section>
 
           {/* 2. ABLAUF / FLOW */}
@@ -114,11 +94,8 @@ export default function Home() {
               </BreakText>
             </div>
 
-            <AutoGrid min="12rem" className="mt-10">
-              <article className="card card--subtle">
-                <div className="card__icon">
-                  <CheckCircle2 className="w-6 h-6" strokeWidth={2} />
-                </div>
+            <div className="flow-steps mt-10 flex flex-col gap-4 md:flex-row md:items-stretch md:justify-between md:gap-6">
+              <div className="flow-steps__item card card--subtle flex-1">
                 <h3 className="card__title">
                   <BreakText className="block">
                     {t("flow.step1Title")}
@@ -127,12 +104,13 @@ export default function Home() {
                 <BreakText className="card__body block">
                   {t("flow.step1Text")}
                 </BreakText>
-              </article>
+              </div>
 
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--accent-soft">
-                  <Zap className="w-6 h-6" strokeWidth={2} />
-                </div>
+              <div className="flow-steps__arrow flex items-center justify-center text-2xl md:px-2">
+                <span aria-hidden="true">→</span>
+              </div>
+
+              <div className="flow-steps__item card card--subtle flex-1">
                 <h3 className="card__title">
                   <BreakText className="block">
                     {t("flow.step2Title")}
@@ -141,12 +119,13 @@ export default function Home() {
                 <BreakText className="card__body block">
                   {t("flow.step2Text")}
                 </BreakText>
-              </article>
+              </div>
 
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--warm">
-                  <FileText className="w-6 h-6" strokeWidth={2} />
-                </div>
+              <div className="flow-steps__arrow flex items-center justify-center text-2xl md:px-2">
+                <span aria-hidden="true">→</span>
+              </div>
+
+              <div className="flow-steps__item card card--subtle flex-1">
                 <h3 className="card__title">
                   <BreakText className="block">
                     {t("flow.step3Title")}
@@ -155,11 +134,11 @@ export default function Home() {
                 <BreakText className="card__body block">
                   {t("flow.step3Text")}
                 </BreakText>
-              </article>
-            </AutoGrid>
+              </div>
+            </div>
           </section>
 
-          {/* 3. CHECKER-BEREICH (große Card) */}
+          {/* 3. CHECKER – direkt unter dem Ablauf, mit eingebettetem ersten Screen */}
           <section className="section section--compact">
             <div className="surface-muted">
               <div className="section__heading">
@@ -173,49 +152,39 @@ export default function Home() {
                 </BreakText>
               </div>
 
-              <AutoGrid min="16rem" className="mt-10 page-actions">
-                <article className="card">
-                  <div className="card__icon">
-                    <CheckCircle2 className="w-7 h-7" strokeWidth={2.2} />
-                  </div>
-                  <h3 className="card__title">
-                    <BreakText className="block">
-                      {t("card1Title")}
-                    </BreakText>
-                  </h3>
-                  <BreakText className="card__body block">
-                    {t("card1Description")}
-                  </BreakText>
-                  <Link
-                    href={`/${activeLocale}/check`}
-                    className="btn btn-primary w-full justify-center"
-                  >
-                    <BreakText>{t("card1Button")}</BreakText>
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </article>
+              <div className="checker-embed mt-8">
+                {/* 
+                  TODO: Hier den ersten Screen des Checkers einbinden,
+                  z.B. eine gemeinsame Komponente wie:
+                  <CheckWizardFirstStep locale={activeLocale} />
 
-                <article className="card">
-                  <div className="card__icon card__icon--warm">
-                    <FileText className="w-7 h-7" strokeWidth={2.2} />
-                  </div>
-                  <h3 className="card__title">
-                    <BreakText className="block">
-                      {t("card2Title")}
-                    </BreakText>
-                  </h3>
+                  Bis dahin zeigt der Platzhalter-Text an, was hier passiert.
+                */}
+                <div className="card">
                   <BreakText className="card__body block">
-                    {t("card2Description")}
+                    {t("checker.placeholder")}
                   </BreakText>
-                  <Link
-                    href={`/${activeLocale}/documents`}
-                    className="btn btn-secondary w-full justify-center"
-                  >
-                    <BreakText>{t("card2Button")}</BreakText>
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </article>
-              </AutoGrid>
+                  <div className="mt-4">
+                    <Link
+                      href={`/${activeLocale}/check`}
+                      className="btn btn-primary"
+                    >
+                      <BreakText>{t("card1Button")}</BreakText>
+                      <ArrowRight className="w-5 h-5" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <Link
+                  href={`/${activeLocale}/documents`}
+                  className="btn btn-secondary inline-flex items-center gap-2"
+                >
+                  <BreakText>{t("documents.cta")}</BreakText>
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
             </div>
           </section>
 
@@ -227,9 +196,7 @@ export default function Home() {
                   {t("selling.heading")}
                 </BreakText>
               </h2>
-              <BreakText className="section__copy block">
-                {t("selling.intro")}
-              </BreakText>
+              {/* Subheadline entfernt – direkt in die Features/Stats */}
             </div>
 
             <div className="surface-muted mt-8">
