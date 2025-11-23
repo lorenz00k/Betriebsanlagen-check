@@ -3,47 +3,66 @@
     "selectLanguage": "Sprache wählen"
   },
   "home": {
-    "title": "Betriebsanlagen-Check für Gründer",
-    "subtitle": "Finden Sie in 2 Minuten heraus, ob Sie eine Betriebsanlagengenehmigung benötigen",
-    "card1Title": "Betriebsanlagen checker",
-    "card1Description": "Erhalte eine vollständige Auswertung zu Betriebsanlage, Genehmigungspflicht, Unterlagen, Arbeitnehmerschutz und Betriebspflichten.",
+    "title": "Brauche ich eine Betriebsanlagengenehmigung?",
+    "subtitle": "Finde in 2 Minuten kostenlos heraus, ob dein Betrieb eine Genehmigung braucht – anonym und kostenlos!",
+    "card1Title": "Überprüfung starten",
+    "card1Description": "Erhalte eine Auswertung zu Betriebsanlage, Genehmigungspflicht, Unterlagen, Arbeitnehmerschutz und Betriebspflichten.",
     "card1Button": "Checker starten",
     "card2Title": "Ihr Weg und benötigte Dokumente",
-    "card2Description": "Überblick über alle Schritte und Dokumente, die Sie für eine Betriebsanlagengenehmigung benötigen",
+    "card2Description": "Überblick über alle Schritte und Dokumente, die Sie für eine Betriebsanlagengenehmigung benötigen.",
     "card2Button": "Mehr erfahren",
+    "flow": {
+      "heading": "So funktioniert der Check",
+      "intro": "In drei einfachen Schritten zur ersten Einschätzung für deinen Betrieb in Wien.",
+      "step1Title": "Fragen beantworten",
+      "step1Text": "Gib ein paar Eckdaten zu deinem Betrieb und Standort ein.",
+      "step2Title": "Einschätzung erhalten",
+      "step2Text": "Sieh, ob dein Betrieb voraussichtlich genehmigungspflichtig ist.",
+      "step3Title": "Dokumente vorbereiten",
+      "step3Text": "Erhalte Hinweise zu Unterlagen und nächsten Schritten.",
+      "ctaLabel": "So funktioniert der Check"
+    },
+    "checker": {
+      "heading": "Starte jetzt deinen Betriebsanlagen-Check",
+      "intro": "Beginne direkt mit der Überprüfung oder informiere dich zuerst über die notwendigen Dokumente."
+    },
     "stats": {
       "languages": "Sprachen verfügbar",
       "time": "Ergebnis in Minuten",
-      "free": "Kostenlos & Sicher"
+      "free": "Kostenlos & anonym"
+    },
+    "selling": {
+      "heading": "Was den Betriebsanlagen-Check auszeichnet",
+      "intro": "Der Check ist auf Wiener Betriebsanlagen zugeschnitten, schnell erledigt und vollständig anonym."
     },
     "seo": {
       "heading": "Warum eine Betriebsanlagengenehmigung wichtig ist",
       "intro": "In Wien und ganz Österreich benötigen viele Unternehmen eine Betriebsanlagengenehmigung nach der Gewerbeordnung. Unser kostenloser Check hilft Ihnen schnell und unkompliziert herauszufinden, ob Ihr Betrieb genehmigungspflichtig ist.",
-      "feature1Title": "Schnell & Einfach",
-      "feature1Text": "In nur 2 Minuten erhalten Sie eine erste Einschätzung, ob Sie eine Betriebsanlagengenehmigung benötigen. Keine komplizierten Formulare, keine Wartezeiten.",
+      "feature1Title": "Schnell & einfach",
+      "feature1Text": "In nur 2 Minuten erhalten Sie eine erste Einschätzung, ob Sie eine Betriebsanlagengenehmigung benötigen. Keine komplizierten Formulare, keine Wartezeiten, kein kompliziertes Beamtendeutsch.",
       "feature2Title": "Mehrsprachig",
-      "feature2Text": "Unser Service ist in 8 Sprachen verfügbar: Deutsch, Englisch, Serbisch, Kroatisch, Türkisch, Italienisch, Spanisch und Ukrainisch - für alle Unternehmer in Wien zugänglich.",
-      "feature3Title": "Kostenlos & Anonym",
+      "feature2Text": "Unser Service ist in 8 Sprachen verfügbar: Deutsch, Englisch, Serbisch, Kroatisch, Türkisch, Italienisch, Spanisch und Ukrainisch – für alle Unternehmer:innen in Wien zugänglich.",
+      "feature3Title": "Kostenlos & anonym",
       "feature3Text": "Der Check ist völlig kostenlos und Ihre Daten bleiben privat. Keine Registrierung erforderlich, keine versteckten Kosten.",
       "whyTitle": "Wann brauchen Sie eine Betriebsanlagengenehmigung?",
       "whyText": "Eine Betriebsanlagengenehmigung ist in Österreich für viele gewerbliche Tätigkeiten erforderlich. Die Genehmigungsfreistellungsverordnung regelt, welche Betriebe von der Genehmigungspflicht ausgenommen sind. Faktoren wie Betriebsfläche, Lärm, Öffnungszeiten und Art der Tätigkeit spielen eine wichtige Rolle."
     },
     "gruender": {
       "heading": "Betriebsanlagengenehmigung bei Unternehmensgründung in Wien",
-      "intro": "Sie planen eine Unternehmensgründung in Wien? Beim Gründen eines Gewerbes ist die Frage nach der Betriebsanlagengenehmigung oft der erste wichtige Schritt. Hier erfahren Sie, was Sie als Gründer beachten müssen.",
-      "question1": "Brauche ich als Gründer in Wien eine Betriebsanlagengenehmigung?",
+      "intro": "Sie planen eine Unternehmensgründung in Wien? Beim Gründen eines Gewerbes ist die Frage nach der Betriebsanlagengenehmigung oft der erste wichtige Schritt. Hier erfahren Sie, was Sie als Gründer:in beachten müssen.",
+      "question1": "Brauche ich als Gründer:in in Wien eine Betriebsanlagengenehmigung?",
       "answer1": "Nicht jedes Gewerbe benötigt eine Betriebsanlagengenehmigung. Bei der Unternehmensgründung in Wien hängt die Genehmigungspflicht von mehreren Faktoren ab: Betriebsart (z.B. Handel, Gastro, Werkstatt), Betriebsfläche, Lärmentwicklung und Öffnungszeiten. Die Gewerbliche Freistellungsverordnung (GFVO) befreit viele kleinere Betriebe von der Genehmigungspflicht.",
       "question2": "Welche Betriebsanlagen sind beim Gründen in Wien genehmigungspflichtig?",
       "answer2": "Genehmigungspflichtige Betriebsanlagen bei der Unternehmensgründung umfassen typischerweise: Gastronomiebetriebe mit Küche, Werkstätten mit Lärmentwicklung, Einzelhandel über 600 m², Betriebe mit geregelten Gefahrenstoffen, Beherbergungsbetriebe über 30 Betten. Die MA 36 (Magistratsabteilung 36) in Wien ist die zuständige Behörde für Betriebsanlagengenehmigungen.",
       "question3": "Wie lange dauert eine Betriebsanlagengenehmigung in Wien?",
-      "answer3": "Die Bearbeitungsdauer für eine Betriebsanlagengenehmigung bei der MA 36 in Wien beträgt üblicherweise 2-6 Monate. Bei der Unternehmensgründung sollten Gründer diesen Zeitraum einplanen. Unvollständige Unterlagen können die Dauer verlängern. Für schnellere Genehmigungen empfiehlt sich eine Vorabklärung mit der Behörde.",
-      "question4": "Was kostet eine Betriebsanlagengenehmigung für Gründer?",
-      "answer4": "Die Kosten für eine Betriebsanlagengenehmigung in Wien setzen sich zusammen aus: Amtsgebühren (abhängig von Betriebsgröße), Sachverständigenkosten (z.B. für Lärmgutachten, Brandschutz), Planungskosten. Für kleine Gewerbebetriebe bei der Gründung können Gesamtkosten zwischen 500-3000 Euro anfallen. Gründer sollten diese Kosten in der Startfinanzierung berücksichtigen.",
+      "answer3": "Die Bearbeitungsdauer für eine Betriebsanlagengenehmigung bei der MA 36 in Wien beträgt üblicherweise 2–6 Monate. Bei der Unternehmensgründung sollten Gründer:innen diesen Zeitraum einplanen. Unvollständige Unterlagen können die Dauer verlängern. Für schnellere Genehmigungen empfiehlt sich eine Vorabklärung mit der Behörde.",
+      "question4": "Was kostet eine Betriebsanlagengenehmigung für Gründer:innen?",
+      "answer4": "Die Kosten für eine Betriebsanlagengenehmigung in Wien setzen sich zusammen aus: Amtsgebühren (abhängig von Betriebsgröße), Sachverständigenkosten (z.B. für Lärmgutachten, Brandschutz), Planungskosten. Für kleine Gewerbebetriebe bei der Gründung können Gesamtkosten zwischen 500–3000 Euro anfallen. Gründer:innen sollten diese Kosten in der Startfinanzierung berücksichtigen.",
       "ctaTitle": "Jetzt kostenlos Genehmigungspflicht prüfen",
       "ctaText": "Sparen Sie Zeit und Geld bei Ihrer Unternehmensgründung in Wien. Finden Sie in 2 Minuten heraus, ob Ihr Gewerbe eine Betriebsanlagengenehmigung benötigt."
     },
     "footer": {
-      "copyright": "Betriebsanlagen Check - Ihr Helfer für Wiener Bürokratie",
+      "copyright": "Betriebsanlagen-Check – Ihr Helfer für Wiener Bürokratie",
       "disclaimer": "Diese Website dient nur zu Informationszwecken. Für rechtlich verbindliche Auskünfte wenden Sie sich bitte an die zuständigen Behörden.",
       "imprint": "Impressum",
       "privacy": "Datenschutz"
