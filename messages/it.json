@@ -11,6 +11,10 @@
     "card2Title": "Il tuo percorso e i documenti necessari",
     "card2Description": "Panoramica di tutti i passaggi e i documenti necessari per l'autorizzazione dell'impianto aziendale",
     "card2Button": "Scopri di più",
+    "documents": {
+      "heading": "Panoramica di tutti i documenti necessari",
+      "cta": "Vai ai documenti più importanti"
+    },
     "stats": {
       "languages": "Lingue disponibili",
       "time": "Risultato in pochi minuti",

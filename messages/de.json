@@ -27,6 +27,7 @@
       "placeholder": "Hier wird der erste Schritt des Betriebsanlagen-Checks angezeigt. Solange der Check noch nicht eingebunden ist, kannst du ihn über den Button starten."
     },
     "documents": {
+      "heading": "Überblick über alle benötigten Dokumente",
       "cta": "Hier geht’s zu den wichtigsten Dokumenten"
     },
     "stats": {

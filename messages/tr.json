@@ -11,6 +11,10 @@
     "card2Title": "Yolunuz ve gerekli belgeler",
     "card2Description": "İşletme tesisi izni için ihtiyacınız olan tüm adımların ve belgelerin genel bakışı",
     "card2Button": "Daha fazla bilgi",
+    "documents": {
+      "heading": "Gerekli tüm belgelerin genel görünümü",
+      "cta": "En önemli belgelere git"
+    },
     "stats": {
       "languages": "Mevcut diller",
       "time": "Dakikalar içinde sonuç",

@@ -11,6 +11,10 @@
     "card2Title": "Your path and required documents",
     "card2Description": "Overview of all steps and documents you need for a business facility permit",
     "card2Button": "Learn more",
+    "documents": {
+      "heading": "Overview of all required documents",
+      "cta": "Go to the most important documents"
+    },
     "stats": {
       "languages": "Languages available",
       "time": "Result in minutes",
