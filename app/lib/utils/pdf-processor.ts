@@ -14,6 +14,7 @@ export interface PDFChunk {
   metadata: {
     source: string;
     page?: number;
+    section?: string;
     chunk_index: number;
     total_chunks: number;
     char_count: number;
@@ -32,22 +33,76 @@ export interface ProcessingMetadata {
   }[];
 }
 
+export interface PagedText {
+  fullText: string;
+  pages: Array<{
+    pageNumber: number;
+    text: string;
+    startIndex: number;
+    endIndex: number;
+  }>;
+  totalPages: number;
+}
+
 /**
- * Extract text from a single PDF file using pdf-parse (dynamic import)
+ * Extract text from a single PDF file with page information
  */
-async function extractTextFromPDF(pdfPath: string): Promise<string> {
+async function extractTextFromPDFWithPages(pdfPath: string): Promise<PagedText> {
   try {
     const dataBuffer = await fs.readFile(pdfPath);
 
     // Dynamic import to handle CommonJS module
     const pdfParse = (await import('pdf-parse')).default;
-    const data = await pdfParse(dataBuffer);
 
-    return data.text.trim();
+    const pages: PagedText['pages'] = [];
+    let currentIndex = 0;
+
+    // Use pagerender to extract text page by page
+    const data = await pdfParse(dataBuffer, {
+      pagerender: async (pageData: any) => {
+        const textContent = await pageData.getTextContent();
+        const pageText = textContent.items
+          .map((item: any) => item.str)
+          .join(' ')
+          .trim();
+
+        const startIndex = currentIndex;
+        const endIndex = currentIndex + pageText.length;
+
+        pages.push({
+          pageNumber: pageData.pageNumber,
+          text: pageText,
+          startIndex,
+          endIndex
+        });
+
+        // Add page separator and update index
+        currentIndex = endIndex + 2; // +2 for \n\n separator
+
+        return pageText;
+      }
+    });
+
+    const fullText = pages.map(p => p.text).join('\n\n').trim();
+
+    return {
+      fullText,
+      pages,
+      totalPages: data.numpages
+    };
   } catch (error) {
     console.error(`Error extracting text from ${pdfPath}:`, error);
     throw error;
   }
+}
+
+/**
+ * Extract text from a single PDF file using pdf-parse (dynamic import)
+ * Legacy function - kept for backward compatibility
+ */
+async function extractTextFromPDF(pdfPath: string): Promise<string> {
+  const pagedText = await extractTextFromPDFWithPages(pdfPath);
+  return pagedText.fullText;
 }
 
 /**
@@ -103,26 +158,43 @@ export async function processAllPDFs(
       console.log(`Processing: ${filename}...`);
 
       try {
-        // Extract text
-        const text = await extractTextFromPDF(filePath);
+        // Extract text with page information
+        const pagedText = await extractTextFromPDFWithPages(filePath);
 
-        if (!text || text.trim().length === 0) {
+        if (!pagedText.fullText || pagedText.fullText.trim().length === 0) {
           console.log(`⚠️  No text extracted from ${filename}`);
           continue;
         }
 
         // Split into chunks
-        const textChunks = splitTextIntoChunks(text, DEFAULT_CHUNK_CONFIG);
+        const textChunks = splitTextIntoChunks(pagedText.fullText, DEFAULT_CHUNK_CONFIG);
 
         if (textChunks.length === 0) {
           console.log(`⚠️  No chunks created from ${filename}`);
           continue;
         }
 
-        const fileChars = text.length;
+        const fileChars = pagedText.fullText.length;
         totalCharacters += fileChars;
 
-        // Convert to PDFChunk format with section extraction
+        // Helper function to find which page a chunk belongs to
+        const findPageForChunk = (chunkStartIndex: number): number | undefined => {
+          // Find the page that contains the start of this chunk
+          for (const page of pagedText.pages) {
+            if (chunkStartIndex >= page.startIndex && chunkStartIndex < page.endIndex) {
+              return page.pageNumber;
+            }
+          }
+          // If not found in exact range, find the closest page
+          const closestPage = pagedText.pages.reduce((prev, curr) => {
+            const prevDist = Math.abs(prev.startIndex - chunkStartIndex);
+            const currDist = Math.abs(curr.startIndex - chunkStartIndex);
+            return currDist < prevDist ? curr : prev;
+          });
+          return closestPage?.pageNumber;
+        };
+
+        // Convert to PDFChunk format with section extraction and page numbers
         const pdfChunks: PDFChunk[] = textChunks.map((chunk, index) => {
           // Extract § paragraph references from chunk text
           const sectionMatches = chunk.text.match(/§\s*\d+[a-z]?(\s+[A-Z][a-zäöüß]+)?/gi);
@@ -130,11 +202,17 @@ export async function processAllPDFs(
             ? sectionMatches[0].trim()  // Use first § found in chunk
             : undefined;
 
+          // Find the page number for this chunk
+          const pageNumber = chunk.start !== undefined
+            ? findPageForChunk(chunk.start)
+            : undefined;
+
           return {
             id: `${filename.replace('.pdf', '')}_chunk_${index}`,
             text: chunk.text,
             metadata: {
               source: filename,
+              page: pageNumber,
               chunk_index: index,
               total_chunks: textChunks.length,
               char_count: chunk.text.length,
@@ -147,12 +225,12 @@ export async function processAllPDFs(
 
         fileMetadata.push({
           filename,
-          pages: 0, // We could track this if needed
+          pages: pagedText.totalPages,
           chunks: textChunks.length,
           characters: fileChars
         });
 
-        console.log(`✅ ${filename}: ${textChunks.length} chunks, ${fileChars} characters`);
+        console.log(`✅ ${filename}: ${pagedText.totalPages} pages, ${textChunks.length} chunks, ${fileChars} characters`);
 
       } catch (error) {
         console.error(`❌ Error processing ${filename}:`, error);
