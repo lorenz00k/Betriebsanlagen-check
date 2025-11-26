@@ -59,10 +59,10 @@ async function extractTextFromPDFWithPages(pdfPath: string): Promise<PagedText> 
 
     // Use pagerender to extract text page by page
     const data = await pdfParse(dataBuffer, {
-      pagerender: async (pageData: any) => {
+      pagerender: async (pageData: { pageNumber: number; getTextContent: () => Promise<{ items: Array<{ str: string }> }> }) => {
         const textContent = await pageData.getTextContent();
         const pageText = textContent.items
-          .map((item: any) => item.str)
+          .map((item) => item.str)
           .join(' ')
           .trim();
 
