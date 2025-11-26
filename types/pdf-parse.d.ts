@@ -31,7 +31,7 @@ declare module 'pdf-parse' {
   }
 
   interface PDFOptions {
-    pagerender?: (pageData: any) => string;
+    pagerender?: (pageData: any) => string | Promise<string>;
     max?: number;
     version?: string;
   }
