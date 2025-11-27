@@ -39,17 +39,69 @@ function splitTextIntoChunks(text, chunkSize = 1200, overlap = 300) {
   return chunks;
 }
 
-// Extract text from PDF using pdf-parse
-async function extractTextFromPDF(pdfPath) {
+// Extract text from PDF with page information
+async function extractTextFromPDFWithPages(pdfPath) {
   try {
     const dataBuffer = await fs.readFile(pdfPath);
     const pdfParse = require('pdf-parse');
-    const data = await pdfParse(dataBuffer);
-    return data.text.trim();
+
+    const pages = [];
+    let currentIndex = 0;
+
+    // Use pagerender to extract text page by page
+    const data = await pdfParse(dataBuffer, {
+      pagerender: async (pageData) => {
+        const textContent = await pageData.getTextContent();
+        const pageText = textContent.items
+          .map((item) => item.str)
+          .join(' ')
+          .trim();
+
+        const startIndex = currentIndex;
+        const endIndex = currentIndex + pageText.length;
+
+        pages.push({
+          pageNumber: pageData.pageNumber,
+          text: pageText,
+          startIndex,
+          endIndex
+        });
+
+        // Add page separator and update index
+        currentIndex = endIndex + 2; // +2 for \n\n separator
+
+        return pageText;
+      }
+    });
+
+    const fullText = pages.map(p => p.text).join('\n\n').trim();
+
+    return {
+      fullText,
+      pages,
+      totalPages: data.numpages
+    };
   } catch (error) {
     console.error(`Error extracting text from ${pdfPath}:`, error.message);
     throw error;
   }
+}
+
+// Helper function to find which page a chunk belongs to
+function findPageForChunk(chunkStartIndex, pages) {
+  // Find the page that contains the start of this chunk
+  for (const page of pages) {
+    if (chunkStartIndex >= page.startIndex && chunkStartIndex < page.endIndex) {
+      return page.pageNumber;
+    }
+  }
+  // If not found in exact range, find the closest page
+  const closestPage = pages.reduce((prev, curr) => {
+    const prevDist = Math.abs(prev.startIndex - chunkStartIndex);
+    const currDist = Math.abs(curr.startIndex - chunkStartIndex);
+    return currDist < prevDist ? curr : prev;
+  });
+  return closestPage?.pageNumber;
 }
 
 // Process all PDFs
@@ -66,14 +118,14 @@ async function processPDFs(documentsPath) {
     console.log(`Processing: ${filename}...`);
 
     try {
-      const text = await extractTextFromPDF(filePath);
+      const pagedText = await extractTextFromPDFWithPages(filePath);
 
-      if (!text || text.trim().length === 0) {
+      if (!pagedText.fullText || pagedText.fullText.trim().length === 0) {
         console.log(`⚠️  No text extracted from ${filename}`);
         continue;
       }
 
-      const textChunks = splitTextIntoChunks(text);
+      const textChunks = splitTextIntoChunks(pagedText.fullText);
 
       const pdfChunks = textChunks.map((chunk, index) => {
         // Sanitize ID: only ASCII, replace spaces with underscores, remove special chars
@@ -83,11 +135,24 @@ async function processPDFs(documentsPath) {
           .replace(/_+/g, '_')             // Replace multiple underscores with single
           .replace(/^_|_$/g, '');          // Remove leading/trailing underscores
 
+        // Extract § paragraph references from chunk text
+        const sectionMatches = chunk.text.match(/§\s*\d+[a-z]?(\s+[A-Z][a-zäöüß]+)?/gi);
+        const section = sectionMatches && sectionMatches.length > 0
+          ? sectionMatches[0].trim()  // Use first § found in chunk
+          : undefined;
+
+        // Find the page number for this chunk
+        const pageNumber = chunk.start !== undefined
+          ? findPageForChunk(chunk.start, pagedText.pages)
+          : undefined;
+
         return {
           id: `${sanitizedFilename}_chunk_${index}`,
           text: chunk.text,
           metadata: {
             source: filename,
+            page: pageNumber,
+            section: section,
             chunk_index: index,
             total_chunks: textChunks.length,
             char_count: chunk.text.length
@@ -96,7 +161,7 @@ async function processPDFs(documentsPath) {
       });
 
       allChunks.push(...pdfChunks);
-      console.log(`✅ ${filename}: ${textChunks.length} chunks, ${text.length} characters`);
+      console.log(`✅ ${filename}: ${pagedText.totalPages} pages, ${textChunks.length} chunks, ${pagedText.fullText.length} characters`);
     } catch (error) {
       console.error(`❌ Error processing ${filename}:`, error.message);
     }
@@ -193,6 +258,8 @@ async function main() {
       metadata: {
         text: chunk.text,
         source: chunk.metadata.source,
+        page: chunk.metadata.page,
+        section: chunk.metadata.section,
         chunk_index: chunk.metadata.chunk_index,
         total_chunks: chunk.metadata.total_chunks,
         date_added: dateAdded

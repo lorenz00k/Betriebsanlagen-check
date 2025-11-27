@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import PDFViewerModal from './PDFViewerModal'
 
 interface FormData {
   businessType: string
@@ -50,6 +51,21 @@ export function AIAnalysisResult({
 }: AIAnalysisResultProps) {
   const [showSources, setShowSources] = useState(false)
   const [showMetadata, setShowMetadata] = useState(false)
+  const [pdfViewerOpen, setPdfViewerOpen] = useState(false)
+  const [selectedPdf, setSelectedPdf] = useState<{ url: string; page: number; filename: string } | null>(null)
+
+  const openPdfViewer = (source: Source) => {
+    // Extract filename from source.title and construct PDF URL
+    const filename = source.title
+    const pdfUrl = `/documents/raw-pdfs/${filename}`
+
+    setSelectedPdf({
+      url: pdfUrl,
+      page: source.page || 1,
+      filename: source.title
+    })
+    setPdfViewerOpen(true)
+  }
 
   const getBusinessTypeLabel = (type: string): string => {
     const labels: Record<string, string> = {
@@ -300,22 +316,36 @@ export function AIAnalysisResult({
           {showSources && (
             <div className="mt-4 space-y-3 animate-slideDown">
               {result.sources.map((source, idx) => (
-                <div key={idx} className="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
+                <button
+                  key={idx}
+                  onClick={() => openPdfViewer(source)}
+                  className="w-full text-left p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all cursor-pointer group"
+                >
                   <div className="flex items-start justify-between mb-2">
-                    <h5 className="font-semibold text-gray-900 text-sm flex items-center gap-2">
-                      <svg className="w-4 h-4 text-gray-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <h5 className="font-semibold text-gray-900 text-sm flex items-center gap-2 group-hover:text-blue-700 transition-colors">
+                      <svg className="w-4 h-4 text-gray-600 group-hover:text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                       <span>{source.title}{source.page && ` (Seite ${source.page})`}</span>
+                      <svg className="w-4 h-4 text-gray-400 group-hover:text-blue-600 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
                     </h5>
-                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-medium flex-shrink-0 ml-2">
+                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-medium flex-shrink-0 ml-2 group-hover:bg-blue-200">
                       {(source.score * 100).toFixed(0)}% Relevanz
                     </span>
                   </div>
-                  <p className="text-sm text-gray-700 leading-relaxed">
+                  <p className="text-sm text-gray-700 leading-relaxed group-hover:text-gray-900">
                     {source.content}
                   </p>
-                </div>
+                  <p className="text-xs text-gray-500 mt-2 group-hover:text-blue-600 flex items-center gap-1">
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    Klicken Sie, um das PDF anzuzeigen
+                  </p>
+                </button>
               ))}
             </div>
           )}
@@ -386,6 +416,17 @@ export function AIAnalysisResult({
           Diese Analyse dient nur zur Information und ersetzt keine Rechtsberatung
         </p>
       </div>
+
+      {/* PDF Viewer Modal */}
+      {selectedPdf && (
+        <PDFViewerModal
+          isOpen={pdfViewerOpen}
+          onClose={() => setPdfViewerOpen(false)}
+          pdfUrl={selectedPdf.url}
+          initialPage={selectedPdf.page}
+          filename={selectedPdf.filename}
+        />
+      )}
     </div>
   )
 }
