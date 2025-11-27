@@ -32,7 +32,10 @@ function splitTextIntoChunks(text, chunkSize = 1200, overlap = 300) {
   while (startIndex < text.length) {
     const endIndex = Math.min(startIndex + chunkSize, text.length);
     const chunk = text.substring(startIndex, endIndex);
-    chunks.push({ text: chunk.trim() });
+    chunks.push({
+      text: chunk.trim(),
+      start: startIndex  // Track start position for hierarchical matching
+    });
     startIndex += chunkSize - overlap;
   }
 
@@ -104,6 +107,168 @@ function findPageForChunk(chunkStartIndex, pages) {
   return closestPage?.pageNumber;
 }
 
+// Parse legal document structure (§, Abs., Z hierarchy)
+function parseLegalDocument(text) {
+  const sections = [];
+  const metadata = { totalSections: 0, paragraphs: 0 };
+
+  // Find all paragraph markers (§)
+  const paragraphRegex = /§\s*(\d+[a-z]?)/gi;
+  let paragraphMatch;
+
+  while ((paragraphMatch = paragraphRegex.exec(text)) !== null) {
+    const paragraphId = `§ ${paragraphMatch[1]}`;
+    const paragraphStart = paragraphMatch.index;
+
+    // Find where this paragraph ends
+    const nextParagraphMatch = paragraphRegex.exec(text);
+    const paragraphEnd = nextParagraphMatch ? nextParagraphMatch.index : text.length;
+
+    // Reset regex for next iteration
+    if (nextParagraphMatch) {
+      paragraphRegex.lastIndex = nextParagraphMatch.index;
+    }
+
+    const paragraphText = text.substring(paragraphStart, paragraphEnd);
+
+    // Parse Absätze within this paragraph
+    const absatze = parseAbsatze(paragraphText, paragraphStart, paragraphId);
+
+    sections.push({
+      type: 'paragraph',
+      identifier: paragraphId,
+      text: paragraphText,
+      startIndex: paragraphStart,
+      endIndex: paragraphEnd,
+      level: 0,
+      children: absatze
+    });
+
+    metadata.paragraphs++;
+    metadata.totalSections++;
+  }
+
+  return { sections, metadata };
+}
+
+// Parse Absätze (subsections) within a paragraph
+function parseAbsatze(text, baseOffset, parentId) {
+  const absatze = [];
+  const absatzRegex = /(?:Abs\.\s*(\d+)|\((\d+)\))/gi;
+  let absatzMatch;
+
+  while ((absatzMatch = absatzRegex.exec(text)) !== null) {
+    const absatzNum = absatzMatch[1] || absatzMatch[2];
+    const absatzId = `Abs. ${absatzNum}`;
+    const absatzStart = absatzMatch.index;
+
+    const nextAbsatzMatch = absatzRegex.exec(text);
+    const absatzEnd = nextAbsatzMatch ? nextAbsatzMatch.index : text.length;
+
+    if (nextAbsatzMatch) {
+      absatzRegex.lastIndex = nextAbsatzMatch.index;
+    }
+
+    const absatzText = text.substring(absatzStart, absatzEnd);
+    const ziffern = parseZiffern(absatzText, baseOffset + absatzStart, `${parentId} ${absatzId}`);
+
+    absatze.push({
+      type: 'absatz',
+      identifier: absatzId,
+      text: absatzText,
+      startIndex: baseOffset + absatzStart,
+      endIndex: baseOffset + absatzEnd,
+      level: 1,
+      parentId: parentId,
+      children: ziffern
+    });
+  }
+
+  return absatze;
+}
+
+// Parse Ziffern (numbered points) within an Absatz
+function parseZiffern(text, baseOffset, parentId) {
+  const ziffern = [];
+  const zifferRegex = /(?:Z\.?\s*(\d+)|Ziffer\s*(\d+))/gi;
+  let zifferMatch;
+
+  while ((zifferMatch = zifferRegex.exec(text)) !== null) {
+    const zifferNum = zifferMatch[1] || zifferMatch[2];
+    const zifferId = `Z ${zifferNum}`;
+    const zifferStart = zifferMatch.index;
+
+    const nextZifferMatch = zifferRegex.exec(text);
+    const zifferEnd = nextZifferMatch ? nextZifferMatch.index : text.length;
+
+    if (nextZifferMatch) {
+      zifferRegex.lastIndex = nextZifferMatch.index;
+    }
+
+    const zifferText = text.substring(zifferStart, zifferEnd);
+
+    ziffern.push({
+      type: 'ziffer',
+      identifier: zifferId,
+      text: zifferText,
+      startIndex: baseOffset + zifferStart,
+      endIndex: baseOffset + zifferEnd,
+      level: 2,
+      parentId: parentId,
+      children: []
+    });
+  }
+
+  return ziffern;
+}
+
+// Find which legal section a chunk belongs to
+function findChunkSection(chunkStart, chunkEnd, sections) {
+  function searchSections(sectionList) {
+    for (const section of sectionList) {
+      const overlapsSection = !(chunkEnd <= section.startIndex || chunkStart >= section.endIndex);
+
+      if (overlapsSection) {
+        if (section.children.length > 0) {
+          const childMatch = searchSections(section.children);
+          if (childMatch) return childMatch;
+        }
+        return section;
+      }
+    }
+    return null;
+  }
+
+  return searchSections(sections);
+}
+
+// Get full hierarchical path for a section
+function getSectionPath(section, allSections) {
+  const path = [section.identifier];
+  let currentParentId = section.parentId;
+
+  function findSectionById(id, sections) {
+    for (const sec of sections) {
+      if (sec.identifier === id) return sec;
+      const found = findSectionById(id, sec.children);
+      if (found) return found;
+    }
+    return null;
+  }
+
+  while (currentParentId) {
+    const parent = findSectionById(currentParentId, allSections);
+    if (parent) {
+      path.unshift(parent.identifier);
+      currentParentId = parent.parentId;
+    } else {
+      break;
+    }
+  }
+
+  return path.join(' ');
+}
+
 // Process all PDFs
 async function processPDFs(documentsPath) {
   const files = await fs.readdir(documentsPath);
@@ -123,6 +288,18 @@ async function processPDFs(documentsPath) {
       if (!pagedText.fullText || pagedText.fullText.trim().length === 0) {
         console.log(`⚠️  No text extracted from ${filename}`);
         continue;
+      }
+
+      // Parse legal document structure for hierarchical metadata
+      let legalStructure = null;
+      try {
+        legalStructure = parseLegalDocument(pagedText.fullText);
+        if (legalStructure.sections.length > 0) {
+          console.log(`   📚 Found ${legalStructure.metadata.paragraphs} paragraphs in legal structure`);
+        }
+      } catch (error) {
+        console.log(`   ℹ️  No legal structure found (not a legal document)`);
+        legalStructure = null;
       }
 
       const textChunks = splitTextIntoChunks(pagedText.fullText);
@@ -146,6 +323,24 @@ async function processPDFs(documentsPath) {
           ? findPageForChunk(chunk.start, pagedText.pages)
           : undefined;
 
+        // Find hierarchical metadata if legal structure was parsed
+        let hierarchyLevel, hierarchyPath, parentSection, hasChildren;
+
+        if (legalStructure && legalStructure.sections.length > 0 && chunk.start !== undefined) {
+          const chunkSection = findChunkSection(
+            chunk.start,
+            chunk.start + chunk.text.length,
+            legalStructure.sections
+          );
+
+          if (chunkSection) {
+            hierarchyLevel = chunkSection.level;
+            hierarchyPath = getSectionPath(chunkSection, legalStructure.sections);
+            parentSection = chunkSection.parentId;
+            hasChildren = chunkSection.children.length > 0;
+          }
+        }
+
         return {
           id: `${sanitizedFilename}_chunk_${index}`,
           text: chunk.text,
@@ -155,7 +350,12 @@ async function processPDFs(documentsPath) {
             section: section,
             chunk_index: index,
             total_chunks: textChunks.length,
-            char_count: chunk.text.length
+            char_count: chunk.text.length,
+            // Hierarchical metadata
+            ...(hierarchyLevel !== undefined && { hierarchy_level: hierarchyLevel }),
+            ...(hierarchyPath && { hierarchy_path: hierarchyPath }),
+            ...(parentSection && { parent_section: parentSection }),
+            ...(hasChildren !== undefined && { has_children: hasChildren })
           }
         };
       });
