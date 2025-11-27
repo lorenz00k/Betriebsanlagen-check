@@ -8,7 +8,7 @@
  */
 
 import { generateEmbedding } from './openai';
-import { queryVectors } from '../vectordb/pinecone';
+import { queryVectors, queryByHierarchyPath } from '../vectordb/pinecone';
 import { generateRAGResponse, type UserContext, type SourceDocument } from './anthropic';
 
 /**
@@ -144,14 +144,65 @@ export async function performRAGQuery(
       };
     }
 
-    // STEP 3: Prepare source documents for Claude
-    const sourceDocuments: SourceDocument[] = relevantDocs.map(result => ({
-      text: result.metadata?.text as string || '',
-      source: result.metadata?.source as string || 'Unknown',
-      page: result.metadata?.page as number | undefined,
-      section: result.metadata?.section as string | undefined,
-      score: result.score || 0
-    }));
+    // STEP 3: Enrich documents with parent context (hierarchical chunking)
+    console.log('🔗 Checking for hierarchical parent context...');
+
+    // Cache parent sections to avoid duplicate queries
+    const parentContextCache = new Map<string, string>();
+    let enrichedDocCount = 0;
+
+    const sourceDocuments: SourceDocument[] = await Promise.all(
+      relevantDocs.map(async (result) => {
+        let text = result.metadata?.text as string || '';
+        const source = result.metadata?.source as string || 'Unknown';
+
+        // Check if this document has parent context
+        const parentSection = result.metadata?.parent_section as string | undefined;
+        const hierarchyPath = result.metadata?.hierarchy_path as string | undefined;
+
+        if (parentSection && hierarchyPath) {
+          // Check cache first
+          let parentText = parentContextCache.get(parentSection);
+
+          if (!parentText) {
+            // Fetch parent section from Pinecone
+            try {
+              const parentDocs = await queryByHierarchyPath(parentSection, source);
+
+              if (parentDocs.length > 0) {
+                // Get the first chunk of the parent section (intro text)
+                parentText = parentDocs[0].metadata?.text as string || '';
+                parentContextCache.set(parentSection, parentText);
+
+                console.log(`   📚 Found parent context: ${parentSection} (${parentText.length} chars)`);
+              }
+            } catch (error) {
+              console.warn(`   ⚠️  Failed to fetch parent context for ${parentSection}:`, error);
+            }
+          }
+
+          // Prepend parent context if available
+          if (parentText && parentText !== text) {
+            text = `[Parent Context: ${parentSection}]\n${parentText}\n\n[Current Section: ${hierarchyPath}]\n${text}`;
+            enrichedDocCount++;
+          }
+        }
+
+        return {
+          text,
+          source,
+          page: result.metadata?.page as number | undefined,
+          section: result.metadata?.section as string | undefined,
+          score: result.score || 0
+        };
+      })
+    );
+
+    if (enrichedDocCount > 0) {
+      console.log(`✨ Enriched ${enrichedDocCount}/${sourceDocuments.length} documents with parent context`);
+    } else {
+      console.log('ℹ️  No hierarchical documents found (or documents are top-level sections)');
+    }
 
     // STEP 4: Generate response with Claude
     console.log('🤖 Generating response with Claude...');
