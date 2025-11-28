@@ -1,251 +1,248 @@
 "use client";
 
-// Home renders the localized landing page experience, including hero messaging,
-// CTA cards, and animated visuals tailored to the active locale.
+import { useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import AnimatedStats from "../components/AnimatedStats";
+import { useParams, useRouter } from "next/navigation";
+import {
+  ArrowRight,
+  BadgeCheck,
+  Building2,
+  CheckCircle2,
+  FileCheck,
+  Globe2,
+  Lock,
+  MapPin,
+  Sparkles,
+  Timer,
+} from "lucide-react";
 import { defaultLocale } from "@/i18n";
-import { CheckCircle2, FileText, Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
-import BreakText from "@/components/ui/BreakText";
-import AutoGrid from "@/components/ui/AutoGrid";
 
-// Displays the localized homepage with locale-aware navigation targets.
+const STEP_ICONS = [Sparkles, CheckCircle2, FileCheck];
+const TRUST_ICONS = [Timer, Globe2, Lock, BadgeCheck];
+
 export default function Home() {
   const t = useTranslations("home");
-  const gruenderT = useTranslations("home.gruender");
   const params = useParams<{ locale: string }>();
+  const router = useRouter();
   const paramLocale = params?.locale;
   const activeLocale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale;
 
-  // QA Page schema for AI search and Google Featured Snippets
-  const qaSchema = {
-    "@context": "https://schema.org",
-    "@type": "QAPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": gruenderT("question1"),
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": gruenderT("answer1")
-        }
-      },
-      {
-        "@type": "Question",
-        "name": gruenderT("question2"),
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": gruenderT("answer2")
-        }
-      },
-      {
-        "@type": "Question",
-        "name": gruenderT("question3"),
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": gruenderT("answer3")
-        }
-      },
-      {
-        "@type": "Question",
-        "name": gruenderT("question4"),
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": gruenderT("answer4")
-        }
-      }
-    ]
+  const [sector, setSector] = useState("retail");
+  const [locationType, setLocationType] = useState("vienna");
+
+  const steps = [
+    { title: t("steps.items.0.title"), description: t("steps.items.0.description") },
+    { title: t("steps.items.1.title"), description: t("steps.items.1.description") },
+    { title: t("steps.items.2.title"), description: t("steps.items.2.description") },
+  ];
+
+  const trustPoints = [
+    { title: t("trust.items.0.title"), description: t("trust.items.0.description") },
+    { title: t("trust.items.1.title"), description: t("trust.items.1.description") },
+    { title: t("trust.items.2.title"), description: t("trust.items.2.description") },
+    { title: t("trust.items.3.title"), description: t("trust.items.3.description") },
+  ];
+
+  const infoCards = [
+    { title: t("info.cards.0.title"), description: t("info.cards.0.description") },
+    { title: t("info.cards.1.title"), description: t("info.cards.1.description") },
+  ];
+
+  const handleStart = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    router.push(`/${activeLocale}/check`);
   };
 
   return (
-    <>
-      {/* QA Schema for AI Search and Featured Snippets */}
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(qaSchema) }}
-      />
-
-      <main className="page-shell">
-        <div className="site-container">
-          <section className="section page-hero">
-            <h1 className="page-hero__title">
-              <BreakText className="block">{t("title")}</BreakText>
-            </h1>
-            <BreakText className="page-hero__copy block">{t("subtitle")}</BreakText>
-          </section>
-
-          <section className="section section--compact">
-            <AutoGrid min="16rem" className="page-actions">
-              <article className="card">
-                <div className="card__icon">
-                  <CheckCircle2 className="w-7 h-7" strokeWidth={2.2} />
-                </div>
-                <h2 className="card__title">
-                  <BreakText className="block">{t("card1Title")}</BreakText>
-                </h2>
-                <BreakText className="card__body block">{t("card1Description")}</BreakText>
-                <Link
-                  href={`/${activeLocale}/check`}
-                  className="btn btn-primary w-full justify-center"
-                >
-                  <BreakText>{t("card1Button")}</BreakText>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </article>
-
-              <article className="card">
-                <div className="card__icon card__icon--warm">
-                  <FileText className="w-7 h-7" strokeWidth={2.2} />
-                </div>
-                <h2 className="card__title">
-                  <BreakText className="block">{t("card2Title")}</BreakText>
-                </h2>
-                <BreakText className="card__body block">{t("card2Description")}</BreakText>
-                <Link
-                  href={`/${activeLocale}/documents`}
-                  className="btn btn-secondary w-full justify-center"
-                >
-                  <BreakText>{t("card2Button")}</BreakText>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </article>
-            </AutoGrid>
-          </section>
-
-          <section className="section section--compact">
-            <div className="surface-muted">
-              <AnimatedStats
-                stats={[
-                  {
-                    value: 8,
-                    suffix: "",
-                    label: t("stats.languages"),
-                    icon: <Languages className="w-6 h-6" strokeWidth={2} />,
-                  },
-                  {
-                    value: 2,
-                    suffix: " Min",
-                    label: t("stats.time"),
-                    icon: <Zap className="w-6 h-6" strokeWidth={2} />,
-                  },
-                  {
-                    value: 100,
-                    suffix: "%",
-                    label: t("stats.free"),
-                    icon: <Shield className="w-6 h-6" strokeWidth={2} />,
-                  },
-                ]}
-              />
-            </div>
-          </section>
-
-          <section className="section">
-            <div className="section__heading">
-              <h2>
-                <BreakText className="block">{t("seo.heading")}</BreakText>
-              </h2>
-              <BreakText className="section__copy block">{t("seo.intro")}</BreakText>
-            </div>
-
-            <AutoGrid min="14rem" className="mt-12">
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--accent-soft">
-                  <Zap className="w-6 h-6" strokeWidth={2} />
-                </div>
-                <h3 className="card__title">
-                  <BreakText className="block">{t("seo.feature1Title")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("seo.feature1Text")}</BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--success">
-                  <Languages className="w-6 h-6" strokeWidth={2} />
-                </div>
-                <h3 className="card__title">
-                  <BreakText className="block">{t("seo.feature2Title")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("seo.feature2Text")}</BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--shield">
-                  <Shield className="w-6 h-6" strokeWidth={2} />
-                </div>
-                <h3 className="card__title">
-                  <BreakText className="block">{t("seo.feature3Title")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("seo.feature3Text")}</BreakText>
-              </article>
-            </AutoGrid>
-
-            <div className="surface-muted mt-12 flex flex-col gap-6 md:flex-row md:items-center">
-              <div className="card__icon">
-                <Sparkles className="w-6 h-6" strokeWidth={2} />
-              </div>
-              <div className="flex-1 space-y-3">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("seo.whyTitle")}</BreakText>
-                </h3>
-                <BreakText className="card__body text-lg block">{t("seo.whyText")}</BreakText>
-              </div>
-            </div>
-          </section>
-
-          <section className="section">
-            <div className="section__heading">
-              <h2>
-                <BreakText className="block">{t("gruender.heading")}</BreakText>
-              </h2>
-              <BreakText className="section__copy block">{t("gruender.intro")}</BreakText>
-            </div>
-
-            <AutoGrid min="16rem" className="mt-12">
-              <article className="card card--subtle">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("gruender.question1")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("gruender.answer1")}</BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("gruender.question2")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("gruender.answer2")}</BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("gruender.question3")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("gruender.answer3")}</BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("gruender.question4")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("gruender.answer4")}</BreakText>
-              </article>
-            </AutoGrid>
-
-            <div className="cta-panel">
-              <h3>
-                <BreakText className="block">{t("gruender.ctaTitle")}</BreakText>
-              </h3>
-              <BreakText className="block">{t("gruender.ctaText")}</BreakText>
+    <main className="landing">
+      <div className="site-container space-y-16 lg:space-y-20">
+        <section className="landing-hero">
+          <div className="hero-text">
+            <span className="eyebrow">{t("hero.eyebrow")}</span>
+            <h1 className="hero-title">{t("hero.headline")}</h1>
+            <p className="hero-subtitle">{t("hero.subheadline")}</p>
+            <div className="hero-actions">
               <Link href={`/${activeLocale}/check`} className="btn btn-primary">
-                <BreakText>{t("card1Button")}</BreakText>
-                <ArrowRight className="w-5 h-5" />
+                {t("hero.primaryCta")} <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link href="#how-it-works" className="btn btn-ghost">
+                {t("hero.secondaryCta")}
               </Link>
             </div>
-          </section>
-        </div>
-      </main>
-    </>
+            <div className="hero-highlights">
+              <span>{t("hero.highlights.0")}</span>
+              <span>{t("hero.highlights.1")}</span>
+              <span>{t("hero.highlights.2")}</span>
+            </div>
+          </div>
+
+          <div className="hero-visual">
+            <div className="hero-card">
+              <div className="hero-card__header">
+                <div className="hero-card__icon">
+                  <Building2 className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="hero-card__eyebrow">{t("hero.visual.label")}</p>
+                  <p className="hero-card__title">{t("hero.visual.title")}</p>
+                </div>
+              </div>
+              <ul className="hero-list">
+                <li>
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span>{t("hero.visual.points.0")}</span>
+                </li>
+                <li>
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span>{t("hero.visual.points.1")}</span>
+                </li>
+                <li>
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span>{t("hero.visual.points.2")}</span>
+                </li>
+              </ul>
+              <div className="hero-card__footer">
+                <div>
+                  <p className="hero-card__meta">{t("hero.visual.metaTitle")}</p>
+                  <p className="hero-card__value">{t("hero.visual.metaValue")}</p>
+                </div>
+                <Link className="text-link" href={`/${activeLocale}/documents`}>
+                  {t("hero.visual.cta")}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="how-it-works" className="section-block">
+          <div className="section-heading">
+            <p className="section-kicker">{t("steps.kicker")}</p>
+            <h2>{t("steps.title")}</h2>
+            <p className="section-copy">{t("steps.copy")}</p>
+          </div>
+          <div className="step-row">
+            {steps.map((step, index) => {
+              const Icon = STEP_ICONS[index];
+              return (
+                <div key={step.title} className="step-card">
+                  <div className="step-number">0{index + 1}</div>
+                  <div className="step-icon">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="section-block">
+          <div className="section-heading">
+            <p className="section-kicker">{t("checker.kicker")}</p>
+            <h2>{t("checker.title")}</h2>
+            <p className="section-copy">{t("checker.copy")}</p>
+          </div>
+          <div className="checker-card">
+            <div className="checker-meta">
+              <div className="meta-pill">
+                <Timer className="w-4 h-4" />
+                {t("checker.meta.time")}
+              </div>
+              <div className="meta-pill">
+                <Globe2 className="w-4 h-4" />
+                {t("checker.meta.languages")}
+              </div>
+              <div className="meta-pill">
+                <Lock className="w-4 h-4" />
+                {t("checker.meta.privacy")}
+              </div>
+            </div>
+            <form className="checker-form" onSubmit={handleStart}>
+              <label className="form-field">
+                <span>{t("checker.fields.sectorLabel")}</span>
+                <div className="select-field">
+                  <select value={sector} onChange={(event) => setSector(event.target.value)}>
+                    <option value="retail">{t("checker.fields.sectorOptions.retail")}</option>
+                    <option value="gastro">{t("checker.fields.sectorOptions.gastro")}</option>
+                    <option value="office">{t("checker.fields.sectorOptions.office")}</option>
+                    <option value="production">{t("checker.fields.sectorOptions.production")}</option>
+                    <option value="other">{t("checker.fields.sectorOptions.other")}</option>
+                  </select>
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </label>
+
+              <label className="form-field">
+                <span>{t("checker.fields.locationLabel")}</span>
+                <div className="pill-row">
+                  <button
+                    type="button"
+                    className={`pill ${locationType === "vienna" ? "pill--active" : ""}`}
+                    onClick={() => setLocationType("vienna")}
+                  >
+                    <MapPin className="w-4 h-4" />
+                    {t("checker.fields.locationOptions.vienna")}
+                  </button>
+                  <button
+                    type="button"
+                    className={`pill ${locationType === "austria" ? "pill--active" : ""}`}
+                    onClick={() => setLocationType("austria")}
+                  >
+                    <MapPin className="w-4 h-4" />
+                    {t("checker.fields.locationOptions.austria")}
+                  </button>
+                </div>
+              </label>
+
+              <div className="form-footer">
+                <div className="form-note">{t("checker.note")}</div>
+                <button type="submit" className="btn btn-primary">
+                  {t("checker.cta")}
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section className="section-block">
+          <div className="section-heading">
+            <p className="section-kicker">{t("trust.kicker")}</p>
+            <h2>{t("trust.title")}</h2>
+          </div>
+          <div className="trust-grid">
+            {trustPoints.map((item, index) => {
+              const Icon = TRUST_ICONS[index];
+              return (
+                <article key={item.title} className="trust-card">
+                  <div className="trust-icon">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="section-block info-section">
+          <div className="section-heading">
+            <p className="section-kicker">{t("info.kicker")}</p>
+            <h2>{t("info.title")}</h2>
+            <p className="section-copy">{t("info.copy")}</p>
+          </div>
+          <div className="info-grid">
+            {infoCards.map((card) => (
+              <article key={card.title} className="info-card">
+                <h3>{card.title}</h3>
+                <p>{card.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
