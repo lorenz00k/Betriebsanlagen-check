@@ -19,7 +19,7 @@ export interface RiskAssessment {
 /**
  * POIs analysieren und Risikobewertung erstellen
  */
-export function analyzePOIs(pois: POI[], address: Address): RiskAssessment {
+export function analyzePOIs(pois: POI[], _address: Address): RiskAssessment {
   let riskPoints = 0;
   const warnings: string[] = [];
   const recommendations: string[] = [];

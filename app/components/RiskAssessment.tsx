@@ -10,7 +10,7 @@ interface RiskAssessmentProps {
   address: Address;
 }
 
-export default function RiskAssessment({ assessment, address }: RiskAssessmentProps) {
+export default function RiskAssessment({ assessment }: RiskAssessmentProps) {
   const t = useTranslations('addressChecker.risk');
 
   // Risk level styling

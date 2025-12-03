@@ -26,7 +26,7 @@ export async function GET() {
     try {
       const files = await readdir(documentsPath);
       localPDFCount = files.filter(f => f.toLowerCase().endsWith('.pdf')).length;
-    } catch (error) {
+    } catch {
       console.warn('⚠️  Could not read local PDF files');
     }
 

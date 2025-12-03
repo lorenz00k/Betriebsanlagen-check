@@ -15,7 +15,7 @@ declare global {
 
 export default function CookieConsentModal() {
   const [open, setOpen] = useState(false)
-  const [decision, setDecision] = useState<Consent | null>(null)
+  const [, setDecision] = useState<Consent | null>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

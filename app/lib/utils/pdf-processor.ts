@@ -146,30 +146,6 @@ function findChunkSection(
 }
 
 /**
- * Get parent hierarchy for a section (all parent identifiers)
- */
-function getParentHierarchy(
-  section: LegalSection,
-  allSections: LegalSection[]
-): string[] {
-  const hierarchy: string[] = [];
-
-  let currentParentId = section.parentId;
-
-  while (currentParentId) {
-    const parent = findSectionRecursive(currentParentId, allSections);
-    if (parent) {
-      hierarchy.unshift(parent.identifier);
-      currentParentId = parent.parentId;
-    } else {
-      break;
-    }
-  }
-
-  return hierarchy;
-}
-
-/**
  * Find section by identifier (recursive search)
  */
 function findSectionRecursive(
@@ -258,7 +234,7 @@ export async function processAllPDFs(
           if (legalStructure.sections.length > 0) {
             console.log(`   📚 Found ${legalStructure.metadata.paragraphs} paragraphs in legal structure`);
           }
-        } catch (error) {
+        } catch {
           console.log(`   ℹ️  No legal structure found (not a legal document)`);
           legalStructure = null;
         }
