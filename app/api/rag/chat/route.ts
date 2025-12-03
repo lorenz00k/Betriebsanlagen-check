@@ -18,6 +18,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { performRAGQuery } from '@/app/lib/ai/rag';
 import type { UserContext } from '@/app/lib/ai/anthropic';
+import { getCachedResponse, setCachedResponse } from '@/app/lib/cache/rag-cache';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60; // 60 seconds for RAG query
@@ -67,6 +68,45 @@ export async function POST(request: NextRequest) {
     }
     console.log('='.repeat(70));
 
+    // Try to get cached response first
+    const cacheContext = userContext ? {
+      businessType: userContext.businessType,
+      businessSize: userContext.businessSize,
+      location: userContext.location,
+      numberOfEmployees: userContext.numberOfEmployees,
+      outdoorSeating: userContext.outdoorSeating
+    } : undefined;
+
+    const cachedResponse = await getCachedResponse(query, cacheContext);
+
+    if (cachedResponse) {
+      const duration = Date.now() - startTime;
+
+      console.log('\n' + '='.repeat(70));
+      console.log('⚡ CACHE HIT - Returning cached response');
+      console.log('='.repeat(70));
+      console.log(`⏱️  Duration: ${duration}ms (cached)`);
+      console.log(`📚 Sources: ${cachedResponse.sources.length}`);
+      console.log(`🤖 Model: ${cachedResponse.metadata.model}`);
+      console.log(`💾 Originally generated: ${cachedResponse.original_timestamp}`);
+      console.log('='.repeat(70) + '\n');
+
+      return NextResponse.json({
+        success: true,
+        answer: cachedResponse.answer,
+        sources: cachedResponse.sources,
+        metadata: {
+          ...cachedResponse.metadata,
+          duration_ms: duration,
+          cached: true,
+          cached_at: cachedResponse.cached_at,
+          original_timestamp: cachedResponse.original_timestamp
+        }
+      });
+    }
+
+    console.log('❌ Cache miss - Performing RAG query...\n');
+
     // Perform RAG query using existing orchestration
     const result = await performRAGQuery(query, userContext, filter);
 
@@ -86,6 +126,34 @@ export async function POST(request: NextRequest) {
 
     console.log(`📊 Tokens: ${inputTokens} in / ${outputTokens} out / ${totalTokens} total`);
     console.log('='.repeat(70) + '\n');
+
+    // Store response in cache for future requests
+    await setCachedResponse(
+      query,
+      {
+        answer: result.answer,
+        sources: result.sources.map(source => ({
+          title: source.title,
+          content: source.content,
+          page: source.page,
+          section: source.section,
+          score: source.score
+        })),
+        metadata: {
+          model: result.metadata?.model ?? 'claude-3-5-haiku-20241022',
+          usage: {
+            input_tokens: inputTokens,
+            output_tokens: outputTokens,
+            total_tokens: totalTokens
+          },
+          duration_ms: duration,
+          documents_found: result.metadata?.documents_found ?? 0,
+          documents_used: result.metadata?.documents_used ?? 0
+        }
+      },
+      cacheContext,
+      3600 // 1 hour TTL (Time-To-Live)
+    );
 
     // Return response
     return NextResponse.json({

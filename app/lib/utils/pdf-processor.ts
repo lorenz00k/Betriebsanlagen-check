@@ -7,6 +7,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { splitTextIntoChunks, DEFAULT_CHUNK_CONFIG } from './chunking';
+import { parseLegalDocument, getSectionPath, type LegalSection } from './legal-document-parser';
 
 export interface PDFChunk {
   id: string;
@@ -18,6 +19,11 @@ export interface PDFChunk {
     chunk_index: number;
     total_chunks: number;
     char_count: number;
+    // Hierarchical metadata for legal documents
+    hierarchy_level?: number;  // 0 = paragraph, 1 = absatz, 2 = ziffer
+    hierarchy_path?: string;   // e.g., "§ 77 Abs. 2 Z 1"
+    parent_section?: string;   // Reference to parent section
+    has_children?: boolean;    // Whether this section has subsections
   };
 }
 
@@ -106,6 +112,40 @@ async function extractTextFromPDF(pdfPath: string): Promise<string> {
 }
 
 /**
+ * Find which legal section a chunk belongs to based on its position
+ */
+function findChunkSection(
+  chunkStart: number,
+  chunkEnd: number,
+  sections: LegalSection[]
+): LegalSection | null {
+  // Recursively search through sections and their children
+  function searchSections(sectionList: LegalSection[]): LegalSection | null {
+    for (const section of sectionList) {
+      // Check if chunk overlaps with this section
+      const overlapsSection = !(chunkEnd <= section.startIndex || chunkStart >= section.endIndex);
+
+      if (overlapsSection) {
+        // If section has children, search them first (more specific)
+        if (section.children.length > 0) {
+          const childMatch = searchSections(section.children);
+          if (childMatch) {
+            return childMatch;
+          }
+        }
+
+        // Return this section if no more specific child found
+        return section;
+      }
+    }
+
+    return null;
+  }
+
+  return searchSections(sections);
+}
+
+/**
  * Process all PDF files in a directory
  */
 export async function processAllPDFs(
@@ -166,6 +206,18 @@ export async function processAllPDFs(
           continue;
         }
 
+        // Parse legal document structure for hierarchical metadata
+        let legalStructure: ReturnType<typeof parseLegalDocument> | null = null;
+        try {
+          legalStructure = parseLegalDocument(pagedText.fullText);
+          if (legalStructure.sections.length > 0) {
+            console.log(`   📚 Found ${legalStructure.metadata.paragraphs} paragraphs in legal structure`);
+          }
+        } catch {
+          console.log(`   ℹ️  No legal structure found (not a legal document)`);
+          legalStructure = null;
+        }
+
         // Split into chunks
         const textChunks = splitTextIntoChunks(pagedText.fullText, DEFAULT_CHUNK_CONFIG);
 
@@ -194,9 +246,9 @@ export async function processAllPDFs(
           return closestPage?.pageNumber;
         };
 
-        // Convert to PDFChunk format with section extraction and page numbers
+        // Convert to PDFChunk format with section extraction, page numbers, and hierarchical metadata
         const pdfChunks: PDFChunk[] = textChunks.map((chunk, index) => {
-          // Extract § paragraph references from chunk text
+          // Extract § paragraph references from chunk text (fallback)
           const sectionMatches = chunk.text.match(/§\s*\d+[a-z]?(\s+[A-Z][a-zäöüß]+)?/gi);
           const section = sectionMatches && sectionMatches.length > 0
             ? sectionMatches[0].trim()  // Use first § found in chunk
@@ -207,6 +259,27 @@ export async function processAllPDFs(
             ? findPageForChunk(chunk.start)
             : undefined;
 
+          // Find hierarchical metadata if legal structure was parsed
+          let hierarchyLevel: number | undefined;
+          let hierarchyPath: string | undefined;
+          let parentSection: string | undefined;
+          let hasChildren: boolean | undefined;
+
+          if (legalStructure && legalStructure.sections.length > 0 && chunk.start !== undefined) {
+            const chunkSection = findChunkSection(
+              chunk.start,
+              chunk.start + chunk.text.length,
+              legalStructure.sections
+            );
+
+            if (chunkSection) {
+              hierarchyLevel = chunkSection.level;
+              hierarchyPath = getSectionPath(chunkSection, legalStructure.sections);
+              parentSection = chunkSection.parentId;
+              hasChildren = chunkSection.children.length > 0;
+            }
+          }
+
           return {
             id: `${filename.replace('.pdf', '')}_chunk_${index}`,
             text: chunk.text,
@@ -216,7 +289,12 @@ export async function processAllPDFs(
               chunk_index: index,
               total_chunks: textChunks.length,
               char_count: chunk.text.length,
-              section: section  // Add § paragraph as section metadata
+              section: section,  // Fallback section extraction
+              // Hierarchical metadata
+              hierarchy_level: hierarchyLevel,
+              hierarchy_path: hierarchyPath,
+              parent_section: parentSection,
+              has_children: hasChildren
             }
           };
         });

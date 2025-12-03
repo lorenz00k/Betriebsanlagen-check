@@ -282,7 +282,7 @@ export async function GET() {
       fileExists = true;
       documentCount = Object.keys(data).length;
       totalCharacters = Object.values(data).reduce((sum, doc) => sum + (doc.text?.length || 0), 0);
-    } catch (error) {
+    } catch {
       // File doesn't exist or is invalid
     }
 
