@@ -74,7 +74,7 @@ export default function AddressChecker() {
       setNearbyPOIs(pois);
 
       // Risikobewertung durchführen
-      const assessment = analyzePOIs(pois, addressData);
+      const assessment = analyzePOIs(pois);
       setRiskAssessment(assessment);
     } catch (err) {
       console.error('POI loading error:', err);

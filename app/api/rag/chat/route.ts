@@ -149,8 +149,7 @@ export async function POST(request: NextRequest) {
           duration_ms: duration,
           documents_found: result.metadata?.documents_found ?? 0,
           documents_used: result.metadata?.documents_used ?? 0
-        },
-        cached: false
+        }
       },
       cacheContext,
       3600 // 1 hour TTL (Time-To-Live)

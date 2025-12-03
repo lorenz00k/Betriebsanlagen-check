@@ -146,27 +146,6 @@ function findChunkSection(
 }
 
 /**
- * Find section by identifier (recursive search)
- */
-function findSectionRecursive(
-  identifier: string,
-  sections: LegalSection[]
-): LegalSection | null {
-  for (const section of sections) {
-    if (section.identifier === identifier) {
-      return section;
-    }
-
-    const found = findSectionRecursive(identifier, section.children);
-    if (found) {
-      return found;
-    }
-  }
-
-  return null;
-}
-
-/**
  * Process all PDF files in a directory
  */
 export async function processAllPDFs(
