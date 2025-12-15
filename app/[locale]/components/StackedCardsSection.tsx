@@ -169,6 +169,30 @@ function MobileList() {
         </section>
     )
 }
+function StickyStackLikeArticle() {
+    return (
+        <section className="py-16">
+            <div className="mx-auto max-w-4xl px-6">
+                <div
+                    className="space-y-4"
+                    style={{ paddingBottom: `${cards.length}rem` }} // Spacer wie im Artikel
+                >
+                    {cards.map((card, i) => (
+                        <div
+                            key={card.title}
+                            className="sticky top-24 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+                            style={{ transform: `translateY(${i}rem)` }} // Stack-Versatz
+                        >
+                            <h3 className="text-xl font-semibold">{card.title}</h3>
+                            <p className="mt-2 text-slate-600">{card.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )
+}
+
 
 export default function StackedCardsSection() {
     return (
@@ -177,7 +201,7 @@ export default function StackedCardsSection() {
                 <MobileList />
             </div>
             <div className="hidden lg:block">
-                <DesktopStack />
+                <StickyStackLikeArticle />
             </div>
         </>
     )
