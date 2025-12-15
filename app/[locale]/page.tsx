@@ -88,7 +88,7 @@ export default function Home() {
           {/* 2. ABLAUF / FLOW */}
 
           {/* Mobile: FlowSteps */}
-          <section id="how-it-works" className="section section--compact lg:hidden">
+          <section id="how-it-works" className="section section--compact md:hidden">
             <div className="section__heading">
               <h2>
                 <BreakText className="block">{t("flow.heading")}</BreakText>
@@ -109,7 +109,7 @@ export default function Home() {
 
 
           {/* Desktop: Stacked Cards */}
-          <div className="block">
+          <div className="hidden md:block">
             <StackedCardsSection />
           </div>
 

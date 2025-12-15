@@ -118,7 +118,7 @@ export default function StackedCardsSection() {
         <section className="section section--compact">
             <div className="section__heading text-center">
                 <p className="text-sm font-semibold tracking-wide text-slate-600">
-                    So funktioniert der Check
+                    So funktioniert der Check adjknca
                 </p>
                 <h2 className="mt-2 text-3xl font-semibold text-slate-900 sm:text-4xl">
                     In drei Schritten zur ersten Einschätzung
