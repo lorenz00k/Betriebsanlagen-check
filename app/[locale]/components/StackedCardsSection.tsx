@@ -46,19 +46,25 @@ function StackedCard({
     const yCollapse = useTransform(progress, [collapseStart, collapseEnd], [0, -22])
     const scaleCollapse = useTransform(progress, [collapseStart, collapseEnd], [1, 0.965])
 
+    const peek = index * 14
+    const yWithOffset = useTransform(y, (v) => v + index * 18)
+
     return (
         <motion.div
             className="absolute inset-0 rounded-3xl border border-slate-200 bg-white shadow-[0_25px_60px_-35px_rgba(15,23,42,0.35)]"
             style={{
                 zIndex: total - index,
-                y,
+                y: yWithOffset,
                 opacity,
-                scale: useTransform(progress, [0, 1], [1 - index * 0.04, 1 - index * 0.04]),
-                translateY: index * 20,
+                scale,
+                top: -peek,
+                left: -peek,
+                right: -peek,
+                bottom: -peek,
             }}
         >
             <motion.div
-                className="h-full w-full p-6 sm:p-8"
+                className="h-full w-full p-5 sm:p-6"
                 style={{ y: yCollapse, scale: scaleCollapse }}
             >
                 <div className="flex items-start gap-4">
@@ -70,7 +76,7 @@ function StackedCard({
                         <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
                             {card.title}
                         </h3>
-                        <p className="mt-2 max-w-2xl text-base leading-relaxed text-slate-600">
+                        <p className="mt-2 max-w-xl text-base leading-relaxed text-slate-600">
                             {card.description}
                         </p>
 
@@ -112,7 +118,7 @@ function DesktopStack() {
                         </h2>
                     </div>
 
-                    <div className="relative mx-auto h-[380px] w-full max-w-4xl">
+                    <div className="relative mx-auto h-[300px] w-full max-w-4xl">
                         {cards.map((card, i) => (
                             <StackedCard
                                 key={card.title}
