@@ -10,6 +10,7 @@ import { defaultLocale } from "@/i18n";
 import { Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
 import BreakText from "@/components/ui/BreakText";
 import AutoGrid from "@/components/ui/AutoGrid";
+import StackedCardsSection from './components/StackedCardsSection'
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -84,7 +85,9 @@ export default function Home() {
           </section>
 
           {/* 2. ABLAUF / FLOW */}
-          <section id="how-it-works" className="section section--compact">
+
+          {/* Mobile: bisheriger Ablauf */}
+          <section id="how-it-works" className="section section--compact lg:hidden">
             <div className="section__heading">
               <h2>
                 <BreakText className="block">{t("flow.heading")}</BreakText>
@@ -97,9 +100,7 @@ export default function Home() {
             <div className="flow-steps mt-10 flex flex-col gap-4 md:flex-row md:items-stretch md:justify-between md:gap-6">
               <div className="flow-steps__item card card--subtle flex-1">
                 <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("flow.step1Title")}
-                  </BreakText>
+                  <BreakText className="block">{t("flow.step1Title")}</BreakText>
                 </h3>
                 <BreakText className="card__body block">
                   {t("flow.step1Text")}
@@ -107,14 +108,12 @@ export default function Home() {
               </div>
 
               <div className="flow-steps__arrow flex items-center justify-center text-2xl md:px-2">
-                <span aria-hidden="true">→</span>
+                →
               </div>
 
               <div className="flow-steps__item card card--subtle flex-1">
                 <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("flow.step2Title")}
-                  </BreakText>
+                  <BreakText className="block">{t("flow.step2Title")}</BreakText>
                 </h3>
                 <BreakText className="card__body block">
                   {t("flow.step2Text")}
@@ -122,14 +121,12 @@ export default function Home() {
               </div>
 
               <div className="flow-steps__arrow flex items-center justify-center text-2xl md:px-2">
-                <span aria-hidden="true">→</span>
+                →
               </div>
 
               <div className="flow-steps__item card card--subtle flex-1">
                 <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("flow.step3Title")}
-                  </BreakText>
+                  <BreakText className="block">{t("flow.step3Title")}</BreakText>
                 </h3>
                 <BreakText className="card__body block">
                   {t("flow.step3Text")}
@@ -138,8 +135,14 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Desktop: Stacked Cards */}
+          <div className="hidden lg:block">
+            <StackedCardsSection />
+          </div>
+
+
           {/* 3. CHECKER – direkt unter dem Ablauf, mit eingebettetem ersten Screen */}
-          <section className="section section--compact">
+          <section id="start-check" className="section section--compact">
             <div className="surface-muted">
               <div className="section__heading">
                 <h2>
