@@ -1,3 +1,28 @@
+'use client'
+
+import { useRef } from 'react'
+import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
+
+type Card = {
+    title: string
+    description: string
+}
+
+const cards: Card[] = [
+    {
+        title: 'Fragen beantworten',
+        description: 'Beantworte ein paar kurze Fragen zu deinem Betrieb und Standort.',
+    },
+    {
+        title: 'Einschätzung erhalten',
+        description: 'Du bekommst eine erste Einschätzung, ob eine Genehmigung nötig ist.',
+    },
+    {
+        title: 'Dokumente vorbereiten',
+        description: 'Wir zeigen dir, welche Unterlagen typischerweise gebraucht werden.',
+    },
+]
+
 function StackedCard({
     card,
     index,
