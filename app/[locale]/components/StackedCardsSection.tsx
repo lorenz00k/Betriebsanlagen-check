@@ -57,10 +57,10 @@ function StackedCard({
                 y: yWithOffset,
                 opacity,
                 scale,
-                top: -peek,
-                left: -peek,
-                right: -peek,
-                bottom: -peek,
+                top: index * 18,
+                left: index * 18,
+                right: index * 18,
+                bottom: index * 18,
             }}
         >
             <motion.div
@@ -106,7 +106,7 @@ function DesktopStack() {
     })
 
     return (
-        <section ref={sectionRef} className="relative h-[260vh]">
+        <section ref={sectionRef} className="relative h-[140vh]">
             <div className="sticky top-24 flex h-[calc(100vh-6rem)] items-center">
                 <div className="mx-auto w-full max-w-screen-xl px-6 lg:px-10">
                     <div className="mb-8 text-center">
