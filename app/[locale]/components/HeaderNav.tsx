@@ -34,7 +34,7 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
   }
 
   return (
-    <header className="border-b border-slate-200 bg-white">
+    <header className="border-b border-slate-200 bg-white sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70" >
       <div className="mx-auto w-full max-w-screen-xl px-4">
         <div className="flex h-14 items-center justify-between gap-3">
           <div className="flex min-w-0 flex-shrink-0 items-center">
@@ -55,11 +55,10 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`min-w-0 shrink-0 text-sm font-medium transition hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 ${
-                  isActive(link.href)
+                className={`min-w-0 shrink-0 text-sm font-medium transition hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 ${isActive(link.href)
                     ? 'text-slate-900'
                     : 'text-slate-600'
-                }`}
+                  }`}
                 aria-current={isActive(link.href) ? 'page' : undefined}
               >
                 {link.label}
