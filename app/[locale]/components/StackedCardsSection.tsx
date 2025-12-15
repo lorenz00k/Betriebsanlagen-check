@@ -29,7 +29,8 @@ function StackedStickyCard({
                 position: "sticky",
                 top: stickyTopPx,
                 transform: `translateY(${index * offsetPx}px)`,
-                zIndex: 50 - index,
+                zIndex: index + 1,
+                height: "clamp(260px, 32vw, 360px)",
             }}
         >
             <div className="p-6 sm:p-7">

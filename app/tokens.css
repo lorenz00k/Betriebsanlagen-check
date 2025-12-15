@@ -1,13 +1,13 @@
 :root {
   color-scheme: light;
   /* Core palette */
-  --color-bg: #f4f6fb;
+  --color-bg: #e9eff3;
   --color-surface: #ffffff;
   --color-surface-muted: #f1f3f8;
   --color-fg: #1f2430;
   --color-fg-subtle: #4f5563;
   --color-muted: #8a92a3;
-  --color-border: #d7dce6;
+  --color-border: #7f8185;
   --color-accent: #365ddb;
   --color-accent-strong: #2547b4;
   --color-accent-soft: #dee5ff;
