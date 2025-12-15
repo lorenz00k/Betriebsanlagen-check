@@ -119,7 +119,7 @@ h4 {
 .page-shell {
   position: relative;
   overflow: visible;
-  background: radial-gradient(circle at top right, color-mix(in srgb, var(--color-accent) 6%, transparent) 0%, transparent 55%),
+  background: radial-gradient(circle at top right, color-mix(in srgb, var(--color-accent) 3%, transparent) 0%, transparent 55%),
     var(--color-bg);
 }
 
