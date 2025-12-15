@@ -51,16 +51,16 @@ function StackedCard({
 
     return (
         <motion.div
-            className="absolute inset-0 rounded-3xl border border-slate-200 bg-white shadow-[0_25px_60px_-35px_rgba(15,23,42,0.35)]"
+            className="absolute rounded-3xl border border-slate-200 bg-white shadow-[0_25px_60px_-35px_rgba(15,23,42,0.35)]"
             style={{
-                zIndex: total - index,
-                y: yWithOffset,
-                opacity,
-                scale,
                 top: index * 18,
                 left: index * 18,
                 right: index * 18,
                 bottom: index * 18,
+                zIndex: total - index,
+                y,        // nur scroll-y
+                opacity,
+                scale,
             }}
         >
             <motion.div
