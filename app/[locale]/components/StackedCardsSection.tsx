@@ -53,12 +53,12 @@ function StackedCard({
                 zIndex: total - index,
                 y,
                 opacity,
-                scale,
-                translateY: index * 10,
+                scale: useTransform(progress, [0, 1], [1 - index * 0.04, 1 - index * 0.04]),
+                translateY: index * 20,
             }}
         >
             <motion.div
-                className="h-full w-full p-8 sm:p-10"
+                className="h-full w-full p-6 sm:p-8"
                 style={{ y: yCollapse, scale: scaleCollapse }}
             >
                 <div className="flex items-start gap-4">
@@ -112,7 +112,7 @@ function DesktopStack() {
                         </h2>
                     </div>
 
-                    <div className="relative mx-auto h-[520px] w-full max-w-4xl">
+                    <div className="relative mx-auto h-[380px] w-full max-w-4xl">
                         {cards.map((card, i) => (
                             <StackedCard
                                 key={card.title}
