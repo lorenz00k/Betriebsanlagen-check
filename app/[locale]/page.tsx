@@ -109,7 +109,7 @@ export default function Home() {
 
 
           {/* Desktop: Stacked Cards */}
-          <div className="hidden lg:block">
+          <div className="block">
             <StackedCardsSection />
           </div>
 
