@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
 
 type Card = {
     title: string
@@ -32,7 +32,7 @@ function StackedCard({
     card: Card
     index: number
     total: number
-    progress: any
+    progress: MotionValue<number>
 }) {
     const start = index * 0.22
     const end = start + 0.32
@@ -126,5 +126,65 @@ function DesktopStack() {
                 </div>
             </div>
         </section>
+    )
+}
+
+function MobileList() {
+    return (
+        <section className="py-10">
+            <div className="mx-auto w-full max-w-screen-xl px-6 lg:px-10">
+                <p className="text-sm font-semibold tracking-wide text-slate-600">
+                    So funktioniert der Check
+                </p>
+                <h2 className="mt-2 text-2xl font-semibold text-slate-900">
+                    In drei Schritten zur ersten Einschätzung
+                </h2>
+
+                <div className="mt-6 grid gap-4">
+                    {cards.map((c, i) => (
+                        <div
+                            key={c.title}
+                            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                        >
+                            <div className="flex items-start gap-3">
+                                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 text-sm font-semibold text-white">
+                                    {i + 1}
+                                </div>
+                                <div>
+                                    <h3 className="text-lg font-semibold text-slate-900">
+                                        {c.title}
+                                    </h3>
+                                    <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                                        {c.description}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="mt-6">
+                    <a
+                        href="#start-check"
+                        className="inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+                    >
+                        Check starten
+                    </a>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+export default function StackedCardsSection() {
+    return (
+        <>
+            <div className="lg:hidden">
+                <MobileList />
+            </div>
+            <div className="hidden lg:block">
+                <DesktopStack />
+            </div>
+        </>
     )
 }
