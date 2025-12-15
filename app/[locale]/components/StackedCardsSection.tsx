@@ -34,19 +34,28 @@ function StackedCard({
     total: number
     progress: MotionValue<number>
 }) {
-    // Segment pro Karte (3 Karten => 0..1/3..2/3..1)
     const step = 1 / total
-
-    // Wann ist diese Karte “active” (Mitte ihres Segments)
     const activeCenter = index * step + step * 0.5
 
-    // Visuelles “peek” (Kartenstapel)
+    // sichtbarer “Stack”
     const inset = index * 18
 
-    // Karte kommt “nach vorne” wenn ihr Segment erreicht ist
-    const lift = useTransform(progress, [activeCenter - 0.18, activeCenter, activeCenter + 0.18], [24, 0, -24])
-    const scale = useTransform(progress, [activeCenter - 0.18, activeCenter, activeCenter + 0.18], [0.985, 1, 0.985])
-    const opacity = useTransform(progress, [activeCenter - 0.22, activeCenter, activeCenter + 0.22], [0.55, 1, 0.55])
+    // pro Segment: Karte kommt nach vorne und wird lesbar
+    const y = useTransform(
+        progress,
+        [activeCenter - 0.18, activeCenter, activeCenter + 0.18],
+        [24, 0, -24],
+    )
+    const scale = useTransform(
+        progress,
+        [activeCenter - 0.18, activeCenter, activeCenter + 0.18],
+        [0.985, 1, 0.985],
+    )
+    const opacity = useTransform(
+        progress,
+        [activeCenter - 0.22, activeCenter, activeCenter + 0.22],
+        [0.55, 1, 0.55],
+    )
 
     return (
         <motion.div
@@ -57,7 +66,7 @@ function StackedCard({
                 right: inset,
                 bottom: inset,
                 zIndex: total - index,
-                y: lift,
+                y,
                 scale,
                 opacity,
             }}
@@ -69,12 +78,8 @@ function StackedCard({
                     </div>
 
                     <div className="min-w-0">
-                        <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
-                            {card.title}
-                        </h3>
-                        <p className="mt-2 max-w-xl text-base leading-relaxed text-slate-600">
-                            {card.description}
-                        </p>
+                        <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">{card.title}</h3>
+                        <p className="mt-2 max-w-xl text-base leading-relaxed text-slate-600">{card.description}</p>
 
                         {index === total - 1 && (
                             <div className="mt-6">
@@ -106,9 +111,7 @@ function DesktopStack() {
             <div className="sticky top-24 flex h-[calc(100vh-6rem)] items-center">
                 <div className="mx-auto w-full max-w-screen-xl px-6 lg:px-10">
                     <div className="mb-8 text-center">
-                        <p className="text-sm font-semibold tracking-wide text-slate-600">
-                            So funktioniert der Check
-                        </p>
+                        <p className="text-sm font-semibold tracking-wide text-slate-600">So funktioniert der Check</p>
                         <h2 className="mt-2 text-3xl font-semibold text-slate-900 sm:text-4xl">
                             In drei Schritten zur ersten Einschätzung
                         </h2>
@@ -128,5 +131,54 @@ function DesktopStack() {
                 </div>
             </div>
         </section>
+    )
+}
+
+function MobileList() {
+    return (
+        <section className="py-10">
+            <div className="mx-auto w-full max-w-screen-xl px-6 lg:px-10">
+                <p className="text-sm font-semibold tracking-wide text-slate-600">So funktioniert der Check</p>
+                <h2 className="mt-2 text-2xl font-semibold text-slate-900">In drei Schritten zur ersten Einschätzung</h2>
+
+                <div className="mt-6 grid gap-4">
+                    {cards.map((c, i) => (
+                        <div key={c.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                            <div className="flex items-start gap-3">
+                                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 text-sm font-semibold text-white">
+                                    {i + 1}
+                                </div>
+                                <div>
+                                    <h3 className="text-lg font-semibold text-slate-900">{c.title}</h3>
+                                    <p className="mt-1 text-sm leading-relaxed text-slate-600">{c.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="mt-6">
+                    <a
+                        href="#start-check"
+                        className="inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+                    >
+                        Check starten
+                    </a>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+export default function StackedCardsSection() {
+    return (
+        <>
+            <div className="lg:hidden">
+                <MobileList />
+            </div>
+            <div className="hidden lg:block">
+                <DesktopStack />
+            </div>
+        </>
     )
 }
