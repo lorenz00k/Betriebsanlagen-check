@@ -10,8 +10,8 @@ import { defaultLocale } from "@/i18n";
 import { Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
 import BreakText from "@/components/ui/BreakText";
 import AutoGrid from "@/components/ui/AutoGrid";
-import StickyStackLikeArticle from './components/StackedCardsSection'
 import FlowSteps from "./components/FlowSteps";
+import StackedCardsSection from "./components/StackedCardsSection";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -110,7 +110,7 @@ export default function Home() {
 
           {/* Desktop: Stacked Cards */}
           <div className="hidden lg:block">
-            <StickyStackLikeArticle />
+            <StackedCardsSection />
           </div>
 
 
