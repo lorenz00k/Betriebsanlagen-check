@@ -11,7 +11,7 @@ import { Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
 import BreakText from "@/components/ui/BreakText";
 import AutoGrid from "@/components/ui/AutoGrid";
 import StickyStackLikeArticle from './components/StackedCardsSection'
-import FlowSteps, { StepsWithResponsiveArrows } from "./components/FlowSteps";
+import FlowSteps from "./components/FlowSteps";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
