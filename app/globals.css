@@ -755,7 +755,7 @@ form .form-row {
 }
 
 .surface-note {
-  background: color-mix(in srgb, var(--color-accent-soft) 60%, transparent);
+  background: color-mix(in srgb, var(--color-fg) 60%, transparent);
   border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
   border-radius: var(--radius-sm);
   padding: 1.5rem;

@@ -42,17 +42,6 @@ function StackedStickyCard({
                     <div className="min-w-0">
                         <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">{card.title}</h3>
                         <p className="mt-2 max-w-xl text-base leading-relaxed text-slate-600">{card.description}</p>
-
-                        {index === cards.length - 1 && (
-                            <div className="mt-6">
-                                <a
-                                    href="#start-check"
-                                    className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
-                                >
-                                    Check starten
-                                </a>
-                            </div>
-                        )}
                     </div>
                 </div>
             </div>
@@ -64,7 +53,7 @@ export default function StackedCardsSection() {
     // Tuning
     const stickyTopPx = 96; // entspricht etwa top-24 (24*4px)
     const offsetPx = 18;    // sichtbarer "Stack"-Versatz
-    const spacerPx = cards.length * offsetPx + 400; // Scroll-Spielraum unten
+    const spacerPx = cards.length * offsetPx + 200; // Scroll-Spielraum unten
 
     return (
         <section className="section section--compact">
