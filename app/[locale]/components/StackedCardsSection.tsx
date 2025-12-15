@@ -193,7 +193,6 @@ function StickyStackLikeArticle() {
     )
 }
 
-
 export default function StackedCardsSection() {
     return (
         <>

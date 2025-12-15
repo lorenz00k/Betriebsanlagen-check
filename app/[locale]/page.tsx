@@ -11,6 +11,7 @@ import { Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
 import BreakText from "@/components/ui/BreakText";
 import AutoGrid from "@/components/ui/AutoGrid";
 import StickyStackLikeArticle from './components/StackedCardsSection'
+import FlowSteps, { StepsWithResponsiveArrows } from "./components/FlowSteps";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -86,7 +87,7 @@ export default function Home() {
 
           {/* 2. ABLAUF / FLOW */}
 
-          {/* Mobile: bisheriger Ablauf */}
+          {/* Mobile: FlowSteps */}
           <section id="how-it-works" className="section section--compact lg:hidden">
             <div className="section__heading">
               <h2>
@@ -97,43 +98,15 @@ export default function Home() {
               </BreakText>
             </div>
 
-            <div className="flow-steps mt-10 flex flex-col gap-4 md:flex-row md:items-stretch md:justify-between md:gap-6">
-              <div className="flow-steps__item card card--subtle flex-1">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("flow.step1Title")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("flow.step1Text")}
-                </BreakText>
-              </div>
-
-              <div className="flow-steps__arrow flex items-center justify-center text-2xl md:px-2">
-                →
-              </div>
-
-              <div className="flow-steps__item card card--subtle flex-1">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("flow.step2Title")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("flow.step2Text")}
-                </BreakText>
-              </div>
-
-              <div className="flow-steps__arrow flex items-center justify-center text-2xl md:px-2">
-                →
-              </div>
-
-              <div className="flow-steps__item card card--subtle flex-1">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("flow.step3Title")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("flow.step3Text")}
-                </BreakText>
-              </div>
-            </div>
+            <FlowSteps
+              steps={[
+                { title: t("flow.step1Title"), text: t("flow.step1Text") },
+                { title: t("flow.step2Title"), text: t("flow.step2Text") },
+                { title: t("flow.step3Title"), text: t("flow.step3Text") },
+              ]}
+            />
           </section>
+
 
           {/* Desktop: Stacked Cards */}
           <div className="hidden lg:block">
