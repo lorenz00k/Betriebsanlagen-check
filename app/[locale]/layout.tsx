@@ -130,7 +130,7 @@ export default async function LocaleLayout({
 
           <HeaderNav locale={locale} />
 
-          <main className="min-h-screen w-full px-6 lg:px-10">{children}</main>
+          <main className="min-h-screen w-full">{children}</main>
           <Footer />
           <Analytics />
           <SpeedInsights />
