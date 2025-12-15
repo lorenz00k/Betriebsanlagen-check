@@ -128,7 +128,7 @@ h4 {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--color-accent) 8%, transparent) 0, transparent 55%);
+  background: radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--color-bg) 8%, transparent) 0, transparent 55%);
   opacity: 0.7;
 }
 
