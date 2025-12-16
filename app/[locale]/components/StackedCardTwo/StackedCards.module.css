@@ -8,7 +8,7 @@
 .cards {
     --numcards: 3;
     --card-top-offset: 18px;
-    --card-height: calc(100vh - var(--header-offset));
+    --card-height: calc(100% / var(--total-cards));
     --overlap: clamp(64px, calc(var(--card-height) * 0.22), 160px);
 
     list-style: none;
@@ -18,6 +18,7 @@
     view-timeline-name: --cards-element-scrolls-in-body;
     padding-bottom: 50vh;
     isolation: isolate;
+    display: flex;
 }
 
 /* Karte (nicht sticky!) */
