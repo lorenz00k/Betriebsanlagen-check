@@ -1,0 +1,19 @@
+.stackCards {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stackCardItem {
+    position: sticky;
+    top: 12px;
+    /* like --space-sm in the tutorial */
+    transform-origin: center top;
+    will-change: transform;
+    /* helps a bit */
+}
+
+/* optional: spacing between cards */
+.stackCardItem+.stackCardItem {
+    margin-top: 16px;
+}

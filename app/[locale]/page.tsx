@@ -13,6 +13,7 @@ import AutoGrid from "@/components/ui/AutoGrid";
 import FlowSteps from "./components/FlowSteps";
 import StackedCardsSection from "./components/StackedCardsSection";
 import StackedStickyCardSection from "./components/StackedStickyCard";
+import { StackCards } from "./components/StackedCard/StackedCard";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -108,16 +109,22 @@ export default function Home() {
             />
           </section>
 
-
+          <StackCards stickyTop={12}>
+            {[
+              <div key="a">Card A</div>,
+              <div key="b">Card B</div>,
+              <div key="c">Card C</div>,
+            ]}
+          </StackCards>
           {/* Desktop: Stacked Cards */}{/*
           <div className="hidden md:block">
             <StackedCardsSection />
           </div>
-          */}
+          
           <div className="hidden md:block">
             <StackedStickyCardSection />
           </div>
-
+          */}
 
           {/* 3. CHECKER – direkt unter dem Ablauf, mit eingebettetem ersten Screen */}
           <section id="start-check" className="section section--compact">
