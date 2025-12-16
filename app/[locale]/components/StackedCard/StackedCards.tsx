@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useEffect, useMemo, useRef } from "react";
-import "./StackCards.css";
+import styles from "./StackedCards.module.css";
 
 type StackCardsProps = {
     children: React.ReactNode[];
@@ -115,10 +117,10 @@ export function StackCards({
     }, [stickyTop, scaleIntensity, count]);
 
     return (
-        <ul ref={containerRef} className="stackCards">
+        <ul ref={containerRef} className={styles.stackCards}>
             {React.Children.map(children, (child, i) => (
                 <li
-                    className="stackCardItem"
+                    className={styles.stackCardItem}
                     ref={(node) => {
                         itemRefs.current[i] = node;
                     }}
