@@ -1,5 +1,6 @@
 .section {
-    padding: 48px 0;
+    padding-top: calc(48px + var(--header-offset));
+    padding-bottom: 48px;
 }
 
 /* Wrapper, der als Timeline dient */
@@ -7,10 +8,9 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    top: var(--header-offset);
 
     /* fixed header offset */
-    --header-offset: 96px;
+    --header-offset: 140px;
 
     /* scroll-driven animations timeline */
     view-timeline-name: --cards-element-scrolls-in-body;
