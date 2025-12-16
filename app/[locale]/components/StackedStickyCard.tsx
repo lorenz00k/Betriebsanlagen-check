@@ -95,23 +95,35 @@ export default function StackedStickyCardSection() {
                 </h2>
             </div>
 
-            <div className="mx-auto mt-10 w-full max-w-4xl px-6 lg:px-10">
-                {cards.map((card, i) => (
-                    // ✅ der “Scroll-Slot”: gibt jeder Karte Platz/Timing
-                    <div key={card.title} style={{ height: cardHeight + slotExtraScroll }}>
-                        <CardDeck
-                            card={card}
-                            index={i}
-                            total={cards.length}
-                            stickyTopPx={stickyTopPx}
-                            cardHeight={cardHeight}
-                        />
-                    </div>
-                ))}
+            <div className="mx-auto mt-10 w-full max-w-4xl px-6 lg:px-10 overflow-visible">
+                {cards.map((card, i) => {
+                    // wie stark soll die nächste Karte "unter" der vorherigen noch sichtbar bleiben?
+                    const overlapPeek = 28; // px (optischer Abstand)
+                    const pullUp = cardHeight - overlapPeek;
 
-                {/* kleiner Extra-Puffer am Ende */}
+                    return (
+                        <div
+                            key={card.title}
+                            className="relative"
+                            style={{
+                                height: cardHeight + slotExtraScroll,
+                                marginTop: i === 0 ? 0 : -pullUp,  // ✅ das ist der Stapel-Trick
+                            }}
+                        >
+                            <CardDeck
+                                card={card}
+                                index={i}
+                                total={cards.length}
+                                stickyTopPx={stickyTopPx}
+                                cardHeight={cardHeight}
+                            />
+                        </div>
+                    );
+                })}
+
                 <div style={{ height: 120 }} />
             </div>
+
         </section>
     );
 }
