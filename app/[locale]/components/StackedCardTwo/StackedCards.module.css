@@ -16,8 +16,8 @@
     --index0: calc(var(--index) - 1);
     --reverse-index: calc(var(--numcards) - var(--index0));
     --reverse-index0: calc(var(--reverse-index) - 1);
-
-    margin: 0 0 18px 0;
+    min-height: calc(100vh - var(--header-offset));
+    padding-bottom: 24px;
 }
 
 /* Sticky nur auf inner content */
