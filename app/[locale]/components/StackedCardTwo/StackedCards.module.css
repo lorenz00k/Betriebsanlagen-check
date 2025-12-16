@@ -29,7 +29,7 @@
     position: relative;
 
     min-height: var(--card-height);
-    padding-bottom: 24px;
+    padding-bottom: calc(var(--reverse-index0) * var(--overlap));
 }
 
 .card+.card {
