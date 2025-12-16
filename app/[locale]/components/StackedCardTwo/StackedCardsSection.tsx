@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import styles from "./StackedCards.module.css";
 
 type Card = { title: string; description: string };
@@ -22,7 +22,8 @@ export default function StackedCardsSection2() {
                 {cards.map((c, idx) => (
                     <li key={c.title} className={styles.card} style={cssVar("--index", idx + 1)}>
                         <div className={styles.card__content}>
-                            ...
+                            <h3 className={styles.title}>{c.title}</h3>
+                            <p className={styles.desc}>{c.description}</p>
                         </div>
                     </li>
                 ))}
