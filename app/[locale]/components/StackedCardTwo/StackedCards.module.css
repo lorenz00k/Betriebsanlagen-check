@@ -28,7 +28,7 @@
 
     position: relative;
 
-    min-height: var(--card-height);
+    min-height: calc(var(--card-height) - var(--header-offset));
     padding-bottom: calc(var(--reverse-index0) * var(--overlap));
 }
 
