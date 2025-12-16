@@ -1,0 +1,67 @@
+.section {
+    padding: 48px 0;
+}
+
+/* Wrapper, der als Timeline dient */
+.cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    /* fixed header offset */
+    --header-offset: 96px;
+
+    /* scroll-driven animations timeline */
+    view-timeline-name: --cards-element-scrolls-in-body;
+}
+
+/* Karte (nicht sticky!) */
+.card {
+    /* 1-based index kommt aus TSX: --index: 1..n */
+    --index0: calc(var(--index) - 1);
+    --reverse-index: calc(var(--numcards) - var(--index0));
+    --reverse-index0: calc(var(--reverse-index) - 1);
+
+    margin: 0 0 18px 0;
+}
+
+/* Sticky nur auf inner content */
+.card__content {
+    position: sticky;
+    top: var(--header-offset);
+
+    transform-origin: center top;
+    will-change: transform;
+
+    /* Animation Range pro Karte berechnen */
+    --start-range: calc(var(--index0) / var(--numcards) * 100%);
+    --end-range: calc((var(--index)) / var(--numcards) * 100%);
+
+    animation: linear scale forwards;
+    animation-timeline: --cards-element-scrolls-in-body;
+    animation-range: exit-crossing var(--start-range) exit-crossing var(--end-range);
+
+    /* dein Card-Look */
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
+}
+
+@keyframes scale {
+    to {
+        transform: scale(calc(1.1 - calc(0.1 * var(--reverse-index))));
+    }
+}
+
+.title {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.desc {
+    margin: 0;
+    opacity: 0.8;
+    line-height: 1.5;
+}

@@ -15,6 +15,7 @@ import StackedCardsSection from "./components/StackedCardsSection";
 import StackedStickyCardSection from "./components/StackedStickyCard";
 import { StackCards } from "./components/StackedCard/StackedCards";
 import Card from "./components/StackedCard/Card";
+import StackedCardsSection2 from "./components/StackedCardTwo/StackedCardsSection";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -109,9 +110,7 @@ export default function Home() {
               ]}
             />
           </section>
-          <div className="hidden md:block">
-            <Card />
-          </div>
+
           {/* Desktop: Stacked Cards */}{/*
           <div className="hidden md:block">
             <StackedCardsSection />
@@ -120,7 +119,15 @@ export default function Home() {
           <div className="hidden md:block">
             <StackedStickyCardSection />
           </div>
-          */}
+          
+
+          <div className="hidden md:block">
+            <Card />
+          </div>
+*/}
+          <div className="hidden md:block">
+            <StackedCardsSection2 />
+          </div>
 
           {/* 3. CHECKER – direkt unter dem Ablauf, mit eingebettetem ersten Screen */}
           <section id="start-check" className="section section--compact">
