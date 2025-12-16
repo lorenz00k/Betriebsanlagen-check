@@ -28,7 +28,7 @@ function StackedStickyCard({
 
     const insetStep = 18
     const liftStep = 14
-    const frameOpacity = 0.55
+    const frameOpacity = 0.9
 
     return (
         <div
@@ -48,7 +48,7 @@ function StackedStickyCard({
                     <div
                         key={n}
                         aria-hidden
-                        className="pointer-events-none absolute rounded-3xl border border-slate-200 bg-transparent"
+                        className="pointer-events-none absolute rounded-3xl border border-slate-300 bg-white shadow-sm"
                         style={{
                             left: n * insetStep,
                             right: n * insetStep,
