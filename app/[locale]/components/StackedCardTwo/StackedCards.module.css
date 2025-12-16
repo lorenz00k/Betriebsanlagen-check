@@ -9,7 +9,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    /*padding-top: var(--header-offset);*/
+    padding-top: var(--header-offset);
     view-timeline-name: --cards-element-scrolls-in-body;
 
     --step: 28vh;
@@ -26,7 +26,7 @@
 
     height: var(--step);
     margin: 0;
-    /*padding-bottom: 24px;*/
+    padding-bottom: 24px;
 }
 
 .card+.card {
