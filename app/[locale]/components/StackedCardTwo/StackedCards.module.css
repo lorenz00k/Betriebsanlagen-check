@@ -33,7 +33,7 @@
 }
 
 .card+.card {
-    margin-top: calc(-1 * var(--overlap));
+    margin-top: calc(-1 * (var(--card-height) - var(--card-top-offset)));
 }
 
 /* Sticky nur auf inner content */
