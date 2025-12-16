@@ -9,6 +9,7 @@
     margin: 0;
     padding-top: var(--header-offset);
     view-timeline-name: --cards-element-scrolls-in-body;
+    padding-bottom: 50vh;
 }
 
 /* Karte (nicht sticky!) */
