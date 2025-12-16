@@ -5,19 +5,13 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import AnimatedStats from "../components/AnimatedStats";
 import { defaultLocale } from "@/i18n";
 import { Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
 import BreakText from "@/components/ui/BreakText";
 import AutoGrid from "@/components/ui/AutoGrid";
 import FlowSteps from "./components/FlowSteps";
-import StackedCardsSection from "./components/StackedCardsSection";
-import StackedStickyCardSection from "./components/StackedStickyCard";
-import { StackCards } from "./components/StackedCard/StackedCards";
-import Card from "./components/StackedCard/Card";
-import StackedCardsSection2 from "./components/StackedCardTwo/StackedCardsSection";
-import StackedCardSection from "./components/StackedCardTwo/StackedCardsSection";
-import StackedCard from "./components/StackedCardMe/StackedCardPattern";
+import StackedCard from "./components/StackedCard/Process/StackedCard";
+import StackedArticles from "./components/StackedCard/Q&A/StackedArticles";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -113,20 +107,7 @@ export default function Home() {
             />
           </section>
 
-          {/* Desktop: Stacked Cards */}{/*
-          <div className="hidden md:block">
-            <StackedCardsSection />
-          </div>
-          
-          <div className="hidden md:block">
-            <StackedStickyCardSection />
-          </div>
-          
-
-          <div className="hidden md:block">
-            <Card />
-          </div>
-*/}
+          {/* Desktop: Stacked Cards */}
           <div className="hidden md:block">
             <StackedCard />
           </div>
@@ -265,51 +246,40 @@ export default function Home() {
               </BreakText>
             </div>
 
-            <AutoGrid min="16rem" className="mt-12">
-              <article className="card card--subtle">
-                <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("gruender.question1")}
-                  </BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("gruender.answer1")}
-                </BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("gruender.question2")}
-                  </BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("gruender.answer2")}
-                </BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("gruender.question3")}
-                  </BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("gruender.answer3")}
-                </BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("gruender.question4")}
-                  </BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("gruender.answer4")}
-                </BreakText>
-              </article>
-            </AutoGrid>
+            <StackedArticles
+              items={[
+                {
+                  title: (
+                    <h3 className="card__title">
+                      <BreakText className="block">{t("gruender.question2")}</BreakText>
+                    </h3>
+                  ),
+                  body: (
+                    <BreakText className="card__body block">{t("gruender.answer2")}</BreakText>
+                  ),
+                },
+                {
+                  title: (
+                    <h3 className="card__title">
+                      <BreakText className="block">{t("gruender.question3")}</BreakText>
+                    </h3>
+                  ),
+                  body: (
+                    <BreakText className="card__body block">{t("gruender.answer3")}</BreakText>
+                  ),
+                },
+                {
+                  title: (
+                    <h3 className="card__title">
+                      <BreakText className="block">{t("gruender.question4")}</BreakText>
+                    </h3>
+                  ),
+                  body: (
+                    <BreakText className="card__body block">{t("gruender.answer4")}</BreakText>
+                  ),
+                },
+              ]}
+            />
 
             <div className="cta-panel">
               <h3>

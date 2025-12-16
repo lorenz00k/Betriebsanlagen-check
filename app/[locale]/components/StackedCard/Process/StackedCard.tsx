@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styles from "./StackedCardPattern.module.css";
+import styles from "./StackedCard.module.css";
 
 type Card = { title: string; description: string };
 
