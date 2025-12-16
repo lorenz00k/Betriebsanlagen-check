@@ -9,7 +9,7 @@
     --numcards: 3;
     --card-top-offset: 18px;
     --card-height: calc(100vh - var(--header-offset));
-    --overlap: 120px;
+    --overlap: 180px;
 
     list-style: none;
     margin: 0;
