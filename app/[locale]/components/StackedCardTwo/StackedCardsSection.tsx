@@ -10,23 +10,19 @@ const cards: Card[] = [
     { title: "Dokumente vorbereiten", description: "Wir zeigen dir, welche Unterlagen typischerweise gebraucht werden." },
 ];
 
+function cssVar(name: `--${string}`, value: string | number): React.CSSProperties {
+    return { [name]: value } as React.CSSProperties;
+}
+
+
 export default function StackedCardsSection2() {
     return (
         <section className={styles.section}>
-            <ul
-                id={styles.cards} // oder className={styles.cards}
-                className={styles.cards}
-                style={{ ["--numcards" as any]: cards.length }}
-            >
+            <ul className={styles.cards} style={cssVar("--numcards", cards.length)}>
                 {cards.map((c, idx) => (
-                    <li
-                        key={c.title}
-                        className={styles.card}
-                        style={{ ["--index" as any]: idx + 1 }} // 1-based wie im Demo
-                    >
+                    <li key={c.title} className={styles.card} style={cssVar("--index", idx + 1)}>
                         <div className={styles.card__content}>
-                            <h3 className={styles.title}>{c.title}</h3>
-                            <p className={styles.desc}>{c.description}</p>
+                            ...
                         </div>
                     </li>
                 ))}
