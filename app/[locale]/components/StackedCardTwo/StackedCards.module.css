@@ -20,7 +20,6 @@
     position: relative;
 
     min-height: calc(100vh - var(--header-offset));
-    padding-bottom: 24px;
 }
 
 .card+.card {
