@@ -1,9 +1,6 @@
 "use client";
 
-type Card = {
-    title: string;
-    description: string;
-};
+type Card = { title: string; description: string };
 
 const cards: Card[] = [
     { title: "Fragen beantworten", description: "Beantworte ein paar kurze Fragen zu deinem Betrieb und Standort." },
@@ -11,59 +8,57 @@ const cards: Card[] = [
     { title: "Dokumente vorbereiten", description: "Wir zeigen dir, welche Unterlagen typischerweise gebraucht werden." },
 ];
 
-function StackedStickyCard({
+function CardDeck({
     card,
     index,
     total,
-    offsetPx,
     stickyTopPx,
+    cardHeight,
 }: {
-    card: { title: string; description: string }
-    index: number
-    total: number
-    offsetPx: number
-    stickyTopPx: number
+    card: Card;
+    index: number;
+    total: number;
+    stickyTopPx: number;
+    cardHeight: number;
 }) {
-    const backLayers = Math.max(0, total - index - 1) // ✅ nur echte "restliche" Karten
+    // so viele "Back Cards", wie wirklich noch kommen (max 3 ist bei 3 cards sowieso erfüllt)
+    const backLayers = Math.max(0, total - index - 1);
 
-    const insetStep = 18
-    const liftStep = 14
-    const frameOpacity = 0.9
+    const insetStep = 18; // wie stark die Back-Cards kleiner werden
+    const liftStep = 14;  // wie stark sie nach oben rutschen
 
     return (
         <div
-            className="relative mx-auto"
+            className="relative"
             style={{
                 position: "sticky",
                 top: stickyTopPx,
-                transform: `translateY(${index * offsetPx}px)`,
-                zIndex: index + 1,
-                maxWidth: 960,
+                zIndex: index + 1, // spätere Karten liegen beim Überlappen vorne
             }}
         >
             {/* Back frames */}
             {Array.from({ length: backLayers }).map((_, j) => {
-                const n = j + 1
+                const n = j + 1;
+                const opacity = Math.max(0.18, 0.38 - j * 0.08); // vorne stärker, hinten schwächer
                 return (
                     <div
                         key={n}
                         aria-hidden
-                        className="pointer-events-none absolute rounded-3xl border border-slate-300 bg-white shadow-sm"
+                        className="pointer-events-none absolute rounded-3xl border border-slate-300 bg-white"
                         style={{
-                            left: n * insetStep,
-                            right: n * insetStep,
-                            top: -n * liftStep,
-                            bottom: n * 10,
-                            opacity: frameOpacity,
+                            // "Deck" Look: kleiner + nach oben versetzt
+                            inset: `${n * insetStep}px`,
+                            transform: `translateY(${-n * liftStep}px)`,
+                            opacity,
                         }}
                     />
-                )
+                );
             })}
 
             {/* Front card */}
             <article
                 className="relative rounded-3xl border border-slate-200 bg-white shadow-[0_25px_60px_-35px_rgba(15,23,42,0.35)]"
-                style={{ height: "clamp(260px, 28vw, 360px)" }}
+                style={{ height: cardHeight }}
             >
                 <div className="h-full p-6 sm:p-7">
                     <div className="flex items-start gap-4">
@@ -79,14 +74,17 @@ function StackedStickyCard({
                 </div>
             </article>
         </div>
-    )
+    );
 }
 
 export default function StackedStickyCardSection() {
-    // Tuning
-    const stickyTopPx = 96; // entspricht etwa top-24 (24*4px)
-    const offsetPx = 18;    // sichtbarer "Stack"-Versatz
-    const spacerPx = cards.length * offsetPx + 200; // Scroll-Spielraum unten
+    const stickyTopPx = 96;
+
+    // Alle gleich groß (wichtig für sauberen Stack)
+    const cardHeight = 340;
+
+    // Wie viel “Scroll-Zeit” jede Karte bekommt, bevor die nächste übernimmt
+    const slotExtraScroll = 220;
 
     return (
         <section className="section section--compact">
@@ -98,20 +96,21 @@ export default function StackedStickyCardSection() {
             </div>
 
             <div className="mx-auto mt-10 w-full max-w-4xl px-6 lg:px-10">
-                {/* Wichtig: kein space-y hier, sonst schiebst du die Cards auseinander */}
-                <div style={{ paddingBottom: spacerPx }}>
-                    {cards.map((card, i) => (
-                        <StackedStickyCard
-                            key={card.title}
+                {cards.map((card, i) => (
+                    // ✅ der “Scroll-Slot”: gibt jeder Karte Platz/Timing
+                    <div key={card.title} style={{ height: cardHeight + slotExtraScroll }}>
+                        <CardDeck
                             card={card}
                             index={i}
-                            total={cards.length}   // ✅ wichtig
-                            offsetPx={offsetPx}
+                            total={cards.length}
                             stickyTopPx={stickyTopPx}
+                            cardHeight={cardHeight}
                         />
-                    ))}
+                    </div>
+                ))}
 
-                </div>
+                {/* kleiner Extra-Puffer am Ende */}
+                <div style={{ height: 120 }} />
             </div>
         </section>
     );
