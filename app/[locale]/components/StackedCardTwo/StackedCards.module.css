@@ -9,7 +9,7 @@
     --numcards: 3;
     --card-top-offset: 18px;
     --card-height: calc(100vh - var(--header-offset));
-    --overlap: 50px;
+    --overlap: 120px;
 
     list-style: none;
     margin: 0;
@@ -33,7 +33,7 @@
 }
 
 .card+.card {
-    margin-top: calc(-1 * (var(--card-height) - var(--card-top-offset)));
+    margin-top: calc(-1 * var(--overlap));
 }
 
 /* Sticky nur auf inner content */
