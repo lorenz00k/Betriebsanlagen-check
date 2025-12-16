@@ -109,15 +109,15 @@ export default function Home() {
           </section>
 
 
-          {/* Desktop: Stacked Cards 
+          {/* Desktop: Stacked Cards */}
           <div className="hidden md:block">
             <StackedCardsSection />
           </div>
-          */}
+          {/*
           <div className="hidden md:block">
             <StackedStickyCardSection />
           </div>
-
+          */}
 
           {/* 3. CHECKER – direkt unter dem Ablauf, mit eingebettetem ersten Screen */}
           <section id="start-check" className="section section--compact">
