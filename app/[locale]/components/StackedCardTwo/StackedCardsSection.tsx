@@ -15,7 +15,7 @@ function cssVar(name: `--${string}`, value: string | number): React.CSSPropertie
 }
 
 
-export default function StackedCardsSection2() {
+export default function StackedCardSection() {
     return (
         <section className={styles.section}>
             <ul className={styles.cards} style={cssVar("--numcards", cards.length)}>
