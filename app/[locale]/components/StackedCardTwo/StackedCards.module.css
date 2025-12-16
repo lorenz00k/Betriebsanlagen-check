@@ -10,6 +10,7 @@
     --card-top-offset: 18px;
     list-style: none;
     margin: 0;
+    padding: 0;
 
     view-timeline-name: --cards-element-scrolls-in-body;
     padding-bottom: calc(var(--numcards) * var(--card-top-offset));
@@ -23,12 +24,12 @@
 
     position: relative;
 
-    min-height: calc(100vh - var(--header-offset));
+    min-height: calc(var(--index0) * var(--peek));
     padding-bottom: 24px;
 }
 
 .card+.card {
-    margin-top: -50px;
+    margin-top: calc(-1 * var(--overlap));
 }
 
 /* Sticky nur auf inner content */
