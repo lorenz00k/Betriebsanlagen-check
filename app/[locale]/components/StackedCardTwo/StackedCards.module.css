@@ -16,11 +16,43 @@
     --index0: calc(var(--index) - 1);
     --reverse-index: calc(var(--numcards) - var(--index0));
     --reverse-index0: calc(var(--reverse-index) - 1);
+
+    position: relative;
+
     min-height: calc(100vh - var(--header-offset));
     padding-bottom: 24px;
 }
 
+.card+.card {
+    margin-top: -160px;
+}
+
+.card__content {
+    position: sticky;
+    top: var(--header-offset);
+
+    /* entscheidend: spätere Karten überdecken frühere */
+    z-index: var(--index);
+
+    transform-origin: center top;
+    will-change: transform;
+
+    --start-range: calc(var(--index0) / var(--numcards) * 100%);
+    --end-range: calc((var(--index)) / var(--numcards) * 100%);
+
+    animation: linear scale forwards;
+    animation-timeline: --cards-element-scrolls-in-body;
+    animation-range: exit-crossing var(--start-range) exit-crossing var(--end-range);
+
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
+}
+
+
 /* Sticky nur auf inner content */
+/*
 .card__content {
     position: sticky;
     top: var(--header-offset);
@@ -41,6 +73,7 @@
     min-height: 240px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
 }
+*/
 
 @keyframes scale {
     to {
