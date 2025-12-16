@@ -1,5 +1,5 @@
 .section {
-    padding-top: calc(48px + var(--header-offset));
+    padding-top: var(--header-offset);
     padding-bottom: 48px;
 }
 
