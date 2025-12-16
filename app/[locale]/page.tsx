@@ -14,6 +14,7 @@ import FlowSteps from "./components/FlowSteps";
 import StackedCardsSection from "./components/StackedCardsSection";
 import StackedStickyCardSection from "./components/StackedStickyCard";
 import { StackCards } from "./components/StackedCard/StackedCards";
+import Card from "./components/StackedCard/Card";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -108,7 +109,9 @@ export default function Home() {
               ]}
             />
           </section>
-
+          <div className="hidden md:block">
+            <Card />
+          </div>
           <StackCards stickyTop={12}>
             {[
               <div key="a">Card A</div>,
