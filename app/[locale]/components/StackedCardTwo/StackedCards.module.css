@@ -3,13 +3,16 @@
     padding-bottom: 48px;
 }
 
+/*padding-top: var(--header-offset);*/
 /* Wrapper, der als Timeline dient */
 .cards {
+    --numcards: 3;
+    --card-top-offset: 18px;
     list-style: none;
     margin: 0;
-    padding-top: var(--header-offset);
+
     view-timeline-name: --cards-element-scrolls-in-body;
-    padding-bottom: 50vh;
+    padding-bottom: calc(var(--numcards) * var(--card-top-offset));
 }
 
 /* Karte (nicht sticky!) */
@@ -25,7 +28,7 @@
 }
 
 .card+.card {
-    margin-top: -120px;
+    margin-top: -50px;
 }
 
 /* Sticky nur auf inner content */
