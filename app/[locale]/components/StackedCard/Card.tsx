@@ -11,7 +11,7 @@ const cards: Card[] = [
 
 export default function Card() {
     return (
-        <section style={{ padding: "48px 0" }}>
+        <section style={{ padding: "48px 0", minHeight: "200vh" }}>
             <StackCards stickyTop={12}>
                 {cards.map((c) => (
                     <article key={c.title} className={styles.myCard}>

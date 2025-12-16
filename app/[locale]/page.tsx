@@ -112,13 +112,6 @@ export default function Home() {
           <div className="hidden md:block">
             <Card />
           </div>
-          <StackCards stickyTop={12}>
-            {[
-              <div key="a">Card A</div>,
-              <div key="b">Card B</div>,
-              <div key="c">Card C</div>,
-            ]}
-          </StackCards>
           {/* Desktop: Stacked Cards */}{/*
           <div className="hidden md:block">
             <StackedCardsSection />
