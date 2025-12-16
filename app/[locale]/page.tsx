@@ -12,6 +12,7 @@ import BreakText from "@/components/ui/BreakText";
 import AutoGrid from "@/components/ui/AutoGrid";
 import FlowSteps from "./components/FlowSteps";
 import StackedCardsSection from "./components/StackedCardsSection";
+import StackedStickyCardSection from "./components/StackedStickyCard";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -108,9 +109,13 @@ export default function Home() {
           </section>
 
 
-          {/* Desktop: Stacked Cards */}
+          {/* Desktop: Stacked Cards 
           <div className="hidden md:block">
             <StackedCardsSection />
+          </div>
+          */}
+          <div className="hidden md:block">
+            <StackedStickyCardSection />
           </div>
 
 
@@ -166,6 +171,14 @@ export default function Home() {
 
           {/* 4. SELLING POINTS / STATS */}
           <section className="section section--compact">
+            <div className="section__heading">
+              <h2>
+                <BreakText className="block">
+                  {t("selling.heading")}
+                </BreakText>
+              </h2>
+            </div>
+
             <AutoGrid min="14rem" className="mt-10">
               <article className="card card--subtle">
                 <div className="card__icon card__icon--accent-soft">
