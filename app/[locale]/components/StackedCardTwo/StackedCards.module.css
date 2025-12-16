@@ -4,16 +4,11 @@
 }
 
 /* Wrapper, der als Timeline dient */
-
 .cards {
     list-style: none;
     margin: 0;
-    padding: 0;
     padding-top: var(--header-offset);
     view-timeline-name: --cards-element-scrolls-in-body;
-
-    --step: 28vh;
-    padding-bottom: calc(var(--numcards) * var(--step));
 }
 
 /* Karte (nicht sticky!) */
@@ -24,8 +19,7 @@
 
     position: relative;
 
-    height: var(--step);
-    margin: 0;
+    min-height: calc(100vh - var(--header-offset));
     padding-bottom: 24px;
 }
 
@@ -35,12 +29,9 @@
 
 /* Sticky nur auf inner content */
 .card__content {
-    --peek: 18px;
     position: sticky;
-    top: calc(var(--header-offset) + (var(--index0) * var(--peek)));
-
-
-    z-index: var(--index);
+    top: var(--header-offset);
+    --peek: 18px;
 
     transform-origin: center top;
     will-change: transform;
