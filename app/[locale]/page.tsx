@@ -166,40 +166,6 @@ export default function Home() {
 
           {/* 4. SELLING POINTS / STATS */}
           <section className="section section--compact">
-            <div className="section__heading">
-              <h2>
-                <BreakText className="block">
-                  {t("selling.heading")}
-                </BreakText>
-              </h2>
-              {/* Subheadline entfernt – direkt in die Features/Stats */}
-            </div>
-
-            <div className="surface-muted mt-8">
-              <AnimatedStats
-                stats={[
-                  {
-                    value: 8,
-                    suffix: "",
-                    label: t("stats.languages"),
-                    icon: <Languages className="w-6 h-6" strokeWidth={2} />,
-                  },
-                  {
-                    value: 2,
-                    suffix: " Min",
-                    label: t("stats.time"),
-                    icon: <Zap className="w-6 h-6" strokeWidth={2} />,
-                  },
-                  {
-                    value: 100,
-                    suffix: "%",
-                    label: t("stats.free"),
-                    icon: <Shield className="w-6 h-6" strokeWidth={2} />,
-                  },
-                ]}
-              />
-            </div>
-
             <AutoGrid min="14rem" className="mt-10">
               <article className="card card--subtle">
                 <div className="card__icon card__icon--accent-soft">
