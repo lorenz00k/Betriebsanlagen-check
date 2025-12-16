@@ -6,7 +6,7 @@
 
 .stackCardItem {
     position: sticky;
-    top: 12px;
+    top: var(--header-offset);
     /* like --space-sm in the tutorial */
     transform-origin: center top;
     will-change: transform;

@@ -17,6 +17,7 @@
   /* Layout */
   --container-w: 1200px;
   --container-padding: clamp(1.25rem, 3vw, 2.5rem);
+  --header-offset: 96px;
 
   /* Elevation & radius */
   --radius-xs: 10px;
