@@ -1,5 +1,8 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
 type Card = { title: string; description: string };
 
 const cards: Card[] = [
@@ -7,46 +10,65 @@ const cards: Card[] = [
     { title: "Einschätzung erhalten", description: "Du bekommst eine erste Einschätzung, ob eine Genehmigung nötig ist." },
     { title: "Dokumente vorbereiten", description: "Wir zeigen dir, welche Unterlagen typischerweise gebraucht werden." },
 ];
-
 function CardDeck({
     card,
     index,
     total,
     stickyTopPx,
     cardHeight,
+    slotRef,
 }: {
     card: Card;
     index: number;
     total: number;
     stickyTopPx: number;
     cardHeight: number;
+    slotRef: React.RefObject<HTMLDivElement | null>;
 }) {
-    // so viele "Back Cards", wie wirklich noch kommen (max 3 ist bei 3 cards sowieso erfüllt)
     const backLayers = Math.max(0, total - index - 1);
 
-    const insetStep = 18; // wie stark die Back-Cards kleiner werden
-    const liftStep = 14;  // wie stark sie nach oben rutschen
+    const insetStep = 18;
+    const liftStep = 14;
+
+    const depth = index;
+
+    // Tunables (so bekommst du den Screenshot-Look)
+    const scaleStep = 0.03; // pro Depth-Ebene kleiner
+    const baseScale = 1 - depth * scaleStep; // z.B. 1, 0.97, 0.94
+    const baseY = -depth * 10; // optional: leicht hochgezogen
+
+    // ✅ Scroll-Progress in meinem Slot
+    const { scrollYProgress } = useScroll({
+        target: slotRef,
+        offset: ["start 85%", "start 25%"],
+    });
+
+    // ✅ während "übernehmen": von base -> full
+    const scale = useTransform(scrollYProgress, [0, 1], [baseScale, 1]);
+    const y = useTransform(scrollYProgress, [0, 1], [baseY, 0]);
 
     return (
-        <div
+        <motion.div
             className="relative"
             style={{
                 position: "sticky",
                 top: stickyTopPx,
-                zIndex: index + 1, // spätere Karten liegen beim Überlappen vorne
+                zIndex: total - index,
+                scale,
+                y,
+                transformOrigin: "center top",
             }}
         >
-            {/* Back frames */}
+            {/* Back frames (Deko) */}
             {Array.from({ length: backLayers }).map((_, j) => {
                 const n = j + 1;
-                const opacity = Math.max(0.18, 0.38 - j * 0.08); // vorne stärker, hinten schwächer
+                const opacity = Math.max(0.18, 0.38 - j * 0.08);
                 return (
                     <div
                         key={n}
                         aria-hidden
                         className="pointer-events-none absolute rounded-3xl border border-slate-300 bg-white"
                         style={{
-                            // "Deck" Look: kleiner + nach oben versetzt
                             inset: `${n * insetStep}px`,
                             transform: `translateY(${-n * liftStep}px)`,
                             opacity,
@@ -67,63 +89,90 @@ function CardDeck({
                         </div>
 
                         <div className="min-w-0">
-                            <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">{card.title}</h3>
-                            <p className="mt-2 max-w-xl text-base leading-relaxed text-slate-600">{card.description}</p>
+                            <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
+                                {card.title}
+                            </h3>
+                            <p className="mt-2 max-w-xl text-base leading-relaxed text-slate-600">
+                                {card.description}
+                            </p>
                         </div>
                     </div>
                 </div>
             </article>
+        </motion.div>
+    );
+}
+
+function CardSlot({
+    card,
+    i,
+    total,
+    stickyTopPx,
+    cardHeight,
+    slotExtraScroll,
+    pullUp,
+}: {
+    card: Card;
+    i: number;
+    total: number;
+    stickyTopPx: number;
+    cardHeight: number;
+    slotExtraScroll: number;
+    pullUp: number;
+}) {
+    const slotRef = useRef<HTMLDivElement | null>(null);
+
+    return (
+        <div
+            ref={slotRef}
+            className="relative"
+            style={{
+                height: cardHeight + slotExtraScroll,
+                marginTop: i === 0 ? 0 : -pullUp,
+            }}
+        >
+            <CardDeck
+                card={card}
+                index={i}
+                total={total}
+                stickyTopPx={stickyTopPx}
+                cardHeight={cardHeight}
+                slotRef={slotRef}
+            />
         </div>
     );
 }
 
+
+
 export default function StackedStickyCardSection() {
     const stickyTopPx = 96;
-
-    // Alle gleich groß (wichtig für sauberen Stack)
     const cardHeight = 340;
-
-    // Wie viel “Scroll-Zeit” jede Karte bekommt, bevor die nächste übernimmt
     const slotExtraScroll = 220;
+
+    const overlapPeek = 28;
+    const pullUp = cardHeight - overlapPeek;
 
     return (
         <section className="section section--compact">
-            <div className="section__heading text-center">
-                <p className="text-sm font-semibold tracking-wide text-slate-600">So funktioniert der Check</p>
-                <h2 className="mt-2 text-3xl font-semibold text-slate-900 sm:text-4xl">
-                    In drei Schritten zur ersten Einschätzung
-                </h2>
-            </div>
+            {/* Heading ... */}
 
             <div className="mx-auto mt-10 w-full max-w-4xl px-6 lg:px-10 overflow-visible">
-                {cards.map((card, i) => {
-                    // wie stark soll die nächste Karte "unter" der vorherigen noch sichtbar bleiben?
-                    const overlapPeek = 28; // px (optischer Abstand)
-                    const pullUp = cardHeight - overlapPeek;
-
-                    return (
-                        <div
-                            key={card.title}
-                            className="relative"
-                            style={{
-                                height: cardHeight + slotExtraScroll,
-                                marginTop: i === 0 ? 0 : -pullUp,  // ✅ das ist der Stapel-Trick
-                            }}
-                        >
-                            <CardDeck
-                                card={card}
-                                index={i}
-                                total={cards.length}
-                                stickyTopPx={stickyTopPx}
-                                cardHeight={cardHeight}
-                            />
-                        </div>
-                    );
-                })}
+                {cards.map((card, i) => (
+                    <CardSlot
+                        key={card.title}
+                        card={card}
+                        i={i}
+                        total={cards.length}
+                        stickyTopPx={stickyTopPx}
+                        cardHeight={cardHeight}
+                        slotExtraScroll={slotExtraScroll}
+                        pullUp={pullUp}
+                    />
+                ))}
 
                 <div style={{ height: 120 }} />
             </div>
-
         </section>
     );
 }
