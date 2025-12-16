@@ -13,7 +13,7 @@ import AutoGrid from "@/components/ui/AutoGrid";
 import FlowSteps from "./components/FlowSteps";
 import StackedCardsSection from "./components/StackedCardsSection";
 import StackedStickyCardSection from "./components/StackedStickyCard";
-import { StackCards } from "./components/StackedCard/StackedCard";
+import { StackCards } from "./components/StackedCard/StackedCards";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
