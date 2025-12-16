@@ -8,6 +8,8 @@
 .cards {
     --numcards: 3;
     --card-top-offset: 18px;
+    --overlap: 50px;
+
     list-style: none;
     margin: 0;
     padding: 0;
@@ -24,7 +26,7 @@
 
     position: relative;
 
-    min-height: calc(var(--index0) * var(--peek));
+    min-height: calc((100vh - var(--header-offset)) + (var(--reverse-index0) * var(--overlap)));
     padding-bottom: 24px;
 }
 
@@ -36,7 +38,6 @@
 .card__content {
     position: sticky;
     top: var(--header-offset);
-    --peek: 18px;
 
     transform-origin: center top;
     will-change: transform;
