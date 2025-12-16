@@ -9,6 +9,7 @@
     margin: 0;
     padding-top: var(--header-offset);
     view-timeline-name: --cards-element-scrolls-in-body;
+    padding-bottom: calc(var(--numcards) * 60vh);
 }
 
 /* Karte (nicht sticky!) */
@@ -18,8 +19,6 @@
     --reverse-index0: calc(var(--reverse-index) - 1);
 
     position: relative;
-
-    min-height: calc(100vh - var(--header-offset));
 }
 
 .card+.card {
