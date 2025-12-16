@@ -15,7 +15,7 @@
     padding: 0;
 
     view-timeline-name: --cards-element-scrolls-in-body;
-    padding-bottom: calc(var(--numcards) * var(--card-top-offset));
+    padding-bottom: calc(50vh + (var(--numcards) * var(--overlap)));
 }
 
 /* Karte (nicht sticky!) */
@@ -26,8 +26,8 @@
 
     position: relative;
 
-    min-height: calc((100vh - var(--header-offset)) + (var(--reverse-index0) * var(--overlap)));
-    padding-bottom: 24px;
+    min-height: calc(100vh - var(--header-h));
+    padding-bottom: calc(var(--reverse-index0) * var(--overlap));
 }
 
 .card+.card {
@@ -37,7 +37,8 @@
 /* Sticky nur auf inner content */
 .card__content {
     position: sticky;
-    top: var(--header-offset);
+    top: calc(var(--header-offset) + (var(--index0) * var(--card-top-offset)));
+    z-index: var(--index);
 
     transform-origin: center top;
     will-change: transform;
