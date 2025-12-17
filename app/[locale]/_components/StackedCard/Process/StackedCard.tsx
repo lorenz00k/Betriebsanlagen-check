@@ -24,7 +24,6 @@ export default function StackedCard({ cards }: { cards: Card[] }) {
                         <div className={styles.card__content}>
                             <h3 className={styles.title}>{c.title}</h3>
                             <p className={styles.desc}>{c.description}</p>
-
                             {c.bullets?.length ? (
                                 <ul className={styles.bullets}>
                                     {c.bullets.map((b) => (
@@ -32,6 +31,15 @@ export default function StackedCard({ cards }: { cards: Card[] }) {
                                     ))}
                                 </ul>
                             ) : null}
+                            {c.cta ? (
+                                <div className={styles.ctaRow}>
+                                    <Link href={c.cta.href} className={styles.cta}>
+                                        {c.cta.label}
+                                        <span className={styles.ctaArrow} aria-hidden>→</span>
+                                    </Link>
+                                </div>
+                            ) : null}
+
                         </div>
                     </li>
                 ))}
