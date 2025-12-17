@@ -10,8 +10,9 @@ import { Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
 import BreakText from "@/components/ui/BreakText";
 import AutoGrid from "@/components/ui/AutoGrid";
 import FlowSteps from "./components/FlowSteps";
-import StackedCard from "./components/StackedCard/Process/StackedCard";
-import StackedArticles from "./components/StackedCard/Q&A/StackedArticles";
+import StackedCard from "./_components/StackedCard/Process/StackedCard";
+import StackedArticles from "./_components/StackedCard/Q&A/StackedArticles";
+import CheckerEmbed from "./_components/CheckerEmbed";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -127,50 +128,29 @@ export default function Home() {
             <div className="surface-muted">
               <div className="section__heading">
                 <h2>
-                  <BreakText className="block">
-                    {t("checker.heading")}
-                  </BreakText>
+                  <BreakText className="block">{t("checker.heading")}</BreakText>
                 </h2>
-                <BreakText className="section__copy block">
-                  {t("checker.intro")}
-                </BreakText>
+                <BreakText className="section__copy block">{t("checker.intro")}</BreakText>
               </div>
 
               <div className="checker-embed mt-8">
-                {/* 
-                  TODO: Hier den ersten Screen des Checkers einbinden,
-                  z.B. eine gemeinsame Komponente wie:
-                  <CheckWizardFirstStep locale={activeLocale} />
-
-                  Bis dahin zeigt der Platzhalter-Text an, was hier passiert.
-                */}
-                <div className="card">
-                  <BreakText className="card__body block">
-                    {t("checker.placeholder")}
-                  </BreakText>
-                  <div className="mt-4">
-                    <Link
-                      href={`/${activeLocale}/check`}
-                      className="btn btn-primary"
-                    >
-                      <BreakText>{t("card1Button")}</BreakText>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <Link
-                  href={`/${activeLocale}/documents`}
-                  className="btn btn-secondary inline-flex items-center gap-2"
-                >
-                  <BreakText>{t("documents.cta")}</BreakText>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
+                <CheckerEmbed />
               </div>
             </div>
           </section>
+
+
+
+          {/* Dokumente */}
+          <div className="mt-6">
+            <Link
+              href={`/${activeLocale}/documents`}
+              className="btn btn-secondary inline-flex items-center gap-2"
+            >
+              <BreakText>{t("documents.cta")}</BreakText>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
 
           {/* 4. SELLING POINTS / STATS */}
           <section className="section section--compact">
