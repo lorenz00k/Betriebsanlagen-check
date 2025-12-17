@@ -1,5 +1,18 @@
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
+import "./globals.css"
+import { Manrope } from "next/font/google"
+
+import Script from 'next/script'
+import { GoogleAnalytics } from '@next/third-parties/google'
+import { Analytics as VercelAnalytics } from '@vercel/analytics/next' // keep if you want Vercel Analytics
+import CookieConsentModal from './components/CookieConsentModal'
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+})
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -40,16 +53,13 @@ export const metadata: Metadata = {
   manifest: '/manifest.webmanifest'
 }
 
-import Script from 'next/script'
-import { GoogleAnalytics } from '@next/third-parties/google'
-import { Analytics as VercelAnalytics } from '@vercel/analytics/next' // keep if you want Vercel Analytics
-import CookieConsentModal from './components/CookieConsentModal'
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID
 
   return (
-    <html lang="de">
+    <html lang="de" className={manrope.variable}>
       <head>
         {/* Consent Mode v2: default = denied BEFORE GA loads */}
         <Script id="ga-consent-default" strategy="beforeInteractive">
