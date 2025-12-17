@@ -34,14 +34,14 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
   }
 
   return (
-    <header className="border-b border-slate-200 bg-white sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70" >
+    <header className="header sticky top-0 z-50">
       <div className="w-full px-6 lg:px-10">
         <div className="flex h-14 items-center justify-between gap-3">
           <div className="flex min-w-0 flex-shrink-0 items-center">
             <Link href={`/${locale}`} className="flex items-center gap-2">
               <Image src="/icon.svg" alt="" width={28} height={28} className="h-7 w-7 rounded-lg shadow-sm" />
-              <span className="ml-2 text-sm font-semibold text-slate-900 lg:hidden">Betriebsanlagen Check</span>
-              <span className="ml-2 hidden truncate text-sm font-semibold text-slate-900 lg:inline">
+              <span className="ml-2 text-sm font-semibold text-current lg:hidden">Betriebsanlagen Check</span>
+              <span className="ml-2 hidden truncate text-sm font-semibold text-current lg:inline">
                 Betriebsanlagen Check
               </span>
             </Link>
@@ -55,10 +55,8 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`min-w-0 shrink-0 text-sm font-medium transition hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 ${isActive(link.href)
-                  ? 'text-slate-900'
-                  : 'text-slate-600'
-                  }`}
+                className={`min-w-0 shrink-0 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${isActive(link.href) ? "text-current" : "text-[color:var(--color-header-fg-muted)] hover:text-current"}`}
+
                 aria-current={isActive(link.href) ? 'page' : undefined}
               >
                 {link.label}
@@ -70,7 +68,7 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
             <button
               type="button"
               onClick={() => setIsSidebarOpen(true)}
-              className="inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+              className="inline-flex items-center justify-center rounded-md p-2 text-[color:var(--color-header-fg-muted)] hover:bg-white/10 hover:text-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               aria-label="Menü öffnen"
               aria-expanded={isSidebarOpen}
               aria-controls="mobile-sidebar"

@@ -21,6 +21,13 @@
   --sticky-gap: 16px;
   --header-offset: calc(var(--header-h) + var(--sticky-gap));
 
+  /* Header Design */
+  --color-header-bg: #0b1b3a;
+  --color-header-bg-glass: rgba(11, 27, 58, 0.75);
+  --color-header-border: rgba(255, 255, 255, 0.10);
+  --color-header-fg: #ffffff;
+  --color-header-fg-muted: rgba(255, 255, 255, 0.72);
+
   /* Elevation & radius */
   --radius-xs: 10px;
   --radius-sm: 14px;
