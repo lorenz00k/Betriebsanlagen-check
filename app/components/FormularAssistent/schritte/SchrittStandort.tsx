@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapPin, Search, Loader2, CheckCircle, AlertTriangle } from 'lucide-react';
-import { searchAddress, getNearbyPOIs, getZoningInfo, getBuildingPlanInfo } from '@/app/lib/viennagis-api';
-import { analyzeEnvironment, analyzePOIs } from '@/app/utils/poi-checker';
+import { searchAddress, getNearbyPOIs } from '@/app/lib/viennagis-api';
+import { analyzePOIs } from '@/app/utils/poi-checker';
 import type { FormularDaten } from '../types';
 import type { Address } from '@/app/lib/viennagis-api';
 import ViennaGISMap from '@/app/components/ViennaGISMap';

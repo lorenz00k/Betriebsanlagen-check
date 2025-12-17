@@ -1,6 +1,6 @@
 // Umgebungsanalyse für Betriebsanlagengenehmigung
 
-import type { POI, Address } from '@/app/lib/viennagis-api';
+import type { POI } from '@/app/lib/viennagis-api';
 
 export interface EnvironmentAnalysis {
   summary: string; // Kurze Zusammenfassung
@@ -141,7 +141,13 @@ export function analyzeEnvironment(pois: POI[]): EnvironmentAnalysis {
  * Helper: POIs in Gruppen kategorisieren
  */
 function createPOIGroups(pois: POI[]): POIGroup[] {
-  const categories = {
+  type CategoryConfig = {
+    types: string[];
+    label: string;
+    icon: string;
+  };
+
+  const categories: Record<string, CategoryConfig> = {
     religion: {
       types: ['religion', 'kath', 'evangkirche', 'orthodox', 'islam', 'israel', 'juedwien', 'buddh'],
       label: 'Religiöse Einrichtungen',
@@ -174,8 +180,8 @@ function createPOIGroups(pois: POI[]): POIGroup[] {
   for (const [category, config] of Object.entries(categories)) {
     const categoryPOIs = category === 'other'
       ? pois.filter(p => !Object.values(categories)
-          .filter(c => c.types.length > 0)
-          .some(c => c.types.includes(p.type)))
+          .filter((c: CategoryConfig) => c.types.length > 0)
+          .some((c: CategoryConfig) => c.types.includes(p.type)))
       : pois.filter(p => config.types.includes(p.type));
 
     const nearbyCount = categoryPOIs.filter(p => p.distance < 100).length;
