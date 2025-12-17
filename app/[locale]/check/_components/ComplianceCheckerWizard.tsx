@@ -18,7 +18,6 @@ import { InfoBox } from "../../_components/info-box"
 import { helpTexts } from "../../_data/help-texts"
 
 export type StepId = "basics" | "location" | "operations" | "context"
-
 const steps: StepId[] = ["basics", "location", "operations", "context"]
 
 interface Option<T extends string> {
@@ -180,6 +179,17 @@ export default function ComplianceCheckerWizard({
         setForm((prev) => ({ ...prev, [field]: value }))
     }
 
+    // ✅ strikt typisiert: nur Felder, die BooleanChoice|undefined sind
+    type BooleanField = Extract<{
+        [K in keyof ComplianceInput]: ComplianceInput[K] extends BooleanChoice | undefined ? K : never
+    }[keyof ComplianceInput],
+        string
+    >
+
+    const setBooleanField = (field: BooleanField, value: BooleanChoice) => {
+        setForm((prev) => ({ ...prev, [field]: value }))
+    }
+
     const handleNumericChange =
         (field: keyof ComplianceInput) => (event: ChangeEvent<HTMLInputElement>) => {
             setField(field, parseNumber(event.target.value) as ComplianceInput[typeof field])
@@ -238,7 +248,7 @@ export default function ComplianceCheckerWizard({
     }, [currentStep, form])
 
     const handleNext = () => {
-        // EMBED-Usecase: Nach Step 1 raus in /check (statt intern zu Step 2)
+        // EMBED: nach Step 1 raus in /check
         if (currentStep === "basics" && onCompleteBasics) {
             onCompleteBasics(form)
             return
@@ -328,6 +338,7 @@ export default function ComplianceCheckerWizard({
                                     placeholder={t("form.areaSqm.placeholder")}
                                 />
                             </div>
+
                             <div>
                                 <div className="mb-2 flex items-start gap-2">
                                     <label htmlFor="personCount" className="text-sm font-medium text-gray-700">
@@ -358,6 +369,7 @@ export default function ComplianceCheckerWizard({
                                     onSelect={(value) => setField("isStationary", value)}
                                 />
                             </div>
+
                             <div className="space-y-2">
                                 <div className="flex items-start gap-2">
                                     <span className="text-sm font-medium text-gray-700">
@@ -393,6 +405,7 @@ export default function ComplianceCheckerWizard({
                                             placeholder={t("form.bedCount.placeholder")}
                                         />
                                     </div>
+
                                     <div className="space-y-2">
                                         <div className="flex items-start gap-2">
                                             <span className="text-sm font-medium text-gray-700">
@@ -406,6 +419,7 @@ export default function ComplianceCheckerWizard({
                                             onSelect={(value) => setField("buildingUseExclusive", value)}
                                         />
                                     </div>
+
                                     <div className="space-y-2">
                                         <label className="block text-sm font-medium text-gray-700">
                                             {t("form.hasWellnessFacilities.question")}
@@ -417,6 +431,7 @@ export default function ComplianceCheckerWizard({
                                         />
                                     </div>
                                 </div>
+
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
                                         <span className="text-sm font-medium text-gray-700">
@@ -442,6 +457,7 @@ export default function ComplianceCheckerWizard({
                             <h2 className="text-2xl font-bold text-gray-900 mb-3">{t("form.location.heading")}</h2>
                             <p className="text-gray-600">{t("form.location.helper")}</p>
                         </div>
+
                         <div className="space-y-6">
                             <div className="space-y-2">
                                 <label className="block text-sm font-medium text-gray-700">
@@ -453,6 +469,7 @@ export default function ComplianceCheckerWizard({
                                     onSelect={(value) => setField("zoningClarified", value)}
                                 />
                             </div>
+
                             <div className="space-y-2">
                                 <label className="block text-sm font-medium text-gray-700">
                                     {t("form.buildingConsentPresent.question")}
@@ -474,6 +491,7 @@ export default function ComplianceCheckerWizard({
                             <h2 className="text-2xl font-bold text-gray-900 mb-3">{t("form.operations.heading")}</h2>
                             <p className="text-gray-600">{t("form.operations.helper")}</p>
                         </div>
+
                         <div className="space-y-6">
                             <div className="space-y-2">
                                 <div className="flex items-start gap-2">
@@ -482,6 +500,7 @@ export default function ComplianceCheckerWizard({
                                     </span>
                                     <InfoBox text={info.openingHours} />
                                 </div>
+
                                 <SelectionGrid<OperatingPattern>
                                     options={operatingOptions}
                                     selected={form.operatingPattern}
@@ -489,23 +508,26 @@ export default function ComplianceCheckerWizard({
                                 />
                             </div>
 
-                            {[
-                                ["hasExternalVentilation", info.ventilation],
-                                ["storesRegulatedHazardous", info.chemicals],
-                                ["storesLabelledHazardous", info.chemicals],
-                                ["usesLoudMusic", info.noise],
-                            ].map(([field, infoText]) => (
+                            {(
+                                [
+                                    ["hasExternalVentilation", info.ventilation],
+                                    ["storesRegulatedHazardous", info.chemicals],
+                                    ["storesLabelledHazardous", info.chemicals],
+                                    ["usesLoudMusic", info.noise],
+                                ] as const
+                            ).map(([field, infoText]) => (
                                 <div key={field} className="space-y-2">
                                     <div className="flex items-start gap-2">
                                         <span className="text-sm font-medium text-gray-700">
                                             {t(`form.${field}.question`)}
                                         </span>
-                                        <InfoBox text={infoText as string} />
+                                        <InfoBox text={infoText} />
                                     </div>
+
                                     <SelectionGrid<BooleanChoice>
                                         options={BOOLEAN_OPTIONS(t)}
-                                        selected={form[field as keyof ComplianceInput] as BooleanChoice | undefined}
-                                        onSelect={(value) => setField(field as keyof ComplianceInput, value as any)}
+                                        selected={form[field]}
+                                        onSelect={(value) => setBooleanField(field, value)}
                                     />
                                 </div>
                             ))}
@@ -531,21 +553,25 @@ export default function ComplianceCheckerWizard({
                             <h2 className="text-2xl font-bold text-gray-900 mb-3">{t("form.context.heading")}</h2>
                             <p className="text-gray-600">{t("form.context.helper")}</p>
                         </div>
+
                         <div className="space-y-6">
-                            {[
-                                "expectedImpairments",
-                                "locatedInInfrastructureSite",
-                                "locatedInApprovedComplex",
-                                "existingPermitHistory",
-                            ].map((field) => (
+                            {(
+                                [
+                                    "expectedImpairments",
+                                    "locatedInInfrastructureSite",
+                                    "locatedInApprovedComplex",
+                                    "existingPermitHistory",
+                                ] as const
+                            ).map((field) => (
                                 <div key={field} className="space-y-2">
                                     <label className="block text-sm font-medium text-gray-700">
                                         {t(`form.${field}.question`)}
                                     </label>
+
                                     <SelectionGrid<BooleanChoice>
                                         options={BOOLEAN_OPTIONS(t)}
-                                        selected={form[field as keyof ComplianceInput] as BooleanChoice | undefined}
-                                        onSelect={(value) => setField(field as keyof ComplianceInput, value as any)}
+                                        selected={form[field]}
+                                        onSelect={(value) => setBooleanField(field, value)}
                                     />
                                 </div>
                             ))}
@@ -555,17 +581,31 @@ export default function ComplianceCheckerWizard({
         }
     }
 
-    const Content = (
-        <div className={variant === "page" ? "min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 py-12" : ""}>
+    return (
+        <div
+            className={
+                variant === "page"
+                    ? "min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 py-12"
+                    : ""
+            }
+        >
             <div className={variant === "page" ? "max-w-5xl mx-auto px-4" : ""}>
-                <div className={variant === "page" ? "bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-blue-100" : ""}>
+                <div
+                    className={
+                        variant === "page"
+                            ? "bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-blue-100"
+                            : ""
+                    }
+                >
                     {variant === "page" ? (
                         <>
                             <div className="mb-10 text-center">
                                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold">
                                     {t("badge")}
                                 </span>
-                                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-4">{t("title")}</h1>
+                                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-4">
+                                    {t("title")}
+                                </h1>
                                 <p className="text-lg text-gray-600 max-w-3xl mx-auto">{t("subtitle")}</p>
                             </div>
 
@@ -589,7 +629,7 @@ export default function ComplianceCheckerWizard({
                         <button
                             type="button"
                             onClick={handleBack}
-                            disabled={stepIndex === 0 || Boolean(onCompleteBasics)} // im Embed-Modus i.d.R. kein Back nötig
+                            disabled={stepIndex === 0 || Boolean(onCompleteBasics)}
                             className="inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
                         >
                             {t("actions.back")}
@@ -608,6 +648,4 @@ export default function ComplianceCheckerWizard({
             </div>
         </div>
     )
-
-    return Content
 }
