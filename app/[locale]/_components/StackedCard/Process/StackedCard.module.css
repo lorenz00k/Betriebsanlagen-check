@@ -18,7 +18,7 @@
 
     /* “Runway” am Ende, damit der Stapel fertig werden kann,
      bevor alles wegscrollt */
-    padding-bottom: 20vh;
+    padding-bottom: 10vh;
 }
 
 .card {
