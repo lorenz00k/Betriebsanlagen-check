@@ -571,7 +571,7 @@ export default function DocumentsPageClient() {
         </div>
 
         {/* Help Box */}
-        <div className="p-8 bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300 rounded-2xl text-blue-900 shadow-xl">
+        <div className="cta-panel">
           <div className="flex items-start gap-4">
             <div className="flex-shrink-0">
               <div className="w-12 h-12 bg-white/60 rounded-lg flex items-center justify-center">
@@ -587,7 +587,7 @@ export default function DocumentsPageClient() {
               </p>
               <Link
                 href={`/${activeLocale}/check`}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold shadow-md transition-colors hover:bg-blue-700"
+                className="btn btn-secondary"
               >
                 <BreakText className="inline">{t('startChecker')}</BreakText>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
