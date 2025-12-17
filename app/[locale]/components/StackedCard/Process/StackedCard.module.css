@@ -4,8 +4,11 @@
     --slice: calc(100% / var(--total-cards));
 
     list-style: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
+
+    width: 60%;
+    max-width: 500px;
 
     display: flex;
     flex-direction: column;
@@ -15,7 +18,7 @@
 
     /* “Runway” am Ende, damit der Stapel fertig werden kann,
      bevor alles wegscrollt */
-    padding-bottom: 40vh;
+    padding-bottom: 20vh;
 }
 
 .card {

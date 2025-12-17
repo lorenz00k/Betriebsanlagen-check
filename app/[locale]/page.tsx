@@ -110,7 +110,7 @@ export default function Home() {
           </section>
 
           {/* Desktop: Stacked Cards */}
-          <div className="hidden md:block">
+          <section id="how-it-works" className="section section--compact hidden md:block">
             <div className="section__heading">
               <h2>
                 <BreakText className="block">{t("flow.heading")}</BreakText>
@@ -120,7 +120,7 @@ export default function Home() {
               </BreakText>
             </div>
             <StackedCard cards={flowItems} />
-          </div>
+          </section>
 
           {/* 3. CHECKER – direkt unter dem Ablauf, mit eingebettetem ersten Screen */}
           <section id="start-check" className="section section--compact">
@@ -310,7 +310,7 @@ export default function Home() {
             </div>
           </section>
         </div>
-      </main>
+      </main >
     </>
   );
 }
