@@ -25,14 +25,24 @@ export default function Home() {
     : paramLocale ?? defaultLocale;
 
   const flowItems = [
-    { title: t("flow.step1Title"), description: t("flow.step1Text") },
-    { title: t("flow.step2Title"), description: t("flow.step2Text") },
+    {
+      title: t("flow.step1Title"),
+      description: t("flow.step1Text"),
+      bullets: t.raw("flow.step1Bullets") as string[],
+    },
+    {
+      title: t("flow.step2Title"),
+      description: t("flow.step2Text"),
+      bullets: t.raw("flow.step2Bullets") as string[],
+    },
     {
       title: t("flow.step3Title"),
       description: t("flow.step3Text"),
+      bullets: t.raw("flow.step3Bullets") as string[],
       cta: { label: t("flow.step3Cta"), href: `/${activeLocale}/documents` },
     },
-  ];
+  ]
+
 
   // QA Page schema for AI search and Google Featured Snippets
   const qaSchema = {

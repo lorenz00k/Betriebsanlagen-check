@@ -15,11 +15,26 @@
       "heading": "So funktioniert der Check",
       "intro": "Entwickelt für Gründer:innen, Unternehmer:innen und Projektstarter in Wien.",
       "step1Title": "Fragen beantworten",
-      "step1Text": "Beantworte einige gezielte Fragen zu deinem Vorhaben, dem Standort und der geplanten Nutzung. Der Check führt dich Schritt für Schritt durch die wichtigsten Punkte – ohne Fachjargon und ohne Vorbereitung.",
+      "step1Text": "Gib ein paar Eckdaten zu Betrieb und Standort ein.",
+      "step1Bullets": [
+        "Betriebsart & Nutzung",
+        "Fläche, Personen, Betrieb",
+        "Standort & Dauer"
+      ],
       "step2Title": "Sofort Einschätzung erhalten",
-      "step2Text": "Du erhältst eine erste rechtliche Einschätzung, ob für deinen Betrieb voraussichtlich eine Betriebsanlagengenehmigung notwendig ist – oder ob dein Vorhaben genehmigungsfrei sein könnte.",
+      "step2Text": "Du bekommst sofort eine erste Orientierung zur Genehmigungspflicht.",
+      "step2Bullets": [
+        "Genehmigung wahrscheinlich?",
+        "Welche Punkte sind kritisch?",
+        "Empfohlene nächste Schritte"
+      ],
       "step3Title": "Dokumente vorbereiten",
-      "step3Text": "Wenn eine Genehmigung nötig ist, zeigen wir dir, welche Unterlagen typischerweise erforderlich sind und wie du dich auf das Verfahren vorbereiten kannst – übersichtlich und praxisnah.",
+      "step3Text": "Wenn eine Genehmigung nötig ist, weißt du, was typischerweise gebraucht wird.",
+      "step3Bullets": [
+        "Checkliste für Unterlagen",
+        "Hinweise zu Plänen & Nachweisen",
+        "Rückfragen vermeiden"
+      ],
       "step3Cta": "Zu den benötigten Unterlagen"
     },
     "checker": {
