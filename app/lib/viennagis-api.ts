@@ -31,6 +31,21 @@ export interface POI {
   };
 }
 
+export interface ZoningInfo {
+  widmung: string; // z.B. "Wohngebiet", "Mischgebiet", "Betriebsgebiet"
+  widmungCode: string; // z.B. "W", "G", "GB"
+  details: string;
+  found: boolean;
+}
+
+export interface BuildingPlanInfo {
+  bauklasse?: string; // z.B. "III" (3 Vollgeschosse)
+  bebauungsdichte?: number; // z.B. 60 (max. 60% Grundfläche)
+  bauhoehe?: number; // in Metern
+  details: string;
+  found: boolean;
+}
+
 /**
  * Koordinaten von EPSG:31256 (MGI Austria GK Central) nach EPSG:4326 (WGS84) konvertieren
  * Verwendet Proj4js für präzise Transformation
@@ -242,4 +257,157 @@ function calculateDistance(
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
   return R * c;
+}
+
+/**
+ * Flächenwidmung für eine Adresse abrufen
+ * Nutzt den WFS-Service der Stadt Wien (FLAECHENWIDMUNGOGD)
+ */
+export async function getZoningInfo(lng: number, lat: number): Promise<ZoningInfo> {
+  try {
+    // Buffer um den Punkt (5 Meter Radius für bessere Trefferquote)
+    const buffer = 0.00005; // ca. 5 Meter in Grad
+    const bbox = `${lng - buffer},${lat - buffer},${lng + buffer},${lat + buffer}`;
+
+    const url = `https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FLAECHENWIDMUNGOGD&outputFormat=application/json&srsName=EPSG:4326&bbox=${bbox}`;
+
+    console.log('🏘️ Abfrage Flächenwidmung:', { lng, lat, bbox });
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      console.warn('Flächenwidmung konnte nicht geladen werden:', response.status);
+      return {
+        widmung: 'Unbekannt',
+        widmungCode: '',
+        details: 'Die Flächenwidmung konnte nicht ermittelt werden.',
+        found: false
+      };
+    }
+
+    const data = await response.json();
+
+    if (!data.features || data.features.length === 0) {
+      return {
+        widmung: 'Keine Daten',
+        widmungCode: '',
+        details: 'Für diese Adresse sind keine Flächenwidmungsdaten verfügbar.',
+        found: false
+      };
+    }
+
+    // Erstes Feature nehmen (sollte das nächste sein)
+    const feature = data.features[0];
+    const props = feature.properties;
+
+    // Widmungscode interpretieren (z.B. "W" = Wohngebiet, "G" = Gemischtes Gebiet, etc.)
+    const widmungCode = (props.FWIDMUNG || props.WIDMUNG || '').toString();
+    const widmung = interpretWidmung(widmungCode);
+
+    return {
+      widmung,
+      widmungCode,
+      details: props.FWIDMTXT || props.BEMERKUNG || 'Keine weiteren Details verfügbar',
+      found: true
+    };
+  } catch (error) {
+    console.error('Fehler beim Abrufen der Flächenwidmung:', error);
+    return {
+      widmung: 'Fehler',
+      widmungCode: '',
+      details: 'Beim Abrufen der Flächenwidmung ist ein Fehler aufgetreten.',
+      found: false
+    };
+  }
+}
+
+/**
+ * Bebauungsplan-Informationen für eine Adresse abrufen
+ * Nutzt den WFS-Service der Stadt Wien (BEBAUUNGSPLANOGD)
+ */
+export async function getBuildingPlanInfo(lng: number, lat: number): Promise<BuildingPlanInfo> {
+  try {
+    // Buffer um den Punkt (5 Meter Radius)
+    const buffer = 0.00005;
+    const bbox = `${lng - buffer},${lat - buffer},${lng + buffer},${lat + buffer}`;
+
+    const url = `https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:BEBAUUNGSPLANOGD&outputFormat=application/json&srsName=EPSG:4326&bbox=${bbox}`;
+
+    console.log('📐 Abfrage Bebauungsplan:', { lng, lat, bbox });
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      console.warn('Bebauungsplan konnte nicht geladen werden:', response.status);
+      return {
+        details: 'Der Bebauungsplan konnte nicht ermittelt werden.',
+        found: false
+      };
+    }
+
+    const data = await response.json();
+
+    if (!data.features || data.features.length === 0) {
+      return {
+        details: 'Für diese Adresse sind keine Bebauungsplan-Daten verfügbar.',
+        found: false
+      };
+    }
+
+    // Erstes Feature nehmen
+    const feature = data.features[0];
+    const props = feature.properties;
+
+    return {
+      bauklasse: props.BAUKLASSE?.toString() || undefined,
+      bebauungsdichte: props.BEBAUUNGSDICHTE ? parseFloat(props.BEBAUUNGSDICHTE) : undefined,
+      bauhoehe: props.BAUHOEHE ? parseFloat(props.BAUHOEHE) : undefined,
+      details: props.BPLAN_TXT || props.BEMERKUNG || 'Keine weiteren Details verfügbar',
+      found: true
+    };
+  } catch (error) {
+    console.error('Fehler beim Abrufen des Bebauungsplans:', error);
+    return {
+      details: 'Beim Abrufen des Bebauungsplans ist ein Fehler aufgetreten.',
+      found: false
+    };
+  }
+}
+
+/**
+ * Widmungscode in menschenlesbare Form übersetzen
+ */
+function interpretWidmung(code: string): string {
+  const widmungen: Record<string, string> = {
+    'W': 'Wohngebiet',
+    'WA': 'Allgemeines Wohngebiet',
+    'WR': 'Reines Wohngebiet',
+    'G': 'Gemischtes Gebiet',
+    'GM': 'Gemischtes Gebiet',
+    'GB': 'Betriebsbaugebiet',
+    'I': 'Industriegebiet',
+    'IG': 'Industriegebiet',
+    'EKZ': 'Einkaufszentrum',
+    'PARK': 'Parkanlage',
+    'SPO': 'Sportanlage',
+    'GF-BD': 'Grünfläche - Baudenkmal',
+    'GF': 'Grünfläche',
+    'LW': 'Land- und Forstwirtschaft',
+    'V': 'Verkehrsfläche',
+    'S': 'Sondergebiet',
+  };
+
+  // Versuche exakte Übereinstimmung
+  if (widmungen[code]) {
+    return widmungen[code];
+  }
+
+  // Versuche Teilübereinstimmung
+  for (const [key, value] of Object.entries(widmungen)) {
+    if (code.startsWith(key)) {
+      return value;
+    }
+  }
+
+  return code || 'Unbekannt';
 }

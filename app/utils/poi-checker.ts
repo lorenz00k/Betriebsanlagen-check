@@ -1,9 +1,26 @@
-// POI-Analyse und Risikobewertung für Betriebsanlagengenehmigung
+// Umgebungsanalyse für Betriebsanlagengenehmigung
 
 import type { POI, Address } from '@/app/lib/viennagis-api';
 
+export interface EnvironmentAnalysis {
+  summary: string; // Kurze Zusammenfassung
+  insights: string[]; // Neutrale Hinweise zur Umgebung
+  recommendations: string[]; // Empfehlungen
+  poiGroups: POIGroup[];
+}
+
+export interface POIGroup {
+  category: 'religion' | 'health' | 'education' | 'cemetery' | 'other';
+  label: string; // z.B. "Religiöse Einrichtungen"
+  icon: string;
+  count: number;
+  pois: POI[];
+  nearbyCount: number; // Anzahl unter 100m
+}
+
+// Legacy interface for backwards compatibility
 export interface RiskAssessment {
-  riskPoints: number; // 0-100
+  riskPoints: number;
   overallRisk: 'low' | 'medium' | 'high';
   warnings: string[];
   recommendations: string[];
@@ -17,7 +34,171 @@ export interface RiskAssessment {
 }
 
 /**
- * POIs analysieren und Risikobewertung erstellen
+ * Neue Umgebungsanalyse ohne Risikobewertung (neutral)
+ */
+export function analyzeEnvironment(pois: POI[]): EnvironmentAnalysis {
+  const insights: string[] = [];
+  const recommendations: string[] = [];
+
+  // POIs kategorisieren
+  const groups = createPOIGroups(pois);
+
+  // Zusammenfassung erstellen
+  const totalCount = pois.length;
+  const summary = totalCount === 0
+    ? 'Keine sensiblen Einrichtungen in unmittelbarer Nähe gefunden.'
+    : `${totalCount} ${totalCount === 1 ? 'Einrichtung' : 'Einrichtungen'} in der Umgebung gefunden, die bei der Genehmigung relevant sein ${totalCount === 1 ? 'kann' : 'können'}.`;
+
+  // Insights für jede Kategorie mit POIs
+  for (const group of groups) {
+    if (group.count === 0) continue;
+
+    const nearby = group.nearbyCount;
+    const distanceInfo = nearby > 0
+      ? `${nearby} davon in unmittelbarer Nähe (unter 100m)`
+      : 'alle über 100m entfernt';
+
+    switch (group.category) {
+      case 'religion':
+        insights.push(
+          `${group.count} religiöse ${group.count === 1 ? 'Einrichtung' : 'Einrichtungen'} gefunden, ${distanceInfo}.`
+        );
+        if (nearby > 0) {
+          recommendations.push(
+            'Berücksichtigen Sie Ruhezeiten, besonders an Sonn- und Feiertagen.'
+          );
+          recommendations.push(
+            'Bei Lärm- oder Geruchsemissionen: Planen Sie entsprechende Schutzmaßnahmen ein.'
+          );
+        }
+        break;
+
+      case 'health':
+        insights.push(
+          `${group.count} Gesundheitseinrichtung${group.count > 1 ? 'en' : ''} gefunden, ${distanceInfo}.`
+        );
+        if (nearby > 0) {
+          recommendations.push(
+            'Gesundheitseinrichtungen haben besondere Anforderungen an Lärmschutz.'
+          );
+        }
+        break;
+
+      case 'education':
+        insights.push(
+          `${group.count} Bildungseinrichtung${group.count > 1 ? 'en' : ''} gefunden, ${distanceInfo}.`
+        );
+        if (nearby > 0) {
+          recommendations.push(
+            'Bei Schulen/Kindergärten: Beachten Sie Betreuungszeiten (Mo-Fr 7:00-17:00 Uhr).'
+          );
+        }
+        break;
+
+      case 'cemetery':
+        insights.push(
+          `${group.count} Friedhof${group.count > 1 ? 'e' : ''} gefunden, ${distanceInfo}.`
+        );
+        if (nearby > 0) {
+          recommendations.push(
+            'Friedhöfe: Besondere Auflagen für Geruchsemissionen und Pietät möglich.'
+          );
+        }
+        break;
+    }
+  }
+
+  // Allgemeine Empfehlungen
+  if (totalCount === 0) {
+    recommendations.push(
+      'Die Umgebung scheint für eine Betriebsanlage grundsätzlich geeignet zu sein.'
+    );
+    recommendations.push(
+      'Beachten Sie dennoch alle allgemeinen Auflagen der Betriebsanlagengenehmigung.'
+    );
+  } else if (groups.some(g => g.nearbyCount > 0)) {
+    recommendations.push(
+      'Wir empfehlen eine unverbindliche Vorabklärung mit der MA 36 für konkrete Auflagen.'
+    );
+    recommendations.push(
+      'Kontakt MA 36: +43 1 4000-25310 oder post@ma36.wien.gv.at'
+    );
+  } else {
+    recommendations.push(
+      'Dokumentieren Sie alle geplanten Schutzmaßnahmen für den Genehmigungsantrag.'
+    );
+  }
+
+  return {
+    summary,
+    insights,
+    recommendations,
+    poiGroups: groups
+  };
+}
+
+/**
+ * Helper: POIs in Gruppen kategorisieren
+ */
+function createPOIGroups(pois: POI[]): POIGroup[] {
+  const categories = {
+    religion: {
+      types: ['religion', 'kath', 'evangkirche', 'orthodox', 'islam', 'israel', 'juedwien', 'buddh'],
+      label: 'Religiöse Einrichtungen',
+      icon: '🛐'
+    },
+    health: {
+      types: ['krankenhaus'],
+      label: 'Gesundheitseinrichtungen',
+      icon: '🏥'
+    },
+    education: {
+      types: ['kindergarten', 'schule'],
+      label: 'Bildungseinrichtungen',
+      icon: '🏫'
+    },
+    cemetery: {
+      types: ['friedhof'],
+      label: 'Friedhöfe',
+      icon: '🪦'
+    },
+    other: {
+      types: [],
+      label: 'Sonstige',
+      icon: '📍'
+    }
+  };
+
+  const groups: POIGroup[] = [];
+
+  for (const [category, config] of Object.entries(categories)) {
+    const categoryPOIs = category === 'other'
+      ? pois.filter(p => !Object.values(categories)
+          .filter(c => c.types.length > 0)
+          .some(c => c.types.includes(p.type)))
+      : pois.filter(p => config.types.includes(p.type));
+
+    const nearbyCount = categoryPOIs.filter(p => p.distance < 100).length;
+
+    groups.push({
+      category: category as POIGroup['category'],
+      label: config.label,
+      icon: config.icon,
+      count: categoryPOIs.length,
+      pois: categoryPOIs.sort((a, b) => a.distance - b.distance), // Nach Distanz sortieren
+      nearbyCount
+    });
+  }
+
+  // Nur Gruppen mit POIs zurückgeben, sortiert nach Anzahl
+  return groups
+    .filter(g => g.count > 0)
+    .sort((a, b) => b.count - a.count);
+}
+
+/**
+ * Legacy: POIs analysieren und Risikobewertung erstellen
+ * @deprecated Use analyzeEnvironment() instead
  */
 export function analyzePOIs(pois: POI[]): RiskAssessment {
   let riskPoints = 0;
