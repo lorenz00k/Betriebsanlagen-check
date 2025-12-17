@@ -44,6 +44,20 @@
   /* Typography */
   --font-sans: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Button */
+  --btn-radius: 14px;
+  --btn-pad-y: 0.95rem;
+  --btn-pad-x: 1.4rem;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-bg-hover: var(--color-accent-strong);
+  --btn-primary-fg: #fff;
+
+  --btn-secondary-bg: #fff;
+  --btn-secondary-bg-hover: rgba(255, 255, 255, 0.92);
+  --btn-secondary-fg: var(--color-accent-strong);
+  --btn-secondary-border: rgba(255, 255, 255, 0.25);
 }
 
 html.dark {

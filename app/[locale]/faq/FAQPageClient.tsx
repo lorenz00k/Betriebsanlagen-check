@@ -79,9 +79,8 @@ export default function FAQPageClient({ locale }: FAQPageClientProps) {
                   </svg>
                 </button>
                 <div
-                  className={`transition-all duration-300 ease-in-out ${
-                    openQuestion === q ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}
+                  className={`transition-all duration-300 ease-in-out ${openQuestion === q ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}
                 >
                   <div className="p-6 pt-0 text-gray-700 leading-relaxed border-t border-gray-100">
                     {t(`questions.${q}.answer`)}
@@ -95,11 +94,8 @@ export default function FAQPageClient({ locale }: FAQPageClientProps) {
           <div className="mt-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-center text-white">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">{t('cta.title')}</h2>
             <p className="text-lg mb-6 opacity-90">{t('cta.description')}</p>
-            <Link
-              href={`/${locale}/check`}
-              className="inline-block bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors shadow-lg"
-            >
-              {t('cta.button')}
+            <Link href={`/${locale}/check`} className="btn btn-secondary">
+              {t("cta.button")}
             </Link>
           </div>
         </div>
