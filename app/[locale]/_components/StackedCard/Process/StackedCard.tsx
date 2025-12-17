@@ -1,8 +1,13 @@
 "use client";
 import React from "react";
 import styles from "./StackedCard.module.css";
+import Link from "next/link";
 
-type Card = { title: string; description: string };
+type Card = {
+    title: string;
+    description: string
+    cta?: { label: string; href: string };
+};
 
 function cssVar(name: `--${string}`, value: string | number): React.CSSProperties {
     return { [name]: value } as React.CSSProperties;
@@ -18,6 +23,14 @@ export default function StackedCard({ cards }: { cards: Card[] }) {
                         <div className={styles.card__content}>
                             <h3 className={styles.title}>{c.title}</h3>
                             <p className={styles.desc}>{c.description}</p>
+                            {c.cta ? (
+                                <div className={styles.ctaRow}>
+                                    <Link href={c.cta.href} className={styles.cta}>
+                                        {c.cta.label}
+                                        <span className={styles.ctaArrow} aria-hidden>→</span>
+                                    </Link>
+                                </div>
+                            ) : null}
                         </div>
                     </li>
                 ))}

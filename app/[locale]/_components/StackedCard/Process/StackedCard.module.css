@@ -54,3 +54,31 @@
     padding: 48px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
 }
+
+.ctaRow {
+    margin-top: 18px;
+}
+
+.cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 14px;
+    border-radius: 12px;
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.02);
+
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.cta:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.ctaArrow {
+    font-size: 18px;
+    line-height: 1;
+}
