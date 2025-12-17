@@ -18,7 +18,7 @@
     view-timeline-name: --cardsContainer;
 
     /* runway am Ende */
-    padding-bottom: 80vh;
+    padding-bottom: 40vh;
 
     isolation: isolate;
 }

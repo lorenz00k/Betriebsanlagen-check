@@ -23,6 +23,12 @@ export default function Home() {
     ? paramLocale[0]
     : paramLocale ?? defaultLocale;
 
+  const flowItems = [
+    { title: t("flow.step1Title"), description: t("flow.step1Text") },
+    { title: t("flow.step2Title"), description: t("flow.step2Text") },
+    { title: t("flow.step3Title"), description: t("flow.step3Text") },
+  ];
+
   // QA Page schema for AI search and Google Featured Snippets
   const qaSchema = {
     "@context": "https://schema.org",
@@ -99,17 +105,21 @@ export default function Home() {
             </div>
 
             <FlowSteps
-              steps={[
-                { title: t("flow.step1Title"), text: t("flow.step1Text") },
-                { title: t("flow.step2Title"), text: t("flow.step2Text") },
-                { title: t("flow.step3Title"), text: t("flow.step3Text") },
-              ]}
+              steps={flowItems.map(i => ({ title: i.title, text: i.description }))}
             />
           </section>
 
           {/* Desktop: Stacked Cards */}
           <div className="hidden md:block">
-            <StackedCard />
+            <div className="section__heading">
+              <h2>
+                <BreakText className="block">{t("flow.heading")}</BreakText>
+              </h2>
+              <BreakText className="section__copy block">
+                {t("flow.intro")}
+              </BreakText>
+            </div>
+            <StackedCard cards={flowItems} />
           </div>
 
           {/* 3. CHECKER – direkt unter dem Ablauf, mit eingebettetem ersten Screen */}
