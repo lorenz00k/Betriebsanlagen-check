@@ -153,19 +153,6 @@ export default function Home() {
             </div>
           </section>
 
-
-
-          {/* Dokumente */}
-          <div className="mt-6">
-            <Link
-              href={`/${activeLocale}/documents`}
-              className="btn btn-secondary inline-flex items-center gap-2"
-            >
-              <BreakText>{t("documents.cta")}</BreakText>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-
           {/* 4. SELLING POINTS / STATS */}
           <section className="section section--compact">
             <div className="section__heading">
