@@ -91,9 +91,9 @@ export default function FAQPageClient({ locale }: FAQPageClientProps) {
           </div>
 
           {/* CTA Section */}
-          <div className="mt-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-center text-white">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">{t('cta.title')}</h2>
-            <p className="text-lg mb-6 opacity-90">{t('cta.description')}</p>
+          <div className="cta-panel">
+            <h2 className="block">{t('cta.title')}</h2>
+            <p className="block">{t('cta.description')}</p>
             <Link href={`/${locale}/check`} className="btn btn-secondary">
               {t("cta.button")}
             </Link>
