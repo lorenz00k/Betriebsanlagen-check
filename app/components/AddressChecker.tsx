@@ -314,7 +314,7 @@ export default function AddressChecker() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span>
-                      Die Widmung "{zoningInfo.widmung}" gibt Hinweise auf mögliche Nutzungseinschränkungen.
+                      Die Widmung &ldquo;{zoningInfo.widmung}&rdquo; gibt Hinweise auf mögliche Nutzungseinschränkungen.
                       Kontaktieren Sie die MA 36 für Details zur gewerblichen Nutzbarkeit.
                     </span>
                   </p>
