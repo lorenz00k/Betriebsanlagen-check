@@ -5,7 +5,7 @@ import { useParams } from "next/navigation"
 
 import { defaultLocale } from "@/i18n"
 import type { ComplianceInput } from "@/app/lib/complianceCheckerLogic"
-import ComplianceCheckerWizard, { StepId } from "./_components/ComplianceCheckerWIzard"
+import ComplianceCheckerWizard, { StepId } from "./_components/ComplianceCheckerWizard"
 
 const STORAGE_INPUT = "complianceInput"
 const STORAGE_START_STEP = "complianceStartStep" // optional (z.B. von Landing Page gesetzt)
