@@ -10,12 +10,6 @@ type SellingPointsProps = {
 export default function SellingPoints({ t }: SellingPointsProps) {
     return (
         <section className="section section--compact">
-            <div className="section__heading">
-                <h2>
-                    <BreakText className="block">{t("selling.heading")}</BreakText>
-                </h2>
-            </div>
-
             <AutoGrid min="14rem" className="mt-10">
                 <article className="card card--subtle">
                     <div className="card__icon card__icon--accent-soft">
