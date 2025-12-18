@@ -1,13 +1,11 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Building2, TrendingUp, Users, Shield, Search, MessageCircle, CheckCircle, ArrowRight } from 'lucide-react';
 import AutoGrid from '@/components/ui/AutoGrid';
 import BreakText from '@/components/ui/BreakText';
 
 export default function BetriebsboersePage({ params }: { params: { locale: string } }) {
-  const t = useTranslations('betriebsboerse');
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/20">
@@ -100,7 +98,7 @@ export default function BetriebsboersePage({ params }: { params: { locale: strin
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              <BreakText className="block">So funktioniert's</BreakText>
+              <BreakText className="block">So funktioniert&apos;s</BreakText>
             </h2>
             <p className="text-xl text-gray-600">
               <BreakText className="block">In drei einfachen Schritten zu Ihrer Betriebsübernahme</BreakText>
