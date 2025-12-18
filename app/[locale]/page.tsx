@@ -14,6 +14,8 @@ import StackedCard from "./_components/StackedCard/Process/StackedCard";
 import StackedArticles from "./_components/StackedCard/Q&A/StackedArticles";
 import CheckerEmbed from "./_components/CheckerEmbed";
 import Hero from "./_components/Hero";
+import SellingPoints from "./components/SellingPoints";
+import DocumentTeaser from "./components/DocumentTeaser";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -102,6 +104,7 @@ export default function Home() {
           {/* 2. ABLAUF / FLOW */}
 
           {/* Mobile: FlowSteps */}
+          {/*
           <section id="how-it-works" className="section section--compact md:hidden">
             <div className="section__heading">
               <h2>
@@ -116,8 +119,9 @@ export default function Home() {
               steps={flowItems.map(i => ({ title: i.title, text: i.description }))}
             />
           </section>
-
+*/}
           {/* Desktop: Stacked Cards */}
+          {/*
           <section id="how-it-works" className="section section--compact hidden md:block">
             <div className="section__heading">
               <h2>
@@ -129,8 +133,25 @@ export default function Home() {
             </div>
             <StackedCard cards={flowItems} />
           </section>
+*/}
+          {/* Why Betriebsanlage important */}
+          <section className="section">
+            <div className="section__heading">
+              <h2>
+                <BreakText className="block">
+                  {t("seo.heading")}
+                </BreakText>
+              </h2>
+              <BreakText className="section__copy block">
+                {t("seo.intro")}
+              </BreakText>
+            </div>
+          </section>
 
-          {/* 3. CHECKER – direkt unter dem Ablauf, mit eingebettetem ersten Screen */}
+          {/* SELLING POINTS / STATS */}
+          <SellingPoints t={t} />
+
+          {/* CHECKER */}
           <section id="start-check" className="section section--compact">
             <div className="surface-muted">
               <div className="section__heading">
@@ -146,76 +167,8 @@ export default function Home() {
             </div>
           </section>
 
-          {/* 4. SELLING POINTS / STATS */}
-          <section className="section section--compact">
-            <div className="section__heading">
-              <h2>
-                <BreakText className="block">
-                  {t("selling.heading")}
-                </BreakText>
-              </h2>
-            </div>
-
-            <AutoGrid min="14rem" className="mt-10">
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--accent-soft">
-                  <Zap className="w-6 h-6" strokeWidth={2} />
-                </div>
-                <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("seo.feature1Title")}
-                  </BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("seo.feature1Text")}
-                </BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--success">
-                  <Languages className="w-6 h-6" strokeWidth={2} />
-                </div>
-                <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("seo.feature2Title")}
-                  </BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("seo.feature2Text")}
-                </BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--shield">
-                  <Shield className="w-6 h-6" strokeWidth={2} />
-                </div>
-                <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("seo.feature3Title")}
-                  </BreakText>
-                </h3>
-                <BreakText className="card__body block">
-                  {t("seo.feature3Text")}
-                </BreakText>
-              </article>
-            </AutoGrid>
-
-            <div className="surface-muted mt-12 flex flex-col gap-6 md:flex-row md:items-center">
-              <div className="card__icon">
-                <Sparkles className="w-6 h-6" strokeWidth={2} />
-              </div>
-              <div className="flex-1 space-y-3">
-                <h3 className="card__title">
-                  <BreakText className="block">
-                    {t("seo.whyTitle")}
-                  </BreakText>
-                </h3>
-                <BreakText className="card__body text-lg block">
-                  {t("seo.whyText")}
-                </BreakText>
-              </div>
-            </div>
-          </section>
+          {/* Dokumente */}
+          <DocumentTeaser t={t} locale={activeLocale} />
 
           {/* 5. ALLGEMEINE INFOS / Q&A-BEREICH (Wien / Gründung) */}
           <section className="section">
