@@ -18,7 +18,7 @@ import {
   resolveLocaleParam,
   type MessagesWithMetadata,
 } from './metadataConfig'
-import HeaderNav from './components/HeaderNav'
+import HeaderNav from '../components/HeaderNav'
 
 // generateMetadata builds locale-scoped metadata for the current route by combining
 // localized message bundles with inherited parent metadata values.

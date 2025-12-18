@@ -13,6 +13,7 @@ import FlowSteps from "./components/FlowSteps";
 import StackedCard from "./_components/StackedCard/Process/StackedCard";
 import StackedArticles from "./_components/StackedCard/Q&A/StackedArticles";
 import CheckerEmbed from "./_components/CheckerEmbed";
+import Hero from "./_components/Hero";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -96,21 +97,7 @@ export default function Home() {
       <main className="page-shell">
         <div className="site-container">
           {/* 1. HERO */}
-          <section className="section page-hero">
-            <div className="page-hero__bg">
-              <video autoPlay loop muted playsInline>
-                <source src="/images/homepage/hero-video.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div className="page-hero__content">
-              <h1 className="page-hero__title">
-                <BreakText className="block">{t("title")}</BreakText>
-              </h1>
-              <BreakText className="page-hero__copy block">
-                {t("subtitle")}
-              </BreakText>
-            </div>
-          </section>
+          <Hero t={t} />
 
           {/* 2. ABLAUF / FLOW */}
 
