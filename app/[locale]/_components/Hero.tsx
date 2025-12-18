@@ -16,7 +16,7 @@ export default function Hero({ t }: HeroProps) {
                     muted
                     playsInline
                     preload="metadata"
-                    poster="/images/homepage/hero-fallback.jpg"
+                    poster="/images/betriebsboerse/verkaufer-bild.jpg"
                 >
                     <source src="/images/homepage/hero-video.mp4" type="video/mp4" />
                     <img

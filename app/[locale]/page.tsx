@@ -97,9 +97,7 @@ export default function Home() {
       <main className="page-shell">
         <div className="site-container">
           {/* 1. HERO */}
-          <section className="section page-hero">
-            <Hero t={t} />
-          </section>
+          <Hero t={t} />
 
           {/* 2. ABLAUF / FLOW */}
 
