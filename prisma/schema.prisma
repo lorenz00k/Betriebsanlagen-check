@@ -84,3 +84,183 @@ model DocumentDownload {
   @@index([documentId])
   @@index([downloadedAt])
 }
+
+// ============================================
+// NEXTAUTH MODELS - Authentication
+// ============================================
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  role          String    @default("user") // 'user', 'admin'
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts Account[]
+  sessions Session[]
+  betriebe Betrieb[]
+  kontakte Kontaktanfrage[]
+
+  @@index([email])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ============================================
+// BETRIEBSBÖRSE MODELS
+// ============================================
+
+// Betrieb: Ein Inserat für einen zu verkaufenden Betrieb
+model Betrieb {
+  id String @id @default(uuid())
+
+  // Verkäufer
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Basisdaten
+  name         String
+  branche      String // "Gastro", "Einzelhandel", "Handwerk", "Dienstleistung"
+  kategorie    String // "Restaurant", "Café", "Bar", "Bäckerei", etc.
+  beschreibung String @db.Text
+
+  // Standort
+  adresse    String
+  bezirk     String
+  plz        String
+  bundesland String @default("Wien")
+
+  // Finanzielles
+  kaufpreis          Int?
+  pacht              Int? // Monatliche Pacht
+  jahresumsatz       Int?
+  jahresgewinn       Int?
+  mitarbeiterAnzahl  Int?
+  gruendungsjahr     Int?
+  uebergabeTermin    String? // z.B. "sofort", "nach Vereinbarung", "Q2 2024"
+  uebernahmeInventar Boolean @default(false)
+
+  // Details
+  flaeche           Int? // m²
+  raeume            Int? // Anzahl Räume
+  sitzplaetze       Int? // bei Gastro
+  parkplaetze       Int?
+  aussenbereiche    Boolean @default(false)
+  barrierefreier    Boolean @default(false)
+  klimatisiert      Boolean @default(false)
+  modernisierungsjahr Int?
+
+  // Rechtliches
+  betriebsgenehmigung     Boolean @default(false)
+  genehmigungTyp          String? // "§ 74 GewO", "§ 82 GewO", etc.
+  mietvertragRestlaufzeit Int? // in Monaten
+  pachtvertragOptionen    String? // "Verlängerung möglich", etc.
+
+  // Highlights/Besonderheiten
+  highlights String[] // ["Stammkundschaft", "Top-Lage", "Neu renoviert"]
+
+  // Media
+  images String[] // URLs zu Bildern
+  videos String[] // URLs zu Videos (optional)
+
+  // SEO & Sichtbarkeit
+  isPremium    Boolean  @default(false)
+  isVerified   Boolean  @default(false)
+  isFeatured   Boolean  @default(false)
+  views        Int      @default(0)
+  favoriteCount Int     @default(0)
+
+  // Status
+  status String @default("draft") // "draft", "active", "sold", "closed", "paused"
+
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  publishedAt DateTime?
+  soldAt      DateTime?
+  expiresAt   DateTime? // Premium-Inserate ablaufen
+
+  // Relationen
+  kontaktanfragen Kontaktanfrage[]
+
+  @@index([userId])
+  @@index([branche])
+  @@index([bezirk])
+  @@index([status])
+  @@index([createdAt])
+  @@index([isPremium])
+}
+
+// Kontaktanfrage: Wenn ein Interessent Kontakt aufnehmen möchte
+model Kontaktanfrage {
+  id String @id @default(uuid())
+
+  // Von wem
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  // Kontaktdaten (falls nicht eingeloggt)
+  name    String
+  email   String
+  telefon String?
+
+  // An welchen Betrieb
+  betriebId String
+  betrieb   Betrieb @relation(fields: [betriebId], references: [id], onDelete: Cascade)
+
+  // Nachricht
+  nachricht String  @db.Text
+  anfrageart String @default("interesse") // "interesse", "besichtigung", "finanzierung"
+
+  // Status
+  status String @default("neu") // "neu", "gelesen", "beantwortet", "abgeschlossen"
+  antwort String? @db.Text
+
+  // Timestamps
+  createdAt    DateTime  @default(now())
+  beantwortAm  DateTime?
+
+  @@index([betriebId])
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+}
