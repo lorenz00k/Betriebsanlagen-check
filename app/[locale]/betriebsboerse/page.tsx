@@ -41,7 +41,7 @@ export default function BetriebsboersePage({ params }: { params: Promise<{ local
 
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
-                href={`/${params.locale}/betriebsboerse/inserat-erstellen`}
+                href={`/${locale}/betriebsboerse/inserat-erstellen`}
                 className="group px-8 py-4 bg-white hover:bg-gray-50 text-blue-600 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
               >
                 <Building2 className="w-5 h-5" />
@@ -50,7 +50,7 @@ export default function BetriebsboersePage({ params }: { params: Promise<{ local
               </Link>
 
               <Link
-                href={`/${params.locale}/betriebsboerse/inserate`}
+                href={`/${locale}/betriebsboerse/inserate`}
                 className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white rounded-xl font-bold transition-all flex items-center gap-2"
               >
                 <Search className="w-5 h-5" />
@@ -235,7 +235,7 @@ export default function BetriebsboersePage({ params }: { params: Promise<{ local
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href={`/${params.locale}/betriebsboerse/inserat-erstellen`}
+              href={`/${locale}/betriebsboerse/inserat-erstellen`}
               className="px-8 py-4 bg-white hover:bg-gray-50 text-blue-600 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
             >
               <Building2 className="w-5 h-5" />
@@ -243,7 +243,7 @@ export default function BetriebsboersePage({ params }: { params: Promise<{ local
             </Link>
 
             <Link
-              href={`/${params.locale}/betriebsboerse/inserate`}
+              href={`/${locale}/betriebsboerse/inserate`}
               className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white text-white rounded-xl font-bold transition-all flex items-center gap-2"
             >
               <Search className="w-5 h-5" />
