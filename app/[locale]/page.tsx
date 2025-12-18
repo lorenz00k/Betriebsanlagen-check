@@ -95,10 +95,10 @@ export default function Home() {
       />
 
       <main className="page-shell">
-        <div className="site-container">
-          {/* 1. HERO */}
-          <Hero t={t} />
 
+        {/* 1. HERO */}
+        <Hero t={t} />
+        <div className="site-container">
           {/* 2. ABLAUF / FLOW */}
 
           {/* Mobile: FlowSteps */}
