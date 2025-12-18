@@ -2,6 +2,7 @@
 
 import { use } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Building2, Search, ArrowRight, CheckCircle, Heart, Star, Award,
   Clock, Euro, Handshake, Target, Lightbulb, Play, Image as ImageIcon,
@@ -60,19 +61,18 @@ export default function BetriebsboersePage({ params }: { params: Promise<{ local
                 </div>
               </div>
 
-              {/* Platzhalter für Bild/Video */}
+              {/* Hero Video */}
               <div className="relative">
-                <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl shadow-2xl flex items-center justify-center group hover:shadow-3xl transition-shadow">
-                  <div className="text-center">
-                    <Play className="w-16 h-16 text-blue-600 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-                    <p className="text-gray-600 font-medium">
-                      <BreakText>Video-Platzhalter</BreakText>
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      <BreakText>Erklärvideo zur Plattform</BreakText>
-                    </p>
-                  </div>
-                </div>
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full aspect-video rounded-2xl shadow-2xl object-cover"
+                >
+                  <source src="/images/betriebsboerse/hero-video.mp4" type="video/mp4" />
+                  <BreakText>Ihr Browser unterstützt das Video-Format nicht.</BreakText>
+                </video>
               </div>
             </AutoGrid>
           </div>
@@ -379,14 +379,15 @@ export default function BetriebsboersePage({ params }: { params: Promise<{ local
                   </li>
                 </ul>
 
-                {/* Platzhalter für Bild */}
-                <div className="mt-8 aspect-video bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl flex items-center justify-center">
-                  <div className="text-center">
-                    <ImageIcon className="w-12 h-12 text-blue-600 mx-auto mb-2" />
-                    <p className="text-sm text-gray-600">
-                      <BreakText>Bild: Zufriedener Verkäufer</BreakText>
-                    </p>
-                  </div>
+                {/* Verkäufer Bild */}
+                <div className="mt-8 relative aspect-video rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/betriebsboerse/verkaufer-bild.jpg"
+                    alt="Zufriedener Verkäufer übergibt sein Lebenswerk"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
               </div>
 
@@ -443,14 +444,15 @@ export default function BetriebsboersePage({ params }: { params: Promise<{ local
                   </li>
                 </ul>
 
-                {/* Platzhalter für Bild */}
-                <div className="mt-8 aspect-video bg-gradient-to-br from-green-50 to-green-100 rounded-xl flex items-center justify-center">
-                  <div className="text-center">
-                    <ImageIcon className="w-12 h-12 text-green-600 mx-auto mb-2" />
-                    <p className="text-sm text-gray-600">
-                      <BreakText>Bild: Erfolgreicher Käufer</BreakText>
-                    </p>
-                  </div>
+                {/* Käufer Bild */}
+                <div className="mt-8 relative aspect-video rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/betriebsboerse/kaeufer-bild.jpg"
+                    alt="Erfolgreicher Käufer startet sein eigenes Geschäft"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
               </div>
             </AutoGrid>
