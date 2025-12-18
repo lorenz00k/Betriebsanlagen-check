@@ -64,10 +64,10 @@ export default function Home() {
       />
 
       {/* Hero Section - Full Width with Video/Image Background */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gray-900">
         {/* Background Video */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/90 via-blue-700/85 to-blue-800/90 z-10" />
+          <div className="absolute inset-0 bg-black/40 z-10" />
           <video
             autoPlay
             loop
