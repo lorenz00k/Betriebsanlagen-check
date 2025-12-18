@@ -269,48 +269,51 @@ h4 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
 
   margin-top: clamp(2.2rem, 5vh, 3.2rem);
-  padding: 0.95rem 1.35rem;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
 
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  background: rgba(11, 27, 58, 0.35);
-  /* glass */
+  border: 1px solid var(--hero-cta-border);
+  background: var(--hero-cta-bg);
   backdrop-filter: blur(10px);
 
-  color: var(--color-header-fg);
+  color: var(--hero-cta-fg);
   text-decoration: none;
   font-weight: 650;
   letter-spacing: 0.01em;
 
   box-shadow: 0 18px 50px -30px rgba(0, 0, 0, 0.55);
-  transition: transform var(--transition-move), background var(--transition-fade),
-    border-color var(--transition-fade), box-shadow var(--transition-fade);
+  transition:
+    transform var(--transition-move),
+    background var(--transition-fade),
+    border-color var(--transition-fade),
+    box-shadow var(--transition-fade);
+}
+
+.page-hero .hero-cta,
+.page-hero .hero-cta:visited,
+.page-hero .hero-cta:hover,
+.page-hero .hero-cta:active {
+  color: var(--hero-cta-fg);
 }
 
 .hero-cta:hover {
   transform: translateY(-1px);
-  background: rgba(11, 27, 58, 0.55);
-  border-color: rgba(255, 255, 255, 0.40);
-  box-shadow: 0 26px 70px -36px rgba(0, 0, 0, 0.7);
-}
-
-.hero-cta:active {
-  transform: translateY(0);
+  background: var(--hero-cta-bg-hover);
+  border-color: var(--hero-cta-border-hover);
 }
 
 .hero-cta:focus-visible {
-  outline: 3px solid rgba(92, 123, 255, 0.65);
-  outline-offset: 3px;
+  outline: 3px solid var(--hero-cta-focus);
+  outline-offset: 4px;
 }
 
-@media (max-width: 520px) {
-  .hero-cta {
-    width: 100%;
-  }
+/* iOS / Mobile Tap Highlight */
+.hero-cta {
+  -webkit-tap-highlight-color: transparent;
 }
+
 
 
 .card {
