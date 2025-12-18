@@ -97,13 +97,19 @@ export default function Home() {
         <div className="site-container">
           {/* 1. HERO */}
           <section className="section page-hero">
-            <h1 className="page-hero__title">
-              <BreakText className="block">{t("title")}</BreakText>
-            </h1>
-            <BreakText className="page-hero__copy block">
-              {t("subtitle")}
-            </BreakText>
-            {/* keine Buttons hier – nur Headline + Subheadline */}
+            <div className="page-hero__bg">
+              <video autoPlay loop muted playsInline>
+                <source src="/images/homepage/hero-video.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div className="page-hero__content">
+              <h1 className="page-hero__title">
+                <BreakText className="block">{t("title")}</BreakText>
+              </h1>
+              <BreakText className="page-hero__copy block">
+                {t("subtitle")}
+              </BreakText>
+            </div>
           </section>
 
           {/* 2. ABLAUF / FLOW */}
