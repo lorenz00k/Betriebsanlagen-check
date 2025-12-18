@@ -2,7 +2,11 @@
 
 import { use } from 'react';
 import Link from 'next/link';
-import { Building2, TrendingUp, Users, Shield, Search, MessageCircle, CheckCircle, ArrowRight } from 'lucide-react';
+import {
+  Building2, Search, ArrowRight, CheckCircle, Heart, Star, Award,
+  Clock, Euro, Handshake, Target, Lightbulb, Play, Image as ImageIcon,
+  TrendingUp, Users, Shield
+} from 'lucide-react';
 import AutoGrid from '@/components/ui/AutoGrid';
 import BreakText from '@/components/ui/BreakText';
 
@@ -10,211 +14,387 @@ export default function BetriebsboersePage({ params }: { params: Promise<{ local
   const { locale } = use(params);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/20">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-purple-900">
-        {/* Decorative background */}
-        <div className="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,transparent,black)]" />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-transparent to-purple-500/20" />
+    <div className="min-h-screen bg-white">
+      {/* Hero Section - Hell und klar */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div className="container mx-auto px-4 py-20 relative">
+          <div className="max-w-6xl mx-auto">
+            <AutoGrid min="28rem" className="items-center gap-12">
+              {/* Text */}
+              <div>
+                <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                  <BreakText>Beta Version - Kostenlos testen</BreakText>
+                </div>
 
-        <div className="container mx-auto px-4 py-24 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Beta Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-8">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              <BreakText>Beta Version - Jetzt testen!</BreakText>
-            </div>
+                <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                  <BreakText className="block">Wiener</BreakText>
+                  <span className="text-blue-600">Betriebsbörse</span>
+                </h1>
 
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              <BreakText className="block mb-2">Wiener Betriebsbörse</BreakText>
-              <span className="bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">
-                Ihr Geschäft. Ihre Chance.
-              </span>
-            </h1>
+                <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                  <BreakText className="block">
+                    Die moderne Plattform für erfolgreiche Betriebsübernahmen in Wien.
+                    Finden Sie Nachfolger für Ihr Lebenswerk oder starten Sie mit einem
+                    etablierten Geschäft durch.
+                  </BreakText>
+                </p>
 
-            <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed">
-              <BreakText className="block">
-                Die moderne Plattform für Betriebsübernahmen in Wien.
-                Verkaufen Sie Ihren Betrieb oder finden Sie Ihr Traumgeschäft.
-              </BreakText>
-            </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link
+                    href={`/${locale}/betriebsboerse/inserat-erstellen`}
+                    className="group px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+                  >
+                    <Building2 className="w-5 h-5" />
+                    <BreakText>Betrieb inserieren</BreakText>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
 
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href={`/${locale}/betriebsboerse/inserat-erstellen`}
-                className="group px-8 py-4 bg-white hover:bg-gray-50 text-blue-600 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
-              >
-                <Building2 className="w-5 h-5" />
-                <BreakText>Betrieb inserieren</BreakText>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+                  <Link
+                    href={`/${locale}/betriebsboerse/inserate`}
+                    className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-700 border-2 border-gray-300 rounded-lg font-semibold transition-all flex items-center gap-2"
+                  >
+                    <Search className="w-5 h-5" />
+                    <BreakText>Inserate durchsuchen</BreakText>
+                  </Link>
+                </div>
+              </div>
 
-              <Link
-                href={`/${locale}/betriebsboerse/inserate`}
-                className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white rounded-xl font-bold transition-all flex items-center gap-2"
-              >
-                <Search className="w-5 h-5" />
-                <BreakText>Inserate durchsuchen</BreakText>
-              </Link>
-            </div>
+              {/* Platzhalter für Bild/Video */}
+              <div className="relative">
+                <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl shadow-2xl flex items-center justify-center group hover:shadow-3xl transition-shadow">
+                  <div className="text-center">
+                    <Play className="w-16 h-16 text-blue-600 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                    <p className="text-gray-600 font-medium">
+                      <BreakText>Video-Platzhalter</BreakText>
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      <BreakText>Erklärvideo zur Plattform</BreakText>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </AutoGrid>
           </div>
         </div>
       </div>
 
-      {/* Stats Section */}
-      <div className="container mx-auto px-4 -mt-16 relative z-10">
-        <div className="bg-white rounded-2xl shadow-2xl p-8">
-          <AutoGrid min="14rem" className="text-center">
-            <div className="space-y-2">
-              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                0
-              </div>
-              <div className="text-gray-600 font-medium">
-                <BreakText>Aktive Inserate</BreakText>
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Wien
-              </div>
-              <div className="text-gray-600 font-medium">
-                <BreakText>Fokus auf Wiener Betriebe</BreakText>
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                23
-              </div>
-              <div className="text-gray-600 font-medium">
-                <BreakText>Bezirke abgedeckt</BreakText>
-              </div>
-            </div>
-          </AutoGrid>
-        </div>
-      </div>
-
-      {/* How it Works Section */}
-      <div className="container mx-auto px-4 py-24">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              <BreakText className="block">So funktioniert&apos;s</BreakText>
-            </h2>
-            <p className="text-xl text-gray-600">
-              <BreakText className="block">In drei einfachen Schritten zu Ihrer Betriebsübernahme</BreakText>
-            </p>
-          </div>
-
-          <AutoGrid min="18rem" className="gap-8">
-            {/* Step 1 */}
-            <div className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all border-2 border-transparent hover:border-blue-100">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                1
-              </div>
-              <div className="mb-6 mt-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Building2 className="w-8 h-8 text-blue-600" />
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                <BreakText className="block">Inserat erstellen</BreakText>
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                <BreakText className="block">
-                  Beschreiben Sie Ihren Betrieb mit allen wichtigen Details.
-                  Fotos hochladen und Standort angeben - fertig!
-                </BreakText>
-              </p>
-            </div>
-
-            {/* Step 2 */}
-            <div className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all border-2 border-transparent hover:border-purple-100">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                2
-              </div>
-              <div className="mb-6 mt-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Users className="w-8 h-8 text-purple-600" />
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                <BreakText className="block">Käufer finden</BreakText>
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                <BreakText className="block">
-                  Interessenten durchsuchen die Plattform und entdecken Ihr Inserat.
-                  Sie erhalten Anfragen direkt über die Plattform.
-                </BreakText>
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all border-2 border-transparent hover:border-green-100">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                3
-              </div>
-              <div className="mb-6 mt-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <MessageCircle className="w-8 h-8 text-green-600" />
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                <BreakText className="block">Kontakt aufnehmen</BreakText>
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                <BreakText className="block">
-                  Sichere Kommunikation über die Plattform.
-                  Besichtigungstermine vereinbaren und Details klären.
-                </BreakText>
-              </p>
-            </div>
-          </AutoGrid>
-        </div>
-      </div>
-
-      {/* Features Section */}
-      <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 py-24">
+      {/* Warum Betriebsübernahme? Section */}
+      <div className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-4">
-                <BreakText className="block">Warum Wiener Betriebsbörse?</BreakText>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                <BreakText className="block">Warum Betriebsübernahme?</BreakText>
               </h2>
-              <p className="text-xl text-blue-200">
-                <BreakText className="block">Die moderne Plattform mit allen Features</BreakText>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                <BreakText className="block">
+                  Tausende Unternehmer in Österreich suchen Nachfolger.
+                  Eine Betriebsübernahme bietet Chancen für beide Seiten.
+                </BreakText>
               </p>
             </div>
 
-            <AutoGrid min="18rem" className="gap-6">
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:bg-white/15 transition-all">
-                <TrendingUp className="w-12 h-12 text-blue-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">
-                  <BreakText className="block">Fokus auf Wien</BreakText>
+            <AutoGrid min="20rem" className="gap-8">
+              <div className="bg-blue-50 rounded-xl p-8 border-2 border-blue-100">
+                <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6">
+                  <TrendingUp className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  <BreakText>Etablierter Kundenstamm</BreakText>
                 </h3>
-                <p className="text-blue-100">
-                  <BreakText className="block">Spezialisiert auf Wiener Betriebe mit lokalem Know-how</BreakText>
+                <p className="text-gray-700 leading-relaxed">
+                  <BreakText className="block">
+                    Übernehmen Sie ein Geschäft mit bestehenden Kunden,
+                    laufendem Umsatz und bewährten Prozessen.
+                  </BreakText>
                 </p>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:bg-white/15 transition-all">
-                <Shield className="w-12 h-12 text-purple-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">
-                  <BreakText className="block">Sicher & DSGVO-konform</BreakText>
+              <div className="bg-green-50 rounded-xl p-8 border-2 border-green-100">
+                <div className="w-14 h-14 bg-green-600 rounded-xl flex items-center justify-center mb-6">
+                  <Clock className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  <BreakText>Schnellerer Start</BreakText>
                 </h3>
-                <p className="text-blue-100">
-                  <BreakText className="block">Ihre Daten sind geschützt. Volle Transparenz bei jedem Schritt</BreakText>
+                <p className="text-gray-700 leading-relaxed">
+                  <BreakText className="block">
+                    Umgehen Sie die riskante Gründungsphase und starten
+                    Sie direkt mit einem funktionierenden Betrieb.
+                  </BreakText>
                 </p>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:bg-white/15 transition-all">
-                <CheckCircle className="w-12 h-12 text-green-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">
-                  <BreakText className="block">Einfach & Modern</BreakText>
+              <div className="bg-purple-50 rounded-xl p-8 border-2 border-purple-100">
+                <div className="w-14 h-14 bg-purple-600 rounded-xl flex items-center justify-center mb-6">
+                  <Award className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  <BreakText>Bewährtes Geschäftsmodell</BreakText>
                 </h3>
-                <p className="text-blue-100">
-                  <BreakText className="block">Intuitive Bedienung, moderne Technologie, mobile-optimiert</BreakText>
+                <p className="text-gray-700 leading-relaxed">
+                  <BreakText className="block">
+                    Profitieren Sie von erprobten Abläufen, bestehenden
+                    Lieferantenbeziehungen und Marktkenntnis.
+                  </BreakText>
+                </p>
+              </div>
+            </AutoGrid>
+          </div>
+        </div>
+      </div>
+
+      {/* Für Verkäufer & Käufer Section */}
+      <div className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <AutoGrid min="28rem" className="gap-12">
+              {/* Für Verkäufer */}
+              <div className="bg-white rounded-2xl shadow-lg p-10 border-2 border-blue-100">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center">
+                    <Handshake className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-gray-900">
+                    <BreakText>Für Verkäufer</BreakText>
+                  </h3>
+                </div>
+
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  <BreakText className="block">
+                    Sie möchten Ihr Lebenswerk in gute Hände übergeben?
+                  </BreakText>
+                </p>
+
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-semibold text-gray-900">
+                        <BreakText>Würdevoller Ruhestand</BreakText>
+                      </div>
+                      <p className="text-gray-600 text-sm">
+                        <BreakText>Ihr Betrieb wird erfolgreich weitergeführt</BreakText>
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-semibold text-gray-900">
+                        <BreakText>Faire Bewertung</BreakText>
+                      </div>
+                      <p className="text-gray-600 text-sm">
+                        <BreakText>Erzielen Sie den bestmöglichen Verkaufspreis</BreakText>
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-semibold text-gray-900">
+                        <BreakText>Diskretion garantiert</BreakText>
+                      </div>
+                      <p className="text-gray-600 text-sm">
+                        <BreakText>Vertraulicher Verkaufsprozess</BreakText>
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+
+                {/* Platzhalter für Bild */}
+                <div className="mt-8 aspect-video bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl flex items-center justify-center">
+                  <div className="text-center">
+                    <ImageIcon className="w-12 h-12 text-blue-600 mx-auto mb-2" />
+                    <p className="text-sm text-gray-600">
+                      <BreakText>Bild: Zufriedener Verkäufer</BreakText>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Für Käufer */}
+              <div className="bg-white rounded-2xl shadow-lg p-10 border-2 border-green-100">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center">
+                    <Target className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-gray-900">
+                    <BreakText>Für Käufer</BreakText>
+                  </h3>
+                </div>
+
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  <BreakText className="block">
+                    Sie träumen von Ihrem eigenen Geschäft?
+                  </BreakText>
+                </p>
+
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-semibold text-gray-900">
+                        <BreakText>Geringeres Risiko</BreakText>
+                      </div>
+                      <p className="text-gray-600 text-sm">
+                        <BreakText>Starten Sie mit bewährtem Konzept statt bei Null</BreakText>
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-semibold text-gray-900">
+                        <BreakText>Sofortiger Cashflow</BreakText>
+                      </div>
+                      <p className="text-gray-600 text-sm">
+                        <BreakText>Ab Tag 1 Umsatz mit bestehenden Kunden</BreakText>
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-semibold text-gray-900">
+                        <BreakText>Großes Angebot</BreakText>
+                      </div>
+                      <p className="text-gray-600 text-sm">
+                        <BreakText>Wählen Sie aus vielen Betrieben in ganz Wien</BreakText>
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+
+                {/* Platzhalter für Bild */}
+                <div className="mt-8 aspect-video bg-gradient-to-br from-green-50 to-green-100 rounded-xl flex items-center justify-center">
+                  <div className="text-center">
+                    <ImageIcon className="w-12 h-12 text-green-600 mx-auto mb-2" />
+                    <p className="text-sm text-gray-600">
+                      <BreakText>Bild: Erfolgreicher Käufer</BreakText>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </AutoGrid>
+          </div>
+        </div>
+      </div>
+
+      {/* Statistiken Section */}
+      <div className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                <BreakText className="block">Betriebsübernahme in Zahlen</BreakText>
+              </h2>
+            </div>
+
+            <AutoGrid min="16rem" className="gap-8">
+              <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl">
+                <div className="text-5xl font-bold text-blue-600 mb-2">35%</div>
+                <p className="text-gray-700 font-medium">
+                  <BreakText>aller Unternehmer sind über 50</BreakText>
+                </p>
+                <p className="text-sm text-gray-600 mt-2">
+                  <BreakText>Quelle: WKO Nachfolge-Report</BreakText>
+                </p>
+              </div>
+
+              <div className="text-center p-8 bg-gradient-to-br from-green-50 to-green-100 rounded-xl">
+                <div className="text-5xl font-bold text-green-600 mb-2">70%</div>
+                <p className="text-gray-700 font-medium">
+                  <BreakText>höhere Erfolgsquote als Neugründung</BreakText>
+                </p>
+                <p className="text-sm text-gray-600 mt-2">
+                  <BreakText>durch etablierte Strukturen</BreakText>
+                </p>
+              </div>
+
+              <div className="text-center p-8 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl">
+                <div className="text-5xl font-bold text-purple-600 mb-2">Wien</div>
+                <p className="text-gray-700 font-medium">
+                  <BreakText>23 Bezirke, tausende Betriebe</BreakText>
+                </p>
+                <p className="text-sm text-gray-600 mt-2">
+                  <BreakText>Fokus auf lokale Geschäfte</BreakText>
+                </p>
+              </div>
+            </AutoGrid>
+          </div>
+        </div>
+      </div>
+
+      {/* So funktioniert's Section */}
+      <div className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                <BreakText className="block">So funktioniert&apos;s</BreakText>
+              </h2>
+              <p className="text-xl text-gray-600">
+                <BreakText className="block">In drei einfachen Schritten zum Erfolg</BreakText>
+              </p>
+            </div>
+
+            <AutoGrid min="20rem" className="gap-8">
+              {/* Schritt 1 */}
+              <div className="relative bg-white rounded-xl p-8 shadow-md border-2 border-gray-100">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                  1
+                </div>
+                <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6 mt-4">
+                  <Building2 className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  <BreakText>Inserat erstellen</BreakText>
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  <BreakText className="block">
+                    Beschreiben Sie Ihren Betrieb mit allen Details, Fotos und Standort.
+                    Oder durchsuchen Sie bestehende Inserate.
+                  </BreakText>
+                </p>
+              </div>
+
+              {/* Schritt 2 */}
+              <div className="relative bg-white rounded-xl p-8 shadow-md border-2 border-gray-100">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                  2
+                </div>
+                <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6 mt-4">
+                  <Users className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  <BreakText>Kontakt aufnehmen</BreakText>
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  <BreakText className="block">
+                    Interessenten melden sich bei Ihnen. Tauschen Sie sich direkt
+                    über die Plattform aus.
+                  </BreakText>
+                </p>
+              </div>
+
+              {/* Schritt 3 */}
+              <div className="relative bg-white rounded-xl p-8 shadow-md border-2 border-gray-100">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                  3
+                </div>
+                <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6 mt-4">
+                  <Handshake className="w-8 h-8 text-purple-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  <BreakText>Deal abschließen</BreakText>
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  <BreakText className="block">
+                    Vereinbaren Sie Besichtigungen, klären Sie Details und
+                    schließen Sie die Übernahme ab.
+                  </BreakText>
                 </p>
               </div>
             </AutoGrid>
@@ -223,47 +403,50 @@ export default function BetriebsboersePage({ params }: { params: Promise<{ local
       </div>
 
       {/* CTA Section */}
-      <div className="container mx-auto px-4 py-24">
-        <div className="max-w-4xl mx-auto bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-12 text-center shadow-2xl">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            <BreakText className="block">Bereit für den nächsten Schritt?</BreakText>
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            <BreakText className="block">
-              Starten Sie jetzt und finden Sie Ihre perfekte Betriebsübernahme
-            </BreakText>
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href={`/${locale}/betriebsboerse/inserat-erstellen`}
-              className="px-8 py-4 bg-white hover:bg-gray-50 text-blue-600 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
-            >
-              <Building2 className="w-5 h-5" />
-              <BreakText>Jetzt Betrieb inserieren</BreakText>
-            </Link>
+      <div className="py-20 bg-gradient-to-br from-blue-600 to-indigo-700">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <BreakText className="block">Bereit für den nächsten Schritt?</BreakText>
+            </h2>
+            <p className="text-xl text-blue-100 mb-10">
+              <BreakText className="block">
+                Starten Sie jetzt kostenlos und finden Sie Ihre perfekte Betriebsübernahme
+              </BreakText>
+            </p>
 
-            <Link
-              href={`/${locale}/betriebsboerse/inserate`}
-              className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white text-white rounded-xl font-bold transition-all flex items-center gap-2"
-            >
-              <Search className="w-5 h-5" />
-              <BreakText>Inserate durchsuchen</BreakText>
-            </Link>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link
+                href={`/${locale}/betriebsboerse/inserat-erstellen`}
+                className="px-10 py-5 bg-white hover:bg-gray-50 text-blue-600 rounded-lg font-bold text-lg transition-all shadow-xl hover:shadow-2xl flex items-center gap-2"
+              >
+                <Building2 className="w-6 h-6" />
+                <BreakText>Jetzt Betrieb inserieren</BreakText>
+              </Link>
+
+              <Link
+                href={`/${locale}/betriebsboerse/inserate`}
+                className="px-10 py-5 bg-blue-500 hover:bg-blue-400 text-white border-2 border-white rounded-lg font-bold text-lg transition-all flex items-center gap-2"
+              >
+                <Search className="w-6 h-6" />
+                <BreakText>Inserate durchsuchen</BreakText>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Info Section */}
-      <div className="bg-amber-50 border-y-2 border-amber-200 py-12">
+      {/* Wichtiger Hinweis Section */}
+      <div className="bg-amber-50 border-t-4 border-amber-400 py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-start gap-4">
               <Shield className="w-8 h-8 text-amber-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-bold text-amber-900 mb-2">
+                <h3 className="text-xl font-bold text-amber-900 mb-3">
                   <BreakText className="block">Wichtiger Hinweis zur Betriebsübernahme</BreakText>
                 </h3>
-                <p className="text-amber-800 leading-relaxed mb-4">
+                <p className="text-amber-800 leading-relaxed mb-3">
                   <BreakText className="block">
                     Diese Plattform vermittelt ausschließlich Kontakte zwischen Verkäufern und Käufern.
                     Wir bieten keine Rechtsberatung, Finanzierungsberatung oder Bewertungsdienstleistungen an.
@@ -271,9 +454,18 @@ export default function BetriebsboersePage({ params }: { params: Promise<{ local
                 </p>
                 <p className="text-amber-800 leading-relaxed">
                   <BreakText className="block">
-                    Für rechtliche, steuerliche und finanzielle Fragen bei Betriebsübernahmen empfehlen wir die
-                    Konsultation von Fachanwälten, Steuerberatern und der Wirtschaftskammer Wien.
+                    Für rechtliche, steuerliche und finanzielle Fragen bei Betriebsübernahmen empfehlen wir
+                    die Konsultation von Fachanwälten, Steuerberatern und der{' '}
                   </BreakText>
+                  <a
+                    href="https://www.wko.at"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-amber-900 font-semibold underline hover:text-amber-700"
+                  >
+                    Wirtschaftskammer Wien
+                  </a>
+                  .
                 </p>
               </div>
             </div>
