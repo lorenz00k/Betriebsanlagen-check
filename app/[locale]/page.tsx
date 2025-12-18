@@ -1,17 +1,12 @@
 "use client";
 
-// Home renders the localized landing page experience, including hero messaging,
-// CTA cards, and animated visuals tailored to the active locale.
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import AnimatedStats from "../components/AnimatedStats";
+import Image from "next/image";
 import { defaultLocale } from "@/i18n";
-import { CheckCircle2, FileText, Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
-import BreakText from "@/components/ui/BreakText";
-import AutoGrid from "@/components/ui/AutoGrid";
+import { CheckCircle2, FileText, Zap, Languages, Shield, ArrowRight, Play, MapPin, Clock, Users } from "lucide-react";
 
-// Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
   const t = useTranslations("home");
   const gruenderT = useTranslations("home.gruender");
@@ -61,191 +56,309 @@ export default function Home() {
 
   return (
     <>
-      {/* QA Schema for AI Search and Featured Snippets */}
+      {/* QA Schema for AI Search */}
       <script
         type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(qaSchema) }}
       />
 
-      <main className="page-shell">
-        <div className="site-container">
-          <section className="section page-hero">
-            <h1 className="page-hero__title">
-              <BreakText className="block">{t("title")}</BreakText>
-            </h1>
-            <BreakText className="page-hero__copy block">{t("subtitle")}</BreakText>
-          </section>
-
-          <section className="section section--compact">
-            <AutoGrid min="16rem" className="page-actions">
-              <article className="card">
-                <div className="card__icon">
-                  <CheckCircle2 className="w-7 h-7" strokeWidth={2.2} />
-                </div>
-                <h2 className="card__title">
-                  <BreakText className="block">{t("card1Title")}</BreakText>
-                </h2>
-                <BreakText className="card__body block">{t("card1Description")}</BreakText>
-                <Link
-                  href={`/${activeLocale}/check`}
-                  className="btn btn-primary w-full justify-center"
-                >
-                  <BreakText>{t("card1Button")}</BreakText>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </article>
-
-              <article className="card">
-                <div className="card__icon card__icon--warm">
-                  <FileText className="w-7 h-7" strokeWidth={2.2} />
-                </div>
-                <h2 className="card__title">
-                  <BreakText className="block">{t("card2Title")}</BreakText>
-                </h2>
-                <BreakText className="card__body block">{t("card2Description")}</BreakText>
-                <Link
-                  href={`/${activeLocale}/documents`}
-                  className="btn btn-secondary w-full justify-center"
-                >
-                  <BreakText>{t("card2Button")}</BreakText>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </article>
-            </AutoGrid>
-          </section>
-
-          <section className="section section--compact">
-            <div className="surface-muted">
-              <AnimatedStats
-                stats={[
-                  {
-                    value: 8,
-                    suffix: "",
-                    label: t("stats.languages"),
-                    icon: <Languages className="w-6 h-6" strokeWidth={2} />,
-                  },
-                  {
-                    value: 2,
-                    suffix: " Min",
-                    label: t("stats.time"),
-                    icon: <Zap className="w-6 h-6" strokeWidth={2} />,
-                  },
-                  {
-                    value: 100,
-                    suffix: "%",
-                    label: t("stats.free"),
-                    icon: <Shield className="w-6 h-6" strokeWidth={2} />,
-                  },
-                ]}
-              />
+      {/* Hero Section - Full Width with Video/Image Background */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        {/* Background Video Placeholder */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95 z-10" />
+          {/* Video Placeholder */}
+          <div className="w-full h-full bg-slate-800 flex items-center justify-center">
+            <div className="text-center">
+              <Play className="w-20 h-20 text-slate-600 mx-auto mb-4" />
+              <p className="text-slate-500 text-sm">Hero Video Placeholder</p>
+              <p className="text-slate-600 text-xs mt-2">hero-video.mp4</p>
             </div>
-          </section>
+          </div>
+        </div>
 
-          <section className="section">
-            <div className="section__heading">
-              <h2>
-                <BreakText className="block">{t("seo.heading")}</BreakText>
-              </h2>
-              <BreakText className="section__copy block">{t("seo.intro")}</BreakText>
+        {/* Hero Content */}
+        <div className="relative z-20 max-w-5xl mx-auto px-4 py-20 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            {t("title")}
+          </h1>
+          <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            {t("subtitle")}
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link
+              href={`/${activeLocale}/check`}
+              className="group px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold text-lg transition-all duration-300 flex items-center gap-3 shadow-xl shadow-blue-500/20"
+            >
+              {t("card1Button")}
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href={`/${activeLocale}/documents`}
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border border-white/20 rounded-full font-semibold text-lg transition-all duration-300"
+            >
+              {t("card2Button")}
+            </Link>
+          </div>
+
+          {/* Stats */}
+          <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">8</div>
+              <div className="text-sm text-slate-400">{t("stats.languages")}</div>
             </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">2 Min</div>
+              <div className="text-sm text-slate-400">{t("stats.time")}</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">100%</div>
+              <div className="text-sm text-slate-400">{t("stats.free")}</div>
+            </div>
+          </div>
+        </div>
 
-            <AutoGrid min="14rem" className="mt-12">
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--accent-soft">
-                  <Zap className="w-6 h-6" strokeWidth={2} />
-                </div>
-                <h3 className="card__title">
-                  <BreakText className="block">{t("seo.feature1Title")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("seo.feature1Text")}</BreakText>
-              </article>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+            <div className="w-1 h-3 bg-white/50 rounded-full" />
+          </div>
+        </div>
+      </section>
 
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--success">
-                  <Languages className="w-6 h-6" strokeWidth={2} />
-                </div>
-                <h3 className="card__title">
-                  <BreakText className="block">{t("seo.feature2Title")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("seo.feature2Text")}</BreakText>
-              </article>
+      {/* Features Section - White Background */}
+      <section className="py-20 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              {t("seo.heading")}
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              {t("seo.intro")}
+            </p>
+          </div>
 
-              <article className="card card--subtle">
-                <div className="card__icon card__icon--shield">
-                  <Shield className="w-6 h-6" strokeWidth={2} />
-                </div>
-                <h3 className="card__title">
-                  <BreakText className="block">{t("seo.feature3Title")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("seo.feature3Text")}</BreakText>
-              </article>
-            </AutoGrid>
-
-            <div className="surface-muted mt-12 flex flex-col gap-6 md:flex-row md:items-center">
-              <div className="card__icon">
-                <Sparkles className="w-6 h-6" strokeWidth={2} />
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <div className="group p-8 rounded-3xl bg-slate-50 hover:bg-slate-100 transition-all duration-300 hover:scale-105">
+              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Zap className="w-7 h-7 text-blue-600" strokeWidth={2} />
               </div>
-              <div className="flex-1 space-y-3">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("seo.whyTitle")}</BreakText>
-                </h3>
-                <BreakText className="card__body text-lg block">{t("seo.whyText")}</BreakText>
-              </div>
-            </div>
-          </section>
-
-          <section className="section">
-            <div className="section__heading">
-              <h2>
-                <BreakText className="block">{t("gruender.heading")}</BreakText>
-              </h2>
-              <BreakText className="section__copy block">{t("gruender.intro")}</BreakText>
-            </div>
-
-            <AutoGrid min="16rem" className="mt-12">
-              <article className="card card--subtle">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("gruender.question1")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("gruender.answer1")}</BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("gruender.question2")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("gruender.answer2")}</BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("gruender.question3")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("gruender.answer3")}</BreakText>
-              </article>
-
-              <article className="card card--subtle">
-                <h3 className="card__title">
-                  <BreakText className="block">{t("gruender.question4")}</BreakText>
-                </h3>
-                <BreakText className="card__body block">{t("gruender.answer4")}</BreakText>
-              </article>
-            </AutoGrid>
-
-            <div className="cta-panel">
-              <h3>
-                <BreakText className="block">{t("gruender.ctaTitle")}</BreakText>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                {t("seo.feature1Title")}
               </h3>
-              <BreakText className="block">{t("gruender.ctaText")}</BreakText>
-              <Link href={`/${activeLocale}/check`} className="btn btn-primary">
-                <BreakText>{t("card1Button")}</BreakText>
+              <p className="text-slate-600 leading-relaxed">
+                {t("seo.feature1Text")}
+              </p>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="group p-8 rounded-3xl bg-slate-50 hover:bg-slate-100 transition-all duration-300 hover:scale-105">
+              <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Languages className="w-7 h-7 text-green-600" strokeWidth={2} />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                {t("seo.feature2Title")}
+              </h3>
+              <p className="text-slate-600 leading-relaxed">
+                {t("seo.feature2Text")}
+              </p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="group p-8 rounded-3xl bg-slate-50 hover:bg-slate-100 transition-all duration-300 hover:scale-105">
+              <div className="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Shield className="w-7 h-7 text-purple-600" strokeWidth={2} />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                {t("seo.feature3Title")}
+              </h3>
+              <p className="text-slate-600 leading-relaxed">
+                {t("seo.feature3Text")}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Image Feature Section 1 - Left Image, Right Content */}
+      <section className="py-20 md:py-32 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Image Placeholder */}
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-slate-200 shadow-2xl">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <MapPin className="w-16 h-16 text-slate-400 mx-auto mb-4" />
+                  <p className="text-slate-500 font-medium">Feature Image 1</p>
+                  <p className="text-slate-400 text-sm mt-2">feature-1.jpg</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                {t("card1Title")}
+              </h2>
+              <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+                {t("card1Description")}
+              </p>
+              <Link
+                href={`/${activeLocale}/check`}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-full font-semibold text-lg transition-all duration-300 shadow-xl"
+              >
+                {t("card1Button")}
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
-          </section>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Image Feature Section 2 - Right Image, Left Content */}
+      <section className="py-20 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Content (Desktop: Left) */}
+            <div className="md:order-1 order-2">
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                {t("card2Title")}
+              </h2>
+              <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+                {t("card2Description")}
+              </p>
+              <Link
+                href={`/${activeLocale}/documents`}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold text-lg transition-all duration-300 shadow-xl"
+              >
+                {t("card2Button")}
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+
+            {/* Image Placeholder (Desktop: Right) */}
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-slate-200 shadow-2xl md:order-2 order-1">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <FileText className="w-16 h-16 text-slate-400 mx-auto mb-4" />
+                  <p className="text-slate-500 font-medium">Feature Image 2</p>
+                  <p className="text-slate-400 text-sm mt-2">feature-2.jpg</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Section - Dark Background */}
+      <section className="py-20 md:py-32 bg-slate-900">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+            {t("seo.whyTitle")}
+          </h2>
+          <p className="text-xl text-slate-300 leading-relaxed mb-12">
+            {t("seo.whyText")}
+          </p>
+
+          {/* Trust Indicators */}
+          <div className="grid md:grid-cols-3 gap-8 mt-16">
+            <div className="flex flex-col items-center">
+              <Clock className="w-12 h-12 text-blue-400 mb-4" />
+              <div className="text-2xl font-bold text-white mb-2">Schnell</div>
+              <div className="text-slate-400">In 2 Minuten zum Ergebnis</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <Shield className="w-12 h-12 text-green-400 mb-4" />
+              <div className="text-2xl font-bold text-white mb-2">Sicher</div>
+              <div className="text-slate-400">DSGVO-konform & verschlüsselt</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <Users className="w-12 h-12 text-purple-400 mb-4" />
+              <div className="text-2xl font-bold text-white mb-2">Vertrauenswürdig</div>
+              <div className="text-slate-400">Von Experten entwickelt</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section for Founders - Light Background */}
+      <section className="py-20 md:py-32 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              {t("gruender.heading")}
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              {t("gruender.intro")}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* FAQ 1 */}
+            <div className="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-slate-900 mb-4">
+                {t("gruender.question1")}
+              </h3>
+              <p className="text-slate-600 leading-relaxed">
+                {t("gruender.answer1")}
+              </p>
+            </div>
+
+            {/* FAQ 2 */}
+            <div className="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-slate-900 mb-4">
+                {t("gruender.question2")}
+              </h3>
+              <p className="text-slate-600 leading-relaxed">
+                {t("gruender.answer2")}
+              </p>
+            </div>
+
+            {/* FAQ 3 */}
+            <div className="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-slate-900 mb-4">
+                {t("gruender.question3")}
+              </h3>
+              <p className="text-slate-600 leading-relaxed">
+                {t("gruender.answer3")}
+              </p>
+            </div>
+
+            {/* FAQ 4 */}
+            <div className="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-slate-900 mb-4">
+                {t("gruender.question4")}
+              </h3>
+              <p className="text-slate-600 leading-relaxed">
+                {t("gruender.answer4")}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section - Gradient Background */}
+      <section className="py-20 md:py-32 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            {t("gruender.ctaTitle")}
+          </h2>
+          <p className="text-xl text-blue-100 mb-12">
+            {t("gruender.ctaText")}
+          </p>
+          <Link
+            href={`/${activeLocale}/check`}
+            className="inline-flex items-center gap-3 px-10 py-5 bg-white hover:bg-slate-50 text-blue-600 rounded-full font-bold text-lg transition-all duration-300 shadow-2xl hover:scale-105"
+          >
+            {t("card1Button")}
+            <ArrowRight className="w-6 h-6" />
+          </Link>
+        </div>
+      </section>
     </>
   );
 }
