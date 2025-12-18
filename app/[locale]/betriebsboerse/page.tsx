@@ -1,11 +1,13 @@
 'use client';
 
+import { use } from 'react';
 import Link from 'next/link';
 import { Building2, TrendingUp, Users, Shield, Search, MessageCircle, CheckCircle, ArrowRight } from 'lucide-react';
 import AutoGrid from '@/components/ui/AutoGrid';
 import BreakText from '@/components/ui/BreakText';
 
-export default function BetriebsboersePage({ params }: { params: { locale: string } }) {
+export default function BetriebsboersePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = use(params);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/20">
