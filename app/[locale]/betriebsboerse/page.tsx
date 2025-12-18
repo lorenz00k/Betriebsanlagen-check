@@ -145,6 +145,182 @@ export default function BetriebsboersePage({ params }: { params: Promise<{ local
         </div>
       </div>
 
+      {/* Betriebsanlagengenehmigung Section - WICHTIG! */}
+      <div className="py-20 bg-gradient-to-br from-green-50 to-emerald-50 border-y-4 border-green-200">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-full text-sm font-bold mb-6">
+                <CheckCircle className="w-5 h-5" />
+                <BreakText>Der entscheidende Vorteil</BreakText>
+              </div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                <BreakText className="block">Betriebsanlagengenehmigung inklusive!</BreakText>
+              </h2>
+              <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                <BreakText className="block">
+                  Bei einer Betriebsübernahme wird die bestehende Betriebsanlagengenehmigung
+                  automatisch mitübernommen. Sie sparen sich Zeit, Kosten und den
+                  bürokratischen Aufwand einer Neubeantragung!
+                </BreakText>
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-12">
+              <AutoGrid min="22rem" className="gap-8 items-center">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    <BreakText>Warum ist das so wichtig?</BreakText>
+                  </h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <div className="font-semibold text-gray-900">
+                          <BreakText>Keine Wartezeit</BreakText>
+                        </div>
+                        <p className="text-gray-600">
+                          <BreakText>Starten Sie sofort - keine monatelange Genehmigungsphase</BreakText>
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <div className="font-semibold text-gray-900">
+                          <BreakText>Kosten sparen</BreakText>
+                        </div>
+                        <p className="text-gray-600">
+                          <BreakText>Vermeiden Sie teure Gutachten und Behördengebühren</BreakText>
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <div className="font-semibold text-gray-900">
+                          <BreakText>Rechtssicherheit</BreakText>
+                        </div>
+                        <p className="text-gray-600">
+                          <BreakText>Der Betrieb ist bereits behördlich genehmigt und geprüft</BreakText>
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <div className="font-semibold text-gray-900">
+                          <BreakText>Weniger Risiko</BreakText>
+                        </div>
+                        <p className="text-gray-600">
+                          <BreakText>Keine Unsicherheit ob die Genehmigung erteilt wird</BreakText>
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8 border-2 border-blue-200">
+                  <div className="bg-white rounded-lg p-6 mb-6">
+                    <div className="text-center">
+                      <div className="text-5xl font-bold text-green-600 mb-2">0€</div>
+                      <p className="text-gray-700 font-semibold">
+                        <BreakText>Neugenehmigung bei Übernahme</BreakText>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-lg p-6">
+                    <div className="text-center">
+                      <div className="text-5xl font-bold text-red-600 mb-2">~5.000€+</div>
+                      <p className="text-gray-700 font-semibold">
+                        <BreakText>Kosten bei Neugründung</BreakText>
+                      </p>
+                      <p className="text-sm text-gray-600 mt-2">
+                        <BreakText>+ mehrere Monate Wartezeit</BreakText>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </AutoGrid>
+            </div>
+
+            {/* Verbindung zu anderen Tools */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  <BreakText>Unsere Tools helfen Ihnen bei jedem Schritt</BreakText>
+                </h3>
+                <p className="text-gray-600">
+                  <BreakText className="block">
+                    Nutzen Sie unsere kostenlosen Tools für eine erfolgreiche Betriebsübernahme
+                  </BreakText>
+                </p>
+              </div>
+
+              <AutoGrid min="18rem" className="gap-6">
+                <Link
+                  href={`/${locale}/adressen-check`}
+                  className="group bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 rounded-xl p-6 border-2 border-blue-200 transition-all"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                      <Search className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900">
+                      <BreakText>Adressen-Check</BreakText>
+                    </h4>
+                  </div>
+                  <p className="text-sm text-gray-700">
+                    <BreakText className="block">
+                      Prüfen Sie vor der Übernahme den Standort: Flächenwidmung,
+                      Nachbarschaft und mehr
+                    </BreakText>
+                  </p>
+                </Link>
+
+                <Link
+                  href={`/${locale}/formular-assistent`}
+                  className="group bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 rounded-xl p-6 border-2 border-purple-200 transition-all"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                      <Building2 className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900">
+                      <BreakText>Formular-Assistent</BreakText>
+                    </h4>
+                  </div>
+                  <p className="text-sm text-gray-700">
+                    <BreakText className="block">
+                      Falls Umbau geplant: Neue Genehmigung einfach online beantragen
+                    </BreakText>
+                  </p>
+                </Link>
+
+                <Link
+                  href={`/${locale}/gastro-ki`}
+                  className="group bg-gradient-to-br from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200 rounded-xl p-6 border-2 border-orange-200 transition-all"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center">
+                      <Lightbulb className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900">
+                      <BreakText>Gastro KI</BreakText>
+                    </h4>
+                  </div>
+                  <p className="text-sm text-gray-700">
+                    <BreakText className="block">
+                      Speziell für Gastro-Betriebe: KI-gestützte Beratung für Ihre Übernahme
+                    </BreakText>
+                  </p>
+                </Link>
+              </AutoGrid>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Für Verkäufer & Käufer Section */}
       <div className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
