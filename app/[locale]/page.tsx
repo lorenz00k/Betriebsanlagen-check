@@ -83,7 +83,7 @@ export default function Home() {
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             {t("title")}
           </h1>
-          <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-slate-100 mb-12 max-w-3xl mx-auto leading-relaxed">
             {t("subtitle")}
           </p>
 
@@ -108,15 +108,15 @@ export default function Home() {
           <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">8</div>
-              <div className="text-sm text-slate-400">{t("stats.languages")}</div>
+              <div className="text-sm text-slate-200">{t("stats.languages")}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">2 Min</div>
-              <div className="text-sm text-slate-400">{t("stats.time")}</div>
+              <div className="text-sm text-slate-200">{t("stats.time")}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">100%</div>
-              <div className="text-sm text-slate-400">{t("stats.free")}</div>
+              <div className="text-sm text-slate-200">{t("stats.free")}</div>
             </div>
           </div>
         </div>
@@ -260,7 +260,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
             {t("seo.whyTitle")}
           </h2>
-          <p className="text-xl text-slate-300 leading-relaxed mb-12">
+          <p className="text-xl text-slate-100 leading-relaxed mb-12">
             {t("seo.whyText")}
           </p>
 
@@ -269,17 +269,17 @@ export default function Home() {
             <div className="flex flex-col items-center">
               <Clock className="w-12 h-12 text-blue-400 mb-4" />
               <div className="text-2xl font-bold text-white mb-2">Schnell</div>
-              <div className="text-slate-400">In 2 Minuten zum Ergebnis</div>
+              <div className="text-slate-300">In 2 Minuten zum Ergebnis</div>
             </div>
             <div className="flex flex-col items-center">
               <Shield className="w-12 h-12 text-green-400 mb-4" />
               <div className="text-2xl font-bold text-white mb-2">Sicher</div>
-              <div className="text-slate-400">DSGVO-konform & verschlüsselt</div>
+              <div className="text-slate-300">DSGVO-konform & verschlüsselt</div>
             </div>
             <div className="flex flex-col items-center">
               <Users className="w-12 h-12 text-purple-400 mb-4" />
               <div className="text-2xl font-bold text-white mb-2">Vertrauenswürdig</div>
-              <div className="text-slate-400">Von Experten entwickelt</div>
+              <div className="text-slate-300">Von Experten entwickelt</div>
             </div>
           </div>
         </div>
