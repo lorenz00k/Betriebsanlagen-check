@@ -65,17 +65,18 @@ export default function Home() {
 
       {/* Hero Section - Full Width with Video/Image Background */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        {/* Background Video Placeholder */}
+        {/* Background Video */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95 z-10" />
-          {/* Video Placeholder */}
-          <div className="w-full h-full bg-slate-800 flex items-center justify-center">
-            <div className="text-center">
-              <Play className="w-20 h-20 text-slate-600 mx-auto mb-4" />
-              <p className="text-slate-500 text-sm">Hero Video Placeholder</p>
-              <p className="text-slate-600 text-xs mt-2">hero-video.mp4</p>
-            </div>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 z-10" />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/images/homepage/hero-video.mp4" type="video/mp4" />
+          </video>
         </div>
 
         {/* Hero Content */}
@@ -188,15 +189,15 @@ export default function Home() {
       <section className="py-20 md:py-32 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Image Placeholder */}
-            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-slate-200 shadow-2xl">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-16 h-16 text-slate-400 mx-auto mb-4" />
-                  <p className="text-slate-500 font-medium">Feature Image 1</p>
-                  <p className="text-slate-400 text-sm mt-2">feature-1.jpg</p>
-                </div>
-              </div>
+            {/* Feature Image 1 */}
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/homepage/feature-1.jpg"
+                alt="Standortprüfung für Betriebsanlagen in Wien"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </div>
 
             {/* Content */}
@@ -240,15 +241,15 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Image Placeholder (Desktop: Right) */}
-            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-slate-200 shadow-2xl md:order-2 order-1">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <FileText className="w-16 h-16 text-slate-400 mx-auto mb-4" />
-                  <p className="text-slate-500 font-medium">Feature Image 2</p>
-                  <p className="text-slate-400 text-sm mt-2">feature-2.jpg</p>
-                </div>
-              </div>
+            {/* Feature Image 2 (Desktop: Right) */}
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl md:order-2 order-1">
+              <Image
+                src="/images/homepage/feature-2.jpg"
+                alt="Dokumente und Formulare für Betriebsanlagen"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </div>
           </div>
         </div>
@@ -299,41 +300,41 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* FAQ 1 */}
-            <div className="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300">
+            <div className="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100">
               <h3 className="text-xl font-bold text-slate-900 mb-4">
                 {t("gruender.question1")}
               </h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-700 leading-relaxed text-base">
                 {t("gruender.answer1")}
               </p>
             </div>
 
             {/* FAQ 2 */}
-            <div className="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300">
+            <div className="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100">
               <h3 className="text-xl font-bold text-slate-900 mb-4">
                 {t("gruender.question2")}
               </h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-700 leading-relaxed text-base">
                 {t("gruender.answer2")}
               </p>
             </div>
 
             {/* FAQ 3 */}
-            <div className="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300">
+            <div className="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100">
               <h3 className="text-xl font-bold text-slate-900 mb-4">
                 {t("gruender.question3")}
               </h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-700 leading-relaxed text-base">
                 {t("gruender.answer3")}
               </p>
             </div>
 
             {/* FAQ 4 */}
-            <div className="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300">
+            <div className="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100">
               <h3 className="text-xl font-bold text-slate-900 mb-4">
                 {t("gruender.question4")}
               </h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-700 leading-relaxed text-base">
                 {t("gruender.answer4")}
               </p>
             </div>
