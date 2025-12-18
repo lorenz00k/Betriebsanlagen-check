@@ -3,8 +3,8 @@
     "selectLanguage": "Sprache wählen"
   },
   "home": {
-    "title": "Brauche ich eine Betriebsanlagengenehmigung?",
-    "subtitle": "Finde in 2 Minuten kostenlos heraus, ob dein Betrieb eine Genehmigung braucht – anonym und kostenlos!",
+    "title": "Betriebsanlagen-Check für Gründer",
+    "subtitle": "Finde in 2 Minuten kostenlos heraus, ob dein Betrieb eine Genehmigung braucht!",
     "card1Title": "Überprüfung starten",
     "card1Description": "Erhalte eine Auswertung zu Betriebsanlage, Genehmigungspflicht, Unterlagen, Arbeitnehmerschutz und Betriebspflichten.",
     "card1Button": "Checker starten",
@@ -44,9 +44,12 @@
       "cta": "Hier geht’s zu den wichtigsten Dokumenten"
     },
     "stats": {
+      "value_language": "8",
       "languages": "Sprachen verfügbar",
+      "value_time": "3 min",
       "time": "Ergebnis in Minuten",
-      "free": "Kostenlos & anonym"
+      "value_free": "100%",
+      "free": "Kostenlos & sicher"
     },
     "selling": {
       "heading": "Was den Betriebsanlagen-Check auszeichnet"

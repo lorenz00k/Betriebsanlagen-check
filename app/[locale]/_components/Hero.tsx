@@ -1,11 +1,13 @@
 import BreakText from "@/components/ui/BreakText";
+import Link from "next/link";
 import React from "react";
 
 type HeroProps = {
     t: (key: string) => string;
+    locale: string;
 };
 
-export default function Hero({ t }: HeroProps) {
+export default function Hero({ t, locale }: HeroProps) {
     return (
         <section className="section page-hero">
             <div className="page-hero__bg">
@@ -36,18 +38,22 @@ export default function Hero({ t }: HeroProps) {
 
                 <div className="page-hero__stats" aria-label="Key stats">
                     <div className="page-hero__stat">
-                        <div className="page-hero__statValue">20+</div>
+                        <div className="page-hero__statValue">{t("stats.value_language")}</div>
                         <div className="page-hero__statLabel">{t("stats.languages")}</div>
                     </div>
                     <div className="page-hero__stat">
-                        <div className="page-hero__statValue">3–5</div>
+                        <div className="page-hero__statValue">{t("stats.value_time")}</div>
                         <div className="page-hero__statLabel">{t("stats.time")}</div>
                     </div>
                     <div className="page-hero__stat">
-                        <div className="page-hero__statValue">✓</div>
+                        <div className="page-hero__statValue">{t("stats.value_free")}</div>
                         <div className="page-hero__statLabel">{t("stats.free")}</div>
                     </div>
                 </div>
+
+                <Link href={`/${locale}/check`} className="btn btn-secondary">
+                    {t("cta.button")}
+                </Link>
             </div>
         </section>
     );

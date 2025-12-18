@@ -97,7 +97,7 @@ export default function Home() {
       <main className="page-shell">
 
         {/* 1. HERO */}
-        <Hero t={t} />
+        <Hero t={t} locale={activeLocale} />
         <div className="site-container">
           {/* 2. ABLAUF / FLOW */}
 
