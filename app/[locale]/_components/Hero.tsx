@@ -20,7 +20,7 @@ export default function Hero({ t }: HeroProps) {
                 >
                     <source src="/images/homepage/hero-video.mp4" type="video/mp4" />
                     <img
-                        src="/images/homepage/hero-fallback.jpg"
+                        src="/images/betriebsboerse/verkaufer-bild.jpg"
                         alt=""
                         className="page-hero__fallback"
                     />
