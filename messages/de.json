@@ -13,18 +13,32 @@
     "card2Button": "Mehr erfahren",
     "flow": {
       "heading": "So funktioniert der Check",
-      "intro": "In drei einfachen Schritten zur ersten Einschätzung für deinen Betrieb in Wien.",
+      "intro": "Entwickelt für Gründer:innen, Unternehmer:innen und Projektstarter in Wien.",
       "step1Title": "Fragen beantworten",
-      "step1Text": "Gib ein paar Eckdaten zu deinem Betrieb und Standort ein.",
-      "step2Title": "Einschätzung erhalten",
-      "step2Text": "Sieh, ob dein Betrieb voraussichtlich genehmigungspflichtig ist.",
+      "step1Text": "Gib ein paar Eckdaten zu Betrieb und Standort ein.",
+      "step1Bullets": [
+        "Betriebsart & Nutzung",
+        "Fläche, Personen, Betrieb",
+        "Standort & Dauer"
+      ],
+      "step2Title": "Sofort Einschätzung erhalten",
+      "step2Text": "Du bekommst sofort eine erste Orientierung zur Genehmigungspflicht.",
+      "step2Bullets": [
+        "Genehmigung wahrscheinlich?",
+        "Welche Punkte sind kritisch?",
+        "Empfohlene nächste Schritte"
+      ],
       "step3Title": "Dokumente vorbereiten",
-      "step3Text": "Erhalte Hinweise zu Unterlagen und nächsten Schritten."
+      "step3Text": "Wenn eine Genehmigung nötig ist, zeigen wir dir, welche Dokumente gebraucht werden.",
+      "step3Bullets": [
+        "Checkliste für Unterlagen",
+        "Hinweise zu Plänen & Nachweisen"
+      ],
+      "step3Cta": "Zu den benötigten Unterlagen"
     },
     "checker": {
       "heading": "Starte jetzt deinen Betriebsanlagen-Check",
-      "intro": "Beginne direkt mit der Überprüfung – die erste Seite des Checks ist hier eingebettet.",
-      "placeholder": "Hier wird der erste Schritt des Betriebsanlagen-Checks angezeigt. Solange der Check noch nicht eingebunden ist, kannst du ihn über den Button starten."
+      "intro": "Beginne direkt hier mit der Überprüfung deiner Betriebsanlage"
     },
     "documents": {
       "cta": "Hier geht’s zu den wichtigsten Dokumenten"

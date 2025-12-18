@@ -89,7 +89,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
       <div className="flex-1 bg-black/30" />
       <div
         ref={drawerRef}
-        className="ml-auto flex h-full w-80 max-w-[85vw] flex-col gap-4 bg-white p-4 shadow-xl"
+        className="ml-auto flex h-full w-80 max-w-[85vw] flex-col gap-4 bg-[color:var(--color-header-bg)] p-4 shadow-xl text-[color:var(--color-header-fg)]"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-center justify-between gap-3">
@@ -104,7 +104,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex items-center justify-center rounded-md p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+            className="inline-flex items-center justify-center rounded-md p-2 text-[color:var(--color-header-fg-muted)] hover:bg-white/10 hover:text-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             aria-label="Menü schließen"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -119,20 +119,20 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="rounded-md px-2 py-2 text-base font-medium text-slate-800 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+              className="rounded-md px-2 py-2 text-base font-medium text-current hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="mt-2 flex flex-col gap-1 text-sm text-slate-600">
+        <div className="mt-2 flex flex-col gap-1 text-sm text-[color:var(--color-header-fg-muted)]">
           {secondary.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="rounded-md px-2 py-1 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+              className="rounded-md px-2 py-1 hover:bg-white/10 hover:text-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             >
               {link.label}
             </Link>
