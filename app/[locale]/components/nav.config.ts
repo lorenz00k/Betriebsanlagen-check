@@ -7,6 +7,7 @@ export const primaryLinks = (locale: string): NavItem[] => [
   { href: `/${locale}/adressen-check`, label: 'Adressen-Check' },
   { href: `/${locale}/gastro-ki`, label: 'Gastro KI' },
   { href: `/${locale}/formular-assistent`, label: 'Formular-Assistent' },
+  { href: `/${locale}/betriebsboerse`, label: 'Betriebsbörse' },
   { href: `/${locale}/documents`, label: 'Dokumente' },
   { href: `/${locale}/faq`, label: 'FAQ' },
 ]
