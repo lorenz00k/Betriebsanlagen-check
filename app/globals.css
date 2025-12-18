@@ -200,6 +200,8 @@ h4 {
 .page-hero__copy {
   max-width: 65ch;
   margin-inline: auto;
+  margin-top: 12px;
+
   color: var(--color-header-fg-muted);
   font-size: clamp(1.05rem, 2.2vw, 1.35rem);
 }
@@ -217,9 +219,12 @@ h4 {
 
 /* Stats */
 .page-hero__stats {
-  margin-top: clamp(1.5rem, 4vh, 2.5rem);
-  display: grid;
-  gap: 1rem;
+  margin-top: clamp(2.2rem, 5vh, 3.2rem);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(2.5rem, 7vw, 6rem);
+  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -229,24 +234,82 @@ h4 {
 }
 
 .page-hero__stat {
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(10px);
-  border-radius: var(--radius-sm);
-  padding: 1rem 1.1rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  backdrop-filter: none;
+  border-radius: 0;
+  box-shadow: none;
+  min-width: 0;
 }
 
 .page-hero__statValue {
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.6rem;
   color: var(--color-header-fg);
-  font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 1.2;
-  margin-bottom: 0.25rem;
 }
 
 .page-hero__statLabel {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   color: var(--color-header-fg-muted);
-  font-size: 0.95rem;
+}
+
+@media (max-width: 720px) {
+  .page-hero__stats {
+    flex-direction: column;
+    gap: 1.6rem;
+    align-items: center;
+  }
+}
+
+/*Page hero Button */
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  margin-top: clamp(2.2rem, 5vh, 3.2rem);
+  padding: 0.95rem 1.35rem;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(11, 27, 58, 0.35);
+  /* glass */
+  backdrop-filter: blur(10px);
+
+  color: var(--color-header-fg);
+  text-decoration: none;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+
+  box-shadow: 0 18px 50px -30px rgba(0, 0, 0, 0.55);
+  transition: transform var(--transition-move), background var(--transition-fade),
+    border-color var(--transition-fade), box-shadow var(--transition-fade);
+}
+
+.hero-cta:hover {
+  transform: translateY(-1px);
+  background: rgba(11, 27, 58, 0.55);
+  border-color: rgba(255, 255, 255, 0.40);
+  box-shadow: 0 26px 70px -36px rgba(0, 0, 0, 0.7);
+}
+
+.hero-cta:active {
+  transform: translateY(0);
+}
+
+.hero-cta:focus-visible {
+  outline: 3px solid rgba(92, 123, 255, 0.65);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .hero-cta {
+    width: 100%;
+  }
 }
 
 

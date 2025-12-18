@@ -51,8 +51,8 @@ export default function Hero({ t, locale }: HeroProps) {
                     </div>
                 </div>
 
-                <Link href={`/${locale}/check`} className="btn btn-secondary">
-                    {t("cta.button")}
+                <Link href={`/${locale}/check`} className="hero-cta">
+                    {t("home.card1Button")}
                 </Link>
             </div>
         </section>
