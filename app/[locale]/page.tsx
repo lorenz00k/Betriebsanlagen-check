@@ -64,10 +64,10 @@ export default function Home() {
       />
 
       {/* Hero Section - Full Width with Video/Image Background */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         {/* Background Video */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/90 via-blue-700/85 to-blue-800/90 z-10" />
           <video
             autoPlay
             loop
@@ -210,7 +210,7 @@ export default function Home() {
               </p>
               <Link
                 href={`/${activeLocale}/check`}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-full font-semibold text-lg transition-all duration-300 shadow-xl"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-blue-700 hover:bg-blue-800 text-white rounded-full font-semibold text-lg transition-all duration-300 shadow-xl"
               >
                 {t("card1Button")}
                 <ArrowRight className="w-5 h-5" />
@@ -256,7 +256,7 @@ export default function Home() {
       </section>
 
       {/* Why Section - Dark Background */}
-      <section className="py-20 md:py-32 bg-slate-900">
+      <section className="py-20 md:py-32 bg-blue-900">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
             {t("seo.whyTitle")}
