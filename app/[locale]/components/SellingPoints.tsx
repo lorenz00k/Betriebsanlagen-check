@@ -13,16 +13,16 @@ export default function SellingPoints({ t }: SellingPointsProps) {
         <section className="section section--compact">
             {/* Why Betriebsanlage important */}
             <div className="section__heading">
-                <h5>
+                <h4>
                     <BreakText className="block">
                         {t("seo.heading")}
                     </BreakText>
-                </h5>
-                <h2>
+                </h4>
+                <h1>
                     <BreakText className="section__copy block">
                         {t("seo.intro")}
                     </BreakText>
-                </h2>
+                </h1>
             </div>
 
             {/*stats*/}

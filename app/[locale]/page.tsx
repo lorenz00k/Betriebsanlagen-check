@@ -139,7 +139,7 @@ export default function Home() {
           <SellingPoints t={t} />
 
           {/* CHECKER */}
-          <section id="start-check" className="section section--compact">
+          <section id="start-check" className="section">
             <div className="surface-muted">
               <div className="section__heading">
                 <h1>
