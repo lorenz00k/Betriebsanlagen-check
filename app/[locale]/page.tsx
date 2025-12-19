@@ -16,6 +16,7 @@ import CheckerEmbed from "./_components/CheckerEmbed";
 import Hero from "./_components/Hero";
 import SellingPoints from "./components/SellingPoints";
 import DocumentTeaser from "./components/DocumentTeaser";
+import SectionHeading from "./components/SectionHeading";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {
@@ -139,16 +140,12 @@ export default function Home() {
           <SellingPoints t={t} />
 
           {/* CHECKER */}
-          <section id="start-check" className="section">
-            <div className="surface-muted">
-              <div className="section__heading">
-                <h1>
-                  <BreakText className="block">{t("checker.heading")}</BreakText>
-                </h1>
-                <h4>
-                  <BreakText className="section__copy block">{t("checker.intro")}</BreakText>
-                </h4>
-              </div>
+          <section id="start-check" className="section section--full-bg">
+            <div className="section--full-bg__inner">
+              <SectionHeading
+                title={t("checker.heading")}
+                subtitle={t("checker.intro")}
+              />
 
               <div className="checker-full mt-8">
                 <CheckerEmbed />
@@ -161,16 +158,10 @@ export default function Home() {
 
           {/* 5. ALLGEMEINE INFOS / Q&A-BEREICH (Wien / Gründung) */}
           <section className="section">
-            <div className="section__heading">
-              <h2>
-                <BreakText className="block">
-                  {t("gruender.heading")}
-                </BreakText>
-              </h2>
-              <BreakText className="section__copy block">
-                {t("gruender.intro")}
-              </BreakText>
-            </div>
+            <SectionHeading
+              title={t("gruender.heading")}
+              subtitle={t("gruender.intro")}
+            />
 
             <StackedArticles
               items={[

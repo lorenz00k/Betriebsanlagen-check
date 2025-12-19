@@ -118,6 +118,18 @@ h4 {
   color: var(--color-fg-subtle);
 }
 
+.section__title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.section_subtitle {
+  margin-top: 0.9rem;
+  font-size: 1.05rem;
+  color: var(--color-fg-subtle);
+}
+
 .page-shell {
   position: relative;
   overflow: visible;
@@ -362,12 +374,20 @@ h4 {
 }
 
 /*Checker width */
-.checker-full {
+.section--full-bg {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 
-  padding-inline: clamp(1rem, 4vw, 2rem);
+  background: var(--color-surface);
+}
+
+.section--full-bg__inner {
+  max-width: var(--container-w);
+  margin-inline: auto;
+
+  padding-block: clamp(3rem, 8vw, 5rem);
+  padding-inline: var(--container-padding);
 }
 
 .card {
