@@ -155,6 +155,7 @@ export default function Home() {
 
           {/* Dokumente */}
           <DocumentTeaser t={t} locale={activeLocale} />
+          <div className="section-separator" />
 
           {/* 5. ALLGEMEINE INFOS / Q&A-BEREICH (Wien / Gründung) */}
           <section className="section">

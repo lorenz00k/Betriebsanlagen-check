@@ -131,6 +131,23 @@ h4 {
   color: var(--color-fg-subtle);
 }
 
+.section__subtitle {
+  outline: 2px solid red;
+}
+
+.section__subtitle .block {
+  outline: 2px solid lime;
+}
+
+
+.section-separator {
+  height: 1px;
+  background: rgba(31, 36, 48, 0.08);
+  width: min(var(--container-w), 100%);
+  margin: 0 auto;
+}
+
+
 .page-shell {
   position: relative;
   overflow: visible;
