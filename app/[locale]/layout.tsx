@@ -18,7 +18,7 @@ import {
   resolveLocaleParam,
   type MessagesWithMetadata,
 } from './metadataConfig'
-import HeaderNav from './components/HeaderNav'
+import HeaderNav from '../components/HeaderNav'
 
 // generateMetadata builds locale-scoped metadata for the current route by combining
 // localized message bundles with inherited parent metadata values.
@@ -130,7 +130,7 @@ export default async function LocaleLayout({
 
           <HeaderNav locale={locale} />
 
-          <main className="min-h-screen mx-auto max-w-screen-xl w-full px-4">{children}</main>
+          <main className="min-h-screen w-full">{children}</main>
           <Footer />
           <Analytics />
           <SpeedInsights />

@@ -1,0 +1,54 @@
+.section {
+    padding-top: var(--header-offset);
+    padding-bottom: 48px;
+}
+
+.cards {
+    --peek: clamp(10px, 1.2vw, 20px);
+    --total-cards: var(--numcards);
+    --slice: calc(100% / var(--total-cards));
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    view-timeline-name: --cardsContainer;
+
+    /* runway am Ende */
+    padding-bottom: 10vh;
+
+    isolation: isolate;
+}
+
+.card {
+    --index0: calc(var(--index) - 1);
+
+    position: sticky;
+    top: calc(var(--header-offset) + var(--index0) * var(--peek));
+
+    z-index: var(--index);
+    transform-origin: top center;
+
+    animation: stacking 1ms linear forwards;
+    animation-timeline: --cardsContainer;
+
+    /* wenn Safari bei start/end zickt: siehe Alternative unten */
+    animation-range-start: exit-crossing calc(var(--slice) * var(--index0));
+    animation-range-end: exit-crossing calc(var(--slice) * var(--index));
+}
+
+@keyframes stacking {
+    to {
+        transform: scale(calc(1 - 0.08 * (var(--total-cards) - var(--index))));
+    }
+}
+
+.card__content {
+    background: white;
+    border-radius: 20px;
+    padding: 48px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
+}
