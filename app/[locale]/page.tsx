@@ -134,21 +134,8 @@ export default function Home() {
             <StackedCard cards={flowItems} />
           </section>
 */}
-          {/* Why Betriebsanlage important */}
-          <section className="section">
-            <div className="section__heading">
-              <h2>
-                <BreakText className="block">
-                  {t("seo.heading")}
-                </BreakText>
-              </h2>
-              <BreakText className="section__copy block">
-                {t("seo.intro")}
-              </BreakText>
-            </div>
-          </section>
 
-          {/* SELLING POINTS / STATS */}
+          {/* Why important & SELLING POINTS / STATS */}
           <SellingPoints t={t} />
 
           {/* CHECKER */}
