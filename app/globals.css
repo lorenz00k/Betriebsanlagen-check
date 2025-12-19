@@ -131,12 +131,6 @@ h4 {
   color: var(--color-fg-subtle);
 }
 
-/*
-.section__subtitle .block {
-  max-width: 52ch;
-  margin-inline: auto;
-}
-*/
 @media (max-width: 720px) {
   .section__subtitle .block {
     max-width: 65ch;
@@ -516,7 +510,46 @@ h4 {
   color: var(--color-accent-strong);
 }
 
+/* NEXT (Wizard) — gleiche Farbe wie Primary, aber eigener Button */
+.btn-next {
+  padding-inline: 2rem;
+  /* "Next" etwas breiter */
+  background: var(--color-accent);
+  color: #fff;
+  border-color: color-mix(in srgb, var(--color-accent-strong) 35%, transparent);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-next:hover:not(:disabled) {
+  background: var(--color-accent-strong);
+  transform: translateY(-1px);
+}
+
+/* ZURÜCK (Wizard) — weiß, ruhig */
+.btn-previous {
+  background: #fff;
+  border: 2px solid rgba(31, 36, 48, 0.14);
+  color: var(--color-fg);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-previous:hover:not(:disabled) {
+  background: rgba(31, 36, 48, 0.03);
+  border-color: rgba(31, 36, 48, 0.22);
+}
+
 .btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn:active:not(:disabled) {
   transform: translateY(0);
 }
 

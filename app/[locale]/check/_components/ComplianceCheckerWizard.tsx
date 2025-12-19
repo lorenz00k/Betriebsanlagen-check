@@ -630,7 +630,7 @@ export default function ComplianceCheckerWizard({
                             type="button"
                             onClick={handleBack}
                             disabled={stepIndex === 0 || Boolean(onCompleteBasics)}
-                            className="inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+                            className="btn btn-next"
                         >
                             {t("actions.back")}
                         </button>
@@ -639,7 +639,7 @@ export default function ComplianceCheckerWizard({
                             type="button"
                             onClick={handleNext}
                             disabled={!canProceed}
-                            className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold shadow-lg hover:from-blue-700 hover:to-blue-800 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                            className="btn btn-previous"
                         >
                             {stepIndex === steps.length - 1 ? t("actions.finish") : t("actions.next")}
                         </button>
