@@ -18,11 +18,11 @@ export default function SellingPoints({ t }: SellingPointsProps) {
                         {t("seo.heading")}
                     </BreakText>
                 </h2>
-                <h4>
+                <h5>
                     <BreakText className="section__copy block">
                         {t("seo.intro")}
                     </BreakText>
-                </h4>
+                </h5>
             </div>
 
             {/*stats*/}

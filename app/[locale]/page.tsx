@@ -140,19 +140,17 @@ export default function Home() {
 
           {/* CHECKER */}
           <section id="start-check" className="section">
-            <div className="surface-muted">
-              <div className="section__heading">
-                <h1>
-                  <BreakText className="block">{t("checker.heading")}</BreakText>
-                </h1>
-                <h4>
-                  <BreakText className="section__copy block">{t("checker.intro")}</BreakText>
-                </h4>
-              </div>
+            <div className="section__heading">
+              <h1>
+                <BreakText className="block">{t("checker.heading")}</BreakText>
+              </h1>
+              <h4>
+                <BreakText className="section__copy block">{t("checker.intro")}</BreakText>
+              </h4>
+            </div>
 
-              <div className="checker-embed mt-8">
-                <CheckerEmbed />
-              </div>
+            <div className="checker-full mt-8">
+              <CheckerEmbed />
             </div>
           </section>
 

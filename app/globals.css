@@ -361,6 +361,14 @@ h4 {
   }
 }
 
+/*Checker width */
+.checker-full {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
 
 .card {
   background: var(--color-surface);
