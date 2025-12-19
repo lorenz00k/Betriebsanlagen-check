@@ -512,8 +512,6 @@ h4 {
 
 /* NEXT (Wizard) — gleiche Farbe wie Primary, aber eigener Button */
 .btn-next {
-  padding-inline: 2rem;
-  /* "Next" etwas breiter */
   background: var(--color-accent);
   color: #fff;
   border-color: color-mix(in srgb, var(--color-accent-strong) 35%, transparent);
