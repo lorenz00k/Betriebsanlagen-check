@@ -494,7 +494,7 @@ h4 {
   box-shadow: var(--shadow-xs);
 }
 
-.btn-primary:hover {
+.btn-primary:hover:not(:disabled) {
   background: var(--color-accent-strong);
   transform: translateY(-2px);
 }
@@ -505,7 +505,7 @@ h4 {
   border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover:not(:disabled) {
   background: var(--color-accent-soft);
   color: var(--color-accent-strong);
 }
@@ -525,19 +525,15 @@ h4 {
 
 /* ZURÜCK (Wizard) — weiß, ruhig */
 .btn-previous {
-  background: #fff;
-  border: 2px solid rgba(31, 36, 48, 0.14);
-  color: var(--color-fg);
+  background: var(--color-accent);
+  color: #fff;
+  border-color: color-mix(in srgb, var(--color-accent-strong) 35%, transparent);
   box-shadow: var(--shadow-xs);
 }
 
 .btn-previous:hover:not(:disabled) {
-  background: rgba(31, 36, 48, 0.03);
-  border-color: rgba(31, 36, 48, 0.22);
-}
-
-.btn:active {
-  transform: translateY(0);
+  background: var(--color-accent-strong);
+  transform: translateY(-1px);
 }
 
 .btn:disabled {

@@ -630,7 +630,7 @@ export default function ComplianceCheckerWizard({
                             type="button"
                             onClick={handleBack}
                             disabled={stepIndex === 0 || Boolean(onCompleteBasics)}
-                            className="btn btn-next"
+                            className="btn btn-previous"
                         >
                             {t("actions.back")}
                         </button>
@@ -639,7 +639,7 @@ export default function ComplianceCheckerWizard({
                             type="button"
                             onClick={handleNext}
                             disabled={!canProceed}
-                            className="btn btn-previous"
+                            className="btn btn-next"
                         >
                             {stepIndex === steps.length - 1 ? t("actions.finish") : t("actions.next")}
                         </button>
