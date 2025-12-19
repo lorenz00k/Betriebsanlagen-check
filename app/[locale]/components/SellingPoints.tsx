@@ -2,6 +2,7 @@ import React from "react";
 import { Zap, Languages, Shield, Sparkles } from "lucide-react";
 import BreakText from "@/components/ui/BreakText";
 import AutoGrid from "@/components/ui/AutoGrid";
+import SectionHeading from "./SectionHeading";
 
 type SellingPointsProps = {
     t: (key: string) => string;
@@ -13,16 +14,10 @@ export default function SellingPoints({ t }: SellingPointsProps) {
         <section className="section section--compact">
             {/* Why Betriebsanlage important */}
             <div className="section__heading">
-                <h2>
-                    <BreakText className="block">
-                        {t("seo.heading")}
-                    </BreakText>
-                </h2>
-                <h5>
-                    <BreakText className="section__copy block">
-                        {t("seo.intro")}
-                    </BreakText>
-                </h5>
+                <SectionHeading
+                    title={t("seo.heading")}
+                    subtitle={t("seo.intro")}
+                />
             </div>
 
             {/*stats*/}

@@ -126,7 +126,8 @@ h4 {
 
 .section_subtitle {
   margin-top: 0.9rem;
-  font-size: 1.05rem;
+  max-width: 65ch;
+  margin-inline: auto;
   color: var(--color-fg-subtle);
 }
 
