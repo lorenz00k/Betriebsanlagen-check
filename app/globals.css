@@ -124,7 +124,7 @@ h4 {
   font-weight: 700;
 }
 
-.section_subtitle {
+.section__subtitle {
   margin-top: 0.9rem;
   max-width: 65ch;
   margin-inline: auto;
@@ -387,7 +387,7 @@ h4 {
   max-width: var(--container-w);
   margin-inline: auto;
 
-  padding-block: clamp(3rem, 8vw, 5rem);
+  padding-block: clamp(1.5rem, 4vw, 2.5rem);
   padding-inline: var(--container-padding);
 }
 
