@@ -126,17 +126,22 @@ h4 {
 
 .section__subtitle {
   margin-top: 0.9rem;
-  max-width: 65ch;
+  max-width: 55ch;
   margin-inline: auto;
   color: var(--color-fg-subtle);
 }
 
-.section__subtitle {
-  outline: 2px solid red;
-}
-
+/*
 .section__subtitle .block {
-  outline: 2px solid lime;
+  max-width: 52ch;
+  margin-inline: auto;
+}
+*/
+@media (max-width: 720px) {
+  .section__subtitle .block {
+    max-width: 65ch;
+    /* auf kleineren Screens darf’s breiter sein */
+  }
 }
 
 
