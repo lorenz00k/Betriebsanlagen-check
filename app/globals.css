@@ -108,11 +108,12 @@ h4 {
   max-width: 150ch;
   margin-inline: auto;
   text-align: center;
+  display: grid;
   gap: 0.9rem;
 }
 
 .section__copy {
-  max-width: 70ch;
+  max-width: 65ch;
   margin-inline: auto;
   color: var(--color-fg-subtle);
 }

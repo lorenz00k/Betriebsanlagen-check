@@ -142,10 +142,12 @@ export default function Home() {
           <section id="start-check" className="section section--compact">
             <div className="surface-muted">
               <div className="section__heading">
-                <h2>
+                <h1>
                   <BreakText className="block">{t("checker.heading")}</BreakText>
-                </h2>
-                <BreakText className="section__copy block">{t("checker.intro")}</BreakText>
+                </h1>
+                <h4>
+                  <BreakText className="section__copy block">{t("checker.intro")}</BreakText>
+                </h4>
               </div>
 
               <div className="checker-embed mt-8">
