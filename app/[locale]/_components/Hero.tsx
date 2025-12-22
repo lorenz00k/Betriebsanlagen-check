@@ -2,7 +2,7 @@
 
 import BreakText from "@/components/ui/BreakText";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type HeroProps = {
     t: (key: string) => string;
