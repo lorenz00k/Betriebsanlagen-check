@@ -77,7 +77,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
 
   return (
     <div
-      className={`mobileSidebar ${open ? 'isOpen' : ''}`}
+      className={`mobileSidebar ${open ? 'is-open' : ''}`}
       role="dialog"
       aria-modal="true"
       aria-label="Navigation"
