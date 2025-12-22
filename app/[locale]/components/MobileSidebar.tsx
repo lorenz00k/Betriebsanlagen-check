@@ -27,7 +27,8 @@ const focusableSelectors = [
 ].join(',')
 
 export default function MobileSidebar({ locale, open, onClose }: MobileSidebarProps) {
-  const t = useTranslations("home")
+  const tItem = useTranslations("item")
+  const tNav = useTranslations("nav")
   const drawerRef = useRef<HTMLDivElement | null>(null)
   const lastFocusedElement = useRef<HTMLElement | null>(null)
   const pathname = usePathname()
@@ -82,14 +83,14 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
       className={`mobileSidebar ${open ? 'is-open' : ''}`}
       role="dialog"
       aria-modal="true"
-      aria-label={t("nav.navigation")}
+      aria-label={tNav("navigation")}
       aria-hidden={!open}
       id="mobile-sidebar"
     >
       <button
         type="button"
         className="mobileSidebar__backdrop"
-        aria-label={t("nav.closeMenu")}
+        aria-label={tNav("closeMenu")}
         onClick={onClose}
         tabIndex={open ? 0 : -1}
       />
@@ -111,12 +112,12 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
                 style={{ borderRadius: 'var(--radius-sm)', boxShadow: 'var(--shadow-xs)' }}
               />
               <div>
-                <div className="mobileSidebar__brandTitle">{t("item.bac")}</div>
-                <div className="mobileSidebar__brandSub">{t("nav.navigation")}</div>
+                <div className="mobileSidebar__brandTitle">{tItem("bac")}</div>
+                <div className="mobileSidebar__brandSub">{tNav("navigation")}</div>
               </div>
             </Link>
 
-            <button type="button" onClick={onClose} className="mobileSidebar__close" aria-label={t("nav.closeMenu")} tabIndex={open ? 0 : -1}>
+            <button type="button" onClick={onClose} className="mobileSidebar__close" aria-label={tNav("closeMenu")} tabIndex={open ? 0 : -1}>
               <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6L6 18" />
               </svg>
@@ -127,7 +128,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
         </div>
 
         <div className="mobileSidebar__content">
-          <div className="mobileSidebar__sectionLabel">{t('nav.primaryMenu')}</div>
+          <div className="mobileSidebar__sectionLabel">{tItem('primaryMenu')}</div>
           <nav className="mobileSidebar__nav">
             {primary.map((link) => (
               <Link
@@ -138,7 +139,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
                 className={`mobileSidebar__item ${isActive(link.href) ? 'is-active' : ''}`}
                 tabIndex={open ? 0 : -1}
               >
-                <span>{t(link.label)}</span>
+                <span>{tItem(link.label.replace("item.", ""))}</span>
               </Link>
             ))}
           </nav>
@@ -148,7 +149,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
           <div className="mobileSidebar__divider" style={{ margin: '0 12px' }} />
 
           <div className="mobileSidebar__spacer" />
-          <div className="mobileSidebar__sectionLabel">{t("nav.more")}</div>
+          <div className="mobileSidebar__sectionLabel">{tNav("more")}</div>
 
           <nav className="mobileSidebar__nav">
             {secondary.map((link) => (
@@ -160,7 +161,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
                 className={`mobileSidebar__item mobileSidebar__item--secondary ${isActive(link.href) ? 'is-active' : ''}`}
                 tabIndex={open ? 0 : -1}
               >
-                {t(link.label)}
+                {tItem(link.label.replace("item.", ""))}
               </Link>
             ))}
           </nav>
