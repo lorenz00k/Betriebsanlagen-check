@@ -1210,7 +1210,7 @@ form .form-row {
   position: absolute;
   inset: 0;
   background: var(--color-header-bg);
-  opacity: 1;
+  opacity: 0;
   backdrop-filter: none;
   transition: opacity var(--transition-fade);
 }
