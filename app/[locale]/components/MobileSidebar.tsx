@@ -138,7 +138,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
                 className={`mobileSidebar__item ${isActive(link.href) ? 'is-active' : ''}`}
                 tabIndex={open ? 0 : -1}
               >
-                <span>{link.label}</span>
+                <span>{t(link.label)}</span>
               </Link>
             ))}
           </nav>
@@ -160,7 +160,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
                 className={`mobileSidebar__item mobileSidebar__item--secondary ${isActive(link.href) ? 'is-active' : ''}`}
                 tabIndex={open ? 0 : -1}
               >
-                {link.label}
+                {t(link.label)}
               </Link>
             ))}
           </nav>
