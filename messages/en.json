@@ -21,9 +21,10 @@
   "home": {
     "title": "Business Facility Permit Check for Founders",
     "subtitle": "Find out in 2 minutes if you need a business facility permit",
+    "cardButton": "Start check now",
     "card1Title": "Betriebsanlagen checker",
     "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
-    "card1Button": "Start checker",
+    "car1Button": "Start checker",
     "card2Title": "Your path and required documents",
     "card2Description": "Overview of all steps and documents you need for a business facility permit",
     "card2Button": "Learn more",

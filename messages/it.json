@@ -21,7 +21,7 @@
   "home": {
     "title": "Controllo Autorizzazione Impianto Aziendale per Fondatori",
     "subtitle": "Scopri in 2 minuti se hai bisogno di un'autorizzazione per l'impianto aziendale",
-    "card1Title": "Betriebsanlagen checker",
+    "cardButton": "Avvia verifica ora",
     "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
     "card1Button": "Start checker",
     "card2Title": "Il tuo percorso e i documenti necessari",

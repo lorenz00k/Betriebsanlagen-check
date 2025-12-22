@@ -21,7 +21,7 @@
   "home": {
     "title": "Provjera dozvola za poslovne objekte za osnivače",
     "subtitle": "Saznajte za 2 minute trebate li dozvolu za poslovni objekt",
-    "card1Title": "Betriebsanlagen checker",
+    "cardButton": "Pokreni provjeru sada",
     "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
     "card1Button": "Start checker",
     "card2Title": "Vaš put i potrebni dokumenti",

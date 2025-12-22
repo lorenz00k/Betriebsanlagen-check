@@ -21,7 +21,7 @@
   "home": {
     "title": "Girişimciler için İşletme İzni Kontrolü",
     "subtitle": "2 dakikada işletme tesisi izni gerekip gerekmediğini öğrenin",
-    "card1Title": "Betriebsanlagen checker",
+    "cardButton": "Kontrolü şimdi başlat",
     "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
     "card1Button": "Start checker",
     "card2Title": "Yolunuz ve gerekli belgeler",

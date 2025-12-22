@@ -21,7 +21,7 @@
   "home": {
     "title": "Перевірка дозволу на комерційні установи для засновників",
     "subtitle": "Дізнайтеся за 2 хвилини, чи потрібен вам дозвіл на комерційну установу",
-    "card1Title": "Betriebsanlagen checker",
+    "cardButton": "Розпочати перевірку зараз",
     "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
     "card1Button": "Start checker",
     "card2Title": "Ваш шлях і необхідні документи",
