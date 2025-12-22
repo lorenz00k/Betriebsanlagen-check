@@ -1,15 +1,12 @@
 "use client";
 
 import BreakText from "@/components/ui/BreakText";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
-type HeroProps = {
-    t: (key: string, values?: Record<string, unknown>) => string;
-    locale: string;
-};
-
-export default function Hero({ t, locale }: HeroProps) {
+export default function Hero({ locale }: { locale: string }) {
+    const t = useTranslations("home");
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [useImageFallback, setUseImageFallback] = useState(false);
 
