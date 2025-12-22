@@ -27,8 +27,11 @@
     "card2Description": "Panoramica di tutti i passaggi e i documenti necessari per l'autorizzazione dell'impianto aziendale",
     "card2Button": "Scopri di più",
     "stats": {
+      "value_language": "{value}",
       "languages": "Lingue disponibili",
+      "value_time": "{value} min",
       "time": "Risultato in pochi minuti",
+      "value_free": "100%",
       "free": "Gratuito e sicuro"
     },
     "seo": {

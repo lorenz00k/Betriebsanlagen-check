@@ -27,8 +27,11 @@
     "card2Description": "Resumen de todos los pasos y documentos que necesitas para el permiso de instalación comercial",
     "card2Button": "Más información",
     "stats": {
+      "value_language": "{value}",
       "languages": "Idiomas disponibles",
+      "value_time": "{value} min",
       "time": "Resultado en minutos",
+      "value_free": "100%",
       "free": "Gratis y seguro"
     },
     "seo": {

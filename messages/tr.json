@@ -27,8 +27,11 @@
     "card2Description": "İşletme tesisi izni için ihtiyacınız olan tüm adımların ve belgelerin genel bakışı",
     "card2Button": "Daha fazla bilgi",
     "stats": {
+      "value_language": "{value}",
       "languages": "Mevcut diller",
+      "value_time": "{value} dk",
       "time": "Dakikalar içinde sonuç",
+      "value_free": "100%",
       "free": "Ücretsiz ve güvenli"
     },
     "seo": {

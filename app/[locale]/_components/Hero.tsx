@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
 type HeroProps = {
-    t: (key: string) => string;
+    t: (key: string, values?: Record<string, unknown>) => string;
     locale: string;
 };
 
@@ -96,11 +96,11 @@ export default function Hero({ t, locale }: HeroProps) {
 
                 <div className="page-hero__stats" aria-label="Key stats">
                     <div className="page-hero__stat">
-                        <div className="page-hero__statValue">{t("stats.value_language")}</div>
+                        <div className="page-hero__statValue">{t("stats.value_language", { value: 8 })}</div>
                         <div className="page-hero__statLabel">{t("stats.languages")}</div>
                     </div>
                     <div className="page-hero__stat">
-                        <div className="page-hero__statValue">{t("stats.value_time")}</div>
+                        <div className="page-hero__statValue">{t("stats.value_time", { value: 3 })}</div>
                         <div className="page-hero__statLabel">{t("stats.time")}</div>
                     </div>
                     <div className="page-hero__stat">

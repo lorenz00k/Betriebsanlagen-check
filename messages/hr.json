@@ -27,8 +27,11 @@
     "card2Description": "Pregled svih koraka i dokumenata koji su vam potrebni za dozvolu za poslovni objekt",
     "card2Button": "Saznajte više",
     "stats": {
+      "value_language": "{value}",
       "languages": "Dostupnih jezika",
+      "value_time": "{value} min",
       "time": "Rezultat za nekoliko minuta",
+      "value_free": "100%",
       "free": "Besplatno i sigurno"
     },
     "seo": {

@@ -27,8 +27,11 @@
     "card2Description": "Overview of all steps and documents you need for a business facility permit",
     "card2Button": "Learn more",
     "stats": {
+      "value_language": "{value}",
       "languages": "Languages available",
+      "value_time": "{value} min",
       "time": "Result in minutes",
+      "value_free": "100%",
       "free": "Free & Secure"
     },
     "seo": {

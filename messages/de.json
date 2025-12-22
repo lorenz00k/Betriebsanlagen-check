@@ -59,9 +59,9 @@
       "cta": "Hier geht’s zu den wichtigsten Dokumenten"
     },
     "stats": {
-      "value_language": "8",
+      "value_language": "{value}",
       "languages": "Sprachen verfügbar",
-      "value_time": "3 min",
+      "value_time": "{value} min",
       "time": "Ergebnis in Minuten",
       "value_free": "100%",
       "free": "Kostenlos & sicher"
