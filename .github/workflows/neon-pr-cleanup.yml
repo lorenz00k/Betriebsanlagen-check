@@ -22,7 +22,7 @@ jobs:
           # also make a sanitized variant (slashes -> dashes etc.) in case your naming changes later
           HEAD_REF_SANITIZED=$(echo "$HEAD_REF_RAW" \
             | tr '[:upper:]' '[:lower:]' \
-            | sed -E 's#[^a-z0-9-_/]+##g; s#[/_]+#-#g; s#-+#-#g')
+            | sed -E 's#[^a-z0-9_/-]+##g; s#[/_]+#-#g; s#-+#-#g'
 
           echo "PR: $PR_NUM"
           echo "head.ref (raw):        $HEAD_REF_RAW"
