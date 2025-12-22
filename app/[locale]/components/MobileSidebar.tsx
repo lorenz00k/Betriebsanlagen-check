@@ -128,7 +128,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
         </div>
 
         <div className="mobileSidebar__content">
-          <div className="mobileSidebar__sectionLabel">{tItem('primaryMenu')}</div>
+          <div className="mobileSidebar__sectionLabel">{tItem("primaryMenu")}</div>
           <nav className="mobileSidebar__nav">
             {primary.map((link) => (
               <Link
