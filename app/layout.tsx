@@ -56,6 +56,7 @@ export const metadata: Metadata = {
 
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const isProduction = process.env.NEXT_PUBLIC_VERCEL_ENV === "production";
   const gaId = process.env.NEXT_PUBLIC_GA_ID
 
   return (
@@ -78,11 +79,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
 
-        {/* Vercel Web Analytics (cookie-less). Remove this line if you decide to disable it. */}
-        <VercelAnalytics />
+        {isProduction && (
+          <>
+            {/* Vercel Web Analytics (cookie-less) */}
+            <VercelAnalytics />
 
-        {/* GA4 loader. This injects gtag.js and auto-tracks pageviews on client-side route changes */}
-        {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
+            {/* GA4 loader. This injects gtag.js and auto-tracks pageviews on client-side route changes */}
+            {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
+          </>
+        )}
+
         <CookieConsentModal />
       </body>
     </html>
