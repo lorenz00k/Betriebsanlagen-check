@@ -1210,7 +1210,8 @@ form .form-row {
   position: absolute;
   inset: 0;
   background: var(--color-header-bg);
-  opacity: 0;
+  opacity: 1;
+  backdrop-filter: none;
   transition: opacity var(--transition-fade);
 }
 
@@ -1223,7 +1224,7 @@ form .form-row {
   position: absolute;
   top: 0;
   right: 0;
-  height: 100%;
+  height: 100dvh;
   width: min(22rem, 88vw);
 
   display: flex;
@@ -1239,6 +1240,17 @@ form .form-row {
 
   transform: translateX(100%);
   transition: transform var(--transition-move);
+
+  background-color: var(--color-header-bg) !important;
+  background-image: none !important;
+
+  /* falls irgendwo glass/blur reinwirkt */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  /* wichtig: keine opacity am container */
+  opacity: 1 !important;
+
 }
 
 .mobileSidebar.is-open .mobileSidebar__drawer {
@@ -1309,6 +1321,7 @@ form .form-row {
 
 .mobileSidebar__content {
   flex: 1;
+  min-height: 0;
   overflow: auto;
   padding: 12px 8px;
 }
