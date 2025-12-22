@@ -3,12 +3,10 @@ import { Zap, Languages, Shield, Sparkles } from "lucide-react";
 import BreakText from "@/components/ui/BreakText";
 import AutoGrid from "@/components/ui/AutoGrid";
 import SectionHeading from "./SectionHeading";
+import { useTranslations } from "next-intl";
 
-type SellingPointsProps = {
-    t: (key: string) => string;
-};
-
-export default function SellingPoints({ t }: SellingPointsProps) {
+export default function SellingPoints() {
+    const t = useTranslations("home");
     return (
 
         <section className="section section--compact">
@@ -29,7 +27,7 @@ export default function SellingPoints({ t }: SellingPointsProps) {
                     <h3 className="card__title">
                         <BreakText className="block">{t("seo.feature1Title")}</BreakText>
                     </h3>
-                    <BreakText className="card__body block">{t("seo.feature1Text")}</BreakText>
+                    <BreakText className="card__body block">{t("seo.feature1Text", { value: 3 })}</BreakText>
                 </article>
 
                 <article className="card card--subtle">
@@ -39,7 +37,7 @@ export default function SellingPoints({ t }: SellingPointsProps) {
                     <h3 className="card__title">
                         <BreakText className="block">{t("seo.feature2Title")}</BreakText>
                     </h3>
-                    <BreakText className="card__body block">{t("seo.feature2Text")}</BreakText>
+                    <BreakText className="card__body block">{t("seo.feature2Text", { value: 8 })}</BreakText>
                 </article>
 
                 <article className="card card--subtle">

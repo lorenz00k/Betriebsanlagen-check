@@ -20,7 +20,7 @@
   },
   "home": {
     "title": "Business Facility Permit Check for Founders",
-    "subtitle": "Find out in 2 minutes if you need a business facility permit",
+    "subtitle": "Find out in {value} minutes if you need a business facility permit",
     "cardButton": "Start check now",
     "card1Title": "Betriebsanlagen checker",
     "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
@@ -28,31 +28,55 @@
     "card2Title": "Your path and required documents",
     "card2Description": "Overview of all steps and documents you need for a business facility permit",
     "card2Button": "Learn more",
+    "checker": {
+      "heading": "Start your business facilities check now",
+      "intro": "Begin right here with the assessment of your business facility"
+    },
+    "documents": {
+      "cta": "Access the most important documents here"
+    },
     "stats": {
       "value_language": "{value}",
       "languages": "Languages available",
       "value_time": "{value} min",
       "time": "Result in minutes",
       "value_free": "100%",
-      "free": "Free & Secure"
+      "free": "Free & secure"
+    },
+    "selling": {
+      "heading": "What makes the Business Facilities Check stand out"
     },
     "seo": {
       "heading": "Why a business facility permit is important",
-      "intro": "In Vienna and throughout Austria, many businesses require a business facility permit according to the Trade Act. Our free check helps you quickly and easily find out whether your business requires a permit.",
-      "feature1Title": "Fast & Simple",
-      "feature1Text": "In just 2 minutes you will receive an initial assessment of whether you need a business facility permit. No complicated forms, no waiting times.",
+      "intro": "In Vienna and throughout Austria, many businesses require a business facility permit under trade regulations. Our free check helps you quickly and easily determine whether your business requires approval.",
+      "feature1Title": "Fast & easy",
+      "feature1Text": "In just {value} minutes, you receive an initial assessment of whether you need a business facility permit. No complicated forms, no waiting times, no bureaucratic jargon.",
       "feature2Title": "Multilingual",
-      "feature2Text": "Our service is available in 8 languages: German, English, Serbian, Croatian, Turkish, Italian, Spanish and Ukrainian - accessible to all entrepreneurs in Vienna.",
-      "feature3Title": "Free & Anonymous",
+      "feature2Text": "Our service is available in {value} languages: German, English, Serbian, Croatian, Turkish, Italian, Spanish and Ukrainian – accessible to all entrepreneurs in Vienna.",
+      "feature3Title": "Free & anonymous",
       "feature3Text": "The check is completely free and your data remains private. No registration required, no hidden costs.",
       "whyTitle": "When do you need a business facility permit?",
-      "whyText": "A business facility permit is required in Austria for many commercial activities. The exemption regulation determines which businesses are exempt from the permit requirement. Factors such as business area, noise, operating hours and type of activity play an important role."
+      "whyText": "In Austria, a business facility permit is required for many commercial activities. The exemption regulation defines which businesses are excluded from the permit requirement. Factors such as floor space, noise levels, opening hours and type of activity play an important role."
+    },
+    "gruender": {
+      "heading": "Business facility permits when founding a company in Vienna",
+      "intro": "Planning to start a business in Vienna? When founding a company, the question of a business facility permit is often the first crucial step. Here you can find out what founders need to consider.",
+      "question1": "Do I need a business facility permit as a founder in Vienna?",
+      "answer1": "Not every business requires a business facility permit. When founding a company in Vienna, the permit requirement depends on several factors: type of business (e.g. retail, gastronomy, workshop), floor space, noise levels and opening hours. The exemption regulation relieves many smaller businesses from the permit requirement.",
+      "question2": "Which facilities require approval when founding a business in Vienna?",
+      "answer2": "Facilities requiring approval typically include: gastronomy businesses with kitchens, workshops generating noise, retail spaces over 600 m², operations involving hazardous substances, and accommodation businesses with more than 30 beds. MA 36 (Municipal Department 36) is the responsible authority in Vienna.",
+      "question3": "How long does a business facility permit take in Vienna?",
+      "answer3": "Processing times for a business facility permit at MA 36 in Vienna typically range from 2 to 6 months. Founders should factor this time frame into their planning. Incomplete documents may extend the process. Early clarification with the authority is recommended.",
+      "question4": "What does a business facility permit cost for founders?",
+      "answer4": "The costs for a business facility permit in Vienna include official fees (depending on business size), expert costs (e.g. noise or fire safety assessments), and planning expenses. For small businesses, total costs typically range from €500 to €3,000.",
+      "ctaTitle": "Check permit requirements for free",
+      "ctaText": "Save time and money when founding your business in Vienna. Find out in just 2 minutes whether your business requires a permit."
     },
     "footer": {
-      "copyright": "Betriebsanlagen Check - Your helper for Viennese bureaucracy",
-      "disclaimer": "This website is for informational purposes only. For legally binding information, please contact the relevant authorities.",
+      "copyright": "Business Facilities Check – Your guide through Vienna’s bureaucracy",
+      "disclaimer": "This website is for informational purposes only. For legally binding information, please contact the responsible authorities.",
       "imprint": "Legal notice",
-      "privacy": "Privacy"
+      "privacy": "Privacy policy"
     }
   },
   "documents": {

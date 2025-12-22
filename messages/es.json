@@ -20,13 +20,20 @@
   },
   "home": {
     "title": "Verificación de Permisos de Instalaciones Comerciales para Fundadores",
-    "subtitle": "Descubre en 2 minutos si necesitas un permiso para tu instalación comercial",
+    "subtitle": "Descubre en {value} minutos si necesitas un permiso para tu instalación comercial",
     "cardButton": "Iniciar verificación ahora",
     "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
     "card1Button": "Start checker",
     "card2Title": "Tu camino y los documentos necesarios",
     "card2Description": "Resumen de todos los pasos y documentos que necesitas para el permiso de instalación comercial",
     "card2Button": "Más información",
+    "checker": {
+      "heading": "Inicia ahora tu verificación de instalaciones",
+      "intro": "Comienza aquí mismo con la evaluación de tu establecimiento"
+    },
+    "documents": {
+      "cta": "Accede aquí a los documentos más importantes"
+    },
     "stats": {
       "value_language": "{value}",
       "languages": "Idiomas disponibles",
@@ -35,21 +42,38 @@
       "value_free": "100%",
       "free": "Gratis y seguro"
     },
+    "selling": {
+      "heading": "Qué distingue a la verificación de instalaciones"
+    },
     "seo": {
-      "heading": "Por qué un permiso de instalación comercial es importante",
-      "intro": "En Viena y en toda Austria, muchas empresas requieren un permiso de instalación comercial según la Ley de Comercio. Nuestra verificación gratuita te ayuda a descubrir rápida y fácilmente si tu empresa requiere un permiso.",
-      "feature1Title": "Rápido y simple",
-      "feature1Text": "En solo 2 minutos recibirás una evaluación inicial de si necesitas un permiso de instalación comercial. Sin formularios complicados, sin tiempos de espera.",
+      "heading": "Por qué es importante un permiso de instalación",
+      "intro": "En Viena y en toda Austria, muchas empresas necesitan un permiso de instalación conforme a la normativa comercial. Nuestro control gratuito te ayuda a saber de forma rápida y sencilla si tu negocio requiere autorización.",
+      "feature1Title": "Rápido y sencillo",
+      "feature1Text": "En solo 2 minutos obtendrás una primera evaluación sobre si necesitas un permiso de instalación. Sin formularios complicados, sin esperas, sin lenguaje burocrático.",
       "feature2Title": "Multilingüe",
-      "feature2Text": "Nuestro servicio está disponible en 8 idiomas: alemán, inglés, serbio, croata, turco, italiano, español y ucraniano - accesible para todos los empresarios en Viena.",
+      "feature2Text": "Nuestro servicio está disponible en 8 idiomas: alemán, inglés, serbio, croata, turco, italiano, español y ucraniano – accesible para todos los emprendedores en Viena.",
       "feature3Title": "Gratis y anónimo",
-      "feature3Text": "La verificación es completamente gratuita y tus datos permanecen privados. No se requiere registro, sin costos ocultos.",
-      "whyTitle": "¿Cuándo necesitas un permiso de instalación comercial?",
-      "whyText": "Un permiso de instalación comercial es requerido en Austria para muchas actividades comerciales. El reglamento de exención determina qué empresas están exentas del requisito de permiso. Factores como el área comercial, el ruido, el horario de apertura y el tipo de actividad juegan un papel importante."
+      "feature3Text": "La verificación es completamente gratuita y tus datos permanecen privados. No se requiere registro ni hay costes ocultos.",
+      "whyTitle": "¿Cuándo necesitas un permiso de instalación?",
+      "whyText": "En Austria, muchas actividades comerciales requieren un permiso de instalación. La normativa de exención define qué negocios están excluidos de esta obligación. Factores como la superficie, el ruido, los horarios de apertura y el tipo de actividad son determinantes."
+    },
+    "gruender": {
+      "heading": "Permiso de instalación al fundar una empresa en Viena",
+      "intro": "¿Planeas fundar una empresa en Viena? Al iniciar un negocio, la cuestión del permiso de instalación suele ser uno de los primeros pasos importantes. Aquí te explicamos qué debes tener en cuenta como emprendedor.",
+      "question1": "¿Necesito un permiso de instalación como emprendedor en Viena?",
+      "answer1": "No todas las actividades requieren un permiso de instalación. En Viena, la obligación depende de varios factores: tipo de negocio (por ejemplo, comercio, gastronomía, taller), superficie, nivel de ruido y horarios de apertura. La normativa de exención libera a muchos pequeños negocios de esta obligación.",
+      "question2": "¿Qué instalaciones requieren autorización al fundar una empresa en Viena?",
+      "answer2": "Normalmente requieren autorización: negocios gastronómicos con cocina, talleres con generación de ruido, comercios de más de 600 m², empresas con sustancias peligrosas reguladas y alojamientos con más de 30 camas. La autoridad competente en Viena es la MA 36.",
+      "question3": "¿Cuánto tiempo tarda un permiso de instalación en Viena?",
+      "answer3": "El tiempo de tramitación de un permiso de instalación en la MA 36 suele ser de entre 2 y 6 meses. Los emprendedores deben tener en cuenta este plazo. La documentación incompleta puede alargar el proceso. Se recomienda una consulta previa con la autoridad.",
+      "question4": "¿Cuánto cuesta un permiso de instalación para emprendedores?",
+      "answer4": "Los costes incluyen tasas administrativas (según el tamaño del negocio), honorarios de expertos (por ejemplo, informes de ruido o protección contra incendios) y costes de planificación. Para pequeños negocios, los costes totales suelen oscilar entre 500 y 3.000 euros.",
+      "ctaTitle": "Comprueba gratis la obligación de permiso",
+      "ctaText": "Ahorra tiempo y dinero al fundar tu empresa en Viena. Descubre en solo 2 minutos si tu negocio necesita un permiso."
     },
     "footer": {
-      "copyright": "Betriebsanlagen Check - Tu ayudante para la burocracia vienesa",
-      "disclaimer": "Este sitio web es solo con fines informativos. Para información legalmente vinculante, por favor contacta con las autoridades competentes.",
+      "copyright": "Verificación de instalaciones – Tu ayuda con la burocracia vienesa",
+      "disclaimer": "Este sitio web es solo para fines informativos. Para información legalmente vinculante, contacta con las autoridades competentes.",
       "imprint": "Aviso legal",
       "privacy": "Protección de datos"
     }

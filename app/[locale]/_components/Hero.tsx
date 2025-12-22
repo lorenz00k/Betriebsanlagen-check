@@ -89,7 +89,7 @@ export default function Hero({ locale }: { locale: string }) {
                     <BreakText className="block">{t("title")}</BreakText>
                 </h1>
 
-                <BreakText className="page-hero__copy block">{t("subtitle")}</BreakText>
+                <BreakText className="page-hero__copy block">{t("subtitle", { value: 3 })}</BreakText>
 
                 <div className="page-hero__stats" aria-label="Key stats">
                     <div className="page-hero__stat">

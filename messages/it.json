@@ -20,38 +20,62 @@
   },
   "home": {
     "title": "Controllo Autorizzazione Impianto Aziendale per Fondatori",
-    "subtitle": "Scopri in 2 minuti se hai bisogno di un'autorizzazione per l'impianto aziendale",
+    "subtitle": "Scopri in {value} minuti se hai bisogno di un'autorizzazione per l'impianto aziendale",
     "cardButton": "Avvia verifica ora",
     "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
     "card1Button": "Start checker",
     "card2Title": "Il tuo percorso e i documenti necessari",
     "card2Description": "Panoramica di tutti i passaggi e i documenti necessari per l'autorizzazione dell'impianto aziendale",
     "card2Button": "Scopri di più",
+    "checker": {
+      "heading": "Avvia ora la verifica delle strutture",
+      "intro": "Inizia subito qui la valutazione della tua struttura aziendale"
+    },
+    "documents": {
+      "cta": "Accedi qui ai documenti più importanti"
+    },
     "stats": {
       "value_language": "{value}",
       "languages": "Lingue disponibili",
       "value_time": "{value} min",
-      "time": "Risultato in pochi minuti",
+      "time": "Risultato in minuti",
       "value_free": "100%",
       "free": "Gratuito e sicuro"
     },
+    "selling": {
+      "heading": "Cosa rende speciale la verifica delle strutture"
+    },
     "seo": {
-      "heading": "Perché un'autorizzazione per l'impianto aziendale è importante",
-      "intro": "A Vienna e in tutta l'Austria, molte aziende richiedono un'autorizzazione per l'impianto aziendale secondo la Legge sul Commercio. Il nostro controllo gratuito ti aiuta a scoprire rapidamente e facilmente se la tua azienda richiede un'autorizzazione.",
+      "heading": "Perché è importante un’autorizzazione per l’impianto",
+      "intro": "A Vienna e in tutta l’Austria, molte aziende necessitano di un’autorizzazione per l’impianto secondo la normativa commerciale. Il nostro controllo gratuito ti aiuta a capire rapidamente se la tua attività richiede un’autorizzazione.",
       "feature1Title": "Veloce e semplice",
-      "feature1Text": "In soli 2 minuti riceverai una valutazione iniziale se hai bisogno di un'autorizzazione per l'impianto aziendale. Nessun modulo complicato, nessun tempo di attesa.",
+      "feature1Text": "In soli {value} minuti ricevi una prima valutazione per capire se hai bisogno di un’autorizzazione per l’impianto. Nessun modulo complicato, nessuna attesa, nessun linguaggio burocratico.",
       "feature2Title": "Multilingue",
-      "feature2Text": "Il nostro servizio è disponibile in 8 lingue: tedesco, inglese, serbo, croato, turco, italiano, spagnolo e ucraino - accessibile a tutti gli imprenditori di Vienna.",
+      "feature2Text": "Il nostro servizio è disponibile in {value} lingue: tedesco, inglese, serbo, croato, turco, italiano, spagnolo e ucraino – accessibile a tutti gli imprenditori a Vienna.",
       "feature3Title": "Gratuito e anonimo",
-      "feature3Text": "Il controllo è completamente gratuito e i tuoi dati rimangono privati. Nessuna registrazione richiesta, nessun costo nascosto.",
-      "whyTitle": "Quando hai bisogno di un'autorizzazione per l'impianto aziendale?",
-      "whyText": "Un'autorizzazione per l'impianto aziendale è richiesta in Austria per molte attività commerciali. Il regolamento di esenzione determina quali aziende sono esentate dall'obbligo di autorizzazione. Fattori come l'area aziendale, il rumore, gli orari di apertura e il tipo di attività svolgono un ruolo importante."
+      "feature3Text": "La verifica è completamente gratuita e i tuoi dati rimangono privati. Nessuna registrazione richiesta, nessun costo nascosto.",
+      "whyTitle": "Quando è necessaria un’autorizzazione per l’impianto?",
+      "whyText": "In Austria, molte attività commerciali richiedono un’autorizzazione per l’impianto. La normativa di esenzione definisce quali attività sono escluse dall’obbligo. Fattori come la superficie, il rumore, gli orari di apertura e il tipo di attività sono determinanti."
+    },
+    "gruender": {
+      "heading": "Autorizzazione per l’impianto alla fondazione di un’azienda a Vienna",
+      "intro": "Stai pianificando di fondare un’azienda a Vienna? Durante la fondazione, la questione dell’autorizzazione per l’impianto è spesso uno dei primi passi importanti.",
+      "question1": "Ho bisogno di un’autorizzazione per l’impianto come fondatore a Vienna?",
+      "answer1": "Non tutte le attività richiedono un’autorizzazione per l’impianto. A Vienna, l’obbligo dipende da diversi fattori come il tipo di attività, la superficie, il rumore e gli orari di apertura.",
+      "question2": "Quali impianti richiedono un’autorizzazione alla fondazione a Vienna?",
+      "answer2": "Tipicamente richiedono autorizzazione: attività di ristorazione con cucina, officine rumorose, negozi oltre 600 m², aziende con sostanze pericolose regolamentate e strutture ricettive con più di 30 posti letto.",
+      "question3": "Quanto tempo richiede un’autorizzazione per l’impianto a Vienna?",
+      "answer3": "I tempi di elaborazione variano generalmente tra 2 e 6 mesi. I fondatori dovrebbero tenerne conto nella pianificazione.",
+      "question4": "Quanto costa un’autorizzazione per l’impianto per i fondatori?",
+      "answer4": "I costi includono tasse amministrative, costi per perizie tecniche e spese di pianificazione. Per le piccole imprese, i costi totali variano generalmente tra 500 e 3.000 euro.",
+      "ctaTitle": "Verifica gratuitamente l’obbligo di autorizzazione",
+      "ctaText": "Risparmia tempo e denaro quando fondi la tua azienda a Vienna. Scopri in soli 2 minuti se la tua attività richiede un’autorizzazione."
     },
     "footer": {
-      "copyright": "Betriebsanlagen Check - Il tuo aiuto per la burocrazia viennese",
-      "disclaimer": "Questo sito web è solo a scopo informativo. Per informazioni legalmente vincolanti, si prega di contattare le autorità competenti.",
+      "copyright": "Verifica delle strutture – La tua guida nella burocrazia viennese",
+      "disclaimer": "Questo sito web è solo a scopo informativo. Per informazioni legalmente vincolanti, contatta le autorità competenti.",
       "imprint": "Note legali",
-      "privacy": "Privacy"
+      "privacy": "Protezione dei dati"
     }
   },
   "documents": {

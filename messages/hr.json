@@ -20,36 +20,60 @@
   },
   "home": {
     "title": "Provjera dozvola za poslovne objekte za osnivače",
-    "subtitle": "Saznajte za 2 minute trebate li dozvolu za poslovni objekt",
+    "subtitle": "Saznajte za {value} minute trebate li dozvolu za poslovni objekt",
     "cardButton": "Pokreni provjeru sada",
     "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
     "card1Button": "Start checker",
     "card2Title": "Vaš put i potrebni dokumenti",
     "card2Description": "Pregled svih koraka i dokumenata koji su vam potrebni za dozvolu za poslovni objekt",
     "card2Button": "Saznajte više",
+    "checker": {
+      "heading": "Pokreni provjeru poslovnog objekta",
+      "intro": "Započni odmah ovdje s provjerom svog poslovnog objekta"
+    },
+    "documents": {
+      "cta": "Ovdje pronađite najvažnije dokumente"
+    },
     "stats": {
       "value_language": "{value}",
-      "languages": "Dostupnih jezika",
+      "languages": "Dostupni jezici",
       "value_time": "{value} min",
-      "time": "Rezultat za nekoliko minuta",
+      "time": "Rezultat u minutama",
       "value_free": "100%",
       "free": "Besplatno i sigurno"
     },
+    "selling": {
+      "heading": "Što izdvaja provjeru poslovnog objekta"
+    },
     "seo": {
-      "heading": "Zašto je dozvola za poslovni objekt važna",
-      "intro": "U Beču i širom Austrije, mnogim poduzećima je potrebna dozvola za poslovni objekt prema Zakonu o trgovini. Naša besplatna provjera vam pomaže da brzo i lako saznate treba li vašem poduzeću dozvola.",
+      "heading": "Zašto je potrebna dozvola za poslovni objekt",
+      "intro": "U Beču i cijeloj Austriji mnogim je poduzećima potrebna dozvola za poslovni objekt. Naša besplatna provjera pomaže vam brzo i jednostavno utvrditi je li dozvola potrebna.",
       "feature1Title": "Brzo i jednostavno",
-      "feature1Text": "Za samo 2 minute dobit ćete početnu procjenu trebate li dozvolu za poslovni objekt. Bez kompliciranih obrazaca, bez čekanja.",
+      "feature1Text": "U samo {value} minuta dobit ćete početnu procjenu trebate li dozvolu. Bez kompliciranih obrazaca i čekanja.",
       "feature2Title": "Višejezično",
-      "feature2Text": "Naša usluga dostupna je na 8 jezika: njemački, engleski, srpski, hrvatski, turski, talijanski, španjolski i ukrajinski - dostupna svim poduzetnicima u Beču.",
+      "feature2Text": "Usluga je dostupna na {value} jezika: njemački, engleski, srpski, hrvatski, turski, talijanski, španjolski i ukrajinski.",
       "feature3Title": "Besplatno i anonimno",
-      "feature3Text": "Provjera je potpuno besplatna i vaši podaci ostaju privatni. Nije potrebna registracija, nema skrivenih troškova.",
-      "whyTitle": "Kada vam je potrebna dozvola za poslovni objekt?",
-      "whyText": "Dozvola za poslovni objekt potrebna je u Austriji za mnoge komercijalne djelatnosti. Uredba o izuzeću od dozvole određuje koja poduzeća su oslobođena od obveze dozvole. Čimbenici poput poslovne površine, buke, radnog vremena i vrste djelatnosti igraju važnu ulogu."
+      "feature3Text": "Provjera je potpuno besplatna, a vaši podaci ostaju privatni.",
+      "whyTitle": "Kada je potrebna dozvola?",
+      "whyText": "U Austriji je dozvola potrebna za mnoge djelatnosti. Površina, buka i radno vrijeme igraju važnu ulogu."
+    },
+    "gruender": {
+      "heading": "Dozvola pri osnivanju poduzeća u Beču",
+      "intro": "Planirate osnovati poduzeće u Beču? Dozvola za poslovni objekt često je prvi važan korak.",
+      "question1": "Trebam li dozvolu kao osnivač?",
+      "answer1": "Ne treba svaka djelatnost dozvolu. Obveza ovisi o vrsti djelatnosti i drugim čimbenicima.",
+      "question2": "Koji objekti trebaju dozvolu?",
+      "answer2": "Najčešće: ugostiteljski objekti s kuhinjom, bučne radionice i trgovine veće od 600 m².",
+      "question3": "Koliko traje postupak?",
+      "answer3": "Postupak obično traje između 2 i 6 mjeseci.",
+      "question4": "Koliki su troškovi?",
+      "answer4": "Troškovi se obično kreću između 500 i 3000 €.",
+      "ctaTitle": "Besplatno provjeri obvezu dozvole",
+      "ctaText": "U samo 2 minute saznajte treba li vam dozvola."
     },
     "footer": {
-      "copyright": "Betriebsanlagen Check - Vaš pomoćnik za bečku birokraciju",
-      "disclaimer": "Ova web stranica je samo u informativne svrhe. Za pravno obvezujuće informacije, molimo kontaktirajte nadležne organe.",
+      "copyright": "Provjera poslovnog objekta – Vaš vodič kroz bečku birokraciju",
+      "disclaimer": "Ova web stranica služi samo u informativne svrhe.",
       "imprint": "Impresum",
       "privacy": "Zaštita podataka"
     }

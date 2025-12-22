@@ -20,38 +20,62 @@
   },
   "home": {
     "title": "Girişimciler için İşletme İzni Kontrolü",
-    "subtitle": "2 dakikada işletme tesisi izni gerekip gerekmediğini öğrenin",
+    "subtitle": "{value} dakikada işletme tesisi izni gerekip gerekmediğini öğrenin",
     "cardButton": "Kontrolü şimdi başlat",
     "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
     "card1Button": "Start checker",
     "card2Title": "Yolunuz ve gerekli belgeler",
     "card2Description": "İşletme tesisi izni için ihtiyacınız olan tüm adımların ve belgelerin genel bakışı",
     "card2Button": "Daha fazla bilgi",
+    "checker": {
+      "heading": "İşletme tesis kontrolünü şimdi başlat",
+      "intro": "İşletme tesisinin değerlendirmesine hemen buradan başla"
+    },
+    "documents": {
+      "cta": "En önemli belgelere buradan ulaşın"
+    },
     "stats": {
       "value_language": "{value}",
       "languages": "Mevcut diller",
       "value_time": "{value} dk",
-      "time": "Dakikalar içinde sonuç",
+      "time": "Dakika içinde sonuç",
       "value_free": "100%",
       "free": "Ücretsiz ve güvenli"
     },
+    "selling": {
+      "heading": "İşletme tesis kontrolünü öne çıkaran özellikler"
+    },
     "seo": {
-      "heading": "İşletme tesisi izninin neden önemli olduğu",
-      "intro": "Viyana'da ve Avusturya genelinde, birçok işletme Ticaret Yasası'na göre işletme tesisi izni gerektirir. Ücretsiz kontrolümüz, işletmenizin izin gerektirip gerektirmediğini hızlı ve kolay bir şekilde bulmanıza yardımcı olur.",
-      "feature1Title": "Hızlı ve basit",
-      "feature1Text": "Sadece 2 dakikada işletme tesisi iznine ihtiyacınız olup olmadığına dair ilk değerlendirmeyi alacaksınız. Karmaşık formlar yok, bekleme süresi yok.",
+      "heading": "İşletme tesisi izni neden önemlidir",
+      "intro": "Viyana’da ve Avusturya genelinde birçok işletme ticaret mevzuatına göre işletme tesisi iznine ihtiyaç duyar. Ücretsiz kontrolümüz, işletmenizin izne tabi olup olmadığını hızlı ve kolay şekilde öğrenmenize yardımcı olur.",
+      "feature1Title": "Hızlı ve kolay",
+      "feature1Text": "Sadece {value} dakika içinde işletme tesisi iznine ihtiyacınız olup olmadığına dair ilk değerlendirmeyi alırsınız. Karmaşık formlar yok, bekleme yok, bürokratik dil yok.",
       "feature2Title": "Çok dilli",
-      "feature2Text": "Hizmetimiz 8 dilde mevcuttur: Almanca, İngilizce, Sırpça, Hırvatça, Türkçe, İtalyanca, İspanyolca ve Ukraynaca - Viyana'daki tüm girişimciler için erişilebilir.",
+      "feature2Text": "Hizmetimiz {value} dilde sunulmaktadır: Almanca, İngilizce, Sırpça, Hırvatça, Türkçe, İtalyanca, İspanyolca ve Ukraynaca – Viyana’daki tüm girişimciler için erişilebilir.",
       "feature3Title": "Ücretsiz ve anonim",
       "feature3Text": "Kontrol tamamen ücretsizdir ve verileriniz gizli kalır. Kayıt gerekmez, gizli maliyet yoktur.",
-      "whyTitle": "Ne zaman işletme tesisi iznine ihtiyacınız var?",
-      "whyText": "İşletme tesisi izni, Avusturya'da birçok ticari faaliyet için gereklidir. İzin muafiyeti yönetmeliği, hangi işletmelerin izin gereksiniminden muaf olduğunu belirler. İşletme alanı, gürültü, çalışma saatleri ve faaliyet türü gibi faktörler önemli bir rol oynar."
+      "whyTitle": "Ne zaman işletme tesisi iznine ihtiyaç duyulur?",
+      "whyText": "Avusturya’da birçok ticari faaliyet için işletme tesisi izni gereklidir. Muafiyet yönetmeliği hangi işletmelerin izin zorunluluğundan muaf olduğunu belirler. Alan büyüklüğü, gürültü, çalışma saatleri ve faaliyet türü gibi faktörler önemlidir."
+    },
+    "gruender": {
+      "heading": "Viyana’da şirket kuruluşunda işletme tesisi izni",
+      "intro": "Viyana’da bir işletme kurmayı mı planlıyorsunuz? Şirket kuruluşunda işletme tesisi izni genellikle ilk önemli adımlardan biridir.",
+      "question1": "Viyana’da girişimci olarak işletme tesisi iznine ihtiyacım var mı?",
+      "answer1": "Her işletme işletme tesisi iznine ihtiyaç duymaz. İzin zorunluluğu faaliyet türü, alan büyüklüğü, gürültü ve çalışma saatleri gibi faktörlere bağlıdır.",
+      "question2": "Viyana’da kuruluşta hangi tesisler izne tabidir?",
+      "answer2": "Genellikle izne tabi olanlar: mutfaklı gastronomi işletmeleri, gürültülü atölyeler, 600 m² üzeri perakende alanları, tehlikeli maddelerle çalışan işletmeler ve 30 yataktan fazla konaklama tesisleri.",
+      "question3": "Viyana’da işletme tesisi izni ne kadar sürer?",
+      "answer3": "MA 36’daki işlem süresi genellikle 2–6 ay arasındadır. Eksik belgeler süreci uzatabilir.",
+      "question4": "Girişimciler için işletme tesisi izni ne kadara mal olur?",
+      "answer4": "Maliyetler resmi harçlar, uzman raporları ve planlama giderlerinden oluşur. Küçük işletmeler için toplam maliyetler genellikle 500–3000 € arasındadır.",
+      "ctaTitle": "İzin zorunluluğunu ücretsiz kontrol et",
+      "ctaText": "Viyana’da işletme kurarken zaman ve paradan tasarruf edin. Sadece 2 dakika içinde izne ihtiyacınız olup olmadığını öğrenin."
     },
     "footer": {
-      "copyright": "Betriebsanlagen Check - Viyana bürokrasisi için yardımcınız",
-      "disclaimer": "Bu web sitesi yalnızca bilgilendirme amaçlıdır. Yasal olarak bağlayıcı bilgiler için lütfen ilgili makamlarla iletişime geçin.",
+      "copyright": "İşletme tesis kontrolü – Viyana bürokrasisinde yardımcınız",
+      "disclaimer": "Bu web sitesi yalnızca bilgilendirme amaçlıdır. Hukuken bağlayıcı bilgiler için yetkili makamlara başvurunuz.",
       "imprint": "Künye",
-      "privacy": "Gizlilik"
+      "privacy": "Veri koruma"
     }
   },
   "documents": {
