@@ -19,13 +19,13 @@
     "closeMenu": "Chiudi menu"
   },
   "home": {
-    "title": "Controllo Autorizzazione Impianto Aziendale per Fondatori",
-    "subtitle": "Scopri in {value} minuti se hai bisogno di un'autorizzazione per l'impianto aziendale",
+    "title": "Verifica delle strutture per imprenditori",
+    "subtitle": "Scopri gratuitamente in {value} minuti se la tua attività necessita di un’autorizzazione",
     "cardButton": "Avvia verifica ora",
-    "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
-    "card1Button": "Start checker",
+    "card1Description": "Ricevi una valutazione su struttura, obbligo di autorizzazione, documentazione, sicurezza sul lavoro e obblighi operativi.",
+    "card1Button": "Avvia il checker",
     "card2Title": "Il tuo percorso e i documenti necessari",
-    "card2Description": "Panoramica di tutti i passaggi e i documenti necessari per l'autorizzazione dell'impianto aziendale",
+    "card2Description": "Panoramica di tutti i passaggi e documenti necessari per un’autorizzazione dell’impianto.",
     "card2Button": "Scopri di più",
     "checker": {
       "heading": "Avvia ora la verifica delle strutture",

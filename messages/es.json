@@ -19,13 +19,13 @@
     "closeMenu": "Cerrar menú"
   },
   "home": {
-    "title": "Verificación de Permisos de Instalaciones Comerciales para Fundadores",
-    "subtitle": "Descubre en {value} minutos si necesitas un permiso para tu instalación comercial",
+    "title": "Verificación de instalaciones para emprendedores",
+    "subtitle": "Descubre gratis en {value} minutos si tu negocio necesita un permiso",
     "cardButton": "Iniciar verificación ahora",
-    "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
-    "card1Button": "Start checker",
+    "card1Description": "Obtén una evaluación sobre la instalación, la obligación de permiso, la documentación, la seguridad laboral y las obligaciones operativas.",
+    "card1Button": "Iniciar verificador",
     "card2Title": "Tu camino y los documentos necesarios",
-    "card2Description": "Resumen de todos los pasos y documentos que necesitas para el permiso de instalación comercial",
+    "card2Description": "Resumen de todos los pasos y documentos necesarios para un permiso de instalación.",
     "card2Button": "Más información",
     "checker": {
       "heading": "Inicia ahora tu verificación de instalaciones",

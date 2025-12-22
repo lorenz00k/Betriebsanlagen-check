@@ -19,13 +19,13 @@
     "closeMenu": "Menüyü kapat"
   },
   "home": {
-    "title": "Girişimciler için İşletme İzni Kontrolü",
-    "subtitle": "{value} dakikada işletme tesisi izni gerekip gerekmediğini öğrenin",
+    "title": "Girişimciler için işletme tesisi kontrolü",
+    "subtitle": "İşletmenizin izin gerektirip gerektirmediğini {value} dakika içinde ücretsiz öğrenin",
     "cardButton": "Kontrolü şimdi başlat",
-    "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
-    "card1Button": "Start checker",
-    "card2Title": "Yolunuz ve gerekli belgeler",
-    "card2Description": "İşletme tesisi izni için ihtiyacınız olan tüm adımların ve belgelerin genel bakışı",
+    "card1Description": "İşletme tesisi, izin zorunluluğu, gerekli belgeler, çalışan güvenliği ve işletme yükümlülükleri hakkında değerlendirme alın.",
+    "card1Button": "Kontrolü başlat",
+    "card2Title": "Süreciniz ve gerekli belgeler",
+    "card2Description": "İşletme tesisi izni için gereken tüm adımların ve belgelerin özeti.",
     "card2Button": "Daha fazla bilgi",
     "checker": {
       "heading": "İşletme tesis kontrolünü şimdi başlat",

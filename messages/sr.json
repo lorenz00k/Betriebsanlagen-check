@@ -19,14 +19,14 @@
     "closeMenu": "Zatvori meni"
   },
   "home": {
-    "title": "Provera dozvola za poslovne objekte za osnivače",
-    "subtitle": "Saznajte za {value} minuta da li vam je potrebna dozvola za poslovni objekat",
+    "title": "Provera poslovnog objekta za osnivače",
+    "subtitle": "Saznajte besplatno za {value} minuta da li je vašem poslu potrebna dozvola",
     "cardButton": "Pokreni proveru sada",
-    "card1Description": "Get a complete assessment covering facility status, permit duty, required documents, worker safety metrics, and operating duties.",
-    "card1Button": "Start checker",
-    "card2Title": "Vaš put i potrebni dokumenti",
-    "card2Description": "Pregled svih koraka i dokumenata koji su vam potrebni za dozvolu za poslovni objekat",
-    "card2Button": "Saznajte više",
+    "card1Description": "Dobijte procenu o poslovnom objektu, obavezi dozvole, dokumentaciji, zaštiti zaposlenih i operativnim obavezama.",
+    "card1Button": "Pokreni proveru",
+    "card2Title": "Vaš put i potrebna dokumenta",
+    "card2Description": "Pregled svih koraka i dokumenata potrebnih za dozvolu poslovnog objekta.",
+    "card2Button": "Saznaj više",
     "checker": {
       "heading": "Pokreni proveru poslovnog objekta",
       "intro": "Započni odmah ovde sa proverom svog poslovnog objekta"
