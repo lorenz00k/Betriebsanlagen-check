@@ -4,15 +4,15 @@ export interface NavItem {
 }
 
 export const primaryLinks = (locale: string): NavItem[] => [
-  { href: `/${locale}/check`, label: 'Genehmigungs-Check' },
-  { href: `/${locale}/gastro-ki`, label: 'Gastro KI' },
-  { href: `/${locale}/adressen-check`, label: 'Adressen-Check' },
-  { href: `/${locale}/formular-assistent`, label: 'Formular-Assistent' },
-  { href: `/${locale}/documents`, label: 'Dokumente' },
-  { href: `/${locale}/faq`, label: 'FAQ' },
+  { href: `/${locale}/check`, label: 'item.approval' },
+  { href: `/${locale}/gastro-ki`, label: 'item.gastroAi' },
+  { href: `/${locale}/adressen-check`, label: 'item.addressCheck' },
+  { href: `/${locale}/formular-assistent`, label: 'item.formAssistant' },
+  { href: `/${locale}/documents`, label: 'item.documents' },
+  { href: `/${locale}/faq`, label: 'item.faq' },
 ]
 
 export const secondaryLinks = (locale: string): NavItem[] => [
-  { href: `/${locale}/impressum`, label: 'Impressum' },
-  { href: `/${locale}/datenschutz`, label: 'Datenschutz' },
+  { href: `/${locale}/impressum`, label: 'item.imprint' },
+  { href: `/${locale}/datenschutz`, label: 'item.privacy' },
 ]

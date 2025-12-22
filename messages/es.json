@@ -1,6 +1,21 @@
 {
+  "items": {
+    "bac": "Verificación de instalaciones",
+    "approval": "Verificación de permisos",
+    "gastroAi": "IA gastronómica",
+    "addressCheck": "Verificación de direcciones",
+    "formAssistant": "Asistente de formularios",
+    "documents": "Documentos",
+    "faq": "Preguntas frecuentes",
+    "imprint": "Aviso legal",
+    "privacy": "Protección de datos"
+  },
   "nav": {
-    "selectLanguage": "Seleccionar idioma"
+    "selectLanguage": "Seleccionar idioma",
+    "navigation": "Navegación",
+    "primaryMenu": "Menú principal",
+    "more": "Más",
+    "closeMenu": "Cerrar menú"
   },
   "home": {
     "title": "Verificación de Permisos de Instalaciones Comerciales para Fundadores",
@@ -242,7 +257,9 @@
     "twitter": {
       "title": "Verificador de permisos: ¿necesita autorización?",
       "description": "Responda algunas preguntas para saber si su instalación en Viena requiere permiso y reciba orientación sobre los siguientes pasos.",
-      "images": ["/og-image.png"]
+      "images": [
+        "/og-image.png"
+      ]
     },
     "faq": {
       "title": "FAQ sobre permisos de instalaciones comerciales en Viena",

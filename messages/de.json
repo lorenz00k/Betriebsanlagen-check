@@ -1,6 +1,21 @@
 {
+  "items": {
+    "bac": "Betriebsanlagen Check",
+    "approval": "Genehmigungs-Check",
+    "gastroAi": "Gastro-KI",
+    "addressCheck": "Adressen-Check",
+    "formAssistant": "Formular-Assistent",
+    "documents": "Dokumente",
+    "faq": "FAQ",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz"
+  },
   "nav": {
-    "selectLanguage": "Sprache wählen"
+    "selectLanguage": "Sprache wählen",
+    "navigation": "Navigation",
+    "primaryMenu": "Hauptmenü",
+    "more": "Mehr",
+    "closeMenu": "Menü schließen"
   },
   "home": {
     "title": "Betriebsanlagen-Check für Gründer",

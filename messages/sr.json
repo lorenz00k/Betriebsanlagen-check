@@ -1,6 +1,21 @@
 {
+  "items": {
+    "bac": "Provera poslovnih objekata",
+    "approval": "Provera dozvola",
+    "gastroAi": "Gastro AI",
+    "addressCheck": "Provera adresa",
+    "formAssistant": "Asistent za formulare",
+    "documents": "Dokumenti",
+    "faq": "Česta pitanja",
+    "imprint": "Impresum",
+    "privacy": "Zaštita podataka"
+  },
   "nav": {
-    "selectLanguage": "Izaberite jezik"
+    "selectLanguage": "Izaberite jezik",
+    "navigation": "Navigacija",
+    "primaryMenu": "Glavni meni",
+    "more": "Više",
+    "closeMenu": "Zatvori meni"
   },
   "home": {
     "title": "Provera dozvola za poslovne objekte za osnivače",
@@ -293,7 +308,9 @@
     "twitter": {
       "title": "Provera dozvole: da li vam je potrebno odobrenje?",
       "description": "Odgovorite na nekoliko pitanja kako biste saznali da li je vašem poslovnom prostoru u Beču potrebna dozvola i koje korake potom preduzeti.",
-      "images": ["/og-image.png"]
+      "images": [
+        "/og-image.png"
+      ]
     },
     "faq": {
       "title": "Česta pitanja o dozvoli za poslovni objekat u Beču",

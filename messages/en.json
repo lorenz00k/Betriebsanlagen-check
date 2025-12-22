@@ -1,6 +1,21 @@
 {
+  "items": {
+    "bac": "Business Facilities Check",
+    "approval": "Permit Check",
+    "gastroAi": "Gastro AI",
+    "addressCheck": "Address Check",
+    "formAssistant": "Form Assistant",
+    "documents": "Documents",
+    "faq": "FAQ",
+    "imprint": "Legal Notice",
+    "privacy": "Privacy Policy"
+  },
   "nav": {
-    "selectLanguage": "Select language"
+    "selectLanguage": "Select language",
+    "navigation": "Navigation",
+    "primaryMenu": "Main menu",
+    "more": "More",
+    "closeMenu": "Close menu"
   },
   "home": {
     "title": "Business Facility Permit Check for Founders",

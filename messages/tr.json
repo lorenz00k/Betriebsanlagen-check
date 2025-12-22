@@ -1,6 +1,21 @@
 {
+  "items": {
+    "bac": "İşletme tesis kontrolü",
+    "approval": "Ruhsat kontrolü",
+    "gastroAi": "Gastro Yapay Zeka",
+    "addressCheck": "Adres kontrolü",
+    "formAssistant": "Form asistanı",
+    "documents": "Belgeler",
+    "faq": "SSS",
+    "imprint": "Künye",
+    "privacy": "Veri koruma"
+  },
   "nav": {
-    "selectLanguage": "Dil seçin"
+    "selectLanguage": "Dil seç",
+    "navigation": "Gezinme",
+    "primaryMenu": "Ana menü",
+    "more": "Daha fazla",
+    "closeMenu": "Menüyü kapat"
   },
   "home": {
     "title": "Girişimciler için İşletme İzni Kontrolü",
@@ -242,7 +257,9 @@
     "twitter": {
       "title": "İzin kontrolü: Onaya ihtiyacınız var mı?",
       "description": "Birkaç soruyu yanıtlayarak Viyana'daki işletme tesisinizin izne ihtiyaç duyup duymadığını öğrenin ve sonraki adımlar hakkında rehberlik alın.",
-      "images": ["/og-image.png"]
+      "images": [
+        "/og-image.png"
+      ]
     },
     "faq": {
       "title": "Viyana'da işletme tesisi izni hakkında SSS",

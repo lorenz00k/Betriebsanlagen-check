@@ -1,6 +1,21 @@
 {
+  "items": {
+    "bac": "Provjera poslovnih objekata",
+    "approval": "Provjera dozvola",
+    "gastroAi": "Gastro AI",
+    "addressCheck": "Provjera adresa",
+    "formAssistant": "Asistent za obrasce",
+    "documents": "Dokumenti",
+    "faq": "Česta pitanja",
+    "imprint": "Impresum",
+    "privacy": "Zaštita podataka"
+  },
   "nav": {
-    "selectLanguage": "Odaberite jezik"
+    "selectLanguage": "Odaberite jezik",
+    "navigation": "Navigacija",
+    "primaryMenu": "Glavni izbornik",
+    "more": "Više",
+    "closeMenu": "Zatvori izbornik"
   },
   "home": {
     "title": "Provjera dozvola za poslovne objekte za osnivače",
@@ -242,7 +257,9 @@
     "twitter": {
       "title": "Provjera dozvole: treba li vam odobrenje?",
       "description": "Odgovorite na nekoliko pitanja i saznajte treba li vašem poslovnom prostoru u Beču dozvola te koje korake zatim poduzeti.",
-      "images": ["/og-image.png"]
+      "images": [
+        "/og-image.png"
+      ]
     },
     "faq": {
       "title": "FAQ o dozvoli poslovnog objekta u Beču",

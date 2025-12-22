@@ -1,6 +1,21 @@
 {
+  "items": {
+    "bac": "Verifica delle strutture",
+    "approval": "Verifica delle autorizzazioni",
+    "gastroAi": "IA per la ristorazione",
+    "addressCheck": "Verifica indirizzi",
+    "formAssistant": "Assistente ai moduli",
+    "documents": "Documenti",
+    "faq": "FAQ",
+    "imprint": "Note legali",
+    "privacy": "Protezione dei dati"
+  },
   "nav": {
-    "selectLanguage": "Seleziona lingua"
+    "selectLanguage": "Seleziona lingua",
+    "navigation": "Navigazione",
+    "primaryMenu": "Menu principale",
+    "more": "Altro",
+    "closeMenu": "Chiudi menu"
   },
   "home": {
     "title": "Controllo Autorizzazione Impianto Aziendale per Fondatori",
@@ -293,7 +308,9 @@
     "twitter": {
       "title": "Verifica permessi: hai bisogno di un'autorizzazione?",
       "description": "Rispondi a poche domande per scoprire se la tua attività a Vienna necessita di un permesso e ricevi indicazioni sui prossimi passi.",
-      "images": ["/og-image.png"]
+      "images": [
+        "/og-image.png"
+      ]
     },
     "faq": {
       "title": "FAQ sull'autorizzazione degli impianti aziendali a Vienna",

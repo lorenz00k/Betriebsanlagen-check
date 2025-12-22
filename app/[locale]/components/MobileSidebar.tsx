@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from "next-intl";
 
 import LanguageSwitcher from '../../components/LanguageSwitcher'
 import { primaryLinks, secondaryLinks } from './nav.config'
@@ -26,6 +27,7 @@ const focusableSelectors = [
 ].join(',')
 
 export default function MobileSidebar({ locale, open, onClose }: MobileSidebarProps) {
+  const t = useTranslations("home");
   const drawerRef = useRef<HTMLDivElement | null>(null)
   const lastFocusedElement = useRef<HTMLElement | null>(null)
   const pathname = usePathname()
@@ -80,14 +82,14 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
       className={`mobileSidebar ${open ? 'is-open' : ''}`}
       role="dialog"
       aria-modal="true"
-      aria-label="Navigation"
+      aria-label={t("nav.navigation")}
       aria-hidden={!open}
       id="mobile-sidebar"
     >
       <button
         type="button"
         className="mobileSidebar__backdrop"
-        aria-label="Close menu"
+        aria-label={t("nav.closeMenu")}
         onClick={onClose}
         tabIndex={open ? 0 : -1}
       />
@@ -109,8 +111,8 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
                 style={{ borderRadius: 'var(--radius-sm)', boxShadow: 'var(--shadow-xs)' }}
               />
               <div>
-                <div className="mobileSidebar__brandTitle">Betriebsanlagen Check</div>
-                <div className="mobileSidebar__brandSub">Navigation</div>
+                <div className="mobileSidebar__brandTitle">{t('item.bac')}</div>
+                <div className="mobileSidebar__brandSub">{t("nav.navigation")}</div>
               </div>
             </Link>
 
@@ -125,7 +127,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
         </div>
 
         <div className="mobileSidebar__content">
-          <div className="mobileSidebar__sectionLabel">Hauptmenü</div>
+          <div className="mobileSidebar__sectionLabel">{t('nav.primaryMenu')}</div>
           <nav className="mobileSidebar__nav">
             {primary.map((link) => (
               <Link
@@ -146,7 +148,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
           <div className="mobileSidebar__divider" style={{ margin: '0 12px' }} />
 
           <div className="mobileSidebar__spacer" />
-          <div className="mobileSidebar__sectionLabel">Mehr</div>
+          <div className="mobileSidebar__sectionLabel">{t('nav.more')}</div>
 
           <nav className="mobileSidebar__nav">
             {secondary.map((link) => (
