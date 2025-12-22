@@ -1,8 +1,9 @@
-'use client'
+"use client";
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import LanguageSwitcher from '../../components/LanguageSwitcher'
 import { primaryLinks, secondaryLinks } from './nav.config'
@@ -27,6 +28,10 @@ const focusableSelectors = [
 export default function MobileSidebar({ locale, open, onClose }: MobileSidebarProps) {
   const drawerRef = useRef<HTMLDivElement | null>(null)
   const lastFocusedElement = useRef<HTMLElement | null>(null)
+  const pathname = usePathname()
+
+  const primary = useMemo(() => primaryLinks(locale), [locale])
+  const secondary = useMemo(() => secondaryLinks(locale), [locale])
 
   useEffect(() => {
     if (!open) return
@@ -37,8 +42,7 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
     const focusableItems = drawer
       ? Array.from(drawer.querySelectorAll<HTMLElement>(focusableSelectors))
       : []
-    const firstItem = focusableItems[0]
-    firstItem?.focus()
+    focusableItems[0]?.focus()
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -46,101 +50,124 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
         onClose()
         return
       }
-
-      if (event.key !== 'Tab' || focusableItems.length === 0) {
-        return
-      }
+      if (event.key !== 'Tab' || focusableItems.length === 0) return
 
       const first = focusableItems[0]
       const last = focusableItems[focusableItems.length - 1]
-      const activeElement = document.activeElement as HTMLElement | null
+      const active = document.activeElement as HTMLElement | null
 
-      if (!event.shiftKey && activeElement === last) {
+      if (!event.shiftKey && active === last) {
         event.preventDefault()
         first.focus()
-      } else if (event.shiftKey && activeElement === first) {
+      } else if (event.shiftKey && active === first) {
         event.preventDefault()
         last.focus()
       }
     }
 
     document.addEventListener('keydown', handleKeyDown)
-
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
       lastFocusedElement.current?.focus()
     }
   }, [open, onClose])
 
-  if (!open) return null
-
-  const primary = primaryLinks(locale)
-  const secondary = secondaryLinks(locale)
+  const isActive = (href: string) =>
+    pathname === href || (href !== `/${locale}` && pathname?.startsWith(href))
 
   return (
     <div
-      className="fixed inset-0 z-50 flex"
+      className={`mobileSidebar ${open ? 'isOpen' : ''}`}
       role="dialog"
       aria-modal="true"
       aria-label="Navigation"
+      aria-hidden={!open}
       id="mobile-sidebar"
-      onClick={onClose}
     >
-      <div className="flex-1 bg-black/30" />
+      <button
+        type="button"
+        className="mobileSidebar__backdrop"
+        aria-label="Close menu"
+        onClick={onClose}
+        tabIndex={open ? 0 : -1}
+      />
+
       <div
         ref={drawerRef}
-        className="ml-auto flex h-full w-80 max-w-[85vw] flex-col gap-4 bg-[color:var(--color-header-bg)] p-4 shadow-xl text-[color:var(--color-header-fg)]"
-        onClick={(event) => event.stopPropagation()}
+        className="mobileSidebar__drawer"
+        onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between gap-3">
-          <Link
-            href={`/${locale}`}
-            className="inline-flex items-center justify-center"
-            onClick={onClose}
-          >
-            <Image src="/icon.svg" alt="" width={32} height={32} className="h-8 w-8 rounded-lg shadow-sm" />
-            <span className="sr-only">Betriebsanlagen Check</span>
-          </Link>
-          <button
-            type="button"
-            onClick={onClose}
-            className="inline-flex items-center justify-center rounded-md p-2 text-[color:var(--color-header-fg-muted)] hover:bg-white/10 hover:text-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
-            aria-label="Menü schließen"
-          >
-            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6L6 18" />
-            </svg>
-          </button>
+        <div className="mobileSidebar__header">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+            <Link href={`/${locale}`} className="mobileSidebar__brand" onClick={onClose} tabIndex={open ? 0 : -1}>
+              <Image
+                src="/icon.svg"
+                alt=""
+                width={32}
+                height={32}
+                className="h-9 w-9"
+                style={{ borderRadius: 'var(--radius-sm)', boxShadow: 'var(--shadow-xs)' }}
+              />
+              <div>
+                <div className="mobileSidebar__brandTitle">Betriebsanlagen Check</div>
+                <div className="mobileSidebar__brandSub">Navigation</div>
+              </div>
+            </Link>
+
+            <button type="button" onClick={onClose} className="mobileSidebar__close" aria-label="Menü schließen" tabIndex={open ? 0 : -1}>
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </button>
+          </div>
+
+          <div className="mobileSidebar__divider" />
         </div>
 
-        <nav className="flex flex-col gap-2">
-          {primary.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={onClose}
-              className="rounded-md px-2 py-2 text-base font-medium text-current hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="mobileSidebar__content">
+          <div className="mobileSidebar__sectionLabel">Hauptmenü</div>
+          <nav className="navList">
+            {primary.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={onClose}
+                aria-current={isActive(link.href) ? 'page' : undefined}
+                className={`navItem ${isActive(link.href) ? 'isActive' : ''}`}
+                tabIndex={open ? 0 : -1}
+              >
+                <span>{link.label}</span>
+                <span className="navItem__hint">→</span>
+              </Link>
+            ))}
+          </nav>
 
-        <div className="mt-2 flex flex-col gap-1 text-sm text-[color:var(--color-header-fg-muted)]">
-          {secondary.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={onClose}
-              className="rounded-md px-2 py-1 hover:bg-white/10 hover:text-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
-            >
-              {link.label}
-            </Link>
-          ))}
+          <div className="mobileSidebar__spacer" />
+          <div className="mobileSidebar__divider" style={{ margin: '0 12px' }} />
+
+          <div className="mobileSidebar__spacer" />
+          <div className="mobileSidebar__sectionLabel">Mehr</div>
+
+          <div className="navList">
+            {secondary.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={onClose}
+                aria-current={isActive(link.href) ? 'page' : undefined}
+                className={`navItem navItemSecondary ${isActive(link.href) ? 'isActive' : ''}`}
+                tabIndex={open ? 0 : -1}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-auto pt-4">
-          <LanguageSwitcher direction="up" />
+        <div className="mobileSidebar__footer">
+          <div className="mobileSidebar__footerInner">
+            <LanguageSwitcher direction="up" />
+          </div>
         </div>
       </div>
     </div>
