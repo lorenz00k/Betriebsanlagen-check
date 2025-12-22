@@ -137,7 +137,7 @@ export default function Home() {
 */}
 
           {/* Why important & SELLING POINTS / STATS */}
-          <SellingPoints t={t} />
+          <SellingPoints />
 
           {/* CHECKER */}
           <section id="start-check" className="section section--full-bg">
