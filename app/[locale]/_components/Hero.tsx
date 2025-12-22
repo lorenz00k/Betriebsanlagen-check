@@ -1,3 +1,5 @@
+"use client";
+
 import BreakText from "@/components/ui/BreakText";
 import Link from "next/link";
 import React from "react";
@@ -8,11 +10,65 @@ type HeroProps = {
 };
 
 export default function Hero({ t, locale }: HeroProps) {
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+    const [useImageFallback, setUseImageFallback] = useState(false);
+
+    useEffect(() => {
+        const v = videoRef.current;
+        if (!v) return;
+
+        let settled = false;
+
+        const markFallback = () => {
+            if (!settled) {
+                settled = true;
+                setUseImageFallback(true);
+            }
+        };
+
+        const markPlaying = () => {
+            if (!settled) {
+                settled = true;
+                setUseImageFallback(false);
+            }
+        };
+
+        // If playback starts -> keep video
+        v.addEventListener("playing", markPlaying);
+        v.addEventListener("canplay", () => {
+            // try to play when we can
+            v.play().catch(markFallback);
+        });
+
+        // If something goes wrong -> fallback
+        v.addEventListener("error", markFallback);
+        v.addEventListener("stalled", markFallback);
+        v.addEventListener("abort", markFallback);
+
+        // Try immediately as well
+        v.play().catch(() => { /* will fallback by timer below */ });
+
+        // If it hasn't started after ~1s, assume mobile blocked it
+        const timer = window.setTimeout(() => {
+            if (v.paused || v.readyState < 3) markFallback();
+        }, 1200);
+
+        return () => {
+            window.clearTimeout(timer);
+            v.removeEventListener("playing", markPlaying);
+            v.removeEventListener("error", markFallback);
+            v.removeEventListener("stalled", markFallback);
+            v.removeEventListener("abort", markFallback);
+        };
+    }, []);
+
     return (
         <section className="section page-hero">
             <div className="page-hero__bg">
+                {/* Video (only visible if it actually plays) */}
                 <video
-                    className="page-hero__video"
+                    ref={videoRef}
+                    className={`page-hero__video ${useImageFallback ? "is-hidden" : ""}`}
                     autoPlay
                     loop
                     muted
@@ -21,12 +77,14 @@ export default function Hero({ t, locale }: HeroProps) {
                     poster="/images/betriebsboerse/verkaufer-bild.jpg"
                 >
                     <source src="/images/homepage/hero-video.mp4" type="video/mp4" />
-                    <img
-                        src="/images/betriebsboerse/verkaufer-bild.jpg"
-                        alt=""
-                        className="page-hero__fallback"
-                    />
                 </video>
+
+                {/* Image fallback (visible only when video fails) */}
+                <img
+                    className={`page-hero__poster ${useImageFallback ? "is-visible" : ""}`}
+                    src="/images/betriebsboerse/verkaufer-bild.jpg"
+                    alt=""
+                />
             </div>
 
             <div className="page-hero__content">
