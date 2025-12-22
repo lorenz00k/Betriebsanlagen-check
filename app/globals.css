@@ -44,10 +44,11 @@ a {
   transition: color var(--transition-fade);
 }
 
-a:hover,
-a:focus-visible {
-  color: var(--color-accent);
+.mobileSidebar a:hover,
+.mobileSidebar a:focus-visible {
+  color: inherit;
 }
+
 
 :focus-visible {
   outline: 3px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
@@ -1208,11 +1209,11 @@ form .form-row {
 .mobileSidebar__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.42);
-  backdrop-filter: blur(2px);
+  background: var(--color-header-bg);
   opacity: 0;
   transition: opacity var(--transition-fade);
 }
+
 
 .mobileSidebar.is-open .mobileSidebar__backdrop {
   opacity: 1;

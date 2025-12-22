@@ -126,21 +126,21 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
 
         <div className="mobileSidebar__content">
           <div className="mobileSidebar__sectionLabel">Hauptmenü</div>
-          <nav className="navList">
+          <nav className="mobileSidebar__nav">
             {primary.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={onClose}
                 aria-current={isActive(link.href) ? 'page' : undefined}
-                className={`navItem ${isActive(link.href) ? 'isActive' : ''}`}
+                className={`mobileSidebar__item ${isActive(link.href) ? 'is-active' : ''}`}
                 tabIndex={open ? 0 : -1}
               >
                 <span>{link.label}</span>
-                <span className="navItem__hint">→</span>
               </Link>
             ))}
           </nav>
+
 
           <div className="mobileSidebar__spacer" />
           <div className="mobileSidebar__divider" style={{ margin: '0 12px' }} />
@@ -148,20 +148,21 @@ export default function MobileSidebar({ locale, open, onClose }: MobileSidebarPr
           <div className="mobileSidebar__spacer" />
           <div className="mobileSidebar__sectionLabel">Mehr</div>
 
-          <div className="navList">
+          <nav className="mobileSidebar__nav">
             {secondary.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={onClose}
                 aria-current={isActive(link.href) ? 'page' : undefined}
-                className={`navItem navItemSecondary ${isActive(link.href) ? 'isActive' : ''}`}
+                className={`mobileSidebar__item mobileSidebar__item--secondary ${isActive(link.href) ? 'is-active' : ''}`}
                 tabIndex={open ? 0 : -1}
               >
                 {link.label}
               </Link>
             ))}
-          </div>
+          </nav>
+
         </div>
 
         <div className="mobileSidebar__footer">
