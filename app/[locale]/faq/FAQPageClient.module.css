@@ -1,6 +1,6 @@
 .page {
     min-height: 100vh;
-    padding: 48px 0;
+    padding: 64px 0;
     background: linear-gradient(135deg, #f9fafb 0%, #eff6ff 50%, #f3f4f6 100%);
 }
 
@@ -21,7 +21,7 @@
     line-height: 1.05;
     font-weight: 800;
     letter-spacing: -0.03em;
-    margin: 0 0 14px;
+    margin: 0 0 26px;
 
     /* Gradient text wie vorher */
     background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
