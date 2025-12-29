@@ -344,6 +344,20 @@
   "faq": {
     "title": "Preguntas frecuentes",
     "subtitle": "Todo lo importante sobre la autorización de instalaciones comerciales, el registro mercantil y la creación de empresas en Viena",
+    "groups": {
+      "genehmigung": {
+        "title": "Permiso y proceso",
+        "description": "Duración, inicio antes de la aprobación y autoridad competente."
+      },
+      "kosten": {
+        "title": "Costes y documentos",
+        "description": "Tasas, informes técnicos y documentación necesaria."
+      },
+      "recht": {
+        "title": "Aspectos legales y casos especiales",
+        "description": "Registro de empresa vs. permiso, exenciones, vecinos, idioma."
+      }
+    },
     "questions": {
       "q1": {
         "question": "¿Qué es una instalación comercial y necesito un permiso?",

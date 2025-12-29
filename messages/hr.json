@@ -344,6 +344,20 @@
   "faq": {
     "title": "Često postavljana pitanja",
     "subtitle": "Sve važno o dozvolama za poslovne objekte, prijavi obrta i pokretanju poduzeća u Beču",
+    "groups": {
+      "genehmigung": {
+        "title": "Dozvola i postupak",
+        "description": "Trajanje, početak prije odobrenja i nadležno tijelo."
+      },
+      "kosten": {
+        "title": "Troškovi i dokumenti",
+        "description": "Pristojbe, stručna mišljenja i potrebna dokumentacija."
+      },
+      "recht": {
+        "title": "Pravni aspekti i posebni slučajevi",
+        "description": "Registracija obrta nasuprot dozvoli, izuzeća, susjedi, jezik."
+      }
+    },
     "questions": {
       "q1": {
         "question": "Što je poslovni objekt i trebam li dozvolu?",

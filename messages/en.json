@@ -112,6 +112,20 @@
   "faq": {
     "title": "Frequently Asked Questions",
     "subtitle": "Everything important about business facility permits, trade registration and starting a business in Vienna",
+    "groups": {
+      "genehmigung": {
+        "title": "Permit & Process",
+        "description": "Duration, starting before approval, and responsible authority."
+      },
+      "kosten": {
+        "title": "Costs & Documents",
+        "description": "Fees, expert reports, and required documents."
+      },
+      "recht": {
+        "title": "Legal Matters & Special Cases",
+        "description": "Business registration vs. permit, exemptions, neighbors, language."
+      }
+    },
     "questions": {
       "q1": {
         "question": "What is a business facility and do I need a permit?",

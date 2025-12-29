@@ -264,6 +264,20 @@
   "faq": {
     "title": "Domande Frequenti",
     "subtitle": "Tutto ciò che è importante sull'autorizzazione dell'impianto aziendale, la registrazione dell'attività e la fondazione d'impresa a Vienna",
+    "groups": {
+      "genehmigung": {
+        "title": "Autorizzazione e procedura",
+        "description": "Durata, avvio prima dell’autorizzazione e autorità competente."
+      },
+      "kosten": {
+        "title": "Costi e documenti",
+        "description": "Tasse, perizie tecniche e documentazione necessaria."
+      },
+      "recht": {
+        "title": "Aspetti legali e casi speciali",
+        "description": "Registrazione dell’attività vs autorizzazione, esenzioni, vicini, lingua."
+      }
+    },
     "questions": {
       "q1": {
         "question": "Cos'è un impianto aziendale e ho bisogno di un'autorizzazione?",

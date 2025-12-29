@@ -344,6 +344,20 @@
   "faq": {
     "title": "Sıkça Sorulan Sorular",
     "subtitle": "Viyana'da işletme tesisi izni, ticaret kaydı ve şirket kuruluşu hakkında bilmeniz gerekenler",
+    "groups": {
+      "genehmigung": {
+        "title": "İzin ve süreç",
+        "description": "Süre, onaydan önce başlama ve yetkili makam."
+      },
+      "kosten": {
+        "title": "Maliyetler ve belgeler",
+        "description": "Harçlar, uzman raporları ve gerekli belgeler."
+      },
+      "recht": {
+        "title": "Hukuki konular ve özel durumlar",
+        "description": "İşletme kaydı ve izin farkı, muafiyetler, komşular, dil."
+      }
+    },
     "questions": {
       "q1": {
         "question": "İşletme tesisi nedir ve izin almam gerekir mi?",
