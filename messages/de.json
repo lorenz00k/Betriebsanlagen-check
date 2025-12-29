@@ -591,6 +591,20 @@
   "faq": {
     "title": "Häufig gestellte Fragen",
     "subtitle": "Alles Wichtige rund um Betriebsanlagengenehmigung, Gewerbeanmeldung und Unternehmensgründung in Wien",
+    "groups": {
+      "genehmigung": {
+        "title": "Genehmigung & Ablauf",
+        "description": "Dauer, Start vor Genehmigung und zuständige Stelle."
+      },
+      "kosten": {
+        "title": "Kosten & Unterlagen",
+        "description": "Gebühren, Gutachten und welche Dokumente du brauchst."
+      },
+      "recht": {
+        "title": "Rechtliches & Sonderfälle",
+        "description": "Gewerbeanmeldung vs. Genehmigung, Freistellung, Nachbarn, Sprache."
+      }
+    },
     "questions": {
       "q1": {
         "question": "Was ist eine Betriebsanlage und brauche ich eine Genehmigung?",
