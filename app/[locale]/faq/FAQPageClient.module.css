@@ -18,12 +18,9 @@
 }
 
 .title {
-    line-height: 1.12;
-    font-size: clamp(34px, 4vw, 56px);
-    line-height: 1.05;
-    font-weight: 800;
+    line-height: 1.15;
     letter-spacing: -0.03em;
-    padding-bottom: 2px;
+    padding-bottom: 6px;
     margin: 0 0 26px;
 
     /* Gradient text wie vorher */
