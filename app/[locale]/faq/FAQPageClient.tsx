@@ -3,7 +3,8 @@
 import { useTranslations } from "next-intl"
 import { useMemo, useState } from "react"
 import Link from "next/link"
-import FAQStacked from "./FAQStacked" // neu
+import FAQStacked from "./FAQStacked"
+import styles from "./FAQPageClient.module.css"
 
 type Group = { id: string; questions: readonly string[] }
 
@@ -18,7 +19,6 @@ export default function FAQPageClient({ locale, groups }: FAQPageClientProps) {
 
   const toggleQuestion = (q: string) => setOpenQuestion(prev => (prev === q ? null : q))
 
-  // UI-Texte aus i18n ableiten (hier passiert das, nicht im Server)
   const uiGroups = useMemo(
     () =>
       groups.map(g => ({
@@ -29,7 +29,6 @@ export default function FAQPageClient({ locale, groups }: FAQPageClientProps) {
     [groups, t],
   )
 
-  // Für Schema brauchst du alle Fragen flach
   const allQuestions = useMemo(() => groups.flatMap(g => [...g.questions]), [groups])
 
   const faqSchema = useMemo(
@@ -58,25 +57,15 @@ export default function FAQPageClient({ locale, groups }: FAQPageClientProps) {
         dangerouslySetInnerHTML={{ __html: faqSchemaJson }}
       />
 
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 py-12">
-        <div className="max-w-4xl mx-auto px-4">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              {t("title")}
-            </h1>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">{t("subtitle")}</p>
-          </div>
+      <div className={styles.page}>
+        <div className={styles.container}>
+          <header className={styles.header}>
+            <h1 className={styles.title}>{t("title")}</h1>
+            <p className={styles.subtitle}>{t("subtitle")}</p>
+          </header>
 
-          {/* Stacked Themen-Cards + Accordion innen */}
-          <FAQStacked
-            groups={uiGroups}
-            openQuestion={openQuestion}
-            onToggle={toggleQuestion}
-            t={t}
-          />
+          <FAQStacked groups={uiGroups} openQuestion={openQuestion} onToggle={toggleQuestion} t={t} />
 
-          {/* CTA */}
           <div className="cta-panel mt-10">
             <h2 className="block">{t("cta.title")}</h2>
             <p className="block">{t("cta.description")}</p>

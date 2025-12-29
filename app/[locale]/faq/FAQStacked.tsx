@@ -2,7 +2,7 @@
 
 import React from "react"
 import FAQAccordion from "./FAQAccordion"
-import StackedArticles from "../_components/StackedCard/Q&A/StackedArticles"
+import FAQStackedArticles from "./FAQStackedArticles"
 
 type UIGroup = {
     id: string
@@ -23,7 +23,7 @@ export default function FAQStacked({
     t: (key: string) => string
 }) {
     return (
-        <StackedArticles
+        <FAQStackedArticles
             items={groups.map(g => ({
                 title: <h3 className="card__title">{g.title}</h3>,
                 body: (
