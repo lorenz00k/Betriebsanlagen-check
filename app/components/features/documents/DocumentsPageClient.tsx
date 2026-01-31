@@ -24,7 +24,7 @@ import {
 
 import DocumentCard from '@/app/components/Documents/DocumentCard'
 import { DOCUMENTS } from '@/config/documents'
-import BreakText from '@/components/ui/BreakText'
+import BreakText from '@/app/components/ui/BreakText'
 
 const STEP_IDS = ['step1', 'step2', 'step3', 'step4'] as const
 const STEP2_ITEMS = ['applicationForm', 'businessLicense', 'plans', 'technicalDescription', 'neighbors', 'tenancy'] as const

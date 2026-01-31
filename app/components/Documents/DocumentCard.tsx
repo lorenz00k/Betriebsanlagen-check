@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import type { Document } from '@/config/documents';
 import { Download, ExternalLink, FileText } from 'lucide-react';
-import BreakText from '@/components/ui/BreakText';
+import BreakText from '@/app/components/ui/BreakText';
 
 interface DocumentCardProps {
   document: Document;

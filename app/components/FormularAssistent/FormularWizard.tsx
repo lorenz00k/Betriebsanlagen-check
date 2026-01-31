@@ -11,7 +11,7 @@ import SchrittFlaechen from './schritte/SchrittFlaechen';
 import SchrittZusammenfassung from './schritte/SchrittZusammenfassung';
 import { generiereEinfachesPDF } from './PDFGenerator';
 import type { FormularDaten } from './types';
-import BreakText from '@/components/ui/BreakText';
+import BreakText from '@/app/components/ui/BreakText';
 
 const SCHRITTE = [
   { id: 'antragsteller', icon: '1' },

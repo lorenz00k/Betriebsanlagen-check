@@ -15,8 +15,8 @@ import {
 } from '@/app/lib/viennagis-api';
 import { analyzeEnvironment, type EnvironmentAnalysis } from '@/app/utils/poi-checker';
 import ViennaGISMap from './ViennaGISMap';
-import AutoGrid from '@/components/ui/AutoGrid';
-import BreakText from '@/components/ui/BreakText';
+import AutoGrid from '@/app/components/ui/AutoGrid';
+import BreakText from '@/app/components/ui/BreakText';
 
 export default function AddressChecker() {
   const t = useTranslations('addressChecker');

@@ -6,8 +6,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import LanguageSwitcher from './LanguageSwitcher'
-import MobileSidebar from '../[locale]/components/MobileSidebar'
-import { primaryLinks } from '../[locale]/components/nav.config'
+import MobileSidebar from '@/app/components/shared/MobileSidebar'
+import { primaryLinks } from '@/app/components/shared/nav.config'
 import { useTranslations } from 'next-intl'
 
 interface HeaderNavProps {

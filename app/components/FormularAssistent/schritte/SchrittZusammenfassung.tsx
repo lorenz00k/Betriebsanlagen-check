@@ -2,8 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { CheckCircle, Edit, User, MapPin, FileText, Ruler, AlertTriangle } from 'lucide-react';
-import AutoGrid from '@/components/ui/AutoGrid';
-import BreakText from '@/components/ui/BreakText';
+import AutoGrid from '@/app/components/ui/AutoGrid';
+import BreakText from '@/app/components/ui/BreakText';
 import type { FormularDaten } from '../types';
 
 interface SchrittZusammenfassungProps {

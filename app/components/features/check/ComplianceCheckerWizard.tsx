@@ -14,8 +14,8 @@ import {
     evaluateCompliance,
 } from "@/app/lib/complianceCheckerLogic"
 import { defaultLocale } from "@/i18n"
-import { InfoBox } from "../../_components/info-box"
-import { helpTexts } from "../../_data/help-texts"
+import { InfoBox } from "@/app/components/home/info-box"
+import { helpTexts } from "@/app/data/help-texts"
 
 export type StepId = "basics" | "location" | "operations" | "context"
 const steps: StepId[] = ["basics", "location", "operations", "context"]

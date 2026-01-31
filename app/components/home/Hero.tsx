@@ -1,6 +1,6 @@
 "use client";
 
-import BreakText from "@/components/ui/BreakText";
+import BreakText from "@/app/components/ui/BreakText";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";

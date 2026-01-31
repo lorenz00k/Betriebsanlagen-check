@@ -7,16 +7,16 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { defaultLocale } from "@/i18n";
 import { Zap, Languages, Shield, ArrowRight, Sparkles } from "lucide-react";
-import BreakText from "@/components/ui/BreakText";
-import AutoGrid from "@/components/ui/AutoGrid";
-import FlowSteps from "./components/FlowSteps";
-import StackedCard from "./_components/StackedCard/Process/StackedCard";
-import StackedArticles from "./_components/StackedCard/Q&A/StackedArticles";
-import CheckerEmbed from "./_components/CheckerEmbed";
-import Hero from "./_components/Hero";
-import SellingPoints from "./components/SellingPoints";
-import DocumentTeaser from "./components/DocumentTeaser";
-import SectionHeading from "./components/SectionHeading";
+import BreakText from "@/app/components/ui/BreakText";
+import AutoGrid from "@/app/components/ui/AutoGrid";
+import FlowSteps from "@/app/components/shared/FlowSteps";
+import StackedCard from "@/app/components/home/StackedCard/Process/StackedCard";
+import StackedArticles from "@/app/components/home/StackedCard/Q&A/StackedArticles";
+import CheckerEmbed from "@/app/components/home/CheckerEmbed";
+import Hero from "@/app/components/home/Hero";
+import SellingPoints from "@/app/components/shared/SellingPoints";
+import DocumentTeaser from "@/app/components/shared/DocumentTeaser";
+import SectionHeading from "@/app/components/shared/SectionHeading";
 
 // Displays the localized homepage with locale-aware navigation targets.
 export default function Home() {

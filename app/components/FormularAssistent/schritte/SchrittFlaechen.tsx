@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Ruler, Zap } from 'lucide-react';
-import BreakText from '@/components/ui/BreakText';
+import BreakText from '@/app/components/ui/BreakText';
 import type { FormularDaten } from '../types';
 
 interface SchrittFlaechenProps {

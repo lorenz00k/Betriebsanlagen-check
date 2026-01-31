@@ -4,7 +4,7 @@ import React from "react"
 import { useParams, useRouter } from "next/navigation"
 
 import type { ComplianceInput } from "@/app/lib/complianceCheckerLogic"
-import ComplianceCheckerWizard from "@/app/[locale]/check/_components/ComplianceCheckerWizard"
+import ComplianceCheckerWizard from "@/app/components/features/check/ComplianceCheckerWizard"
 import { defaultLocale } from "@/i18n"
 
 const STORAGE_INPUT = "complianceInput"

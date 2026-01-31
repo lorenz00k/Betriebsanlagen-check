@@ -5,7 +5,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { locales, type Locale } from '@/i18n'
-import ResultPageClient from './ResultPageClient'
+import ResultPageClient from '@/app/components/features/check/ResultPageClient'
 
 import {
   ROUTE_FALLBACK_METADATA,

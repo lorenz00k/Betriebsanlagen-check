@@ -2,8 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { FileText, Factory, RefreshCw } from 'lucide-react';
-import AutoGrid from '@/components/ui/AutoGrid';
-import BreakText from '@/components/ui/BreakText';
+import AutoGrid from '@/app/components/ui/AutoGrid';
+import BreakText from '@/app/components/ui/BreakText';
 import type { FormularDaten } from '../types';
 
 interface SchrittAntragstyppProps {

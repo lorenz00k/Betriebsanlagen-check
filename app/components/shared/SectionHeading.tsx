@@ -1,5 +1,5 @@
 import React from "react";
-import BreakText from "@/components/ui/BreakText";
+import BreakText from "@/app/components/ui/BreakText";
 
 type SectionHeadingProps = {
     title: string;
