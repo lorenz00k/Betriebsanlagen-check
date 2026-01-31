@@ -1,7 +1,7 @@
 /**
  * API Route: /api/rag/embed
  *
- * Processes PDFs from /documents/raw-pdfs/ and uploads them to Pinecone
+ * Processes PDFs from /public/pdfs/sources/ and uploads them to Pinecone
  *
  * POST /api/rag/embed
  * {
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
 
     // STEP 2: Process PDFs
     console.log('📄 Processing PDFs...');
-    const documentsPath = path.join(process.cwd(), 'documents', 'raw-pdfs');
+    const documentsPath = path.join(process.cwd(), 'public', 'pdfs', 'sources');
     const { chunks, metadata } = await processAllPDFs(documentsPath);
 
     if (chunks.length === 0) {
@@ -183,7 +183,7 @@ export async function GET() {
       action: 'process_all'
     },
     requirements: [
-      'PDFs must be in /documents/raw-pdfs/',
+      'PDFs must be in /public/pdfs/sources/',
       'OPENAI_API_KEY must be set',
       'PINECONE_API_KEY must be set',
       'PINECONE_INDEX_NAME must be set'

@@ -57,7 +57,7 @@ export function AIAnalysisResult({
   const openPdfViewer = (source: Source) => {
     // Extract filename from source.title and construct PDF URL
     const filename = source.title
-    const pdfUrl = `/documents/raw-pdfs/${filename}`
+    const pdfUrl = `/pdfs/sources/${filename}`
 
     setSelectedPdf({
       url: pdfUrl,
