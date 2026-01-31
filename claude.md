@@ -1,8 +1,8 @@
 # Betriebsanlagen-Check Wien - AI Context
 
-Mehrsprachige Web-App für Betriebsanlagengenehmigungen in Wien.
+Mehrsprachige Web-App zur Unterstützung bei Betriebsanlagengenehmigungen in Wien.
 
-## Architektur
+## Tech Stack
 
 ```
 Next.js 15 (App Router) + TypeScript + Tailwind CSS 4
@@ -14,43 +14,68 @@ Next.js 15 (App Router) + TypeScript + Tailwind CSS 4
 └── next-intl (i18n: de, en, sr, hr, tr, it, es, uk)
 ```
 
-## Wichtige Verzeichnisse
+## Projektstruktur
 
-| Pfad | Zweck |
-|------|-------|
-| `app/[locale]/` | Lokalisierte Seiten |
-| `app/api/rag/` | RAG-System API |
-| `app/lib/ai/` | AI-Integration (anthropic.ts, openai.ts, rag.ts) |
-| `app/lib/vectordb/` | Pinecone Client |
-| `app/lib/cache/` | Vercel KV Cache |
-| `app/config/` | Dokument-Konfiguration |
-| `app/components/` | React Components |
-| `messages/` | i18n JSON-Dateien |
-| `prisma/schema.prisma` | Datenbank-Schema |
+```
+app/
+├── [locale]/                    # Seiten (nur page.tsx, layout.tsx)
+│   ├── page.tsx                 # Homepage
+│   ├── gastro-ki/               # AI-Assistent
+│   ├── check/                   # Compliance Checker
+│   │   └── result/
+│   ├── documents/               # Dokument-Downloads
+│   ├── formular-assistent/      # Formular-Wizard
+│   ├── adressen-check/          # Adress-Validierung
+│   ├── faq/
+│   ├── datenschutz/
+│   └── impressum/
+│
+├── api/                         # API Routes
+│   ├── rag/chat/                # RAG Chat Endpoint
+│   ├── rag/embed/               # PDF Embedding
+│   └── documents/download/      # Dokument-Download
+│
+├── components/                  # ALLE Components
+│   ├── layout/                  # Header, Footer, Nav
+│   ├── ui/                      # Basis-UI (AutoGrid, BreakText)
+│   ├── shared/                  # Wiederverwendbar (Hero, SellingPoints, etc.)
+│   ├── home/                    # Homepage-spezifisch (CheckerEmbed, etc.)
+│   ├── features/                # Feature-spezifisch
+│   │   ├── check/               # ComplianceCheckerWizard, ResultPageClient
+│   │   ├── documents/           # DocumentsPageClient
+│   │   └── faq/                 # FAQPageClient
+│   ├── gastro-ki/               # AI Wizard Components
+│   ├── FormularAssistent/       # Formular-Schritte
+│   └── Documents/               # DocumentCard
+│
+├── lib/                         # Server/Business Logic
+│   ├── ai/                      # anthropic.ts, openai.ts, rag.ts
+│   ├── vectordb/                # pinecone.ts
+│   ├── cache/                   # rag-cache.ts
+│   ├── utils/                   # pdf-processor.ts, chunking.ts
+│   └── prisma.ts
+│
+└── data/                        # Statische Daten
+    └── help-texts.ts
 
-## Seiten
+config/                          # App-Konfiguration
+└── documents.ts                 # Dokument-Definitionen
 
-| Route | Funktion |
-|-------|----------|
-| `/[locale]` | Homepage |
-| `/[locale]/gastro-ki` | AI-Assistent (RAG Chat) |
-| `/[locale]/check` | Compliance Checker Wizard |
-| `/[locale]/formular-assistent` | Formular-Wizard |
-| `/[locale]/documents` | Dokument-Downloads |
-| `/[locale]/adressen-check` | Wien Adress-Validierung (GIS API) |
+public/
+└── pdfs/sources/                # RAG-Quellen-PDFs
+
+messages/                        # i18n (de.json, en.json, etc.)
+prisma/schema.prisma             # Datenbank-Schema
+```
 
 ## API Endpoints
 
 ### POST /api/rag/chat
-RAG-Chat mit Claude. Cached Responses in Vercel KV.
+RAG-Chat mit Claude. Cached in Vercel KV (1h TTL).
 
 ```typescript
 // Request
-{ query: string, userContext?: UserContext, filter?: Record<string, unknown> }
-
-// UserContext
-{ businessType?: string, businessSize?: string, location?: string,
-  numberOfEmployees?: number, outdoorSeating?: boolean }
+{ query: string, userContext?: UserContext }
 
 // Response
 { success: boolean, answer: string, sources: Source[], metadata: {...} }
@@ -60,77 +85,46 @@ RAG-Chat mit Claude. Cached Responses in Vercel KV.
 Dokument-Download mit Analytics-Tracking.
 
 ```typescript
-{ documentId: 'ansuchen' | 'betriebsbeschreibung' | 'ausfuellhilfe',
-  format: 'pdf', language: string }
+{ documentId: 'ansuchen' | 'betriebsbeschreibung' | 'ausfuellhilfe', format: 'pdf', language: string }
 ```
+
+### POST /api/rag/embed
+Verarbeitet PDFs aus `public/pdfs/sources/` und lädt sie in Pinecone.
 
 ## Datenbank (Prisma)
 
-```prisma
-model FormSession {
-  id, sessionToken, formType, language, status, currentStep, totalSteps
-  formData: FormData[], documents: GeneratedDocument[]
-}
-
-model FormData {
-  id, sessionId, fieldName, fieldValue, section, stepNumber
-}
-
-model GeneratedDocument {
-  id, sessionId, documentType, fileUrl, fileSize, downloadCount, expiresAt
-}
-
-model DocumentDownload {
-  id, documentId, format, language, userAgent, ipAddress (anonymized)
-}
-```
+| Model | Zweck |
+|-------|-------|
+| `FormSession` | Formular-Sessions |
+| `FormData` | Eingabe-Felder pro Session |
+| `GeneratedDocument` | Generierte PDFs |
+| `DocumentDownload` | Analytics-Tracking |
 
 ## RAG-System
 
-Flow: Query → OpenAI Embedding → Pinecone Search → Claude Response
+**Flow:** Query → OpenAI Embedding → Pinecone Search → Claude Response
 
-**Konfiguration** (`app/lib/ai/rag.ts`):
-- topK: 8 Dokumente
-- minScore: 0.15 (Similarity Threshold)
-- Fallback: Top 5 bei keinem Match
+**Config** (`app/lib/ai/rag.ts`): topK=8, minScore=0.15
 
-**Hierarchisches Chunking**: Parent-Context wird bei Bedarf hinzugefügt.
-
-**Cache**: Responses werden 1h in Vercel KV gecached.
-
-## Dokumente
-
-Definiert in `app/config/documents.ts`:
-- `ansuchen` - Haupt-Antragsformular (required)
-- `betriebsbeschreibung` - Technische Details, 4-fach (required)
-- `ausfuellhilfe` - Anleitung (guide)
-
-Alle mit 8-Sprachen-Übersetzungen.
-
-## i18n
-
-- Config: `i18n.ts` (locales, defaultLocale)
-- Middleware: `middleware.ts` (Routing)
-- Messages: `messages/{locale}.json`
-- Hook: `useTranslations()` von next-intl
+**PDF-Quellen:** `public/pdfs/sources/` (öffentlich zugänglich für PDF-Viewer)
 
 ## Coding-Konventionen
 
-- **Components**: Funktionale Components mit TypeScript
-- **Styling**: Tailwind CSS, keine CSS-Module
-- **API**: Next.js Route Handlers (app/api/)
-- **DB**: Prisma Client über `app/lib/prisma.ts` (Singleton)
-- **Imports**: `@/` Alias für Root
+- **Components:** Funktionale Components, TypeScript
+- **Styling:** Tailwind CSS
+- **Imports:** `@/` Alias für Root (z.B. `@/app/components/ui/`)
+- **API:** Next.js Route Handlers
+- **DB:** Prisma Client über `app/lib/prisma.ts`
 
-## Rechtliche Hinweise
+## i18n
 
-Diese App bietet **keine Rechtsberatung**. Disclaimers müssen auf relevanten Seiten angezeigt werden:
-- Keine Garantien für Genehmigungen
-- Nur technische Unterstützung beim Ausfüllen
-- Original-Formulare von der Behörde
+- Config: `i18n.ts`
+- Middleware: `middleware.ts`
+- Messages: `messages/{locale}.json`
+- Hook: `useTranslations()` von next-intl
 
-## DSGVO
+## Rechtliches
 
-- IP-Adressen werden anonymisiert (erste 3 Oktetten)
-- Sessions laufen nach 30 Tagen ab
-- Download-Links nach 7 Tagen
+- Keine Rechtsberatung - nur technische Unterstützung
+- Disclaimers auf relevanten Seiten
+- DSGVO: IP-Anonymisierung, Session-Ablauf nach 30 Tagen
