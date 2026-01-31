@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import type { Document } from '@/app/config/documents';
+import type { Document } from '@/config/documents';
 import { Download, ExternalLink, FileText } from 'lucide-react';
 import BreakText from '@/components/ui/BreakText';
 

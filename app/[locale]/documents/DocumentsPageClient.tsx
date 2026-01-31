@@ -23,7 +23,7 @@ import {
 } from 'lucide-react'
 
 import DocumentCard from '@/app/components/Documents/DocumentCard'
-import { DOCUMENTS } from '@/app/config/documents'
+import { DOCUMENTS } from '@/config/documents'
 import BreakText from '@/components/ui/BreakText'
 
 const STEP_IDS = ['step1', 'step2', 'step3', 'step4'] as const

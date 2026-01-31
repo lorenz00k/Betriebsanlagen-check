@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import { prisma } from '@/app/lib/prisma';
-import { DOCUMENTS } from '@/app/config/documents';
+import { DOCUMENTS } from '@/config/documents';
 
 export async function POST(request: NextRequest) {
   try {
