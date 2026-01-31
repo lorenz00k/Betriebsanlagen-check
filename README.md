@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Betriebsanlagen-Check Wien
 
-## Getting Started
+Mehrsprachige Web-Anwendung zur Unterstützung bei Betriebsanlagengenehmigungen in Wien. Die App bietet einen AI-gestützten Assistenten, Formular-Hilfen und Dokument-Downloads.
 
-First, run the development server:
+## Tech Stack
+
+- **Framework:** Next.js 15 (App Router, Turbopack)
+- **Language:** TypeScript 5
+- **Styling:** Tailwind CSS 4
+- **Database:** PostgreSQL (Vercel) + Prisma ORM
+- **AI:** Claude 3.5 Haiku (Anthropic) + OpenAI Embeddings
+- **Vector DB:** Pinecone
+- **Cache:** Vercel KV (Redis)
+- **i18n:** next-intl (8 Sprachen: de, en, sr, hr, tr, it, es, uk)
+- **Maps:** Leaflet + Vienna GIS API
+- **Hosting:** Vercel
+
+## Setup
+
+### 1. Dependencies installieren
+
+```bash
+npm install
+```
+
+### 2. Environment Variables
+
+Kopiere `.env.example` zu `.env.local` und fülle die Werte aus:
+
+```bash
+cp .env.example .env.local
+```
+
+Benötigte Variables:
+- `POSTGRES_URL`, `POSTGRES_PRISMA_URL`, `POSTGRES_URL_NON_POOLING` - Vercel Postgres
+- `ANTHROPIC_API_KEY` - Claude API
+- `OPENAI_API_KEY` - Embeddings
+- `PINECONE_API_KEY`, `PINECONE_INDEX_NAME` - Vector DB
+- `KV_REST_API_URL`, `KV_REST_API_TOKEN` - Vercel KV (optional)
+
+### 3. Datenbank Setup
+
+```bash
+npx prisma generate
+npx prisma db push
+```
+
+### 4. Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Öffne [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Script | Beschreibung |
+|--------|--------------|
+| `npm run dev` | Development mit Turbopack |
+| `npm run build` | Production Build |
+| `npm run start` | Production Server |
+| `npm run lint` | ESLint |
 
-## Learn More
+## Projektstruktur
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+├── [locale]/              # Lokalisierte Seiten (de, en, etc.)
+│   ├── page.tsx           # Homepage
+│   ├── gastro-ki/         # AI-Assistent für Gastro
+│   ├── check/             # Compliance Checker
+│   ├── formular-assistent/# Formular-Wizard
+│   ├── documents/         # Dokument-Downloads
+│   ├── adressen-check/    # Adress-Validierung
+│   ├── faq/               # FAQ
+│   ├── datenschutz/       # Datenschutz
+│   └── impressum/         # Impressum
+│
+├── api/                   # API Routes
+│   ├── rag/
+│   │   ├── chat/          # RAG Chat Endpoint
+│   │   ├── embed/         # PDF Embedding
+│   │   └── test/          # Test Endpoint
+│   └── documents/
+│       └── download/      # Dokument-Download
+│
+├── components/            # React Components
+├── lib/                   # Business Logic
+│   ├── ai/                # AI Integration (Claude, OpenAI, RAG)
+│   ├── vectordb/          # Pinecone
+│   ├── cache/             # Vercel KV Cache
+│   └── prisma.ts          # DB Client
+│
+├── config/                # Konfiguration
+│   └── documents.ts       # Dokument-Definitionen
+│
+└── i18n/                  # Internationalisierung
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+messages/                  # Übersetzungsdateien (JSON)
+prisma/                    # Datenbank-Schema
+public/                    # Statische Assets
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Datenbank-Modelle
 
-## Deploy on Vercel
+| Model | Beschreibung |
+|-------|--------------|
+| `FormSession` | Formular-Sessions mit Status |
+| `FormData` | Eingabe-Felder pro Session |
+| `GeneratedDocument` | Generierte PDFs |
+| `DocumentDownload` | Download-Tracking (Analytics) |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## API Endpoints
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### RAG Chat
+```
+POST /api/rag/chat
+Body: { query: string, userContext?: {...} }
+```
+
+### Dokument Download
+```
+POST /api/documents/download
+Body: { documentId: string, format: 'pdf', language: string }
+```
+
+## Deployment
+
+Das Projekt ist für Vercel optimiert. Bei Push auf `main` wird automatisch deployed.
+
+```bash
+vercel --prod
+```
+
+## Lizenz
+
+Privates Projekt.
