@@ -3,70 +3,102 @@
  *
  * RAG-powered Chat Interface
  * Accepts user questions and returns AI-generated answers with sources
- *
- * POST /api/rag/chat
- * {
- *   "query": "User's question",
- *   "userContext": {              // Optional
- *     "businessType": "restaurant",
- *     "businessSize": "80",
- *     "location": "1010 Wien"
- *   }
- * }
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { performRAGQuery } from '@/app/lib/ai/rag';
 import type { UserContext } from '@/app/lib/ai/anthropic';
 import { getCachedResponse, setCachedResponse } from '@/app/lib/cache/rag-cache';
+import { logger } from '@/app/lib/utils/logger';
+import { isRateLimited, getRateLimitInfo, getClientIdentifier } from '@/app/lib/middleware/rate-limit';
 
 export const runtime = 'nodejs';
-export const maxDuration = 60; // 60 seconds for RAG query
+export const maxDuration = 60;
 
-interface ChatRequest {
-  query: string;
-  userContext?: UserContext;
-  filter?: Record<string, unknown>;
-}
+// Rate limit config for chat endpoint
+const CHAT_RATE_LIMIT = {
+  windowMs: 60 * 1000,  // 1 minute
+  maxRequests: 20,      // 20 requests per minute
+};
+
+// Zod schemas for request validation
+const UserContextSchema = z.object({
+  businessType: z.string().optional(),
+  businessSize: z.string().optional(),
+  location: z.string().optional(),
+  numberOfEmployees: z.number().optional(),
+  outdoorSeating: z.boolean().optional(),
+}).optional();
+
+const ChatRequestSchema = z.object({
+  query: z.string()
+    .min(1, 'Query is required')
+    .max(1000, 'Query too long (max 1000 characters)'),
+  userContext: UserContextSchema,
+  filter: z.record(z.unknown()).optional(),
+});
+
+type ChatRequest = z.infer<typeof ChatRequestSchema>;
 
 /**
  * POST handler - Process RAG query
  */
 export async function POST(request: NextRequest) {
   const startTime = Date.now();
+  const endTimer = logger.time('rag-chat');
+
+  // Rate limiting check
+  const clientId = getClientIdentifier(request);
+  if (isRateLimited(clientId, CHAT_RATE_LIMIT)) {
+    const limitInfo = getRateLimitInfo(clientId, CHAT_RATE_LIMIT);
+    logger.warn('Rate limit exceeded', {
+      component: 'rag-chat',
+      action: 'rate-limited',
+      clientId: clientId.substring(0, 10) + '...'
+    });
+    return NextResponse.json({
+      success: false,
+      error: 'Too many requests. Please try again later.',
+      retryAfter: limitInfo.reset,
+      timestamp: new Date().toISOString()
+    }, {
+      status: 429,
+      headers: {
+        'Retry-After': String(limitInfo.reset),
+        'X-RateLimit-Remaining': String(limitInfo.remaining),
+        'X-RateLimit-Reset': String(limitInfo.reset)
+      }
+    });
+  }
 
   try {
-    const body: ChatRequest = await request.json();
-    const { query, userContext, filter } = body;
+    const body = await request.json();
 
-    // Validation
-    if (!query || typeof query !== 'string' || query.trim().length === 0) {
+    // Zod validation
+    const parseResult = ChatRequestSchema.safeParse(body);
+    if (!parseResult.success) {
+      const errorMessage = parseResult.error.errors[0]?.message ?? 'Invalid request';
+      logger.warn('RAG chat validation failed', {
+        component: 'rag-chat',
+        action: 'validation'
+      });
       return NextResponse.json({
         success: false,
-        error: 'Query is required and must be a non-empty string',
+        error: errorMessage,
         timestamp: new Date().toISOString()
       }, { status: 400 });
     }
 
-    if (query.length > 1000) {
-      return NextResponse.json({
-        success: false,
-        error: 'Query too long (max 1000 characters)',
-        timestamp: new Date().toISOString()
-      }, { status: 400 });
-    }
+    const { query, userContext, filter } = parseResult.data;
 
-    console.log('\n' + '='.repeat(70));
-    console.log('💬 RAG CHAT REQUEST');
-    console.log('='.repeat(70));
-    console.log(`📝 Query: ${query}`);
-    if (userContext) {
-      console.log(`👤 User Context:`, JSON.stringify(userContext, null, 2));
-    }
-    if (filter) {
-      console.log(`🔍 Filter:`, JSON.stringify(filter, null, 2));
-    }
-    console.log('='.repeat(70));
+    logger.debug('RAG chat request received', {
+      component: 'rag-chat',
+      action: 'request',
+      queryLength: query.length,
+      hasUserContext: !!userContext,
+      hasFilter: !!filter
+    });
 
     // Try to get cached response first
     const cacheContext = userContext ? {
@@ -81,15 +113,15 @@ export async function POST(request: NextRequest) {
 
     if (cachedResponse) {
       const duration = Date.now() - startTime;
+      endTimer();
 
-      console.log('\n' + '='.repeat(70));
-      console.log('⚡ CACHE HIT - Returning cached response');
-      console.log('='.repeat(70));
-      console.log(`⏱️  Duration: ${duration}ms (cached)`);
-      console.log(`📚 Sources: ${cachedResponse.sources.length}`);
-      console.log(`🤖 Model: ${cachedResponse.metadata.model}`);
-      console.log(`💾 Originally generated: ${cachedResponse.original_timestamp}`);
-      console.log('='.repeat(70) + '\n');
+      logger.debug('Cache hit - returning cached response', {
+        component: 'rag-chat',
+        action: 'cache-hit',
+        duration,
+        sourcesCount: cachedResponse.sources.length,
+        model: cachedResponse.metadata.model
+      });
 
       return NextResponse.json({
         success: true,
@@ -105,27 +137,32 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    console.log('❌ Cache miss - Performing RAG query...\n');
+    logger.debug('Cache miss - performing RAG query', {
+      component: 'rag-chat',
+      action: 'cache-miss'
+    });
 
     // Perform RAG query using existing orchestration
     const result = await performRAGQuery(query, userContext, filter);
 
     const duration = Date.now() - startTime;
-
-    console.log('\n' + '='.repeat(70));
-    console.log('✅ RAG CHAT RESPONSE');
-    console.log('='.repeat(70));
-    console.log(`⏱️  Duration: ${duration}ms`);
-    console.log(`📚 Sources found: ${result.sources.length}`);
-    console.log(`🤖 Model: ${result.metadata?.model ?? 'unknown'}`);
+    endTimer();
 
     // Safe access to usage data from metadata.usage
     const inputTokens = result.metadata?.usage?.input_tokens ?? 0;
     const outputTokens = result.metadata?.usage?.output_tokens ?? 0;
     const totalTokens = result.metadata?.usage?.total_tokens ?? 0;
 
-    console.log(`📊 Tokens: ${inputTokens} in / ${outputTokens} out / ${totalTokens} total`);
-    console.log('='.repeat(70) + '\n');
+    logger.info('RAG query completed', {
+      component: 'rag-chat',
+      action: 'response',
+      duration,
+      sourcesCount: result.sources.length,
+      model: result.metadata?.model ?? 'unknown',
+      tokensIn: inputTokens,
+      tokensOut: outputTokens,
+      tokensTotal: totalTokens
+    });
 
     // Store response in cache for future requests
     await setCachedResponse(
@@ -182,7 +219,13 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     const duration = Date.now() - startTime;
-    console.error('\n❌ RAG Chat failed:', error);
+    endTimer();
+
+    logger.error('RAG Chat failed', error, {
+      component: 'rag-chat',
+      action: 'error',
+      duration
+    });
 
     // Check for specific error types
     if (error instanceof Error) {
@@ -191,7 +234,6 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({
           success: false,
           error: 'Embedding generation failed',
-          details: error.message,
           timestamp: new Date().toISOString()
         }, { status: 503 });
       }
@@ -201,7 +243,6 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({
           success: false,
           error: 'Vector search failed',
-          details: error.message,
           timestamp: new Date().toISOString()
         }, { status: 503 });
       }
@@ -211,17 +252,15 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({
           success: false,
           error: 'AI response generation failed',
-          details: error.message,
           timestamp: new Date().toISOString()
         }, { status: 503 });
       }
     }
 
-    // Generic error
+    // Generic error - don't expose internal error details to client
     return NextResponse.json({
       success: false,
       error: 'RAG query failed',
-      details: error instanceof Error ? error.message : 'Unknown error',
       duration_ms: duration,
       timestamp: new Date().toISOString()
     }, { status: 500 });

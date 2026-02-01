@@ -1,13 +1,33 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import { prisma } from '@/app/lib/prisma';
 import { DOCUMENTS } from '@/config/documents';
+import { logger } from '@/app/lib/utils/logger';
+
+// Zod schema for request validation
+const DownloadRequestSchema = z.object({
+  documentId: z.string().min(1),
+  format: z.enum(['pdf']),
+  language: z.string().optional().default('de'),
+});
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { documentId, format, language } = body;
+
+    // Zod validation
+    const parseResult = DownloadRequestSchema.safeParse(body);
+    if (!parseResult.success) {
+      logger.warn('Document download validation failed', { component: 'download' });
+      return NextResponse.json(
+        { error: 'Invalid request parameters' },
+        { status: 400 }
+      );
+    }
+
+    const { documentId, format, language } = parseResult.data;
 
     // Validierung
     const document = DOCUMENTS.find(d => d.id === documentId);
@@ -19,7 +39,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!document.formats.includes(format as 'pdf')) {
+    // TODO: Document.formats type should match Zod schema formats
+    if (!document.formats.includes(format)) {
       return NextResponse.json(
         { error: 'Format not available' },
         { status: 400 }
@@ -38,10 +59,8 @@ export async function POST(request: NextRequest) {
     // Datei lesen
     const fileBuffer = await readFile(filePath);
 
-    // MIME-Type bestimmen
-    const mimeTypes = {
-      pdf: 'application/pdf',
-    };
+    // MIME-Type - format is already validated by Zod
+    const mimeType = 'application/pdf';
 
     // IP-Adresse anonymisieren (nur erste 3 Oktetten für DSGVO)
     const forwardedFor = request.headers.get('x-forwarded-for');
@@ -61,20 +80,23 @@ export async function POST(request: NextRequest) {
       });
     } catch (dbError) {
       // Wenn DB-Tracking fehlschlägt, trotzdem Download erlauben
-      console.warn('DB tracking failed, continuing with download:', dbError);
+      logger.warn('DB tracking failed, continuing with download', {
+        component: 'download',
+        documentId
+      });
     }
 
     // Datei zurückgeben (Buffer zu Uint8Array konvertieren für NextResponse)
     return new NextResponse(new Uint8Array(fileBuffer), {
       headers: {
-        'Content-Type': mimeTypes[format as keyof typeof mimeTypes],
+        'Content-Type': mimeType,
         'Content-Disposition': `attachment; filename="${documentId}.${format}"`,
         'Content-Length': fileBuffer.length.toString(),
         'Cache-Control': 'public, max-age=31536000, immutable'
       }
     });
   } catch (error) {
-    console.error('Download failed:', error);
+    logger.error('Download failed', error, { component: 'download' });
     return NextResponse.json(
       { error: 'Download failed' },
       { status: 500 }

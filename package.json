@@ -31,7 +31,8 @@
     "react-dom": "19.1.2",
     "react-leaflet": "^5.0.0",
     "react-pdf": "^10.2.0",
-    "styled-jsx": "^5.1.7"
+    "styled-jsx": "^5.1.7",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

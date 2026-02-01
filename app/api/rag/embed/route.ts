@@ -2,40 +2,56 @@
  * API Route: /api/rag/embed
  *
  * Processes PDFs from /public/pdfs/sources/ and uploads them to Pinecone
- *
- * POST /api/rag/embed
- * {
- *   "action": "process_all" | "clear_and_process" | "clear_only"
- * }
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import path from 'path';
 import { processAllPDFs } from '@/app/lib/utils/pdf-processor';
 import { generateEmbeddings } from '@/app/lib/ai/openai';
 import { upsertVectors, deleteAllVectors } from '@/app/lib/vectordb/pinecone';
+import { logger } from '@/app/lib/utils/logger';
 
 export const runtime = 'nodejs';
-export const maxDuration = 300; // 5 minutes for PDF processing
+export const maxDuration = 300;
 
-interface EmbedRequest {
-  action?: 'process_all' | 'clear_and_process' | 'clear_only';
-}
+// Zod schema for request validation
+const EmbedRequestSchema = z.object({
+  action: z.enum(['process_all', 'clear_and_process', 'clear_only']).default('process_all'),
+});
+
+type EmbedRequest = z.infer<typeof EmbedRequestSchema>;
 
 export async function POST(request: NextRequest) {
   const startTime = Date.now();
+  const endTimer = logger.time('embed-process');
 
   try {
-    const body: EmbedRequest = await request.json();
-    const action = body.action || 'process_all';
+    const body = await request.json();
 
-    console.log(`🚀 Starting embed process with action: ${action}`);
+    // Zod validation
+    const parseResult = EmbedRequestSchema.safeParse(body);
+    if (!parseResult.success) {
+      logger.warn('Embed request validation failed', { component: 'embed' });
+      return NextResponse.json({
+        success: false,
+        error: 'Invalid action parameter',
+        timestamp: new Date().toISOString()
+      }, { status: 400 });
+    }
+
+    const { action } = parseResult.data;
+
+    logger.info('Starting embed process', {
+      component: 'embed',
+      action: action
+    });
 
     // STEP 1: Clear existing vectors if requested
     if (action === 'clear_only' || action === 'clear_and_process') {
-      console.log('🗑️  Clearing existing vectors from Pinecone...');
+      logger.info('Clearing existing vectors from Pinecone', { component: 'embed' });
       await deleteAllVectors();
-      console.log('✅ Vectors cleared');
+      logger.info('Vectors cleared', { component: 'embed' });
 
       if (action === 'clear_only') {
         return NextResponse.json({
@@ -47,11 +63,15 @@ export async function POST(request: NextRequest) {
     }
 
     // STEP 2: Process PDFs
-    console.log('📄 Processing PDFs...');
+    logger.info('Processing PDFs', { component: 'embed' });
     const documentsPath = path.join(process.cwd(), 'public', 'pdfs', 'sources');
     const { chunks, metadata } = await processAllPDFs(documentsPath);
 
     if (chunks.length === 0) {
+      logger.warn('No PDFs found or no text extracted', {
+        component: 'embed',
+        filesFound: metadata.totalFiles
+      });
       return NextResponse.json({
         success: false,
         message: 'No PDFs found or no text extracted',
@@ -62,29 +82,39 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    console.log(`✅ Created ${chunks.length} chunks from ${metadata.totalFiles} PDFs`);
+    logger.info('PDF processing complete', {
+      component: 'embed',
+      chunksCreated: chunks.length,
+      filesProcessed: metadata.totalFiles
+    });
 
     // STEP 3: Generate embeddings
-    console.log('🔢 Generating embeddings with OpenAI...');
+    logger.info('Generating embeddings with OpenAI', { component: 'embed' });
     const texts = chunks.map(chunk => chunk.text);
 
     let embeddings: number[][];
     try {
       embeddings = await generateEmbeddings(texts);
-      console.log(`✅ Generated ${embeddings.length} embeddings`);
+      logger.info('Embeddings generated', {
+        component: 'embed',
+        count: embeddings.length
+      });
     } catch (error) {
-      console.error('❌ Error generating embeddings:', error);
+      logger.error('Error generating embeddings', error, { component: 'embed' });
       return NextResponse.json({
         success: false,
         message: 'Failed to generate embeddings',
-        error: error instanceof Error ? error.message : 'Unknown error',
         metadata
       }, { status: 500 });
     }
 
     // Verify embeddings count matches chunks
     if (embeddings.length !== chunks.length) {
-      console.error(`❌ Embedding count mismatch: ${embeddings.length} vs ${chunks.length}`);
+      logger.error('Embedding count mismatch', null, {
+        component: 'embed',
+        embeddingsCount: embeddings.length,
+        chunksCount: chunks.length
+      });
       return NextResponse.json({
         success: false,
         message: 'Embedding count does not match chunk count',
@@ -93,7 +123,7 @@ export async function POST(request: NextRequest) {
     }
 
     // STEP 4: Prepare vectors for Pinecone
-    console.log('📦 Preparing vectors for Pinecone...');
+    logger.debug('Preparing vectors for Pinecone', { component: 'embed' });
     const dateAdded = new Date().toISOString();
     const vectors = chunks.map((chunk, index) => ({
       id: chunk.id,
@@ -109,16 +139,15 @@ export async function POST(request: NextRequest) {
     }));
 
     // STEP 5: Upload to Pinecone
-    console.log('⬆️  Uploading to Pinecone...');
+    logger.info('Uploading to Pinecone', { component: 'embed', vectorCount: vectors.length });
     try {
       await upsertVectors(vectors);
-      console.log('✅ Upload complete!');
+      logger.info('Upload complete', { component: 'embed' });
     } catch (error) {
-      console.error('❌ Error uploading to Pinecone:', error);
+      logger.error('Error uploading to Pinecone', error, { component: 'embed' });
       return NextResponse.json({
         success: false,
         message: 'Failed to upload vectors to Pinecone',
-        error: error instanceof Error ? error.message : 'Unknown error',
         metadata
       }, { status: 500 });
     }
@@ -128,6 +157,15 @@ export async function POST(request: NextRequest) {
     const embeddingCost = (totalTokens / 1_000_000) * 0.00002; // $0.00002 per 1K tokens
 
     const processingTime = Date.now() - startTime;
+    endTimer();
+
+    logger.info('Embed process completed successfully', {
+      component: 'embed',
+      duration: processingTime,
+      filesProcessed: metadata.totalFiles,
+      chunksCreated: chunks.length,
+      vectorsUploaded: vectors.length
+    });
 
     // Success response
     return NextResponse.json({
@@ -150,12 +188,12 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('❌ Embed process failed:', error);
+    endTimer();
+    logger.error('Embed process failed', error, { component: 'embed' });
 
     return NextResponse.json({
       success: false,
       message: 'Embed process failed',
-      error: error instanceof Error ? error.message : 'Unknown error',
       timestamp: new Date().toISOString()
     }, { status: 500 });
   }
