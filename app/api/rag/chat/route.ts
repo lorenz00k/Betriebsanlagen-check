@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
     // Zod validation
     const parseResult = ChatRequestSchema.safeParse(body);
     if (!parseResult.success) {
-      const errorMessage = parseResult.error.errors[0]?.message ?? 'Invalid request';
+      const errorMessage = parseResult.error.issues[0]?.message ?? 'Invalid request';
       logger.warn('RAG chat validation failed', {
         component: 'rag-chat',
         action: 'validation'
