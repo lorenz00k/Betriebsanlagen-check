@@ -3,6 +3,20 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./app/i18n/request.ts');
 
+// Content Security Policy
+// Adjust these based on your actual external resources
+const ContentSecurityPolicy = `
+  default-src 'self';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' blob: data: https:;
+  font-src 'self' data:;
+  connect-src 'self' https://api.anthropic.com https://api.openai.com https://*.pinecone.io https://*.vercel-storage.com;
+  frame-ancestors 'self';
+  base-uri 'self';
+  form-action 'self';
+`.replace(/\s{2,}/g, ' ').trim();
+
 const config: NextConfig = {
   // Security headers
   async headers() {
@@ -39,6 +53,10 @@ const config: NextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()',
           },
+          {
+            key: 'Content-Security-Policy',
+            value: ContentSecurityPolicy,
+          },
         ],
       },
       {
@@ -48,6 +66,18 @@ const config: NextConfig = {
           {
             key: 'Cache-Control',
             value: 'no-store, max-age=0',
+          },
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET, POST, OPTIONS',
+          },
+          {
+            key: 'Access-Control-Allow-Headers',
+            value: 'Content-Type, Authorization',
+          },
+          {
+            key: 'Access-Control-Max-Age',
+            value: '86400',
           },
         ],
       },

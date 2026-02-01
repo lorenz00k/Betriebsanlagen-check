@@ -5,6 +5,8 @@
  * TODO: Migrate to Vercel KV for distributed rate limiting
  */
 
+import { RATE_LIMITS } from '@/config/security';
+
 interface RateLimitEntry {
   count: number;
   resetTime: number;
@@ -13,15 +15,20 @@ interface RateLimitEntry {
 // In-memory store - cleared on server restart
 const rateLimitStore = new Map<string, RateLimitEntry>();
 
-interface RateLimitConfig {
+export interface RateLimitConfig {
   windowMs: number;      // Time window in milliseconds
   maxRequests: number;   // Max requests per window
 }
 
-const DEFAULT_CONFIG: RateLimitConfig = {
-  windowMs: 60 * 1000,   // 1 minute
-  maxRequests: 30,       // 30 requests per minute
-};
+// Export preset configs for easy use
+export const rateLimitPresets = {
+  api: RATE_LIMITS.api,
+  chat: RATE_LIMITS.chat,
+  downloads: RATE_LIMITS.downloads,
+  embed: RATE_LIMITS.embed,
+} as const;
+
+const DEFAULT_CONFIG: RateLimitConfig = RATE_LIMITS.api;
 
 /**
  * Check if request should be rate limited

@@ -13,16 +13,10 @@ import { getCachedResponse, setCachedResponse } from '@/app/lib/cache/rag-cache'
 import { logger } from '@/app/lib/utils/logger';
 import { sanitizeQuery } from '@/app/lib/utils/sanitize';
 import { success, apiError } from '@/app/lib/api/response';
-import { isRateLimited, getRateLimitInfo, getClientIdentifier } from '@/app/lib/middleware/rate-limit';
+import { isRateLimited, getRateLimitInfo, getClientIdentifier, rateLimitPresets } from '@/app/lib/middleware/rate-limit';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
-
-// Rate limit config for chat endpoint
-const CHAT_RATE_LIMIT = {
-  windowMs: 60 * 1000,  // 1 minute
-  maxRequests: 20,      // 20 requests per minute
-};
 
 // Zod schemas for request validation
 const UserContextSchema = z.object({
@@ -52,8 +46,8 @@ export async function POST(request: NextRequest) {
 
   // Rate limiting check
   const clientId = getClientIdentifier(request);
-  if (isRateLimited(clientId, CHAT_RATE_LIMIT)) {
-    const limitInfo = getRateLimitInfo(clientId, CHAT_RATE_LIMIT);
+  if (isRateLimited(clientId, rateLimitPresets.chat)) {
+    const limitInfo = getRateLimitInfo(clientId, rateLimitPresets.chat);
     logger.warn('Rate limit exceeded', {
       component: 'rag-chat',
       action: 'rate-limited',
