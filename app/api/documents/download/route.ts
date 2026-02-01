@@ -5,6 +5,7 @@ import path from 'path';
 import { prisma } from '@/app/lib/prisma';
 import { DOCUMENTS } from '@/config/documents';
 import { logger } from '@/app/lib/utils/logger';
+import { apiError } from '@/app/lib/api/response';
 
 // Zod schema for request validation
 const DownloadRequestSchema = z.object({
@@ -21,10 +22,7 @@ export async function POST(request: NextRequest) {
     const parseResult = DownloadRequestSchema.safeParse(body);
     if (!parseResult.success) {
       logger.warn('Document download validation failed', { component: 'download' });
-      return NextResponse.json(
-        { error: 'Invalid request parameters' },
-        { status: 400 }
-      );
+      return apiError.validation('Invalid request parameters');
     }
 
     const { documentId, format, language } = parseResult.data;
@@ -33,18 +31,12 @@ export async function POST(request: NextRequest) {
     const document = DOCUMENTS.find(d => d.id === documentId);
 
     if (!document) {
-      return NextResponse.json(
-        { error: 'Document not found' },
-        { status: 404 }
-      );
+      return apiError.notFound('Document not found');
     }
 
     // TODO: Document.formats type should match Zod schema formats
     if (!document.formats.includes(format)) {
-      return NextResponse.json(
-        { error: 'Format not available' },
-        { status: 400 }
-      );
+      return apiError.badRequest('Format not available');
     }
 
     // Datei-Pfad
@@ -97,10 +89,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     logger.error('Download failed', error, { component: 'download' });
-    return NextResponse.json(
-      { error: 'Download failed' },
-      { status: 500 }
-    );
+    return apiError.internal('Download failed');
   }
 }
 
@@ -112,10 +101,7 @@ export async function GET(request: NextRequest) {
   const language = searchParams.get('lang') || 'de';
 
   if (!documentId) {
-    return NextResponse.json(
-      { error: 'Document ID required' },
-      { status: 400 }
-    );
+    return apiError.badRequest('Document ID required');
   }
 
   // Redirect zu POST

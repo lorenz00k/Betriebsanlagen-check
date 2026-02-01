@@ -5,12 +5,14 @@
  * Accepts user questions and returns AI-generated answers with sources
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { z } from 'zod';
 import { performRAGQuery } from '@/app/lib/ai/rag';
 import type { UserContext } from '@/app/lib/ai/anthropic';
 import { getCachedResponse, setCachedResponse } from '@/app/lib/cache/rag-cache';
 import { logger } from '@/app/lib/utils/logger';
+import { sanitizeQuery } from '@/app/lib/utils/sanitize';
+import { success, apiError } from '@/app/lib/api/response';
 import { isRateLimited, getRateLimitInfo, getClientIdentifier } from '@/app/lib/middleware/rate-limit';
 
 export const runtime = 'nodejs';
@@ -57,19 +59,7 @@ export async function POST(request: NextRequest) {
       action: 'rate-limited',
       clientId: clientId.substring(0, 10) + '...'
     });
-    return NextResponse.json({
-      success: false,
-      error: 'Too many requests. Please try again later.',
-      retryAfter: limitInfo.reset,
-      timestamp: new Date().toISOString()
-    }, {
-      status: 429,
-      headers: {
-        'Retry-After': String(limitInfo.reset),
-        'X-RateLimit-Remaining': String(limitInfo.remaining),
-        'X-RateLimit-Reset': String(limitInfo.reset)
-      }
-    });
+    return apiError.rateLimited(limitInfo.reset);
   }
 
   try {
@@ -83,14 +73,12 @@ export async function POST(request: NextRequest) {
         component: 'rag-chat',
         action: 'validation'
       });
-      return NextResponse.json({
-        success: false,
-        error: errorMessage,
-        timestamp: new Date().toISOString()
-      }, { status: 400 });
+      return apiError.validation(errorMessage);
     }
 
-    const { query, userContext, filter } = parseResult.data;
+    const { userContext, filter } = parseResult.data;
+    // Sanitize query to prevent injection
+    const query = sanitizeQuery(parseResult.data.query);
 
     logger.debug('RAG chat request received', {
       component: 'rag-chat',
@@ -231,39 +219,22 @@ export async function POST(request: NextRequest) {
     if (error instanceof Error) {
       // OpenAI API error
       if (error.message.includes('OpenAI')) {
-        return NextResponse.json({
-          success: false,
-          error: 'Embedding generation failed',
-          timestamp: new Date().toISOString()
-        }, { status: 503 });
+        return apiError.serviceUnavailable('Embedding generation failed');
       }
 
       // Pinecone error
       if (error.message.includes('Pinecone')) {
-        return NextResponse.json({
-          success: false,
-          error: 'Vector search failed',
-          timestamp: new Date().toISOString()
-        }, { status: 503 });
+        return apiError.serviceUnavailable('Vector search failed');
       }
 
       // Anthropic error
       if (error.message.includes('Anthropic') || error.message.includes('Claude')) {
-        return NextResponse.json({
-          success: false,
-          error: 'AI response generation failed',
-          timestamp: new Date().toISOString()
-        }, { status: 503 });
+        return apiError.serviceUnavailable('AI response generation failed');
       }
     }
 
     // Generic error - don't expose internal error details to client
-    return NextResponse.json({
-      success: false,
-      error: 'RAG query failed',
-      duration_ms: duration,
-      timestamp: new Date().toISOString()
-    }, { status: 500 });
+    return apiError.internal('RAG query failed');
   }
 }
 
