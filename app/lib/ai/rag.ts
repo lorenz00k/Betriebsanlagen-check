@@ -10,6 +10,7 @@
 import { generateEmbedding } from './openai';
 import { queryVectors, queryByHierarchyPath } from '../vectordb/pinecone';
 import { generateRAGResponse, type UserContext, type SourceDocument } from './anthropic';
+import { logger } from '@/app/lib/utils/logger';
 
 /**
  * RAG Configuration
@@ -80,36 +81,45 @@ export async function performRAGQuery(
       };
     }
 
-    console.log('🔍 Starting RAG query:', userQuery.substring(0, 100));
-    console.log('🎯 Using minScore threshold:', RAG_CONFIG.minScore);
+    logger.debug('Starting RAG query', {
+      component: 'rag',
+      action: 'performRAGQuery',
+      queryPreview: userQuery.substring(0, 100),
+      minScore: RAG_CONFIG.minScore
+    });
 
     // STEP 1: Generate embedding for user query
-    console.log('📊 Generating query embedding...');
+    logger.debug('Generating query embedding', { component: 'rag', action: 'embedding' });
     const queryEmbedding = await generateEmbedding(userQuery);
 
     // STEP 2: Search Pinecone for relevant documents
-    console.log('🔎 Searching Pinecone for relevant documents...');
+    logger.debug('Searching Pinecone', { component: 'rag', action: 'vectorSearch', topK: RAG_CONFIG.topK });
     let searchResults = await queryVectors(
       queryEmbedding,
       RAG_CONFIG.topK,
       filter
     );
 
-    console.log(`✅ Found ${searchResults.length} documents`);
+    logger.debug('Pinecone search complete', { component: 'rag', action: 'vectorSearch', documentsFound: searchResults.length });
 
     // BACKUP QUERY: If Pinecone returns nothing at all, try a generic query
     if (searchResults.length === 0) {
-      console.log('⚠️  No documents found. Trying backup query with generic keywords...');
+      logger.warn('No documents found, trying backup query', { component: 'rag', action: 'backupQuery' });
       const backupQuery = 'Betriebsanlagengenehmigung Wien Gastronomie Restaurant Genehmigungsverfahren Unterlagen Antrag';
       const backupEmbedding = await generateEmbedding(backupQuery);
       searchResults = await queryVectors(backupEmbedding, RAG_CONFIG.topK, undefined);
-      console.log(`✅ Backup query found ${searchResults.length} documents`);
+      logger.debug('Backup query complete', { component: 'rag', action: 'backupQuery', documentsFound: searchResults.length });
     }
 
     // DEBUG: Log all document scores
-    console.log('📊 Document scores:');
-    searchResults.forEach((result, idx) => {
-      console.log(`   ${idx + 1}. Score: ${result.score?.toFixed(4)} | Source: ${result.metadata?.source || 'Unknown'} | Text: ${(result.metadata?.text as string || '').substring(0, 100)}...`);
+    logger.debug('Document scores', {
+      component: 'rag',
+      action: 'scoring',
+      scores: searchResults.map((result, idx) => ({
+        rank: idx + 1,
+        score: result.score?.toFixed(4),
+        source: result.metadata?.source || 'Unknown'
+      }))
     });
 
     // Filter by minimum score
@@ -117,14 +127,27 @@ export async function performRAGQuery(
       result => (result.score || 0) >= RAG_CONFIG.minScore
     );
 
-    console.log(`✅ ${relevantDocs.length} documents meet minimum score threshold (${RAG_CONFIG.minScore})`);
+    logger.debug('Documents filtered by threshold', {
+      component: 'rag',
+      action: 'filtering',
+      relevantCount: relevantDocs.length,
+      threshold: RAG_CONFIG.minScore
+    });
 
     // FALLBACK: If no docs meet threshold, use top N docs anyway
     // This ensures Claude always gets context to work with
     if (relevantDocs.length === 0 && searchResults.length > 0) {
-      console.log(`⚠️  No documents above threshold. Using top ${RAG_CONFIG.minDocsForFallback} as fallback.`);
+      logger.warn('No documents above threshold, using fallback', {
+        component: 'rag',
+        action: 'fallback',
+        fallbackCount: RAG_CONFIG.minDocsForFallback
+      });
       relevantDocs = searchResults.slice(0, RAG_CONFIG.minDocsForFallback);
-      console.log(`📊 Fallback document scores: ${relevantDocs.map(d => d.score?.toFixed(3)).join(', ')}`);
+      logger.debug('Fallback documents selected', {
+        component: 'rag',
+        action: 'fallback',
+        scores: relevantDocs.map(d => d.score?.toFixed(3)).join(', ')
+      });
     }
 
     // Only fail if we literally have no documents at all
@@ -145,7 +168,7 @@ export async function performRAGQuery(
     }
 
     // STEP 3: Enrich documents with parent context (hierarchical chunking)
-    console.log('🔗 Checking for hierarchical parent context...');
+    logger.debug('Checking for hierarchical parent context', { component: 'rag', action: 'hierarchy' });
 
     // Cache parent sections to avoid duplicate queries
     const parentContextCache = new Map<string, string>();
@@ -174,10 +197,19 @@ export async function performRAGQuery(
                 parentText = parentDocs[0].metadata?.text as string || '';
                 parentContextCache.set(parentSection, parentText);
 
-                console.log(`   📚 Found parent context: ${parentSection} (${parentText.length} chars)`);
+                logger.debug('Found parent context', {
+                  component: 'rag',
+                  action: 'hierarchy',
+                  parentSection,
+                  charCount: parentText.length
+                });
               }
             } catch (error) {
-              console.warn(`   ⚠️  Failed to fetch parent context for ${parentSection}:`, error);
+              logger.warn('Failed to fetch parent context', {
+                component: 'rag',
+                action: 'hierarchy',
+                parentSection
+              });
             }
           }
 
@@ -199,20 +231,25 @@ export async function performRAGQuery(
     );
 
     if (enrichedDocCount > 0) {
-      console.log(`✨ Enriched ${enrichedDocCount}/${sourceDocuments.length} documents with parent context`);
+      logger.debug('Documents enriched with parent context', {
+        component: 'rag',
+        action: 'hierarchy',
+        enrichedCount: enrichedDocCount,
+        totalCount: sourceDocuments.length
+      });
     } else {
-      console.log('ℹ️  No hierarchical documents found (or documents are top-level sections)');
+      logger.debug('No hierarchical documents found', { component: 'rag', action: 'hierarchy' });
     }
 
     // STEP 4: Generate response with Claude
-    console.log('🤖 Generating response with Claude...');
+    logger.debug('Generating response with Claude', { component: 'rag', action: 'claudeResponse' });
     const claudeResponse = await generateRAGResponse(
       userQuery,
       sourceDocuments,
       userContext
     );
 
-    console.log('✅ RAG query completed successfully');
+    logger.debug('RAG query completed successfully', { component: 'rag', action: 'complete' });
 
     // STEP 5: Format response
     const queryTime = Date.now() - startTime;
@@ -240,7 +277,7 @@ export async function performRAGQuery(
       }
     };
   } catch (error) {
-    console.error('❌ RAG query failed:', error);
+    logger.error('RAG query failed', error, { component: 'rag', action: 'performRAGQuery' });
 
     return {
       success: false,
@@ -269,7 +306,7 @@ export async function performBatchRAGQuery(
     filter?: Record<string, unknown>;
   }>
 ): Promise<RAGQueryResponse[]> {
-  console.log(`🔄 Processing ${queries.length} queries in batch...`);
+  logger.debug('Processing batch RAG queries', { component: 'rag', action: 'batchQuery', queryCount: queries.length });
 
   const results = await Promise.all(
     queries.map(({ query, context, filter }) =>
@@ -277,7 +314,7 @@ export async function performBatchRAGQuery(
     )
   );
 
-  console.log('✅ Batch query completed');
+  logger.debug('Batch query completed', { component: 'rag', action: 'batchQuery', resultCount: results.length });
 
   return results;
 }

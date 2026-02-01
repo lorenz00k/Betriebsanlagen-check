@@ -8,12 +8,13 @@ import { NextResponse } from 'next/server';
 import { testPineconeConnection } from '@/app/lib/vectordb/pinecone';
 import { testOpenAIConnection } from '@/app/lib/ai/openai';
 import { testAnthropicConnection } from '@/app/lib/ai/anthropic';
+import { logger } from '@/app/lib/utils/logger';
 
 export const runtime = 'nodejs';
 
 export async function GET() {
   try {
-    console.log('🧪 Testing RAG system connections...');
+    logger.debug('Testing RAG system connections', { component: 'rag-test', action: 'start' });
 
     // Test all services in parallel
     const [pineconeTest, openaiTest, anthropicTest] = await Promise.all([
@@ -41,7 +42,7 @@ export async function GET() {
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    console.error('❌ Test failed:', error);
+    logger.error('RAG test failed', error, { component: 'rag-test', action: 'GET' });
 
     return NextResponse.json(
       {

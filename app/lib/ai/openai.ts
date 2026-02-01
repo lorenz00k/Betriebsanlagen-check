@@ -6,6 +6,7 @@
  */
 
 import OpenAI from 'openai';
+import { logger } from '@/app/lib/utils/logger';
 
 // Singleton pattern für OpenAI Client
 let openaiClient: OpenAI | null = null;
@@ -66,7 +67,7 @@ export async function generateEmbedding(text: string): Promise<number[]> {
 
     return response.data[0].embedding;
   } catch (error) {
-    console.error('❌ Error generating embedding:', error);
+    logger.error('Error generating embedding', error, { component: 'openai', action: 'generateEmbedding' });
     throw error;
   }
 }
@@ -105,12 +106,17 @@ export async function generateEmbeddings(texts: string[]): Promise<number[][]> {
       const embeddings = response.data.map(item => item.embedding);
       allEmbeddings.push(...embeddings);
 
-      console.log(`✅ Generated embeddings for batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(validTexts.length / BATCH_SIZE)}`);
+      logger.debug('Generated embeddings batch', {
+        component: 'openai',
+        action: 'generateEmbeddings',
+        batch: Math.floor(i / BATCH_SIZE) + 1,
+        totalBatches: Math.ceil(validTexts.length / BATCH_SIZE)
+      });
     }
 
     return allEmbeddings;
   } catch (error) {
-    console.error('❌ Error generating embeddings:', error);
+    logger.error('Error generating embeddings', error, { component: 'openai', action: 'generateEmbeddings' });
     throw error;
   }
 }

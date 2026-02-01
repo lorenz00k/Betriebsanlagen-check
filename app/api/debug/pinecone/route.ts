@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { generateEmbedding } from '@/app/lib/ai/openai';
 import { queryVectors, getIndexStats, getPineconeIndex } from '@/app/lib/vectordb/pinecone';
+import { logger } from '@/app/lib/utils/logger';
 
 /**
  * Debug Route for Pinecone Vector Database
@@ -13,14 +14,14 @@ import { queryVectors, getIndexStats, getPineconeIndex } from '@/app/lib/vectord
  */
 export async function GET() {
   try {
-    console.log('🔍 Starting Pinecone debug...');
+    logger.debug('Starting Pinecone debug', { component: 'debug-pinecone', action: 'start' });
 
     // Get Pinecone index
     const indexName = process.env.PINECONE_INDEX_NAME || 'gastro-genehmigung';
     getPineconeIndex(); // Initialize index connection
 
     // 1. Get index stats
-    console.log('📊 Fetching index statistics...');
+    logger.debug('Fetching index statistics', { component: 'debug-pinecone', action: 'stats' });
     const stats = await getIndexStats();
 
     // 2. Test simple query
@@ -33,7 +34,7 @@ export async function GET() {
 
     const testResults = await Promise.all(
       testQueries.map(async (query) => {
-        console.log(`🔎 Testing query: "${query}"`);
+        logger.debug('Testing query', { component: 'debug-pinecone', action: 'testQuery', query });
 
         // Generate embedding
         const embedding = await generateEmbedding(query);
@@ -79,7 +80,7 @@ export async function GET() {
     }, { status: 200 });
 
   } catch (error) {
-    console.error('❌ Pinecone debug failed:', error);
+    logger.error('Pinecone debug failed', error, { component: 'debug-pinecone', action: 'GET' });
 
     return NextResponse.json({
       success: false,

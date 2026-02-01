@@ -5,6 +5,7 @@
  */
 
 import Anthropic from '@anthropic-ai/sdk';
+import { logger } from '@/app/lib/utils/logger';
 
 // Singleton pattern für Anthropic Client
 let anthropicClient: Anthropic | null = null;
@@ -119,7 +120,7 @@ export async function generateRAGResponse(
       }
     };
   } catch (error) {
-    console.error('❌ Error generating RAG response:', error);
+    logger.error('Error generating RAG response', error, { component: 'anthropic', action: 'generateRAGResponse' });
     throw error;
   }
 }

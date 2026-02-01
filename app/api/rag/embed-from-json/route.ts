@@ -16,6 +16,7 @@ import { splitTextIntoChunks, DEFAULT_CHUNK_CONFIG } from '@/app/lib/utils/chunk
 import { generateEmbeddings } from '@/app/lib/ai/openai';
 import { upsertVectors, deleteAllVectors } from '@/app/lib/vectordb/pinecone';
 import type { DocumentMetadata } from '@/app/lib/vectordb/pinecone';
+import { logger } from '@/app/lib/utils/logger';
 
 export const runtime = 'nodejs';
 export const maxDuration = 300; // 5 minutes for large uploads
@@ -65,7 +66,7 @@ async function processExtractedJSON(): Promise<{
     }>;
   };
 }> {
-  console.log('\n🚀 Starting JSON processing...\n');
+  logger.info('Starting JSON processing', { component: 'embed-from-json', action: 'start' });
 
   // Read extracted.json
   const jsonPath = path.join(process.cwd(), 'documents', 'processed', 'extracted.json');
@@ -74,9 +75,9 @@ async function processExtractedJSON(): Promise<{
   try {
     const fileContent = await readFile(jsonPath, 'utf-8');
     extractedData = JSON.parse(fileContent);
-    console.log(`✅ Loaded extracted.json with ${Object.keys(extractedData).length} documents\n`);
+    logger.info('Loaded extracted.json', { component: 'embed-from-json', action: 'load', documentCount: Object.keys(extractedData).length });
   } catch (error) {
-    console.error('❌ Failed to read extracted.json:', error);
+    logger.error('Failed to read extracted.json', error, { component: 'embed-from-json', action: 'load' });
     throw new Error(`Could not read extracted.json: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 
@@ -98,11 +99,11 @@ async function processExtractedJSON(): Promise<{
 
   // Process each document
   for (const [filename, data] of Object.entries(extractedData)) {
-    console.log(`📄 Processing: ${filename}`);
+    logger.debug('Processing document', { component: 'embed-from-json', action: 'process', filename });
 
     // Skip documents with errors or empty text
     if (data.error || !data.text || data.text.trim().length === 0) {
-      console.warn(`⚠️  Skipping ${filename}: ${data.error || 'No text found'}\n`);
+      logger.warn('Skipping document', { component: 'embed-from-json', action: 'skip', filename, reason: data.error || 'No text found' });
       documentsStats.push({
         filename,
         chunks: 0,
@@ -116,7 +117,7 @@ async function processExtractedJSON(): Promise<{
     try {
       // Split text into chunks
       const textChunks = splitTextIntoChunks(data.text, DEFAULT_CHUNK_CONFIG);
-      console.log(`   ✅ Created ${textChunks.length} chunks`);
+      logger.debug('Created chunks', { component: 'embed-from-json', action: 'chunk', filename, chunkCount: textChunks.length });
 
       // Detect document type
       const documentType = detectDocumentType(filename);
@@ -125,9 +126,9 @@ async function processExtractedJSON(): Promise<{
       const textsToEmbed = textChunks.map(chunk => chunk.text);
 
       // Generate embeddings (batched automatically by OpenAI client)
-      console.log(`   🔄 Generating embeddings...`);
+      logger.debug('Generating embeddings', { component: 'embed-from-json', action: 'embed', filename });
       const embeddings = await generateEmbeddings(textsToEmbed);
-      console.log(`   ✅ Generated ${embeddings.length} embeddings`);
+      logger.debug('Generated embeddings', { component: 'embed-from-json', action: 'embed', filename, embeddingCount: embeddings.length });
 
       // Create vectors with metadata
       const cleanFilename = filename.replace(/\.[^/.]+$/, '').toLowerCase();
@@ -171,10 +172,10 @@ async function processExtractedJSON(): Promise<{
         characters: docCharacters
       });
 
-      console.log(`   ✅ Prepared ${vectors.length} vectors for upload\n`);
+      logger.debug('Prepared vectors', { component: 'embed-from-json', action: 'vectors', filename, vectorCount: vectors.length });
 
     } catch (error) {
-      console.error(`   ❌ Failed to process ${filename}:`, error);
+      logger.error('Failed to process document', error, { component: 'embed-from-json', action: 'process', filename });
       documentsStats.push({
         filename,
         chunks: 0,
@@ -187,11 +188,11 @@ async function processExtractedJSON(): Promise<{
 
   // Upload all vectors to Pinecone
   if (allVectors.length > 0) {
-    console.log(`\n📤 Uploading ${allVectors.length} vectors to Pinecone...`);
+    logger.info('Uploading vectors to Pinecone', { component: 'embed-from-json', action: 'upload', vectorCount: allVectors.length });
     await upsertVectors(allVectors);
-    console.log(`✅ Upload complete!\n`);
+    logger.info('Upload complete', { component: 'embed-from-json', action: 'upload' });
   } else {
-    console.warn('⚠️  No vectors to upload\n');
+    logger.warn('No vectors to upload', { component: 'embed-from-json', action: 'upload' });
   }
 
   return {
@@ -214,15 +215,13 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const action = body.action || 'process_all';
 
-    console.log(`\n${'='.repeat(60)}`);
-    console.log(`📋 Action: ${action}`);
-    console.log('='.repeat(60));
+    logger.info('Embed-from-JSON action started', { component: 'embed-from-json', action });
 
     // Handle clear action
     if (action === 'clear_only' || action === 'clear_and_process') {
-      console.log('\n🗑️  Clearing Pinecone index...');
+      logger.info('Clearing Pinecone index', { component: 'embed-from-json', action: 'clear' });
       await deleteAllVectors();
-      console.log('✅ Index cleared\n');
+      logger.info('Index cleared', { component: 'embed-from-json', action: 'clear' });
 
       if (action === 'clear_only') {
         return NextResponse.json({
@@ -236,14 +235,14 @@ export async function POST(request: NextRequest) {
     // Process JSON
     const result = await processExtractedJSON();
 
-    console.log('\n' + '='.repeat(60));
-    console.log('✅ PROCESSING COMPLETE');
-    console.log('='.repeat(60));
-    console.log(`📊 Total documents: ${result.stats.totalDocuments}`);
-    console.log(`📊 Total chunks: ${result.stats.totalChunks}`);
-    console.log(`📊 Total characters: ${result.stats.totalCharacters.toLocaleString()}`);
-    console.log(`⚠️  Skipped documents: ${result.stats.skippedDocuments}`);
-    console.log('='.repeat(60) + '\n');
+    logger.info('Processing complete', {
+      component: 'embed-from-json',
+      action: 'complete',
+      totalDocuments: result.stats.totalDocuments,
+      totalChunks: result.stats.totalChunks,
+      totalCharacters: result.stats.totalCharacters,
+      skippedDocuments: result.stats.skippedDocuments
+    });
 
     return NextResponse.json({
       success: true,
@@ -253,7 +252,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('\n❌ Processing failed:', error);
+    logger.error('Processing failed', error, { component: 'embed-from-json', action: 'POST' });
 
     return NextResponse.json({
       success: false,

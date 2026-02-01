@@ -10,12 +10,13 @@ import { NextResponse } from 'next/server';
 import { getIndexStats } from '@/app/lib/vectordb/pinecone';
 import { readdir } from 'fs/promises';
 import path from 'path';
+import { logger } from '@/app/lib/utils/logger';
 
 export const runtime = 'nodejs';
 
 export async function GET() {
   try {
-    console.log('📊 Fetching Pinecone index stats...');
+    logger.debug('Fetching Pinecone index stats', { component: 'embed-status', action: 'start' });
 
     // Get Pinecone stats
     const stats = await getIndexStats();
@@ -27,7 +28,7 @@ export async function GET() {
       const files = await readdir(documentsPath);
       localPDFCount = files.filter(f => f.toLowerCase().endsWith('.pdf')).length;
     } catch {
-      console.warn('⚠️  Could not read local PDF files');
+      logger.warn('Could not read local PDF files', { component: 'embed-status', action: 'readPDFs' });
     }
 
     // Calculate status
@@ -59,7 +60,7 @@ export async function GET() {
     });
 
   } catch (error) {
-    console.error('❌ Status check failed:', error);
+    logger.error('Status check failed', error, { component: 'embed-status', action: 'GET' });
 
     return NextResponse.json({
       success: false,

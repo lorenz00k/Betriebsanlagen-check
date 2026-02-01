@@ -7,6 +7,7 @@
 
 import { kv } from '@vercel/kv';
 import crypto from 'crypto';
+import { logger } from '@/app/lib/utils/logger';
 
 export interface CachedRAGResponse {
   answer: string;
@@ -67,7 +68,7 @@ export async function getCachedResponse(
     const cached = await kv.get<CachedRAGResponse>(cacheKey);
 
     if (cached) {
-      console.log(`✅ Cache HIT for query: "${query.substring(0, 50)}..."`);
+      logger.debug('Cache HIT', { component: 'cache', action: 'get', queryPreview: query.substring(0, 50) });
       return {
         ...cached,
         cached: true,
@@ -75,10 +76,10 @@ export async function getCachedResponse(
       };
     }
 
-    console.log(`❌ Cache MISS for query: "${query.substring(0, 50)}..."`);
+    logger.debug('Cache MISS', { component: 'cache', action: 'get', queryPreview: query.substring(0, 50) });
     return null;
   } catch (error) {
-    console.error('Cache retrieval error:', error);
+    logger.error('Cache retrieval error', error, { component: 'cache', action: 'get' });
     // Don't fail the request if cache fails - just proceed without cache
     return null;
   }
@@ -105,9 +106,9 @@ export async function setCachedResponse(
     // Store with TTL (time-to-live)
     await kv.set(cacheKey, cacheValue, { ex: ttl });
 
-    console.log(`💾 Cached response for query: "${query.substring(0, 50)}..." (TTL: ${ttl}s)`);
+    logger.debug('Cached response', { component: 'cache', action: 'set', queryPreview: query.substring(0, 50), ttl });
   } catch (error) {
-    console.error('Cache storage error:', error);
+    logger.error('Cache storage error', error, { component: 'cache', action: 'set' });
     // Don't fail the request if cache fails
   }
 }
@@ -122,9 +123,9 @@ export async function invalidateCachedResponse(
   try {
     const cacheKey = generateCacheKey(query, context);
     await kv.del(cacheKey);
-    console.log(`🗑️  Invalidated cache for query: "${query.substring(0, 50)}..."`);
+    logger.debug('Invalidated cache', { component: 'cache', action: 'invalidate', queryPreview: query.substring(0, 50) });
   } catch (error) {
-    console.error('Cache invalidation error:', error);
+    logger.error('Cache invalidation error', error, { component: 'cache', action: 'invalidate' });
   }
 }
 
@@ -137,17 +138,17 @@ export async function clearAllRAGCache(): Promise<number> {
     const keys = await kv.keys('rag:query:*');
 
     if (keys.length === 0) {
-      console.log('📭 No cache entries to clear');
+      logger.debug('No cache entries to clear', { component: 'cache', action: 'clearAll' });
       return 0;
     }
 
     // Delete all matching keys
     await Promise.all(keys.map(key => kv.del(key)));
 
-    console.log(`🗑️  Cleared ${keys.length} cache entries`);
+    logger.debug('Cleared cache entries', { component: 'cache', action: 'clearAll', count: keys.length });
     return keys.length;
   } catch (error) {
-    console.error('Cache clear error:', error);
+    logger.error('Cache clear error', error, { component: 'cache', action: 'clearAll' });
     return 0;
   }
 }
@@ -167,7 +168,7 @@ export async function getCacheStats(): Promise<{
       sample_keys: keys.slice(0, 10) // Return first 10 keys as sample
     };
   } catch (error) {
-    console.error('Cache stats error:', error);
+    logger.error('Cache stats error', error, { component: 'cache', action: 'stats' });
     return {
       total_entries: 0,
       sample_keys: []
@@ -185,7 +186,7 @@ export async function isCacheAvailable(): Promise<boolean> {
     const health = await kv.get('cache:health');
     return health === 'ok';
   } catch (error) {
-    console.warn('Cache not available:', error);
+    logger.warn('Cache not available', { component: 'cache', action: 'healthCheck' });
     return false;
   }
 }

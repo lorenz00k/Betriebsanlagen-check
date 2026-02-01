@@ -8,6 +8,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { splitTextIntoChunks, DEFAULT_CHUNK_CONFIG } from './chunking';
 import { parseLegalDocument, getSectionPath, type LegalSection } from './legal-document-parser';
+import { logger } from '@/app/lib/utils/logger';
 
 export interface PDFChunk {
   id: string;
@@ -97,7 +98,7 @@ async function extractTextFromPDFWithPages(pdfPath: string): Promise<PagedText> 
       totalPages: data.numpages
     };
   } catch (error) {
-    console.error(`Error extracting text from ${pdfPath}:`, error);
+    logger.error('Error extracting text from PDF', error, { component: 'pdf-processor', action: 'extractText', path: pdfPath });
     throw error;
   }
 }
@@ -156,7 +157,7 @@ export async function processAllPDFs(
     try {
       await fs.access(documentsPath);
     } catch {
-      console.log(`Directory ${documentsPath} does not exist. Creating it...`);
+      logger.debug('Creating documents directory', { component: 'pdf-processor', action: 'createDir', path: documentsPath });
       await fs.mkdir(documentsPath, { recursive: true });
       return {
         chunks: [],
@@ -174,7 +175,7 @@ export async function processAllPDFs(
     const pdfFiles = files.filter(file => file.toLowerCase().endsWith('.pdf'));
 
     if (pdfFiles.length === 0) {
-      console.log(`No PDF files found in ${documentsPath}`);
+      logger.debug('No PDF files found', { component: 'pdf-processor', action: 'scan', path: documentsPath });
       return {
         chunks: [],
         metadata: {
@@ -186,7 +187,7 @@ export async function processAllPDFs(
       };
     }
 
-    console.log(`Found ${pdfFiles.length} PDF files`);
+    logger.debug('Found PDF files', { component: 'pdf-processor', action: 'scan', count: pdfFiles.length });
 
     const allChunks: PDFChunk[] = [];
     const fileMetadata: ProcessingMetadata['files'] = [];
@@ -195,14 +196,14 @@ export async function processAllPDFs(
     // Process each PDF file
     for (const filename of pdfFiles) {
       const filePath = path.join(documentsPath, filename);
-      console.log(`Processing: ${filename}...`);
+      logger.debug('Processing PDF', { component: 'pdf-processor', action: 'process', filename });
 
       try {
         // Extract text with page information
         const pagedText = await extractTextFromPDFWithPages(filePath);
 
         if (!pagedText.fullText || pagedText.fullText.trim().length === 0) {
-          console.log(`⚠️  No text extracted from ${filename}`);
+          logger.warn('No text extracted from PDF', { component: 'pdf-processor', action: 'extract', filename });
           continue;
         }
 
@@ -211,10 +212,15 @@ export async function processAllPDFs(
         try {
           legalStructure = parseLegalDocument(pagedText.fullText);
           if (legalStructure.sections.length > 0) {
-            console.log(`   📚 Found ${legalStructure.metadata.paragraphs} paragraphs in legal structure`);
+            logger.debug('Found legal structure', {
+              component: 'pdf-processor',
+              action: 'parseLegal',
+              filename,
+              paragraphs: legalStructure.metadata.paragraphs
+            });
           }
         } catch {
-          console.log(`   ℹ️  No legal structure found (not a legal document)`);
+          logger.debug('No legal structure found', { component: 'pdf-processor', action: 'parseLegal', filename });
           legalStructure = null;
         }
 
@@ -222,7 +228,7 @@ export async function processAllPDFs(
         const textChunks = splitTextIntoChunks(pagedText.fullText, DEFAULT_CHUNK_CONFIG);
 
         if (textChunks.length === 0) {
-          console.log(`⚠️  No chunks created from ${filename}`);
+          logger.warn('No chunks created from PDF', { component: 'pdf-processor', action: 'chunk', filename });
           continue;
         }
 
@@ -308,10 +314,17 @@ export async function processAllPDFs(
           characters: fileChars
         });
 
-        console.log(`✅ ${filename}: ${pagedText.totalPages} pages, ${textChunks.length} chunks, ${fileChars} characters`);
+        logger.debug('PDF processed successfully', {
+          component: 'pdf-processor',
+          action: 'complete',
+          filename,
+          pages: pagedText.totalPages,
+          chunks: textChunks.length,
+          characters: fileChars
+        });
 
       } catch (error) {
-        console.error(`❌ Error processing ${filename}:`, error);
+        logger.error('Error processing PDF', error, { component: 'pdf-processor', action: 'process', filename });
         // Continue with next file
       }
     }
@@ -323,15 +336,18 @@ export async function processAllPDFs(
       files: fileMetadata
     };
 
-    console.log(`\n📊 Processing complete:`);
-    console.log(`   Files: ${metadata.totalFiles}`);
-    console.log(`   Chunks: ${metadata.totalChunks}`);
-    console.log(`   Characters: ${metadata.totalCharacters}`);
+    logger.debug('PDF processing complete', {
+      component: 'pdf-processor',
+      action: 'summary',
+      totalFiles: metadata.totalFiles,
+      totalChunks: metadata.totalChunks,
+      totalCharacters: metadata.totalCharacters
+    });
 
     return { chunks: allChunks, metadata };
 
   } catch (error) {
-    console.error('Error in processAllPDFs:', error);
+    logger.error('Error in processAllPDFs', error, { component: 'pdf-processor', action: 'processAll' });
     throw error;
   }
 }
