@@ -6,6 +6,7 @@
  */
 
 import { Pinecone } from '@pinecone-database/pinecone';
+import { logger } from '@/app/lib/utils/logger';
 
 // Singleton pattern für Pinecone Client
 let pineconeClient: Pinecone | null = null;
@@ -98,7 +99,12 @@ export async function upsertVectors(
       }));
       await index.upsert(batch);
 
-      console.log(`✅ Upserted batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(vectors.length / BATCH_SIZE)}`);
+      logger.debug('Upserted batch', {
+        component: 'pinecone',
+        action: 'upsert',
+        batch: Math.floor(i / BATCH_SIZE) + 1,
+        totalBatches: Math.ceil(vectors.length / BATCH_SIZE)
+      });
     }
 
     return {
@@ -106,7 +112,7 @@ export async function upsertVectors(
       count: vectors.length
     };
   } catch (error) {
-    console.error('❌ Error upserting vectors:', error);
+    logger.error('Error upserting vectors', error, { component: 'pinecone', action: 'upsert' });
     throw error;
   }
 }
@@ -135,7 +141,7 @@ export async function queryVectors(
 
     return queryResponse.matches || [];
   } catch (error) {
-    console.error('❌ Error querying vectors:', error);
+    logger.error('Error querying vectors', error, { component: 'pinecone', action: 'query' });
     throw error;
   }
 }
@@ -177,7 +183,7 @@ export async function queryByHierarchyPath(
 
     return queryResponse.matches || [];
   } catch (error) {
-    console.error('❌ Error querying by hierarchy path:', error);
+    logger.error('Error querying by hierarchy path', error, { component: 'pinecone', action: 'queryHierarchy' });
     return [];
   }
 }
@@ -195,7 +201,7 @@ export async function deleteVectors(ids: string[]) {
       deleted: ids.length
     };
   } catch (error) {
-    console.error('❌ Error deleting vectors:', error);
+    logger.error('Error deleting vectors', error, { component: 'pinecone', action: 'delete' });
     throw error;
   }
 }
@@ -213,7 +219,7 @@ export async function deleteAllVectors() {
       message: 'All vectors deleted'
     };
   } catch (error) {
-    console.error('❌ Error deleting all vectors:', error);
+    logger.error('Error deleting all vectors', error, { component: 'pinecone', action: 'deleteAll' });
     throw error;
   }
 }
@@ -228,7 +234,7 @@ export async function getIndexStats() {
 
     return stats;
   } catch (error) {
-    console.error('❌ Error getting index stats:', error);
+    logger.error('Error getting index stats', error, { component: 'pinecone', action: 'stats' });
     throw error;
   }
 }

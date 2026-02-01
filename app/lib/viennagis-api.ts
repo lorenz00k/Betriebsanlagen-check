@@ -2,6 +2,7 @@
 // Nutzt die öffentlichen Open Government Data (OGD) APIs der Stadt Wien
 
 import proj4 from 'proj4';
+import { logger } from '@/app/lib/utils/logger';
 
 // Definiere Koordinatensysteme
 // EPSG:31256 - MGI Austria GK Central (M34) - Central meridian at 16.333°E for Vienna
@@ -69,22 +70,27 @@ export async function searchAddress(query: string): Promise<Address[]> {
     const encodedQuery = encodeURIComponent(query);
     const url = `https://data.wien.gv.at/daten/OGDAddressService.svc/GetAddressInfo?Address=${encodedQuery}`;
 
-    console.log('🔍 Adresssuche URL:', url);
-    console.log('🔤 Query:', query);
+    logger.debug('Address search request', {
+      component: 'viennagis',
+      action: 'searchAddress',
+      queryLength: query.length
+    });
 
     const response = await fetch(url);
 
-    console.log('📡 Response Status:', response.status, response.statusText);
-
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error('❌ API Error:', errorText);
+      logger.warn('Address search API error', {
+        component: 'viennagis',
+        action: 'searchAddress',
+        status: response.status
+      });
       throw new Error(`Adresssuche fehlgeschlagen: ${response.status}`);
     }
 
     const data = await response.json();
-    console.log('✅ API Response:', {
-      type: data.type,
+    logger.debug('Address search response', {
+      component: 'viennagis',
+      action: 'searchAddress',
       featuresCount: data.features?.length || 0
     });
 
@@ -113,7 +119,7 @@ export async function searchAddress(query: string): Promise<Address[]> {
       };
     });
   } catch (error) {
-    console.error('Fehler bei der Adresssuche:', error);
+    logger.error('Address search failed', error, { component: 'viennagis', action: 'searchAddress' });
     throw error;
   }
 }
@@ -160,7 +166,7 @@ export async function getNearbyPOIs(
     });
 
   } catch (error) {
-    console.error('Fehler beim Laden der POIs:', error);
+    logger.error('Failed to load POIs', error, { component: 'viennagis', action: 'getNearbyPOIs' });
   }
 
   return allPOIs;
@@ -183,13 +189,22 @@ async function fetchPOIType(
     const response = await fetch(url);
 
     if (!response.ok) {
-      console.warn(`Konnte ${dataset} nicht laden:`, response.status);
+      logger.debug('POI dataset not available', {
+        component: 'viennagis',
+        action: 'fetchPOIType',
+        dataset,
+        status: response.status
+      });
       return [];
     }
 
     const contentType = response.headers.get('content-type');
     if (contentType && contentType.includes('xml')) {
-      console.warn(`${dataset} gibt XML zurück - überspringe`);
+      logger.debug('POI dataset returned XML, skipping', {
+        component: 'viennagis',
+        action: 'fetchPOIType',
+        dataset
+      });
       return [];
     }
 
@@ -230,7 +245,11 @@ async function fetchPOIType(
 
     return pois;
   } catch (error) {
-    console.error(`Fehler beim Laden von ${type}:`, error);
+    logger.error('Failed to fetch POI type', error, {
+      component: 'viennagis',
+      action: 'fetchPOIType',
+      poiType: type
+    });
     return [];
   }
 }
@@ -271,12 +290,19 @@ export async function getZoningInfo(lng: number, lat: number): Promise<ZoningInf
 
     const url = `https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FLAECHENWIDMUNGOGD&outputFormat=application/json&srsName=EPSG:4326&bbox=${bbox}`;
 
-    console.log('🏘️ Abfrage Flächenwidmung:', { lng, lat, bbox });
+    logger.debug('Zoning info request', {
+      component: 'viennagis',
+      action: 'getZoningInfo'
+    });
 
     const response = await fetch(url);
 
     if (!response.ok) {
-      console.warn('Flächenwidmung konnte nicht geladen werden:', response.status);
+      logger.warn('Zoning info not available', {
+        component: 'viennagis',
+        action: 'getZoningInfo',
+        status: response.status
+      });
       return {
         widmung: 'Unbekannt',
         widmungCode: '',
@@ -311,7 +337,7 @@ export async function getZoningInfo(lng: number, lat: number): Promise<ZoningInf
       found: true
     };
   } catch (error) {
-    console.error('Fehler beim Abrufen der Flächenwidmung:', error);
+    logger.error('Failed to get zoning info', error, { component: 'viennagis', action: 'getZoningInfo' });
     return {
       widmung: 'Fehler',
       widmungCode: '',
@@ -333,12 +359,19 @@ export async function getBuildingPlanInfo(lng: number, lat: number): Promise<Bui
 
     const url = `https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:BEBAUUNGSPLANOGD&outputFormat=application/json&srsName=EPSG:4326&bbox=${bbox}`;
 
-    console.log('📐 Abfrage Bebauungsplan:', { lng, lat, bbox });
+    logger.debug('Building plan request', {
+      component: 'viennagis',
+      action: 'getBuildingPlanInfo'
+    });
 
     const response = await fetch(url);
 
     if (!response.ok) {
-      console.warn('Bebauungsplan konnte nicht geladen werden:', response.status);
+      logger.warn('Building plan not available', {
+        component: 'viennagis',
+        action: 'getBuildingPlanInfo',
+        status: response.status
+      });
       return {
         details: 'Der Bebauungsplan konnte nicht ermittelt werden.',
         found: false
@@ -366,7 +399,7 @@ export async function getBuildingPlanInfo(lng: number, lat: number): Promise<Bui
       found: true
     };
   } catch (error) {
-    console.error('Fehler beim Abrufen des Bebauungsplans:', error);
+    logger.error('Failed to get building plan', error, { component: 'viennagis', action: 'getBuildingPlanInfo' });
     return {
       details: 'Beim Abrufen des Bebauungsplans ist ein Fehler aufgetreten.',
       found: false
