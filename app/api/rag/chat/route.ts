@@ -5,7 +5,7 @@
  * Accepts user questions and returns AI-generated answers with sources
  */
 
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { performRAGQuery } from '@/app/lib/ai/rag';
 import { getCachedResponse, setCachedResponse } from '@/app/lib/cache/rag-cache';
