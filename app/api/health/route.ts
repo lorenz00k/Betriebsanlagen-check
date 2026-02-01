@@ -31,8 +31,6 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET(): Promise<NextResponse<HealthStatus>> {
-  const startTime = Date.now();
-
   // Check database connection
   const dbCheck = await checkDatabase();
 
@@ -74,7 +72,7 @@ async function checkDatabase(): Promise<CheckResult> {
       status: 'pass',
       duration_ms: Date.now() - startTime,
     };
-  } catch (error) {
+  } catch {
     return {
       status: 'fail',
       message: 'Database connection failed',

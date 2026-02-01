@@ -126,12 +126,12 @@ export function captureMessage(
 /**
  * Set user context for error tracking
  */
-export function setUser(userId: string, email?: string): void {
+export function setUser(_userId: string, _email?: string): void {
   // TODO: Uncomment when Sentry is installed
   /*
   Sentry.setUser({
-    id: userId,
-    email,
+    id: _userId,
+    email: _email,
   });
   */
 }
@@ -148,16 +148,16 @@ export function clearUser(): void {
  * Add breadcrumb for debugging
  */
 export function addBreadcrumb(
-  message: string,
-  category: string,
-  data?: Record<string, unknown>
+  _message: string,
+  _category: string,
+  _data?: Record<string, unknown>
 ): void {
   // TODO: Uncomment when Sentry is installed
   /*
   Sentry.addBreadcrumb({
-    message,
-    category,
-    data,
+    message: _message,
+    category: _category,
+    data: _data,
     level: 'info',
   });
   */

@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
           ipAddress: anonymizedIp
         }
       });
-    } catch (dbError) {
+    } catch {
       // Wenn DB-Tracking fehlschlägt, trotzdem Download erlauben
       logger.warn('DB tracking failed, continuing with download', {
         component: 'download',

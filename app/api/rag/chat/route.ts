@@ -8,11 +8,10 @@
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
 import { performRAGQuery } from '@/app/lib/ai/rag';
-import type { UserContext } from '@/app/lib/ai/anthropic';
 import { getCachedResponse, setCachedResponse } from '@/app/lib/cache/rag-cache';
 import { logger } from '@/app/lib/utils/logger';
 import { sanitizeQuery } from '@/app/lib/utils/sanitize';
-import { success, apiError } from '@/app/lib/api/response';
+import { apiError } from '@/app/lib/api/response';
 import { isRateLimited, getRateLimitInfo, getClientIdentifier, rateLimitPresets } from '@/app/lib/middleware/rate-limit';
 
 export const runtime = 'nodejs';
@@ -32,10 +31,8 @@ const ChatRequestSchema = z.object({
     .min(1, 'Query is required')
     .max(1000, 'Query too long (max 1000 characters)'),
   userContext: UserContextSchema,
-  filter: z.record(z.unknown()).optional(),
+  filter: z.record(z.string(), z.unknown()).optional(),
 });
-
-type ChatRequest = z.infer<typeof ChatRequestSchema>;
 
 /**
  * POST handler - Process RAG query

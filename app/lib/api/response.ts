@@ -21,7 +21,8 @@ interface ErrorResponse {
   timestamp: string;
 }
 
-type ApiResponse<T> = SuccessResponse<T> | ErrorResponse;
+// Exported for use in API route type annotations
+export type ApiResponse<T> = SuccessResponse<T> | ErrorResponse;
 
 /**
  * Standard error codes

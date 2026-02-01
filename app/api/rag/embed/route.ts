@@ -20,8 +20,6 @@ const EmbedRequestSchema = z.object({
   action: z.enum(['process_all', 'clear_and_process', 'clear_only']).default('process_all'),
 });
 
-type EmbedRequest = z.infer<typeof EmbedRequestSchema>;
-
 export async function POST(request: NextRequest) {
   const startTime = Date.now();
   const endTimer = logger.time('embed-process');
