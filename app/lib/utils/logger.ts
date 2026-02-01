@@ -8,6 +8,8 @@
  * NEVER log user data, API keys, or sensitive information.
  */
 
+import { captureError, captureMessage } from '@/app/lib/monitoring/sentry';
+
 type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 
 interface LogContext {
@@ -86,14 +88,8 @@ export const logger = {
   },
 
   /**
-   * Warning logs - Always logged
-   */
-  warn(message: string, context?: LogContext): void {
-    console.warn(formatMessage('warn', message, context));
-  },
-
-  /**
    * Error logs - Always logged (sanitized)
+   * Also sends to Sentry if configured
    */
   error(message: string, error?: unknown, context?: LogContext): void {
     const errorMessage = error instanceof Error ? error.message : String(error);
@@ -104,6 +100,31 @@ export const logger = {
       ...(isDev && error instanceof Error ? { stack: error.stack } : {})
     };
     console.error(formatMessage('error', message, fullContext));
+
+    // Send to Sentry in production
+    if (error instanceof Error) {
+      captureError(error, {
+        component: context?.component as string,
+        action: context?.action as string,
+        extra: sanitizeContext(context),
+      });
+    }
+  },
+
+  /**
+   * Warning logs - Always logged
+   * Optionally sends to Sentry for tracking
+   */
+  warn(message: string, context?: LogContext): void {
+    console.warn(formatMessage('warn', message, context));
+
+    // Send warnings to Sentry in production for visibility
+    if (!isDev) {
+      captureMessage(message, 'warning', {
+        component: context?.component as string,
+        action: context?.action as string,
+      });
+    }
   },
 
   /**
