@@ -1,0 +1,78 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.95rem 1.2rem;
+    border-radius: calc(var(--radius-sm) - 2px);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    transition: transform var(--transition-fade), box-shadow var(--transition-fade), background var(--transition-fade), color var(--transition-fade);
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background: var(--color-accent);
+    color: #fff;
+    border-color: color-mix(in srgb, var(--color-accent-strong) 35%, transparent);
+    box-shadow: var(--shadow-xs);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--color-accent-strong);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--color-surface);
+    color: var(--color-accent-strong);
+    border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+}
+
+/* NEXT (Wizard) — gleiche Farbe wie Primary, aber eigener Button */
+.btn-next {
+    background: var(--color-accent);
+    color: #fff;
+    border-color: color-mix(in srgb, var(--color-accent-strong) 35%, transparent);
+    box-shadow: var(--shadow-xs);
+}
+
+.btn-next:hover:not(:disabled) {
+    background: var(--color-accent-strong);
+    transform: translateY(-1px);
+}
+
+/* ZURÜCK (Wizard) — weiß, ruhig */
+.btn-previous {
+    background: var(--color-accent);
+    color: #fff;
+    border-color: color-mix(in srgb, var(--color-accent-strong) 35%, transparent);
+    box-shadow: var(--shadow-xs);
+}
+
+.btn-previous:hover:not(:disabled) {
+    background: var(--color-accent-strong);
+    transform: translateY(-1px);
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+    outline-offset: 3px;
+}

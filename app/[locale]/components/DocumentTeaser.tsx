@@ -1,6 +1,7 @@
 import React from "react";
 import BreakText from "@/components/ui/BreakText";
 import Link from "next/link";
+import styles from "./DocumentTeaser.module.css";
 
 type DocumentTeaserProps = {
     t: (key: string) => string;
@@ -10,27 +11,27 @@ type DocumentTeaserProps = {
 export default function DocumentTeaser({ t, locale }: DocumentTeaserProps) {
     return (
         <section className="section">
-            <div className="document-teaser">
-                <div className="document-teaser__content">
-                    <h2 className="document-teaser__title">
+            <div className={styles.documentTeaser}>
+                <div className={styles.content}>
+                    <h2 className={styles.title}>
                         <BreakText className="block">
                             {t("card2Title")}
                         </BreakText>
                     </h2>
 
-                    <BreakText className="document-teaser__copy block">
+                    <BreakText className={`${styles.hero} block`}>
                         {t("card2Description")}
                     </BreakText>
 
                     <Link
                         href={`/${locale}/documents`}
-                        className="btn btn-primary document-teaser__cta"
+                        className={styles.cta}
                     >
                         {t("card2Button")}
                     </Link>
                 </div>
 
-                <div className="document-teaser__media">
+                <div className={styles.media}>
                     <img
                         src="/images/homepage/feature-2.jpg"
                         alt=""

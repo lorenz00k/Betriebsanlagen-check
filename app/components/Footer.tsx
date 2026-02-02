@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { defaultLocale } from '@/i18n'
+import styles from "./Footer.module.css";
 
 // Displays a localized footer with imprint/privacy shortcuts tied to the current locale.
 export default function Footer() {
@@ -14,27 +15,27 @@ export default function Footer() {
   const locale = Array.isArray(paramLocale) ? paramLocale[0] : paramLocale ?? defaultLocale
 
   return (
-    <footer className="site-footer">
+    <footer className={styles.footer}>
       <div className="site-container">
-        <div className="site-footer__meta">
-          <p>© 2025 {t('copyright')}</p>
+        <div className={styles.meta}>
+          <p>© 2026 {t('copyright')}</p>
           <p className="mt-3 text-xs">
             {t('disclaimer')}
           </p>
         </div>
-        <div className="site-footer__links">
-          <Link href={`/${locale}/impressum`} className="site-footer__link">
+        <div className={styles.links}>
+          <Link href={`/${locale}/impressum`} className={styles.link}>
             {t('imprint')}
           </Link>
-          <Link href={`/${locale}/datenschutz`} className="site-footer__link">
+          <Link href={`/${locale}/datenschutz`} className={styles.link}>
             {t('privacy')}
           </Link>
           <button
             type="button"
             onClick={() => window.showCookieSettings?.()}
-            className="site-footer__link"
+            className={styles.link}
           >
-            Cookie-Einstellungen
+            {t('cookie')}
           </button>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation'
 import LanguageSwitcher from './LanguageSwitcher'
 import MobileSidebar from '../[locale]/components/MobileSidebar'
 import { primaryLinks } from '../[locale]/components/nav.config'
+import styles from "./HeaderNav.module.css";
 import { useTranslations } from 'next-intl'
 
 interface HeaderNavProps {
@@ -32,12 +33,11 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
     if (href === `/${locale}`) {
       return pathname === `/${locale}`
     }
-
     return pathname === href || pathname.startsWith(`${href}/`)
   }
 
   return (
-    <header className="header sticky top-0 z-50">
+    <header className={`${styles.header} sticky top-0 z-50`}>
       <div className="w-full px-6 lg:px-10">
         <div className="flex h-14 items-center justify-between gap-3">
           <div className="flex min-w-0 flex-shrink-0 items-center">
@@ -54,24 +54,26 @@ export default function HeaderNav({ locale }: HeaderNavProps) {
             className="hidden min-w-0 flex-1 flex-wrap items-center justify-end gap-x-6 gap-y-2 lg:flex"
             aria-label={tNav("primaryMenu")}
           >
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`min-w-0 shrink-0 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${isActive(link.href) ? "text-current" : "text-[color:var(--color-header-fg-muted)] hover:text-current"}`}
-
-                aria-current={isActive(link.href) ? 'page' : undefined}
-              >
-                {tItem(link.label.replace("item.", ""))}
-              </Link>
-            ))}
+            {links.map((link) => {
+              const active = isActive(link.href)
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`${styles.navLink} ${active ? styles.navLinkActive : styles.navLinkInactive}`}
+                  aria-current={active ? 'page' : undefined}
+                >
+                  {tItem(link.label.replace("item.", ""))}
+                </Link>
+              )
+            })}
           </nav>
 
           <div className="flex flex-shrink-0 items-center lg:hidden">
             <button
               type="button"
               onClick={() => setIsSidebarOpen(true)}
-              className="inline-flex items-center justify-center rounded-md p-2 text-[color:var(--color-header-fg-muted)] hover:bg-white/10 hover:text-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+              className={styles.menuButton}
               aria-label={tNav("menuOpen")}
               aria-expanded={isSidebarOpen}
               aria-controls="mobile-sidebar"

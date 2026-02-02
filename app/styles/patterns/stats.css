@@ -1,0 +1,56 @@
+/* 
+used in AnimatedStats --> is this still used or dead code??
+*/
+.stat-grid {
+    display: grid;
+    gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+    .stat-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.stat-card {
+    background: var(--color-surface);
+    border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-xs);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    text-align: center;
+    transition: box-shadow var(--transition-move), transform var(--transition-move);
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-card__icon {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    margin-inline: auto;
+    margin-bottom: 1rem;
+    background: color-mix(in srgb, var(--color-accent) 18%, var(--color-surface));
+    color: var(--color-accent-strong);
+}
+
+.stat-card__value {
+    font-size: clamp(2.3rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--color-fg);
+}
+
+.stat-card__suffix {
+    color: var(--color-accent-strong);
+}
+
+.stat-card__label {
+    margin-top: 0.5rem;
+    color: var(--color-fg-subtle);
+    font-size: 0.95rem;
+}

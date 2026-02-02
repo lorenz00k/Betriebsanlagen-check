@@ -1,0 +1,63 @@
+.header {
+    background: var(--color-header-bg);
+    color: var(--color-header-fg);
+    border-bottom: 1px solid var(--color-header-border);
+}
+
+@supports (backdrop-filter: blur(8px)) {
+    .header {
+        background: var(--color-header-bg-glass);
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Links (desktop) */
+.navLink {
+    min-width: 0;
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    /* text-sm */
+    font-weight: 500;
+    transition: color var(--transition-fade);
+}
+
+.navLink:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, #fff 30%, transparent);
+    border-radius: 6px;
+}
+
+.navLinkInactive {
+    color: var(--color-header-fg-muted);
+}
+
+.navLinkInactive:hover {
+    color: currentColor;
+}
+
+.navLinkActive {
+    color: currentColor;
+}
+
+/* Mobile menu button */
+.menuButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    /* rounded-md */
+    padding: 0.5rem;
+    /* p-2 */
+    color: var(--color-header-fg-muted);
+    transition: background var(--transition-fade), color var(--transition-fade);
+}
+
+.menuButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: currentColor;
+}
+
+.menuButton:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, #fff 30%, transparent);
+}

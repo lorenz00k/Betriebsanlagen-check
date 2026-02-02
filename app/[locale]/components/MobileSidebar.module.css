@@ -1,0 +1,207 @@
+/* ===========================
+   Mobile Sidebar (Drawer)
+   =========================== */
+
+.mobileSidebar {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+}
+
+.mobileSidebar[aria-hidden="true"] {
+    pointer-events: none;
+}
+
+.backdrop {
+    position: absolute;
+    inset: 0;
+    background: var(--color-header-bg);
+    opacity: 0;
+    backdrop-filter: none;
+    transition: opacity var(--transition-fade);
+}
+
+
+.mobileSidebar.open .backdrop {
+    opacity: 1;
+}
+
+.drawer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100dvh;
+    width: min(22rem, 88vw);
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--color-header-bg);
+    color: var(--color-header-fg);
+    border-left: 1px solid var(--color-header-border);
+    box-shadow: var(--shadow);
+
+    padding-top: max(16px, env(safe-area-inset-top));
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+
+    transform: translateX(100%);
+    transition: transform var(--transition-move);
+
+    background-color: var(--color-header-bg) !important;
+    background-image: none !important;
+
+    /* falls irgendwo glass/blur reinwirkt */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    /* wichtig: keine opacity am container */
+    opacity: 1 !important;
+
+}
+
+.mobileSidebar.open .drawer {
+    transform: translateX(0);
+}
+
+.header {
+    padding: 0 16px;
+}
+
+.topRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 10px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: inherit;
+    transition: background var(--transition-fade);
+}
+
+.brand:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.brandTitle {
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+}
+
+.brandSub {
+    margin-top: 2px;
+    font-size: 0.78rem;
+    color: var(--color-header-fg-muted);
+}
+
+.close {
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-header-fg-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition-fade), color var(--transition-fade);
+}
+
+.close:hover {
+    background: rgba(255, 255, 255, 0.10);
+    color: var(--color-header-fg);
+}
+
+.divider {
+    height: 1px;
+    background: var(--color-header-border);
+    margin-top: 12px;
+}
+
+.content {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 12px 8px;
+}
+
+.sectionLabel {
+    padding: 0 10px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-header-fg-muted);
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 4px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 12px;
+    border-radius: var(--radius);
+    color: inherit;
+    text-decoration: none;
+    transition: background var(--transition-fade);
+}
+
+.item:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.item.active {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.hint {
+    color: var(--color-header-fg-muted);
+    transition: transform var(--transition-fade), color var(--transition-fade);
+}
+
+.item:hover .hint {
+    color: var(--color-header-fg);
+    transform: translateX(2px);
+}
+
+.item--secondary {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    color: var(--color-header-fg-muted);
+}
+
+.item--secondary:hover {
+    color: var(--color-header-fg);
+}
+
+.item--secondary.active {
+    background: rgba(255, 255, 255, 0.10);
+    color: var(--color-header-fg);
+}
+
+.footer {
+    padding: 0 16px;
+}
+
+.footerInner {
+    border-top: 1px solid var(--color-header-border);
+    padding-top: 12px;
+}
+
+/* Sidebar-specific focus ring (white-ish, not accent) */
+.mobileSidebar :focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--color-header-fg) 45%, transparent);
+    outline-offset: 3px;
+}

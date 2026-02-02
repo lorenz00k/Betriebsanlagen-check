@@ -1,0 +1,34 @@
+.footer {
+    margin-top: clamp(4rem, 8vw, 6rem);
+    background: color-mix(in srgb, var(--color-surface) 86%, transparent 14%);
+    border-top: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+    padding-block: clamp(2rem, 5vw, 3rem);
+}
+
+.meta {
+    text-align: center;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.link {
+    color: var(--color-fg-subtle);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, var(--color-fg-subtle) 60%, transparent);
+}
+
+.link:hover,
+.link:focus-visible {
+    color: var(--color-accent-strong);
+    text-decoration-color: currentColor;
+}

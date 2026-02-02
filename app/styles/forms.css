@@ -1,0 +1,51 @@
+input,
+select,
+textarea {
+    --form-padding-block: 0.75rem;
+    --form-padding-inline-start: 1rem;
+    --form-padding-inline-end: 1rem;
+    width: 100%;
+    background: var(--color-surface);
+    border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+    border-radius: var(--radius-xs);
+    padding-block: var(--form-padding-block);
+    padding-inline-start: var(--form-padding-inline-start);
+    padding-inline-end: var(--form-padding-inline-end);
+    font-size: 1rem;
+    color: var(--color-fg);
+    transition: border-color var(--transition-fade), box-shadow var(--transition-fade), background var(--transition-fade);
+}
+
+.input-with-icon {
+    --form-padding-inline-start: 2.75rem;
+}
+
+.input-with-unit {
+    --form-padding-inline-end: 4rem;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 18%, transparent);
+    outline: none;
+}
+
+label {
+    display: block;
+    color: var(--color-fg-subtle);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+form .form-row {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    form .form-row--split {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

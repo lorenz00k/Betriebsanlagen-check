@@ -1,0 +1,65 @@
+.card {
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+    box-shadow: var(--shadow-xs);
+    padding: clamp(2rem, 4vw, 2.75rem);
+    display: grid;
+    gap: 1.5rem;
+    transition: transform var(--transition-move), box-shadow var(--transition-move), border-color var(--transition-fade);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-sm);
+    border-color: color-mix(in srgb, var(--color-accent) 20%, var(--color-border));
+}
+
+.card__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--radius-sm);
+    display: grid;
+    place-items: center;
+    background: var(--color-accent);
+    color: #fff;
+    box-shadow: var(--shadow-xs);
+}
+
+.card__icon--warm {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-warning) 85%, #ffffff) 0%, var(--color-warning) 100%);
+}
+
+.card__icon--accent-soft {
+    background: color-mix(in srgb, var(--color-accent) 15%, var(--color-surface));
+    color: var(--color-accent-strong);
+}
+
+.card__icon--success {
+    background: color-mix(in srgb, var(--color-success) 18%, var(--color-surface));
+    color: var(--color-success);
+}
+
+.card__icon--shield {
+    background: color-mix(in srgb, var(--color-fg) 10%, var(--color-surface));
+    color: var(--color-fg);
+}
+
+.card__title {
+    font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+    margin: 0;
+}
+
+.card__body {
+    margin: 0;
+    color: var(--color-fg-subtle);
+}
+
+.card--subtle {
+    box-shadow: none;
+    border-color: color-mix(in srgb, var(--color-border) 60%, transparent);
+}
+
+.card--subtle:hover {
+    box-shadow: var(--shadow-xs);
+}

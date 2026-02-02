@@ -1,0 +1,122 @@
+/* welches werden genau benutzt??*/
+
+/* 1) Flex-Kindern im Header erlauben zu schrumpfen */
+.siteNav__inner>* {
+    min-width: 0;
+}
+
+/* 2) Brand-Text darf umbrechen/ellipsis statt Layout zu sprengen */
+.siteBrand {
+    min-width: 0;
+}
+
+.siteBrand span {
+    display: inline-block;
+    max-width: 60vw;
+    /* auf Mobile begrenzen */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 3) Language-Switcher im Header: nicht wachsen lassen */
+.language-switcher {
+    flex: 0 0 auto;
+}
+
+/* 4) Absolute Sicherheitsleine gegen horizontales Scrollen im Header */
+.siteNav {
+    overflow-x: clip;
+}
+
+/* 5) Optional: auf sehr kleinen Screens Text ganz ausblenden (nur Logo) */
+@media (max-width: 480px) {
+    .siteBrand span {
+        display: none;
+    }
+}
+
+.siteNav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(18px);
+    background: color-mix(in srgb, var(--color-surface) 82%, transparent 18%);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+    box-shadow: var(--shadow-xs);
+}
+
+.siteNav__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    padding-block: 0.9rem;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--color-fg);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.siteBrand__mark {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-xs);
+    display: grid;
+    place-items: center;
+    background: linear-gradient(140deg, var(--color-accent), var(--color-accent-strong));
+    color: #fff;
+    box-shadow: var(--shadow-xs);
+    transition: transform var(--transition-fade);
+}
+
+.siteBrand:hover .site-brand__mark {
+    transform: rotate(-3deg) scale(1.04);
+}
+
+.siteNav__links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-size: 0.95rem;
+}
+
+.siteNav__link {
+    color: var(--color-fg-subtle);
+    font-weight: 500;
+    position: relative;
+    padding-block: 0.25rem;
+    transition: color var(--transition-fade);
+}
+
+.siteNav__link::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -0.5rem;
+    height: 2px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-accent) 70%, transparent);
+    opacity: 0;
+    transform: scaleX(0.5);
+    transition: opacity var(--transition-fade), transform var(--transition-fade);
+}
+
+.siteNav__link:hover,
+.siteNav__link:focus-visible {
+    color: var(--color-accent-strong);
+}
+
+.siteNav__link.active {
+    color: var(--color-accent-strong);
+}
+
+.siteNav__link.active::after {
+    opacity: 1;
+    transform: scaleX(1);
+}

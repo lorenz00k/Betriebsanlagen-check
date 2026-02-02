@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useMemo, type ReactNode } from 'react'
+import styles from "./NavLink.module.css";
 
 interface NavLinkProps {
   href: string
@@ -26,7 +27,7 @@ export default function NavLink({ href, activeMatch, children }: NavLinkProps) {
   }, [pathname, href, activeMatch])
 
   return (
-    <Link href={href} className={`site-nav__link${isActive ? ' is-active' : ''}`}>
+    <Link href={href} className={`${styles.siteNav__link} ${isActive ? ' active' : ''}`}>
       {children}
     </Link>
   )

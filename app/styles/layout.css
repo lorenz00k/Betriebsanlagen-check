@@ -68,3 +68,20 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
+
+/*Checker width */
+.section--full-bg {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    background: var(--color-surface);
+}
+
+.section--full-bg__inner {
+    max-width: var(--container-w);
+    margin-inline: auto;
+
+    padding-block: clamp(1.5rem, 4vw, 2.5rem);
+    padding-inline: var(--container-padding);
+}
