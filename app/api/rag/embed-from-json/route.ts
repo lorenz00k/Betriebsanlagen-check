@@ -17,6 +17,7 @@ import { generateEmbeddings } from '@/app/lib/ai/openai';
 import { upsertVectors, deleteAllVectors } from '@/app/lib/vectordb/pinecone';
 import type { DocumentMetadata } from '@/app/lib/vectordb/pinecone';
 import { logger } from '@/app/lib/utils/logger';
+import { validateAdminAuth } from '@/app/lib/middleware/admin-auth';
 
 export const runtime = 'nodejs';
 export const maxDuration = 300; // 5 minutes for large uploads
@@ -211,6 +212,12 @@ async function processExtractedJSON(): Promise<{
  * POST handler
  */
 export async function POST(request: NextRequest) {
+  // Validate admin authentication
+  const authError = validateAdminAuth(request);
+  if (authError) {
+    return authError;
+  }
+
   try {
     const body = await request.json();
     const action = body.action || 'process_all';

@@ -25,6 +25,9 @@ const envSchema = z.object({
   KV_REST_API_URL: z.string().url().optional(),
   KV_REST_API_TOKEN: z.string().optional(),
 
+  // Admin API Key (for protected endpoints like /api/rag/embed)
+  ADMIN_API_KEY: z.string().min(32, 'ADMIN_API_KEY must be at least 32 characters').optional(),
+
   // App
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   DEBUG: z.string().optional(),
