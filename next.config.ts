@@ -4,10 +4,10 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./app/i18n/request.ts');
 
 // Content Security Policy
-// Adjust these based on your actual external resources
+// Note: 'unsafe-inline' for styles is required by Tailwind CSS / Next.js
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline';
+  script-src 'self';
   style-src 'self' 'unsafe-inline';
   img-src 'self' blob: data: https:;
   font-src 'self' data:;

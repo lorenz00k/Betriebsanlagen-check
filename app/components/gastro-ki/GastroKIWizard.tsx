@@ -172,8 +172,6 @@ export function GastroKIWizard() {
         besonderheiten: finalData.specialFeatures?.join(', ') || 'Keine',
       }
 
-      console.log('🔍 Starting RAG Analysis:', { query, userContext })
-
       const response = await fetch('/api/rag/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -189,22 +187,12 @@ export function GastroKIWizard() {
 
       const result = await response.json()
 
-      console.log('[DEBUG] Received result:', {
-        success: result.success,
-        hasAnswer: !!result.answer,
-        sourcesCount: result.sources?.length,
-        metadata: result.metadata
-      })
-
       if (!result.success) {
         throw new Error(result.error || 'Analyse fehlgeschlagen')
       }
 
-      console.log('[DEBUG] Setting analysis result...')
       setAnalysisResult(result)
-      console.log('[DEBUG] Analysis result set!')
     } catch (error) {
-      console.error('[ERROR] Analyse failed:', error)
       setError(error instanceof Error ? error.message : 'Unbekannter Fehler')
     } finally {
       setIsAnalyzing(false)

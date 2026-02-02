@@ -9,7 +9,8 @@ export const ALLOWED_ORIGINS = [
   'http://localhost:3000',
   'http://localhost:3001',
   'https://betriebsanlagen-check.vercel.app',
-  // TODO: Add production domain
+  'https://betriebsanlage-check.at',
+  'https://www.betriebsanlage-check.at',
 ] as const;
 
 // Rate limiting configuration
@@ -39,7 +40,8 @@ export const RATE_LIMITS = {
 // Content Security Policy directives
 export const CSP_DIRECTIVES = {
   'default-src': ["'self'"],
-  'script-src': ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
+  'script-src': ["'self'"],
+  // Note: 'unsafe-inline' for styles is required by Tailwind CSS / Next.js
   'style-src': ["'self'", "'unsafe-inline'"],
   'img-src': ["'self'", 'blob:', 'data:', 'https:'],
   'font-src': ["'self'", 'data:'],

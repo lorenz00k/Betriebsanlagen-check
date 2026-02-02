@@ -62,8 +62,7 @@ export default function AddressChecker() {
       if (results.length === 1) {
         await handleSelectAddress(results[0]);
       }
-    } catch (err) {
-      console.error('Search error:', err);
+    } catch {
       setError(t('search.error'));
     } finally {
       setLoading(false);
@@ -92,8 +91,7 @@ export default function AddressChecker() {
       // Umgebungsanalyse durchführen
       const analysis = analyzeEnvironment(pois);
       setEnvironmentAnalysis(analysis);
-    } catch (err) {
-      console.error('Environment data loading error:', err);
+    } catch {
       setError('Fehler beim Laden der Umgebungsdaten.');
     } finally {
       setLoading(false);

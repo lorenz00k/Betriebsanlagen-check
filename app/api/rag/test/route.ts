@@ -4,15 +4,22 @@
  * Tests all connections: Pinecone, OpenAI, Anthropic
  */
 
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { testPineconeConnection } from '@/app/lib/vectordb/pinecone';
 import { testOpenAIConnection } from '@/app/lib/ai/openai';
 import { testAnthropicConnection } from '@/app/lib/ai/anthropic';
 import { logger } from '@/app/lib/utils/logger';
+import { validateAdminAuth } from '@/app/lib/middleware/admin-auth';
 
 export const runtime = 'nodejs';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // Validate admin authentication
+  const authError = validateAdminAuth(request);
+  if (authError) {
+    return authError;
+  }
+
   try {
     logger.debug('Testing RAG system connections', { component: 'rag-test', action: 'start' });
 

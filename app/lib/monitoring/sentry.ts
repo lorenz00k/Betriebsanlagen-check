@@ -14,6 +14,8 @@
 // TODO: Uncomment when Sentry is installed
 // import * as Sentry from '@sentry/nextjs';
 
+import { logger } from '@/app/lib/utils/logger';
+
 interface ErrorContext {
   component?: string;
   action?: string;
@@ -29,9 +31,10 @@ export function initSentry(): void {
   const dsn = process.env.SENTRY_DSN;
 
   if (!dsn) {
-    if (process.env.NODE_ENV === 'development') {
-      console.info('[Sentry] DSN not configured, error reporting disabled');
-    }
+    logger.info('Sentry DSN not configured, error reporting disabled', {
+      component: 'sentry',
+      action: 'init',
+    });
     return;
   }
 
@@ -59,10 +62,11 @@ export function initSentry(): void {
 export function captureError(error: Error, context?: ErrorContext): void {
   const dsn = process.env.SENTRY_DSN;
 
-  // Always log to console in development
-  if (process.env.NODE_ENV === 'development') {
-    console.error('[Error]', error.message, context);
-  }
+  // Always log errors
+  logger.error('Captured error', error, {
+    component: context?.component || 'sentry',
+    action: context?.action || 'captureError',
+  });
 
   if (!dsn) {
     return;
@@ -101,8 +105,22 @@ export function captureMessage(
 ): void {
   const dsn = process.env.SENTRY_DSN;
 
-  if (process.env.NODE_ENV === 'development') {
-    console.log(`[${level.toUpperCase()}]`, message, context);
+  // Log message using logger
+  if (level === 'error') {
+    logger.error(message, null, {
+      component: context?.component || 'sentry',
+      action: context?.action || 'captureMessage',
+    });
+  } else if (level === 'warning') {
+    logger.warn(message, {
+      component: context?.component || 'sentry',
+      action: context?.action || 'captureMessage',
+    });
+  } else {
+    logger.info(message, {
+      component: context?.component || 'sentry',
+      action: context?.action || 'captureMessage',
+    });
   }
 
   if (!dsn) {

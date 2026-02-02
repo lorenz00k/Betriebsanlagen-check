@@ -1,7 +1,8 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { generateEmbedding } from '@/app/lib/ai/openai';
 import { queryVectors, getIndexStats, getPineconeIndex } from '@/app/lib/vectordb/pinecone';
 import { logger } from '@/app/lib/utils/logger';
+import { validateAdminAuth } from '@/app/lib/middleware/admin-auth';
 
 /**
  * Debug Route for Pinecone Vector Database
@@ -12,7 +13,13 @@ import { logger } from '@/app/lib/utils/logger';
  * 3. Test query with simple keywords
  * 4. Shows actual similarity scores
  */
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // Validate admin authentication
+  const authError = validateAdminAuth(request);
+  if (authError) {
+    return authError;
+  }
+
   try {
     logger.debug('Starting Pinecone debug', { component: 'debug-pinecone', action: 'start' });
 
@@ -85,7 +92,6 @@ export async function GET() {
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : undefined
     }, { status: 500 });
   }
 }

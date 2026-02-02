@@ -6,6 +6,7 @@
  */
 
 import { z } from 'zod';
+import { logger } from '@/app/lib/utils/logger';
 
 const envSchema = z.object({
   // Database
@@ -49,7 +50,7 @@ function validateEnv(): Env {
 
     // In development, log warning but don't crash
     if (process.env.NODE_ENV === 'development') {
-      console.warn('Environment validation warnings:\n' + errors);
+      logger.warn('Environment validation warnings: ' + errors, { component: 'env', action: 'validate' });
       // Return partial env with defaults
       return {
         ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY ?? '',

@@ -31,8 +31,7 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
     try {
       const results = await searchAddress(adresssuche);
       setSuchergebnisse(results);
-    } catch (error) {
-      console.error('Adresssuche fehlgeschlagen:', error);
+    } catch {
       alert('Fehler bei der Adresssuche');
     } finally {
       setLoading(false);
@@ -59,8 +58,8 @@ export default function SchrittStandort({ daten, onChange }: SchrittStandortProp
 
       setShowAddressChecker(true);
       setSuchergebnisse([]);
-    } catch (error) {
-      console.error('POI-Analyse fehlgeschlagen:', error);
+    } catch {
+      // POI analysis failed silently - address selection still works
     } finally {
       setLoading(false);
     }

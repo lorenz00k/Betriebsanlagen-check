@@ -75,8 +75,8 @@ export default function FormularWizard() {
         } else {
           localStorage.removeItem('formular_entwurf');
         }
-      } catch (error) {
-        console.error('Fehler beim Wiederherstellen:', error);
+      } catch {
+        // Failed to parse stored draft, ignore
       }
     }
   }, [t]);
@@ -108,8 +108,7 @@ export default function FormularWizard() {
       // Erfolgreiche Erstellung - Entwurf löschen
       localStorage.removeItem('formular_entwurf');
       alert(t('pdfErfolgreich'));
-    } catch (error) {
-      console.error('Fehler bei PDF-Generierung:', error);
+    } catch {
       alert(t('pdfFehler'));
     }
   };

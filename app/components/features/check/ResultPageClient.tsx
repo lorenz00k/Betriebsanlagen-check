@@ -136,7 +136,6 @@ export default function ResultPageClient({ locale }: ResultPageClientProps) {
       const data: RAGResponse = await response.json()
       setRagResponse(data)
     } catch (error) {
-      console.error('AI-Analyse fehlgeschlagen:', error)
       setRagError(error instanceof Error ? error.message : 'Unbekannter Fehler')
     } finally {
       setRagLoading(false)

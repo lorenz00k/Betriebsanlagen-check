@@ -88,8 +88,6 @@ export function FollowUpChat({ initialContext, previousAnalysis, onBack }: Follo
 
       // For follow-up questions, we keep them as natural language since they're typically
       // specific questions that benefit from semantic search
-      // But we could also extract keywords here if needed
-      console.log('[DEBUG] Follow-up question:', { question, userContext })
 
       const response = await fetch('/api/rag/chat', {
         method: 'POST',
@@ -100,21 +98,11 @@ export function FollowUpChat({ initialContext, previousAnalysis, onBack }: Follo
         }),
       })
 
-      console.log('[DEBUG] Response status:', response.status, response.ok)
-
       if (!response.ok) {
-        const errorText = await response.text()
-        console.error('[DEBUG] Error response:', errorText)
         throw new Error('Anfrage fehlgeschlagen')
       }
 
       const result = await response.json()
-      console.log('[DEBUG] Received result:', {
-        success: result.success,
-        hasAnswer: !!result.answer,
-        answerLength: result.answer?.length,
-        error: result.error
-      })
 
       if (!result.success) {
         throw new Error(result.error || 'Keine Antwort erhalten')
@@ -126,11 +114,8 @@ export function FollowUpChat({ initialContext, previousAnalysis, onBack }: Follo
         content: result.answer,
         timestamp: new Date(),
       }
-      console.log('[DEBUG] Adding assistant message to chat')
       setMessages((prev) => [...prev, assistantMessage])
     } catch (error) {
-      console.error('[CHAT ERROR]', error)
-      console.error('[CHAT ERROR] Stack:', error instanceof Error ? error.stack : 'No stack')
       setError(error instanceof Error ? error.message : 'Unbekannter Fehler')
 
       // Add error message to chat

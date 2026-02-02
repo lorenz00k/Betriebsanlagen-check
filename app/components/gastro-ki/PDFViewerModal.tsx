@@ -50,8 +50,7 @@ export default function PDFViewerModal({
     setIsLoading(false);
   };
 
-  const onDocumentLoadError = (error: Error) => {
-    console.error('Error loading PDF:', error);
+  const onDocumentLoadError = (_error: Error) => {
     setIsLoading(false);
   };
 
