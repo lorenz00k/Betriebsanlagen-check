@@ -8,6 +8,11 @@
     z-index: 60;
 }
 
+.mobileSidebar a:hover,
+.mobileSidebar a:focus-visible {
+    color: inherit;
+}
+
 .mobileSidebar[aria-hidden="true"] {
     pointer-events: none;
 }

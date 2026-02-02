@@ -1,5 +1,6 @@
 @import "./tokens.css";
 @import "tailwindcss";
+@import "./styles/*";
 
 *,
 *::before,
@@ -42,11 +43,6 @@ a {
   color: inherit;
   text-decoration: none;
   transition: color var(--transition-fade);
-}
-
-.mobileSidebar a:hover,
-.mobileSidebar a:focus-visible {
-  color: inherit;
 }
 
 
