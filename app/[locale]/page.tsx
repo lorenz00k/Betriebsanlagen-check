@@ -3,6 +3,7 @@
 // Home renders the localized landing page experience, including hero messaging,
 // CTA cards, and animated visuals tailored to the active locale.
 import { useTranslations } from "next-intl";
+import styles from "./page.module.css";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { defaultLocale } from "@/i18n";
@@ -97,7 +98,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(qaSchema) }}
       />
 
-      <main className="page-shell">
+      <main className={styles.pageShell}>
 
         {/* 1. HERO */}
         <Hero locale={activeLocale} />

@@ -1,6 +1,7 @@
 "use client";
 
 import BreakText from "@/components/ui/BreakText";
+import styles from "./Hero.module.css";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
@@ -60,12 +61,12 @@ export default function Hero({ locale }: { locale: string }) {
     }, []);
 
     return (
-        <section className="section page-hero">
-            <div className="page-hero__bg">
+        <section className={`${styles.hero} section`}>
+            <div className={styles.bg}>
                 {/* Video (only visible if it actually plays) */}
                 <video
                     ref={videoRef}
-                    className={`page-hero__video ${useImageFallback ? "is-hidden" : ""}`}
+                    className={`$styles.video} ${useImageFallback ? styles.hidden : ""}`}
                     autoPlay
                     loop
                     muted
@@ -78,35 +79,37 @@ export default function Hero({ locale }: { locale: string }) {
 
                 {/* Image fallback (visible only when video fails) */}
                 <img
-                    className={`page-hero__poster ${useImageFallback ? "is-visible" : ""}`}
+                    className={`${styles.poster} ${useImageFallback ? styles.visible : ""}`}
                     src="/images/betriebsboerse/verkaufer-bild.jpg"
                     alt=""
                 />
             </div>
 
-            <div className="page-hero__content">
-                <h1 className="page-hero__title">
+            <div className={styles.content}>
+                <h1 className={styles.title}>
                     <BreakText className="block">{t("title")}</BreakText>
                 </h1>
 
-                <BreakText className="page-hero__copy block">{t("subtitle", { value: 3 })}</BreakText>
+                <BreakText className={styles.copy}>
+                    {t("subtitle", { value: 3 })}
+                </BreakText>
 
-                <div className="page-hero__stats" aria-label="Key stats">
-                    <div className="page-hero__stat">
-                        <div className="page-hero__statValue">{t("stats.value_language", { value: 8 })}</div>
-                        <div className="page-hero__statLabel">{t("stats.languages")}</div>
+                <div className={styles.stats} aria-label="Key stats">
+                    <div className={styles.stat}>
+                        <div className={styles.statValue}>{t("stats.value_language", { value: 8 })}</div>
+                        <div className={styles.statLabel}>{t("stats.languages")}</div>
                     </div>
-                    <div className="page-hero__stat">
-                        <div className="page-hero__statValue">{t("stats.value_time", { value: 3 })}</div>
-                        <div className="page-hero__statLabel">{t("stats.time")}</div>
+                    <div className={styles.stat}>
+                        <div className={styles.statValue}>{t("stats.value_time", { value: 3 })}</div>
+                        <div className={styles.statLabel}>{t("stats.time")}</div>
                     </div>
-                    <div className="page-hero__stat">
-                        <div className="page-hero__statValue">{t("stats.value_free")}</div>
-                        <div className="page-hero__statLabel">{t("stats.free")}</div>
+                    <div className={styles.stat}>
+                        <div className={styles.statValue}>{t("stats.value_free")}</div>
+                        <div className={styles.statLabel}>{t("stats.free")}</div>
                     </div>
                 </div>
 
-                <Link href={`/${locale}/check`} className="hero-cta">
+                <Link href={`/${locale}/check`} className={styles.cta}>
                     {t("cardButton")}
                 </Link>
             </div>
