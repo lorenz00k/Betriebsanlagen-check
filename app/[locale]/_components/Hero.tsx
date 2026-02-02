@@ -66,7 +66,7 @@ export default function Hero({ locale }: { locale: string }) {
                 {/* Video (only visible if it actually plays) */}
                 <video
                     ref={videoRef}
-                    className={`$styles.video} ${useImageFallback ? styles.hidden : ""}`}
+                    className={`${styles.video} ${useImageFallback ? styles.hidden : ""}`}
                     autoPlay
                     loop
                     muted
