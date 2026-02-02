@@ -1,6 +1,13 @@
 @import "./tokens.css";
 @import "tailwindcss";
-@import "./styles/*";
+@import "./styles/layout.css";
+@import "./styles/forms.css";
+@import "./styles/card.css";
+@import "./styles/buttons.css";
+@import "./styles/animations.css";
+@import "./styles/patterns/cta.css";
+@import "./styles/patterns/stats.css";
+@import "./styles/patterns/timeline.css";
 
 *,
 *::before,
