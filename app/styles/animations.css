@@ -50,6 +50,10 @@
     animation: fadeInUp 0.6s ease-out both;
 }
 
+.animate-slideUp {
+    animation: slideUpSoft 0.45s ease-out both;
+}
+
 .animate-slideDown {
     animation: slideDownSoft 0.45s ease-out both;
 }

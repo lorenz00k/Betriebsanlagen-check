@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import ui from "./WizardStep.module.css";
 
 export interface StepOption {
   value: string
@@ -91,46 +92,35 @@ export function WizardStep({ step, onComplete, onBack, canGoBack }: WizardStepPr
     switch (step.type) {
       case 'choice':
         return (
-          <div className="grid md:grid-cols-2 gap-4">
-            {step.options?.map((option) => (
-              <button
-                key={option.value}
-                onClick={() => setValue(option.value)}
-                className={`p-6 rounded-lg border-2 text-left transition-all hover:shadow-md ${
-                  value === option.value
-                    ? 'border-blue-600 bg-blue-50 shadow-sm'
-                    : 'border-gray-200 hover:border-blue-300 bg-white'
-                }`}
-              >
-                <div className="flex items-start gap-3">
-                  <div className="flex-1">
-                    <div className="font-semibold text-lg text-gray-900 mb-1">
-                      {option.label}
+          <div className={ui.gridTwo}>
+            {step.options?.map((option) => {
+              const selected = value === option.value
+              return (
+                <button
+                  key={option.value}
+                  onClick={() => setValue(option.value)}
+                  className={`${ui.card} ${selected ? ui.selected : ""}`}
+                >
+                  <div className={ui.row}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div className={ui.title}>{option.label}</div>
+                      {option.description && <div className={ui.desc}>{option.description}</div>}
                     </div>
-                    {option.description && (
-                      <div className="text-sm text-gray-600">
-                        {option.description}
-                      </div>
+
+                    {selected && (
+                      <svg
+                        className="w-6 h-6 flex-shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
                     )}
                   </div>
-                  {value === option.value && (
-                    <svg
-                      className="w-6 h-6 text-blue-600 flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  )}
-                </div>
-              </button>
-            ))}
+                </button>
+              )
+            })}
           </div>
         )
 
@@ -142,20 +132,22 @@ export function WizardStep({ step, onComplete, onBack, canGoBack }: WizardStepPr
                 type="number"
                 value={typeof value === 'string' || typeof value === 'number' ? value : ''}
                 onChange={(e) => setValue(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleComplete()}
+                onKeyDown={(e) => e.key === 'Enter' && handleComplete()}
                 min={step.min}
                 max={step.max}
                 placeholder={step.placeholder}
-                className="w-full px-6 py-4 text-2xl font-bold text-center border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 outline-none transition-all"
+                className="px-6 py-4 text-2xl font-bold text-center"
               />
               {step.unit && (
-                <span className="absolute right-6 top-1/2 -translate-y-1/2 text-xl text-gray-400 font-medium">
+                <span className="absolute right-6 top-1/2 -translate-y-1/2 text-xl font-medium"
+                  style={{ color: "var(--color-muted)" }}
+                >
                   {step.unit}
                 </span>
               )}
             </div>
             {step.min !== undefined && step.max !== undefined && (
-              <div className="mt-3 text-sm text-gray-500 text-center">
+              <div className="mt-3 text-sm text-center" style={{ color: "var(--color-muted)" }}>
                 Zwischen {step.min} und {step.max} {step.unit}
               </div>
             )}
@@ -168,7 +160,7 @@ export function WizardStep({ step, onComplete, onBack, canGoBack }: WizardStepPr
             <select
               value={typeof value === 'string' ? value : ''}
               onChange={(e) => setValue(e.target.value)}
-              className="w-full px-6 py-4 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 outline-none transition-all appearance-none bg-white cursor-pointer"
+              className="px-6 py-4 text-lg cursor-pointer appearance-none"
             >
               <option value="">Bitte wählen...</option>
               {step.options?.map((option) => (
@@ -177,75 +169,65 @@ export function WizardStep({ step, onComplete, onBack, canGoBack }: WizardStepPr
                 </option>
               ))}
             </select>
+
           </div>
         )
 
       case 'boolean':
         return (
-          <div className="grid md:grid-cols-2 gap-4 max-w-xl mx-auto">
+          <div className={`${ui.gridTwo} max-w-xl mx-auto`}>
             <button
               onClick={() => setValue(true)}
-              className={`group p-8 rounded-lg border-2 text-center transition-all hover:shadow-md ${
-                value === true
-                  ? 'border-green-600 bg-green-50 shadow-sm'
-                  : 'border-gray-200 hover:border-green-300 bg-white'
-              }`}
+              className={`${ui.card} ${ui.booleanCard} ${value === true ? ui.yesSelected : ""}`}
             >
-              <svg className="w-12 h-12 mx-auto mb-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={ui.booleanIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
-              <div className="font-bold text-xl text-gray-900">Ja</div>
+              <div className={ui.booleanLabel}>Ja</div>
             </button>
+
             <button
               onClick={() => setValue(false)}
-              className={`group p-8 rounded-lg border-2 text-center transition-all hover:shadow-md ${
-                value === false
-                  ? 'border-red-600 bg-red-50 shadow-sm'
-                  : 'border-gray-200 hover:border-red-300 bg-white'
-              }`}
+              className={`${ui.card} ${ui.booleanCard} ${value === false ? ui.noSelected : ""}`}
             >
-              <svg className="w-12 h-12 mx-auto mb-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={ui.booleanIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
-              <div className="font-bold text-xl text-gray-900">Nein</div>
+              <div className={ui.booleanLabel}>Nein</div>
             </button>
           </div>
         )
 
+
       case 'multiselect':
         return (
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className={ui.gridTwo}>
             {step.options?.map((option) => {
-              const isSelected = (value as string[] || []).includes(option.value)
+              const isSelected = ((value as string[]) || []).includes(option.value)
+
               return (
                 <button
                   key={option.value}
                   onClick={() => handleMultiselectToggle(option.value)}
-                  className={`p-6 rounded-lg border-2 text-left transition-all hover:shadow-md ${
-                    isSelected
-                      ? 'border-blue-600 bg-blue-50 shadow-sm'
-                      : 'border-gray-200 hover:border-blue-300 bg-white'
-                  }`}
+                  className={`${ui.card} ${isSelected ? ui.selected : ""}`}
                 >
-                  <div className="flex items-start gap-3">
-                    <div className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                      isSelected ? 'bg-blue-600 border-blue-600' : 'border-gray-300'
-                    }`}>
+                  <div className={ui.row}>
+                    <div className={`${ui.checkBox} ${isSelected ? ui.checkBoxSelected : ""}`}>
                       {isSelected && (
-                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={3}
+                            d="M5 13l4 4L19 7"
+                          />
                         </svg>
                       )}
                     </div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-gray-900 mb-1">
-                        {option.label}
-                      </div>
-                      {option.description && (
-                        <div className="text-sm text-gray-600">
-                          {option.description}
-                        </div>
-                      )}
+
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div className={ui.title}>{option.label}</div>
+                      {option.description && <div className={ui.desc}>{option.description}</div>}
                     </div>
                   </div>
                 </button>
@@ -263,12 +245,16 @@ export function WizardStep({ step, onComplete, onBack, canGoBack }: WizardStepPr
     <div className="space-y-8">
       {/* Question */}
       <div className="text-center animate-fadeIn">
-        <h2 className="text-3xl font-bold text-gray-900 mb-3">
+        <h2 className="text-3xl font-bold mb-3" style={{ color: "var(--color-fg)" }}>
           {step.question}
         </h2>
+
         {step.helpText && (
-          <p className="text-gray-600 max-w-xl mx-auto">{step.helpText}</p>
+          <p className="max-w-xl mx-auto" style={{ color: "var(--color-fg-subtle)" }}>
+            {step.helpText}
+          </p>
         )}
+
       </div>
 
       {/* Input */}
@@ -276,9 +262,9 @@ export function WizardStep({ step, onComplete, onBack, canGoBack }: WizardStepPr
 
       {/* Error */}
       {error && (
-        <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-700 rounded-lg border border-red-200">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className={ui.errorWrap}>
+          <div className={ui.errorBox} role="alert" aria-live="polite">
+            <svg className={ui.errorIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -291,12 +277,16 @@ export function WizardStep({ step, onComplete, onBack, canGoBack }: WizardStepPr
         </div>
       )}
 
+
       {/* Navigation Buttons */}
-      <div className="flex gap-4 justify-between pt-6 border-t border-gray-200">
+      <div
+        className="flex gap-4 justify-between pt-6 border-t"
+        style={{ borderColor: "color-mix(in srgb, var(--color-border) 55%, transparent)" }}
+      >
         <button
           onClick={onBack}
           disabled={!canGoBack}
-          className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+          className="btn btn-previous"
         >
           ← Zurück
         </button>
@@ -307,7 +297,7 @@ export function WizardStep({ step, onComplete, onBack, canGoBack }: WizardStepPr
               ? !value || (value as string[]).length === 0
               : value === null || value === undefined || value === ''
           }
-          className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold shadow-sm hover:shadow-md disabled:opacity-40 disabled:cursor-not-allowed transition-all disabled:hover:shadow-sm"
+          className="btn btn-next"
         >
           Weiter →
         </button>

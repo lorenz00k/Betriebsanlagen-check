@@ -48,7 +48,7 @@
     transform: translateY(-1px);
 }
 
-/* ZURÜCK (Wizard) — weiß, ruhig */
+/* ZURÜCK (Wizard) */
 .btn-previous {
     background: var(--color-accent);
     color: #fff;
