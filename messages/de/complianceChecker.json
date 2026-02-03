@@ -1,0 +1,140 @@
+{
+    "badge": "Checker 2.0",
+    "title": "Betriebsanlagen checker nach GewO",
+    "subtitle": "Führe die strukturierte Prüfung zu Betriebsanlage, Genehmigungspflicht, Unterlagen und Pflichten durch.",
+    "progress": "Schritt {current} von {total}",
+    "actions": {
+        "next": "Weiter",
+        "back": "Zurück",
+        "finish": "Auswertung anzeigen"
+    },
+    "form": {
+        "options": {
+            "yes": "Ja",
+            "no": "Nein"
+        },
+        "sector": {
+            "question": "Welche Betriebsart planst du?",
+            "helper": "Der Checker deckt Handel, Dienstleistung, Gastronomie/Beherbergung, Werkstätten und weitere Sonderfälle ab.",
+            "options": {
+                "retail": "Handel/Einzelhandel",
+                "office": "Büro- oder Dienstleistungsbetrieb",
+                "gastronomyHotel": "Gastronomie/Hotel",
+                "accommodation": "Beherbergungsbetrieb",
+                "workshop": "Werkstätte",
+                "warehouse": "Lager",
+                "cosmetics": "Kosmetik/Fußpflege/Massage",
+                "dataCenter": "Rechenzentrum",
+                "selfService": "Containershop/Selbstbedienung",
+                "other": "Andere Tätigkeit"
+            }
+        },
+        "hospitalitySubtype": {
+            "question": "Welche Ausprägung trifft für Gastronomie/Beherbergung zu?",
+            "options": {
+                "beherbergung": "Beherbergung (Pension, kleines Hotel)",
+                "iceSalon": "Gastgewerbe in der Betriebsart Eissalon",
+                "otherGastro": "Andere Gastronomieform"
+            },
+            "descriptions": {
+                "beherbergung": "Max. 30 Betten, Gebäude ausschließlich Wohn-/Beherbergungszweck, keine Wellnessbereiche, nur Frühstück oder kleiner Imbiss.",
+                "iceSalon": "Reiner Eissalon ohne vollwertige Küche.",
+                "otherGastro": "Gastrobetriebe außerhalb der Eissalon-Freistellung."
+            }
+        },
+        "workshopSubtype": {
+            "question": "Welche Werkstattform trifft zu?",
+            "options": {
+                "tailor": "Änderungsschneiderei/haushaltsähnliche Nähmaschinen",
+                "shoeService": "Schuhservice/Schusterei",
+                "textilePickup": "Textilreinigung-Annahmestelle",
+                "otherWorkshop": "Andere Werkstatt"
+            }
+        },
+        "areaSqm": {
+            "label": "Betriebsfläche in m²",
+            "placeholder": "z. B. 250"
+        },
+        "personCount": {
+            "label": "Maximale Personen gleichzeitig (AN + Kund:innen/Gäste)",
+            "placeholder": "z. B. 20"
+        },
+        "isStationary": {
+            "question": "Ist die Tätigkeit örtlich gebunden?"
+        },
+        "isOnlyTemporary": {
+            "question": "Handelt es sich nur um eine vorübergehende Nutzung?"
+        },
+        "bedCount": {
+            "label": "Gästebetten gesamt",
+            "placeholder": "z. B. 18"
+        },
+        "buildingUseExclusive": {
+            "question": "Wird das Gebäude ausschließlich für Wohnen/Beherbergung genutzt?"
+        },
+        "hasWellnessFacilities": {
+            "question": "Sind Wellness-/Badeeinrichtungen (Pool, Sauna etc.) vorgesehen?"
+        },
+        "servesFullMeals": {
+            "question": "Werden über Frühstück/Imbiss hinausgehende Mahlzeiten angeboten?"
+        },
+        "location": {
+            "heading": "Standort- & Baukonsens",
+            "helper": "Klärung von Widmung, Bebauungsplan und bestehendem Nutzungskonsens."
+        },
+        "zoningClarified": {
+            "question": "Ist Widmung/Bebauungsplan für die geplante Nutzung passend?"
+        },
+        "buildingConsentPresent": {
+            "question": "Liegt ein aufrechter Bau- und Nutzungskonsens für die Räume vor?"
+        },
+        "operations": {
+            "heading": "Betriebsablauf & Emissionen",
+            "helper": "Bewerte Zeiten, Emissionen, Gefahrstoffe und Sonderanlagen."
+        },
+        "operatingPattern": {
+            "question": "Welche Betriebszeiten werden benötigt?",
+            "options": {
+                "gfvoWindow": "Innerhalb der 2. GFVO-Zeiten (Mo–Fr 6–22 Uhr, Sa 6–19 Uhr)",
+                "extendedHours": "Erweiterte Zeiten (z. B. Abende, Sonntag)",
+                "roundTheClock": "24/7 oder Nachtbetrieb"
+            },
+            "descriptions": {
+                "gfvoWindow": "Normale Tagesöffnungszeiten inklusive Lieferzeiten der 2. GFVO.",
+                "extendedHours": "Zeitbedarf außerhalb der Freistellung, aber nicht dauerhaft 24/7.",
+                "roundTheClock": "Durchgehender Betrieb oder Nachtbetrieb."
+            }
+        },
+        "hasExternalVentilation": {
+            "question": "Gibt es außenliegende Ventilatoren/Kälte- oder Abluftgeräte?"
+        },
+        "storesRegulatedHazardous": {
+            "question": "Lagern Gefahrstoffe mit speziellen Rechtsvorschriften (z. B. brennbare Flüssigkeiten, Gas)?"
+        },
+        "storesLabelledHazardous": {
+            "question": "Lagern kennzeichnungspflichtige Gefahrstoffe ohne Spezialvorschrift in relevanten Mengen?"
+        },
+        "usesLoudMusic": {
+            "question": "Sind Musikdarbietungen oder laute Beschallung vorgesehen?"
+        },
+        "ippcOrSevesoRelevant": {
+            "question": "Fallen IPPC-/Seveso-Schwellen (Anlage 3 GewO, Störfallrecht) an?"
+        },
+        "context": {
+            "heading": "Wirkungen & Sonderfälle",
+            "helper": "Bewerte Umweltauswirkungen, Infrastrukturstandorte und bestehende Bescheide."
+        },
+        "expectedImpairments": {
+            "question": "Sind nachteilige Auswirkungen iSd § 74 Abs. 2 GewO zu erwarten?"
+        },
+        "locatedInInfrastructureSite": {
+            "question": "Liegt der Betrieb innerhalb von Bahnhof, Flugplatz, Hafen oder Krankenanstalt?"
+        },
+        "locatedInApprovedComplex": {
+            "question": "Befindet sich der Betrieb in einer bereits genehmigten Gesamtanlage (z. B. Einkaufszentrum)?"
+        },
+        "existingPermitHistory": {
+            "question": "Gibt es bestehende Bescheide/Eignungsfeststellungen für den Standort?"
+        }
+    }
+}

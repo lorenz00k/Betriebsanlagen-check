@@ -1,0 +1,199 @@
+{
+    "title": "Ihr Weg zur Betriebsanlagengenehmigung",
+    "subtitle": "Überblick über alle Schritte und Dokumente",
+    "intro": "Hier erfahren Sie, welche Dokumente Sie vorbereiten müssen und welche Schritte zu unternehmen sind.",
+    "steps": {
+        "step1": {
+            "title": "Vorprüfung und Beratung",
+            "description": "Kontaktieren Sie die zuständige MA 36 (Technische Gewerbeangelegenheiten) für eine erste Beratung.",
+            "contactTitle": "Kontakt:",
+            "contact": {
+                "phone": {
+                    "icon": "📞",
+                    "label": "Telefon",
+                    "value": "+43 1 4000-25310"
+                },
+                "email": {
+                    "icon": "📧",
+                    "label": "E-Mail",
+                    "value": "post@ma36.wien.gv.at"
+                },
+                "website": {
+                    "icon": "🌐",
+                    "value": "www.wien.gv.at/ma36"
+                }
+            }
+        },
+        "step2": {
+            "title": "Erforderliche Dokumente vorbereiten",
+            "description": "Typischerweise benötigte Unterlagen:",
+            "items": {
+                "applicationForm": {
+                    "title": "Antragsformular",
+                    "description": "Vollständig ausgefüllt und unterschrieben"
+                },
+                "businessLicense": {
+                    "title": "Gewerbeberechtigung",
+                    "description": "Nachweis der Gewerbeberechtigung"
+                },
+                "plans": {
+                    "title": "Pläne und Skizzen",
+                    "description": "Lagepläne, Grundrisse, Schnitte (maßstabsgetreu)"
+                },
+                "technicalDescription": {
+                    "title": "Technische Beschreibung",
+                    "description": "Detaillierte Beschreibung der Betriebsanlage und ihrer Einrichtungen"
+                },
+                "neighbors": {
+                    "title": "Nachbarschaftsinformation",
+                    "description": "Zustimmung oder Information der Nachbar:innen"
+                },
+                "tenancy": {
+                    "title": "Miet-/Eigentumsnachweis",
+                    "description": "Nachweis über das Recht zur Nutzung der Räumlichkeiten"
+                }
+            }
+        },
+        "step3": {
+            "title": "Antrag einreichen",
+            "description": "Reichen Sie alle Unterlagen vollständig bei der MA 36 ein. Die Einreichung kann erfolgen:",
+            "options": {
+                "inPerson": {
+                    "title": "📮 Persönlich",
+                    "line1": "Dresdner Straße 73-75, 1200 Wien",
+                    "line2": "Mo–Fr: 8:00–15:30 Uhr"
+                },
+                "mail": {
+                    "title": "✉️ Postweg",
+                    "line1": "MA 36 – Technische Gewerbeangelegenheiten",
+                    "line2": "Dresdner Straße 73-75, 1200 Wien"
+                }
+            }
+        },
+        "step4": {
+            "title": "Nach der Einreichung",
+            "description": "Was passiert nach der Einreichung?",
+            "items": {
+                "confirmation": {
+                    "icon": "✅",
+                    "title": "Eingangsbestätigung",
+                    "description": "Sie erhalten eine Bestätigung über den Eingang der Unterlagen."
+                },
+                "assessment": {
+                    "icon": "📝",
+                    "title": "Prüfung",
+                    "description": "Die Behörde prüft die Unterlagen und holt ggf. Stellungnahmen ein."
+                },
+                "questions": {
+                    "icon": "📞",
+                    "title": "Rückfragen",
+                    "description": "Bei Unklarheiten werden Sie kontaktiert, um weitere Informationen zu liefern."
+                },
+                "decision": {
+                    "icon": "📄",
+                    "title": "Bescheid",
+                    "description": "Sie erhalten einen Bescheid über die Genehmigung oder Auflagen."
+                }
+            },
+            "processingTime": "Durchschnittliche Bearbeitungszeit: 4–8 Wochen"
+        }
+    },
+    "expertReports": {
+        "title": "Häufig benötigte Fachgutachten",
+        "items": {
+            "noise": {
+                "icon": "🔊",
+                "title": "Schallschutz / Lärmschutz",
+                "description": "Besonders bei Maschinen, Lüftungsanlagen oder Musikbetrieb."
+            },
+            "ventilation": {
+                "icon": "🌬️",
+                "title": "Lüftung / Klima",
+                "description": "Nachweis einer ausreichenden Be- und Entlüftung."
+            },
+            "fireProtection": {
+                "icon": "🔥",
+                "title": "Brandschutz",
+                "description": "Brandalarm, Fluchtwege, Feuerlöscher, ggf. Sprinkler."
+            }
+        }
+    },
+    "fees": {
+        "title": "Kosten & Gebühren",
+        "items": {
+            "federalFees": {
+                "icon": "💶",
+                "title": "Bundesabgaben",
+                "description": "Abhängig von Betriebsart und Umfang (ca. 70–300 €)."
+            },
+            "expertFees": {
+                "icon": "📄",
+                "title": "Sachverständigenkosten",
+                "description": "Behördliche Gutachter (je nach Aufwand, mehrere hundert Euro möglich)."
+            },
+            "ownExperts": {
+                "icon": "🛠️",
+                "title": "Eigene Expert:innen",
+                "description": "Z. B. Ingenieurbüros, Planer:innen, Brandschutzexpert:innen."
+            },
+            "time": {
+                "icon": "⏱️",
+                "title": "Zeit",
+                "description": "Planen Sie ausreichend Zeit für Vorbereitung und eventuelle Nachbesserungen ein."
+            }
+        }
+    },
+    "tips": {
+        "title": "Tipps für einen reibungslosen Ablauf",
+        "items": {
+            "planEarly": {
+                "icon": "🗂️",
+                "title": "Frühzeitig planen",
+                "description": "Beginnen Sie mindestens 2–3 Monate vor geplanter Inbetriebnahme."
+            },
+            "contactAuthority": {
+                "icon": "🤝",
+                "title": "MA 36 kontaktieren",
+                "description": "Nutzen Sie die Beratung – viele Fragen lassen sich schon vorab klären."
+            },
+            "useChecklists": {
+                "icon": "📋",
+                "title": "Checklisten verwenden",
+                "description": "Überprüfen Sie, ob alle Pläne, Gutachten und Formulare vollständig sind."
+            },
+            "stayFlexible": {
+                "icon": "🔄",
+                "title": "Flexibel bleiben",
+                "description": "Seien Sie auf Nachbesserungen oder Auflagen vorbereitet."
+            }
+        }
+    },
+    "pageTitle": "Dokumente & Formulare",
+    "pageDescription": "Alle erforderlichen Dokumente für Ihre Betriebsanlagengenehmigung zum Download",
+    "disclaimer": {
+        "title": "⚖️ Wichtiger rechtlicher Hinweis",
+        "text": "Diese Plattform bietet ausschließlich Informationen und technische Unterstützung beim Ausfüllen von Formularen. Wir bieten keine Rechtsberatung an. Die Überprüfung auf Vollständigkeit und Richtigkeit liegt in Ihrer Verantwortung. Für rechtliche Fragen wenden Sie sich bitte an einen Fachanwalt oder die MA 36."
+    },
+    "filter": {
+        "all": "Alle Dokumente",
+        "required": "Pflichtdokumente",
+        "guides": "Anleitungen"
+    },
+    "category": {
+        "required": "Pflicht",
+        "optional": "Optional",
+        "guide": "Anleitung"
+    },
+    "pages": "Seiten",
+    "download": "Herunterladen",
+    "downloading": "Lädt...",
+    "downloadFailed": "Download fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "openExternal": "Externen Link öffnen",
+    "noExternalLink": "Kein externer Link verfügbar.",
+    "needHelp": {
+        "title": "Hilfe beim Ausfüllen?",
+        "text": "Diese Formulare können komplex sein. Nutzen Sie unseren kostenlosen Checker, um herauszufinden, welche Dokumente Sie genau benötigen."
+    },
+    "startChecker": "Jetzt Checker starten",
+    "officialSource": "Quelle"
+}

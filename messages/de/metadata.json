@@ -1,0 +1,87 @@
+{
+    "title": "Betriebsanlagengenehmigung Wien – Genehmigung prüfen für Gründer",
+    "description": "Kostenloser Betriebsanlagen-Check für Gründer in Wien: Erfahren Sie in 2 Minuten, ob Ihr Gewerbe bei der Unternehmensgründung eine Betriebsanlagengenehmigung braucht. MA 36 Wien, GFVO, alle Infos.",
+    "keywords": [
+        "Betriebsanlagengenehmigung Wien",
+        "Unternehmensgründung Wien",
+        "Gründen Gewerbe Wien",
+        "Betriebsanlage Gründer",
+        "Gewerbeanmeldung Wien",
+        "Genehmigung Betriebsanlage",
+        "MA 36 Wien",
+        "Betriebsanlage GFVO",
+        "Gewerbe gründen Wien",
+        "Startup Wien Genehmigung"
+    ],
+    "openGraph": {
+        "title": "Betriebsanlagen-Check für Gründer in Wien",
+        "description": "Prüfen Sie mit unserem kostenlosen Online-Check, ob Ihre Betriebsanlage eine Genehmigung benötigt – mehrsprachig, sicher und schnell.",
+        "siteName": "Betriebsanlagen Check",
+        "images": [
+            {
+                "url": "/og-image.png",
+                "width": 1200,
+                "height": 630,
+                "alt": "Betriebsanlagen Check Wien - Genehmigung prüfen"
+            }
+        ]
+    },
+    "twitter": {
+        "title": "Betriebsanlagen-Check: Genehmigungspflicht jetzt prüfen",
+        "description": "Finden Sie in wenigen Minuten heraus, ob Ihre Betriebsanlage in Wien genehmigungspflichtig ist und welche Unterlagen Sie brauchen.",
+        "images": [
+            "/og-image.png"
+        ]
+    },
+    "faq": {
+        "title": "FAQ zum Betriebsanlagen-Check – Häufig gestellte Fragen",
+        "description": "Antworten zu Genehmigungspflicht, Ablauf und Kosten des Betriebsanlagen-Verfahrens in Wien.",
+        "keywords": [
+            "FAQ Betriebsanlagengenehmigung",
+            "Häufige Fragen Betriebsanlage",
+            "Genehmigung Wien Informationen"
+        ],
+        "openGraph": {
+            "title": "FAQ: Wichtigste Antworten zur Betriebsanlagengenehmigung",
+            "description": "Erhalten Sie klare Antworten zur Genehmigungspflicht, zu Fristen und zu Ansprechpersonen in Wien."
+        },
+        "twitter": {
+            "title": "FAQ zur Betriebsanlagengenehmigung",
+            "description": "Die häufigsten Fragen zum Betriebsanlagen-Check verständlich erklärt."
+        }
+    },
+    "documents": {
+        "title": "Unterlagen für die Betriebsanlagengenehmigung in Wien",
+        "description": "Überblick über erforderliche Dokumente, Expertisen und Bearbeitungsfristen für Ihren Genehmigungsantrag.",
+        "keywords": [
+            "Betriebsanlage Unterlagen",
+            "Genehmigungsprozess Wien",
+            "Behördenwege Betriebsanlage"
+        ],
+        "openGraph": {
+            "title": "Checkliste: Dokumente für Ihre Betriebsanlagengenehmigung",
+            "description": "Schritt-für-Schritt-Anleitung zu Formularen, Plänen und Sachverständigengutachten in Wien."
+        },
+        "twitter": {
+            "title": "Dokumente für den Betriebsanlagen-Antrag",
+            "description": "Welche Unterlagen die Behörde verlangt und wie Sie sich optimal vorbereiten."
+        }
+    },
+    "checkResult": {
+        "title": "Ihr Ergebnis des Betriebsanlagen-Checks",
+        "description": "Auswertung Ihres Checks mit Empfehlungen zu nächsten Schritten, Kontakten und Dokumenten.",
+        "keywords": [
+            "Betriebsanlagen Check Ergebnis",
+            "Nächste Schritte Genehmigung",
+            "Bewertung Betriebsanlage"
+        ],
+        "openGraph": {
+            "title": "Ergebnis: Benötigt Ihre Betriebsanlage eine Genehmigung?",
+            "description": "Sehen Sie sofort, ob Handlungsbedarf besteht und wie Sie weiter vorgehen sollten."
+        },
+        "twitter": {
+            "title": "Ihr Betriebsanlagen-Check Ergebnis",
+            "description": "Empfehlungen zu Genehmigungspflicht, Dokumenten und nächsten Schritten auf einen Blick."
+        }
+    }
+}

@@ -1,0 +1,146 @@
+{
+    "title": "Auswertung Betriebsanlagen checker",
+    "actions": {
+        "restart": "Checker neu starten"
+    },
+    "sections": {
+        "procedural": "Zuständigkeit & Verfahren",
+        "documents": "Einreichunterlagen",
+        "labour": "Planungswerte Arbeitnehmerschutz",
+        "operationalDuties": "Pflichten im Betrieb",
+        "changeDuties": "Anzeigen & Änderungen",
+        "preCheck": "Vorbereitende Schritte",
+        "specialNotes": "Besondere Hinweise",
+        "quickReferences": "Schnellzugriffe auf Quellen"
+    },
+    "gfvoMatch": {
+        "title": "Einstufung nach 2. GFVO"
+    },
+    "reasons": {
+        "title": "Rechtliche Einschätzung",
+        "externalVentilation": "Außenliegende Lüftungs- oder Klimageräte lösen gemäß § 2 Z 2 2. GFVO Genehmigungspflicht aus.",
+        "regulatedHazardousStorage": "Es werden Gefahrstoffe in Mengen gelagert, für die besondere Rechtsvorschriften gelten (§ 2 Z 3 2. GFVO).",
+        "labelledHazardousStorage": "Kennzeichnungspflichtige Gefahrstoffe ohne spezielle Lagervorschriften schließen die Freistellung aus (§ 2 Z 4 2. GFVO).",
+        "musicExclusion": "Musikdarbietungen oder laute Beschallung sind nach § 2 Z 5 2. GFVO nicht freigestellt.",
+        "ippcSeveso": "IPPC-/Seveso-relevante Anlagen sind stets genehmigungspflichtig (§ 2 Z 6 2. GFVO).",
+        "noFacilityDefinition": "Keine örtlich gebundene, auf Dauer angelegte Betriebsanlage – daher endet der Checker hier.",
+        "operatingHours": "Geplante Betriebszeiten überschreiten den Rahmen der 2. GFVO (§ 1 Abs. 2).",
+        "areaExceeded": "Die angegebene Fläche überschreitet die Höchstgrenze der gewählten Freistellungskategorie.",
+        "accommodationBeds": "Mehr als 30 Gästebetten führen zur Genehmigungspflicht (§ 1 Abs. 1 Z 8 2. GFVO).",
+        "accommodationBuildingUse": "Das Gebäude wird nicht ausschließlich für Wohn-/Beherbergungszwecke genutzt – Voraussetzung der Freistellung fehlt.",
+        "accommodationWellness": "Wellness- bzw. Badeeinrichtungen sind vom Ausnahmetatbestand nicht umfasst.",
+        "accommodationMeals": "Die Abgabe vollwertiger Mahlzeiten überschreitet die Freistellung (nur Frühstück/kleiner Imbiss erlaubt).",
+        "expectedImpairments": "Nach § 74 Abs. 2 GewO sind schädliche Immissionen, Gefährdungen oder Störungen zu erwarten.",
+        "individualAssessment": "Keine eindeutige Freistellung – eine behördliche Feststellung kann Genehmigungsfreiheit bestätigen.",
+        "freistellungSummary": "Alle Voraussetzungen der 2. GFVO sind erfüllt – die Anlage bleibt genehmigungsfrei, solange die Auflagen eingehalten werden."
+    },
+    "classifications": {
+        "noFacility": {
+            "title": "Keine Betriebsanlage nach GewO",
+            "summary": "Die Tätigkeit ist mobil oder bloß vorübergehend und fällt damit nicht unter den Betriebsanlagenbegriff (§ 74 GewO)."
+        },
+        "freistellungGFVO": {
+            "title": "Genehmigungsfrei nach 2. GFVO",
+            "summary": "Die Anlage erfüllt Kategorie, Zeitvorgaben und Ausschlussfreiheit der 2. Genehmigungsfreistellungsverordnung."
+        },
+        "needsPermit": {
+            "title": "Genehmigungspflichtige Betriebsanlage",
+            "summary": "Es greifen Ausschlussgründe oder zu erwartende Immissionen – ein Verfahren nach § 74 GewO ist erforderlich."
+        },
+        "individualAssessment": {
+            "title": "Einzelfallprüfung empfohlen",
+            "summary": "Es liegt keine klare Freistellung vor; die Behörde kann Genehmigungsfreiheit im Einzelfall feststellen."
+        }
+    },
+    "gfvoCategories": {
+        "retail": "Einzelhandel bis 600 m² (§ 1 Abs. 1 Z 1 2. GFVO)",
+        "office": "Bürobetriebe ohne lärmende Maschinen (§ 1 Abs. 1 Z 2 2. GFVO)",
+        "warehouse": "Lager in Gebäuden bis 600 m² (§ 1 Abs. 1 Z 3 2. GFVO)",
+        "cosmetics": "Kosmetik-, Fußpflege-, Massagebetriebe (§ 1 Abs. 1 Z 4 2. GFVO)",
+        "tailor": "Änderungsschneidereien/haushaltsähnliche Nähmaschinen oder Schuhservice (§ 1 Abs. 1 Z 5 2. GFVO)",
+        "textilePickup": "Übernahmestelle für Textilreiniger/Wäschebügler (§ 1 Abs. 1 Z 10 2. GFVO)",
+        "accommodation": "Beherbergungsbetrieb ≤ 30 Betten, ohne Wellness, nur Frühstück (§ 1 Abs. 1 Z 8 2. GFVO)",
+        "iceSalon": "Gastgewerbe in der Betriebsart Eissalon (§ 1 Abs. 1 Z 9 2. GFVO)",
+        "dataCenter": "Rechenzentrum ohne Feuerungsanlagen (nur Notstrom) (§ 1 Abs. 1 Z 11 2. GFVO)",
+        "infrastructureSite": "Betrieb innerhalb genehmigter Eisenbahn-, Flugplatz-, Hafen- oder Krankenanstaltseinrichtungen (§ 1 Abs. 1 Z 12 2. GFVO)",
+        "embeddedFacility": "Betrieb bis 400 m² innerhalb einer genehmigten Gesamtanlage (§ 1 Abs. 1 Z 13 2. GFVO)"
+    },
+    "procedural": {
+        "authority": "Zuständige Behörde ist die Bezirksverwaltungsbehörde (in Wien: MA 36 – Betriebsanlagen).",
+        "projectProcedure": "Genehmigungspflichtige Vorhaben benötigen ein Projektverfahren mit vollständigen Einreichunterlagen.",
+        "permitEffect": "Errichtung und Betrieb sind erst nach rechtskräftigem Genehmigungsbescheid zulässig.",
+        "eignungsfeststellung": "Vorhandene Eignungsfeststellungen wirken als anlagenbezogene Genehmigungen weiter.",
+        "projectSprech": "Projektsprechtage der Behörde beschleunigen Abstimmungen mit Sachverständigen.",
+        "feeHint": "Bundesgebühren entfallen seit der GewO-Novelle 2017; Neugründungen können NeuföG-Befreiungen nutzen."
+    },
+    "documents": {
+        "general": {
+            "application": "Antrag auf Errichtung/Änderung der Betriebsanlage (Formblatt, unterschrieben).",
+            "description": "Betriebsbeschreibung mit Betriebsart, Öffnungszeiten, Mitarbeiteranzahl, Verkehrsaufkommen, Lagerungen, Lüftungssituation.",
+            "sitePlans": "Lageplan sowie Grundrisse/Schnitte (typisch Maßstab 1:100).",
+            "ventilationPlan": "Plan bzw. Beschreibung der Lüftungsanlage inkl. Führung der Abluft.",
+            "machineList": "Maschinen- und Geräteverzeichnis mit Leistungen, Medien und Aufstellungsplan.",
+            "emissionStatement": "Erklärung zu Lärm-, Luft- und Verkehrsbelastungen samt vorgesehenen Maßnahmen.",
+            "wasteConcept": "Abfallwirtschaftskonzept gemäß GewO/Vorgaben der Stadt Wien.",
+            "wasteWater": "Nachweis der Abwassereinleitung (Mitteilung/allenfalls wasserrechtliche Bewilligung)."
+        },
+        "sector": {
+            "gastroExhaust": "Gastronomie/Beherbergung: Nachweis Küchenabluft gemäß Stand der Technik (z. B. ÖNORM EN 16282-1).",
+            "guestSanitary": "Gäste-Sanitäranlagen nach baurechtlichen Vorgaben (OIB-Richtlinie 3, Kellnerregel etc.).",
+            "hygiene": "Branchenspezifische Hygienenachweise (Lebensmittelhygiene, Fett-/Ölabscheider)."
+        }
+    },
+    "labour": {
+        "roomHeight": "Arbeitsräume i. d. R. mit 3,0 m Mindest-Raumhöhe (Ausnahmen nach Abstimmung mit Arbeitsinspektion).",
+        "daylight": "Natürliche Belichtung mind. 10 % der Grundfläche; Sonderfälle wie Kellerlokale gesondert begründen.",
+        "ventilation": "Natürliche Lüftung ≥ 2 % der Bodenfläche bzw. mechanische Be-/Entlüftung mit 35/50/70 m³/h Frischluft pro Person (Belastungsgrad).",
+        "exhaustDischarge": "Abluft nach Stand der Technik über Dach oder gefiltert in ausreichender Höhe (Geräusch 30–40 dB(A) am Auslass).",
+        "escapeRoutes": "Fluchtwege: maximale Entfernung 10 m bis zum Fluchtweg, Querlüftung bei Tiefen > 10 m sicherstellen.",
+        "escapeWidths": "Fluchtwegbreiten nach Personenanzahl: 1–20 Pers 1,0 m | 21–120 Pers 1,2 m | +0,1 m je weitere 10 Personen.",
+        "emergencyDoors": "Notausgänge: lichte Breite bis 40 Pers 0,8 m, bis 80 Pers 0,9 m, bis 120 Pers 1,0 m; Türflügel ab > 15 Personen in Fluchtrichtung.",
+        "safetyLighting": "Sicherheitsbeleuchtung bei fehlender natürlicher Belichtung oder Abend-/Nachtbetrieb vorsehen.",
+        "staffSanitary": "Mitarbeiter-Sanitär: mind. 1 verschließbare Zelle pro 15 Personen, getrennte Anlagen ab je 5 m/w, Vorraum/Lüftung sicherstellen."
+    },
+    "operationalDuties": {
+        "startAfterPermit": "Betriebsaufnahme erst nach Rechtskraft des Genehmigungsbescheids (§ 74 GewO).",
+        "periodicInspection": "§ 82b GewO: wiederkehrende Überprüfung alle 5 Jahre (vereinfachtes Verfahren 6 Jahre), ausgenommen UMG-Registerbetriebe.",
+        "inspectionScope": "Prüfumfang: Abgleich Realität vs. Genehmigungskonsens inkl. Mitnormen (§ 356b GewO).",
+        "inspectionCertificate": "Prüfbescheinigung muss Anlage, Standort, Prüferbefugnis, Bescheide, geprüfte Vorschriften und Befunde enthalten.",
+        "deficiencyDuties": "Festgestellte Mängel sind zu beheben; Verstöße können Verwaltungsstrafen auslösen (§ 366 GewO)."
+    },
+    "changeDuties": {
+        "notifyChanges": "Wesentliche Änderungen sind vor Umsetzung gemäß § 81 Abs. 3 GewO anzuzeigen.",
+        "operationAfterNotice": "Geänderte Betriebsanlage darf erst nach bescheidmäßiger Kenntnisnahme (Frist 2 Monate) betrieben werden."
+    },
+    "preCheck": {
+        "contactChamber": "Frühzeitig mit Wirtschaftskammer/Betriebsanlagenservice Kontakt aufnehmen.",
+        "clarifyBuildingLaw": "Widmung, Bebauungsplan und Baukonsens vor Projektstart prüfen.",
+        "engageNeighbours": "Nachbar:innen informieren und frühzeitig einbinden, um Konflikte zu vermeiden.",
+        "reviewOSH": "Arbeitnehmerschutz-Anforderungen (AStV, ASchG) in der Planung berücksichtigen.",
+        "clarifyPermitNeed": "Genehmigungspflicht mit Behörde klären bzw. Feststellungsbescheid beantragen.",
+        "prepareCompleteSet": "Unterlagen vollständig vorbereiten – vollständige Einreichung beschleunigt das Verfahren."
+    },
+    "specialNotes": {
+        "selfService": "Containershops/Selbstbedienungsläden: Widmung und Baukonsens klären; je nach Immissionen genehmigungspflichtig.",
+        "buildingProcedure": "Bau- und Gewerbeverfahren laufen getrennt – Nutzungsänderungen sind baurechtlich gesondert zu genehmigen.",
+        "existingPermits": "Bestehende Genehmigungen/Eignungsfeststellungen dokumentieren und dem Antrag beilegen."
+    },
+    "quickReferences": {
+        "definition": "Definition & Schritte: WKO Leitfaden \"Weg zum genehmigten Betrieb\".",
+        "gfvo": "2. Genehmigungsfreistellungsverordnung (konsolidierte Fassung).",
+        "guideline": "Leitfaden Betriebsanlagengenehmigung (WKW 2022).",
+        "gastro": "Gastronomie/Hotellerie Leitfaden (WKNÖ 06/2024).",
+        "procedure": "Gewerberechtliches Genehmigungsverfahren (NÖ Leitfaden 06/2024).",
+        "section82b": "Regelmäßige Prüfung § 82b GewO – Prüfer, Fristen, Bescheinigung."
+    },
+    "downloadDocuments": {
+        "title": "Benötigte Dokumente herunterladen",
+        "description": "Laden Sie alle erforderlichen Formulare für Ihren Antrag bei der MA 36 herunter. Alle Dokumente sind kostenlos verfügbar.",
+        "button": "Zu den Dokumenten"
+    },
+    "disclaimer": {
+        "title": "Hinweis zur Verbindlichkeit",
+        "orientation": "Hinweis: Dieses Tool dient der Orientierung. Es prüft, ob dein Betrieb grundsätzlich unter eine Ausnahme der 2. Genehmigungsfreistellungsverordnung fällt.",
+        "legal": "Das Ergebnis ist keine behördliche Entscheidung und keine Rechtsberatung im Sinn des RDLG. Verbindlich entscheidet die MA 36 (Betriebsanlagenbehörde Wien)."
+    }
+}
