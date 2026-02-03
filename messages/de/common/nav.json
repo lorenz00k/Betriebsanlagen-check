@@ -4,5 +4,7 @@
     "primaryMenu": "Hauptmenü",
     "more": "Mehr",
     "openMenu": "Menü öffnen",
-    "closeMenu": "Menü schließen"
+    "closeMenu": "Menü schließen",
+    "nextButton": "Weiter",
+    "backButton": "Zurück"
 }
