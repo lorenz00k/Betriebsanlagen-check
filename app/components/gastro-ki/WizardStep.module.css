@@ -9,42 +9,64 @@
     }
 }
 
-.cardButton {
+.card {
+    position: relative;
+    /* needed for the top-right check badge */
     padding: 1.5rem;
     border-radius: var(--radius-sm);
-    border: 2px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+    border: 2px solid color-mix(in srgb, var(--color-border) 55%, transparent);
     background: var(--color-surface);
     text-align: left;
-    transition: transform var(--transition-move), box-shadow var(--transition-fade), border-color var(--transition-fade), background var(--transition-fade);
+    transition:
+        box-shadow var(--transition-fade),
+        border-color var(--transition-fade),
+        transform var(--transition-move),
+        background var(--transition-fade);
 }
 
-.cardButton:hover {
+.card:hover {
     box-shadow: var(--shadow-xs);
     border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
 }
 
-.cardSelected {
-    border-color: color-mix(in srgb, var(--color-accent) 70%, var(--color-border));
-    background: color-mix(in srgb, var(--color-accent-soft) 65%, var(--color-surface));
+.selected {
+    border-color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface));
     box-shadow: var(--shadow-xs);
 }
 
-.cardRow {
+.row {
     display: flex;
     gap: 0.75rem;
     align-items: flex-start;
 }
 
-.cardTitle {
+.title {
     font-weight: 650;
     color: var(--color-fg);
     margin-bottom: 0.25rem;
 }
 
-.cardDesc {
+.desc {
     font-size: 0.95rem;
     color: var(--color-fg-subtle);
 }
+
+.selectedBadge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+
+    background: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface));
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+}
+
 
 /* checkbox square */
 .checkBox {
